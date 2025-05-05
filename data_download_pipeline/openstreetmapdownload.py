@@ -14,10 +14,10 @@ def download_busy_areas_london():
     """
 
     print("Downloading locations for Greater London...")
-    
+
     # Define the Greater London area
     place_name = "Greater London, UK"
-    
+
     # Split tags into smaller groups to avoid timeout
     tag_groups = [
         {'shop': True},
@@ -30,20 +30,18 @@ def download_busy_areas_london():
         {'amenity': ['restaurant', 'cafe', 'bar', 'pub', 'nightclub', 'fast_food']},
         {'amenity': ['parking']}
     ]
-    
+
     all_gdfs = []
-    
+
     # Download POIs (Points of Interest) from OSM in groups
     for i, tags in enumerate(tag_groups):
         try:
             print(f"Downloading group {i+1}/{len(tag_groups)}: {tags}")
             gdf = ox.features_from_place(place_name, tags)
             print(f"  - Downloaded {len(gdf)} locations")
-            
+
             # Create a column for the group name
-            group_name = ', '.join([f"{k}: {v}" for k, v in tags.items() if isinstance(v, list)])
-            if not group_name:  # Handle case for {'shop': True}
-                group_name = ', '.join([f"{k}: {v}" for k, v in tags.items()])
+            group_name = ', '.join([f"{k}: {v}" for k, v in tags.items() if isinstance(v, list)]) or ', '.join([f"{k}: {v}" for k, v in tags.items()])
             gdf['group'] = group_name
 
             all_gdfs.append(gdf)
@@ -52,7 +50,7 @@ def download_busy_areas_london():
             time.sleep(3)  # Increased delay to reduce server load
         except Exception as e:
             print(f"  - Error downloading group {i+1}: {e}")
-    
+
     # Combine all dataframes if we have any successful downloads
     if all_gdfs:
         try:
@@ -63,36 +61,33 @@ def download_busy_areas_london():
             combined_gdf = combined_gdf.drop_duplicates(subset=['geometry'])
             combined_gdf = combined_gdf.reset_index(drop=True)
             combined_gdf = combined_gdf.dropna(subset=['geometry'])
-            
+
             # Get centroid coordinates safely for any geometry type
             def get_lat_lon(geom):
                 try:
-                    # For points, just use coordinates directly
                     if isinstance(geom, Point):
                         return (geom.y, geom.x)
-                    # For lines and polygons, use centroid
-                    else:
-                        centroid = geom.centroid
-                        return (centroid.y, centroid.x)
-                except:
+                    centroid = geom.centroid
+                    return (centroid.y, centroid.x)
+                except Exception:
                     return (None, None)
-            
+
             # Apply function to extract coordinates
             coords = combined_gdf.geometry.apply(get_lat_lon)
             combined_gdf['latitude'] = coords.apply(lambda x: x[0])
             combined_gdf['longitude'] = coords.apply(lambda x: x[1])
-            
+
             # Save the data
             os.makedirs(os.path.join('..', 'processed_data'), exist_ok=True)
             output_path = os.path.join('..', 'processed_data', 'london_busy.parquet')
-            
+
             # Print absolute path to find the file later
             abs_path = os.path.abspath(output_path)
             print(f"Saving to absolute path: {abs_path}")
-            
+
             combined_gdf.to_parquet(output_path)
             print(f"Saved {len(combined_gdf)} locations to {output_path}")
-            
+
             return combined_gdf
         except Exception as e:
             print(f"Error combining or saving data: {e}")

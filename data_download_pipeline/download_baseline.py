@@ -126,7 +126,7 @@ def preprocess_files(input_dir: str, output_dir: str) -> None:
     outcomes = read_city_of_london_street_csvs(
         os.path.join("data", "relevant_data"), "outcomes")
     outcomes = (
-        outcomes[outcomes["Crime ID"].isin(combined_df["Crime ID"].unique())]
+        outcomes[outcomes["Crime ID"].isin(df_streets["Crime ID"].unique())]
         .assign(
             period=pd.to_datetime(
                 outcomes["Month"], format="%Y-%m").dt.to_period("M"),
