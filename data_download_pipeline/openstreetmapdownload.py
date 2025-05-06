@@ -19,29 +19,29 @@ def download_busy_areas_london():
     place_name = "Greater London, UK"
 
     # Split tags into smaller groups to avoid timeout
+    # Each list item is a tuple of (query_dict, simple_group_name)
     tag_groups = [
-        {'shop': True},
-        {'amenity': ['police', 'hospital', 'fire_station']},
-        {'amenity': ['school', 'university', 'library']},
-        {'public_transport': ['station']},
-        {'railway': ['station']},
-        {'amenity': ['theatre', 'cinema', 'museum']},
-        {'leisure': ['park']},
-        {'amenity': ['restaurant', 'cafe', 'bar', 'pub', 'nightclub', 'fast_food']},
-        {'amenity': ['parking']}
+        ({'shop': True}, 'shop'),
+        ({'amenity': ['police', 'hospital', 'fire_station']}, 'emergency'),
+        ({'amenity': ['school', 'university', 'library']}, 'education'),
+        ({'public_transport': ['station']}, 'transport'),
+        ({'railway': ['station']}, 'transport'),
+        ({'amenity': ['theatre', 'cinema', 'museum']}, 'entertainment'),
+        ({'leisure': ['park']}, 'leisure'),
+        ({'amenity': ['restaurant', 'cafe', 'bar', 'pub', 'nightclub', 'fast_food']}, 'food'),
+        ({'amenity': ['parking']}, 'parking')
     ]
 
     all_gdfs = []
 
     # Download POIs (Points of Interest) from OSM in groups
-    for i, tags in enumerate(tag_groups):
+    for i, (tags, group_name) in enumerate(tag_groups):
         try:
-            print(f"Downloading group {i+1}/{len(tag_groups)}: {tags}")
+            print(f"Downloading group {i+1}/{len(tag_groups)}: {group_name}")
             gdf = ox.features_from_place(place_name, tags)
             print(f"  - Downloaded {len(gdf)} locations")
 
-            # Create a column for the group name
-            group_name = ', '.join([f"{k}: {v}" for k, v in tags.items() if isinstance(v, list)]) or ', '.join([f"{k}: {v}" for k, v in tags.items()])
+            # Use the simplified group name
             gdf['group'] = group_name
 
             all_gdfs.append(gdf)
@@ -56,6 +56,9 @@ def download_busy_areas_london():
         try:
             combined_gdf = pd.concat(all_gdfs, ignore_index=True)
             print(f"Total locations downloaded: {len(combined_gdf)}")
+
+            # Only keep relevant columns
+            combined_gdf = combined_gdf[['name', 'group', 'geometry']]
 
             # Clean up the GeoDataFrame
             combined_gdf = combined_gdf.drop_duplicates(subset=['geometry'])

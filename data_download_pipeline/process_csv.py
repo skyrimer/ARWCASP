@@ -53,21 +53,12 @@ def agetable_to_parquet(man_csv, female_csv, total_csv, output_parquet_path):
 
     # Combine the DataFrames
     combined_df = pd.concat([df_man, df_female, df_total], ignore_index=True)
-
-    # Check for columns with mixed types (object type often indicates mixed data)
-    object_cols = combined_df.select_dtypes(include=['object']).columns.tolist()
-    print(f"Object columns that might need conversion: {object_cols}")
     
-    # Clean up problematic columns by converting to appropriate types
-    for col in combined_df.columns:
-        # First check if the column has mixed numeric and string values
-        if combined_df[col].dtype == 'object':
-            # Try to convert to strings first - this handles the mixed types
-            combined_df[col] = combined_df[col].astype(str)
+    combined_df['%.23'] = combined_df['%.23'].astype(str)
     
     # For columns that should be numeric but contain some non-numeric values
     numeric_cols = [col for col in combined_df.columns 
-                   if col not in ['Sex'] and '.' not in col and '%' not in col]
+                   if col not in ['Sex'] and '.' not in col and '%' not in col and 'Area' not in col and 'mnemonic' not in col]
     
     for col in numeric_cols:
         try:
@@ -84,13 +75,13 @@ def agetable_to_parquet(man_csv, female_csv, total_csv, output_parquet_path):
 
 # Example usage
 if __name__ == "__main__":
-    input_csv = "../data/deprivation.csv" 
-    output_parquet = "../processed_data/deprivation_index.parquet"  
-    convert_to_parquet(input_csv, output_parquet, False)
-
-    input_csv = "../data/ethnicity.csv"
-    output_parquet = "../processed_data/ethnicity_index.parquet"
-    convert_to_parquet(input_csv, output_parquet, True)
+    #input_csv = "../data/deprivation.csv" 
+    #output_parquet = "../processed_data/deprivation_index.parquet"  
+    #convert_to_parquet(input_csv, output_parquet, False)
+#
+    #input_csv = "../data/ethnicity.csv"
+    #output_parquet = "../processed_data/ethnicity_index.parquet"
+    #convert_to_parquet(input_csv, output_parquet, True)
 
     input_csv_man = "../data/age_man.csv"
     input_csv_female = "../data/age_female.csv"
