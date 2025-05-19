@@ -1,6 +1,6 @@
 import pandas as pd
 
-def convert_to_parquet(input_csv_path, output_parquet_path, checklondon=False):
+def convert_to_parquet(input_csv_path, output_parquet_path, checklondon=False, seperator=','):
     """
     Converts a deprivation index table from CSV to Parquet format.
 
@@ -9,7 +9,7 @@ def convert_to_parquet(input_csv_path, output_parquet_path, checklondon=False):
         output_parquet_path (str): Path to save the output Parquet file.
     """
     # Load the deprivation index table from CSV
-    df = pd.read_csv(input_csv_path)
+    df = pd.read_csv(input_csv_path, sep=seperator, )
 
     if checklondon:
         # Only keep data from london boroughs
@@ -83,9 +83,13 @@ if __name__ == "__main__":
     #output_parquet = "../processed_data/ethnicity_index.parquet"
     #convert_to_parquet(input_csv, output_parquet, True)
 
-    input_csv_man = "../data/age_man.csv"
-    input_csv_female = "../data/age_female.csv"
-    input_csv_total = "../data/age_total.csv"
-    output_parquet = "../processed_data/age_index.parquet"
-    agetable_to_parquet(input_csv_man, input_csv_female, input_csv_total, output_parquet)
+    #input_csv_man = "../data/age_man.csv"
+    #input_csv_female = "../data/age_female.csv"
+    #input_csv_total = "../data/age_total.csv"
+    #output_parquet = "../processed_data/age_index.parquet"
+    #agetable_to_parquet(input_csv_man, input_csv_female, input_csv_total, output_parquet)
+
+    input_csv = "../data/deprivation_2015.csv"
+    output_parquet = "../processed_data/deprivation_2015.parquet"
+    convert_to_parquet(input_csv, output_parquet, False, seperator=';')
     
