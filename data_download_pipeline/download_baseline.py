@@ -103,6 +103,7 @@ def preprocess_files(input_dir: str, output_dir: str) -> None:
                 axis=1
             )
         )
+        .dropna(subset=["LSOA code"])
         .fillna({
             "Last outcome category": "Not stated",
             "Crime ID": "Not stated",
@@ -214,7 +215,7 @@ if __name__ == "__main__":
         "https://data.police.uk/data/archive/2019-02.zip",
         "https://data.police.uk/data/archive/2016-02.zip",
     ]
-    download_files(urls, os.path.join("data", "raw_download"))
+    # download_files(urls, os.path.join("data", "raw_download"))
     preprocess_files(os.path.join("data", "relevant_data"),
                      os.path.join("processed_data"))
     print("Download completed.")

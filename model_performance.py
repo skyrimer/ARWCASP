@@ -83,11 +83,13 @@ def forecast_next_month(df, params, guide, cats, seed=1, num_samples=100):
 
 # 5) Run it
 def main():
-    df, cats     = load_and_prepare("processed_data/street.parquet", n_lsoas=5)
+    df, cats     = load_and_prepare("processed_data/street.parquet", n_lsoas=5_000)
     params, guide= run_svi(df, num_steps=500, lr=1e-2, seed=0)
     preds        = forecast_next_month(df, params, guide, cats,
                                        seed=1, num_samples=100)
     print(preds)
+    preds.to_parquet("processed_data/street_forecast2.parquet",
+                   index=False, compression='gzip')
 
 if __name__=="__main__":
     main()

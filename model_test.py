@@ -130,7 +130,7 @@ def forecast_next_month(df_model: pd.DataFrame,
 
 def main():
     PARQUET_PATH = 'processed_data/street.parquet'
-    N_LSOAS      = 20
+    N_LSOAS      = 5_000
     SEED         = 42
 
     df_model, cats = load_and_prepare_data(PARQUET_PATH, n_lsoas=N_LSOAS)
@@ -140,6 +140,8 @@ def main():
     preds = forecast_next_month(df_model, cats, trace, seed=SEED)
 
     print(preds)
+    preds.to_parquet("processed_data/street_forecast1.parquet",
+                   index=False, compression='gzip')
 
 if __name__ == '__main__':
     main()
