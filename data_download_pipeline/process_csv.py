@@ -75,9 +75,9 @@ def agetable_to_parquet(man_csv, female_csv, total_csv, output_parquet_path):
 
 # Example usage
 if __name__ == "__main__":
-    #input_csv = "../data/deprivation.csv" 
-    #output_parquet = "../processed_data/deprivation_index.parquet"  
-    #convert_to_parquet(input_csv, output_parquet, False)
+    #input_csv = "../data/IMD_2019.csv" 
+    #output_parquet = "../processed_data/deprivation_index_2019.parquet"  
+    #convert_to_parquet(input_csv, output_parquet, False, seperator=';')
 #
     #input_csv = "../data/ethnicity.csv"
     #output_parquet = "../processed_data/ethnicity_index.parquet"
@@ -89,7 +89,7 @@ if __name__ == "__main__":
     #output_parquet = "../processed_data/age_index.parquet"
     #agetable_to_parquet(input_csv_man, input_csv_female, input_csv_total, output_parquet)
 
-    input_csv = "../data/deprivation_2015.csv"
-    output_parquet = "../processed_data/deprivation_2015.parquet"
-    convert_to_parquet(input_csv, output_parquet, False, seperator=';')
-    
+    #input_csv = "../data/deprivation_2015.csv"
+    #output_parquet = "../processed_data/deprivation_2015.parquet"
+    #convert_to_parquet(input_csv, output_parquet, False, seperator=';')
+    pass

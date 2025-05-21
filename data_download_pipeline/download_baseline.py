@@ -210,12 +210,15 @@ def preprocess_files(input_dir: str, output_dir: str) -> None:
 if __name__ == "__main__":
     # Example usage
     urls = [
-        "https://data.police.uk/data/archive/2025-02.zip",
-        "https://data.police.uk/data/archive/2022-02.zip",
-        "https://data.police.uk/data/archive/2019-02.zip",
-        "https://data.police.uk/data/archive/2016-02.zip",
+        "https://data.police.uk/data/archive/2025-03.zip",
+        "https://data.police.uk/data/archive/2022-03.zip",
+        "https://data.police.uk/data/archive/2019-03.zip",
+        "https://data.police.uk/data/archive/2016-03.zip",
     ]
+
+    print("Download completed.")
+
     # download_files(urls, os.path.join("data", "raw_download"))
     preprocess_files(os.path.join("data", "relevant_data"),
                      os.path.join("processed_data"))
-    print("Download completed.")
+    
