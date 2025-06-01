@@ -28,13 +28,13 @@ warnings.filterwarnings('ignore', 'Geometry is in a geographic CRS. Results from
 
 
 # --- Configuration ---
-WARD_NAME = "City of London, UK"
+WARD_NAME = "Bromley, UK"
 FIXED_CRIME_RATE_THRESHOLD = 0.40 # LSOAs with crime_rate >= this value will be considered high crime
-MAX_TOTAL_WAYPOINTS_FOR_TSP = 50 # Maximum total waypoints to feed into the TSP solver
+MAX_TOTAL_WAYPOINTS_FOR_TSP = 20 # Maximum total waypoints to feed into the TSP solver
 POINTS_PER_LSOA_MIN = 1 # Minimum points to generate for any high-crime LSOA
 POINTS_PER_LSOA_MAX_CAP = 5 # Maximum points to generate for a single LSOA, regardless of size
 LSOA_AREA_TO_POINT_FACTOR = 50000 # 1 point per this many square meters (e.g., 1 point per 0.05 sq km)
-OUTPUT_MAP_FILE = "city_of_london_patrol_route_crime_above_0_40_no_straight_lines_v2.html" # Updated output file name
+OUTPUT_MAP_FILE = "bromley_patrol_route_crime_above_0_40_no_straight_lines_v2.html" # Updated output file name
 
 # --- IMPORTANT: Configure your LSOA Shapefile Path here ---
 LSOA_SHAPEFILE_PATH = "../data/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BSC_V4.gpkg"
@@ -145,8 +145,20 @@ def extract_cycle_network(area_polygon):
     """
     print("3. Extracting cycle network within the area...")
     try:
-        G = ox.graph_from_polygon(area_polygon, network_type='bike')
+        G = ox.graph_from_polygon(area_polygon, network_type='drive')
         G = ox.distance.add_edge_lengths(G)
+
+
+        # Optional filter for mostly-residential:
+        edges = ox.graph_to_gdfs(G, nodes=False)
+        residential_edges = edges[edges['highway'].isin(['residential', 'living_street'])]
+
+        # # Optionally trim the graph to only residential edges:
+        # if not residential_edges.empty:
+        #     G = nx.edge_subgraph(G, residential_edges.index).copy()
+        #     print("Filtered to primarily residential roads.")
+        # else:
+        #     print("No residential roads found; using all drivable roads.")  
 
         # Get the largest strongly connected component to ensure all nodes are reachable
         # This is crucial for TSP and continuous paths
