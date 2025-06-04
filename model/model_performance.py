@@ -54,8 +54,7 @@ def load_and_prepare(parquet_path: str, n_lsoas: int = 5):
     # Spatial lag: neighbor average lag1
     adj_rows = []
     for code, neighs in neighbors.items():
-        for nbr in neighs:
-            adj_rows.append({'LSOA code':code, 'neighbor':nbr})
+        adj_rows.extend({'LSOA code':code, 'neighbor':nbr} for nbr in neighs)
     adj_df = pd.DataFrame(adj_rows)
     lag_df = grouped[['period','LSOA code','lag1']].rename(columns={'LSOA code':'neighbor','lag1':'lag1_nbr'})
     spatial = (adj_df.merge(lag_df, on='neighbor')
