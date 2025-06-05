@@ -238,6 +238,12 @@ class StatisticalTester:
         # If shape is (n_samples, 1, n_cols), squeeze to (n_samples, n_cols)
         if samples.ndim == 3 and samples.size(1) == 1:
             samples = samples.squeeze(1)
+        
+        #If shape is empty or has no columns, return empty DataFrame
+        if samples.numel() == 0 or samples.size(-1) == 0:
+            return pd.DataFrame(
+                columns=["col", "mean", "ci_lower", "ci_upper", "p_val", "significant_CI"]
+            )
 
         # 1) Posterior mean, 95% CI
         mean_vals  = samples.mean(dim=0)   # shape: (n_cols,)
