@@ -34,7 +34,7 @@ warnings.filterwarnings('ignore', 'Geometry is in a geographic CRS. Results from
 # --- Configuration ---
 POINTS_PER_LSOA_MIN = 0 # Minimum points to generate for any high-crime LSOA
 POINTS_PER_LSOA_MAX_CAP = 25 # Maximum points to generate for a single LSOA, regardless of size
-LSOA_MAJORITY_AREA_THRESHOLD = 0.3 # Percentage of LSOA area that must be within the ward (e.g., 0.3 for 30%)
+LSOA_MAJORITY_AREA_THRESHOLD = 0.1 # Percentage of LSOA area that must be within the ward (e.g., 0.3 for 30%)
 
 # --- IMPORTANT: Configure your LSOA Shapefile Path here ---
 LSOA_SHAPEFILE_PATH = "../data/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BSC_V4.gpkg"
@@ -49,17 +49,57 @@ def download_area_boundary(area_name):
     Returns:
         geopandas.GeoDataFrame: GeoDataFrame containing the area boundary.
     """
-    # Always ensure the area is in London
+    boroughs = [
+        "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley", "Camden", "Croydon", "Ealing", "Enfield",
+        "Greenwich", "Hackney", "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon",
+        "Hounslow", "Islington", "Royal Borough of Kensington and Chelsea", "Kingston upon Thames", "Lambeth", "Lewisham",
+        "Merton", "Newham", "Redbridge", "Richmond upon Thames", "Southwark", "Sutton", "Tower Hamlets",
+        "Waltham Forest", "Wandsworth", "City of Westminster", "City of London"
+    ]
+    for borough in boroughs:
+        if area_name.lower().strip() == borough.lower():
+            # Try OSMnx's boundaries_from_place with the borough name and admin_level=10 (London boroughs)
+            queries = [
+                f"London Borough of {borough}, England, United Kingdom",
+                f"{borough}, London, UK"
+            ]
+            for place_query in queries:
+                print(f"1. Downloading boundary for: {place_query} ...")
+                try:
+                    if isinstance(place_query, dict):
+                        # Use geometries_from_place for Overpass dict queries
+                        gdf = ox.features_from_place("London, England, United Kingdom", place_query)
+                        # Filter to polygons only and dissolve to a single geometry
+                        gdf = gdf[gdf.geometry.type.isin(["Polygon", "MultiPolygon"])]
+                        if not gdf.empty:
+                            area_gdf = gpd.GeoDataFrame(geometry=[gdf.unary_union], crs="EPSG:4326")
+                        else:
+                            continue
+                    else:
+                        area_gdf = ox.geocode_to_gdf(place_query)
+                    area_gdf_projected = area_gdf.to_crs(epsg=27700)
+                    area_km2 = area_gdf_projected.geometry.area.sum() / 1e6
+                    if not area_gdf.empty and area_km2 > 2 and area_km2 < 20000:  # Require at least 2 km² for a borough
+                        area_gdf = area_gdf.set_crs(epsg=4326)
+                        print(f"   Area boundary downloaded. CRS: {area_gdf.crs}")
+                        print(f"   Approximate Area: {area_km2:.2f} km² (in projected CRS)")
+                        return area_gdf
+                    else:
+                        print(f"   Query returned area too small ({area_km2:.2f} km²), trying next query...")
+                except Exception as e:
+                    print(f"   Query failed: {e}")
+            print(f"Error: Could not find a valid boundary for borough '{borough}'.")
+            return None
+    # For wards or other names, fallback to previous logic
     if "london" not in area_name.lower():
         area_name = area_name + ", London, UK"
     print(f"1. Downloading boundary for: {area_name}...")
     try:
         area_gdf = ox.geocode_to_gdf(area_name)
+        area_gdf_projected = area_gdf.to_crs(epsg=27700)
+        area_km2 = area_gdf_projected.geometry.area.sum() / 1e6
         print(f"   Area boundary downloaded. CRS: {area_gdf.crs}")
-        
-        area_gdf_projected = area_gdf.to_crs(epsg=27700) # British National Grid for accurate area calculation
-        print(f"   Approximate Area: {area_gdf_projected.geometry.area.sum() / 1e6:.2f} km² (in projected CRS)")
-        
+        print(f"   Approximate Area: {area_km2:.2f} km² (in projected CRS)")
         return area_gdf
     except Exception as e:
         print(f"Error downloading area boundary: {e}")

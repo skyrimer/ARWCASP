@@ -24,7 +24,7 @@ def get_boroughs():
         "Hillingdon",
         "Hounslow",
         "Islington",
-        "Kensington and Chelsea",
+        "Royal Borough of Kensington and Chelsea",
         "Kingston upon Thames",
         "Lambeth",
         "Lewisham",
@@ -37,7 +37,7 @@ def get_boroughs():
         "Tower Hamlets",
         "Waltham Forest",
         "Wandsworth",
-        "Westminster",
+        "City of Westminster",
         "City of London"
     ]
 
@@ -156,16 +156,32 @@ def generate_wards(override=False):
         print(f"Generating patrol route for {ward}...")
         patrol.process_location(ward, True)
 
+def check_boroughs():
+    """
+    Checks if all borough patrol routes exist.
+    """
+    boroughs = get_boroughs()
+
+    allexist = True
+    for borough in boroughs:
+        if not route_exists(borough, False):
+            print(f"Patrol route for {borough} does not exist.")
+            allexist = False
+    
+    if allexist:
+        print("All borough patrol routes exist.")
 
 if __name__ == "__main__":
-    generate_boroughs()
-    print("All borough patrol routes generated successfully.")
+    generate_boroughs(True)
+    #print("All borough patrol routes generated successfully.")
 
-    generate_wards()
-    print("All ward patrol routes generated successfully.")
+    #generate_wards()
+    #print("All ward patrol routes generated successfully.")
 
     # Example usage
     #patrol.process_location("City of London")  
+
+    #check_boroughs()
 
     pass
 
