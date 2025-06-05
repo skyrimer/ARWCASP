@@ -6,9 +6,13 @@ import folium
 from shapely.geometry import Polygon, Point, LineString
 from scipy.spatial.distance import cdist
 from python_tsp.exact import solve_tsp_dynamic_programming
+from python_tsp.heuristics import solve_tsp_local_search
 import warnings
 import random
 import networkx as nx # Added for graph component analysis
+import networkit as nk
+import torch
+import os
 
 # For colormaps
 import matplotlib.cm as cm
@@ -28,14 +32,9 @@ warnings.filterwarnings('ignore', 'Geometry is in a geographic CRS. Results from
 
 
 # --- Configuration ---
-WARD_NAME = "Wimbledon Park, UK" # Changed to Wimbledon Park for testing
-FIXED_CRIME_RATE_THRESHOLD = 0.40 # LSOAs with crime_rate >= this value will be considered high crime
-MAX_TOTAL_WAYPOINTS_FOR_TSP = 50 # Maximum total waypoints to feed into the TSP solver
-POINTS_PER_LSOA_MIN = 1 # Minimum points to generate for any high-crime LSOA
-POINTS_PER_LSOA_MAX_CAP = 5 # Maximum points to generate for a single LSOA, regardless of size
-LSOA_AREA_TO_POINT_FACTOR = 50000 # 1 point per this many square meters (e.g., 1 point per 0.05 sq km)
+POINTS_PER_LSOA_MIN = 0 # Minimum points to generate for any high-crime LSOA
+POINTS_PER_LSOA_MAX_CAP = 25 # Maximum points to generate for a single LSOA, regardless of size
 LSOA_MAJORITY_AREA_THRESHOLD = 0.3 # Percentage of LSOA area that must be within the ward (e.g., 0.3 for 30%)
-OUTPUT_MAP_FILE = "wimbledon_park_patrol_route.html" # Updated output file name
 
 # --- IMPORTANT: Configure your LSOA Shapefile Path here ---
 LSOA_SHAPEFILE_PATH = "../data/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BSC_V4.gpkg"
@@ -50,6 +49,9 @@ def download_area_boundary(area_name):
     Returns:
         geopandas.GeoDataFrame: GeoDataFrame containing the area boundary.
     """
+    # Always ensure the area is in London
+    if "london" not in area_name.lower():
+        area_name = area_name + ", London, UK"
     print(f"1. Downloading boundary for: {area_name}...")
     try:
         area_gdf = ox.geocode_to_gdf(area_name)
@@ -96,8 +98,15 @@ def load_and_filter_lsoa_boundaries(lsoa_file_path, area_gdf, majority_threshold
 
         print(f"   Initial filter resulted in {len(lsoas_within_area_gdf_initial)} LSOAs intersecting the area.")
 
+        # Debugging information
+        print(f"   Area boundary geometry type: {area_gdf.geometry.iloc[0].geom_type}")
+        print(f"   Area boundary bounds: {area_gdf.geometry.iloc[0].bounds}")
+        print(f"   LSOA CRS: {all_lsoas_gdf.crs}, Area CRS: {area_gdf.crs}")
+
+        # After spatial join
+        print(f"   Number of LSOAs after spatial join: {len(lsoas_within_area_gdf_initial)}")
         if lsoas_within_area_gdf_initial.empty:
-            print("   No LSOAs found intersecting the specified area. Please check the area name or LSOA file path.")
+            print("   No LSOAs found intersecting the specified area. Try using a more specific area name, e.g., 'London Borough of Barnet, London, UK'.")
             return gpd.GeoDataFrame(columns=['LSOA21CD', 'LSOA21NM', 'geometry', 'crime_rate'], crs="EPSG:4326")
 
         # Further filter LSOAs where a majority (e.g., >50%) of their area is within the target area
@@ -129,9 +138,10 @@ def load_and_filter_lsoa_boundaries(lsoa_file_path, area_gdf, majority_threshold
         print(f"   Filtered to {len(lsoas_within_area_gdf)} LSOAs after majority-area check.")
 
         # Assign random crime rates to the actual LSOAs
-        lsoas_within_area_gdf['crime_rate'] = np.random.uniform(0.1, 1.0, len(lsoas_within_area_gdf))
-        print(f"   Assigned random crime rates to {len(lsoas_within_area_gdf)} LSOAs.")
+        #lsoas_within_area_gdf['crime_rate'] = np.random.uniform(0.1, 1.0, len(lsoas_within_area_gdf))
+        #print(f"   Assigned crime rates to {len(lsoas_within_area_gdf)} LSOAs.")
         return lsoas_within_area_gdf
+    
     except FileNotFoundError:
         print(f"Error: LSOA file not found at {lsoa_file_path}. Please check the path.")
         return gpd.GeoDataFrame(columns=['LSOA21CD', 'LSOA21NM', 'geometry', 'crime_rate'], crs="EPSG:4326")
@@ -141,16 +151,19 @@ def load_and_filter_lsoa_boundaries(lsoa_file_path, area_gdf, majority_threshold
 
 def extract_cycle_network(area_polygon):
     """
-    Extracts the cycle network within the area boundary using OSMnx.
+    Extracts the drive network within the area boundary using OSMnx.
     Args:
         area_polygon (shapely.geometry.Polygon): The polygon of the area.
     Returns:
-        networkx.MultiDiGraph: The cycle network graph.
+        networkx.MultiDiGraph: The graph network graph.
     """
-    print("3. Extracting cycle network within the area...")
+    print("3. Extracting graph network within the area...")
     try:
-        G = ox.graph_from_polygon(area_polygon, network_type='bike')
+        G = ox.graph_from_polygon(area_polygon, network_type='drive')
         G = ox.distance.add_edge_lengths(G)
+
+        edges = ox.graph_to_gdfs(G, nodes=False)
+        residential_edges = edges[edges['highway'].isin(['residential', 'living_street'])]
 
         # Get the largest strongly connected component to ensure all nodes are reachable
         # This is crucial for TSP and continuous paths
@@ -168,8 +181,8 @@ def extract_cycle_network(area_polygon):
             return None
 
         # Penalize main roads to encourage avoiding them
-        main_roads_to_avoid = ['primary', 'secondary', 'tertiary', 'trunk', 'motorway']
-        penalty_factor = 2.0 # Multiply length by this factor for main roads
+        main_roads_to_avoid = ['primary', 'secondary', 'trunk', 'motorway']
+        penalty_factor = 3.0 # Multiply length by this factor for main roads
 
         for u, v, k, data in G.edges(keys=True, data=True):
             if 'highway' in data:
@@ -212,7 +225,7 @@ def generate_random_points_in_polygon(polygon, num_points):
         print(f"   Warning: Could not generate {num_points} points within polygon. Generated {len(points)}.")
     return points
 
-def calculate_points_based_on_size(lsoa_area_sqm, min_points=POINTS_PER_LSOA_MIN, max_points_per_lsoa_cap=POINTS_PER_LSOA_MAX_CAP, area_scaling_factor=LSOA_AREA_TO_POINT_FACTOR):
+def calculate_points(lsoa_area_sqm, area_scaling_factor, nrburglaries, min_points=POINTS_PER_LSOA_MIN, max_points_per_lsoa_cap=POINTS_PER_LSOA_MAX_CAP):
     """
     Determines the number of points to generate for an LSOA based on its area.
     Args:
@@ -223,66 +236,82 @@ def calculate_points_based_on_size(lsoa_area_sqm, min_points=POINTS_PER_LSOA_MIN
     Returns:
         int: Number of points to generate for this LSOA.
     """
-    points = int(lsoa_area_sqm / area_scaling_factor)
-    points = max(min_points, points)
+    
+    
+    # Only adjust points if there is predicted crime, and make the impact smaller
+    if nrburglaries > 0:
+        points = lsoa_area_sqm / area_scaling_factor
+        points = 1 + np.sqrt(points)  # Square root to reduce the impact of area size
+        points = np.floor(points * nrburglaries)  # Small increase per crime
+        points = max(min_points, points)
+    else:
+        points = min_points
+    
     points = min(max_points_per_lsoa_cap, points)
     return points
 
-def simulate_crime_and_select_waypoints(lsoas_gdf, G, max_total_waypoints_for_tsp, fixed_crime_rate_threshold):
+def select_waypoints_from_lsoas(lsoas_gdf, G):
     """
-    Assigns random crime rates, identifies high-crime LSOAs (based on fixed threshold),
-    and selects representative network nodes as patrol waypoints, generating points
-    based on LSOA size for all high-crime LSOAs.
+    Selects waypoints from LSOAs based on their size and crime rate.
     Args:
-        lsoas_gdf (geopandas.GeoDataFrame): GeoDataFrame of LSOAs.
+        lsoas_gdf (geopandas.GeoDataFrame): GeoDataFrame of LSOAs with crime rates.
         G (networkx.MultiDiGraph): The cycle network graph.
         max_total_waypoints_for_tsp (int): Maximum total waypoints to select for TSP.
-        fixed_crime_rate_threshold (float): LSOAs with crime_rate >= this value will be considered high crime.
     Returns:
         pandas.DataFrame: DataFrame of selected waypoints with their details.
-        geopandas.GeoDataFrame: LSOAs GeoDataFrame with crime rates and high-crime flag.
     """
-    print("4. Simulating crime hotspots and selecting patrol waypoints...")
-    
-    # Identify high-crime LSOAs based on a fixed crime rate threshold
-    lsoas_gdf['is_high_crime'] = lsoas_gdf['crime_rate'] >= fixed_crime_rate_threshold
-    
-    high_crime_lsoas = lsoas_gdf[lsoas_gdf['is_high_crime']].sort_values(by='crime_rate', ascending=False)
+    print("4. Selecting waypoints from LSOAs...")
     
     all_generated_waypoints = []
-    
-    # --- MODIFICATION START ---
-    if high_crime_lsoas.empty:
-        # If no LSOAs meet the fixed crime rate threshold, but there are LSOAs in the area,
-        # consider all of them as high-crime to ensure a route is generated.
-        if not lsoas_gdf.empty:
-            print(f"   Warning: No LSOAs meet the fixed crime rate threshold ({fixed_crime_rate_threshold}). Considering all {len(lsoas_gdf)} LSOAs in the area as high-crime for waypoint selection to ensure route generation.")
-            high_crime_lsoas = lsoas_gdf.sort_values(by='crime_rate', ascending=False) # Still sort by crime rate
-        else:
-            print("   No LSOAs found to select waypoints from based on the fixed threshold and no LSOAs in the area.")
-            return pd.DataFrame(all_generated_waypoints), lsoas_gdf
-    # --- MODIFICATION END ---
 
-    # Iterate through all high-crime LSOAs to generate points based on size
-    for idx, lsoa_row in high_crime_lsoas.iterrows():
+    # append the 'crime_rate' column to the LSOAs GeoDataFrame based on the number of burglaries predicted
+   
+        
+    # open the expected burglaries parquet file
+    expected_burglaries_file = "../model/sample_predictions.parquet"
+    if os.path.exists(expected_burglaries_file):
+        expected_burglaries_df = pd.read_parquet(expected_burglaries_file)
+        # Merge the expected burglaries with the LSOAs GeoDataFrame
+
+        expected_burglaries_df = expected_burglaries_df.reset_index()
+        expected_burglaries_df.rename(columns={'index': 'LSOA21CD'}, inplace=True)     
+
+        lsoas_gdf = pd.merge(lsoas_gdf, expected_burglaries_df[['LSOA21CD', 'median']], on='LSOA21CD', how='left')
+        
+        # Rename the column to 'crime_rate' for consistency
+        lsoas_gdf.rename(columns={'median': 'crime_rate'}, inplace=True)
+        print(f"   Merged expected burglaries data. Total LSOAs: {len(lsoas_gdf)}")
+
+    else:
+        print(f"   Warning: Expected burglaries file not found at {expected_burglaries_file}. Using random crime rates instead.")
+        # Assign random crime rates if the expected burglaries file is not found
+        lsoas_gdf['crime_rate'] = np.random.uniform(0.1, 1.0, len(lsoas_gdf))
+        print(f"   Assigned random crime rates to {len(lsoas_gdf)} LSOAs.")
+        
+
+    # Iterate through all LSOAs to generate points based on size
+    for idx, lsoa_row in lsoas_gdf.iterrows():
         # Get LSOA geometry in projected CRS for accurate area calculation
         lsoa_polygon_projected = gpd.GeoSeries([lsoa_row.geometry], crs=lsoas_gdf.crs).to_crs(epsg=27700).iloc[0]
         lsoa_area_sqm = lsoa_polygon_projected.area
 
-        num_points_for_this_lsoa = calculate_points_based_on_size(lsoa_area_sqm)
+        # Calculate the factor based on the average area of an LSOA and 
+        factor = 150000
+
+        num_points_for_this_lsoa = calculate_points(lsoa_area_sqm, factor, lsoas_gdf.loc[idx, 'crime_rate'])
         
-        print(f"   Generating {num_points_for_this_lsoa} points in LSOA: {lsoa_row['LSOA21NM']} (Area: {lsoa_area_sqm/1e6:.2f} km², Crime Rate: {lsoa_row['crime_rate']:.2f})")
+        #print(f"   Generating {num_points_for_this_lsoa} points in LSOA: {lsoa_row['LSOA21NM']} (Area: {lsoa_area_sqm/1e6:.2f} km², Crime Rate: {lsoa_row['crime_rate']:.2f})")
         
         # Ensure the LSOA geometry is valid before generating points (use original CRS for random point generation)
-        lsoa_polygon_geographic = lsoa_row.geometry
-        if not lsoa_polygon_geographic.is_valid:
-            lsoa_polygon_geographic = lsoa_polygon_geographic.buffer(0) # Attempt to fix invalid geometry
+        lsoas_polygon_geographic = lsoa_row.geometry
+        if not lsoas_polygon_geographic.is_valid:
+            lsoas_polygon_geographic = lsoas_polygon_geographic.buffer(0) # Attempt to fix invalid geometry
 
-        if lsoa_polygon_geographic.is_empty:
+        if lsoas_polygon_geographic.is_empty:
             print(f"   Warning: LSOA ({lsoa_row['LSOA21NM']}) has an empty or invalid geometry. Skipping point generation.")
             continue
 
-        random_points = generate_random_points_in_polygon(lsoa_polygon_geographic, num_points_for_this_lsoa)
+        random_points = generate_random_points_in_polygon(lsoas_polygon_geographic, num_points_for_this_lsoa)
         
         for i, point in enumerate(random_points):
             nearest_node = ox.nearest_nodes(G, point.x, point.y)
@@ -291,25 +320,18 @@ def simulate_crime_and_select_waypoints(lsoas_gdf, G, max_total_waypoints_for_ts
                 all_generated_waypoints.append({
                     'LSOA21CD': lsoa_row['LSOA21CD'],
                     'LSOA21NM': lsoa_row['LSOA21NM'] + f' (Pt {i+1})', # Differentiate points within the same LSOA
-                    'simulated_crime_rate': lsoa_row['crime_rate'],
+                    'expected burglaries': lsoa_row['crime_rate'],
                     'waypoint_lat': G.nodes[nearest_node]['y'],
                     'waypoint_lon': G.nodes[nearest_node]['x'],
                     'nearest_node_id': nearest_node
                 })
             else:
                 print(f"   Warning: Nearest node {nearest_node} for point in LSOA {lsoa_row['LSOA21NM']} is not in the main connected component. Skipping this waypoint.")
-
-
+    
     patrol_waypoints_df = pd.DataFrame(all_generated_waypoints)
 
-    # If more waypoints were generated than the maximum allowed for TSP, select the top ones
-    if len(patrol_waypoints_df) > max_total_waypoints_for_tsp:
-        print(f"   Too many waypoints generated ({len(patrol_waypoints_df)}). Selecting top {max_total_waypoints_for_tsp} by crime rate.")
-        # Sort by crime rate (descending) and then take the top N
-        patrol_waypoints_df = patrol_waypoints_df.sort_values(by='simulated_crime_rate', ascending=False).head(max_total_waypoints_for_tsp)
-    
-    print(f"   Selected a total of {len(patrol_waypoints_df)} patrol waypoints for TSP.")
     return patrol_waypoints_df, lsoas_gdf
+    
 
 # --- 3. Designing the Optimal Cycle Patrol Route ---
 
@@ -332,40 +354,24 @@ def calculate_optimal_route(G, waypoints_df):
     if num_nodes < 2:
         print("   Not enough waypoints to create a route.")
         return [], 0, []
-    
-    # Create a distance matrix for TSP
+
+    # NetworKit for fast CPU parallel shortest paths
+    print("   Using NetworKit for fast parallel shortest path calculation (CPU).")
+    # Map node ids to indices
+    node_id_to_idx = {nid: i for i, nid in enumerate(G.nodes())}
+    idx_to_node_id = {i: nid for nid, i in node_id_to_idx.items()}
+    nkG = nk.Graph(len(G.nodes()), weighted=True, directed=False)
+    for u, v, data in G.edges(data=True):
+        w = float(data.get('length', 1.0))
+        nkG.addEdge(node_id_to_idx[u], node_id_to_idx[v], w)
+    # Compute all-pairs shortest paths for waypoints
     distance_matrix = np.zeros((num_nodes, num_nodes))
-    for i in range(num_nodes):
-        for j in range(num_nodes):
-            if i == j:
-                distance_matrix[i, j] = 0
-            else:
-                try:
-                    path_nodes = ox.shortest_path(G, node_ids[i], node_ids[j], weight='length')
-                    if path_nodes:
-                        segment_length = 0
-                        for k in range(len(path_nodes) - 1):
-                            u, v = path_nodes[k], path_nodes[k+1]
-                            # Ensure the edge exists and has a 'length' attribute
-                            if 0 in G[u][v] and 'length' in G[u][v][0]:
-                                segment_length += G[u][v][0]['length']
-                            else:
-                                # Fallback if length is missing or edge doesn't exist for some reason
-                                # This case should ideally not happen if ox.shortest_path returns a path
-                                # but it's a safeguard
-                                try:
-                                    segment_length += ox.distance.great_circle_vec(
-                                        G.nodes[u]['y'], G.nodes[u]['x'], G.nodes[v]['y'], G.nodes[v]['x']
-                                    )
-                                except KeyError: # If node itself is missing coordinates
-                                    segment_length += np.inf
-                        distance_matrix[i, j] = segment_length
-                    else:
-                        # If no path, assign a very large distance. This should be rare with connected component filtering.
-                        distance_matrix[i, j] = np.inf 
-                except Exception as e:
-                    print(f"   Warning: Could not find path between {node_ids[i]} and {node_ids[j]}: {e}")
-                    distance_matrix[i, j] = np.inf
+    for i, src in enumerate(node_ids):
+        apsp = nk.distance.Dijkstra(nkG, node_id_to_idx[src], storePaths=False)
+        apsp.run()
+        for j, dst in enumerate(node_ids):
+            dist = apsp.distance(node_id_to_idx[dst])
+            distance_matrix[i, j] = dist if dist < float('inf') else np.inf
 
     # Handle unreachable waypoints by making their distance very high but not infinite for TSP solver
     if np.isinf(distance_matrix).any():
@@ -375,8 +381,37 @@ def calculate_optimal_route(G, waypoints_df):
         # Ensure max_finite_dist is not 0 if all distances are 0 or inf
         replacement_val = max_finite_dist * 2 if max_finite_dist > 0 else 1e9
         distance_matrix[np.isinf(distance_matrix)] = replacement_val
+    
+    print("   Distance matrix calculated.")
 
-    permutation, distance = solve_tsp_dynamic_programming(distance_matrix)
+    # --- GPU-accelerated TSP (optional) ---
+    # There is no mature, easy-to-use GPU TSP solver for Python that works cross-platform.
+    # If you have an NVIDIA GPU, you can try PyTorch or CuPy for brute-force/heuristic TSP on small problems.
+    # For large problems, use a fast CPU heuristic (as you do) or call an external solver like LKH or Concorde.
+    # Example: Use PyTorch for nearest neighbor TSP (works on CUDA and ROCm for AMD):
+
+    
+    
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    dm = torch.tensor(distance_matrix, device=device)
+    n = dm.shape[0]
+    visited = torch.zeros(n, dtype=torch.bool, device=device)
+    path = [0]
+    visited[0] = True
+    for _ in range(n-1):
+        last = path[-1]
+        dists = dm[last].clone()
+        dists[visited] = float('inf')
+        next_idx = torch.argmin(dists).item()
+        path.append(next_idx)
+        visited[next_idx] = True
+    path.append(path[0])
+    permutation = path
+    distance = float(dm[path[:-1], path[1:]].sum().cpu().numpy())
+
+    # Otherwise, use your current local search heuristic (CPU)
+    permutation, distance = solve_tsp_local_search(distance_matrix)
+
     
     # The TSP solver returns an order of indices; convert back to original node IDs
     optimal_node_sequence_waypoints = [node_ids[i] for i in permutation]
@@ -424,7 +459,7 @@ def calculate_optimal_route(G, waypoints_df):
 
 # --- 4. Interactive Visualization of the Patrol Route ---
 
-def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence, route_segments, output_file):
+def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence, route_segments, output_file, name):
     """
     Creates an interactive Folium map to visualize the area, LSOAs, waypoints, and patrol route.
     Args:
@@ -443,10 +478,11 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
     area_centroid_geographic = gpd.GeoSeries([area_centroid_projected], crs="EPSG:27700").to_crs(epsg=4326).iloc[0]
     m = folium.Map(location=[area_centroid_geographic.y, area_centroid_geographic.x], zoom_start=14, tiles='cartodbpositron')
 
+
     # Add Area Boundary
     folium.GeoJson(
         area_gdf.to_json(),
-        name=f'{WARD_NAME} Boundary',
+        name=f'{name} Boundary',
         style_function=lambda x: {
             'fillColor': '#cccccc',
             'color': 'black',
@@ -458,27 +494,39 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
     # Add LSOA Choropleth based on simulated crime rates
     lsoas_gdf_wgs84 = lsoas_gdf.to_crs(epsg=4326)
 
-    min_crime = lsoas_gdf_wgs84['crime_rate'].min()
-    max_crime = lsoas_gdf_wgs84['crime_rate'].max()
-    
+    # Fix: Remove rows with missing or None crime_rate before calculating min/max
+    lsoas_gdf_wgs84 = lsoas_gdf_wgs84[lsoas_gdf_wgs84['crime_rate'].notnull()]
+    if lsoas_gdf_wgs84.empty:
+        print("Warning: No LSOAs with valid crime_rate for visualization.")
+        min_crime = 0
+        max_crime = 1
+    else:
+        min_crime = lsoas_gdf_wgs84['crime_rate'].min()
+        max_crime = lsoas_gdf_wgs84['crime_rate'].max()
+        if min_crime is None or max_crime is None:
+            min_crime = 0
+            max_crime = 1
+
     # Use cm.get_cmap for compatibility, with warning filter in place
     cmap = cm.get_cmap('YlOrRd')
     norm = colors.Normalize(vmin=min_crime, vmax=max_crime)
 
     def style_function(feature):
-        crime_rate = feature['properties']['crime_rate']
+        crime_rate = feature['properties'].get('crime_rate', 0)
+        if crime_rate is None:
+            crime_rate = 0
         return {
             'fillColor': colors.rgb2hex(cmap(norm(crime_rate))),
             'color': 'black',
             'weight': 0.5,
-            'fillOpacity': 0.7
+            'fillOpacity': 0.3
         }
 
     folium.GeoJson(
         lsoas_gdf_wgs84.to_json(),
-        name='LSOA Simulated Crime Rates',
+        name='LSOA number of burglaries expected',
         style_function=style_function,
-        tooltip=folium.GeoJsonTooltip(fields=['LSOA21CD', 'LSOA21NM', 'crime_rate'], aliases=['LSOA Code:', 'LSOA Name:', 'Simulated Crime Rate:'])
+        tooltip=folium.GeoJsonTooltip(fields=['LSOA21CD', 'LSOA21NM', 'crime_rate'], aliases=['LSOA Code:', 'LSOA Name:', 'Expected burglaries:'])
     ).add_to(m)
 
     # Add Patrol Waypoints
@@ -493,7 +541,7 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
 
         folium.Marker(
             location=[row['waypoint_lat'], row['waypoint_lon']],
-            popup=f"<b>LSOA:</b> {row['LSOA21NM']}<br><b>Crime Rate:</b> {row['simulated_crime_rate']:.2f}",
+            popup=f"<b>LSOA:</b> {row['LSOA21NM']}<br><b>Expected burglaries:</b> {row['expected burglaries']:.2f}",
             icon=icon
         ).add_to(waypoint_group)
 
@@ -541,49 +589,75 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
     m.save(output_file)
     print(f"   Interactive map saved to {output_file}")
 
-# --- Main Execution ---
-if __name__ == "__main__":
-    area_gdf = download_area_boundary(WARD_NAME)
+def process_location(location_name, ward):
+    """
+    Main function to process the ward or borough, download area boundary, load LSOA boundaries,
+    extract graph network, get crime, and select waypoints, calculate the optimal route,
+    and output the interactive map.
+    Args:
+        location_name (str): The name of the ward to process.
+    """
+    area_gdf = download_area_boundary(location_name)
     if area_gdf is None or area_gdf.empty:
         print("Failed to get area boundary. Exiting.")
+        return
+
+    area_polygon = area_gdf.geometry.iloc[0]
+
+    lsoas_gdf = load_and_filter_lsoa_boundaries(LSOA_SHAPEFILE_PATH, area_gdf, LSOA_MAJORITY_AREA_THRESHOLD)
+    
+    if lsoas_gdf.empty:
+        print("No LSOAs found within the area using the provided file. Exiting.")
+        return
+
+    G = extract_cycle_network(area_polygon)
+    if G is None:
+        print("Failed to extract cycle network. Exiting.")
+        return
+
+    patrol_waypoints_df, lsoas_with_crime_gdf = select_waypoints_from_lsoas(
+        lsoas_gdf, G
+    )
+
+    if patrol_waypoints_df.empty:
+        print("No patrol waypoints selected. Exiting.")
+        return
+    
+    optimal_node_sequence, total_route_distance, route_segments = calculate_optimal_route(G, patrol_waypoints_df)
+    
+    if not optimal_node_sequence:
+        print("Failed to calculate optimal route. Exiting.")
+        return
+    
+    #print("\n--- Route Summary ---")
+    #print(f"Number of Waypoints: {len(patrol_waypoints_df)}")
+    #print(f"Total Route Distance: {total_route_distance / 1000:.2f} km")
+    #estimated_cycle_time_minutes = (total_route_distance / 4.167) / 60
+    #print(f"Estimated Cycle Time: {estimated_cycle_time_minutes:.1f} minutes (at 15 km/h avg speed)")
+    #print(f"Waypoint Sequence (TSP Order): {optimal_node_sequence}")
+
+    # Check if the "ward route" directory exists, if not create it
+
+    if ward:
+        WARD_ROUTE_DIR = "ward_routes"
     else:
-        area_polygon = area_gdf.geometry.iloc[0]
+        WARD_ROUTE_DIR = "borough_routes"
 
-        lsoas_gdf = load_and_filter_lsoa_boundaries(LSOA_SHAPEFILE_PATH, area_gdf, LSOA_MAJORITY_AREA_THRESHOLD)
-        
-        if lsoas_gdf.empty:
-            print("No LSOAs found within the area using the provided file. Exiting.")
-        else:
-            G = extract_cycle_network(area_polygon)
-            if G is None:
-                print("Failed to extract cycle network. Exiting.")
-            else:
-                patrol_waypoints_df, lsoas_with_crime_gdf = simulate_crime_and_select_waypoints(
-                    lsoas_gdf, G, MAX_TOTAL_WAYPOINTS_FOR_TSP, FIXED_CRIME_RATE_THRESHOLD
-                )
-                
-                if patrol_waypoints_df.empty:
-                    print("No patrol waypoints selected. Exiting.")
-                else:
-                    optimal_node_sequence, total_route_distance, route_segments = calculate_optimal_route(G, patrol_waypoints_df)
+    OUTPUT_MAP_FILE = os.path.join(WARD_ROUTE_DIR, f"{location_name.replace(' ', '_').lower()}.html")
 
-                    if not optimal_node_sequence:
-                        print("Failed to calculate optimal route. Exiting.")
-                    else:
-                        print("\n--- Route Summary ---")
-                        print(f"Number of Waypoints: {len(patrol_waypoints_df)}")
-                        print(f"Total Route Distance: {total_route_distance / 1000:.2f} km")
-                        estimated_cycle_time_minutes = (total_route_distance / 4.167) / 60
-                        print(f"Estimated Cycle Time: {estimated_cycle_time_minutes:.1f} minutes (at 15 km/h avg speed)")
-                        print(f"Waypoint Sequence (TSP Order): {optimal_node_sequence}")
+    if not os.path.exists(WARD_ROUTE_DIR):
+        os.makedirs(WARD_ROUTE_DIR)
 
-                        visualize_route(
-                            area_gdf,
-                            lsoas_with_crime_gdf,
-                            patrol_waypoints_df,
-                            G,
-                            optimal_node_sequence,
-                            route_segments,
-                            OUTPUT_MAP_FILE
-                        )
-                        print(f"\nPatrol route generation complete. Check '{OUTPUT_MAP_FILE}' for the interactive map.")
+    
+    # Visualize the route
+    print(f"Visualizing the route and saving to {OUTPUT_MAP_FILE}...")
+    visualize_route(
+        area_gdf,
+        lsoas_with_crime_gdf,
+        patrol_waypoints_df,
+        G,
+        optimal_node_sequence,
+        route_segments,
+        OUTPUT_MAP_FILE,
+        location_name
+    )
