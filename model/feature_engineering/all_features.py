@@ -50,6 +50,22 @@ def create_all_features(gdf: gpd.GeoDataFrame, static, dynamic) -> gpd.GeoDataFr
             'burglaries'].shift(3)
         gdf['lag_4'] = gdf.groupby('occupation_idx', observed=True)[
             'burglaries'].shift(12)
+          # Rolling mean features for longer temporal patterns
+        gdf["roll_3_mean"] = (
+            gdf.groupby("occupation_idx", observed=True)["burglaries"]
+            .apply(lambda s: s.shift(1).rolling(window=3).mean())
+            .reset_index(level=0, drop=True)
+        )
+        gdf["roll_6_mean"] = (
+            gdf.groupby("occupation_idx", observed=True)["burglaries"]
+            .apply(lambda s: s.shift(1).rolling(window=6).mean())
+            .reset_index(level=0, drop=True)
+        )
+        gdf["roll_12_mean"] = (
+            gdf.groupby("occupation_idx", observed=True)["burglaries"]
+            .apply(lambda s: s.shift(1).rolling(window=12).mean())
+            .reset_index(level=0, drop=True)
+        )
 
     # Create static spatial features
     with detect_new_columns(gdf) as static_spatial:

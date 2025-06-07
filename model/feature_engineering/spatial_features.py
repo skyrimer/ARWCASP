@@ -1,5 +1,6 @@
 from typing import Tuple
-
+import networkx as nx
+import osmnx as ox
 import geopandas as gpd
 import pandas as pd
 
@@ -61,8 +62,11 @@ def create_static_spatial_features(gdf: gpd.GeoDataFrame) -> Tuple[gpd.GeoDataFr
         shared_lengths.append(total_len)
 
     unique_geom["shared_length"] = shared_lengths
+    network_df = create_network_features(gdf)
     # Prepare a small DataFrame of static attributes:
-    static_cols = unique_geom[["area", "n_neighbors", "shared_length"]]
+    static_cols = unique_geom[["area", "n_neighbors", "shared_length"]].join(
+        network_df, how="left"
+    )
 
     # Merge onto gdf_time by occupation_idx:
     return static_cols.reset_index().set_index("occupation_idx"), neighbor_dict
@@ -74,6 +78,32 @@ def create_neighbour_map(neighbor_dict: dict[int, list[int]]) -> pd.DataFrame:
         pairs.extend((occ_i, occ_j) for occ_j in neighs)
     return pd.DataFrame(pairs, columns=["occupation_idx", "neighbor_idx"])
 
+def create_network_features(gdf: gpd.GeoDataFrame) -> pd.DataFrame:
+    """Compute basic network centrality features using OSMnx."""
+    unique_geom = (
+        gdf[["occupation_idx", "geometry"]]
+        .drop_duplicates(subset=["occupation_idx"])
+        .set_index("occupation_idx")
+    )
+
+    union_geom = unique_geom.geometry.unary_union
+    try:
+        G = ox.graph_from_polygon(union_geom, network_type="drive")
+    except Exception:
+        return pd.DataFrame(index=unique_geom.index)
+
+    closeness = nx.closeness_centrality(G)
+    nodes, xys = zip(*[(n, (data["x"], data["y"])) for n, data in G.nodes(data=True)])
+    node_gdf = gpd.GeoDataFrame(
+        {"node": nodes, "closeness": [closeness[n] for n in nodes]},
+        geometry=gpd.points_from_xy([p[0] for p in xys], [p[1] for p in xys]),
+        crs="EPSG:4326",
+    ).to_crs(unique_geom.crs)
+
+    joined = gpd.sjoin(node_gdf, unique_geom, how="inner", predicate="within")
+    centrality = joined.groupby("occupation_idx")["closeness"].mean().rename("closeness_centrality")
+
+    return centrality.reset_index().set_index("occupation_idx")
 
 def create_dynamic_spatial_features(gdf: gpd.GeoDataFrame,
                                     neighbor_dict: dict[int, list[int]]) -> pd.DataFrame:
