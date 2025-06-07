@@ -99,7 +99,7 @@ def create_learner(
     model_function,
     guide_type: str = "diag",       # “diag”, “lowrank”, or “iaf”
     guide_rank: int = 10,  # rank for low-rank guide
-    lr: float = 1e-2,
+    lr: float = 1e-3,
     elbo_type: str = "trace",       # “trace”, “graph”, “renyi”, or “jit”
     renyi_alpha: float = 0.5,
     num_particles: int = 1
