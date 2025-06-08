@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ed10fe9693e4d31c941ba4af06b56829 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ed10fe9693e4d31c941ba4af06b56829" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ed10fe9693e4d31c941ba4af06b56829 = L.map(
+                "map_ed10fe9693e4d31c941ba4af06b56829",
+                {
+                    center: [51.551416872478015, 0.019825249024691242],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0ce870333f5bcde6a91e9932b89e8460 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0ce870333f5bcde6a91e9932b89e8460.addTo(map_ed10fe9693e4d31c941ba4af06b56829);
+        
+    
+        function geo_json_5d793279cf99e0654e2114fac8f323c6_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_5d793279cf99e0654e2114fac8f323c6_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_5d793279cf99e0654e2114fac8f323c6 = L.geoJson(null, {
+                onEachFeature: geo_json_5d793279cf99e0654e2114fac8f323c6_onEachFeature,
+            
+                style: geo_json_5d793279cf99e0654e2114fac8f323c6_styler,
+            ...{
+}
+        });
+
+        function geo_json_5d793279cf99e0654e2114fac8f323c6_add (data) {
+            geo_json_5d793279cf99e0654e2114fac8f323c6
+                .addData(data);
+        }
+            geo_json_5d793279cf99e0654e2114fac8f323c6_add({"features": [{"geometry": {"coordinates": [[[0.005503163692944113, 51.55065954067138], [0.005779503805589466, 51.55064762432025], [0.006819521500195407, 51.55087715484417], [0.0075624139698524575, 51.551008285503954], [0.0076912744931342675, 51.55102046442378], [0.008151896932400515, 51.551063913929916], [0.009508205676332879, 51.551237572003174], [0.00945136046648071, 51.55138876959367], [0.009508798330544325, 51.55144801916565], [0.009640311829753414, 51.551582415331424], [0.010097453198367488, 51.55181111211687], [0.010330380905094246, 51.55195545694081], [0.010821201649415458, 51.55225998932695], [0.009622348156405714, 51.55343341658575], [0.011110196605647936, 51.55439799614425], [0.011621347163691922, 51.55391716481745], [0.013926290491236972, 51.55472924889812], [0.01457387726066074, 51.55495456920295], [0.01562283768773601, 51.55394917348051], [0.01569976144860991, 51.553862446238504], [0.01597057291251191, 51.55355833394553], [0.016254251762862517, 51.553222534617966], [0.016720422875782976, 51.553390727302755], [0.016944932297690837, 51.55318279322086], [0.017930896837488376, 51.553591158426975], [0.017932362740494107, 51.5535920322196], [0.018582780177020725, 51.553881201139646], [0.01937870106863807, 51.55410133556482], [0.01933898199850463, 51.554182030843776], [0.01954372837634052, 51.554245033008904], [0.02007616300553043, 51.554410363671266], [0.021532242832497116, 51.55487802874294], [0.02123225408219396, 51.55514040336028], [0.021317238821951513, 51.555171303432864], [0.020341614470706187, 51.556267276254545], [0.020497615158021846, 51.556207053291395], [0.02087751677796565, 51.556249955402414], [0.02132631221266803, 51.55628537628682], [0.02178273276941418, 51.55623256137799], [0.022157544327080617, 51.556195535447266], [0.022476496355730895, 51.556164865323154], [0.022507676419330238, 51.55660762815387], [0.02257509017598141, 51.556698164695185], [0.0227961898772683, 51.556802323551906], [0.023057648815114226, 51.556875129922986], [0.02315510571364963, 51.55686266128115], [0.023230771007754884, 51.556844275311], [0.02329197524296993, 51.55682434066958], [0.023352661867703316, 51.55679542485229], [0.023424234481227355, 51.55674915021999], [0.02348649670022496, 51.55668874191075], [0.02352740742016048, 51.55663769190463], [0.02354593770539272, 51.55659961400022], [0.023570512505988864, 51.55650209736777], [0.023561890682051487, 51.555887145392234], [0.02369872685459502, 51.55562038712014], [0.023762443926177063, 51.55552848829282], [0.024708781796953544, 51.55556160564077], [0.025276606048384106, 51.55554820874014], [0.025293124847737866, 51.55472056697469], [0.02534179061022775, 51.5540623724811], [0.026716522801836555, 51.55425628140057], [0.027546700807769154, 51.55433902974873], [0.028179144013678267, 51.554382937417465], [0.02874015610165485, 51.55441459180796], [0.028973370001658363, 51.55440336665281], [0.029231772644078804, 51.554375523207106], [0.029436411912929755, 51.55433692212107], [0.03090451086875408, 51.55445814529484], [0.031749438833951905, 51.55454600266552], [0.032177780516695564, 51.55457634213568], [0.03229675391444047, 51.55459046338965], [0.03301278277967974, 51.55476424220813], [0.03342099564678453, 51.55486055358799], [0.03381780219625264, 51.55495975831986], [0.034075819256265495, 51.55502190164905], [0.03483748941340705, 51.55518400005834], [0.035009243895498185, 51.55521608228642], [0.03534552926779468, 51.55525430005876], [0.035413272849413695, 51.555253124771475], [0.03551262760750073, 51.5548917075699], [0.035693676566916056, 51.554263575208644], [0.03578362948801419, 51.55388613867358], [0.035906258567055226, 51.55350004390602], [0.03590299449227829, 51.553264470272], [0.035784937790164485, 51.552623547625274], [0.03565281281115434, 51.55189386701647], [0.03587001156479995, 51.55132983540965], [0.03599176493330969, 51.55102017135256], [0.03568776278933739, 51.550995779572105], [0.03533289424357288, 51.5509641784275], [0.034563570003515315, 51.55088753229421], [0.03392827667404209, 51.55084011269098], [0.0335920263953439, 51.550804587462885], [0.033257162599894065, 51.55076813823452], [0.03185935099543318, 51.550604373429024], [0.03158676269446198, 51.55057223489103], [0.031243025698370078, 51.5505287415186], [0.030398719314965874, 51.5504210919757], [0.030144909151343997, 51.550388625098314], [0.028526814616913438, 51.55017019695055], [0.027524165181944806, 51.550002244143904], [0.026225439523676237, 51.54976298121766], [0.024736623134645395, 51.549498216663096], [0.023218241656759245, 51.549247518209945], [0.02085979454902147, 51.54881960576233], [0.01934778604840601, 51.54855067759804], [0.01855372204668422, 51.54840252195086], [0.01769520943312966, 51.54823290434714], [0.017693783456396262, 51.54823292887274], [0.01372217483467388, 51.54752784404235], [0.011315973216448508, 51.54709426728384], [0.009196234158160555, 51.546678300606565], [0.009193382286993262, 51.546678349450154], [0.008093243304211784, 51.54645616255565], [0.007125841422648251, 51.54626945270761], [0.0067456823295135755, 51.54618335867616], [0.0067252841254959285, 51.54617921257483], [0.006359925486656827, 51.54672684337954], [0.005955377882809066, 51.54733267944252], [0.005459757090372171, 51.54829616716727], [0.005207854572478556, 51.54879861227114], [0.005139379959275483, 51.54904530114729], [0.005087732677644568, 51.54934744072465], [0.005055943610345718, 51.54951160308707], [0.005090583629588481, 51.5497070841929], [0.005194615718027234, 51.549974198697875], [0.005391401138803695, 51.55041413472626], [0.005503163692944113, 51.55065954067138]]], "type": "Polygon"}, "id": "612", "properties": {"DISTRICT": "Newham", "GSS_CODE": "E05000483", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "NAME": "Forest Gate North", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_5d793279cf99e0654e2114fac8f323c6.addTo(map_ed10fe9693e4d31c941ba4af06b56829);
+        
+    
+        function geo_json_bce56b6031cd44288f841b4356da1f88_styler(feature) {
+            switch(feature.id) {
+                case "3379": 
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_bce56b6031cd44288f841b4356da1f88_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_bce56b6031cd44288f841b4356da1f88 = L.geoJson(null, {
+                onEachFeature: geo_json_bce56b6031cd44288f841b4356da1f88_onEachFeature,
+            
+                style: geo_json_bce56b6031cd44288f841b4356da1f88_styler,
+            ...{
+}
+        });
+
+        function geo_json_bce56b6031cd44288f841b4356da1f88_add (data) {
+            geo_json_bce56b6031cd44288f841b4356da1f88
+                .addData(data);
+        }
+            geo_json_bce56b6031cd44288f841b4356da1f88_add({"features": [{"geometry": {"coordinates": [[[[0.027624381157264784, 51.550018803213085], [0.031989340059218115, 51.55456990635178], [0.025753938925227142, 51.55412062817543], [0.025270831921962566, 51.55256182697635], [0.02445116108845626, 51.55043456296125], [0.02482807213222031, 51.54951403576365], [0.02510050834494296, 51.549562246025076], [0.027624381157264784, 51.550018803213085]]]], "type": "MultiPolygon"}, "id": "3379", "properties": {"BNG_E": 540727, "BNG_N": 185689, "DISTRICT": "Newham", "GSS_CODE": "E05000483", "GlobalID": "{672EB08C-E325-44BB-B550-FB7713BC0BA3}", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "LAT": 51.55255126953125, "LONG": 0.028397999703884125, "LSOA21CD": "E01003543", "LSOA21NM": "Newham 001A", "LSOA21NMW": " ", "NAME": "Forest Gate North", "NONLD_AREA": 0.0, "WD24NM": "Forest Gate North", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.017355387995639744, 51.55335197947225], [0.014572979594889025, 51.55495430713368], [0.013582851472339211, 51.554608723803206], [0.014154196664388214, 51.55306906565805], [0.019844668475125067, 51.54863876412076], [0.02482807213222031, 51.54951403576365], [0.02445116108845626, 51.55043456296125], [0.02122840191385198, 51.54944152622164], [0.017355387995639744, 51.55335197947225]]]], "type": "MultiPolygon"}, "id": "3380", "properties": {"BNG_E": 539998, "BNG_N": 185584, "DISTRICT": "Newham", "GSS_CODE": "E05000483", "GlobalID": "{371DEDBC-31D3-47C0-9F6B-1984C2F1E759}", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "LAT": 51.551780700683594, "LONG": 0.017849000170826912, "LSOA21CD": "E01003544", "LSOA21NM": "Newham 001B", "LSOA21NMW": " ", "NAME": "Forest Gate North", "NONLD_AREA": 0.0, "WD24NM": "Forest Gate North", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.019844668475125067, 51.54863876412076], [0.014154196664388214, 51.55306906565805], [0.011657392810078137, 51.550248928339975], [0.015296444954177599, 51.547807647493734], [0.019844668475125067, 51.54863876412076]]]], "type": "MultiPolygon"}, "id": "3381", "properties": {"BNG_E": 539867, "BNG_N": 185291, "DISTRICT": "Newham", "GSS_CODE": "E05000483", "GlobalID": "{55A9CA30-FFEF-4AEE-99B6-C0989DF0B36D}", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "LAT": 51.54917907714844, "LONG": 0.015845000743865967, "LSOA21CD": "E01003545", "LSOA21NM": "Newham 006A", "LSOA21NMW": " ", "NAME": "Forest Gate North", "NONLD_AREA": 0.0, "WD24NM": "Forest Gate North", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.025270831921962566, 51.55256182697635], [0.01876789771306301, 51.55393172055868], [0.017355387995639744, 51.55335197947225], [0.02122840191385198, 51.54944152622164], [0.02445116108845626, 51.55043456296125], [0.025270831921962566, 51.55256182697635]]]], "type": "MultiPolygon"}, "id": "3382", "properties": {"BNG_E": 540377, "BNG_N": 185589, "DISTRICT": "Newham", "GSS_CODE": "E05000483", "GlobalID": "{ADC44184-A3C0-4937-9C34-28839A3C1840}", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "LAT": 51.55173110961914, "LONG": 0.02331399917602539, "LSOA21CD": "E01003546", "LSOA21NM": "Newham 001C", "LSOA21NMW": " ", "NAME": "Forest Gate North", "NONLD_AREA": 0.0, "WD24NM": "Forest Gate North", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.034563320705423645, 51.55088783756001], [0.03533360533794982, 51.55532250309619], [0.031989340059218115, 51.55456990635178], [0.027624381157264784, 51.550018803213085], [0.034563320705423645, 51.55088783756001]]]], "type": "MultiPolygon"}, "id": "3383", "properties": {"BNG_E": 541032, "BNG_N": 185709, "DISTRICT": "Newham", "GSS_CODE": "E05000483", "GlobalID": "{47AFD8CE-A85E-41B8-B112-F7BC93724AA1}", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "LAT": 51.552650451660156, "LONG": 0.0328029990196228, "LSOA21CD": "E01003547", "LSOA21NM": "Newham 007A", "LSOA21NMW": " ", "NAME": "Forest Gate North", "NONLD_AREA": 0.0, "WD24NM": "Forest Gate North", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.014154196664388214, 51.55306906565805], [0.013582851472339211, 51.554608723803206], [0.012039301463581226, 51.55406507653983], [0.005501829541843613, 51.55065861997358], [0.0053227602580318235, 51.54858224300491], [0.005933037363717382, 51.54742670200215], [0.011657392810078137, 51.550248928339975], [0.014154196664388214, 51.55306906565805]]]], "type": "MultiPolygon"}, "id": "3384", "properties": {"BNG_E": 539429, "BNG_N": 185445, "DISTRICT": "Newham", "GSS_CODE": "E05000483", "GlobalID": "{C45EA036-A273-4412-8959-242B054E423A}", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "LAT": 51.55067825317383, "LONG": 0.009592999704182148, "LSOA21CD": "E01003548", "LSOA21NM": "Newham 006B", "LSOA21NMW": " ", "NAME": "Forest Gate North", "NONLD_AREA": 0.0, "WD24NM": "Maryland", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.015296444954177599, 51.547807647493734], [0.011657392810078137, 51.550248928339975], [0.005933037363717382, 51.54742670200215], [0.006691720191948724, 51.54617216213177], [0.011593324204552134, 51.547143001481345], [0.012704318002043077, 51.547344073031354], [0.015296444954177599, 51.547807647493734]]]], "type": "MultiPolygon"}, "id": "3385", "properties": {"BNG_E": 539569, "BNG_N": 185177, "DISTRICT": "Newham", "GSS_CODE": "E05000483", "GlobalID": "{5450C307-D613-4861-A2FB-B280953A3FFC}", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "LAT": 51.5482292175293, "LONG": 0.011505000293254852, "LSOA21CD": "E01003549", "LSOA21NM": "Newham 006C", "LSOA21NMW": " ", "NAME": "Forest Gate North", "NONLD_AREA": 0.0, "WD24NM": "Maryland", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.025259212677877195, 51.5555480549145], [0.02033942021403868, 51.5562661151909], [0.01876789771306301, 51.55393172055868], [0.025270831921962566, 51.55256182697635], [0.025753938925227142, 51.55412062817543], [0.025259212677877195, 51.5555480549145]]]], "type": "MultiPolygon"}, "id": "3386", "properties": {"BNG_E": 540300, "BNG_N": 185913, "DISTRICT": "Newham", "GSS_CODE": "E05000483", "GlobalID": "{F3618337-2A37-4589-BE54-9073C584B7F4}", "HECTARES": 124.768, "LAGSSCODE": "E09000025", "LAT": 51.55466079711914, "LONG": 0.022332999855279922, "LSOA21CD": "E01003550", "LSOA21NM": "Newham 001D", "LSOA21NMW": " ", "NAME": "Forest Gate North", "NONLD_AREA": 0.0, "WD24NM": "Forest Gate North", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_bce56b6031cd44288f841b4356da1f88.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_bce56b6031cd44288f841b4356da1f88.addTo(map_ed10fe9693e4d31c941ba4af06b56829);
+        
+    
+            var feature_group_f2fdd404a6483df68f647f64a74faae2 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_64c95e4148f7dee0e8a92b5e03d6745c = L.marker(
+                [51.5530864, 0.0281257],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_b8876efa87e32cebff35cd8df62db442 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0a8c8d603f44f292c3312a2706283a8a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6b69e8337933dd2a7ad64a2f61da8372 = $(`<div id="html_6b69e8337933dd2a7ad64a2f61da8372" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 001A (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_0a8c8d603f44f292c3312a2706283a8a.setContent(html_6b69e8337933dd2a7ad64a2f61da8372);
+            
+        
+
+        marker_64c95e4148f7dee0e8a92b5e03d6745c.bindPopup(popup_0a8c8d603f44f292c3312a2706283a8a)
+        ;
+
+        
+    
+    
+                marker_64c95e4148f7dee0e8a92b5e03d6745c.setIcon(icon_b8876efa87e32cebff35cd8df62db442);
+            
+    
+            var marker_c4f75a522e4252b0b0a9fe4c2bac605b = L.marker(
+                [51.5520039, 0.0264419],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_a57b3e5b9d3a83e7fe245e73454ecf62 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_edf2491a6dc85cb9672107f824667698 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_21f02b63d9cb2d8b354024af3e229dd9 = $(`<div id="html_21f02b63d9cb2d8b354024af3e229dd9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 001A (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_edf2491a6dc85cb9672107f824667698.setContent(html_21f02b63d9cb2d8b354024af3e229dd9);
+            
+        
+
+        marker_c4f75a522e4252b0b0a9fe4c2bac605b.bindPopup(popup_edf2491a6dc85cb9672107f824667698)
+        ;
+
+        
+    
+    
+                marker_c4f75a522e4252b0b0a9fe4c2bac605b.setIcon(icon_a57b3e5b9d3a83e7fe245e73454ecf62);
+            
+    
+            var marker_a32428183cc05deb7b3ecb3501547caa = L.marker(
+                [51.5502599, 0.0250513],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_838352a767007b5a330cddaaf7852e55 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c78e9ae95e8d7a779d1fa7fa209212c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_834c1ebadc292e7bc435cd68fe849c3d = $(`<div id="html_834c1ebadc292e7bc435cd68fe849c3d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 001A (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c78e9ae95e8d7a779d1fa7fa209212c9.setContent(html_834c1ebadc292e7bc435cd68fe849c3d);
+            
+        
+
+        marker_a32428183cc05deb7b3ecb3501547caa.bindPopup(popup_c78e9ae95e8d7a779d1fa7fa209212c9)
+        ;
+
+        
+    
+    
+                marker_a32428183cc05deb7b3ecb3501547caa.setIcon(icon_838352a767007b5a330cddaaf7852e55);
+            
+    
+            var marker_1da546247426ef4caa21b5e594309bab = L.marker(
+                [51.5518656, 0.0160844],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_dd0eac3bd79fb80ed57a1d1ca33857ad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_74269d5070efecb14d53684c22487def = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_784972f433c5ace396d6908f7088bdf6 = $(`<div id="html_784972f433c5ace396d6908f7088bdf6" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 001B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_74269d5070efecb14d53684c22487def.setContent(html_784972f433c5ace396d6908f7088bdf6);
+            
+        
+
+        marker_1da546247426ef4caa21b5e594309bab.bindPopup(popup_74269d5070efecb14d53684c22487def)
+        ;
+
+        
+    
+    
+                marker_1da546247426ef4caa21b5e594309bab.setIcon(icon_dd0eac3bd79fb80ed57a1d1ca33857ad);
+            
+    
+            var marker_a02847ff5f99e08079fae0166d8391f9 = L.marker(
+                [51.5521745, 0.0167745],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_7058018da1a4121cca4e10ea9416dcbe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ffceb689a35cb16d752a3771c3dc63a3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1baa9c45a760f3b8c95044f35f70d1ee = $(`<div id="html_1baa9c45a760f3b8c95044f35f70d1ee" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 001B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_ffceb689a35cb16d752a3771c3dc63a3.setContent(html_1baa9c45a760f3b8c95044f35f70d1ee);
+            
+        
+
+        marker_a02847ff5f99e08079fae0166d8391f9.bindPopup(popup_ffceb689a35cb16d752a3771c3dc63a3)
+        ;
+
+        
+    
+    
+                marker_a02847ff5f99e08079fae0166d8391f9.setIcon(icon_7058018da1a4121cca4e10ea9416dcbe);
+            
+    
+            var marker_ee9002512e51b805b183054573015a1c = L.marker(
+                [51.5483579, 0.0147604],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_b76254b9c499ec8419ea6f06b8cae7ee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_46dd5bcaba7286f829e760467b450f10 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_531c40871e0bef0d312d5f9db15a322f = $(`<div id="html_531c40871e0bef0d312d5f9db15a322f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_46dd5bcaba7286f829e760467b450f10.setContent(html_531c40871e0bef0d312d5f9db15a322f);
+            
+        
+
+        marker_ee9002512e51b805b183054573015a1c.bindPopup(popup_46dd5bcaba7286f829e760467b450f10)
+        ;
+
+        
+    
+    
+                marker_ee9002512e51b805b183054573015a1c.setIcon(icon_b76254b9c499ec8419ea6f06b8cae7ee);
+            
+    
+            var marker_771d6c3d3507c1fcad63a6e1f89aaa93 = L.marker(
+                [51.5500661, 0.0124257],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_b8332141991339b5b2957e89db58eda5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9170eae108554e8924ba908bc2c9d017 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_03a9e8417c4b8977a419a5c73b030b19 = $(`<div id="html_03a9e8417c4b8977a419a5c73b030b19" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9170eae108554e8924ba908bc2c9d017.setContent(html_03a9e8417c4b8977a419a5c73b030b19);
+            
+        
+
+        marker_771d6c3d3507c1fcad63a6e1f89aaa93.bindPopup(popup_9170eae108554e8924ba908bc2c9d017)
+        ;
+
+        
+    
+    
+                marker_771d6c3d3507c1fcad63a6e1f89aaa93.setIcon(icon_b8332141991339b5b2957e89db58eda5);
+            
+    
+            var marker_20fcc52907dd2364a777c23090ffd941 = L.marker(
+                [51.5500661, 0.0124257],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_9dd6337673647b86bed2765e9e01e7f0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6b5a3544b846fa39f94c573afebf3e6c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9896ce86e01f3b252ef410fb1d3e15ce = $(`<div id="html_9896ce86e01f3b252ef410fb1d3e15ce" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_6b5a3544b846fa39f94c573afebf3e6c.setContent(html_9896ce86e01f3b252ef410fb1d3e15ce);
+            
+        
+
+        marker_20fcc52907dd2364a777c23090ffd941.bindPopup(popup_6b5a3544b846fa39f94c573afebf3e6c)
+        ;
+
+        
+    
+    
+                marker_20fcc52907dd2364a777c23090ffd941.setIcon(icon_9dd6337673647b86bed2765e9e01e7f0);
+            
+    
+            var marker_3131f6cb268b4d39c90d496fd9129391 = L.marker(
+                [51.5519814, 0.0220207],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_1b0fefc008af9516965905a172cb093a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5d29ec7b4eb2e5225fb8d85a763901c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_34ba052f446ed717b472e4c3ed218e4f = $(`<div id="html_34ba052f446ed717b472e4c3ed218e4f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 001C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5d29ec7b4eb2e5225fb8d85a763901c9.setContent(html_34ba052f446ed717b472e4c3ed218e4f);
+            
+        
+
+        marker_3131f6cb268b4d39c90d496fd9129391.bindPopup(popup_5d29ec7b4eb2e5225fb8d85a763901c9)
+        ;
+
+        
+    
+    
+                marker_3131f6cb268b4d39c90d496fd9129391.setIcon(icon_1b0fefc008af9516965905a172cb093a);
+            
+    
+            var marker_31e494ee1e284ced8b615f8d5214418b = L.marker(
+                [51.5534526, 0.0220506],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_67e32ffdd74be2da6fd7d3772f85e873 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6e6cc1aedcdf589ea0be1f5b378344ff = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a5f31cce4e011b99daa7200658f8dd72 = $(`<div id="html_a5f31cce4e011b99daa7200658f8dd72" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 001C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_6e6cc1aedcdf589ea0be1f5b378344ff.setContent(html_a5f31cce4e011b99daa7200658f8dd72);
+            
+        
+
+        marker_31e494ee1e284ced8b615f8d5214418b.bindPopup(popup_6e6cc1aedcdf589ea0be1f5b378344ff)
+        ;
+
+        
+    
+    
+                marker_31e494ee1e284ced8b615f8d5214418b.setIcon(icon_67e32ffdd74be2da6fd7d3772f85e873);
+            
+    
+            var marker_5f106575833a40113aed52b356defd87 = L.marker(
+                [51.5523955, 0.0208898],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_982900b25c3668806cc3efd1d9927dbc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_38534fa3b859a9cee610a835557c3e45 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a2539a09b6de3f6b940c01765e0261f9 = $(`<div id="html_a2539a09b6de3f6b940c01765e0261f9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 001C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_38534fa3b859a9cee610a835557c3e45.setContent(html_a2539a09b6de3f6b940c01765e0261f9);
+            
+        
+
+        marker_5f106575833a40113aed52b356defd87.bindPopup(popup_38534fa3b859a9cee610a835557c3e45)
+        ;
+
+        
+    
+    
+                marker_5f106575833a40113aed52b356defd87.setIcon(icon_982900b25c3668806cc3efd1d9927dbc);
+            
+    
+            var marker_18066be838f2dc876cc7eb8146bc2fa8 = L.marker(
+                [51.5510045, 0.0305123],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_13e3ecc3439f7e8c5910674ebdf4dfbc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dc4f4d394ccbd436b08712ca7b7d5e87 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17039bc83326b38d5ac493d683c66df7 = $(`<div id="html_17039bc83326b38d5ac493d683c66df7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 007A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_dc4f4d394ccbd436b08712ca7b7d5e87.setContent(html_17039bc83326b38d5ac493d683c66df7);
+            
+        
+
+        marker_18066be838f2dc876cc7eb8146bc2fa8.bindPopup(popup_dc4f4d394ccbd436b08712ca7b7d5e87)
+        ;
+
+        
+    
+    
+                marker_18066be838f2dc876cc7eb8146bc2fa8.setIcon(icon_13e3ecc3439f7e8c5910674ebdf4dfbc);
+            
+    
+            var marker_896f616c6037295b24fc1c84595f3284 = L.marker(
+                [51.5511945, 0.0318066],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_6e410a9a8eec1cfa0ecbda3ae796292d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_82c3d3955b13727ae1f7eacdcb650c26 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4412b67332d967fb8a324ed800392a40 = $(`<div id="html_4412b67332d967fb8a324ed800392a40" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 007A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_82c3d3955b13727ae1f7eacdcb650c26.setContent(html_4412b67332d967fb8a324ed800392a40);
+            
+        
+
+        marker_896f616c6037295b24fc1c84595f3284.bindPopup(popup_82c3d3955b13727ae1f7eacdcb650c26)
+        ;
+
+        
+    
+    
+                marker_896f616c6037295b24fc1c84595f3284.setIcon(icon_6e410a9a8eec1cfa0ecbda3ae796292d);
+            
+    
+            var marker_a5666c2c85d8bd94d0919e4145a59ad4 = L.marker(
+                [51.552911, 0.0298036],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_2d006afc985426635f4f786a958f3106 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_653e0d9a93d3fca25c41be9e602d52ae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1e5be8860750eb9b4e75822d88a90ab8 = $(`<div id="html_1e5be8860750eb9b4e75822d88a90ab8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 007A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_653e0d9a93d3fca25c41be9e602d52ae.setContent(html_1e5be8860750eb9b4e75822d88a90ab8);
+            
+        
+
+        marker_a5666c2c85d8bd94d0919e4145a59ad4.bindPopup(popup_653e0d9a93d3fca25c41be9e602d52ae)
+        ;
+
+        
+    
+    
+                marker_a5666c2c85d8bd94d0919e4145a59ad4.setIcon(icon_2d006afc985426635f4f786a958f3106);
+            
+    
+            var marker_94f55694babbfdd049012a0bfe187b2d = L.marker(
+                [51.54837, 0.0056511],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_625e2cefd2ec3845fff89232e0a7396d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f300c8e396432c367607de03bcbf3d19 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dea0022e361de9b6c046edcc16648ab2 = $(`<div id="html_dea0022e361de9b6c046edcc16648ab2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f300c8e396432c367607de03bcbf3d19.setContent(html_dea0022e361de9b6c046edcc16648ab2);
+            
+        
+
+        marker_94f55694babbfdd049012a0bfe187b2d.bindPopup(popup_f300c8e396432c367607de03bcbf3d19)
+        ;
+
+        
+    
+    
+                marker_94f55694babbfdd049012a0bfe187b2d.setIcon(icon_625e2cefd2ec3845fff89232e0a7396d);
+            
+    
+            var marker_15092a1d0dcc37b53ecab129edd55462 = L.marker(
+                [51.5495615, 0.010057],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_6d54fe3d0abe490dd6f505b86c966676 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_87827d8da5d5ef83ad0181656bb85821 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d9be9a83721c9ccc7aff20cee3624880 = $(`<div id="html_d9be9a83721c9ccc7aff20cee3624880" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_87827d8da5d5ef83ad0181656bb85821.setContent(html_d9be9a83721c9ccc7aff20cee3624880);
+            
+        
+
+        marker_15092a1d0dcc37b53ecab129edd55462.bindPopup(popup_87827d8da5d5ef83ad0181656bb85821)
+        ;
+
+        
+    
+    
+                marker_15092a1d0dcc37b53ecab129edd55462.setIcon(icon_6d54fe3d0abe490dd6f505b86c966676);
+            
+    
+            var marker_cb01bb11ae2021e9435fc822fad4804b = L.marker(
+                [51.5498288, 0.011382],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_7a855142fb314878848566a469869be0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2a1a04188a655797a8b8903993c2d4c4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_85fbedc79b50036e7e0c266743fa5df5 = $(`<div id="html_85fbedc79b50036e7e0c266743fa5df5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_2a1a04188a655797a8b8903993c2d4c4.setContent(html_85fbedc79b50036e7e0c266743fa5df5);
+            
+        
+
+        marker_cb01bb11ae2021e9435fc822fad4804b.bindPopup(popup_2a1a04188a655797a8b8903993c2d4c4)
+        ;
+
+        
+    
+    
+                marker_cb01bb11ae2021e9435fc822fad4804b.setIcon(icon_7a855142fb314878848566a469869be0);
+            
+    
+            var marker_9f331006da26e6c1e2049a0655dd81ed = L.marker(
+                [51.5495615, 0.010057],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_f0c40c8cc700508ab5e21820c5fee414 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_42961e894f7128e0b1c1a540f6ccc04e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a990872ac0f8182e17a315ccf9cf2b5f = $(`<div id="html_a990872ac0f8182e17a315ccf9cf2b5f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006B (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_42961e894f7128e0b1c1a540f6ccc04e.setContent(html_a990872ac0f8182e17a315ccf9cf2b5f);
+            
+        
+
+        marker_9f331006da26e6c1e2049a0655dd81ed.bindPopup(popup_42961e894f7128e0b1c1a540f6ccc04e)
+        ;
+
+        
+    
+    
+                marker_9f331006da26e6c1e2049a0655dd81ed.setIcon(icon_f0c40c8cc700508ab5e21820c5fee414);
+            
+    
+            var marker_8a0af1c9d50cd1a29b41b58c4e4dc368 = L.marker(
+                [51.5477785, 0.0109829],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_57b4551133b4dde422cdbd9ba5b5d8bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_06de20c1be8492c221041f081609cf12 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b2f6b79b53b0e15c14e76440b06d3017 = $(`<div id="html_b2f6b79b53b0e15c14e76440b06d3017" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_06de20c1be8492c221041f081609cf12.setContent(html_b2f6b79b53b0e15c14e76440b06d3017);
+            
+        
+
+        marker_8a0af1c9d50cd1a29b41b58c4e4dc368.bindPopup(popup_06de20c1be8492c221041f081609cf12)
+        ;
+
+        
+    
+    
+                marker_8a0af1c9d50cd1a29b41b58c4e4dc368.setIcon(icon_57b4551133b4dde422cdbd9ba5b5d8bd);
+            
+    
+            var marker_401f5eea7a54516c13c636a57f97bf25 = L.marker(
+                [51.547102, 0.0086402],
+                {
+}
+            ).addTo(feature_group_f2fdd404a6483df68f647f64a74faae2);
+        
+    
+            var icon_9629ac93a3b4c5607b4b6f57c59beeeb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_afb101bd48c09e6a93ae49c7c4fea5ac = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a9e27fcc4ac9cf9c469514bdfdee186 = $(`<div id="html_1a9e27fcc4ac9cf9c469514bdfdee186" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Newham 006C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_afb101bd48c09e6a93ae49c7c4fea5ac.setContent(html_1a9e27fcc4ac9cf9c469514bdfdee186);
+            
+        
+
+        marker_401f5eea7a54516c13c636a57f97bf25.bindPopup(popup_afb101bd48c09e6a93ae49c7c4fea5ac)
+        ;
+
+        
+    
+    
+                marker_401f5eea7a54516c13c636a57f97bf25.setIcon(icon_9629ac93a3b4c5607b4b6f57c59beeeb);
+            
+    
+            feature_group_f2fdd404a6483df68f647f64a74faae2.addTo(map_ed10fe9693e4d31c941ba4af06b56829);
+        
+    
+            var poly_line_bd280168d1f498d077e8c69dfdcdd0c8 = L.polyline(
+                [[51.5530864, 0.0281257], [51.5532038, 0.0271215], [51.5528106, 0.0253202], [51.5525777, 0.0253242], [51.5521122, 0.0252936], [51.5522011, 0.026246], [51.5520235, 0.0263862], [51.5520039, 0.0264419], [51.5520235, 0.0263862], [51.5522011, 0.026246], [51.5526651, 0.0278406], [51.552911, 0.0298036], [51.5530963, 0.0311013], [51.5511945, 0.0318066], [51.5510045, 0.0305123], [51.5505704, 0.0274554], [51.5502599, 0.0250513], [51.5505704, 0.0274554], [51.5526651, 0.0278406], [51.5530864, 0.0281257], [51.5532038, 0.0271215], [51.5528106, 0.0253202], [51.5525777, 0.0253242], [51.5526867, 0.0245261], [51.5519814, 0.0220207], [51.5519276, 0.0191433], [51.5524687, 0.0188138], [51.5522357, 0.0177908], [51.5521745, 0.0167745], [51.5518656, 0.0160844], [51.5512371, 0.0146944], [51.5508529, 0.0134607], [51.5500661, 0.0124257], [51.5498288, 0.011382], [51.5500661, 0.0124257], [51.5490466, 0.0130689], [51.5493162, 0.0141872], [51.5483579, 0.0147604], [51.5479167, 0.0150037], [51.5475746, 0.01314], [51.5472376, 0.0112667], [51.5477785, 0.0109829], [51.5489952, 0.0103267], [51.5490436, 0.0103015], [51.5495615, 0.010057], [51.5490436, 0.0103015], [51.5488144, 0.0091041], [51.5483788, 0.0093357], [51.5473705, 0.0098555], [51.5470091, 0.0100389], [51.5465901, 0.0077413], [51.546871, 0.0076068], [51.5479741, 0.0080809], [51.5485899, 0.0067417], [51.54837, 0.0056511], [51.5485899, 0.0067417], [51.5479741, 0.0080809], [51.5477103, 0.0082997], [51.547102, 0.0086402], [51.5477103, 0.0082997], [51.5479741, 0.0080809], [51.546871, 0.0076068], [51.5465901, 0.0077413], [51.5470091, 0.0100389], [51.5473705, 0.0098555], [51.5483788, 0.0093357], [51.5488144, 0.0091041], [51.5490436, 0.0103015], [51.5489952, 0.0103267], [51.5477785, 0.0109829], [51.5472376, 0.0112667], [51.5475746, 0.01314], [51.5479167, 0.0150037], [51.5483579, 0.0147604], [51.5493162, 0.0141872], [51.5508529, 0.0134607], [51.5512371, 0.0146944], [51.5518656, 0.0160844], [51.5521745, 0.0167745], [51.5522357, 0.0177908], [51.5508337, 0.0186307], [51.5510691, 0.0196639], [51.550781, 0.0198216], [51.5502517, 0.0201411], [51.5496547, 0.0205192], [51.5489923, 0.0208841], [51.5497496, 0.0248922], [51.5502599, 0.0250513], [51.5505704, 0.0274554], [51.5526651, 0.0278406], [51.5530864, 0.0281257], [51.5532038, 0.0271215], [51.5528106, 0.0253202], [51.5525777, 0.0253242], [51.5526867, 0.0245261], [51.5519814, 0.0220207], [51.5525901, 0.0216132], [51.5523955, 0.0208898], [51.5525901, 0.0216132], [51.5531515, 0.0211246], [51.5534526, 0.0220506], [51.5531515, 0.0211246], [51.5525901, 0.0216132], [51.5519814, 0.0220207], [51.5526867, 0.0245261], [51.5525777, 0.0253242], [51.5528106, 0.0253202], [51.5532038, 0.0271215], [51.5530864, 0.0281257]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_ed10fe9693e4d31c941ba4af06b56829);
+        
+    
+            var layer_control_4408552bd1e3aaa5a04a76e9b1210011_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_0ce870333f5bcde6a91e9932b89e8460,
+                },
+                overlays :  {
+                    "Forest Gate North Boundary" : geo_json_5d793279cf99e0654e2114fac8f323c6,
+                    "LSOA Median Crime Rates for Forest Gate North" : geo_json_bce56b6031cd44288f841b4356da1f88,
+                    "Patrol Waypoints" : feature_group_f2fdd404a6483df68f647f64a74faae2,
+                },
+            };
+            let layer_control_4408552bd1e3aaa5a04a76e9b1210011 = L.control.layers(
+                layer_control_4408552bd1e3aaa5a04a76e9b1210011_layers.base_layers,
+                layer_control_4408552bd1e3aaa5a04a76e9b1210011_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_ed10fe9693e4d31c941ba4af06b56829);
+
+        
+</script>
+</html>

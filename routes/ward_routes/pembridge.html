@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7a0c31fe54cd37f5b96467f3a5ece28f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7a0c31fe54cd37f5b96467f3a5ece28f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7a0c31fe54cd37f5b96467f3a5ece28f = L.map(
+                "map_7a0c31fe54cd37f5b96467f3a5ece28f",
+                {
+                    center: [51.5111392951658, -0.19841464845312928],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_504d0aa8f9bda80b5e1b275f1433947d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_504d0aa8f9bda80b5e1b275f1433947d.addTo(map_7a0c31fe54cd37f5b96467f3a5ece28f);
+        
+    
+        function geo_json_437dfaa965ef0fbb48adc9f4917bb24d_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_437dfaa965ef0fbb48adc9f4917bb24d_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_437dfaa965ef0fbb48adc9f4917bb24d = L.geoJson(null, {
+                onEachFeature: geo_json_437dfaa965ef0fbb48adc9f4917bb24d_onEachFeature,
+            
+                style: geo_json_437dfaa965ef0fbb48adc9f4917bb24d_styler,
+            ...{
+}
+        });
+
+        function geo_json_437dfaa965ef0fbb48adc9f4917bb24d_add (data) {
+            geo_json_437dfaa965ef0fbb48adc9f4917bb24d
+                .addData(data);
+        }
+            geo_json_437dfaa965ef0fbb48adc9f4917bb24d_add({"features": [{"geometry": {"coordinates": [[[-0.20521874746229626, 51.51078286506443], [-0.20466193824991702, 51.510943442715345], [-0.2041831926576236, 51.511097931202485], [-0.2042249421754757, 51.51117237720677], [-0.20425060705918696, 51.51121771946991], [-0.20426498772663776, 51.51125389909923], [-0.20426521156602664, 51.51128446806471], [-0.20425959405952807, 51.5113185435433], [-0.20425239745549925, 51.51135349383142], [-0.20423718071635735, 51.511374836531246], [-0.2037193338935587, 51.51153241032844], [-0.20314348105734453, 51.511702488130275], [-0.20266082015068143, 51.511844414561054], [-0.20221336602502626, 51.51197330396332], [-0.20221311843715423, 51.51197959307427], [-0.20221151656153505, 51.51198406345406], [-0.20220837090610286, 51.51198851017125], [-0.2022068751392099, 51.5119902852177], [-0.2022009628103916, 51.5119955885145], [-0.20219639212554666, 51.51200001338888], [-0.20219051516441544, 51.51200441824072], [-0.20218601521820567, 51.5120070462259], [-0.20218024436633042, 51.51200875574399], [-0.2021743547617034, 51.51201046344157], [-0.2021700443074889, 51.51201129635756], [-0.20215414413565777, 51.51201374959823], [-0.20214243566506682, 51.51201536810169], [-0.20213381475444747, 51.5120170339311], [-0.20211790194131773, 51.51201679001346], [-0.20211220182920764, 51.51201670263944], [-0.20204833480549017, 51.51206345982301], [-0.20182074350122786, 51.51195290154353], [-0.20175364059086773, 51.51200940791273], [-0.2016885349108074, 51.51208761044273], [-0.20157965305180245, 51.51218213257051], [-0.20149611222993358, 51.512143094170135], [-0.20140690681649873, 51.51210306985901], [-0.20126809369828863, 51.512043406001204], [-0.20119860745244245, 51.512012583902276], [-0.20115228970340232, 51.51205421582233], [-0.20110897961202054, 51.51209490496762], [-0.20106259445093833, 51.512138243893396], [-0.20100868213778614, 51.5121886592439], [-0.20099819882489584, 51.51219838730472], [-0.20097723218562233, 51.512217843423414], [-0.20079707854597528, 51.51214585808583], [-0.20076705352204763, 51.51217506406771], [-0.2007188798716968, 51.5121914058233], [-0.20077452802659754, 51.51224170374034], [-0.20071886258659133, 51.512264223479455], [-0.20066467490034964, 51.51221304895409], [-0.20056950463084966, 51.51225204332657], [-0.20049630127417087, 51.51228238477942], [-0.20048895113401788, 51.5122849689716], [-0.2004244395090889, 51.512311847784105], [-0.2003512324207091, 51.51234227898859], [-0.20032041927807873, 51.51235529100428], [-0.2002837997432968, 51.512370910878644], [-0.2002588762849704, 51.512382215276375], [-0.20015196126902932, 51.512423726057904], [-0.20018689372815227, 51.51245392865882], [-0.20022284924501582, 51.51249133884091], [-0.20020522796320306, 51.51249826034241], [-0.20006177620759705, 51.51255629113914], [-0.20002519183690257, 51.51257101248654], [-0.19983764719333658, 51.512647334962956], [-0.19978201622117334, 51.512668955803456], [-0.19969558413610516, 51.512706285615685], [-0.19958992211980053, 51.512607483290985], [-0.19944200096921078, 51.512667332601794], [-0.199453059569716, 51.51267918919195], [-0.19930364564799594, 51.51274072348898], [-0.19922451543837205, 51.512773670123416], [-0.1989199378735164, 51.512894851687285], [-0.19893646100518897, 51.512915782105225], [-0.1990366653594063, 51.51304147082076], [-0.19912307134285817, 51.51315247390133], [-0.19922510397953996, 51.51327099862287], [-0.1989806077038582, 51.51336613316246], [-0.19880014095191162, 51.51344966467402], [-0.19889242863219325, 51.51359231267205], [-0.19898815766675532, 51.51387067051923], [-0.1990423649398932, 51.51402981440047], [-0.19909258431185822, 51.51418161522909], [-0.19915272552425595, 51.51437411265963], [-0.19920776914867155, 51.514551249016826], [-0.19576743088419177, 51.514956053353295], [-0.1950726035739877, 51.515031666020114], [-0.19436730596278176, 51.51271248131696], [-0.19406491645547563, 51.51175642740551], [-0.19365539755243574, 51.511691687057386], [-0.19298469151083567, 51.51181350697511], [-0.19214379373986884, 51.50986808450842], [-0.1963103326143932, 51.50905455118361], [-0.19657735652832414, 51.50900831396853], [-0.19693865962372756, 51.50894554579093], [-0.19736778760617932, 51.50888022300029], [-0.19778650565113087, 51.50882273967683], [-0.1982106831271635, 51.50877441850523], [-0.19863798063914506, 51.50871625486121], [-0.19987699461454292, 51.50861661145636], [-0.20047565664468994, 51.508599727560465], [-0.20058009833608517, 51.50858155223284], [-0.20092424940698173, 51.50851662079547], [-0.20231793629117514, 51.508106386688574], [-0.20310460889474075, 51.50789180693672], [-0.20376777353275052, 51.50879942371232], [-0.20446158654110763, 51.50977133370217], [-0.20521874746229626, 51.51078286506443]]], "type": "Polygon"}, "id": "480", "properties": {"DISTRICT": "Kensington and Chelsea", "GSS_CODE": "E05009400", "HECTARES": 38.656, "LAGSSCODE": "E09000020", "NAME": "Pembridge", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_437dfaa965ef0fbb48adc9f4917bb24d.addTo(map_7a0c31fe54cd37f5b96467f3a5ece28f);
+        
+    
+        function geo_json_29bc1ad56fbbc0927e982911deae0784_styler(feature) {
+            switch(feature.id) {
+                case "2739": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_29bc1ad56fbbc0927e982911deae0784_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_29bc1ad56fbbc0927e982911deae0784 = L.geoJson(null, {
+                onEachFeature: geo_json_29bc1ad56fbbc0927e982911deae0784_onEachFeature,
+            
+                style: geo_json_29bc1ad56fbbc0927e982911deae0784_styler,
+            ...{
+}
+        });
+
+        function geo_json_29bc1ad56fbbc0927e982911deae0784_add (data) {
+            geo_json_29bc1ad56fbbc0927e982911deae0784
+                .addData(data);
+        }
+            geo_json_29bc1ad56fbbc0927e982911deae0784_add({"features": [{"geometry": {"coordinates": [[[[-0.20082656975753205, 51.512188544640864], [-0.20145148200687268, 51.51401717131986], [-0.2041646604264287, 51.51320772375912], [-0.20649014786025033, 51.51255369864306], [-0.2043413944416498, 51.50966126386483], [-0.20082656975753205, 51.512188544640864]]]], "type": "MultiPolygon"}, "id": "2739", "properties": {"BNG_E": 524783, "BNG_N": 180731, "DISTRICT": "Kensington and Chelsea", "GSS_CODE": "E05009400", "GlobalID": "{A0843E38-0260-4EBF-8972-D47BD79A2D93}", "HECTARES": 38.656, "LAGSSCODE": "E09000020", "LAT": 51.511741638183594, "LONG": -0.20319999754428864, "LSOA21CD": "E01002882", "LSOA21NM": "Kensington and Chelsea 006A", "LSOA21NMW": " ", "NAME": "Pembridge", "NONLD_AREA": 0.0, "WD24NM": "Colville", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.19753595629515955, 51.508857065345445], [-0.20033898600542896, 51.51244443495804], [-0.20082656975753205, 51.512188544640864], [-0.2043413944416498, 51.50966126386483], [-0.20409599646381513, 51.50930339241752], [-0.20308743550592173, 51.507865364041066], [-0.19778440558386268, 51.508822373976514], [-0.19753595629515955, 51.508857065345445]]]], "type": "MultiPolygon"}, "id": "2740", "properties": {"BNG_E": 525013, "BNG_N": 180558, "DISTRICT": "Kensington and Chelsea", "GSS_CODE": "E05009400", "GlobalID": "{F157CB96-37D6-41C5-AC79-8B7410FE49BC}", "HECTARES": 38.656, "LAGSSCODE": "E09000020", "LAT": 51.5101318359375, "LONG": -0.19994999468326569, "LSOA21CD": "E01002883", "LSOA21NM": "Kensington and Chelsea 006B", "LSOA21NMW": " ", "NAME": "Pembridge", "NONLD_AREA": 0.0, "WD24NM": "Pembridge", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.19537710161177194, 51.511848559357965], [-0.20033898600542896, 51.51244443495804], [-0.19753595629515955, 51.508857065345445], [-0.1941055175919359, 51.509477569300806], [-0.19537710161177194, 51.511848559357965]]]], "type": "MultiPolygon"}, "id": "2741", "properties": {"BNG_E": 525201, "BNG_N": 180613, "DISTRICT": "Kensington and Chelsea", "GSS_CODE": "E05009400", "GlobalID": "{82D785B9-6DD4-47AA-8CB2-0099D311ED70}", "HECTARES": 38.656, "LAGSSCODE": "E09000020", "LAT": 51.51057815551758, "LONG": -0.19721999764442444, "LSOA21CD": "E01002884", "LSOA21NM": "Kensington and Chelsea 006C", "LSOA21NMW": " ", "NAME": "Pembridge", "NONLD_AREA": 0.0, "WD24NM": "Pembridge", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.19214475207977297, 51.50986818705174], [-0.1942480371584632, 51.51233208845209], [-0.19537710161177194, 51.511848559357965], [-0.1941055175919359, 51.509477569300806], [-0.19214475207977297, 51.50986818705174]]]], "type": "MultiPolygon"}, "id": "2742", "properties": {"BNG_E": 525406, "BNG_N": 180671, "DISTRICT": "Kensington and Chelsea", "GSS_CODE": "E05009400", "GlobalID": "{F47759BD-08F3-4A96-A816-1E00C470F6B3}", "HECTARES": 38.656, "LAGSSCODE": "E09000020", "LAT": 51.51105880737305, "LONG": -0.19425000250339508, "LSOA21CD": "E01002885", "LSOA21NM": "Kensington and Chelsea 006D", "LSOA21NMW": " ", "NAME": "Pembridge", "NONLD_AREA": 0.0, "WD24NM": "Pembridge", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.19436832562822112, 51.512712747119714], [-0.19507633588291956, 51.515031627156894], [-0.19921026038703732, 51.51455147948299], [-0.20145148200687268, 51.51401717131986], [-0.20082656975753205, 51.512188544640864], [-0.20033898600542896, 51.51244443495804], [-0.19537710161177194, 51.511848559357965], [-0.1942480371584632, 51.51233208845209], [-0.19436832562822112, 51.512712747119714]]]], "type": "MultiPolygon"}, "id": "2743", "properties": {"BNG_E": 525150, "BNG_N": 180926, "DISTRICT": "Kensington and Chelsea", "GSS_CODE": "E05009400", "GlobalID": "{02F56423-2532-47EE-A228-C0E6B689D4DA}", "HECTARES": 38.656, "LAGSSCODE": "E09000020", "LAT": 51.51340866088867, "LONG": -0.19784000515937805, "LSOA21CD": "E01002886", "LSOA21NM": "Kensington and Chelsea 006E", "LSOA21NMW": " ", "NAME": "Pembridge", "NONLD_AREA": 0.0, "WD24NM": "Pembridge", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_29bc1ad56fbbc0927e982911deae0784.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_29bc1ad56fbbc0927e982911deae0784.addTo(map_7a0c31fe54cd37f5b96467f3a5ece28f);
+        
+    
+            var feature_group_b9332c7d5f4e169552c62bf39196910f = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_51a07a1d0743ca3d87ecd6e874ba7ba7 = L.marker(
+                [51.5096587, -0.2002473],
+                {
+}
+            ).addTo(feature_group_b9332c7d5f4e169552c62bf39196910f);
+        
+    
+            var icon_901198658670d5cb385d508b9dd9be65 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b61fd9363ca723640c0bf3a2117a84f9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31f38f0c59caa69071a5a7af8ef6a9a1 = $(`<div id="html_31f38f0c59caa69071a5a7af8ef6a9a1" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Kensington and Chelsea 006B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_b61fd9363ca723640c0bf3a2117a84f9.setContent(html_31f38f0c59caa69071a5a7af8ef6a9a1);
+            
+        
+
+        marker_51a07a1d0743ca3d87ecd6e874ba7ba7.bindPopup(popup_b61fd9363ca723640c0bf3a2117a84f9)
+        ;
+
+        
+    
+    
+                marker_51a07a1d0743ca3d87ecd6e874ba7ba7.setIcon(icon_901198658670d5cb385d508b9dd9be65);
+            
+    
+            var marker_d12adaba2793d923ed3200a6874375d7 = L.marker(
+                [51.5095794, -0.2032084],
+                {
+}
+            ).addTo(feature_group_b9332c7d5f4e169552c62bf39196910f);
+        
+    
+            var icon_16604226d3365b069df15ca55d5897f0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7b1fa8298c48bc3814890fd9b4b196ff = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_90a70290c11bd4121fee3e57166f8bd3 = $(`<div id="html_90a70290c11bd4121fee3e57166f8bd3" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Kensington and Chelsea 006B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_7b1fa8298c48bc3814890fd9b4b196ff.setContent(html_90a70290c11bd4121fee3e57166f8bd3);
+            
+        
+
+        marker_d12adaba2793d923ed3200a6874375d7.bindPopup(popup_7b1fa8298c48bc3814890fd9b4b196ff)
+        ;
+
+        
+    
+    
+                marker_d12adaba2793d923ed3200a6874375d7.setIcon(icon_16604226d3365b069df15ca55d5897f0);
+            
+    
+            var marker_7808972b2dc886acb99f0b7bc0a76507 = L.marker(
+                [51.5091067, -0.1963582],
+                {
+}
+            ).addTo(feature_group_b9332c7d5f4e169552c62bf39196910f);
+        
+    
+            var icon_ad9b008b03ef783d50db4d22f9c284e7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6edba6e091b19505b72881d670887d2a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_933dcdde9b88559466a3be74327042a1 = $(`<div id="html_933dcdde9b88559466a3be74327042a1" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Kensington and Chelsea 006D (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_6edba6e091b19505b72881d670887d2a.setContent(html_933dcdde9b88559466a3be74327042a1);
+            
+        
+
+        marker_7808972b2dc886acb99f0b7bc0a76507.bindPopup(popup_6edba6e091b19505b72881d670887d2a)
+        ;
+
+        
+    
+    
+                marker_7808972b2dc886acb99f0b7bc0a76507.setIcon(icon_ad9b008b03ef783d50db4d22f9c284e7);
+            
+    
+            var marker_c305302779cd7cb44f27adc919945840 = L.marker(
+                [51.5110948, -0.1976016],
+                {
+}
+            ).addTo(feature_group_b9332c7d5f4e169552c62bf39196910f);
+        
+    
+            var icon_678732f8cefbc48394767aacd058b833 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d99844b0c4a3bf13cb6a9f5d4854f59c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6e2e86c3c03335bb1a623ecee9770d9e = $(`<div id="html_6e2e86c3c03335bb1a623ecee9770d9e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Kensington and Chelsea 006C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_d99844b0c4a3bf13cb6a9f5d4854f59c.setContent(html_6e2e86c3c03335bb1a623ecee9770d9e);
+            
+        
+
+        marker_c305302779cd7cb44f27adc919945840.bindPopup(popup_d99844b0c4a3bf13cb6a9f5d4854f59c)
+        ;
+
+        
+    
+    
+                marker_c305302779cd7cb44f27adc919945840.setIcon(icon_678732f8cefbc48394767aacd058b833);
+            
+    
+            var marker_45ecb58975e1f82215a9ace19766492a = L.marker(
+                [51.5125748, -0.1975832],
+                {
+}
+            ).addTo(feature_group_b9332c7d5f4e169552c62bf39196910f);
+        
+    
+            var icon_3d949d65eb499c50930f357b192145ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8bb2589f7a74f1d0eff4daafd7baa219 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_101f7bfd70753201212db584b651e00e = $(`<div id="html_101f7bfd70753201212db584b651e00e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Kensington and Chelsea 006E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_8bb2589f7a74f1d0eff4daafd7baa219.setContent(html_101f7bfd70753201212db584b651e00e);
+            
+        
+
+        marker_45ecb58975e1f82215a9ace19766492a.bindPopup(popup_8bb2589f7a74f1d0eff4daafd7baa219)
+        ;
+
+        
+    
+    
+                marker_45ecb58975e1f82215a9ace19766492a.setIcon(icon_3d949d65eb499c50930f357b192145ab);
+            
+    
+            var marker_d92d12b5c6925f85667e5547c1b837ec = L.marker(
+                [51.5125077, -0.1955582],
+                {
+}
+            ).addTo(feature_group_b9332c7d5f4e169552c62bf39196910f);
+        
+    
+            var icon_19bcbbaa7f7b148fb268de96a3a81119 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3cd2a6d7c37ad4f8ec68fdcce5640d5c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d1bdbd4d1682ab7352c94a409c1b40df = $(`<div id="html_d1bdbd4d1682ab7352c94a409c1b40df" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Kensington and Chelsea 006E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_3cd2a6d7c37ad4f8ec68fdcce5640d5c.setContent(html_d1bdbd4d1682ab7352c94a409c1b40df);
+            
+        
+
+        marker_d92d12b5c6925f85667e5547c1b837ec.bindPopup(popup_3cd2a6d7c37ad4f8ec68fdcce5640d5c)
+        ;
+
+        
+    
+    
+                marker_d92d12b5c6925f85667e5547c1b837ec.setIcon(icon_19bcbbaa7f7b148fb268de96a3a81119);
+            
+    
+            var marker_aec8cce2116a0dae8c316b0821a93f4f = L.marker(
+                [51.5119486, -0.2017807],
+                {
+}
+            ).addTo(feature_group_b9332c7d5f4e169552c62bf39196910f);
+        
+    
+            var icon_f31ef59d74e00721e74ea2ddccc0dd36 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1ec086a0dbf6cac6fab9b4df52582a7e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_92492420053c6b68561f18f2d422c65c = $(`<div id="html_92492420053c6b68561f18f2d422c65c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Kensington and Chelsea 006A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_1ec086a0dbf6cac6fab9b4df52582a7e.setContent(html_92492420053c6b68561f18f2d422c65c);
+            
+        
+
+        marker_aec8cce2116a0dae8c316b0821a93f4f.bindPopup(popup_1ec086a0dbf6cac6fab9b4df52582a7e)
+        ;
+
+        
+    
+    
+                marker_aec8cce2116a0dae8c316b0821a93f4f.setIcon(icon_f31ef59d74e00721e74ea2ddccc0dd36);
+            
+    
+            feature_group_b9332c7d5f4e169552c62bf39196910f.addTo(map_7a0c31fe54cd37f5b96467f3a5ece28f);
+        
+    
+            var poly_line_fa26486d23ab99b8cacf387435762c09 = L.polyline(
+                [[51.5096587, -0.2002473], [51.5096868, -0.2001504], [51.5098147, -0.1994945], [51.5098485, -0.197788], [51.5096398, -0.1973805], [51.509184, -0.1971725], [51.5089884, -0.19702], [51.5091067, -0.1963582], [51.5112655, -0.1968101], [51.5115407, -0.1973886], [51.511856, -0.1953492], [51.5125077, -0.1955582], [51.5122264, -0.197687], [51.5125748, -0.1975832], [51.5122264, -0.197687], [51.5125077, -0.1955582], [51.511856, -0.1953492], [51.5115407, -0.1973886], [51.5115644, -0.1977219], [51.5110948, -0.1976016], [51.5096398, -0.1973805], [51.5098485, -0.197788], [51.5098147, -0.1994945], [51.5096868, -0.2001504], [51.5096587, -0.2002473], [51.509354, -0.2013427], [51.5103006, -0.2020228], [51.5110747, -0.1998974], [51.5118426, -0.2015529], [51.5117543, -0.2019625], [51.5119486, -0.2017807], [51.5118908, -0.2016566], [51.5118426, -0.2015529], [51.5110747, -0.1998974], [51.5103006, -0.2020228], [51.509354, -0.2013427], [51.5089725, -0.2026991], [51.5095794, -0.2032084], [51.5089725, -0.2026991], [51.509354, -0.2013427], [51.5096587, -0.2002473]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_7a0c31fe54cd37f5b96467f3a5ece28f);
+        
+    
+            var layer_control_1db84e23d4402af72ed71ee63f8b3efe_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_504d0aa8f9bda80b5e1b275f1433947d,
+                },
+                overlays :  {
+                    "Pembridge Boundary" : geo_json_437dfaa965ef0fbb48adc9f4917bb24d,
+                    "LSOA Median Crime Rates for Pembridge" : geo_json_29bc1ad56fbbc0927e982911deae0784,
+                    "Patrol Waypoints" : feature_group_b9332c7d5f4e169552c62bf39196910f,
+                },
+            };
+            let layer_control_1db84e23d4402af72ed71ee63f8b3efe = L.control.layers(
+                layer_control_1db84e23d4402af72ed71ee63f8b3efe_layers.base_layers,
+                layer_control_1db84e23d4402af72ed71ee63f8b3efe_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_7a0c31fe54cd37f5b96467f3a5ece28f);
+
+        
+</script>
+</html>

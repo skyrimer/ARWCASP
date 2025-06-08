@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_587314c7776446c1d4dc472864377550 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_587314c7776446c1d4dc472864377550" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_587314c7776446c1d4dc472864377550 = L.map(
+                "map_587314c7776446c1d4dc472864377550",
+                {
+                    center: [51.45894269017822, 0.03672302436497007],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_efe1712d31a33be1d1e4c7823f9897a9 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_efe1712d31a33be1d1e4c7823f9897a9.addTo(map_587314c7776446c1d4dc472864377550);
+        
+    
+        function geo_json_37f529616171090e1dc0f5159e586e04_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_37f529616171090e1dc0f5159e586e04_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_37f529616171090e1dc0f5159e586e04 = L.geoJson(null, {
+                onEachFeature: geo_json_37f529616171090e1dc0f5159e586e04_onEachFeature,
+            
+                style: geo_json_37f529616171090e1dc0f5159e586e04_styler,
+            ...{
+}
+        });
+
+        function geo_json_37f529616171090e1dc0f5159e586e04_add (data) {
+            geo_json_37f529616171090e1dc0f5159e586e04
+                .addData(data);
+        }
+            geo_json_37f529616171090e1dc0f5159e586e04_add({"features": [{"geometry": {"coordinates": [[[0.0488194969391227, 51.45140629756768], [0.04850962793866221, 51.4514296937103], [0.048274717378414364, 51.45142301045862], [0.04797253923649766, 51.45142469420431], [0.047520553188890965, 51.45142270086084], [0.04714208929239985, 51.451424815933834], [0.04700825322185094, 51.45142535515357], [0.046686238128037995, 51.45143457418682], [0.04641075138966318, 51.45145197029317], [0.04616143768219725, 51.451478798145665], [0.045819527554249374, 51.45152612108616], [0.04519918468559096, 51.45162055547076], [0.04486977811879947, 51.451690133064986], [0.04457004620046561, 51.45174660580348], [0.04426108108067805, 51.451822208196006], [0.0440378747866257, 51.45188363812903], [0.04358206312095409, 51.4520219439706], [0.04295979423265473, 51.452206392257935], [0.042718287974129285, 51.45227533077616], [0.0425616674355934, 51.45231581898279], [0.042366389369542796, 51.45235698052695], [0.04216928875896516, 51.45239188033042], [0.04200344801314099, 51.45241724501625], [0.041837366570076015, 51.45243721951808], [0.04158081347100512, 51.45246155649958], [0.03950593885681422, 51.45273321943003], [0.039225271137329855, 51.45276507307918], [0.038942859800052555, 51.45278976419754], [0.03854672802496983, 51.45281643235947], [0.03679130620045408, 51.452893786193506], [0.03655862073499441, 51.453227860251474], [0.03661943579320763, 51.4532690577246], [0.03653482810436825, 51.45346921168332], [0.03631108944142352, 51.45406843130704], [0.03605766976068, 51.4540674391457], [0.03517187309560937, 51.45382749902096], [0.034912728231613316, 51.45376178427559], [0.034828404412773774, 51.453741671525286], [0.03429134906088174, 51.45360984640219], [0.03431729587429237, 51.45348074601522], [0.03440753044031692, 51.452953162002046], [0.03337549696022665, 51.45295218921013], [0.03305970304887008, 51.452938787223864], [0.03277406920908893, 51.452925760397754], [0.03215669266447734, 51.4528608571366], [0.03182461070022343, 51.452838743975114], [0.031525028094127945, 51.452834946106734], [0.031178371374455026, 51.452840054367456], [0.03102160518436894, 51.45284277066271], [0.030816341747282674, 51.452854418152754], [0.030536411965987744, 51.452870954781844], [0.030157826014268547, 51.45290268473683], [0.029430851267440487, 51.45296471915118], [0.028822546750113327, 51.453042765544154], [0.02736031777659399, 51.45327214193482], [0.02615555573603454, 51.453465674163354], [0.02622888510774746, 51.45401748457727], [0.026358354122346862, 51.45473014829486], [0.02647529985012677, 51.455454715586036], [0.02653692308692882, 51.45583852121026], [0.0265916121723368, 51.456162212255556], [0.02661099815278932, 51.456339973173115], [0.02662743573188579, 51.45645116760067], [0.026633260914520306, 51.456486218613875], [0.026615108870867776, 51.45685611995352], [0.02656969714663884, 51.457422479080904], [0.026353161311303528, 51.4588066686436], [0.02627004197031258, 51.459400739767595], [0.02612237896292467, 51.45938171551939], [0.023985699407450878, 51.45917759825278], [0.02272336943307432, 51.45905005884424], [0.022535144054177413, 51.45938333674281], [0.02217170256041625, 51.46008391978492], [0.02182389535240583, 51.46074908024128], [0.021378614885319936, 51.461585835008606], [0.02103252958824941, 51.462255548129974], [0.02094174823175088, 51.46244950331719], [0.020923272147262945, 51.4625847646477], [0.020946180099495462, 51.46268146384238], [0.020975535035545723, 51.46279243620219], [0.021009872449054154, 51.46288453315229], [0.021072960441501504, 51.463041672951604], [0.021114053645561424, 51.4631254723235], [0.021179544505548084, 51.463205344870474], [0.021273808989494783, 51.463254064717106], [0.02112491617799445, 51.463271915114994], [0.021090559334470696, 51.46327610351358], [0.021111562750789948, 51.463329682574035], [0.021236713064301225, 51.463620695101596], [0.021459193651550794, 51.464255342575555], [0.02123938291351782, 51.464363418829244], [0.02164787500250492, 51.46448502487202], [0.021724189756691572, 51.464519669594026], [0.02282143745666979, 51.465012373975824], [0.024346282050648434, 51.4657972386904], [0.024280109791326072, 51.46586311070517], [0.024832516573102793, 51.46617820693866], [0.02565348873374274, 51.46663888662906], [0.025970178270811436, 51.46683389560335], [0.0263546555615787, 51.46706108569746], [0.026847274509536983, 51.46677378399087], [0.027267219122097064, 51.46650481827264], [0.027350318083692045, 51.46646202635475], [0.027579297905114653, 51.466593009222024], [0.02788404587876833, 51.46651851366906], [0.027954576577349368, 51.46661528678961], [0.028072616169213714, 51.4667768664544], [0.028226652828278215, 51.46697117687262], [0.028419271760690725, 51.4670289776515], [0.028067583487326304, 51.467669949809], [0.02849976199409194, 51.467773142051534], [0.028936794412723538, 51.46785458233066], [0.02920185569306047, 51.46737243543158], [0.029463613514618167, 51.46694437614753], [0.029671041381921125, 51.4665226509632], [0.029852457393359576, 51.466135448608284], [0.029972179011084184, 51.46591221667356], [0.031532035273077866, 51.46544000158263], [0.03283185269413724, 51.46504428643251], [0.03334237351547254, 51.464870013021546], [0.034228361787157366, 51.464495753526755], [0.03537763272229897, 51.46398574923171], [0.03610043153713649, 51.46363147981168], [0.03612145875481068, 51.46361852830735], [0.036899447228063674, 51.46321106215126], [0.03785347341233961, 51.46271611260667], [0.038813150077455436, 51.462252522615145], [0.038924907670873164, 51.46230452022491], [0.03873222829321384, 51.46288971807708], [0.038803038087431976, 51.462960408347804], [0.03887174775604857, 51.46295202119735], [0.03897336713028695, 51.462970931288766], [0.03967199023526967, 51.46346501728293], [0.039866516269173216, 51.46353364425029], [0.04067150933114511, 51.46363381005131], [0.04274504714247165, 51.46390075741056], [0.04457503191331529, 51.464130561132976], [0.045194504141711736, 51.46429956003219], [0.045324235064396236, 51.46414266487077], [0.04539386364528781, 51.46409110479742], [0.045515829876757626, 51.4640817845479], [0.04588827771203799, 51.4642002493871], [0.04622796044168551, 51.46432656704008], [0.04629473163264947, 51.46437035267575], [0.046344667960337343, 51.46442522040607], [0.04652153226759859, 51.46438797015131], [0.04654857172001951, 51.464382103983304], [0.04904932653708507, 51.46373859277834], [0.05060489576054612, 51.4633382085374], [0.049472383364958926, 51.46090655695849], [0.04976255575026195, 51.46069911343189], [0.04978856041913022, 51.460638424167335], [0.04959449796907594, 51.460066262550974], [0.0495998666405384, 51.460056279428116], [0.04962217957929943, 51.459976775248705], [0.04962548321230617, 51.45995514092586], [0.04941736183682314, 51.45993540497572], [0.04938665780372564, 51.46005281479029], [0.049339486952894855, 51.460094095480436], [0.04922456562696323, 51.46009880152223], [0.04888478510164715, 51.460065183636175], [0.04874601053187746, 51.460051426622], [0.04859801713535726, 51.46002794129162], [0.04853449681753023, 51.45999039332067], [0.048505046639836104, 51.45994236070062], [0.04847296462072731, 51.45987001053274], [0.04870701367422871, 51.459729268889696], [0.048493060973808316, 51.4595792748388], [0.04854806805319511, 51.45955395006655], [0.0483840344867358, 51.459490288728894], [0.048658651988697864, 51.45925893593911], [0.048782978207795424, 51.45930261333107], [0.048850900939980985, 51.45930861840398], [0.0489347179309151, 51.45931704270227], [0.04898684507019446, 51.45909757899828], [0.049137016242997905, 51.45843309297932], [0.04921451666422144, 51.458107100813855], [0.04946062877054716, 51.458137860194256], [0.04958394057097068, 51.45761319170255], [0.049919181521763833, 51.457479668426124], [0.05017863634938824, 51.457392420838474], [0.050194207937121274, 51.45738765338192], [0.05018120079310792, 51.457386082821415], [0.05021193524109279, 51.45726678424528], [0.05049909200505196, 51.45644976322469], [0.05075285238061238, 51.45603968448038], [0.0507553361445003, 51.456031549811776], [0.05075675921740748, 51.45603152491592], [0.0511312234047087, 51.45536221266413], [0.051348295986331706, 51.45439349140817], [0.05160535310541927, 51.45331888387575], [0.05172492674981463, 51.45290485796507], [0.05147284079515495, 51.45283554997906], [0.05107030114297308, 51.452750893637536], [0.05086104448222448, 51.452705108589534], [0.05052620472728427, 51.452653428836875], [0.05042350296214622, 51.4526417399825], [0.05021510287169077, 51.45258326255903], [0.050202715086091386, 51.45256370068649], [0.04965435588617524, 51.45246900348955], [0.0493937100846401, 51.452465469512866], [0.049259132020153557, 51.45248130767161], [0.049131993153358866, 51.452406214171525], [0.04857256457754139, 51.452257674078496], [0.04872336446319723, 51.45196006866692], [0.04877712510152584, 51.45181168904676], [0.0488194969391227, 51.45140629756768]]], "type": "Polygon"}, "id": "281", "properties": {"DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "NAME": "Eltham West", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_37f529616171090e1dc0f5159e586e04.addTo(map_587314c7776446c1d4dc472864377550);
+        
+    
+        function geo_json_5a6b075a9a3a3bc774164ef410111b48_styler(feature) {
+            switch(feature.id) {
+                case "1557": case "1558": case "1559": case "1560": case "1561": case "32216": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_5a6b075a9a3a3bc774164ef410111b48_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_5a6b075a9a3a3bc774164ef410111b48 = L.geoJson(null, {
+                onEachFeature: geo_json_5a6b075a9a3a3bc774164ef410111b48_onEachFeature,
+            
+                style: geo_json_5a6b075a9a3a3bc774164ef410111b48_styler,
+            ...{
+}
+        });
+
+        function geo_json_5a6b075a9a3a3bc774164ef410111b48_add (data) {
+            geo_json_5a6b075a9a3a3bc774164ef410111b48
+                .addData(data);
+        }
+            geo_json_5a6b075a9a3a3bc774164ef410111b48_add({"features": [{"geometry": {"coordinates": [[[[0.043523781236556855, 51.45203916398195], [0.042678978873886275, 51.45713482751913], [0.03656082907658505, 51.45552312196885], [0.03640207769730943, 51.45382575726671], [0.03659338096856729, 51.453330266820004], [0.043523781236556855, 51.45203916398195]]]], "type": "MultiPolygon"}, "id": "1557", "properties": {"BNG_E": 541886, "BNG_N": 174873, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{EE5DA169-E326-40CD-BF88-A57AFA501D87}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.45505905151367, "LONG": 0.040755998343229294, "LSOA21CD": "E01001620", "LSOA21NM": "Greenwich 025A", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Eltham Page", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.049622602081542795, 51.46014664057514], [0.04778288968185974, 51.46018395385429], [0.042678978873886275, 51.45713482751913], [0.043523781236556855, 51.45203916398195], [0.045210582703501846, 51.45163327387915], [0.04716758195280513, 51.45142772728154], [0.04882271630533532, 51.45140667828114], [0.05170367832940808, 51.45289836395114], [0.04916912266911462, 51.458298677708484], [0.049622602081542795, 51.46014664057514]]]], "type": "MultiPolygon"}, "id": "1558", "properties": {"BNG_E": 542335, "BNG_N": 174953, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{CC1D2AF1-A5A0-418B-AE15-AA9B2F843459}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.45566940307617, "LONG": 0.04724600166082382, "LSOA21CD": "E01001621", "LSOA21NM": "Greenwich 025B", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Eltham Page", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.03303475135012693, 51.464947833337504], [0.02992647870212727, 51.46592178393903], [0.029662473479435656, 51.46289148173728], [0.02977609933917326, 51.46193589314243], [0.03675283056694685, 51.45907781417929], [0.040610895016090706, 51.45881080901843], [0.038228977521940974, 51.46249640598361], [0.034896269004718955, 51.46418099866185], [0.03303475135012693, 51.464947833337504]]]], "type": "MultiPolygon"}, "id": "1559", "properties": {"BNG_E": 541390, "BNG_N": 175673, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{D46C3FBA-BF44-4C06-8FDC-45B4F1D2B2E4}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.462379455566406, "LONG": 0.03394100069999695, "LSOA21CD": "E01001623", "LSOA21NM": "Greenwich 025C", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Eltham Page", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.05029209410174458, 51.46266623723807], [0.04654454930553804, 51.46438114864623], [0.045195403442010514, 51.46430022760038], [0.03892427944726958, 51.46230430362059], [0.04778288968185974, 51.46018395385429], [0.049622602081542795, 51.46014664057514], [0.05029209410174458, 51.46266623723807]]]], "type": "MultiPolygon"}, "id": "1560", "properties": {"BNG_E": 542254, "BNG_N": 175688, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{6FEFC18C-1BA3-44D6-854D-263DBCFA2B28}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.46229934692383, "LONG": 0.04637699946761131, "LSOA21CD": "E01001624", "LSOA21NM": "Greenwich 025D", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Eltham Park \u0026 Progress", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.03892427944726958, 51.46230430362059], [0.038228977521940974, 51.46249640598361], [0.040610895016090706, 51.45881080901843], [0.03675283056694685, 51.45907781417929], [0.03656082907658505, 51.45552312196885], [0.042678978873886275, 51.45713482751913], [0.04778288968185974, 51.46018395385429], [0.03892427944726958, 51.46230430362059]]]], "type": "MultiPolygon"}, "id": "1561", "properties": {"BNG_E": 541962, "BNG_N": 175406, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{50EE1884-F18E-424E-A3B5-89F503770649}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.4598388671875, "LONG": 0.04206300154328346, "LSOA21CD": "E01001625", "LSOA21NM": "Greenwich 025E", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Eltham Page", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.02992647870212727, 51.46592178393903], [0.02895080149157995, 51.46782186832597], [0.021722451389683203, 51.46451178617238], [0.02234338674209224, 51.45959475375334], [0.02627090721450562, 51.459395303828735], [0.029662473479435656, 51.46289148173728], [0.02992647870212727, 51.46592178393903]]]], "type": "MultiPolygon"}, "id": "32213", "properties": {"BNG_E": 540814, "BNG_N": 175729, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{CB258425-FEF9-4E96-9851-6E25323EF461}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.46302032470703, "LONG": 0.0256779994815588, "LSOA21CD": "E01034174", "LSOA21NM": "Greenwich 034F", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Village \u0026 Sutcliffe", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.02977609933917326, 51.46193589314243], [0.029662473479435656, 51.46289148173728], [0.02627090721450562, 51.459395303828735], [0.026155760664820397, 51.45347173090074], [0.02846058724368112, 51.45310018071785], [0.031078615467178293, 51.45933850721716], [0.02977609933917326, 51.46193589314243]]]], "type": "MultiPolygon"}, "id": "32214", "properties": {"BNG_E": 541013, "BNG_N": 175047, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{DF6273F1-8E5A-4644-BBC3-18890D268F70}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.45684814453125, "LONG": 0.028269000351428986, "LSOA21CD": "E01034175", "LSOA21NM": "Greenwich 034G", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Village \u0026 Sutcliffe", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.03675283056694685, 51.45907781417929], [0.02977609933917326, 51.46193589314243], [0.031078615467178293, 51.45933850721716], [0.034301639131617885, 51.45361296529374], [0.03640207769730943, 51.45382575726671], [0.03656082907658505, 51.45552312196885], [0.03675283056694685, 51.45907781417929]]]], "type": "MultiPolygon"}, "id": "32215", "properties": {"BNG_E": 541386, "BNG_N": 175175, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{0D1D91DE-3BCA-4A32-B8D3-8BE03A3AEFA4}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.45790100097656, "LONG": 0.033684998750686646, "LSOA21CD": "E01034176", "LSOA21NM": "Greenwich 034H", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Eltham Page", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.034301639131617885, 51.45361296529374], [0.031078615467178293, 51.45933850721716], [0.02846058724368112, 51.45310018071785], [0.034301639131617885, 51.45361296529374]]]], "type": "MultiPolygon"}, "id": "32216", "properties": {"BNG_E": 541248, "BNG_N": 174951, "DISTRICT": "Greenwich", "GSS_CODE": "E05000220", "GlobalID": "{1253B731-6902-4084-B83C-72EE19D4A852}", "HECTARES": 242.564, "LAGSSCODE": "E09000011", "LAT": 51.455928802490234, "LONG": 0.03161099925637245, "LSOA21CD": "E01034177", "LSOA21NM": "Greenwich 034I", "LSOA21NMW": " ", "NAME": "Eltham West", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Village \u0026 Sutcliffe", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_5a6b075a9a3a3bc774164ef410111b48.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_5a6b075a9a3a3bc774164ef410111b48.addTo(map_587314c7776446c1d4dc472864377550);
+        
+    
+            var feature_group_99c9693596aed6663cce07d67634cd38 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_6b6994ffae7f918cf32556b69fd57d78 = L.marker(
+                [51.4609609, 0.0293581],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_defde4495798adc6eb7eda5af1bf3456 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_757b95509eb6ca739123f38db7a1243d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9f8a84a13fffbac24ea730188340cacb = $(`<div id="html_9f8a84a13fffbac24ea730188340cacb" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034G (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_757b95509eb6ca739123f38db7a1243d.setContent(html_9f8a84a13fffbac24ea730188340cacb);
+            
+        
+
+        marker_6b6994ffae7f918cf32556b69fd57d78.bindPopup(popup_757b95509eb6ca739123f38db7a1243d)
+        ;
+
+        
+    
+    
+                marker_6b6994ffae7f918cf32556b69fd57d78.setIcon(icon_defde4495798adc6eb7eda5af1bf3456);
+            
+    
+            var marker_6b8e125f228deb87e65ecf2712b83812 = L.marker(
+                [51.4576961, 0.0302595],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_660fed202e78ea98f8bdbec156576882 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_09d1ee1b5d20d8bf71ac99556bd251de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c52db6d7a8a5fa2cfac0819c711853c8 = $(`<div id="html_c52db6d7a8a5fa2cfac0819c711853c8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034G (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_09d1ee1b5d20d8bf71ac99556bd251de.setContent(html_c52db6d7a8a5fa2cfac0819c711853c8);
+            
+        
+
+        marker_6b8e125f228deb87e65ecf2712b83812.bindPopup(popup_09d1ee1b5d20d8bf71ac99556bd251de)
+        ;
+
+        
+    
+    
+                marker_6b8e125f228deb87e65ecf2712b83812.setIcon(icon_660fed202e78ea98f8bdbec156576882);
+            
+    
+            var marker_5917711be0a56e94bec12ecb11eb3426 = L.marker(
+                [51.4617875, 0.0299232],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_cbf0d4c8610577c1021325809d7e4284 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aafa37ce4bec6b080e9b5bd272bb9f91 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_351c59079f46307f4b80eb94a32d7b48 = $(`<div id="html_351c59079f46307f4b80eb94a32d7b48" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034G (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_aafa37ce4bec6b080e9b5bd272bb9f91.setContent(html_351c59079f46307f4b80eb94a32d7b48);
+            
+        
+
+        marker_5917711be0a56e94bec12ecb11eb3426.bindPopup(popup_aafa37ce4bec6b080e9b5bd272bb9f91)
+        ;
+
+        
+    
+    
+                marker_5917711be0a56e94bec12ecb11eb3426.setIcon(icon_cbf0d4c8610577c1021325809d7e4284);
+            
+    
+            var marker_6a52f9b82a5989f216ec9a978f890389 = L.marker(
+                [51.4576961, 0.0302595],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_3fa4e9c0715e7d2a0f3e98b435da3da1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2e22f923da437246b90856ed0340f467 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_de62f281e305975b2fa10e063af32375 = $(`<div id="html_de62f281e305975b2fa10e063af32375" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034G (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_2e22f923da437246b90856ed0340f467.setContent(html_de62f281e305975b2fa10e063af32375);
+            
+        
+
+        marker_6a52f9b82a5989f216ec9a978f890389.bindPopup(popup_2e22f923da437246b90856ed0340f467)
+        ;
+
+        
+    
+    
+                marker_6a52f9b82a5989f216ec9a978f890389.setIcon(icon_3fa4e9c0715e7d2a0f3e98b435da3da1);
+            
+    
+            var marker_d8cba1406cd800f271d404d178328c6a = L.marker(
+                [51.4633146, 0.0254987],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_fa7619bfdfa8a2f43b3b2702bd4502c2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b189c0bc3766ccc15d99af0a6a917d97 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8c9e10c38eaad5d17dcc644fd4589d2c = $(`<div id="html_8c9e10c38eaad5d17dcc644fd4589d2c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034F (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_b189c0bc3766ccc15d99af0a6a917d97.setContent(html_8c9e10c38eaad5d17dcc644fd4589d2c);
+            
+        
+
+        marker_d8cba1406cd800f271d404d178328c6a.bindPopup(popup_b189c0bc3766ccc15d99af0a6a917d97)
+        ;
+
+        
+    
+    
+                marker_d8cba1406cd800f271d404d178328c6a.setIcon(icon_fa7619bfdfa8a2f43b3b2702bd4502c2);
+            
+    
+            var marker_d6c50f3ab03f8956e590ad92ddd148ae = L.marker(
+                [51.4633146, 0.0254987],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_c8e17e534265a6884405fd1d31c4e13b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_24661558c6ea56f1a4e0df9bb66accdb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a5cf561adf2c7f1cbde41dd5c20aa9c5 = $(`<div id="html_a5cf561adf2c7f1cbde41dd5c20aa9c5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034F (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_24661558c6ea56f1a4e0df9bb66accdb.setContent(html_a5cf561adf2c7f1cbde41dd5c20aa9c5);
+            
+        
+
+        marker_d6c50f3ab03f8956e590ad92ddd148ae.bindPopup(popup_24661558c6ea56f1a4e0df9bb66accdb)
+        ;
+
+        
+    
+    
+                marker_d6c50f3ab03f8956e590ad92ddd148ae.setIcon(icon_c8e17e534265a6884405fd1d31c4e13b);
+            
+    
+            var marker_adcfaeee177f981d1a31bb4824a4464a = L.marker(
+                [51.4633146, 0.0254987],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_8781a52144be4e1a71e28d05f3f79a7b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_28f7d7705982b74be80074345406c8ae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_89bee48d270d832cfd86a3e2a8686fe8 = $(`<div id="html_89bee48d270d832cfd86a3e2a8686fe8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034F (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_28f7d7705982b74be80074345406c8ae.setContent(html_89bee48d270d832cfd86a3e2a8686fe8);
+            
+        
+
+        marker_adcfaeee177f981d1a31bb4824a4464a.bindPopup(popup_28f7d7705982b74be80074345406c8ae)
+        ;
+
+        
+    
+    
+                marker_adcfaeee177f981d1a31bb4824a4464a.setIcon(icon_8781a52144be4e1a71e28d05f3f79a7b);
+            
+    
+            var marker_77a075c6456b4c1ca6c22a49d579321e = L.marker(
+                [51.4633146, 0.0254987],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_49d78f36d00adca9dea4685c106faf42 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3cbea8d549a40e46dedf3043cc08fa95 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bed3b5b02316172c5fcc8ec1cd8541f7 = $(`<div id="html_bed3b5b02316172c5fcc8ec1cd8541f7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034F (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_3cbea8d549a40e46dedf3043cc08fa95.setContent(html_bed3b5b02316172c5fcc8ec1cd8541f7);
+            
+        
+
+        marker_77a075c6456b4c1ca6c22a49d579321e.bindPopup(popup_3cbea8d549a40e46dedf3043cc08fa95)
+        ;
+
+        
+    
+    
+                marker_77a075c6456b4c1ca6c22a49d579321e.setIcon(icon_49d78f36d00adca9dea4685c106faf42);
+            
+    
+            var marker_f22c03109cf45425bdb549bbf2f0e5fe = L.marker(
+                [51.4662895, 0.0275068],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_e281f5bd6f4f1c2b21d819322138573e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5c023a71d242095a5a512ae5498fcfa0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c305004fea36f87c7a5814b09ffb4a6b = $(`<div id="html_c305004fea36f87c7a5814b09ffb4a6b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034F (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_5c023a71d242095a5a512ae5498fcfa0.setContent(html_c305004fea36f87c7a5814b09ffb4a6b);
+            
+        
+
+        marker_f22c03109cf45425bdb549bbf2f0e5fe.bindPopup(popup_5c023a71d242095a5a512ae5498fcfa0)
+        ;
+
+        
+    
+    
+                marker_f22c03109cf45425bdb549bbf2f0e5fe.setIcon(icon_e281f5bd6f4f1c2b21d819322138573e);
+            
+    
+            var marker_30da76b115f9046af8bf06625cfffe98 = L.marker(
+                [51.4570412, 0.0335545],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_6487ac3c7aed5c4bd3716d0dbe512c09 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_92f41f9054e866699eecfd6609f4c4d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a944b284b6e1858195b9352d4f74b658 = $(`<div id="html_a944b284b6e1858195b9352d4f74b658" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034H (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_92f41f9054e866699eecfd6609f4c4d2.setContent(html_a944b284b6e1858195b9352d4f74b658);
+            
+        
+
+        marker_30da76b115f9046af8bf06625cfffe98.bindPopup(popup_92f41f9054e866699eecfd6609f4c4d2)
+        ;
+
+        
+    
+    
+                marker_30da76b115f9046af8bf06625cfffe98.setIcon(icon_6487ac3c7aed5c4bd3716d0dbe512c09);
+            
+    
+            var marker_9f1caeb42ffb26f3b1731a6f883ac833 = L.marker(
+                [51.4585956, 0.035661],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_60b92893aafcf4587cf6e9215371b102 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3e5e57320ab537a4b2ca6a399ebccbd8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_069dda52af3624ed5e76348e5f2591d9 = $(`<div id="html_069dda52af3624ed5e76348e5f2591d9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034H (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_3e5e57320ab537a4b2ca6a399ebccbd8.setContent(html_069dda52af3624ed5e76348e5f2591d9);
+            
+        
+
+        marker_9f1caeb42ffb26f3b1731a6f883ac833.bindPopup(popup_3e5e57320ab537a4b2ca6a399ebccbd8)
+        ;
+
+        
+    
+    
+                marker_9f1caeb42ffb26f3b1731a6f883ac833.setIcon(icon_60b92893aafcf4587cf6e9215371b102);
+            
+    
+            var marker_7e8d14256590b2d432bc056a9d2f6384 = L.marker(
+                [51.4603717, 0.031005],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_6789571016e61572d601d59aabba2ec7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5dfdf98d53b4654277803476d76d0d2c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a6c3acd49feb092693852af7c0b09ca = $(`<div id="html_4a6c3acd49feb092693852af7c0b09ca" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034H (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_5dfdf98d53b4654277803476d76d0d2c.setContent(html_4a6c3acd49feb092693852af7c0b09ca);
+            
+        
+
+        marker_7e8d14256590b2d432bc056a9d2f6384.bindPopup(popup_5dfdf98d53b4654277803476d76d0d2c)
+        ;
+
+        
+    
+    
+                marker_7e8d14256590b2d432bc056a9d2f6384.setIcon(icon_6789571016e61572d601d59aabba2ec7);
+            
+    
+            var marker_0b5c26178df8af23da3ecb1273d98dde = L.marker(
+                [51.4545286, 0.0341256],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_0181980005799101c9bb2e11bba0c931 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a353849d48149065f2d9ae2f40bfee51 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f4998e0efa6ce0fe9d361c9bc3b9c593 = $(`<div id="html_f4998e0efa6ce0fe9d361c9bc3b9c593" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 034H (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_a353849d48149065f2d9ae2f40bfee51.setContent(html_f4998e0efa6ce0fe9d361c9bc3b9c593);
+            
+        
+
+        marker_0b5c26178df8af23da3ecb1273d98dde.bindPopup(popup_a353849d48149065f2d9ae2f40bfee51)
+        ;
+
+        
+    
+    
+                marker_0b5c26178df8af23da3ecb1273d98dde.setIcon(icon_0181980005799101c9bb2e11bba0c931);
+            
+    
+            var marker_cab02c79661bb69c4793d6d232a54311 = L.marker(
+                [51.4545004, 0.0383651],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_6d3baa8842ee43b8681cab73e148ff54 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f6b32a3cf8352114f78aab554a5b209a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6a8101fec15e70702c03cd6195c46aed = $(`<div id="html_6a8101fec15e70702c03cd6195c46aed" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 025A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f6b32a3cf8352114f78aab554a5b209a.setContent(html_6a8101fec15e70702c03cd6195c46aed);
+            
+        
+
+        marker_cab02c79661bb69c4793d6d232a54311.bindPopup(popup_f6b32a3cf8352114f78aab554a5b209a)
+        ;
+
+        
+    
+    
+                marker_cab02c79661bb69c4793d6d232a54311.setIcon(icon_6d3baa8842ee43b8681cab73e148ff54);
+            
+    
+            var marker_08d53df9f11ace7205fc8f291a0f783c = L.marker(
+                [51.4539481, 0.0375482],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_c14ae606668bdc68fdd1bef48141545d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2a4bc81e5c02b444293cd9105dd88ab8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4939f71ba17644c3f2d96a740c441e5b = $(`<div id="html_4939f71ba17644c3f2d96a740c441e5b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 025A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_2a4bc81e5c02b444293cd9105dd88ab8.setContent(html_4939f71ba17644c3f2d96a740c441e5b);
+            
+        
+
+        marker_08d53df9f11ace7205fc8f291a0f783c.bindPopup(popup_2a4bc81e5c02b444293cd9105dd88ab8)
+        ;
+
+        
+    
+    
+                marker_08d53df9f11ace7205fc8f291a0f783c.setIcon(icon_c14ae606668bdc68fdd1bef48141545d);
+            
+    
+            var marker_7467e476ec19cd31da856c1367175fa7 = L.marker(
+                [51.4556413, 0.0400415],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_380fa3eb37f51e278433196ef14130ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7a32bbf7a0d39dc63c4de02142a946d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_02ada980937f03c26fc10c269a332912 = $(`<div id="html_02ada980937f03c26fc10c269a332912" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 025A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7a32bbf7a0d39dc63c4de02142a946d2.setContent(html_02ada980937f03c26fc10c269a332912);
+            
+        
+
+        marker_7467e476ec19cd31da856c1367175fa7.bindPopup(popup_7a32bbf7a0d39dc63c4de02142a946d2)
+        ;
+
+        
+    
+    
+                marker_7467e476ec19cd31da856c1367175fa7.setIcon(icon_380fa3eb37f51e278433196ef14130ca);
+            
+    
+            var marker_6adede65144c19d74fa3ed250e12d70c = L.marker(
+                [51.4581123, 0.047916],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_9cd20fa0f2134428daad6e63102e18c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ce511b68d196012343707e31fd166de0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d3673f06bd481154e6ba165694ed3c5 = $(`<div id="html_5d3673f06bd481154e6ba165694ed3c5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 025B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_ce511b68d196012343707e31fd166de0.setContent(html_5d3673f06bd481154e6ba165694ed3c5);
+            
+        
+
+        marker_6adede65144c19d74fa3ed250e12d70c.bindPopup(popup_ce511b68d196012343707e31fd166de0)
+        ;
+
+        
+    
+    
+                marker_6adede65144c19d74fa3ed250e12d70c.setIcon(icon_9cd20fa0f2134428daad6e63102e18c1);
+            
+    
+            var marker_5cb5bddb2b2278986bf4afa6061ec02e = L.marker(
+                [51.4581123, 0.047916],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_bdd8f89cca07ba5b21d5c75b528d8681 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f55710de2f22ba7096ebd78a8e36dc66 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ac55e4c13d7de71a03db3bd0947b6d63 = $(`<div id="html_ac55e4c13d7de71a03db3bd0947b6d63" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 025B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f55710de2f22ba7096ebd78a8e36dc66.setContent(html_ac55e4c13d7de71a03db3bd0947b6d63);
+            
+        
+
+        marker_5cb5bddb2b2278986bf4afa6061ec02e.bindPopup(popup_f55710de2f22ba7096ebd78a8e36dc66)
+        ;
+
+        
+    
+    
+                marker_5cb5bddb2b2278986bf4afa6061ec02e.setIcon(icon_bdd8f89cca07ba5b21d5c75b528d8681);
+            
+    
+            var marker_bd54eaffe0c8e5e01c582ff1516b5cc3 = L.marker(
+                [51.4556413, 0.0400415],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_3735cfc3be472d3671a2083b45bae2be = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_53a42eccf575ff28cba49b3d562ebc42 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3907ac55a4769118c47fcd9790726fea = $(`<div id="html_3907ac55a4769118c47fcd9790726fea" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 025B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_53a42eccf575ff28cba49b3d562ebc42.setContent(html_3907ac55a4769118c47fcd9790726fea);
+            
+        
+
+        marker_bd54eaffe0c8e5e01c582ff1516b5cc3.bindPopup(popup_53a42eccf575ff28cba49b3d562ebc42)
+        ;
+
+        
+    
+    
+                marker_bd54eaffe0c8e5e01c582ff1516b5cc3.setIcon(icon_3735cfc3be472d3671a2083b45bae2be);
+            
+    
+            var marker_a7dfb9abc11d230d261aa7db0384f3b2 = L.marker(
+                [51.4550718, 0.0392009],
+                {
+}
+            ).addTo(feature_group_99c9693596aed6663cce07d67634cd38);
+        
+    
+            var icon_d082bbf560a19b0370bc05fcf586971b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e9882223d9e2c89d217a954126edb4e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f5a76f8506be0ac87879183dd9f8b209 = $(`<div id="html_f5a76f8506be0ac87879183dd9f8b209" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 025B (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_e9882223d9e2c89d217a954126edb4e7.setContent(html_f5a76f8506be0ac87879183dd9f8b209);
+            
+        
+
+        marker_a7dfb9abc11d230d261aa7db0384f3b2.bindPopup(popup_e9882223d9e2c89d217a954126edb4e7)
+        ;
+
+        
+    
+    
+                marker_a7dfb9abc11d230d261aa7db0384f3b2.setIcon(icon_d082bbf560a19b0370bc05fcf586971b);
+            
+    
+            feature_group_99c9693596aed6663cce07d67634cd38.addTo(map_587314c7776446c1d4dc472864377550);
+        
+    
+            var poly_line_56187508cbfb850b4cb76e417da359cd = L.polyline(
+                [[51.4609609, 0.0293581], [51.4603717, 0.031005], [51.4596529, 0.0310243], [51.4589698, 0.0311925], [51.4587205, 0.0300085], [51.4576961, 0.0302595], [51.4587205, 0.0300085], [51.4589698, 0.0311925], [51.4596529, 0.0310243], [51.4603717, 0.031005], [51.4595559, 0.033108], [51.4593322, 0.0330476], [51.4592993, 0.0330538], [51.4580084, 0.0336093], [51.4570412, 0.0335545], [51.4561214, 0.034037], [51.4556761, 0.0339675], [51.4545286, 0.0341256], [51.455117, 0.0351437], [51.4552361, 0.0353137], [51.4547683, 0.0361277], [51.4543872, 0.0367857], [51.4539481, 0.0375482], [51.4543872, 0.0367857], [51.4547683, 0.0361277], [51.4552361, 0.0353137], [51.4555539, 0.0357928], [51.4557859, 0.036136], [51.4555308, 0.0365791], [51.4547692, 0.0378884], [51.4545004, 0.0383651], [51.4547692, 0.0378884], [51.4555308, 0.0365791], [51.4557859, 0.036136], [51.4558944, 0.0362951], [51.4563543, 0.0369758], [51.4550718, 0.0392009], [51.4563543, 0.0369758], [51.4569276, 0.0378163], [51.4566684, 0.038256], [51.4559088, 0.039581], [51.4556413, 0.0400415], [51.4559088, 0.039581], [51.4566684, 0.038256], [51.4569276, 0.0378163], [51.4574775, 0.0386254], [51.4561918, 0.0408528], [51.4568326, 0.0419265], [51.4570178, 0.0421836], [51.4572302, 0.0424248], [51.4586856, 0.0454353], [51.4586067, 0.0455277], [51.4581123, 0.047916], [51.4594231, 0.0474506], [51.459508, 0.0473475], [51.4601806, 0.0477795], [51.460257, 0.0480232], [51.4614449, 0.0476822], [51.4617528, 0.0477522], [51.4619568, 0.0475703], [51.4617275, 0.0459082], [51.4614974, 0.0457797], [51.4614567, 0.0447079], [51.4613343, 0.044709], [51.4605388, 0.0446699], [51.4605107, 0.0448043], [51.4601422, 0.0445677], [51.4588009, 0.0414342], [51.4585749, 0.0409351], [51.45882, 0.0407095], [51.4583753, 0.039593], [51.4574775, 0.0386254], [51.4578871, 0.0375458], [51.4582703, 0.0365251], [51.4585956, 0.035661], [51.4589911, 0.0346129], [51.4593322, 0.0330476], [51.4595559, 0.033108], [51.4603717, 0.031005], [51.4609609, 0.0293581], [51.4612143, 0.026343], [51.4611996, 0.0261897], [51.4620034, 0.0261956], [51.4628157, 0.026897], [51.4630146, 0.027379], [51.4646409, 0.0281946], [51.4653077, 0.0281635], [51.4662895, 0.0275068], [51.4653077, 0.0281635], [51.4646409, 0.0281946], [51.4630146, 0.027379], [51.4628157, 0.026897], [51.4620034, 0.0261956], [51.4612143, 0.026343], [51.4609609, 0.0293581], [51.4603717, 0.031005], [51.4595559, 0.033108], [51.4593322, 0.0330476], [51.4589911, 0.0346129], [51.4585956, 0.035661], [51.4582703, 0.0365251], [51.4578871, 0.0375458], [51.4574775, 0.0386254], [51.4561918, 0.0408528], [51.4568326, 0.0419265], [51.4571304, 0.0418904], [51.4587066, 0.0374738], [51.4617875, 0.0299232], [51.4628308, 0.0286746], [51.4630146, 0.027379], [51.4628157, 0.026897], [51.4629696, 0.026454], [51.4633146, 0.0254987], [51.4629696, 0.026454], [51.4628157, 0.026897], [51.4620034, 0.0261956], [51.4612143, 0.026343], [51.4609609, 0.0293581]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_587314c7776446c1d4dc472864377550);
+        
+    
+            var layer_control_1f583dedac4c1736d3bf2f5ebc89e1cc_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_efe1712d31a33be1d1e4c7823f9897a9,
+                },
+                overlays :  {
+                    "Eltham West Boundary" : geo_json_37f529616171090e1dc0f5159e586e04,
+                    "LSOA Median Crime Rates for Eltham West" : geo_json_5a6b075a9a3a3bc774164ef410111b48,
+                    "Patrol Waypoints" : feature_group_99c9693596aed6663cce07d67634cd38,
+                },
+            };
+            let layer_control_1f583dedac4c1736d3bf2f5ebc89e1cc = L.control.layers(
+                layer_control_1f583dedac4c1736d3bf2f5ebc89e1cc_layers.base_layers,
+                layer_control_1f583dedac4c1736d3bf2f5ebc89e1cc_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_587314c7776446c1d4dc472864377550);
+
+        
+</script>
+</html>

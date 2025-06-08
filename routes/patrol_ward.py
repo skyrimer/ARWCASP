@@ -5,10 +5,11 @@ import numpy as np
 import folium
 from shapely.geometry import Polygon, Point, LineString
 from scipy.spatial.distance import cdist
-from python_tsp.exact import solve_tsp_dynamic_programming
+from python_tsp.heuristics import solve_tsp_local_search
 import warnings
 import random
-import networkx as nx # Added for graph component analysis
+import networkx as nx
+import networkit as nk
 import os
 # For colormaps
 import matplotlib
@@ -42,11 +43,11 @@ LSOA_MAJORITY_AREA_THRESHOLD = 0.1 # Percentage of LSOA area that must be within
 OUTPUT_MAP_FILE = f"{WARD_NAME.lower().replace(' ', '_')}_patrol_route.html" # Dynamic output file name
 
 # --- IMPORTANT FILE PATHS ---
-PREDICTIONS_FILE_PATH = r'C:\Users\20231086\ARWCASP-4\model\sample_predictions.parquet'
-LSOA_WARD_LOOKUP_FILE_PATH = r'C:\Users\20231086\ARWCASP-4\processed_data\LSOA_to_Ward_LAD_lookup.csv'
-WARD_SHAPEFILE_PATH = r"C:\Users\20231086\ARWCASP-4\data\London_Ward.shp"
+PREDICTIONS_FILE_PATH = r'..\model\sample_predictions.parquet'
+LSOA_WARD_LOOKUP_FILE_PATH = r'..\processed_data\LSOA_to_Ward_LAD_lookup.csv'
+WARD_SHAPEFILE_PATH = r"..\data\London_Ward.shp"
 # THIS IS CRUCIAL: Path to a shapefile containing ALL LSOA geometries
-LSOA_BOUNDARIES_SHAPEFILE_PATH = r"C:\Users\20231086\ARWCASP-4\data\Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BSC_V4.gpkg"
+LSOA_BOUNDARIES_SHAPEFILE_PATH = r"..\data\Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BSC_V4.gpkg"
 
 # --- COLUMN NAMES FROM YOUR FILES ---
 LSOA_COLUMN_NAME_IN_PREDICTIONS = 'index' # LSOA column name in sample_predictions.parquet
@@ -185,7 +186,8 @@ def load_and_filter_lsoa_boundaries(all_lsoas_with_crime_and_geo_gdf, area_gdf_o
 
         # Initial spatial join to get LSOAs that intersect with the target area (ward from OSMnx)
         lsoas_intersecting_area_osm = gpd.sjoin(all_lsoas_with_crime_and_geo_gdf, area_gdf_osm, how="inner", predicate="intersects")
-        
+        # Reset index to ensure unique index for downstream selection
+        lsoas_intersecting_area_osm = lsoas_intersecting_area_osm.reset_index(drop=True)
         # Drop duplicate columns from the join
         lsoas_intersecting_area_osm = lsoas_intersecting_area_osm.drop(columns=[col for col in lsoas_intersecting_area_osm.columns if '_right' in col or 'index_' in col], errors='ignore')
 
@@ -213,8 +215,8 @@ def load_and_filter_lsoa_boundaries(all_lsoas_with_crime_and_geo_gdf, area_gdf_o
             if intersection_geom.is_valid and not intersection_geom.is_empty:
                 intersection_area = intersection_geom.area
                 if lsoa_original_area > 1e-9 and (intersection_area / lsoa_original_area) > majority_threshold:
-                    # Append the row from the initial geographic CRS dataframe
-                    filtered_lsoas_list.append(lsoas_intersecting_area_osm.loc[idx])
+                    # Instead of .loc[idx], use .iloc[<row number>] since index may not be unique
+                    filtered_lsoas_list.append(lsoas_intersecting_area_osm.iloc[row.name])
 
         if not filtered_lsoas_list:
             print(f"   After majority-area filtering (threshold: {majority_threshold*100:.0f}%), no LSOAs remain. This might indicate an issue with the area or LSOA data, or the threshold is too strict. Consider adjusting LSOA_MAJORITY_AREA_THRESHOLD.")
@@ -245,8 +247,6 @@ def extract_cycle_network(area_polygon):
     """
     print("--- Step 2.3: Extracting cycle network within the area, prioritizing residential roads ---")
     try:
-        # Using network_type='drive' to get a comprehensive network that includes residential roads.
-        # 'bike' network type can sometimes be too sparse for large areas/complex routes.
         G = ox.graph_from_polygon(area_polygon, network_type='drive')
         G = ox.distance.add_edge_lengths(G)
 
@@ -429,7 +429,7 @@ def calculate_optimal_route(G, waypoints_df):
         float: Total distance of the optimal tour.
         list: List of lists of node IDs for each segment of the route.
     """
-    print("--- Step 5: Calculating Optimal Cycle Patrol Route using TSP ---")
+    print("5. Calculating optimal cycle patrol route using TSP...")
     
     node_ids = waypoints_df['nearest_node_id'].tolist()
     num_nodes = len(node_ids)
@@ -437,44 +437,38 @@ def calculate_optimal_route(G, waypoints_df):
     if num_nodes < 2:
         print("   Not enough waypoints to create a route.")
         return [], 0, []
-    
-    # Create a distance matrix for TSP
+
+    # NetworKit for fast CPU parallel shortest paths
+    print("   Using NetworKit for fast parallel shortest path calculation (CPU).")
+    # Map node ids to indices
+    node_id_to_idx = {nid: i for i, nid in enumerate(G.nodes())}
+    idx_to_node_id = {i: nid for nid, i in node_id_to_idx.items()}
+    nkG = nk.Graph(len(G.nodes()), weighted=True, directed=False)
+    for u, v, data in G.edges(data=True):
+        w = float(data.get('length', 1.0))
+        nkG.addEdge(node_id_to_idx[u], node_id_to_idx[v], w)
+    # Compute all-pairs shortest paths for waypoints
     distance_matrix = np.zeros((num_nodes, num_nodes))
-    for i in range(num_nodes):
-        for j in range(num_nodes):
-            if i == j:
-                distance_matrix[i, j] = 0
-            else:
-                try:
-                    path_nodes = ox.shortest_path(G, node_ids[i], node_ids[j], weight='length')
-                    if path_nodes:
-                        segment_length = 0
-                        for k in range(len(path_nodes) - 1):
-                            u, v = path_nodes[k], path_nodes[k+1]
-                            if 0 in G[u][v] and 'length' in G[u][v][0]:
-                                segment_length += G[u][v][0]['length']
-                            else:
-                                try:
-                                    segment_length += ox.distance.great_circle_vec(
-                                        G.nodes[u]['y'], G.nodes[u]['x'], G.nodes[v]['y'], G.nodes[v]['x']
-                                    )
-                                except KeyError:
-                                    segment_length += np.inf
-                        distance_matrix[i, j] = segment_length
-                    else:
-                        distance_matrix[i, j] = np.inf
-                except Exception as e:
-                    print(f"   Warning: Could not find path between {node_ids[i]} and {node_ids[j]}: {e}")
-                    distance_matrix[i, j] = np.inf
+    for i, src in enumerate(node_ids):
+        apsp = nk.distance.Dijkstra(nkG, node_id_to_idx[src], storePaths=False)
+        apsp.run()
+        for j, dst in enumerate(node_ids):
+            dist = apsp.distance(node_id_to_idx[dst])
+            distance_matrix[i, j] = dist if dist < float('inf') else np.inf
 
     # Handle unreachable waypoints by making their distance very high but not infinite for TSP solver
     if np.isinf(distance_matrix).any():
         print("   Warning: Some waypoints are not reachable from each other. TSP might fail or give suboptimal results.")
+        # Replace inf with a large number based on existing max distance
         max_finite_dist = distance_matrix[~np.isinf(distance_matrix)].max()
+        # Ensure max_finite_dist is not 0 if all distances are 0 or inf
         replacement_val = max_finite_dist * 2 if max_finite_dist > 0 else 1e9
         distance_matrix[np.isinf(distance_matrix)] = replacement_val
+    
+    print("   Distance matrix calculated.")
 
-    permutation, distance = solve_tsp_dynamic_programming(distance_matrix)
+    permutation, distance = solve_tsp_local_search(distance_matrix)
+
     
     # The TSP solver returns an order of indices; convert back to original node IDs
     optimal_node_sequence_waypoints = [node_ids[i] for i in permutation]
@@ -487,6 +481,7 @@ def calculate_optimal_route(G, waypoints_df):
     # Reconstruct the full detailed path for visualization and total distance
     for i in range(len(optimal_node_sequence_waypoints) - 1):
         try:
+            # Get the full list of nodes for the shortest path between current and next waypoint
             path_nodes = ox.shortest_path(G, optimal_node_sequence_waypoints[i], optimal_node_sequence_waypoints[i+1], weight='length')
             if path_nodes:
                 route_segments_detailed.append(path_nodes)
@@ -496,15 +491,23 @@ def calculate_optimal_route(G, waypoints_df):
                     if 0 in G[u][v] and 'length' in G[u][v][0]:
                         segment_length += G[u][v][0]['length']
                     else:
+                        # Fallback for missing length during reconstruction, same as distance matrix
                         try:
                             segment_length += ox.distance.great_circle_vec(
                                 G.nodes[u]['y'], G.nodes[u]['x'], G.nodes[v]['y'], G.nodes[v]['x']
                             )
                         except KeyError:
-                            segment_length += 0
+                            segment_length += 0 # Or some error handling
                 total_route_distance += segment_length
             else:
+                # If path_nodes is None, it means no path was found even after connected component filtering.
+                # This should ideally not happen if waypoints are selected from the main component.
+                # If it does, it indicates a problem with the graph or waypoint selection.
                 print(f"   Error: No path found between {optimal_node_sequence_waypoints[i]} and {optimal_node_sequence_waypoints[i+1]} during route reconstruction. This segment will appear as a straight line.")
+                # To avoid a straight line, we could add a direct line segment as a last resort,
+                # but the user explicitly wants to avoid this. The best fix is to ensure connectivity.
+                # For now, we'll just log and continue, which might lead to a visual gap or straight line.
+                # A more robust solution would be to re-evaluate waypoint selection or graph connectivity.
         except Exception as e:
             print(f"   Error reconstructing path segment between {optimal_node_sequence_waypoints[i]} and {optimal_node_sequence_waypoints[i+1]}: {e}")
             
@@ -512,7 +515,7 @@ def calculate_optimal_route(G, waypoints_df):
     return optimal_node_sequence_waypoints, total_route_distance, route_segments_detailed
 
 # --- 4. Interactive Visualization of the Patrol Route ---
-def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence, route_segments, output_file_raw_name):
+def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence, route_segments, output_file_raw_name, location_name):
     """
     Creates an interactive Folium map to visualize the area, LSOAs, waypoints, and patrol route.
     Args:
@@ -644,9 +647,158 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
     # Add Layer Control
     folium.LayerControl().add_to(m)
 
+    WARD_ROUTE_DIR = "ward_routes"
+
     # Save the map with the sanitized filename
-    m.save(final_output_filename)
+    m.save(os.path.join(WARD_ROUTE_DIR, f"{location_name.replace(' ', '_').lower()}.html"))
     print(f"   Interactive map saved to {final_output_filename}")
+
+
+def load_ward_boundary_from_shapefile(ward_name):
+    """
+    Loads the ward boundary from a local shapefile.
+    Args:
+        ward_name (str): The name of the ward to load.
+    Returns:
+        geopandas.GeoDataFrame: The GeoDataFrame containing the ward boundary.
+    """
+    print(f"--- Step 1: Loading Ward Boundary for '{ward_name}' from local shapefile ---")
+    try:
+        all_wards_gdf = gpd.read_file(WARD_SHAPEFILE_PATH)
+        selected_ward_gdf = all_wards_gdf[all_wards_gdf[WARD_COLUMN_NAME_IN_SHAPEFILE] == ward_name].copy()
+
+        if selected_ward_gdf.empty:
+            print(f"ERROR: Ward '{ward_name}' not found in '{WARD_SHAPEFILE_PATH}' under column '{WARD_COLUMN_NAME_IN_SHAPEFILE}'.")
+            print(f"Available ward names (first 10): {all_wards_gdf[WARD_COLUMN_NAME_IN_SHAPEFILE].unique()[:10]}")
+            return None
+        
+        # Ensure single geometry for area_polygon and correct CRS
+        if not selected_ward_gdf.crs: # If CRS is not set, assume WGS84
+            selected_ward_gdf.crs = "EPSG:4326"
+        selected_ward_gdf = selected_ward_gdf.to_crs(epsg=4326) # Ensure WGS84 for OSMnx/Folium consistency
+
+        # For OSMnx, we often use a single polygon. If the ward is multi-part, dissolve it.
+        area_polygon_for_osmnx = selected_ward_gdf.geometry.unary_union
+        # If unary_union results in a GeometryCollection, pick the largest polygon if possible
+        if area_polygon_for_osmnx.geom_type == 'GeometryCollection':
+            polygons = [geom for geom in area_polygon_for_osmnx.geoms if geom.geom_type == 'Polygon']
+            if polygons:
+                area_polygon_for_osmnx = max(polygons, key=lambda p: p.area)
+            else:
+                print("Warning: Ward geometry is a GeometryCollection with no polygons. Cannot extract network.")
+                return None
+        elif area_polygon_for_osmnx.geom_type == 'MultiPolygon':
+            area_polygon_for_osmnx = area_polygon_for_osmnx.convex_hull # Or just pick the largest part
+
+        if area_polygon_for_osmnx is None:
+            print("Failed to get a valid polygon for the ward. Exiting.")
+            return None
+        print(f"Ward '{ward_name}' boundary loaded from local shapefile.")
+        return selected_ward_gdf
+    except Exception as e:
+        print(f"ERROR loading ward boundary from shapefile: {e}")
+        return None
+
+def load_lsoa_crime_data():
+    """
+    Loads LSOA boundaries and merges them with crime data.
+    Returns:
+        geopandas.GeoDataFrame: LSOAs with crime data merged.
+    """
+    print("--- Step 2.1: Loading LSOA boundaries and merging with crime data ---")
+    try:
+        # Load LSOA boundaries from the local shapefile
+        all_lsoas_gdf = gpd.read_file(LSOA_BOUNDARIES_SHAPEFILE_PATH)
+        all_lsoas_with_crime_and_geo_gdf = all_lsoas_gdf.merge(
+            lsoa_crime_ward_data, 
+            left_on=LSOA_COLUMN_NAME_FOR_MERGE, 
+            right_on=LSOA_COLUMN_NAME_FOR_MERGE, 
+            how='left'
+        )
+
+        if all_lsoas_with_crime_and_geo_gdf.empty:
+            print("ERROR: No LSOAs found in the shapefile or no matching crime data. Exiting.")
+            return None
+
+        # Ensure the GeoDataFrame is in WGS84 for consistency with OSMnx/Folium
+        all_lsoas_with_crime_and_geo_gdf = all_lsoas_with_crime_and_geo_gdf.to_crs(epsg=4326)
+        
+        # Calculate median crime rate for each LSOA
+        all_lsoas_with_crime_and_geo_gdf['crime_rate'] = all_lsoas_with_crime_and_geo_gdf[CRIME_COUNT_COLUMN_NAME].fillna(0).astype(float)
+
+        print(f"   Loaded {len(all_lsoas_with_crime_and_geo_gdf)} LSOAs with crime data.")
+        return all_lsoas_with_crime_and_geo_gdf
+    except Exception as e:
+        print(f"Error loading or merging LSOA boundaries with crime data: {e}")
+        return None
+
+def process_location(ward_name):
+    """
+    Main function to process the specified ward, extract cycle network,
+    filter LSOAs, simulate crime, select waypoints, calculate optimal route,
+    and visualize the results.
+    Args:
+        ward_name (str): The name of the ward to process.
+    """
+    global WARD_NAME
+    WARD_NAME = ward_name
+
+    # Load the ward boundary from local shapefile
+    selected_ward_gdf = load_ward_boundary_from_shapefile(WARD_NAME)
+
+    if selected_ward_gdf is None:
+        print(f"ERROR: Could not load ward boundary for '{WARD_NAME}'. Exiting.")
+        return
+
+    # Load LSOA boundaries and merge with crime data
+    lsoa_crime_ward_data = load_lsoa_crime_data()
+
+    if lsoa_crime_ward_data is None or lsoa_crime_ward_data.empty:
+        print("ERROR: No LSOA crime data available. Exiting.")
+        return
+
+    # Filter LSOAs within the selected ward
+    lsoas_in_ward_gdf = load_and_filter_lsoa_boundaries(lsoa_crime_ward_data, selected_ward_gdf, CRIME_COUNT_COLUMN_NAME)
+
+    if lsoas_in_ward_gdf.empty:
+        print("No LSOAs found within the specified ward with relevant crime data. Exiting.")
+        return
+
+    # Extract cycle network for the ward using OSMnx
+    area_polygon_for_osmnx = selected_ward_gdf.geometry.unary_union
+    G = extract_cycle_network(area_polygon_for_osmnx)
+
+    if G is None:
+        print("Failed to extract cycle network. Exiting.")
+        return
+
+    # Simulate crime and select waypoints based on median crime rates
+    patrol_waypoints_df, lsoas_with_crime_rates = simulate_crime_and_select_waypoints(
+        lsoas_in_ward_gdf, G, MAX_TOTAL_WAYPOINTS_FOR_TSP, FIXED_CRIME_RATE_THRESHOLD
+    )
+
+    if patrol_waypoints_df.empty:
+        print("No patrol waypoints generated. Exiting.")
+        return
+
+    # Calculate the optimal route using TSP
+    optimal_node_sequence, total_distance, route_segments = calculate_optimal_route(G, patrol_waypoints_df)
+
+    if not optimal_node_sequence:
+        print("No valid route could be calculated. Exiting.")
+        return
+
+    # Visualize the route on an interactive map
+    visualize_route(
+        selected_ward_gdf,
+        lsoas_with_crime_rates,
+        patrol_waypoints_df,
+        G,
+        optimal_node_sequence,
+        route_segments,
+        WARD_NAME,
+        WARD_NAME.replace(' ', '_').lower()  # Use ward name for the output file
+    )
 
 # --- Main Execution ---
 if __name__ == "__main__":
@@ -751,6 +903,6 @@ if __name__ == "__main__":
                     print("No optimal route could be calculated. Exiting.")
                 else:
                     # Use the OSMnx area_gdf for visualization as it was used for network extraction
-                    visualize_route(selected_ward_gdf, lsoas_with_crime_gdf_final, patrol_waypoints_df, G, optimal_node_sequence, route_segments, OUTPUT_MAP_FILE)
+                    visualize_route(selected_ward_gdf, lsoas_with_crime_gdf_final, patrol_waypoints_df, G, optimal_node_sequence, route_segments, OUTPUT_MAP_FILE, WARD_NAME)
 
     print("\n--- Script Finished ---")

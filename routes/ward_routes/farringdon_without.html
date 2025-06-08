@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_67f452fe936b2d7d6e5c2194747e1835 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_67f452fe936b2d7d6e5c2194747e1835" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_67f452fe936b2d7d6e5c2194747e1835 = L.map(
+                "map_67f452fe936b2d7d6e5c2194747e1835",
+                {
+                    center: [51.51561186299733, -0.10741366235642924],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f1c2d7b9f08a16d23cc6cacc3c3a232b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f1c2d7b9f08a16d23cc6cacc3c3a232b.addTo(map_67f452fe936b2d7d6e5c2194747e1835);
+        
+    
+        function geo_json_5f8c0cf7690968ed866538d1c1bf26d4_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_5f8c0cf7690968ed866538d1c1bf26d4_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_5f8c0cf7690968ed866538d1c1bf26d4 = L.geoJson(null, {
+                onEachFeature: geo_json_5f8c0cf7690968ed866538d1c1bf26d4_onEachFeature,
+            
+                style: geo_json_5f8c0cf7690968ed866538d1c1bf26d4_styler,
+            ...{
+}
+        });
+
+        function geo_json_5f8c0cf7690968ed866538d1c1bf26d4_add (data) {
+            geo_json_5f8c0cf7690968ed866538d1c1bf26d4
+                .addData(data);
+        }
+            geo_json_5f8c0cf7690968ed866538d1c1bf26d4_add({"features": [{"geometry": {"coordinates": [[[-0.11146384755633673, 51.50976937081573], [-0.11157435102898497, 51.51075492262203], [-0.11158672249835394, 51.51090974930022], [-0.11158394564326174, 51.51101138114775], [-0.11157416031327763, 51.51131697245506], [-0.11155740366028867, 51.5114434612182], [-0.11153039035197153, 51.511642693478], [-0.11156715998865388, 51.511730488215484], [-0.11171076140255204, 51.51195314440355], [-0.1117706592606264, 51.512001755569734], [-0.1118873661483563, 51.51196677555321], [-0.11215759573514943, 51.51226518734383], [-0.11216716925021172, 51.51227792739349], [-0.11218901766240902, 51.51230704695809], [-0.1120583058323355, 51.51233011488413], [-0.11220050640974262, 51.512514900116784], [-0.11241481206267527, 51.51276925927623], [-0.11234748082939157, 51.51279694353398], [-0.11237488097101674, 51.512829748397436], [-0.11221394122642056, 51.51288837977288], [-0.11233759822100688, 51.513036007479656], [-0.11173864659097162, 51.51319546744065], [-0.11185821879362326, 51.51347347429497], [-0.11198066374842591, 51.51368491160628], [-0.11133208216695584, 51.513791428806215], [-0.11110145082676398, 51.513825472604076], [-0.11113771378309577, 51.5139600071056], [-0.1114101398898875, 51.514794437578146], [-0.11155248480619717, 51.51522294374832], [-0.11157588380518922, 51.51528355324725], [-0.1116067870107695, 51.5153379905866], [-0.11186872498051932, 51.51579997650834], [-0.11213327216704388, 51.51619898414529], [-0.11215388301531411, 51.516223588787554], [-0.11286085940338324, 51.51704253399026], [-0.11344863044095105, 51.517643708504394], [-0.11371911826685513, 51.51793402936871], [-0.11374239543224998, 51.51796317157393], [-0.11378688598929279, 51.51810592838099], [-0.11381248995342694, 51.51821970348643], [-0.11382102587211107, 51.51825759857355], [-0.11302979855778018, 51.51829161989767], [-0.1123391052145808, 51.51826252619234], [-0.11162641341632994, 51.518207902355925], [-0.11047593811498917, 51.51807511186851], [-0.1095322985885252, 51.517926854927595], [-0.10903380825508954, 51.51788555647813], [-0.1081917004837835, 51.517790977433926], [-0.10782661682433471, 51.51776531044524], [-0.10759132144962906, 51.51784251394004], [-0.10740615748296067, 51.51789436509204], [-0.1070493044613374, 51.51801985991254], [-0.10653109489324494, 51.51817610171331], [-0.1061998576071171, 51.51827413859432], [-0.10583732437506128, 51.5183960319549], [-0.10534987944086088, 51.51854098853738], [-0.10534106061861344, 51.51854444207041], [-0.10475609948638026, 51.51874814362126], [-0.10325673707447203, 51.519206757991455], [-0.10208398989355819, 51.519575345089244], [-0.1018207993175041, 51.51966557066923], [-0.10157509399603086, 51.519749695791695], [-0.10107264907740601, 51.51990886579401], [-0.10080269949099147, 51.51998720282015], [-0.10043004713790284, 51.520108825843444], [-0.1003010007725299, 51.52012831178274], [-0.09968998005834759, 51.51939813745822], [-0.09987253262088217, 51.51934086213109], [-0.1006960567218518, 51.5190511483646], [-0.101052676994195, 51.51893187206578], [-0.10108194758816982, 51.51892245698316], [-0.1011347643482359, 51.51882981635924], [-0.10108803858331972, 51.51877601906446], [-0.10068895222420891, 51.5187362944171], [-0.10053339576937809, 51.518630390698846], [-0.1003645248489578, 51.51853317120233], [-0.09962668989146085, 51.518112085304814], [-0.0994999595612736, 51.51800754621915], [-0.09940095729382416, 51.517924942343754], [-0.09919068783431424, 51.517748927397705], [-0.09882964389923105, 51.51752363046707], [-0.09878341199920979, 51.517492315163224], [-0.09870640668373133, 51.5174380260631], [-0.09865559040268743, 51.517376969472934], [-0.0986280788022056, 51.51734415957618], [-0.09870368622494576, 51.51726078953685], [-0.09871329095011448, 51.51723847029071], [-0.09868879959668511, 51.517030404827096], [-0.0986468106672526, 51.51665466233275], [-0.09876628068217647, 51.51665659897307], [-0.09886312978590364, 51.51665097685165], [-0.10069635645625166, 51.51661864632145], [-0.10074979069501064, 51.516616814592886], [-0.10094749535045286, 51.5166092278551], [-0.10164691749929677, 51.51677346966205], [-0.10167690195513095, 51.516781146939955], [-0.10178797126941931, 51.51657069126276], [-0.1018285987089859, 51.516496731989534], [-0.10199797320463432, 51.51627013873988], [-0.10199936093833151, 51.516271060193866], [-0.10296136020101425, 51.51656809955563], [-0.1028677401763318, 51.516773444568415], [-0.10305324621984065, 51.517062326027265], [-0.10350271219937422, 51.51727645365526], [-0.1047606464069357, 51.51769962725691], [-0.105178810883729, 51.51766323155949], [-0.10508545476992545, 51.51723820595205], [-0.10508417190807376, 51.51723189224837], [-0.1062010053481757, 51.5175502850258], [-0.10627666789325098, 51.51732486959445], [-0.10634921860833503, 51.517105696847665], [-0.10644703005438179, 51.516936466590515], [-0.10645396004961818, 51.516906911576484], [-0.10648312970500619, 51.516796715990104], [-0.1065209764108057, 51.5167523771385], [-0.1065679394750367, 51.51669739748088], [-0.10666953808895445, 51.51664599675186], [-0.10718471525431413, 51.51722175846586], [-0.10735899201883652, 51.51739807712964], [-0.10785056606752229, 51.51743118020222], [-0.10782192107763527, 51.517634880201385], [-0.10899928635978358, 51.51777792944885], [-0.10902798911371131, 51.51764444174388], [-0.1091417724880282, 51.516914313249124], [-0.10923975284759795, 51.51604629346313], [-0.1089964100802364, 51.51593359182623], [-0.10929318483836487, 51.51572882011562], [-0.10936438396537203, 51.515679624018574], [-0.10943923492527702, 51.51543891056744], [-0.10962103315049772, 51.51501742449953], [-0.10965269256370795, 51.514775115763186], [-0.10962218837217017, 51.514570461970834], [-0.10944864753777551, 51.5141324604861], [-0.10941390481949893, 51.51413639544946], [-0.10893353398451486, 51.514180793075674], [-0.10848294936716273, 51.51420319418702], [-0.10848640587844499, 51.513875925154665], [-0.10834956484086743, 51.513283796388954], [-0.10844659188453373, 51.51327367428047], [-0.108443669485378, 51.51250660284377], [-0.10844167249876412, 51.51144179835035], [-0.10846371486998364, 51.51115348581419], [-0.10846933861131418, 51.51091444322284], [-0.10847223402203177, 51.51081011632659], [-0.10849217538837103, 51.50997868552598], [-0.10849458689701766, 51.509886037777996], [-0.10918839814376875, 51.50987115433128], [-0.10993907978773494, 51.50984010232902], [-0.11038211734058762, 51.509823867250255], [-0.11061716470086537, 51.50982046200966], [-0.11107348630167337, 51.509799044335956], [-0.11146384755633673, 51.50976937081573]]], "type": "Polygon"}, "id": "633", "properties": {"DISTRICT": "City and County of the City of London", "GSS_CODE": "E05009305", "HECTARES": 32.996, "LAGSSCODE": "E09000001", "NAME": "Farringdon Without", "NONLD_AREA": 2.271}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_5f8c0cf7690968ed866538d1c1bf26d4.addTo(map_67f452fe936b2d7d6e5c2194747e1835);
+        
+    
+        function geo_json_f00cc3479331f22e99b74ab36450d368_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#fd8e3c", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_f00cc3479331f22e99b74ab36450d368_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_f00cc3479331f22e99b74ab36450d368 = L.geoJson(null, {
+                onEachFeature: geo_json_f00cc3479331f22e99b74ab36450d368_onEachFeature,
+            
+                style: geo_json_f00cc3479331f22e99b74ab36450d368_styler,
+            ...{
+}
+        });
+
+        function geo_json_f00cc3479331f22e99b74ab36450d368_add (data) {
+            geo_json_f00cc3479331f22e99b74ab36450d368
+                .addData(data);
+        }
+            geo_json_f00cc3479331f22e99b74ab36450d368_add({"features": [{"geometry": {"coordinates": [[[[-0.09974880246315052, 51.51676759455516], [-0.09852430832033376, 51.520538108588056], [-0.10182048830571265, 51.519611310520425], [-0.10534602936444344, 51.51854325758139], [-0.10745405526426346, 51.5178286867038], [-0.11067215667046046, 51.51809482059057], [-0.11382074836956078, 51.51821954828186], [-0.11155316598383742, 51.51522283096357], [-0.11147728164875113, 51.510756650942604], [-0.1084722336292831, 51.51081011588062], [-0.1082466998094301, 51.51080857178658], [-0.10399462243365584, 51.51077938121521], [-0.09974880246315052, 51.51676759455516]]]], "type": "MultiPolygon"}, "id": "31059", "properties": {"BNG_E": 531537, "BNG_N": 181227, "DISTRICT": "City and County of the City of London", "GSS_CODE": "E05009305", "GlobalID": "{A81D5D74-BD63-4AF0-B991-F8695E333B6C}", "HECTARES": 32.996, "LAGSSCODE": "E09000001", "LAT": 51.5146598815918, "LONG": -0.1057400032877922, "LSOA21CD": "E01032740", "LSOA21NM": "City of London 001G", "LSOA21NMW": " ", "NAME": "Farringdon Without", "NONLD_AREA": 2.271, "WD24NM": "Farringdon Without", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_f00cc3479331f22e99b74ab36450d368.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_f00cc3479331f22e99b74ab36450d368.addTo(map_67f452fe936b2d7d6e5c2194747e1835);
+        
+    
+            var feature_group_c7b00b858d882553e5db91c7b977f5df = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_a8b36fb7b01ade6f0056458b962db693 = L.marker(
+                [51.5177232, -0.105199],
+                {
+}
+            ).addTo(feature_group_c7b00b858d882553e5db91c7b977f5df);
+        
+    
+            var icon_0d2be58396728ba721c13eed980a06e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c08f8e3b25d2b5b817479bead5cab8e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d544fad2063d78b0e2974630f6cf4e6 = $(`<div id="html_6d544fad2063d78b0e2974630f6cf4e6" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001G (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c08f8e3b25d2b5b817479bead5cab8e7.setContent(html_6d544fad2063d78b0e2974630f6cf4e6);
+            
+        
+
+        marker_a8b36fb7b01ade6f0056458b962db693.bindPopup(popup_c08f8e3b25d2b5b817479bead5cab8e7)
+        ;
+
+        
+    
+    
+                marker_a8b36fb7b01ade6f0056458b962db693.setIcon(icon_0d2be58396728ba721c13eed980a06e2);
+            
+    
+            var marker_3b2cb03e5f6075e3ec2ebdcf5f7cb0ae = L.marker(
+                [51.5192653, -0.1030011],
+                {
+}
+            ).addTo(feature_group_c7b00b858d882553e5db91c7b977f5df);
+        
+    
+            var icon_9c0d53e2ebcc34a70b671e525b54ceaf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8029c25f8e3cb94a44fb50d60f20d0d5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ec8bbfcb20b6d617a431d4a7f307180f = $(`<div id="html_ec8bbfcb20b6d617a431d4a7f307180f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001G (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_8029c25f8e3cb94a44fb50d60f20d0d5.setContent(html_ec8bbfcb20b6d617a431d4a7f307180f);
+            
+        
+
+        marker_3b2cb03e5f6075e3ec2ebdcf5f7cb0ae.bindPopup(popup_8029c25f8e3cb94a44fb50d60f20d0d5)
+        ;
+
+        
+    
+    
+                marker_3b2cb03e5f6075e3ec2ebdcf5f7cb0ae.setIcon(icon_9c0d53e2ebcc34a70b671e525b54ceaf);
+            
+    
+            var marker_683b95e5110dec4651cd901e9af75c6a = L.marker(
+                [51.5176812, -0.1050889],
+                {
+}
+            ).addTo(feature_group_c7b00b858d882553e5db91c7b977f5df);
+        
+    
+            var icon_bdee958ccf5492e17a8e2306db3cddf2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03f113411f988bd72f4e8d779013e0d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_59b5e9f15e985406f6c38742b67ca30f = $(`<div id="html_59b5e9f15e985406f6c38742b67ca30f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001G (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_03f113411f988bd72f4e8d779013e0d2.setContent(html_59b5e9f15e985406f6c38742b67ca30f);
+            
+        
+
+        marker_683b95e5110dec4651cd901e9af75c6a.bindPopup(popup_03f113411f988bd72f4e8d779013e0d2)
+        ;
+
+        
+    
+    
+                marker_683b95e5110dec4651cd901e9af75c6a.setIcon(icon_bdee958ccf5492e17a8e2306db3cddf2);
+            
+    
+            var marker_2f23548ea2c1a79536c3639385511fa4 = L.marker(
+                [51.5177232, -0.105199],
+                {
+}
+            ).addTo(feature_group_c7b00b858d882553e5db91c7b977f5df);
+        
+    
+            var icon_136d4036dcf7a1df9dd0715082941dde = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b8030afdf3f9a7b7164bf2bc138dfd37 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c981dd87b490d0f25d3fcd2468336e6 = $(`<div id="html_2c981dd87b490d0f25d3fcd2468336e6" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001G (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_b8030afdf3f9a7b7164bf2bc138dfd37.setContent(html_2c981dd87b490d0f25d3fcd2468336e6);
+            
+        
+
+        marker_2f23548ea2c1a79536c3639385511fa4.bindPopup(popup_b8030afdf3f9a7b7164bf2bc138dfd37)
+        ;
+
+        
+    
+    
+                marker_2f23548ea2c1a79536c3639385511fa4.setIcon(icon_136d4036dcf7a1df9dd0715082941dde);
+            
+    
+            var marker_16cbb2430f1004dd22b4dc5b0d880a83 = L.marker(
+                [51.5176812, -0.1050889],
+                {
+}
+            ).addTo(feature_group_c7b00b858d882553e5db91c7b977f5df);
+        
+    
+            var icon_484cefaf576d8c0356c43588894db718 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_47b4285d9ea4a391381888dc92455beb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5030d4978c025f84337711861c0af47c = $(`<div id="html_5030d4978c025f84337711861c0af47c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001G (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_47b4285d9ea4a391381888dc92455beb.setContent(html_5030d4978c025f84337711861c0af47c);
+            
+        
+
+        marker_16cbb2430f1004dd22b4dc5b0d880a83.bindPopup(popup_47b4285d9ea4a391381888dc92455beb)
+        ;
+
+        
+    
+    
+                marker_16cbb2430f1004dd22b4dc5b0d880a83.setIcon(icon_484cefaf576d8c0356c43588894db718);
+            
+    
+            feature_group_c7b00b858d882553e5db91c7b977f5df.addTo(map_67f452fe936b2d7d6e5c2194747e1835);
+        
+    
+            var poly_line_62f0ff9981cf2538f3e3887a7e7be910 = L.polyline(
+                [[51.5177232, -0.105199], [51.5177515, -0.1052068], [51.51776, -0.1051079], [51.5176812, -0.1050889], [51.5177232, -0.105199], [51.5177515, -0.1052068], [51.51776, -0.1051079], [51.5178158, -0.1047128], [51.5181285, -0.1036707], [51.5182874, -0.1030586], [51.518467, -0.1026188], [51.5185909, -0.1024634], [51.5192653, -0.1030011], [51.5185416, -0.1053244], [51.5182011, -0.1052901], [51.5179403, -0.1052164], [51.51776, -0.1051079], [51.5176812, -0.1050889], [51.5177232, -0.105199]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_67f452fe936b2d7d6e5c2194747e1835);
+        
+    
+            var layer_control_e35e30d2208b62eef9080c4acc40aefc_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_f1c2d7b9f08a16d23cc6cacc3c3a232b,
+                },
+                overlays :  {
+                    "Farringdon Without Boundary" : geo_json_5f8c0cf7690968ed866538d1c1bf26d4,
+                    "LSOA Median Crime Rates for Farringdon Without" : geo_json_f00cc3479331f22e99b74ab36450d368,
+                    "Patrol Waypoints" : feature_group_c7b00b858d882553e5db91c7b977f5df,
+                },
+            };
+            let layer_control_e35e30d2208b62eef9080c4acc40aefc = L.control.layers(
+                layer_control_e35e30d2208b62eef9080c4acc40aefc_layers.base_layers,
+                layer_control_e35e30d2208b62eef9080c4acc40aefc_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_67f452fe936b2d7d6e5c2194747e1835);
+
+        
+</script>
+</html>

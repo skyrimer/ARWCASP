@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_39e0ff2bb6040a243c6fc32f7c331253 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_39e0ff2bb6040a243c6fc32f7c331253" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_39e0ff2bb6040a243c6fc32f7c331253 = L.map(
+                "map_39e0ff2bb6040a243c6fc32f7c331253",
+                {
+                    center: [51.59413790130118, 0.06192950465055397],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_81a5ba561fcd66d2239e8dc4ad8b8e78 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_81a5ba561fcd66d2239e8dc4ad8b8e78.addTo(map_39e0ff2bb6040a243c6fc32f7c331253);
+        
+    
+        function geo_json_58b603c9de60dfa15d9fee01d3f2f6bc_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_58b603c9de60dfa15d9fee01d3f2f6bc_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_58b603c9de60dfa15d9fee01d3f2f6bc = L.geoJson(null, {
+                onEachFeature: geo_json_58b603c9de60dfa15d9fee01d3f2f6bc_onEachFeature,
+            
+                style: geo_json_58b603c9de60dfa15d9fee01d3f2f6bc_styler,
+            ...{
+}
+        });
+
+        function geo_json_58b603c9de60dfa15d9fee01d3f2f6bc_add (data) {
+            geo_json_58b603c9de60dfa15d9fee01d3f2f6bc
+                .addData(data);
+        }
+            geo_json_58b603c9de60dfa15d9fee01d3f2f6bc_add({"features": [{"geometry": {"coordinates": [[[0.03777814015643087, 51.5936592524522], [0.037603365991995916, 51.59391409807779], [0.03754163666530287, 51.59418127495977], [0.03788840800479345, 51.59428502219732], [0.038324827644812154, 51.594452748770095], [0.03915994241655732, 51.59491848894784], [0.03983829183340329, 51.59562068916412], [0.04013855641945867, 51.59594279710865], [0.04037461330952833, 51.59618421126313], [0.040771278523863336, 51.59656127881634], [0.04128027530397103, 51.59702997757759], [0.041452826962975586, 51.59717441282826], [0.04185659930850459, 51.59748392784977], [0.04222038506706586, 51.59770873195789], [0.04347663499192393, 51.598480865165044], [0.0450026655361906, 51.599408397151244], [0.045532543161019394, 51.599759843374564], [0.045825351180822656, 51.59975294157104], [0.045924520052193885, 51.59974222279944], [0.0461338174435006, 51.59983746446489], [0.046652944963916976, 51.599790654470254], [0.04726334378232136, 51.599684623892685], [0.04773929770408314, 51.59960709703195], [0.047956849371448756, 51.59956554278025], [0.048259550446640244, 51.599490137918394], [0.04866121344556072, 51.59939682274917], [0.04888251617654702, 51.59934342432913], [0.04891945307446991, 51.59935995046918], [0.049099108667553036, 51.59934144088787], [0.049234050395695936, 51.599292336523476], [0.04932377674460028, 51.59923323349153], [0.04944109245858379, 51.59920781078326], [0.049588786171417876, 51.599185453459384], [0.04989272435900509, 51.599169357048524], [0.0502027746633293, 51.59915944610806], [0.05040147411769595, 51.59914878278346], [0.0505375849376424, 51.599123030604005], [0.05062815908219609, 51.599082790847355], [0.05069545218106374, 51.599038462796926], [0.05076257222368179, 51.59902200688004], [0.05081904335415967, 51.59902551511497], [0.05086699911936967, 51.59900121307786], [0.0510216242428046, 51.59897154077542], [0.051297319377773015, 51.59890469101034], [0.051470213413373045, 51.59886301173225], [0.05163054777719681, 51.59883323882285], [0.051623585027037795, 51.59880818840275], [0.0523017394389648, 51.59866867266422], [0.05261122424609955, 51.598614624068766], [0.053009765183045426, 51.59855011665592], [0.0534896957262827, 51.598466203704284], [0.053864993749303265, 51.59839850403279], [0.05446279989061916, 51.59913529380526], [0.055043838208813464, 51.59981933287725], [0.055396289612503466, 51.60023946908841], [0.05572808279752724, 51.60058166275348], [0.05597122189271253, 51.60081932596498], [0.05619551944423648, 51.6010536328648], [0.0562130842109469, 51.601089285337764], [0.056321021791061514, 51.601082899177015], [0.05636884908270922, 51.601084758196635], [0.056401556479194356, 51.60107609406211], [0.05647091389081324, 51.601074878776295], [0.05654007115451836, 51.60107186894604], [0.056578729626634426, 51.601065797497064], [0.056641242905692925, 51.60104222690958], [0.05669641799652513, 51.60101698687453], [0.05674894079967676, 51.60099628832031], [0.05682417763607515, 51.600967100623954], [0.05688995460428612, 51.60095515977373], [0.05694875313823402, 51.60094424019925], [0.05700714849583157, 51.60092703462402], [0.0570553911070402, 51.600909107965535], [0.05713858130751767, 51.60086359856607], [0.05717809586290519, 51.60084222882049], [0.05720048499805783, 51.600826553280086], [0.05770078552909644, 51.60068194290274], [0.05772740415846952, 51.6007282244824], [0.0577655197839686, 51.600804960561206], [0.05786323266059992, 51.60095428019603], [0.0582871982885081, 51.60084615688497], [0.05997190080695517, 51.60038849208642], [0.06064928314554856, 51.600200395330894], [0.0609763142041081, 51.60008946911974], [0.06129815072642654, 51.60005316081994], [0.06151981184381813, 51.59997375091355], [0.06176846092319406, 51.599914543608676], [0.062040964454104085, 51.59987469478546], [0.062073463259293776, 51.599858840670635], [0.06217548638057685, 51.59981659276837], [0.06339042417864181, 51.59950836561837], [0.06408661278675123, 51.599354889512696], [0.06459193061810152, 51.599256100451655], [0.06485480617417709, 51.599195737266875], [0.06496738510818875, 51.59916319025685], [0.06524697573905532, 51.599088147973774], [0.06552073137803671, 51.599073441161785], [0.0657542441104461, 51.59906393709956], [0.06588899934910779, 51.5990111308025], [0.06602384038382156, 51.59892874551458], [0.06616654871399297, 51.5988911719015], [0.06641641236967166, 51.598861600497514], [0.06641478117280616, 51.59882566894489], [0.06644291397588509, 51.59874516198232], [0.06659450525224005, 51.59871183656599], [0.06659197669426077, 51.59865614266415], [0.06663063168770963, 51.598650067938706], [0.0666576219305588, 51.59860733932947], [0.06666777424597772, 51.598608059557584], [0.06669097468328866, 51.598610348023236], [0.0667127068269965, 51.598611763334176], [0.06672999669586399, 51.598612357863765], [0.0667473647381761, 51.59861205200723], [0.06676901531103921, 51.598611670730406], [0.0667905843094658, 51.598609492872306], [0.06700978508270093, 51.59857326812692], [0.06891617349361723, 51.59826359099969], [0.07063713989678329, 51.59797153848777], [0.07143994646107824, 51.597844096338584], [0.07269551760743444, 51.597641137662464], [0.07356574874393118, 51.59750439898397], [0.07379630965542837, 51.597461667702454], [0.07391731095834227, 51.59739210386501], [0.07404099399123358, 51.597287341291675], [0.07407715132128746, 51.59725523700365], [0.07409424620854241, 51.597314269414085], [0.0741422211415874, 51.59744746363124], [0.07414858589716979, 51.597461735271295], [0.07488972874487983, 51.597345248272994], [0.0753662532630895, 51.597250427654124], [0.07614142762070063, 51.597118047735066], [0.07618007994863178, 51.59711196989094], [0.0755969641662542, 51.59585072696201], [0.07553563376724974, 51.59580326519645], [0.07550348519397633, 51.595730025171136], [0.07495881169770371, 51.595849425642754], [0.07478038359619056, 51.59557829281551], [0.0764980445064251, 51.595156754463744], [0.07740068333078895, 51.59493841277088], [0.07854397776093, 51.59483905605358], [0.07899210952756085, 51.59478796565468], [0.07970272378355987, 51.59463503937295], [0.08119912469782652, 51.59433332464009], [0.08188021841931684, 51.59419897867069], [0.08247272341222342, 51.59408507997354], [0.0846078296436592, 51.59382412834503], [0.08460562525201985, 51.59380978334452], [0.08521862663621795, 51.59370179967089], [0.08475574979119917, 51.59336552284792], [0.08467060234186755, 51.59330500375391], [0.08398352785381463, 51.59248903901872], [0.08286516972589063, 51.591175212607126], [0.08260002992573687, 51.59086966991232], [0.08217433068919158, 51.59036919336478], [0.08217290345117179, 51.59036921868852], [0.08195585062178759, 51.59010507480653], [0.08139692220034851, 51.58931190397631], [0.0811111547208452, 51.58893480302661], [0.08083873460895875, 51.58859702115897], [0.08076810157359335, 51.588504776556896], [0.08078076301701015, 51.58833904429025], [0.0808016262796307, 51.58806888140781], [0.08080088741775096, 51.58805271232634], [0.08079528288610464, 51.58799257802397], [0.0806994141258314, 51.58750692448629], [0.08068007201806368, 51.587461328017824], [0.08063572761655208, 51.58734524294484], [0.0805746998848774, 51.58720787740536], [0.08050984685551582, 51.587085772927466], [0.08036724220607953, 51.58690310503439], [0.08018179233717032, 51.58672829866426], [0.08010933935702108, 51.58666125821626], [0.07947195495539365, 51.58620219268962], [0.07919060147744018, 51.58629896708294], [0.0777208331453934, 51.58680066586332], [0.0773641787539619, 51.586893285087896], [0.07699562907733828, 51.58700957791402], [0.07658105600795212, 51.58713198816115], [0.07591042187171428, 51.587334533686516], [0.07564381444310755, 51.58747050511714], [0.07553796336795955, 51.587524519905905], [0.0755425314363627, 51.58753073217729], [0.07558722390209001, 51.587592063251805], [0.07556852665737543, 51.58765712264245], [0.0758230657384726, 51.587888250678745], [0.07569854181113878, 51.58794259591332], [0.07494776624349841, 51.588225666165584], [0.07317699487548039, 51.58890532865848], [0.07313585850762046, 51.58888807521174], [0.07178585291197911, 51.5883129972937], [0.07154695763748824, 51.588202950678394], [0.07130945391344141, 51.5880920699121], [0.07070203100227099, 51.58777995577406], [0.07008181995806036, 51.5874743571806], [0.06976730847318181, 51.58770115094619], [0.06924302002175516, 51.587950432354305], [0.0676659646602945, 51.58863558527563], [0.06568475687093496, 51.58964086605722], [0.064359485903537, 51.59031075320411], [0.06369032869624071, 51.590708286756225], [0.0632515819600855, 51.59099748074999], [0.06322405589342386, 51.59112292674117], [0.06272249881909833, 51.59114253184285], [0.06253448894570854, 51.591073016769506], [0.059275267019156475, 51.59121386170483], [0.0532721272299824, 51.59140175797751], [0.05285523196351271, 51.5914406065553], [0.05268601428840936, 51.591402122365906], [0.052413430677963925, 51.59131249430754], [0.05056929915662052, 51.590531851036474], [0.050105101388474245, 51.590257583556955], [0.049515922988196, 51.590543869598044], [0.049361573792207895, 51.59044947251559], [0.04883630584799219, 51.59010344706784], [0.04826819125603692, 51.590405631059745], [0.04751900658371052, 51.59076311392063], [0.04725747458475875, 51.59088454742266], [0.0469776532220465, 51.59098840914278], [0.046299744169077686, 51.59125833627998], [0.04595381061081908, 51.59139831960711], [0.04568262144460136, 51.59150103878939], [0.04558170547088754, 51.591536061078166], [0.04464778858982262, 51.591828420788694], [0.044066361818020074, 51.591999561248905], [0.043100724048537396, 51.592261894838536], [0.04064469303661194, 51.592900757456796], [0.03920553065314946, 51.593291848079886], [0.03777814015643087, 51.5936592524522]]], "type": "Polygon"}, "id": "350", "properties": {"DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "NAME": "Fullwell", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_58b603c9de60dfa15d9fee01d3f2f6bc.addTo(map_39e0ff2bb6040a243c6fc32f7c331253);
+        
+    
+        function geo_json_e5c60646e0987b6817d4d0c66fc5d9d0_styler(feature) {
+            switch(feature.id) {
+                case "3506": case "3507": case "3531": case "3532": case "3533": case "3534": case "3535": case "3537": case "3538": case "3586": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_e5c60646e0987b6817d4d0c66fc5d9d0_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_e5c60646e0987b6817d4d0c66fc5d9d0 = L.geoJson(null, {
+                onEachFeature: geo_json_e5c60646e0987b6817d4d0c66fc5d9d0_onEachFeature,
+            
+                style: geo_json_e5c60646e0987b6817d4d0c66fc5d9d0_styler,
+            ...{
+}
+        });
+
+        function geo_json_e5c60646e0987b6817d4d0c66fc5d9d0_add (data) {
+            geo_json_e5c60646e0987b6817d4d0c66fc5d9d0
+                .addData(data);
+        }
+            geo_json_e5c60646e0987b6817d4d0c66fc5d9d0_add({"features": [{"geometry": {"coordinates": [[[[0.058466372610268956, 51.59172423585444], [0.05352693605811499, 51.59189119163195], [0.05031093749196592, 51.59010053335561], [0.06135369475948966, 51.58813714286141], [0.06680979349988303, 51.59103891023575], [0.0668279326553351, 51.59141455738658], [0.06611423664618038, 51.591442214581505], [0.058466372610268956, 51.59172423585444]]]], "type": "MultiPolygon"}, "id": "3506", "properties": {"BNG_E": 542742, "BNG_N": 189900, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{1D69F1A0-2F05-4E00-9CE4-A28AA60407E9}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.589881896972656, "LONG": 0.05914999917149544, "LSOA21CD": "E01003679", "LSOA21NM": "Redbridge 036E", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Clayhall", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.07008235025264699, 51.587474470498265], [0.06680979349988303, 51.59103891023575], [0.06135369475948966, 51.58813714286141], [0.060722447960221346, 51.585937539357595], [0.06446946418027197, 51.586945878460355], [0.06459909792489142, 51.58485194535745], [0.07008235025264699, 51.587474470498265]]]], "type": "MultiPolygon"}, "id": "3507", "properties": {"BNG_E": 543176, "BNG_N": 189701, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{13C477A2-149B-4459-B665-3B2B471D2014}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.58797836303711, "LONG": 0.06532999873161316, "LSOA21CD": "E01003680", "LSOA21NM": "Redbridge 036F", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Clayhall", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.08481048874949876, 51.593742345476706], [0.07955147949738929, 51.59795026551559], [0.07617741530631107, 51.597097507801195], [0.07701103164117494, 51.59326094223838], [0.08179128535647268, 51.589850192931856], [0.08481048874949876, 51.593742345476706]]]], "type": "MultiPolygon"}, "id": "3531", "properties": {"BNG_E": 544200, "BNG_N": 190384, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{320C3B97-99A2-41E7-9C7B-5B8C6920455D}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.5938606262207, "LONG": 0.08038099855184555, "LSOA21CD": "E01003705", "LSOA21NM": "Redbridge 010A", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.07247864417200742, 51.597656242078834], [0.06974594358540251, 51.598117374485604], [0.0677651164837066, 51.597017461200934], [0.07346478770212246, 51.59378040761435], [0.07701103164117494, 51.59326094223838], [0.07617741530631107, 51.597097507801195], [0.07247864417200742, 51.597656242078834]]]], "type": "MultiPolygon"}, "id": "3532", "properties": {"BNG_E": 543682, "BNG_N": 190574, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{65F22D73-6CF1-4CB8-9E27-22FE029524BD}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.595699310302734, "LONG": 0.07298599928617477, "LSOA21CD": "E01003706", "LSOA21NM": "Redbridge 010B", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.06346757175316672, 51.593343434398584], [0.05711083057378411, 51.597942636895965], [0.05374910014385254, 51.593283647694484], [0.058466372610268956, 51.59172423585444], [0.06611423664618038, 51.591442214581505], [0.06346757175316672, 51.593343434398584]]]], "type": "MultiPolygon"}, "id": "3533", "properties": {"BNG_E": 542624, "BNG_N": 190445, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{6DAADB03-C365-47B3-A8F8-0AF54239AE32}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.59479904174805, "LONG": 0.057670000940561295, "LSOA21CD": "E01003707", "LSOA21NM": "Redbridge 008A", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.06974594358540251, 51.598117374485604], [0.056255761669690804, 51.6011724591349], [0.053827011427014564, 51.598350872041635], [0.051844724955439264, 51.59625472520138], [0.05711083057378411, 51.597942636895965], [0.06346757175316672, 51.593343434398584], [0.0677651164837066, 51.597017461200934], [0.06974594358540251, 51.598117374485604]]]], "type": "MultiPolygon"}, "id": "3534", "properties": {"BNG_E": 542968, "BNG_N": 190694, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{A1E615AC-7180-4C4B-B924-98CBE87714A0}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.59695816040039, "LONG": 0.06273400038480759, "LSOA21CD": "E01003708", "LSOA21NM": "Redbridge 008B", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.07346478770212246, 51.59378040761435], [0.0677651164837066, 51.597017461200934], [0.06346757175316672, 51.593343434398584], [0.06611423664618038, 51.591442214581505], [0.0668279326553351, 51.59141455738658], [0.06907892764674001, 51.59130906474134], [0.07346478770212246, 51.59378040761435]]]], "type": "MultiPolygon"}, "id": "3535", "properties": {"BNG_E": 543300, "BNG_N": 190406, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{00605BD1-0733-40ED-B6AF-68E1E9C7D712}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.59428024291992, "LONG": 0.06740599870681763, "LSOA21CD": "E01003709", "LSOA21NM": "Redbridge 008C", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.058466372610268956, 51.59172423585444], [0.05374910014385254, 51.593283647694484], [0.05711083057378411, 51.597942636895965], [0.051844724955439264, 51.59625472520138], [0.04751895074998598, 51.59076344336248], [0.04913121570349338, 51.590297895299486], [0.05352693605811499, 51.59189119163195], [0.058466372610268956, 51.59172423585444]]]], "type": "MultiPolygon"}, "id": "3536", "properties": {"BNG_E": 542313, "BNG_N": 190327, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{9785781F-7FE1-4B42-BFD1-DEE17BBB00F7}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.59381866455078, "LONG": 0.05313500016927719, "LSOA21CD": "E01003710", "LSOA21NM": "Redbridge 008D", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.07701103164117494, 51.59326094223838], [0.07346478770212246, 51.59378040761435], [0.06907892764674001, 51.59130906474134], [0.07473345412971216, 51.59101272381276], [0.07313015951020282, 51.588890517201826], [0.07947142382764208, 51.58620256569047], [0.08078835491463518, 51.588042398601964], [0.08179128535647268, 51.589850192931856], [0.07701103164117494, 51.59326094223838]]]], "type": "MultiPolygon"}, "id": "3537", "properties": {"BNG_E": 544077, "BNG_N": 189974, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{6328B024-83F4-4B23-8F38-F2135AC11125}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.5901985168457, "LONG": 0.07843799889087677, "LSOA21CD": "E01003711", "LSOA21NM": "Redbridge 010C", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.06907892764674001, 51.59130906474134], [0.0668279326553351, 51.59141455738658], [0.06680979349988303, 51.59103891023575], [0.07008235025264699, 51.587474470498265], [0.07111889739312906, 51.587994688381826], [0.07313015951020282, 51.588890517201826], [0.07473345412971216, 51.59101272381276], [0.06907892764674001, 51.59130906474134]]]], "type": "MultiPolygon"}, "id": "3538", "properties": {"BNG_E": 543502, "BNG_N": 189871, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{CBB42956-3606-48EC-96F4-725B9202CEA0}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.589420318603516, "LONG": 0.07010199874639511, "LSOA21CD": "E01003712", "LSOA21NM": "Redbridge 010D", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.051813155422824476, 51.59873242157364], [0.04503497108872286, 51.599822092635264], [0.04068953320629922, 51.59923665782464], [0.037902164972593466, 51.59474377604999], [0.03752999738589486, 51.59414734111619], [0.03771145303496491, 51.5935979703419], [0.046028019989380546, 51.59136900098453], [0.04751895074998598, 51.59076344336248], [0.051844724955439264, 51.59625472520138], [0.053827011427014564, 51.598350872041635], [0.051813155422824476, 51.59873242157364]]]], "type": "MultiPolygon"}, "id": "3586", "properties": {"BNG_E": 541763, "BNG_N": 190477, "DISTRICT": "Redbridge", "GSS_CODE": "E05011243", "GlobalID": "{DBE2800F-ABDC-49BC-8647-C5F7864E05F7}", "HECTARES": 276.981, "LAGSSCODE": "E09000026", "LAT": 51.59531021118164, "LONG": 0.04526099935173988, "LSOA21CD": "E01003763", "LSOA21NM": "Redbridge 009E", "LSOA21NMW": " ", "NAME": "Fullwell", "NONLD_AREA": 0.0, "WD24NM": "Fullwell", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e5c60646e0987b6817d4d0c66fc5d9d0.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_e5c60646e0987b6817d4d0c66fc5d9d0.addTo(map_39e0ff2bb6040a243c6fc32f7c331253);
+        
+    
+            var feature_group_89e830af7f2fa515c0fe0b6190262d83 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_97914a7703ea87bb00caf01dc69a341d = L.marker(
+                [51.5916489, 0.0518521],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_0851285764a122bf27c876d23518b107 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_21b2ebbc4af8d5306546a8c383f0b0d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_36ba3daddb744e2235dd1fec919f9029 = $(`<div id="html_36ba3daddb744e2235dd1fec919f9029" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 008D (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_21b2ebbc4af8d5306546a8c383f0b0d6.setContent(html_36ba3daddb744e2235dd1fec919f9029);
+            
+        
+
+        marker_97914a7703ea87bb00caf01dc69a341d.bindPopup(popup_21b2ebbc4af8d5306546a8c383f0b0d6)
+        ;
+
+        
+    
+    
+                marker_97914a7703ea87bb00caf01dc69a341d.setIcon(icon_0851285764a122bf27c876d23518b107);
+            
+    
+            var marker_c87330eb0e449599e3b68d095fadd5ba = L.marker(
+                [51.5953112, 0.0530369],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_018449047e653a7b2b2d9dc224b3bc1e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0b7098f7ff7e7299946bbaa2d70076a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_842e049e23fa028292aaf250bbfba64b = $(`<div id="html_842e049e23fa028292aaf250bbfba64b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 008D (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_0b7098f7ff7e7299946bbaa2d70076a4.setContent(html_842e049e23fa028292aaf250bbfba64b);
+            
+        
+
+        marker_c87330eb0e449599e3b68d095fadd5ba.bindPopup(popup_0b7098f7ff7e7299946bbaa2d70076a4)
+        ;
+
+        
+    
+    
+                marker_c87330eb0e449599e3b68d095fadd5ba.setIcon(icon_018449047e653a7b2b2d9dc224b3bc1e);
+            
+    
+            var marker_28a986f86a09910122dc398fe6c92e0f = L.marker(
+                [51.5918977, 0.0535462],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_eaad8c937046908d2f3a0179d201fe9d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4757a597fcc8c3377dc473b5d017a2f1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_df4278b706ac10e294f62057fc91e462 = $(`<div id="html_df4278b706ac10e294f62057fc91e462" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 008D (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_4757a597fcc8c3377dc473b5d017a2f1.setContent(html_df4278b706ac10e294f62057fc91e462);
+            
+        
+
+        marker_28a986f86a09910122dc398fe6c92e0f.bindPopup(popup_4757a597fcc8c3377dc473b5d017a2f1)
+        ;
+
+        
+    
+    
+                marker_28a986f86a09910122dc398fe6c92e0f.setIcon(icon_eaad8c937046908d2f3a0179d201fe9d);
+            
+    
+            var marker_acc15e9cb317c27e64d47dfa34218c08 = L.marker(
+                [51.5930959, 0.0500375],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_dce40d2ae77836b23863af736e2517fd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_95a3606f2335814a17fc6a6bdc3c919a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_18dcd23499fa423abe1895df1f904216 = $(`<div id="html_18dcd23499fa423abe1895df1f904216" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 008D (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_95a3606f2335814a17fc6a6bdc3c919a.setContent(html_18dcd23499fa423abe1895df1f904216);
+            
+        
+
+        marker_acc15e9cb317c27e64d47dfa34218c08.bindPopup(popup_95a3606f2335814a17fc6a6bdc3c919a)
+        ;
+
+        
+    
+    
+                marker_acc15e9cb317c27e64d47dfa34218c08.setIcon(icon_dce40d2ae77836b23863af736e2517fd);
+            
+    
+            var marker_ce52a6b8e085b24a187ec25e9538e761 = L.marker(
+                [51.5887236, 0.0675923],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_74632d3214f198c8ac7718ddaff3d951 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_66a36c05adf787ba0731556876441af4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c8927690024e57c82c1b976390559b8 = $(`<div id="html_2c8927690024e57c82c1b976390559b8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036F (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_66a36c05adf787ba0731556876441af4.setContent(html_2c8927690024e57c82c1b976390559b8);
+            
+        
+
+        marker_ce52a6b8e085b24a187ec25e9538e761.bindPopup(popup_66a36c05adf787ba0731556876441af4)
+        ;
+
+        
+    
+    
+                marker_ce52a6b8e085b24a187ec25e9538e761.setIcon(icon_74632d3214f198c8ac7718ddaff3d951);
+            
+    
+            var marker_f399e0cca1b318f277142bbab323cb4a = L.marker(
+                [51.5887236, 0.0675923],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_297ea0bcc49651e5c77e849a3e714204 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f6ae3c2737e91c78a27ad2fdbe593946 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3480463116a6624b782966301e222bca = $(`<div id="html_3480463116a6624b782966301e222bca" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036F (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f6ae3c2737e91c78a27ad2fdbe593946.setContent(html_3480463116a6624b782966301e222bca);
+            
+        
+
+        marker_f399e0cca1b318f277142bbab323cb4a.bindPopup(popup_f6ae3c2737e91c78a27ad2fdbe593946)
+        ;
+
+        
+    
+    
+                marker_f399e0cca1b318f277142bbab323cb4a.setIcon(icon_297ea0bcc49651e5c77e849a3e714204);
+            
+    
+            var marker_5e5df33f6e1bfa921fbb50bf62ed039a = L.marker(
+                [51.5887236, 0.0675923],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_24a755ef4315c4623e498887892d577f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e8f87cb222aeb4d74edf950ca7576819 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef38aa83d249fb8ba510dd18fe4f5ffb = $(`<div id="html_ef38aa83d249fb8ba510dd18fe4f5ffb" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036F (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_e8f87cb222aeb4d74edf950ca7576819.setContent(html_ef38aa83d249fb8ba510dd18fe4f5ffb);
+            
+        
+
+        marker_5e5df33f6e1bfa921fbb50bf62ed039a.bindPopup(popup_e8f87cb222aeb4d74edf950ca7576819)
+        ;
+
+        
+    
+    
+                marker_5e5df33f6e1bfa921fbb50bf62ed039a.setIcon(icon_24a755ef4315c4623e498887892d577f);
+            
+    
+            var marker_156c40e7b4816dab6ab2a2db2000e199 = L.marker(
+                [51.5887236, 0.0675923],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_7c2093ed3e7709551358276edc7f9dc7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0b631e02e45a17a11c1aef3a60c5dca7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_98186ce77b989efcc1faf6c708b81b78 = $(`<div id="html_98186ce77b989efcc1faf6c708b81b78" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036F (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0b631e02e45a17a11c1aef3a60c5dca7.setContent(html_98186ce77b989efcc1faf6c708b81b78);
+            
+        
+
+        marker_156c40e7b4816dab6ab2a2db2000e199.bindPopup(popup_0b631e02e45a17a11c1aef3a60c5dca7)
+        ;
+
+        
+    
+    
+                marker_156c40e7b4816dab6ab2a2db2000e199.setIcon(icon_7c2093ed3e7709551358276edc7f9dc7);
+            
+    
+            var marker_95fc7f54eb7d6bb53c18160c787d77f9 = L.marker(
+                [51.5917246, 0.0585093],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_77661b15ccc40735fabf3b4d19112410 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a45431172a35a81d408542ec9792063f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b1f8cadb8a74564df08529989a0acd69 = $(`<div id="html_b1f8cadb8a74564df08529989a0acd69" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_a45431172a35a81d408542ec9792063f.setContent(html_b1f8cadb8a74564df08529989a0acd69);
+            
+        
+
+        marker_95fc7f54eb7d6bb53c18160c787d77f9.bindPopup(popup_a45431172a35a81d408542ec9792063f)
+        ;
+
+        
+    
+    
+                marker_95fc7f54eb7d6bb53c18160c787d77f9.setIcon(icon_77661b15ccc40735fabf3b4d19112410);
+            
+    
+            var marker_fbf2fa2f832f1dd459d13b63cac05572 = L.marker(
+                [51.5917246, 0.0585093],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_5682f0d58c914fc76dc9cbeed70d2fe7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_49bf78dbb3960089b91738c9b171a44c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f4ecebc283d425cfc29f0a4ae0750538 = $(`<div id="html_f4ecebc283d425cfc29f0a4ae0750538" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036E (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_49bf78dbb3960089b91738c9b171a44c.setContent(html_f4ecebc283d425cfc29f0a4ae0750538);
+            
+        
+
+        marker_fbf2fa2f832f1dd459d13b63cac05572.bindPopup(popup_49bf78dbb3960089b91738c9b171a44c)
+        ;
+
+        
+    
+    
+                marker_fbf2fa2f832f1dd459d13b63cac05572.setIcon(icon_5682f0d58c914fc76dc9cbeed70d2fe7);
+            
+    
+            var marker_2ca1298cdafbbef6ae1bbcfb76683bb3 = L.marker(
+                [51.5918977, 0.0535462],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_f09bd1f855f3365b91c8e8a169adb3e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ee140b63ac45f94cb873ee13a6b09d76 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c61e27dc7fffe4915dc84b3fe4be995e = $(`<div id="html_c61e27dc7fffe4915dc84b3fe4be995e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036E (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_ee140b63ac45f94cb873ee13a6b09d76.setContent(html_c61e27dc7fffe4915dc84b3fe4be995e);
+            
+        
+
+        marker_2ca1298cdafbbef6ae1bbcfb76683bb3.bindPopup(popup_ee140b63ac45f94cb873ee13a6b09d76)
+        ;
+
+        
+    
+    
+                marker_2ca1298cdafbbef6ae1bbcfb76683bb3.setIcon(icon_f09bd1f855f3365b91c8e8a169adb3e2);
+            
+    
+            var marker_6337821bc00cf66ace35dd444d2f6e5a = L.marker(
+                [51.5915849, 0.0624839],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_9a2591e8c5f6fbd0863f4f93c686244b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_54647990bc467dec3b61627a219ddd69 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f09bf9a0dd28b8e0933a9894cb674b49 = $(`<div id="html_f09bf9a0dd28b8e0933a9894cb674b49" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036E (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_54647990bc467dec3b61627a219ddd69.setContent(html_f09bf9a0dd28b8e0933a9894cb674b49);
+            
+        
+
+        marker_6337821bc00cf66ace35dd444d2f6e5a.bindPopup(popup_54647990bc467dec3b61627a219ddd69)
+        ;
+
+        
+    
+    
+                marker_6337821bc00cf66ace35dd444d2f6e5a.setIcon(icon_9a2591e8c5f6fbd0863f4f93c686244b);
+            
+    
+            var marker_5d09b72999b1c11e55eaa53ec35f4447 = L.marker(
+                [51.5905544, 0.0639998],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_0140d799a0f8ee42146697b84d17570c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d09b8e9cbccd1750e03c66b127679b0b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d6ab82bca3fd7ba96098d0b6f1e2ad44 = $(`<div id="html_d6ab82bca3fd7ba96098d0b6f1e2ad44" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 036E (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d09b8e9cbccd1750e03c66b127679b0b.setContent(html_d6ab82bca3fd7ba96098d0b6f1e2ad44);
+            
+        
+
+        marker_5d09b72999b1c11e55eaa53ec35f4447.bindPopup(popup_d09b8e9cbccd1750e03c66b127679b0b)
+        ;
+
+        
+    
+    
+                marker_5d09b72999b1c11e55eaa53ec35f4447.setIcon(icon_0140d799a0f8ee42146697b84d17570c);
+            
+    
+            var marker_9b9f774c876759584f37e79cd22e12f2 = L.marker(
+                [51.5922063, 0.0810074],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_a947597cd352e4b4fcb4d8a8c50f62eb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_64baf3be7afc00e9413dc09a4a6020b3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9d7da62c0748fa4c98fc565553a21afc = $(`<div id="html_9d7da62c0748fa4c98fc565553a21afc" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 010A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_64baf3be7afc00e9413dc09a4a6020b3.setContent(html_9d7da62c0748fa4c98fc565553a21afc);
+            
+        
+
+        marker_9b9f774c876759584f37e79cd22e12f2.bindPopup(popup_64baf3be7afc00e9413dc09a4a6020b3)
+        ;
+
+        
+    
+    
+                marker_9b9f774c876759584f37e79cd22e12f2.setIcon(icon_a947597cd352e4b4fcb4d8a8c50f62eb);
+            
+    
+            var marker_7dc60e296e1b82b5fc4710ea4cdb5a48 = L.marker(
+                [51.5962814, 0.0753335],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_2490435249b70ead3f5beeccd72f6e10 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f9bdc1122260c9d636ffe64da670b5c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_626e34848465fa1869caac1e0b86093e = $(`<div id="html_626e34848465fa1869caac1e0b86093e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 010A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f9bdc1122260c9d636ffe64da670b5c9.setContent(html_626e34848465fa1869caac1e0b86093e);
+            
+        
+
+        marker_7dc60e296e1b82b5fc4710ea4cdb5a48.bindPopup(popup_f9bdc1122260c9d636ffe64da670b5c9)
+        ;
+
+        
+    
+    
+                marker_7dc60e296e1b82b5fc4710ea4cdb5a48.setIcon(icon_2490435249b70ead3f5beeccd72f6e10);
+            
+    
+            var marker_71964ccbe58d4d097c779d1994ccfaca = L.marker(
+                [51.5920393, 0.0805623],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_02c3ed4366b6da659e66feb841f51e42 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7e4d34110841ed7e1fc857420040831 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_995d5890f7356d9c898fc99f7f888924 = $(`<div id="html_995d5890f7356d9c898fc99f7f888924" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 010A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f7e4d34110841ed7e1fc857420040831.setContent(html_995d5890f7356d9c898fc99f7f888924);
+            
+        
+
+        marker_71964ccbe58d4d097c779d1994ccfaca.bindPopup(popup_f7e4d34110841ed7e1fc857420040831)
+        ;
+
+        
+    
+    
+                marker_71964ccbe58d4d097c779d1994ccfaca.setIcon(icon_02c3ed4366b6da659e66feb841f51e42);
+            
+    
+            var marker_0f517adb68fdfe225dad79c729ed7567 = L.marker(
+                [51.5941221, 0.0784494],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_7e84a1baab18d2d3e2639189c0fbe639 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_670f1643c1437c62683ed909ae5a42ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b927bd4a5c370a3d0f224f20ec204248 = $(`<div id="html_b927bd4a5c370a3d0f224f20ec204248" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 010A (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_670f1643c1437c62683ed909ae5a42ab.setContent(html_b927bd4a5c370a3d0f224f20ec204248);
+            
+        
+
+        marker_0f517adb68fdfe225dad79c729ed7567.bindPopup(popup_670f1643c1437c62683ed909ae5a42ab)
+        ;
+
+        
+    
+    
+                marker_0f517adb68fdfe225dad79c729ed7567.setIcon(icon_7e84a1baab18d2d3e2639189c0fbe639);
+            
+    
+            var marker_0daaaa4f1527080d32ee2effd55441f2 = L.marker(
+                [51.5940669, 0.0783878],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_caf8fc2b8574ea7a6a8acf95f1a8e39f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8e4c8664aa87a1166174f328769d952c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4106c38dab332394495d0e551e39ea7d = $(`<div id="html_4106c38dab332394495d0e551e39ea7d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 010A (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8e4c8664aa87a1166174f328769d952c.setContent(html_4106c38dab332394495d0e551e39ea7d);
+            
+        
+
+        marker_0daaaa4f1527080d32ee2effd55441f2.bindPopup(popup_8e4c8664aa87a1166174f328769d952c)
+        ;
+
+        
+    
+    
+                marker_0daaaa4f1527080d32ee2effd55441f2.setIcon(icon_caf8fc2b8574ea7a6a8acf95f1a8e39f);
+            
+    
+            var marker_5205fef788e901a229dcff11de5b164b = L.marker(
+                [51.5955888, 0.0747398],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_2e1dbb984194143ab7a9642402d9b7ff = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4078477423940f6937ada7c6e592f367 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0de0768d9be705037eecc29654510da9 = $(`<div id="html_0de0768d9be705037eecc29654510da9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 010B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_4078477423940f6937ada7c6e592f367.setContent(html_0de0768d9be705037eecc29654510da9);
+            
+        
+
+        marker_5205fef788e901a229dcff11de5b164b.bindPopup(popup_4078477423940f6937ada7c6e592f367)
+        ;
+
+        
+    
+    
+                marker_5205fef788e901a229dcff11de5b164b.setIcon(icon_2e1dbb984194143ab7a9642402d9b7ff);
+            
+    
+            var marker_8d219239abac43fcc6624e2156e069bd = L.marker(
+                [51.5939754, 0.07411],
+                {
+}
+            ).addTo(feature_group_89e830af7f2fa515c0fe0b6190262d83);
+        
+    
+            var icon_92d534229ea61cf04506e3437be2cd60 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_049927cee4e6909f3bac11f51ffad1fd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8ae83364026cccddeee0b0e1b175a8ad = $(`<div id="html_8ae83364026cccddeee0b0e1b175a8ad" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Redbridge 010B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_049927cee4e6909f3bac11f51ffad1fd.setContent(html_8ae83364026cccddeee0b0e1b175a8ad);
+            
+        
+
+        marker_8d219239abac43fcc6624e2156e069bd.bindPopup(popup_049927cee4e6909f3bac11f51ffad1fd)
+        ;
+
+        
+    
+    
+                marker_8d219239abac43fcc6624e2156e069bd.setIcon(icon_92d534229ea61cf04506e3437be2cd60);
+            
+    
+            feature_group_89e830af7f2fa515c0fe0b6190262d83.addTo(map_39e0ff2bb6040a243c6fc32f7c331253);
+        
+    
+            var poly_line_c5c02851e995a8d4b712d783cca2425c = L.polyline(
+                [[51.5916489, 0.0518521], [51.5922594, 0.0505529], [51.5925847, 0.0503664], [51.5930461, 0.0499694], [51.5930959, 0.0500375], [51.5930461, 0.0499694], [51.5925847, 0.0503664], [51.5922594, 0.0505529], [51.5916489, 0.0518521], [51.5919182, 0.0528963], [51.5918977, 0.0535462], [51.5919182, 0.0528963], [51.5928533, 0.0529817], [51.5953112, 0.0530369], [51.5948703, 0.0543107], [51.5942595, 0.0554848], [51.5946945, 0.0565572], [51.5954038, 0.0583702], [51.5958474, 0.0595477], [51.596902, 0.0614825], [51.5967333, 0.0625783], [51.5964719, 0.0648638], [51.5964877, 0.0662789], [51.5962593, 0.0674254], [51.5960547, 0.068478], [51.5958305, 0.0696208], [51.5962859, 0.0715633], [51.5962512, 0.0717412], [51.5959883, 0.0730046], [51.5958002, 0.0738167], [51.5955888, 0.0747398], [51.5962814, 0.0753335], [51.5955888, 0.0747398], [51.5958002, 0.0738167], [51.5959883, 0.0730046], [51.595523, 0.072565], [51.5939754, 0.07411], [51.5935522, 0.0748642], [51.5941565, 0.075372], [51.5945811, 0.0756139], [51.5941221, 0.0784494], [51.5940669, 0.0783878], [51.5922063, 0.0810074], [51.5920393, 0.0805623], [51.5908961, 0.0777372], [51.5908497, 0.077716], [51.5907981, 0.0772449], [51.5909033, 0.0772175], [51.5910445, 0.0756671], [51.5932555, 0.0770509], [51.5940669, 0.0783878], [51.5941221, 0.0784494], [51.5945811, 0.0756139], [51.5941565, 0.075372], [51.5935522, 0.0748642], [51.5939754, 0.07411], [51.5948512, 0.0719041], [51.5941847, 0.0712603], [51.5938818, 0.0709706], [51.5935342, 0.0706252], [51.5929079, 0.0699808], [51.5921972, 0.069297], [51.5924286, 0.0681798], [51.5925963, 0.0667837], [51.5920046, 0.0662653], [51.5914544, 0.0662272], [51.5914274, 0.0669099], [51.5903621, 0.066139], [51.5897768, 0.0654536], [51.5887236, 0.0675923], [51.5897768, 0.0654536], [51.5905544, 0.0639998], [51.5915586, 0.0631899], [51.5915849, 0.0624839], [51.592757, 0.0625963], [51.5933435, 0.0634632], [51.5937793, 0.0623763], [51.5946528, 0.0599412], [51.5926598, 0.0584649], [51.5917246, 0.0585093], [51.5926598, 0.0584649], [51.5927443, 0.0560722], [51.5928019, 0.0544386], [51.5928533, 0.0529817], [51.5919182, 0.0528963], [51.5916489, 0.0518521]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_39e0ff2bb6040a243c6fc32f7c331253);
+        
+    
+            var layer_control_7606cbb62f39fcfb44f65e7e7ded8460_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_81a5ba561fcd66d2239e8dc4ad8b8e78,
+                },
+                overlays :  {
+                    "Fullwell Boundary" : geo_json_58b603c9de60dfa15d9fee01d3f2f6bc,
+                    "LSOA Median Crime Rates for Fullwell" : geo_json_e5c60646e0987b6817d4d0c66fc5d9d0,
+                    "Patrol Waypoints" : feature_group_89e830af7f2fa515c0fe0b6190262d83,
+                },
+            };
+            let layer_control_7606cbb62f39fcfb44f65e7e7ded8460 = L.control.layers(
+                layer_control_7606cbb62f39fcfb44f65e7e7ded8460_layers.base_layers,
+                layer_control_7606cbb62f39fcfb44f65e7e7ded8460_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_39e0ff2bb6040a243c6fc32f7c331253);
+
+        
+</script>
+</html>

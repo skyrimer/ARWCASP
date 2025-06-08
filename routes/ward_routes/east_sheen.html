@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_674bc83acc944203216f64bcd3f1641d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_674bc83acc944203216f64bcd3f1641d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_674bc83acc944203216f64bcd3f1641d = L.map(
+                "map_674bc83acc944203216f64bcd3f1641d",
+                {
+                    center: [51.45119025575528, -0.2641231424305531],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7ba24d1e88fbeb1ab2adfecaf1e17d62 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7ba24d1e88fbeb1ab2adfecaf1e17d62.addTo(map_674bc83acc944203216f64bcd3f1641d);
+        
+    
+        function geo_json_3131cc63c805dca1e4356351242420b5_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_3131cc63c805dca1e4356351242420b5_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_3131cc63c805dca1e4356351242420b5 = L.geoJson(null, {
+                onEachFeature: geo_json_3131cc63c805dca1e4356351242420b5_onEachFeature,
+            
+                style: geo_json_3131cc63c805dca1e4356351242420b5_styler,
+            ...{
+}
+        });
+
+        function geo_json_3131cc63c805dca1e4356351242420b5_add (data) {
+            geo_json_3131cc63c805dca1e4356351242420b5
+                .addData(data);
+        }
+            geo_json_3131cc63c805dca1e4356351242420b5_add({"features": [{"geometry": {"coordinates": [[[-0.28269583602943243, 51.449393519203305], [-0.28271512798505877, 51.449454932889275], [-0.28277459247592035, 51.44963479215832], [-0.2825450648008543, 51.45118532807332], [-0.28251407805893874, 51.45128376263404], [-0.2822992980110382, 51.45159984603721], [-0.28221388441806255, 51.45168768411673], [-0.2821417830085397, 51.451730677979576], [-0.2820317921223888, 51.45174614698893], [-0.28183828972585356, 51.451763987972846], [-0.28166884154596866, 51.451754312621375], [-0.28156489805594187, 51.4517635769244], [-0.2814602286388435, 51.45178901225016], [-0.2814036140557987, 51.451843020515014], [-0.28130485097348334, 51.45182808789481], [-0.2811712157950008, 51.45189804764522], [-0.2810542489755541, 51.45194757495069], [-0.28093930922330773, 51.451981040005734], [-0.28018889757340903, 51.45207161972863], [-0.2798144447021678, 51.45211736833447], [-0.2783846142619986, 51.45228795423797], [-0.2778287750617204, 51.45221856950133], [-0.2776450592162093, 51.45270150328059], [-0.2776507754285174, 51.45277979910105], [-0.27762416666716566, 51.456620956994236], [-0.2776460950394349, 51.456687894012084], [-0.2777667654574856, 51.45677057542693], [-0.27827370314942323, 51.45695512129399], [-0.2787794958728097, 51.45740053385308], [-0.2805346232729559, 51.45892085113375], [-0.2806860756620273, 51.45898690016477], [-0.28078123608052297, 51.45906021443719], [-0.28078066215622594, 51.45907548877464], [-0.2807756883746544, 51.45913205192616], [-0.28069772952351724, 51.45933057341292], [-0.28050350313139355, 51.45951839987924], [-0.28050932611069457, 51.45959400005563], [-0.2804345550814829, 51.459821335648655], [-0.28022109333143264, 51.459715630486116], [-0.2799552685675359, 51.45962632736656], [-0.27970071461792895, 51.45954348191039], [-0.2795393469129848, 51.45943494389559], [-0.2793972247174833, 51.4593070003048], [-0.2791989456792369, 51.45918272725767], [-0.27897590550745416, 51.459142505154915], [-0.2788873452087256, 51.45931659724747], [-0.2788210818084145, 51.4603524245712], [-0.27810407086992295, 51.460314926965204], [-0.2780719664265526, 51.46132248793129], [-0.2780710195731799, 51.46134764561797], [-0.2778191773936817, 51.46134394667829], [-0.27781233005852785, 51.46137450150492], [-0.2776582186377232, 51.46137583365518], [-0.2776537933888957, 51.461569050525235], [-0.27773893267134225, 51.46156490727684], [-0.27772082991757563, 51.4617777908069], [-0.27821833441569355, 51.46179498662864], [-0.2782234232274491, 51.46207923062725], [-0.2782183304794148, 51.46263400956111], [-0.2782152531323687, 51.463138384975025], [-0.2782046653979995, 51.46341970174789], [-0.2781984736411781, 51.46358421499899], [-0.2781789647441043, 51.46398586474275], [-0.2781742979418311, 51.46410985614761], [-0.2781664794170571, 51.464279739401036], [-0.2781563279559488, 51.464281388293486], [-0.2779084869934978, 51.46428763722882], [-0.2772851405145051, 51.46432702537005], [-0.2769282915938412, 51.46432178171391], [-0.27626253839666903, 51.464302107172635], [-0.27533153857773157, 51.4642497599737], [-0.274835178291585, 51.46424245771456], [-0.2743395299669143, 51.46421628513658], [-0.27394673672618963, 51.46421050336169], [-0.27368764273628055, 51.46420668887062], [-0.2733478113251076, 51.46417201833731], [-0.27278877986858485, 51.46418356214751], [-0.27172181613159907, 51.464151657885786], [-0.2717279263557034, 51.46429468668049], [-0.27177734539511605, 51.464548119993225], [-0.2717360934934761, 51.46457178455444], [-0.2718230685430819, 51.465091062059074], [-0.2719097023006284, 51.46542775045899], [-0.27195064565466465, 51.46575477553166], [-0.2720000314951144, 51.466046864561775], [-0.27151076854333184, 51.46607741031354], [-0.27158511292579085, 51.4664345943998], [-0.2719812831262604, 51.46638919159027], [-0.27194822800232205, 51.46650377455301], [-0.2719049324218854, 51.46661919546112], [-0.2719109563737227, 51.46680537421082], [-0.2717961309345252, 51.466793792974634], [-0.27159879938045917, 51.466798076149956], [-0.2715004805423149, 51.46680831359597], [-0.2714984434274044, 51.46686222268723], [-0.2715376556263804, 51.467197313187214], [-0.27155587452239227, 51.46743770073261], [-0.27156408148339695, 51.467600627945735], [-0.27091986794817835, 51.467694512975044], [-0.26963573488828113, 51.467881526730615], [-0.2690326340824676, 51.4679553314783], [-0.26841138156255434, 51.46800998637061], [-0.2681330442077124, 51.46802475422097], [-0.2675491842883796, 51.468044896414206], [-0.2670031728496392, 51.46805300931289], [-0.26653667026063915, 51.46805240631948], [-0.2660979828048525, 51.46804142496889], [-0.26576165091633236, 51.468026562017265], [-0.2654256259232737, 51.46800361176661], [-0.2647713254649895, 51.467943587273965], [-0.2628862423405476, 51.467727696412794], [-0.26243402276813793, 51.467694925171834], [-0.26169547285417616, 51.46765610957737], [-0.26132312903504534, 51.467642497936154], [-0.26094768280453323, 51.46763243504167], [-0.26056064224513403, 51.467627592858726], [-0.26017192276709417, 51.46762632043028], [-0.25946751231380694, 51.467635643636804], [-0.25933250961455534, 51.467249682346804], [-0.259232396680861, 51.46689210745151], [-0.2591088898303323, 51.46650361955039], [-0.25885206683343065, 51.46651778577648], [-0.2584197994340484, 51.46656620405569], [-0.25836724724418725, 51.46631901117004], [-0.25826190436560403, 51.465871458965445], [-0.25816072253237465, 51.465317798076455], [-0.25812402244976695, 51.46510949695777], [-0.25753608090805596, 51.4651223365591], [-0.25697432196788617, 51.4651302584235], [-0.2564550984741896, 51.46515580098525], [-0.25585707216927284, 51.46516848220225], [-0.255312191094317, 51.4651882441068], [-0.2542967907984834, 51.465198301941015], [-0.2529154826328827, 51.46521638407794], [-0.2535540571803923, 51.46489408125366], [-0.2539318822954801, 51.464651498005345], [-0.25553625458268614, 51.463464982783705], [-0.25602033720527206, 51.463040580324524], [-0.25660094797126215, 51.46238468358096], [-0.2570892966553332, 51.46166079751529], [-0.25751916081605974, 51.461032321817996], [-0.25753443817723753, 51.46100827620089], [-0.25790556491594413, 51.460485096574615], [-0.2580219165377316, 51.4603033419589], [-0.25802049307776975, 51.46030332080951], [-0.25804341633992356, 51.46026860087393], [-0.2568079716156945, 51.45986088704635], [-0.25680980584342006, 51.459850126462996], [-0.25682556180315796, 51.45977925077961], [-0.2568675540543731, 51.45973312774083], [-0.25698473178304054, 51.459604516590424], [-0.25704930086887184, 51.45949849693576], [-0.25715344678497365, 51.45933184449234], [-0.25715571677916016, 51.4591600816381], [-0.2572464977274907, 51.458967249682196], [-0.2573174606221211, 51.45880549776347], [-0.2577022763475615, 51.458340057390366], [-0.2581505463120776, 51.45768218618242], [-0.2583408949773329, 51.4573334197896], [-0.25852599199374293, 51.45693234386707], [-0.25852904387193715, 51.45692699527025], [-0.2587317034057864, 51.456482219363025], [-0.2589547276346913, 51.45599180722078], [-0.2590184903013795, 51.45563846283165], [-0.2590801914876478, 51.45526441105115], [-0.25911300533264675, 51.45493218272834], [-0.2549888214858828, 51.45290603969742], [-0.2524483483624906, 51.45166589001185], [-0.2492851438468841, 51.45011873075526], [-0.24732636296346244, 51.44918031393571], [-0.24728668286472258, 51.44912578127204], [-0.2472451324736549, 51.44908290750679], [-0.24707612333740456, 51.44891038142148], [-0.24668409244236264, 51.44851336812554], [-0.24600998605472588, 51.44785403322393], [-0.24552479880032663, 51.447371116919605], [-0.24504771554384255, 51.44689991681548], [-0.2445000594586484, 51.44636023355363], [-0.24424464209652288, 51.44607763128628], [-0.24302900457959972, 51.44471866254366], [-0.2425605785055948, 51.44417476325613], [-0.24204684198397589, 51.44361229258178], [-0.24162922913432597, 51.44313297976736], [-0.24165945799225036, 51.44309657452147], [-0.24196367032194452, 51.44274414748239], [-0.2424556508453289, 51.44222273762253], [-0.24272917564664737, 51.44191839408007], [-0.24320323546118827, 51.441715135405765], [-0.2437747468778971, 51.441482679229225], [-0.24445438335564368, 51.441208687993154], [-0.24502601994139825, 51.44097263167071], [-0.24594571125069978, 51.44059164947786], [-0.24793625059394792, 51.43978778245345], [-0.24906288391899895, 51.439336151511434], [-0.2511516296259848, 51.43848335361843], [-0.2520430778043634, 51.43812168040975], [-0.2532734298114964, 51.43762651638618], [-0.25409054589081975, 51.437290689823676], [-0.2545071304132068, 51.4371206015138], [-0.2550303810778094, 51.43690634096496], [-0.2551389213177255, 51.43685042120886], [-0.25526904274399276, 51.4367947326714], [-0.25568297491852526, 51.43661929668903], [-0.2561804534665914, 51.43662669837875], [-0.25620827135634333, 51.436653182947836], [-0.25636054707781764, 51.436582629821224], [-0.25633545365330734, 51.436562478753174], [-0.25645717335606855, 51.436503067965276], [-0.25627929667574395, 51.43637366433779], [-0.256343668065362, 51.43634675314621], [-0.2565465679726206, 51.436457650038186], [-0.25675873503545105, 51.43651834088098], [-0.2573343388990556, 51.43662677739244], [-0.25794369284034924, 51.4367212388759], [-0.25900671357497973, 51.43687727441825], [-0.2598884330912584, 51.43700013328458], [-0.26047220801689003, 51.437084312945764], [-0.26127267886994016, 51.4371851889407], [-0.26232552338512033, 51.437269213957975], [-0.2635577156392682, 51.43732882673639], [-0.2646375583191963, 51.43738617125448], [-0.2655958462120703, 51.43742372756422], [-0.2657921326172872, 51.437443712427424], [-0.26599952801257537, 51.43747734614057], [-0.26617255181498795, 51.43754463272566], [-0.26645099390362553, 51.43771335586456], [-0.2667048755069036, 51.4379229788086], [-0.2669752108685785, 51.43819316665617], [-0.2673200507369539, 51.43862636318323], [-0.26758248134464246, 51.43891441251242], [-0.26778689356600316, 51.439027110014585], [-0.26813761829746374, 51.43914826177811], [-0.26828880040635794, 51.43922241439728], [-0.2683038859294636, 51.43939443415578], [-0.26830865535056336, 51.43957259444078], [-0.2682878431541415, 51.43981861012112], [-0.26834652556310246, 51.44001734457935], [-0.26834854703867483, 51.44023052483964], [-0.2683181998595734, 51.440462015819435], [-0.2685368446297434, 51.44046524548018], [-0.2687317151309711, 51.44052305187063], [-0.26910763217551786, 51.440740764535114], [-0.2695910426737869, 51.440970940526164], [-0.27036176837119463, 51.441327616595856], [-0.2712735926998245, 51.44168367138638], [-0.27205584679294187, 51.44200274861429], [-0.27252546444930037, 51.4421778706812], [-0.27318324808739386, 51.44244116668052], [-0.27378266891625114, 51.442685529871795], [-0.2739395464894299, 51.442725597351064], [-0.2747429757031727, 51.443094502428586], [-0.27504984291409096, 51.443234765439946], [-0.2757280872943948, 51.44352891361333], [-0.2766132484127256, 51.44386745331416], [-0.2768518374393686, 51.44395276847448], [-0.278380388761033, 51.44451659704062], [-0.2789538710840003, 51.444726480838966], [-0.27916983547605423, 51.44480157020422], [-0.2794143744345357, 51.44483932107748], [-0.27970750562725266, 51.44492902680469], [-0.28002751918111707, 51.44514327638178], [-0.28054958983472533, 51.44538296353392], [-0.28103503995160045, 51.44559954677705], [-0.2813245827461295, 51.445781881378906], [-0.2819129935859604, 51.44613221135616], [-0.28219219007232305, 51.446283736670765], [-0.28303238016530496, 51.44667559733911], [-0.28296219399621897, 51.44693347763183], [-0.2827673417546071, 51.44760144763246], [-0.28274661235405446, 51.44765427411122], [-0.2826944232197531, 51.44778026677393], [-0.28268056252561813, 51.44795995100367], [-0.28272499161090203, 51.44800285420504], [-0.28269680095807886, 51.44817864267385], [-0.28262218747134815, 51.44855440493604], [-0.28262324520406185, 51.44868117756398], [-0.28266057305767955, 51.448989267736195], [-0.2826751209864015, 51.44933208466708], [-0.28269583602943243, 51.449393519203305]]], "type": "Polygon"}, "id": "397", "properties": {"DISTRICT": "Richmond upon Thames", "GSS_CODE": "E05000517", "HECTARES": 583.319, "LAGSSCODE": "E09000027", "NAME": "East Sheen", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_3131cc63c805dca1e4356351242420b5.addTo(map_674bc83acc944203216f64bcd3f1641d);
+        
+    
+        function geo_json_f39c981c0c9fb19134f1bed1691a281f_styler(feature) {
+            switch(feature.id) {
+                case "3627": case "3628": case "3632": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_f39c981c0c9fb19134f1bed1691a281f_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_f39c981c0c9fb19134f1bed1691a281f = L.geoJson(null, {
+                onEachFeature: geo_json_f39c981c0c9fb19134f1bed1691a281f_onEachFeature,
+            
+                style: geo_json_f39c981c0c9fb19134f1bed1691a281f_styler,
+            ...{
+}
+        });
+
+        function geo_json_f39c981c0c9fb19134f1bed1691a281f_add (data) {
+            geo_json_f39c981c0c9fb19134f1bed1691a281f
+                .addData(data);
+        }
+            geo_json_f39c981c0c9fb19134f1bed1691a281f_add({"features": [{"geometry": {"coordinates": [[[[-0.26777749086799557, 51.464086065636394], [-0.2717724825030819, 51.46452431298189], [-0.2781676409035359, 51.464279063909345], [-0.2780753841678909, 51.461201022497335], [-0.2685311705075026, 51.461613650976545], [-0.26777749086799557, 51.464086065636394]]]], "type": "MultiPolygon"}, "id": "3627", "properties": {"BNG_E": 519923, "BNG_N": 175171, "DISTRICT": "Richmond upon Thames", "GSS_CODE": "E05000517", "GlobalID": "{4B02E6D0-91AE-408F-B056-47CCAF2FAB34}", "HECTARES": 583.319, "LAGSSCODE": "E09000027", "LAT": 51.46281814575195, "LONG": -0.27507999539375305, "LSOA21CD": "E01003804", "LSOA21NM": "Richmond upon Thames 005A", "LSOA21NMW": " ", "NAME": "East Sheen", "NONLD_AREA": 0.0, "WD24NM": "East Sheen", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2826925921175879, 51.449384227575216], [-0.2709111321763082, 51.45178831844313], [-0.2685311705075026, 51.461613650976545], [-0.2780753841678909, 51.461201022497335], [-0.28077912794334003, 51.459087031462815], [-0.27764519052636444, 51.45270234754242], [-0.2827154492707685, 51.449454721408856], [-0.2826925921175879, 51.449384227575216]]]], "type": "MultiPolygon"}, "id": "3628", "properties": {"BNG_E": 519962, "BNG_N": 174440, "DISTRICT": "Richmond upon Thames", "GSS_CODE": "E05000517", "GlobalID": "{75A82451-1EA8-4240-A693-F948EB98EFDB}", "HECTARES": 583.319, "LAGSSCODE": "E09000027", "LAT": 51.456241607666016, "LONG": -0.27476999163627625, "LSOA21CD": "E01003805", "LSOA21NM": "Richmond upon Thames 012A", "LSOA21NMW": " ", "NAME": "East Sheen", "NONLD_AREA": 0.0, "WD24NM": "East Sheen", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.26582530250893815, 51.463887970095996], [-0.26777749086799557, 51.464086065636394], [-0.2685311705075026, 51.461613650976545], [-0.2709111321763082, 51.45178831844313], [-0.2826925921175879, 51.449384227575216], [-0.2830324094585047, 51.4466759245494], [-0.2682427438395501, 51.43920038313964], [-0.2562810814111606, 51.4363179417922], [-0.2540359238284763, 51.437240535460475], [-0.24267565608269565, 51.441915324952994], [-0.2430802241035178, 51.44470397132914], [-0.24564718003563457, 51.44744745252665], [-0.2495547165023031, 51.450250176126005], [-0.2535142715937331, 51.452185629963594], [-0.25843049077872465, 51.45697888866257], [-0.26582530250893815, 51.463887970095996]]]], "type": "MultiPolygon"}, "id": "3629", "properties": {"BNG_E": 520857, "BNG_N": 173644, "DISTRICT": "Richmond upon Thames", "GSS_CODE": "E05000517", "GlobalID": "{5057C04E-6807-47B5-B939-9E2651018612}", "HECTARES": 583.319, "LAGSSCODE": "E09000027", "LAT": 51.448890686035156, "LONG": -0.2621699869632721, "LSOA21CD": "E01003806", "LSOA21NM": "Richmond upon Thames 012B", "LSOA21NMW": " ", "NAME": "East Sheen", "NONLD_AREA": 0.0, "WD24NM": "East Sheen", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.263483238138754, 51.46779619640644], [-0.2635478255090519, 51.46780362299651], [-0.27091974942386976, 51.46769517737679], [-0.2715332743821243, 51.467589839603384], [-0.2717724825030819, 51.46452431298189], [-0.26777749086799557, 51.464086065636394], [-0.26582530250893815, 51.463887970095996], [-0.26364868388555635, 51.464641094684765], [-0.2666629421726742, 51.4664505496215], [-0.263483238138754, 51.46779619640644]]]], "type": "MultiPolygon"}, "id": "3630", "properties": {"BNG_E": 520424, "BNG_N": 175547, "DISTRICT": "Richmond upon Thames", "GSS_CODE": "E05000517", "GlobalID": "{97547649-AA62-4FD7-99D3-F1016D0B44D1}", "HECTARES": 583.319, "LAGSSCODE": "E09000027", "LAT": 51.46609115600586, "LONG": -0.26774999499320984, "LSOA21CD": "E01003807", "LSOA21NM": "Richmond upon Thames 005B", "LSOA21NMW": " ", "NAME": "East Sheen", "NONLD_AREA": 0.0, "WD24NM": "East Sheen", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2596128351444006, 51.467634047335174], [-0.263483238138754, 51.46779619640644], [-0.2666629421726742, 51.4664505496215], [-0.26364868388555635, 51.464641094684765], [-0.25907557051898533, 51.46650514573588], [-0.2596128351444006, 51.467634047335174]]]], "type": "MultiPolygon"}, "id": "3631", "properties": {"BNG_E": 520771, "BNG_N": 175559, "DISTRICT": "Richmond upon Thames", "GSS_CODE": "E05000517", "GlobalID": "{EC606DC6-D44D-488F-9970-1F265CC43574}", "HECTARES": 583.319, "LAGSSCODE": "E09000027", "LAT": 51.466121673583984, "LONG": -0.2627499997615814, "LSOA21CD": "E01003808", "LSOA21NM": "Richmond upon Thames 005C", "LSOA21NMW": " ", "NAME": "East Sheen", "NONLD_AREA": 0.0, "WD24NM": "East Sheen", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.25454044427854894, 51.46519628630838], [-0.25907557051898533, 51.46650514573588], [-0.26364868388555635, 51.464641094684765], [-0.26582530250893815, 51.463887970095996], [-0.25843049077872465, 51.45697888866257], [-0.2550382114847207, 51.46383388036275], [-0.2529156623357952, 51.46521629405256], [-0.25454044427854894, 51.46519628630838]]]], "type": "MultiPolygon"}, "id": "3632", "properties": {"BNG_E": 521009, "BNG_N": 175056, "DISTRICT": "Richmond upon Thames", "GSS_CODE": "E05000517", "GlobalID": "{956E1272-F103-48B4-B2B4-754DF5417423}", "HECTARES": 583.319, "LAGSSCODE": "E09000027", "LAT": 51.461551666259766, "LONG": -0.25949999690055847, "LSOA21CD": "E01003809", "LSOA21NM": "Richmond upon Thames 005D", "LSOA21NMW": " ", "NAME": "East Sheen", "NONLD_AREA": 0.0, "WD24NM": "East Sheen", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_f39c981c0c9fb19134f1bed1691a281f.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_f39c981c0c9fb19134f1bed1691a281f.addTo(map_674bc83acc944203216f64bcd3f1641d);
+        
+    
+            var feature_group_dd9a4da4a13603742218be0a3fc0f913 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_b6a98ca158f61beca451eddd4e3791b0 = L.marker(
+                [51.4659411, -0.2700936],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_d6f75dc83cefdf2a2633fcf4d2cfe99e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c6b84e68b7d832c8295ceb93d99f7502 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c4bb97a79d91e772f3e07eae56733484 = $(`<div id="html_c4bb97a79d91e772f3e07eae56733484" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c6b84e68b7d832c8295ceb93d99f7502.setContent(html_c4bb97a79d91e772f3e07eae56733484);
+            
+        
+
+        marker_b6a98ca158f61beca451eddd4e3791b0.bindPopup(popup_c6b84e68b7d832c8295ceb93d99f7502)
+        ;
+
+        
+    
+    
+                marker_b6a98ca158f61beca451eddd4e3791b0.setIcon(icon_d6f75dc83cefdf2a2633fcf4d2cfe99e);
+            
+    
+            var marker_a5279972ea828bc60c28a667bad13c95 = L.marker(
+                [51.464747, -0.2667153],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_698c19bc1b5f0d4515debdb388eb8a72 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9e38d34dc40791ec7d262f5d82abee61 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c2f7dde04b92dcf53bcb93fcb683d39c = $(`<div id="html_c2f7dde04b92dcf53bcb93fcb683d39c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_9e38d34dc40791ec7d262f5d82abee61.setContent(html_c2f7dde04b92dcf53bcb93fcb683d39c);
+            
+        
+
+        marker_a5279972ea828bc60c28a667bad13c95.bindPopup(popup_9e38d34dc40791ec7d262f5d82abee61)
+        ;
+
+        
+    
+    
+                marker_a5279972ea828bc60c28a667bad13c95.setIcon(icon_698c19bc1b5f0d4515debdb388eb8a72);
+            
+    
+            var marker_701ba76a75661fa3c93c9ee81b945cdb = L.marker(
+                [51.4676504, -0.2635501],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_27a15069faccf0ca7c144900167e5db6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dd3e2e70a6eede8310865f3c85edcd50 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d8578ea17738ea733a8e2d40c7998c74 = $(`<div id="html_d8578ea17738ea733a8e2d40c7998c74" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005B (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_dd3e2e70a6eede8310865f3c85edcd50.setContent(html_d8578ea17738ea733a8e2d40c7998c74);
+            
+        
+
+        marker_701ba76a75661fa3c93c9ee81b945cdb.bindPopup(popup_dd3e2e70a6eede8310865f3c85edcd50)
+        ;
+
+        
+    
+    
+                marker_701ba76a75661fa3c93c9ee81b945cdb.setIcon(icon_27a15069faccf0ca7c144900167e5db6);
+            
+    
+            var marker_a9c7446c1efeeb5854c09975e6d17afc = L.marker(
+                [51.457613, -0.262967],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_326fa8fb80700646123c119f3f292ac2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_27683e62a240c5c7fb270cc44b466f3d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e8ca4324a5394bc877d99dc3a3e2d390 = $(`<div id="html_e8ca4324a5394bc877d99dc3a3e2d390" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_27683e62a240c5c7fb270cc44b466f3d.setContent(html_e8ca4324a5394bc877d99dc3a3e2d390);
+            
+        
+
+        marker_a9c7446c1efeeb5854c09975e6d17afc.bindPopup(popup_27683e62a240c5c7fb270cc44b466f3d)
+        ;
+
+        
+    
+    
+                marker_a9c7446c1efeeb5854c09975e6d17afc.setIcon(icon_326fa8fb80700646123c119f3f292ac2);
+            
+    
+            var marker_c0b6bb06f3c8dcbfebed88fe91feef2c = L.marker(
+                [51.457613, -0.262967],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_19c95bc9cd1f1b9fa6f82b87c29f70b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_33fe5eddc302881cc4b2964f20acbe63 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_83e09919caa8c687ef3fe21c4b0a84ea = $(`<div id="html_83e09919caa8c687ef3fe21c4b0a84ea" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_33fe5eddc302881cc4b2964f20acbe63.setContent(html_83e09919caa8c687ef3fe21c4b0a84ea);
+            
+        
+
+        marker_c0b6bb06f3c8dcbfebed88fe91feef2c.bindPopup(popup_33fe5eddc302881cc4b2964f20acbe63)
+        ;
+
+        
+    
+    
+                marker_c0b6bb06f3c8dcbfebed88fe91feef2c.setIcon(icon_19c95bc9cd1f1b9fa6f82b87c29f70b6);
+            
+    
+            var marker_d51aaab7b02f72cd9124a5e7b44f17b8 = L.marker(
+                [51.457613, -0.262967],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_511f8d2f835b80e8509b60a4cfdeda6c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e005949d4313ebf1e19e86f8720bf75d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd456a22f4b237bf4bc4ba33a839bce5 = $(`<div id="html_cd456a22f4b237bf4bc4ba33a839bce5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012B (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_e005949d4313ebf1e19e86f8720bf75d.setContent(html_cd456a22f4b237bf4bc4ba33a839bce5);
+            
+        
+
+        marker_d51aaab7b02f72cd9124a5e7b44f17b8.bindPopup(popup_e005949d4313ebf1e19e86f8720bf75d)
+        ;
+
+        
+    
+    
+                marker_d51aaab7b02f72cd9124a5e7b44f17b8.setIcon(icon_511f8d2f835b80e8509b60a4cfdeda6c);
+            
+    
+            var marker_b100e3d9ec2d6eb477f6685e25e0d060 = L.marker(
+                [51.4625836, -0.2654159],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_c88c85a590ec6146c84788fc11149c9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6e348f479617ae592156dc6ffe9d24f5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_15403a14511aa2460c2fe19ecf18388a = $(`<div id="html_15403a14511aa2460c2fe19ecf18388a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012B (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_6e348f479617ae592156dc6ffe9d24f5.setContent(html_15403a14511aa2460c2fe19ecf18388a);
+            
+        
+
+        marker_b100e3d9ec2d6eb477f6685e25e0d060.bindPopup(popup_6e348f479617ae592156dc6ffe9d24f5)
+        ;
+
+        
+    
+    
+                marker_b100e3d9ec2d6eb477f6685e25e0d060.setIcon(icon_c88c85a590ec6146c84788fc11149c9a);
+            
+    
+            var marker_25057954f250f36a58980c3eb3631509 = L.marker(
+                [51.4563273, -0.2672431],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_61b313011bc309d0f4d876dc3fb1cbd4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52e462a0d77829ac56059d23ee511d47 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_800164cfc6614ca296098401eb79a545 = $(`<div id="html_800164cfc6614ca296098401eb79a545" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012B (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_52e462a0d77829ac56059d23ee511d47.setContent(html_800164cfc6614ca296098401eb79a545);
+            
+        
+
+        marker_25057954f250f36a58980c3eb3631509.bindPopup(popup_52e462a0d77829ac56059d23ee511d47)
+        ;
+
+        
+    
+    
+                marker_25057954f250f36a58980c3eb3631509.setIcon(icon_61b313011bc309d0f4d876dc3fb1cbd4);
+            
+    
+            var marker_8aeaf604458cb4c61566cf1448f04e86 = L.marker(
+                [51.4657157, -0.2636776],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_7f34d4cd241474f043d22c636e50ad22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2bb7b837c6a2595406c744d3d13eb88b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_52ce99770cc1ebb7764ccfeb3e16460e = $(`<div id="html_52ce99770cc1ebb7764ccfeb3e16460e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_2bb7b837c6a2595406c744d3d13eb88b.setContent(html_52ce99770cc1ebb7764ccfeb3e16460e);
+            
+        
+
+        marker_8aeaf604458cb4c61566cf1448f04e86.bindPopup(popup_2bb7b837c6a2595406c744d3d13eb88b)
+        ;
+
+        
+    
+    
+                marker_8aeaf604458cb4c61566cf1448f04e86.setIcon(icon_7f34d4cd241474f043d22c636e50ad22);
+            
+    
+            var marker_ef58a697399533c080346f179872ad90 = L.marker(
+                [51.4665611, -0.2634708],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_3462b7f6498633ca1834cfb69a7e1f05 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_29852a7ad38c0ff75bcd0d77d3f947af = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_134a74db6187b5b9689f4c319aaac441 = $(`<div id="html_134a74db6187b5b9689f4c319aaac441" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005C (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_29852a7ad38c0ff75bcd0d77d3f947af.setContent(html_134a74db6187b5b9689f4c319aaac441);
+            
+        
+
+        marker_ef58a697399533c080346f179872ad90.bindPopup(popup_29852a7ad38c0ff75bcd0d77d3f947af)
+        ;
+
+        
+    
+    
+                marker_ef58a697399533c080346f179872ad90.setIcon(icon_3462b7f6498633ca1834cfb69a7e1f05);
+            
+    
+            var marker_70eb3aa4a7fb24e856071cba5a74f2b7 = L.marker(
+                [51.4635967, -0.2734721],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_87ba11c29c821e93028837be6f4e1cac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_60ecf6c195c5ac96500927fa2e9f27ba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d88cd6abc56346253b624845e171da81 = $(`<div id="html_d88cd6abc56346253b624845e171da81" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_60ecf6c195c5ac96500927fa2e9f27ba.setContent(html_d88cd6abc56346253b624845e171da81);
+            
+        
+
+        marker_70eb3aa4a7fb24e856071cba5a74f2b7.bindPopup(popup_60ecf6c195c5ac96500927fa2e9f27ba)
+        ;
+
+        
+    
+    
+                marker_70eb3aa4a7fb24e856071cba5a74f2b7.setIcon(icon_87ba11c29c821e93028837be6f4e1cac);
+            
+    
+            var marker_d5aeab456e0c5d7473624cc2b1b731ae = L.marker(
+                [51.4618076, -0.274998],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_4009f20fbfda88540960f66d06e30d30 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6c5994497f7e982ad941ac047c69d13 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b52301e705c338c353ce92cc6a86003d = $(`<div id="html_b52301e705c338c353ce92cc6a86003d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_e6c5994497f7e982ad941ac047c69d13.setContent(html_b52301e705c338c353ce92cc6a86003d);
+            
+        
+
+        marker_d5aeab456e0c5d7473624cc2b1b731ae.bindPopup(popup_e6c5994497f7e982ad941ac047c69d13)
+        ;
+
+        
+    
+    
+                marker_d5aeab456e0c5d7473624cc2b1b731ae.setIcon(icon_4009f20fbfda88540960f66d06e30d30);
+            
+    
+            var marker_90e1034c119dec679673149456cca03f = L.marker(
+                [51.4635683, -0.2718744],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_5eebffeb2872e5b35b9713256d4c2f30 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8ef5303287ae7dc16c4a20e567f782f2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_989beb424e25e3b89fa0dedb39bf60dc = $(`<div id="html_989beb424e25e3b89fa0dedb39bf60dc" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8ef5303287ae7dc16c4a20e567f782f2.setContent(html_989beb424e25e3b89fa0dedb39bf60dc);
+            
+        
+
+        marker_90e1034c119dec679673149456cca03f.bindPopup(popup_8ef5303287ae7dc16c4a20e567f782f2)
+        ;
+
+        
+    
+    
+                marker_90e1034c119dec679673149456cca03f.setIcon(icon_5eebffeb2872e5b35b9713256d4c2f30);
+            
+    
+            var marker_6b08a25d706da97f886e07f363166e02 = L.marker(
+                [51.4622, -0.2717926],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_d3b125423e7b784bea77a038cdebad30 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b4676a44f81ed41690f49606ed9d2d9f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d03f92b53524b4c55691a6c8f71d34da = $(`<div id="html_d03f92b53524b4c55691a6c8f71d34da" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005A (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_b4676a44f81ed41690f49606ed9d2d9f.setContent(html_d03f92b53524b4c55691a6c8f71d34da);
+            
+        
+
+        marker_6b08a25d706da97f886e07f363166e02.bindPopup(popup_b4676a44f81ed41690f49606ed9d2d9f)
+        ;
+
+        
+    
+    
+                marker_6b08a25d706da97f886e07f363166e02.setIcon(icon_d3b125423e7b784bea77a038cdebad30);
+            
+    
+            var marker_ce70ee939c5985cdea84224130ee0313 = L.marker(
+                [51.4588887, -0.2765154],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_378c0547b0e1f7301e3fb8d0378943ae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_90b592ed384c3bc6b04eb0d51362ff5d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00de69849868a6d8b65c3f9fed4059f9 = $(`<div id="html_00de69849868a6d8b65c3f9fed4059f9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_90b592ed384c3bc6b04eb0d51362ff5d.setContent(html_00de69849868a6d8b65c3f9fed4059f9);
+            
+        
+
+        marker_ce70ee939c5985cdea84224130ee0313.bindPopup(popup_90b592ed384c3bc6b04eb0d51362ff5d)
+        ;
+
+        
+    
+    
+                marker_ce70ee939c5985cdea84224130ee0313.setIcon(icon_378c0547b0e1f7301e3fb8d0378943ae);
+            
+    
+            var marker_c3d3daea241b25127d7911070fbeb222 = L.marker(
+                [51.4588555, -0.2753636],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_722036a16883acb9fcd921932ce30774 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7cc41fe62862b64db13b6ad92d26e7f1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_73524545cb9876b88c5a152491ac530a = $(`<div id="html_73524545cb9876b88c5a152491ac530a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7cc41fe62862b64db13b6ad92d26e7f1.setContent(html_73524545cb9876b88c5a152491ac530a);
+            
+        
+
+        marker_c3d3daea241b25127d7911070fbeb222.bindPopup(popup_7cc41fe62862b64db13b6ad92d26e7f1)
+        ;
+
+        
+    
+    
+                marker_c3d3daea241b25127d7911070fbeb222.setIcon(icon_722036a16883acb9fcd921932ce30774);
+            
+    
+            var marker_b60763009702221d19d579c954129927 = L.marker(
+                [51.4583281, -0.2690059],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_992ba22b10b7382f1a8de20c269f553f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1de7cb9075e55f620168e488b5415273 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_414bd2812bb84e5f0e1516986442b581 = $(`<div id="html_414bd2812bb84e5f0e1516986442b581" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_1de7cb9075e55f620168e488b5415273.setContent(html_414bd2812bb84e5f0e1516986442b581);
+            
+        
+
+        marker_b60763009702221d19d579c954129927.bindPopup(popup_1de7cb9075e55f620168e488b5415273)
+        ;
+
+        
+    
+    
+                marker_b60763009702221d19d579c954129927.setIcon(icon_992ba22b10b7382f1a8de20c269f553f);
+            
+    
+            var marker_440a1a69207f1d168d405e457f90f394 = L.marker(
+                [51.4588887, -0.2765154],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_8e07601cef64e7a69d4f5c878cd973c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9d3861de30ded9276f142f39e9325166 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_108e59c7f5c712f564c85344a2945578 = $(`<div id="html_108e59c7f5c712f564c85344a2945578" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012A (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9d3861de30ded9276f142f39e9325166.setContent(html_108e59c7f5c712f564c85344a2945578);
+            
+        
+
+        marker_440a1a69207f1d168d405e457f90f394.bindPopup(popup_9d3861de30ded9276f142f39e9325166)
+        ;
+
+        
+    
+    
+                marker_440a1a69207f1d168d405e457f90f394.setIcon(icon_8e07601cef64e7a69d4f5c878cd973c3);
+            
+    
+            var marker_9f160bfe46451d61d92681ca52b1946b = L.marker(
+                [51.4599417, -0.2699491],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_09de840b95239446d3089982c14170ba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c4c44a155fe2236ec0b9607f449c0491 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_075f2d9410127f0ce10890f674388444 = $(`<div id="html_075f2d9410127f0ce10890f674388444" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 012A (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c4c44a155fe2236ec0b9607f449c0491.setContent(html_075f2d9410127f0ce10890f674388444);
+            
+        
+
+        marker_9f160bfe46451d61d92681ca52b1946b.bindPopup(popup_c4c44a155fe2236ec0b9607f449c0491)
+        ;
+
+        
+    
+    
+                marker_9f160bfe46451d61d92681ca52b1946b.setIcon(icon_09de840b95239446d3089982c14170ba);
+            
+    
+            var marker_7f9775e32f8e805927e6b1f717eb7662 = L.marker(
+                [51.4651822, -0.2552399],
+                {
+}
+            ).addTo(feature_group_dd9a4da4a13603742218be0a3fc0f913);
+        
+    
+            var icon_82a7b162f4a88113df114b5e6f66c9c5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_69553f68097163acb6d640cc4c23bec8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0cd2221b935b9bbf1d25479019b24007 = $(`<div id="html_0cd2221b935b9bbf1d25479019b24007" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Richmond upon Thames 005D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_69553f68097163acb6d640cc4c23bec8.setContent(html_0cd2221b935b9bbf1d25479019b24007);
+            
+        
+
+        marker_7f9775e32f8e805927e6b1f717eb7662.bindPopup(popup_69553f68097163acb6d640cc4c23bec8)
+        ;
+
+        
+    
+    
+                marker_7f9775e32f8e805927e6b1f717eb7662.setIcon(icon_82a7b162f4a88113df114b5e6f66c9c5);
+            
+    
+            feature_group_dd9a4da4a13603742218be0a3fc0f913.addTo(map_674bc83acc944203216f64bcd3f1641d);
+        
+    
+            var poly_line_822d9a113c5d0eeb195ce1e19eee7d4f = L.polyline(
+                [[51.4659411, -0.2700936], [51.4665649, -0.2702171], [51.4665712, -0.2701595], [51.4666526, -0.2691931], [51.4666874, -0.2682395], [51.466532, -0.2668365], [51.4668989, -0.2667337], [51.4667846, -0.2657302], [51.4666806, -0.2648946], [51.4666403, -0.2642588], [51.466216, -0.2645505], [51.4659841, -0.2643324], [51.4660249, -0.264006], [51.4656882, -0.2638772], [51.4657157, -0.2636776], [51.4656882, -0.2638772], [51.4660249, -0.264006], [51.4659841, -0.2643324], [51.466216, -0.2645505], [51.4666403, -0.2642588], [51.4665611, -0.2634708], [51.4665599, -0.2634306], [51.4671176, -0.2630498], [51.4676061, -0.2629157], [51.4676504, -0.2635501], [51.4676061, -0.2629157], [51.4675805, -0.2621066], [51.467568, -0.2611207], [51.4675603, -0.260583], [51.4675565, -0.2599576], [51.4666674, -0.259735], [51.46509, -0.2592914], [51.465099, -0.2596202], [51.4638788, -0.2597861], [51.4638204, -0.2586609], [51.4638046, -0.2576786], [51.4637548, -0.2570634], [51.465136, -0.2568066], [51.4651529, -0.2564994], [51.4651822, -0.2552399], [51.4651529, -0.2564994], [51.465136, -0.2568066], [51.4637548, -0.2570634], [51.4607879, -0.260016], [51.4606708, -0.2611552], [51.4605946, -0.2612305], [51.460217, -0.2617168], [51.4601186, -0.2622873], [51.4586451, -0.2630648], [51.4579173, -0.2629523], [51.457613, -0.262967], [51.4579173, -0.2629523], [51.4580724, -0.2656117], [51.4570289, -0.2676206], [51.4569828, -0.2676157], [51.4568345, -0.2675517], [51.4563273, -0.2672431], [51.4568345, -0.2675517], [51.4569828, -0.2676157], [51.4570289, -0.2676206], [51.4580724, -0.2656117], [51.4588276, -0.2654611], [51.4587014, -0.2639324], [51.4586451, -0.2630648], [51.4601186, -0.2622873], [51.4601694, -0.2637209], [51.4600083, -0.2657145], [51.4599791, -0.2663667], [51.4599756, -0.2679189], [51.4599166, -0.2681083], [51.4607629, -0.2684158], [51.4607996, -0.2691314], [51.4607989, -0.2693819], [51.4613612, -0.2693688], [51.461219, -0.2699402], [51.4622, -0.2717926], [51.4626754, -0.2727264], [51.4632011, -0.2720659], [51.4635683, -0.2718744], [51.4635967, -0.2734721], [51.4618433, -0.2739924], [51.4618076, -0.274998], [51.4617826, -0.2754567], [51.4608595, -0.275427], [51.4601447, -0.2754059], [51.4593379, -0.2753733], [51.4588555, -0.2753636], [51.4593379, -0.2753733], [51.4592848, -0.2765279], [51.4588887, -0.2765154], [51.4592848, -0.2765279], [51.4593379, -0.2753733], [51.4601447, -0.2754059], [51.4608595, -0.275427], [51.4617826, -0.2754567], [51.4618076, -0.274998], [51.4618433, -0.2739924], [51.4626754, -0.2727264], [51.4622, -0.2717926], [51.461219, -0.2699402], [51.4613612, -0.2693688], [51.4607989, -0.2693819], [51.4607996, -0.2691314], [51.4607629, -0.2684158], [51.4599166, -0.2681083], [51.4597781, -0.2689415], [51.4599417, -0.2699491], [51.4583281, -0.2690059], [51.4597781, -0.2689415], [51.4599166, -0.2681083], [51.4599756, -0.2679189], [51.4625836, -0.2654159], [51.4634734, -0.2652635], [51.464871, -0.2650638], [51.464747, -0.2667153], [51.464871, -0.2650638], [51.4634734, -0.2652635], [51.4625836, -0.2654159], [51.4629246, -0.2676557], [51.4630888, -0.2688998], [51.4641271, -0.2706249], [51.4641475, -0.2711765], [51.4649803, -0.2712734], [51.4658114, -0.2714213], [51.4664348, -0.2715389], [51.4664852, -0.2709776], [51.4665649, -0.2702171], [51.4659411, -0.2700936]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_674bc83acc944203216f64bcd3f1641d);
+        
+    
+            var layer_control_81ccb53356ac83b4a91a04d4ea66f2a5_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_7ba24d1e88fbeb1ab2adfecaf1e17d62,
+                },
+                overlays :  {
+                    "East Sheen Boundary" : geo_json_3131cc63c805dca1e4356351242420b5,
+                    "LSOA Median Crime Rates for East Sheen" : geo_json_f39c981c0c9fb19134f1bed1691a281f,
+                    "Patrol Waypoints" : feature_group_dd9a4da4a13603742218be0a3fc0f913,
+                },
+            };
+            let layer_control_81ccb53356ac83b4a91a04d4ea66f2a5 = L.control.layers(
+                layer_control_81ccb53356ac83b4a91a04d4ea66f2a5_layers.base_layers,
+                layer_control_81ccb53356ac83b4a91a04d4ea66f2a5_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_674bc83acc944203216f64bcd3f1641d);
+
+        
+</script>
+</html>

@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ea5261ac95452787f5460a5618db7486 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ea5261ac95452787f5460a5618db7486" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ea5261ac95452787f5460a5618db7486 = L.map(
+                "map_ea5261ac95452787f5460a5618db7486",
+                {
+                    center: [51.5870856823839, 0.0016554871573806213],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e88218bedc95d2a38e21d02a8684adad = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e88218bedc95d2a38e21d02a8684adad.addTo(map_ea5261ac95452787f5460a5618db7486);
+        
+    
+        function geo_json_251f6f7a1aa565fd6a5950703a45f735_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_251f6f7a1aa565fd6a5950703a45f735_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_251f6f7a1aa565fd6a5950703a45f735 = L.geoJson(null, {
+                onEachFeature: geo_json_251f6f7a1aa565fd6a5950703a45f735_onEachFeature,
+            
+                style: geo_json_251f6f7a1aa565fd6a5950703a45f735_styler,
+            ...{
+}
+        });
+
+        function geo_json_251f6f7a1aa565fd6a5950703a45f735_add (data) {
+            geo_json_251f6f7a1aa565fd6a5950703a45f735
+                .addData(data);
+        }
+            geo_json_251f6f7a1aa565fd6a5950703a45f735_add({"features": [{"geometry": {"coordinates": [[[-0.00595966613572919, 51.57899011012672], [-0.006176447775498698, 51.57911336074743], [-0.00752759499171848, 51.578944733584365], [-0.007749594640696161, 51.57891883584765], [-0.007894111430434374, 51.57891499633045], [-0.008056236951076753, 51.57893572855083], [-0.008254599849761622, 51.5789877315283], [-0.008529088254309663, 51.57908139122751], [-0.008803028044371511, 51.57918762696639], [-0.00871044637224186, 51.57932369283389], [-0.008721980114425399, 51.579718639436116], [-0.008749305755991718, 51.579755063128644], [-0.008762321727763365, 51.57988743698441], [-0.00886687945654514, 51.580367658900734], [-0.008985687588707039, 51.58048924175471], [-0.00919936649977898, 51.58065387790736], [-0.00926008264935821, 51.5808167279013], [-0.009343666368511102, 51.58088386271551], [-0.009476555358925174, 51.58111356386986], [-0.009704921525174447, 51.58160127893803], [-0.01013448369857224, 51.58230816520493], [-0.010475943707796425, 51.5828526352231], [-0.010097850433244666, 51.582947811357826], [-0.010168078305038134, 51.583091943092136], [-0.009925461111545507, 51.58316163673312], [-0.01002655303665296, 51.58335933291314], [-0.00965336128190239, 51.5834429936672], [-0.009256590134126018, 51.583537850327936], [-0.008839364363421696, 51.583637752583144], [-0.00912473413866917, 51.58410935478106], [-0.009009506224603963, 51.584137066823686], [-0.009126830321824823, 51.58439356401081], [-0.008815999768115122, 51.58450156418814], [-0.008531576723667122, 51.584637071574], [-0.008148396354138873, 51.58484812609816], [-0.007841656057706207, 51.584998536013806], [-0.007877873843538647, 51.585060282799404], [-0.00787351379917542, 51.58506200678265], [-0.00814401009662916, 51.58550899590385], [-0.008149981007312764, 51.585571128196335], [-0.008152805908531595, 51.58560722601262], [-0.008152961948706775, 51.585701623576576], [-0.008129443135109373, 51.585877428219625], [-0.008119053784869453, 51.585981625677626], [-0.008115622742476614, 51.58602741639707], [-0.008053722476872725, 51.586188185553475], [-0.00796510304107108, 51.58646456191002], [-0.007948164965091828, 51.58665315409744], [-0.007974025923704525, 51.5867884429449], [-0.008026688882926151, 51.586939559614244], [-0.008242199232643915, 51.587258856093534], [-0.008304243154168308, 51.587358798995815], [-0.008346155766854033, 51.587489056068925], [-0.00835163001494108, 51.58749723996515], [-0.00837421847801278, 51.587574038229015], [-0.008399766847118805, 51.587716513638625], [-0.00840269525701096, 51.58781284611633], [-0.008395165450641957, 51.58791969919297], [-0.00837726454101825, 51.58796704233465], [-0.00833476923794516, 51.58807869598931], [-0.008202274542648186, 51.58840296365957], [-0.008154303811174572, 51.58860712119098], [-0.008137784782687594, 51.58885415537716], [-0.008144247576350417, 51.58906831667206], [-0.00814935432674883, 51.58915021223277], [-0.008218354210203905, 51.58928982914237], [-0.008275681647207055, 51.58939697385161], [-0.00827679459079461, 51.58940418472964], [-0.008285005744987339, 51.58941511207144], [-0.00831702419807372, 51.58947498938711], [-0.00839684230445861, 51.5895986078034], [-0.008460195113778733, 51.589701359674166], [-0.008564031124041038, 51.58990180043178], [-0.008640625180135492, 51.59009917173527], [-0.00865775368370164, 51.59020015021519], [-0.008650128109267442, 51.59037451643052], [-0.008649539550232965, 51.590488679251116], [-0.008680694894757625, 51.59056831977062], [-0.00875468364299004, 51.59069192889084], [-0.00863151525694524, 51.59073478888366], [-0.008277318560593624, 51.59087801187856], [-0.007829556780291605, 51.59104850340041], [-0.007607000073702118, 51.59112114007838], [-0.0073815083466739016, 51.59119282750489], [-0.007010067905030379, 51.59126751993259], [-0.005878178342432413, 51.59146585001779], [-0.005073949828481278, 51.591599707533305], [-0.004763769713885067, 51.59169422329758], [-0.004328774142666368, 51.59180108969193], [-0.0041019656146603625, 51.59187274846681], [-0.0035608060110044657, 51.592030757481126], [-0.0032686906465756583, 51.592106787555494], [-0.0030195904158450172, 51.59215738800218], [-0.0028709944682533753, 51.5921881223237], [-0.00253653051645121, 51.59224446103244], [-0.002107624676562656, 51.59231267603614], [-0.001689261867249182, 51.59237118001136], [-0.0015628609761835018, 51.59238979452268], [-0.001269466701459618, 51.592429748005685], [-0.001209836202414953, 51.592437722406494], [-0.0009006212270649247, 51.59247740551682], [-0.0005289597031525104, 51.59252411489496], [0.00016405590980309292, 51.59259141757026], [0.0008689317526520859, 51.592663098850885], [0.0025946385826750313, 51.59287189886069], [0.003144691542288095, 51.59293631931584], [0.004147372602128023, 51.593082818498544], [0.004906932313529751, 51.593217370715706], [0.006067861110840885, 51.59345104997751], [0.008706489306443806, 51.59389605160149], [0.008939395077791342, 51.59393791396117], [0.010127050518989095, 51.59415320564872], [0.01014299008851382, 51.594155629634095], [0.010327890693565114, 51.59448518248795], [0.010405569842434946, 51.59464027788933], [0.010467391703746548, 51.59473280477006], [0.010603479251621615, 51.594938142453444], [0.010728142258463023, 51.59491712764817], [0.01088381285799734, 51.59491086442113], [0.011004075356658788, 51.594919591732285], [0.011148486479050576, 51.5949548751055], [0.011640651142913433, 51.595147006983524], [0.01182852314827091, 51.59521480757545], [0.011970128129998424, 51.59531585497881], [0.012053165025754358, 51.595430402445245], [0.012422992338653035, 51.59537012138859], [0.012536633280946643, 51.59536098067099], [0.012536355297032155, 51.59535469243475], [0.012428261026671552, 51.59480258193754], [0.012412233401530911, 51.59466890569325], [0.01237637500616594, 51.59451210557463], [0.012353014020304788, 51.59440642408243], [0.012347379684604955, 51.594343590654525], [0.012342495990274434, 51.594300432467385], [0.012304023376626708, 51.594114100027596], [0.01218811782308208, 51.593452445098904], [0.012174707847723157, 51.59337796806613], [0.012134476771677234, 51.5929901996433], [0.01208509231309641, 51.59268889219778], [0.012090014459897665, 51.59214841842451], [0.012198732044791527, 51.59215734240779], [0.01219111317497911, 51.592116928102534], [0.012264576352057611, 51.592014980382736], [0.012248096282228178, 51.59164208768444], [0.012280325106321441, 51.591552533974124], [0.012275715773041606, 51.591448238999085], [0.012452575216549062, 51.5912699010972], [0.012390819583761625, 51.59094992682406], [0.012390843422786927, 51.5907565512888], [0.012492114509208094, 51.59036815428448], [0.012513440758848887, 51.58980573303003], [0.012575491907179428, 51.589313724310955], [0.012621932570258147, 51.58899369249392], [0.012680774632881258, 51.58862571097378], [0.012832258239319189, 51.58761236546934], [0.012918947289647667, 51.58696161958122], [0.012918867874459505, 51.586959822940145], [0.013032684826271708, 51.58600735606696], [0.013137608174581384, 51.585408439136955], [0.013273387482077072, 51.58456257622509], [0.013325318712166644, 51.58410310431914], [0.013369014751723595, 51.58378581598358], [0.014100202979366299, 51.58341088073704], [0.014865989853095693, 51.583395936638055], [0.014866734150470247, 51.583315912646796], [0.012454456745449694, 51.58337528682128], [0.01092026447083727, 51.583413274403185], [0.00919004290432287, 51.583456396404216], [0.0068389529241131616, 51.583527193345375], [0.006585603760693103, 51.583544111755614], [0.006485230673321852, 51.58355931305126], [0.006322658000745, 51.58360254775087], [0.006232749201653085, 51.58362835793417], [0.006014871581883273, 51.583726477777596], [0.00590181298898853, 51.58378333937674], [0.005853844561403636, 51.58380753334757], [0.005301146332697046, 51.58351572409807], [0.004759908080081447, 51.58325428253384], [0.0043897168684908705, 51.58307442311922], [0.003622192217978444, 51.58272244616945], [0.003474013442758568, 51.58273576412736], [0.0031341557595618414, 51.582587836842535], [0.002176905735982686, 51.58212392698382], [0.0018380043523161737, 51.5819975556904], [0.0014744903385538542, 51.58183914929083], [0.0011305552680088494, 51.581730841845555], [0.0007192676932519007, 51.581633480863836], [0.00045618667880033823, 51.58159391496189], [0.00019310667870272728, 51.58155165145274], [8.84220724198243e-05, 51.58153365775375], [-0.00018249582702773912, 51.581445677958534], [-0.002133676956054742, 51.580497834343035], [-0.0027556511000911862, 51.58020357098566], [-0.0032060208244256427, 51.58003943649086], [-0.003888952488882313, 51.579768679460535], [-0.005303589289329119, 51.579237871683446], [-0.00595966613572919, 51.57899011012672]]], "type": "Polygon"}, "id": "341", "properties": {"DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "NAME": "Wood Street", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_251f6f7a1aa565fd6a5950703a45f735.addTo(map_ea5261ac95452787f5460a5618db7486);
+        
+    
+        function geo_json_3acb6accabd195b5695757fc30b6c90a_styler(feature) {
+            switch(feature.id) {
+                case "4227": case "4232": case "4233": 
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_3acb6accabd195b5695757fc30b6c90a_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_3acb6accabd195b5695757fc30b6c90a = L.geoJson(null, {
+                onEachFeature: geo_json_3acb6accabd195b5695757fc30b6c90a_onEachFeature,
+            
+                style: geo_json_3acb6accabd195b5695757fc30b6c90a_styler,
+            ...{
+}
+        });
+
+        function geo_json_3acb6accabd195b5695757fc30b6c90a_add (data) {
+            geo_json_3acb6accabd195b5695757fc30b6c90a
+                .addData(data);
+        }
+            geo_json_3acb6accabd195b5695757fc30b6c90a_add({"features": [{"geometry": {"coordinates": [[[[-0.0016813407281390355, 51.58670846020312], [-0.0038918287378644214, 51.58905887895612], [-0.00827750939557941, 51.58737013255918], [-0.00787258356469479, 51.5850635494409], [-0.006183606473883972, 51.58268996823223], [-0.004895121080108543, 51.58492497973661], [-0.0020364308397516884, 51.58652936723008], [-0.0016813407281390355, 51.58670846020312]]]], "type": "MultiPolygon"}, "id": "4227", "properties": {"BNG_E": 538232, "BNG_N": 189334, "DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "GlobalID": "{7951C824-6ABA-45CE-83CD-A38F99EFE65A}", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "LAT": 51.58591842651367, "LONG": -0.006130000110715628, "LSOA21CD": "E01004464", "LSOA21NM": "Waltham Forest 013C", "LSOA21NMW": " ", "NAME": "Wood Street", "NONLD_AREA": 0.0, "WD24NM": "Wood Street", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.005174184825410369, 51.58272048373662], [-0.00018087379320728026, 51.582138519244765], [-0.004895121080108543, 51.58492497973661], [-0.006183606473883972, 51.58268996823223], [-0.005174184825410369, 51.58272048373662]]]], "type": "MultiPolygon"}, "id": "4228", "properties": {"BNG_E": 538401, "BNG_N": 189041, "DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "GlobalID": "{E6E186A6-4E28-4483-8603-0E90F0A78AF9}", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "LAT": 51.5832405090332, "LONG": -0.003809999907389283, "LSOA21CD": "E01004465", "LSOA21NM": "Waltham Forest 015B", "LSOA21NMW": " ", "NAME": "Wood Street", "NONLD_AREA": 0.0, "WD24NM": "Wood Street", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.006183606473883972, 51.58268996823223], [-0.00787258356469479, 51.5850635494409], [-0.010180569328102431, 51.58238073455077], [-0.008744095496463872, 51.5795677179065], [-0.006192216219176948, 51.579111096968575], [-0.005174184825410369, 51.58272048373662], [-0.006183606473883972, 51.58268996823223]]]], "type": "MultiPolygon"}, "id": "4229", "properties": {"BNG_E": 538178, "BNG_N": 188781, "DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "GlobalID": "{386AC245-9CEC-426D-B875-24F782104E48}", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "LAT": 51.58095932006836, "LONG": -0.0071299998089671135, "LSOA21CD": "E01004466", "LSOA21NM": "Waltham Forest 015C", "LSOA21NMW": " ", "NAME": "Wood Street", "NONLD_AREA": 0.0, "WD24NM": "Wood Street", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.004101399031676475, 51.58298482714498], [-0.0020364308397516884, 51.58652936723008], [-0.004895121080108543, 51.58492497973661], [-0.00018087379320728026, 51.582138519244765], [-0.005174184825410369, 51.58272048373662], [-0.006192216219176948, 51.579111096968575], [-0.005984590037311653, 51.5789782809249], [-0.0036726142929793884, 51.57989413234055], [0.0014634480865936884, 51.58187382759156], [0.004101399031676475, 51.58298482714498]]]], "type": "MultiPolygon"}, "id": "4230", "properties": {"BNG_E": 538744, "BNG_N": 188987, "DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "GlobalID": "{D8664FD5-2FFE-4FD6-A945-C9353C6A6C53}", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "LAT": 51.58266830444336, "LONG": 0.001117000007070601, "LSOA21CD": "E01004467", "LSOA21NM": "Waltham Forest 015D", "LSOA21NMW": " ", "NAME": "Wood Street", "NONLD_AREA": 0.0, "WD24NM": "Wood Street", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.012236942797733769, 51.59432137814936], [0.012414661437707718, 51.5953199152452], [0.005111343656082095, 51.59325356651487], [0.008487146075033833, 51.5908766640947], [0.003188563352265184, 51.58858024752101], [-0.0016813407281390355, 51.58670846020312], [-0.0020364308397516884, 51.58652936723008], [0.004101399031676475, 51.58298482714498], [0.014348886091175647, 51.58332874787667], [0.012817276834419434, 51.58771133706865], [0.012236942797733769, 51.59432137814936]]]], "type": "MultiPolygon"}, "id": "4231", "properties": {"BNG_E": 539088, "BNG_N": 189448, "DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "GlobalID": "{EC51E268-8338-48E2-BE64-F8C226D12932}", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "LAT": 51.58673095703125, "LONG": 0.006260000169277191, "LSOA21CD": "E01004468", "LSOA21NM": "Waltham Forest 015E", "LSOA21NMW": " ", "NAME": "Wood Street", "NONLD_AREA": 0.0, "WD24NM": "Upper Walthamstow", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.003188563352265184, 51.58858024752101], [0.008487146075033833, 51.5908766640947], [0.005111343656082095, 51.59325356651487], [0.0050444729718421765, 51.59324055470381], [-0.0012717722213341632, 51.592408489324235], [-0.00423266744820684, 51.59184380428947], [-0.0010193768135257691, 51.59033523834568], [0.003188563352265184, 51.58858024752101]]]], "type": "MultiPolygon"}, "id": "4232", "properties": {"BNG_E": 538961, "BNG_N": 189889, "DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "GlobalID": "{4C67C7A1-A83A-48C7-9AF0-6122C6C0C49C}", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "LAT": 51.590721130371094, "LONG": 0.004602999892085791, "LSOA21CD": "E01004469", "LSOA21NM": "Waltham Forest 013D", "LSOA21NMW": " ", "NAME": "Wood Street", "NONLD_AREA": 0.0, "WD24NM": "Upper Walthamstow", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.0010193768135257691, 51.59033523834568], [-0.00423266744820684, 51.59184380428947], [-0.008592339930243295, 51.59080153474933], [-0.008371292531166086, 51.58803206604779], [-0.00827750939557941, 51.58737013255918], [-0.0038918287378644214, 51.58905887895612], [-0.0010193768135257691, 51.59033523834568]]]], "type": "MultiPolygon"}, "id": "4233", "properties": {"BNG_E": 538313, "BNG_N": 189815, "DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "GlobalID": "{61F20053-7B6E-47F9-AAF3-EF132565240D}", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "LAT": 51.5902214050293, "LONG": -0.004769999999552965, "LSOA21CD": "E01004470", "LSOA21NM": "Waltham Forest 013E", "LSOA21NMW": " ", "NAME": "Wood Street", "NONLD_AREA": 0.0, "WD24NM": "Wood Street", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.003188563352265184, 51.58858024752101], [-0.0010193768135257691, 51.59033523834568], [-0.0038918287378644214, 51.58905887895612], [-0.0016813407281390355, 51.58670846020312], [0.003188563352265184, 51.58858024752101]]]], "type": "MultiPolygon"}, "id": "4234", "properties": {"BNG_E": 538651, "BNG_N": 189706, "DISTRICT": "Waltham Forest", "GSS_CODE": "E05000609", "GlobalID": "{6A672192-8D21-4415-B7FD-5FD63314963C}", "HECTARES": 185.011, "LAGSSCODE": "E09000031", "LAT": 51.58916091918945, "LONG": 5.900000178371556e-05, "LSOA21CD": "E01004471", "LSOA21NM": "Waltham Forest 013F", "LSOA21NMW": " ", "NAME": "Wood Street", "NONLD_AREA": 0.0, "WD24NM": "Wood Street", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_3acb6accabd195b5695757fc30b6c90a.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_3acb6accabd195b5695757fc30b6c90a.addTo(map_ea5261ac95452787f5460a5618db7486);
+        
+    
+            var feature_group_01f1aa561c39f260267364659bbd7b0f = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_3c73d5ef16cf415b3cf146b0e5af5d16 = L.marker(
+                [51.5851033, -0.0068602],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_9213b16eb5805ff6fc01a19fa23f01fd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aff6e82323263f1cc7608bc8d8f8391e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4c2e2fd39ced9c26b43a49fec5f00c01 = $(`<div id="html_4c2e2fd39ced9c26b43a49fec5f00c01" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_aff6e82323263f1cc7608bc8d8f8391e.setContent(html_4c2e2fd39ced9c26b43a49fec5f00c01);
+            
+        
+
+        marker_3c73d5ef16cf415b3cf146b0e5af5d16.bindPopup(popup_aff6e82323263f1cc7608bc8d8f8391e)
+        ;
+
+        
+    
+    
+                marker_3c73d5ef16cf415b3cf146b0e5af5d16.setIcon(icon_9213b16eb5805ff6fc01a19fa23f01fd);
+            
+    
+            var marker_febe3c5ae712e578f03f3ca6851b8300 = L.marker(
+                [51.5867872, -0.0045232],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_6eac9823a60a2456b6d918fc471fd82e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1fd1dc9068a95f9ca9ef9705ae9100a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_feab949f9285a434862f1e95cd52595a = $(`<div id="html_feab949f9285a434862f1e95cd52595a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013C (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_1fd1dc9068a95f9ca9ef9705ae9100a4.setContent(html_feab949f9285a434862f1e95cd52595a);
+            
+        
+
+        marker_febe3c5ae712e578f03f3ca6851b8300.bindPopup(popup_1fd1dc9068a95f9ca9ef9705ae9100a4)
+        ;
+
+        
+    
+    
+                marker_febe3c5ae712e578f03f3ca6851b8300.setIcon(icon_6eac9823a60a2456b6d918fc471fd82e);
+            
+    
+            var marker_8d09b59c4e000f8f6ac3bca872493923 = L.marker(
+                [51.585829, -0.0081207],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_e5b3ca323a17793b4dadf6e712387571 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7b0ce1b994cd3c1fcfa898832cb230c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a650f03a3f2bb79d36554f94dd88d61 = $(`<div id="html_8a650f03a3f2bb79d36554f94dd88d61" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013C (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_7b0ce1b994cd3c1fcfa898832cb230c6.setContent(html_8a650f03a3f2bb79d36554f94dd88d61);
+            
+        
+
+        marker_8d09b59c4e000f8f6ac3bca872493923.bindPopup(popup_7b0ce1b994cd3c1fcfa898832cb230c6)
+        ;
+
+        
+    
+    
+                marker_8d09b59c4e000f8f6ac3bca872493923.setIcon(icon_e5b3ca323a17793b4dadf6e712387571);
+            
+    
+            var marker_67a4d5f3b493fc82c7e823da4fee6745 = L.marker(
+                [51.5912361, 0.0039623],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_28b3305cd2b505553cc060a7ffd469b3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_406e969f12f80a76e7aca5ddb3250dda = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cc158a942d2c94b29c337ed535cf432e = $(`<div id="html_cc158a942d2c94b29c337ed535cf432e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013D (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_406e969f12f80a76e7aca5ddb3250dda.setContent(html_cc158a942d2c94b29c337ed535cf432e);
+            
+        
+
+        marker_67a4d5f3b493fc82c7e823da4fee6745.bindPopup(popup_406e969f12f80a76e7aca5ddb3250dda)
+        ;
+
+        
+    
+    
+                marker_67a4d5f3b493fc82c7e823da4fee6745.setIcon(icon_28b3305cd2b505553cc060a7ffd469b3);
+            
+    
+            var marker_db366162fcf2dcb9fb1d7dfeeeee0ebc = L.marker(
+                [51.5914051, 0.0021012],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_44c72b1f1c83d9fc36d26540d93c80c4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c34f4333d58d8329e58286e67b36eb4c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5961f8709de941dfa2af4a77d25551d7 = $(`<div id="html_5961f8709de941dfa2af4a77d25551d7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013D (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c34f4333d58d8329e58286e67b36eb4c.setContent(html_5961f8709de941dfa2af4a77d25551d7);
+            
+        
+
+        marker_db366162fcf2dcb9fb1d7dfeeeee0ebc.bindPopup(popup_c34f4333d58d8329e58286e67b36eb4c)
+        ;
+
+        
+    
+    
+                marker_db366162fcf2dcb9fb1d7dfeeeee0ebc.setIcon(icon_44c72b1f1c83d9fc36d26540d93c80c4);
+            
+    
+            var marker_2043bc08637a1474cbcfb034cd929c1d = L.marker(
+                [51.5899339, 0.003074],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_9f8dd09980e227062947e1e62b2a6b48 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67ac59c163a7a9352b222129886034cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc0209162ab403812b1ad49f6dc1d742 = $(`<div id="html_fc0209162ab403812b1ad49f6dc1d742" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013D (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_67ac59c163a7a9352b222129886034cc.setContent(html_fc0209162ab403812b1ad49f6dc1d742);
+            
+        
+
+        marker_2043bc08637a1474cbcfb034cd929c1d.bindPopup(popup_67ac59c163a7a9352b222129886034cc)
+        ;
+
+        
+    
+    
+                marker_2043bc08637a1474cbcfb034cd929c1d.setIcon(icon_9f8dd09980e227062947e1e62b2a6b48);
+            
+    
+            var marker_9c8d985c28e3632efc023988b8505890 = L.marker(
+                [51.5912361, 0.0039623],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_2e47db5a2306e9f4c4b8b5f1f3977526 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_873dce2259ce5331d0441eecdbeec05c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9724e7826272bfc2ce6a142a13c6dcf1 = $(`<div id="html_9724e7826272bfc2ce6a142a13c6dcf1" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013D (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_873dce2259ce5331d0441eecdbeec05c.setContent(html_9724e7826272bfc2ce6a142a13c6dcf1);
+            
+        
+
+        marker_9c8d985c28e3632efc023988b8505890.bindPopup(popup_873dce2259ce5331d0441eecdbeec05c)
+        ;
+
+        
+    
+    
+                marker_9c8d985c28e3632efc023988b8505890.setIcon(icon_2e47db5a2306e9f4c4b8b5f1f3977526);
+            
+    
+            var marker_24ad99ed6a00c3e0e7021502dc2dff5e = L.marker(
+                [51.5874215, -0.0066381],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_a01d9c0624676e6a780c81d49b3dacf4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_18872148788b0aefd65b23a32f95bda6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f3134ebccd274a28ea523c1628145e4 = $(`<div id="html_6f3134ebccd274a28ea523c1628145e4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_18872148788b0aefd65b23a32f95bda6.setContent(html_6f3134ebccd274a28ea523c1628145e4);
+            
+        
+
+        marker_24ad99ed6a00c3e0e7021502dc2dff5e.bindPopup(popup_18872148788b0aefd65b23a32f95bda6)
+        ;
+
+        
+    
+    
+                marker_24ad99ed6a00c3e0e7021502dc2dff5e.setIcon(icon_a01d9c0624676e6a780c81d49b3dacf4);
+            
+    
+            var marker_7e5b1040a235415cfa1acfd45d821145 = L.marker(
+                [51.5893085, -0.008168],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_7154149a878683359c201eafb612284d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cff9ca7beecbbe043ba4985a23fd17a8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_25d795a286549a523d2493d7ec8d1e62 = $(`<div id="html_25d795a286549a523d2493d7ec8d1e62" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 013E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_cff9ca7beecbbe043ba4985a23fd17a8.setContent(html_25d795a286549a523d2493d7ec8d1e62);
+            
+        
+
+        marker_7e5b1040a235415cfa1acfd45d821145.bindPopup(popup_cff9ca7beecbbe043ba4985a23fd17a8)
+        ;
+
+        
+    
+    
+                marker_7e5b1040a235415cfa1acfd45d821145.setIcon(icon_7154149a878683359c201eafb612284d);
+            
+    
+            var marker_77877b8c750adf7d1af71966a4c42316 = L.marker(
+                [51.5830024, -0.0052634],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_77db611045e7ef8f5d95aa9c2eecb221 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ca78e9bdb41516fd92cac7564f5c99da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_68bf19d3f5f367705093eeb51f1f5ea6 = $(`<div id="html_68bf19d3f5f367705093eeb51f1f5ea6" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_ca78e9bdb41516fd92cac7564f5c99da.setContent(html_68bf19d3f5f367705093eeb51f1f5ea6);
+            
+        
+
+        marker_77877b8c750adf7d1af71966a4c42316.bindPopup(popup_ca78e9bdb41516fd92cac7564f5c99da)
+        ;
+
+        
+    
+    
+                marker_77877b8c750adf7d1af71966a4c42316.setIcon(icon_77db611045e7ef8f5d95aa9c2eecb221);
+            
+    
+            var marker_b3db1405bfd5734a18a6d0dfc5816e3e = L.marker(
+                [51.5844012, -0.0009518],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_7f474b49f7a837aec5f96206c5bf9b8a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5bc696bccf440d7cf25009f1c9650c7d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5cee8565530ae7f78bfb41cbe0fcf39f = $(`<div id="html_5cee8565530ae7f78bfb41cbe0fcf39f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5bc696bccf440d7cf25009f1c9650c7d.setContent(html_5cee8565530ae7f78bfb41cbe0fcf39f);
+            
+        
+
+        marker_b3db1405bfd5734a18a6d0dfc5816e3e.bindPopup(popup_5bc696bccf440d7cf25009f1c9650c7d)
+        ;
+
+        
+    
+    
+                marker_b3db1405bfd5734a18a6d0dfc5816e3e.setIcon(icon_7f474b49f7a837aec5f96206c5bf9b8a);
+            
+    
+            var marker_1cee1b3aaa079314e5f4ba924d29544e = L.marker(
+                [51.5832942, 0.00289],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_af6f4ea855b231a37424f944bba2d56c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd49f2a8aee2ce2f60116da361be245b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_141491526ad8102858cce91a8d80eb4b = $(`<div id="html_141491526ad8102858cce91a8d80eb4b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_bd49f2a8aee2ce2f60116da361be245b.setContent(html_141491526ad8102858cce91a8d80eb4b);
+            
+        
+
+        marker_1cee1b3aaa079314e5f4ba924d29544e.bindPopup(popup_bd49f2a8aee2ce2f60116da361be245b)
+        ;
+
+        
+    
+    
+                marker_1cee1b3aaa079314e5f4ba924d29544e.setIcon(icon_af6f4ea855b231a37424f944bba2d56c);
+            
+    
+            var marker_8b1dbc0ffae0464d2cf4009ed49e52b4 = L.marker(
+                [51.5838499, -0.0025],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_a2dadc06638b25d4bae3e5135c8881ce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_75b06a57d80fc676e08afabbe6406ed3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1a262581b02f6bf21c25f50865a52e1 = $(`<div id="html_f1a262581b02f6bf21c25f50865a52e1" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015D (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_75b06a57d80fc676e08afabbe6406ed3.setContent(html_f1a262581b02f6bf21c25f50865a52e1);
+            
+        
+
+        marker_8b1dbc0ffae0464d2cf4009ed49e52b4.bindPopup(popup_75b06a57d80fc676e08afabbe6406ed3)
+        ;
+
+        
+    
+    
+                marker_8b1dbc0ffae0464d2cf4009ed49e52b4.setIcon(icon_a2dadc06638b25d4bae3e5135c8881ce);
+            
+    
+            var marker_061a51ed2133e5a7755b1ae1086edb2b = L.marker(
+                [51.5838499, -0.0025],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_6e11080909fa82262873e9c2e2af7482 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_16e8daca05888c651948699d416711a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61f735461a9d8bc6f262feb30f472157 = $(`<div id="html_61f735461a9d8bc6f262feb30f472157" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015D (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_16e8daca05888c651948699d416711a1.setContent(html_61f735461a9d8bc6f262feb30f472157);
+            
+        
+
+        marker_061a51ed2133e5a7755b1ae1086edb2b.bindPopup(popup_16e8daca05888c651948699d416711a1)
+        ;
+
+        
+    
+    
+                marker_061a51ed2133e5a7755b1ae1086edb2b.setIcon(icon_6e11080909fa82262873e9c2e2af7482);
+            
+    
+            var marker_4f850aaf647ce83bc362024240621432 = L.marker(
+                [51.5804193, -0.0051939],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_3bea1780ffee149c72950a67f76e0214 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c00852c935e7104149eace8914101fbd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2258d8179c254fd683151eb9038ec9f7 = $(`<div id="html_2258d8179c254fd683151eb9038ec9f7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015D (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c00852c935e7104149eace8914101fbd.setContent(html_2258d8179c254fd683151eb9038ec9f7);
+            
+        
+
+        marker_4f850aaf647ce83bc362024240621432.bindPopup(popup_c00852c935e7104149eace8914101fbd)
+        ;
+
+        
+    
+    
+                marker_4f850aaf647ce83bc362024240621432.setIcon(icon_3bea1780ffee149c72950a67f76e0214);
+            
+    
+            var marker_ed1470b47600f4eb7af89ba47b74ad13 = L.marker(
+                [51.5828875, -0.0079334],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_33d16715ee4617fba5aac91df7796b9f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2a6bc693023266e05a3e2e37591f8976 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b95d2354f178cd076b1165d83cf48fc4 = $(`<div id="html_b95d2354f178cd076b1165d83cf48fc4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_2a6bc693023266e05a3e2e37591f8976.setContent(html_b95d2354f178cd076b1165d83cf48fc4);
+            
+        
+
+        marker_ed1470b47600f4eb7af89ba47b74ad13.bindPopup(popup_2a6bc693023266e05a3e2e37591f8976)
+        ;
+
+        
+    
+    
+                marker_ed1470b47600f4eb7af89ba47b74ad13.setIcon(icon_33d16715ee4617fba5aac91df7796b9f);
+            
+    
+            var marker_66b4dc736e94db9d444c5982514d369c = L.marker(
+                [51.5790664, -0.0084567],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_09b0c92c5181c53ab7a84e1b2115ef22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c920e91e140bb29a200bc87e34b74809 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4177adfe109128e9c823330be023bdcd = $(`<div id="html_4177adfe109128e9c823330be023bdcd" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c920e91e140bb29a200bc87e34b74809.setContent(html_4177adfe109128e9c823330be023bdcd);
+            
+        
+
+        marker_66b4dc736e94db9d444c5982514d369c.bindPopup(popup_c920e91e140bb29a200bc87e34b74809)
+        ;
+
+        
+    
+    
+                marker_66b4dc736e94db9d444c5982514d369c.setIcon(icon_09b0c92c5181c53ab7a84e1b2115ef22);
+            
+    
+            var marker_ed0c56f94f327abfa2f48bd84f96e29f = L.marker(
+                [51.5841097, 0.0040028],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_a6c8750d24e743e8f582ff8eff7eb969 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0b42dd8f64c670ec00162130e827261e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_261191701bd5fe8d8a055827e36d0e78 = $(`<div id="html_261191701bd5fe8d8a055827e36d0e78" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0b42dd8f64c670ec00162130e827261e.setContent(html_261191701bd5fe8d8a055827e36d0e78);
+            
+        
+
+        marker_ed0c56f94f327abfa2f48bd84f96e29f.bindPopup(popup_0b42dd8f64c670ec00162130e827261e)
+        ;
+
+        
+    
+    
+                marker_ed0c56f94f327abfa2f48bd84f96e29f.setIcon(icon_a6c8750d24e743e8f582ff8eff7eb969);
+            
+    
+            var marker_38d5f41d4bc1333128d7c26002653ee3 = L.marker(
+                [51.5891963, 0.0031981],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_00ab7a9c04a1e8d0f1f635944df8d5fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a4ba9e79d06bc975fb4a59f9219ded05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00b57598e97b06edb0ecdb1c654c187b = $(`<div id="html_00b57598e97b06edb0ecdb1c654c187b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015E (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_a4ba9e79d06bc975fb4a59f9219ded05.setContent(html_00b57598e97b06edb0ecdb1c654c187b);
+            
+        
+
+        marker_38d5f41d4bc1333128d7c26002653ee3.bindPopup(popup_a4ba9e79d06bc975fb4a59f9219ded05)
+        ;
+
+        
+    
+    
+                marker_38d5f41d4bc1333128d7c26002653ee3.setIcon(icon_00ab7a9c04a1e8d0f1f635944df8d5fc);
+            
+    
+            var marker_79eb076f69b1a0917ed8177f068526d7 = L.marker(
+                [51.5865548, 0.0081046],
+                {
+}
+            ).addTo(feature_group_01f1aa561c39f260267364659bbd7b0f);
+        
+    
+            var icon_007d62bad98e1c86a8ece552d4233e17 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_58bb9a05cce09350ffe49e7059a828bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17a841d8653997d69fc55a73176f3e68 = $(`<div id="html_17a841d8653997d69fc55a73176f3e68" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Waltham Forest 015E (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_58bb9a05cce09350ffe49e7059a828bc.setContent(html_17a841d8653997d69fc55a73176f3e68);
+            
+        
+
+        marker_79eb076f69b1a0917ed8177f068526d7.bindPopup(popup_58bb9a05cce09350ffe49e7059a828bc)
+        ;
+
+        
+    
+    
+                marker_79eb076f69b1a0917ed8177f068526d7.setIcon(icon_007d62bad98e1c86a8ece552d4233e17);
+            
+    
+            feature_group_01f1aa561c39f260267364659bbd7b0f.addTo(map_ea5261ac95452787f5460a5618db7486);
+        
+    
+            var poly_line_65bf2c496593f4891f84305590668b5b = L.polyline(
+                [[51.5851033, -0.0068602], [51.58536, -0.0045069], [51.5852948, -0.0037336], [51.5857366, -0.0018665], [51.5862891, -0.0024678], [51.5867086, -0.0016403], [51.5871869, -0.0007129], [51.5884846, 0.000443], [51.5887763, 0.0005102], [51.589696, 0.0003657], [51.5899501, 0.0003836], [51.5908333, 0.0008883], [51.5912361, 0.0039623], [51.5908333, 0.0008883], [51.5915919, 0.0009625], [51.5917059, 0.0009355], [51.591844, 0.0019948], [51.5914051, 0.0021012], [51.591844, 0.0019948], [51.5917059, 0.0009355], [51.5915919, 0.0009625], [51.5908333, 0.0008883], [51.5899501, 0.0003836], [51.5898382, 0.0006911], [51.5901097, 0.0027515], [51.5899339, 0.003074], [51.5891963, 0.0031981], [51.5888685, 0.0032021], [51.5879791, 0.0035123], [51.5866056, 0.0046484], [51.5859293, 0.0045961], [51.5850696, 0.0047874], [51.5847373, 0.0033417], [51.5841097, 0.0040028], [51.5839308, 0.0039484], [51.583497, 0.0029618], [51.5832942, 0.00289], [51.583497, 0.0029618], [51.5839308, 0.0039484], [51.5841097, 0.0040028], [51.5847373, 0.0033417], [51.5850696, 0.0047874], [51.5838655, 0.0057984], [51.5845292, 0.0064463], [51.5851629, 0.006515], [51.5852249, 0.0065239], [51.5851995, 0.0076231], [51.5851494, 0.0083861], [51.5865548, 0.0081046], [51.5851494, 0.0083861], [51.5850682, 0.0085957], [51.5843708, 0.0064336], [51.5837825, 0.0059475], [51.5838249, 0.0058579], [51.5838655, 0.0057984], [51.5850696, 0.0047874], [51.5859293, 0.0045961], [51.5866056, 0.0046484], [51.5858233, -0.0004288], [51.5867086, -0.0016403], [51.5862891, -0.0024678], [51.5865578, -0.002857], [51.5873379, -0.0036079], [51.5875298, -0.0026201], [51.5880828, -0.0028028], [51.5878689, -0.0038786], [51.5880143, -0.0039587], [51.587431, -0.0054386], [51.5866486, -0.0053502], [51.5865017, -0.0062723], [51.5874215, -0.0066381], [51.5865017, -0.0062723], [51.5866486, -0.0053502], [51.5867872, -0.0045232], [51.5866486, -0.0053502], [51.587431, -0.0054386], [51.5880143, -0.0039587], [51.5878689, -0.0038786], [51.5880828, -0.0028028], [51.5875298, -0.0026201], [51.5873379, -0.0036079], [51.5865578, -0.002857], [51.585829, -0.0081207], [51.5856089, -0.0081399], [51.5846384, -0.0076172], [51.5844792, -0.0050931], [51.5846339, -0.0046269], [51.5849465, -0.0037007], [51.582735, -0.003463], [51.5827386, -0.0024611], [51.5812271, -0.0022092], [51.5811607, -0.0033799], [51.581093, -0.0040349], [51.5807451, -0.0068046], [51.5806336, -0.0075298], [51.5804957, -0.0084705], [51.5790292, -0.0083486], [51.5790664, -0.0084567], [51.5790292, -0.0083486], [51.5804957, -0.0084705], [51.5806336, -0.0075298], [51.5807451, -0.0068046], [51.581093, -0.0040349], [51.580724, -0.0048053], [51.5804193, -0.0051939], [51.580724, -0.0048053], [51.581093, -0.0040349], [51.5811607, -0.0033799], [51.5812271, -0.0022092], [51.5827386, -0.0024611], [51.582735, -0.003463], [51.5849465, -0.0037007], [51.5846339, -0.0046269], [51.5844792, -0.0050931], [51.5843163, -0.0055456], [51.5839953, -0.0064822], [51.5836844, -0.0074017], [51.5830536, -0.0071979], [51.5828875, -0.0079334], [51.5830536, -0.0071979], [51.5836844, -0.0074017], [51.5839953, -0.0064822], [51.5843163, -0.0055456], [51.5830024, -0.0052634], [51.5843163, -0.0055456], [51.5844792, -0.0050931], [51.5846384, -0.0076172], [51.5856089, -0.0081399], [51.585829, -0.0081207], [51.5872679, -0.0082407], [51.5873856, -0.0082978], [51.5879731, -0.0083581], [51.5881711, -0.00828], [51.5885771, -0.0081284], [51.5893085, -0.008168], [51.5885771, -0.0081284], [51.5881711, -0.00828], [51.5888693, -0.005496], [51.5873856, -0.0082978], [51.5872679, -0.0082407], [51.585829, -0.0081207], [51.5865578, -0.002857], [51.5862891, -0.0024678], [51.5857366, -0.0018665], [51.5844012, -0.0009518], [51.5838499, -0.0025], [51.5844012, -0.0009518], [51.5857366, -0.0018665], [51.5852948, -0.0037336], [51.58536, -0.0045069], [51.5851033, -0.0068602]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_ea5261ac95452787f5460a5618db7486);
+        
+    
+            var layer_control_1ac5040908de546ca63fea7124939af1_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_e88218bedc95d2a38e21d02a8684adad,
+                },
+                overlays :  {
+                    "Wood Street Boundary" : geo_json_251f6f7a1aa565fd6a5950703a45f735,
+                    "LSOA Median Crime Rates for Wood Street" : geo_json_3acb6accabd195b5695757fc30b6c90a,
+                    "Patrol Waypoints" : feature_group_01f1aa561c39f260267364659bbd7b0f,
+                },
+            };
+            let layer_control_1ac5040908de546ca63fea7124939af1 = L.control.layers(
+                layer_control_1ac5040908de546ca63fea7124939af1_layers.base_layers,
+                layer_control_1ac5040908de546ca63fea7124939af1_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_ea5261ac95452787f5460a5618db7486);
+
+        
+</script>
+</html>

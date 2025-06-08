@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_df19f65919c349109024a08e92f35e4d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_df19f65919c349109024a08e92f35e4d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_df19f65919c349109024a08e92f35e4d = L.map(
+                "map_df19f65919c349109024a08e92f35e4d",
+                {
+                    center: [51.55459432788846, -0.18381788323447928],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d152417bbea6778565b46fcbc1b83386 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d152417bbea6778565b46fcbc1b83386.addTo(map_df19f65919c349109024a08e92f35e4d);
+        
+    
+        function geo_json_a3c10de6b43dee54c851726875d1b41e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_a3c10de6b43dee54c851726875d1b41e_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_a3c10de6b43dee54c851726875d1b41e = L.geoJson(null, {
+                onEachFeature: geo_json_a3c10de6b43dee54c851726875d1b41e_onEachFeature,
+            
+                style: geo_json_a3c10de6b43dee54c851726875d1b41e_styler,
+            ...{
+}
+        });
+
+        function geo_json_a3c10de6b43dee54c851726875d1b41e_add (data) {
+            geo_json_a3c10de6b43dee54c851726875d1b41e
+                .addData(data);
+        }
+            geo_json_a3c10de6b43dee54c851726875d1b41e_add({"features": [{"geometry": {"coordinates": [[[-0.18877893340539012, 51.55294742017778], [-0.18915991240166383, 51.55316195455116], [-0.18988371903569623, 51.55356966443793], [-0.19113448592846483, 51.55425438050453], [-0.1938241816508299, 51.5557256462689], [-0.19403699692812312, 51.555853880498006], [-0.19429410318474188, 51.55602603696344], [-0.1945266216348797, 51.556200421549555], [-0.19474300878849432, 51.55638273819751], [-0.19498213779647514, 51.55653744597343], [-0.19514690302075757, 51.556710876870255], [-0.19529714412453011, 51.55688768005381], [-0.19541794394165737, 51.55704506173249], [-0.19555919378177816, 51.55726577634264], [-0.19566218239706223, 51.557470529826325], [-0.1958341109259506, 51.55775464450506], [-0.1958630814852898, 51.557897218838384], [-0.1958926913576095, 51.557987572202826], [-0.19593244100201204, 51.55807718248059], [-0.19597161400667715, 51.558145298235225], [-0.19599471516702943, 51.55818071366672], [-0.19631164941664517, 51.558557853989655], [-0.19662404343668316, 51.558902560320554], [-0.19674487630946375, 51.55905634511262], [-0.19681776053125233, 51.55918341238173], [-0.19668025312317097, 51.55923164203967], [-0.1967663166304386, 51.5593893873278], [-0.19681739848670013, 51.55959253286936], [-0.1968426592090341, 51.559868098998024], [-0.19693200658956422, 51.5598676740415], [-0.19694458553502012, 51.55988045306378], [-0.19692247303781932, 51.56003653587005], [-0.1969037234988404, 51.5604023125815], [-0.1969186837517716, 51.56060751000114], [-0.19691957725975487, 51.56062100843703], [-0.19681312089988967, 51.56061487760746], [-0.19675071733794297, 51.560694916732444], [-0.19664925128612518, 51.560670882838544], [-0.19659468345144962, 51.5607392656654], [-0.19624389960592345, 51.560670046184505], [-0.19612475765618761, 51.560653830936246], [-0.1959580280261322, 51.56060173378507], [-0.19559479857763729, 51.56052243221338], [-0.1953483836035492, 51.56047908744544], [-0.19507768518942012, 51.56046323702045], [-0.19485191418592204, 51.56048133943909], [-0.19461205001188803, 51.56056395118864], [-0.1946128156841998, 51.560655748892266], [-0.19456897786718358, 51.560705417295864], [-0.19448172575914083, 51.5607580135789], [-0.19440265028284165, 51.56078736212454], [-0.19430173734068915, 51.56082446538898], [-0.194279816677431, 51.560831319895684], [-0.1941103118015607, 51.56088534701768], [-0.1939821387938098, 51.560913939631554], [-0.19385275936175553, 51.560867898139655], [-0.19378877697512556, 51.56084353975659], [-0.19361574091622824, 51.56095064156995], [-0.19298045219133608, 51.561180887564554], [-0.19232000013231806, 51.56153857755287], [-0.19174702082024928, 51.56158009188499], [-0.19140641589366805, 51.5615811353086], [-0.19114030238495505, 51.56163546700547], [-0.19096004422707372, 51.56170550549027], [-0.19076632849662112, 51.56182388116735], [-0.19066296997627322, 51.561919467272595], [-0.1906186751768889, 51.56205542933964], [-0.19051500692191065, 51.562377553717106], [-0.19040515531217694, 51.562636653978544], [-0.1903711270007709, 51.562765672325845], [-0.19005434129352236, 51.562750807662965], [-0.18968231937648578, 51.56271000839799], [-0.1895545674875788, 51.56269185569932], [-0.18925073830948963, 51.56264131942959], [-0.18858102660155615, 51.56250332733911], [-0.1876814384898864, 51.56237877187132], [-0.1874412970204091, 51.562357082959416], [-0.1870908075724412, 51.56235526424877], [-0.18628985271045187, 51.56239781429567], [-0.1856607732192665, 51.56239887663696], [-0.185038437527013, 51.5623739694532], [-0.18493844012917673, 51.562348959256134], [-0.1847991041719906, 51.562299157816575], [-0.1846719683315266, 51.56222976736354], [-0.1844405266412203, 51.56206436983672], [-0.18435263914272615, 51.56198920353904], [-0.1841989236284056, 51.56182860412802], [-0.18381872447162959, 51.56148281494408], [-0.18364077213606408, 51.561351416120715], [-0.18351964479079655, 51.561277622484525], [-0.1833784213649369, 51.56116486137448], [-0.18313460855213495, 51.56091018054979], [-0.18306707435702446, 51.560831822373984], [-0.18276249272289674, 51.56018595164736], [-0.18273404157866294, 51.56013876394203], [-0.1826484169743338, 51.56000699548494], [-0.18245149014870035, 51.559734160695534], [-0.18233409949645435, 51.559605585751775], [-0.18224785800523882, 51.55952513930498], [-0.18168304550178285, 51.559073009843765], [-0.18148388883210817, 51.558927884170494], [-0.18138844615165575, 51.55886347614444], [-0.18109634757707416, 51.55866288037549], [-0.18022721048871762, 51.5581026427017], [-0.18008063840646008, 51.558014067038584], [-0.17991626505419647, 51.55790363947134], [-0.17980633648375027, 51.55780295621005], [-0.1797112101057008, 51.55772776389497], [-0.17965774680448823, 51.55765771279366], [-0.17947952147248994, 51.55738785984168], [-0.1794340188180643, 51.557335911802156], [-0.17936891850056996, 51.55726837694504], [-0.17926723949223775, 51.557178608953414], [-0.17915816281150201, 51.5570924118984], [-0.17899921357954127, 51.556989259036094], [-0.17859399891135952, 51.55669700293272], [-0.17868139884459763, 51.556352161300616], [-0.17871112865323865, 51.55622128136647], [-0.1787389280421003, 51.555921362643765], [-0.17860085995294886, 51.55558740475774], [-0.178496588499225, 51.555416777214255], [-0.17832072869460328, 51.55515954480697], [-0.17741109114727405, 51.55435044723768], [-0.17701405828116534, 51.55403583786993], [-0.1766127767904308, 51.55371756514997], [-0.17599950033029904, 51.55314517905574], [-0.17592325608469092, 51.55303242984617], [-0.17593575315784118, 51.552648668147484], [-0.1759401376829651, 51.55253906028284], [-0.1759079216309341, 51.55172111335315], [-0.17561454697661227, 51.55162845145006], [-0.17536488356153654, 51.551450975211615], [-0.17477324604493238, 51.55102545318667], [-0.17417893245849325, 51.55073833002471], [-0.17291454177283394, 51.550182672334266], [-0.17282533306330977, 51.5502127475335], [-0.17175616506561311, 51.54989933711493], [-0.1717108440846626, 51.549878853220726], [-0.17116401353940686, 51.54963030171393], [-0.17116693795402949, 51.54962854932936], [-0.1711684829805924, 51.54962857341283], [-0.17150619418530422, 51.54937124362097], [-0.17159594622515148, 51.54928903677525], [-0.1717137820645555, 51.54915593546634], [-0.17138298105458197, 51.54909863896342], [-0.17100864811331845, 51.54879245316891], [-0.1708487990961445, 51.54868028497806], [-0.17180798950624115, 51.548066665137064], [-0.17213796445192878, 51.547859556156745], [-0.17232426971190276, 51.547673581851875], [-0.1726693333604938, 51.547122395209875], [-0.17268950069335087, 51.5469455193786], [-0.17267060520971822, 51.546767136147295], [-0.17265166736907425, 51.54662839748812], [-0.17267819476172167, 51.54628980339281], [-0.1727241022521483, 51.54608186396395], [-0.17281758863025992, 51.54590621990055], [-0.1729096491592574, 51.54576912001916], [-0.17307940292269264, 51.545598259403434], [-0.1736076681366945, 51.545299840507546], [-0.1747044139701883, 51.544779136085374], [-0.17494619467576844, 51.54468311016306], [-0.17485531289361192, 51.544395729203046], [-0.17488740552836401, 51.54413453389319], [-0.17492140272315448, 51.543718742742975], [-0.17514215263459795, 51.543642976029396], [-0.1751471576723199, 51.543734840266616], [-0.17517639439217828, 51.54383328440846], [-0.17530693762950209, 51.544104201288796], [-0.1753477742762212, 51.54416237146478], [-0.1754757782848195, 51.54431548160003], [-0.17556201554888343, 51.54439503439857], [-0.1757409606834514, 51.544538058681546], [-0.1759301011077444, 51.54467593718476], [-0.1760833936694582, 51.544773612838604], [-0.17632732320486827, 51.54491225254658], [-0.1779357901075454, 51.54551726892162], [-0.17815407954203408, 51.54561334417594], [-0.17834070419480608, 51.54570434254], [-0.1785723042588511, 51.545866159645854], [-0.17896291955269786, 51.54623280596302], [-0.17954181473769681, 51.546905510041675], [-0.1796052955065675, 51.546977514786], [-0.17988415338431907, 51.54725162638538], [-0.18025818832302984, 51.5476737479692], [-0.1807206622135388, 51.548156572638064], [-0.1810766475529643, 51.54856052180211], [-0.18116846811716714, 51.548682409121646], [-0.1812516027649664, 51.54884021096626], [-0.1815990959845537, 51.54935001697533], [-0.1817395166461034, 51.54951769612666], [-0.18206442014002477, 51.54979790975671], [-0.1827735740137569, 51.55020633635257], [-0.18373493768486163, 51.55080394358457], [-0.18383341001099893, 51.550866598789455], [-0.18423668547627822, 51.55113543358227], [-0.18577251586620688, 51.55215733279177], [-0.1859800753630861, 51.55227021796131], [-0.1861062956321805, 51.55232610835418], [-0.1862513517651031, 51.5523778847733], [-0.18642239398534957, 51.552428174823206], [-0.18658252655477245, 51.552465710246125], [-0.18674865032021035, 51.55249614617827], [-0.18702995824292984, 51.552531058709334], [-0.18769301885292614, 51.552650079363865], [-0.18788124023427663, 51.55266916823613], [-0.18812214685518747, 51.55270624098512], [-0.18824925164414005, 51.55273697119679], [-0.18837175649073262, 51.55277572108566], [-0.1884753749645166, 51.55281687619428], [-0.188592923237197, 51.552872629986624], [-0.18877893340539012, 51.55294742017778]]], "type": "Polygon"}, "id": "511", "properties": {"DISTRICT": "Camden", "GSS_CODE": "E05000133", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_a3c10de6b43dee54c851726875d1b41e.addTo(map_df19f65919c349109024a08e92f35e4d);
+        
+    
+        function geo_json_d9079e2aaa453c548e0fee1fb9109c05_styler(feature) {
+            switch(feature.id) {
+                case "839": case "840": case "841": case "842": case "843": case "844": case "845": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_d9079e2aaa453c548e0fee1fb9109c05_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_d9079e2aaa453c548e0fee1fb9109c05 = L.geoJson(null, {
+                onEachFeature: geo_json_d9079e2aaa453c548e0fee1fb9109c05_onEachFeature,
+            
+                style: geo_json_d9079e2aaa453c548e0fee1fb9109c05_styler,
+            ...{
+}
+        });
+
+        function geo_json_d9079e2aaa453c548e0fee1fb9109c05_add (data) {
+            geo_json_d9079e2aaa453c548e0fee1fb9109c05
+                .addData(data);
+        }
+            geo_json_d9079e2aaa453c548e0fee1fb9109c05_add({"features": [{"geometry": {"coordinates": [[[[-0.18939321297822936, 51.555551929222574], [-0.18816877793349412, 51.55787079816097], [-0.19580203617681396, 51.55770163469628], [-0.19553564417850763, 51.557228936129356], [-0.19142520372338262, 51.55441299851972], [-0.18878160212542935, 51.55294689047931], [-0.18740607023741934, 51.55259827368065], [-0.18939321297822936, 51.555551929222574]]]], "type": "MultiPolygon"}, "id": "839", "properties": {"BNG_E": 525477, "BNG_N": 185660, "DISTRICT": "Camden", "GSS_CODE": "E05000133", "GlobalID": "{55D442CA-9E67-40FA-AEEB-AFFDC64CDA2C}", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "LAT": 51.55588150024414, "LONG": -0.19144999980926514, "LSOA21CD": "E01000878", "LSOA21NM": "Camden 004A", "LSOA21NMW": " ", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0, "WD24NM": "Frognal", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.17679586621203006, 51.55386624769333], [-0.1786504048318711, 51.55673644415781], [-0.18242030624489305, 51.55530417961941], [-0.18066997955142655, 51.55191299887841], [-0.17923990242638793, 51.550059819817875], [-0.17591902040889862, 51.55306153860705], [-0.17679586621203006, 51.55386624769333]]]], "type": "MultiPolygon"}, "id": "840", "properties": {"BNG_E": 526327, "BNG_N": 185403, "DISTRICT": "Camden", "GSS_CODE": "E05000133", "GlobalID": "{F8C3FF3D-1A8D-43EA-968D-F223F49B83E0}", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "LAT": 51.55337905883789, "LONG": -0.17927999794483185, "LSOA21CD": "E01000879", "LSOA21NM": "Camden 004B", "LSOA21NMW": " ", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0, "WD24NM": "Frognal", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.18242030624489305, 51.55530417961941], [-0.18939321297822936, 51.555551929222574], [-0.18740607023741934, 51.55259827368065], [-0.1838742886326558, 51.55089326916522], [-0.1837357728680625, 51.550803723289135], [-0.18066997955142655, 51.55191299887841], [-0.18242030624489305, 51.55530417961941]]]], "type": "MultiPolygon"}, "id": "841", "properties": {"BNG_E": 525926, "BNG_N": 185436, "DISTRICT": "Camden", "GSS_CODE": "E05000133", "GlobalID": "{4E252326-2ECC-4711-A7DA-E4D9D58D0162}", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "LAT": 51.553768157958984, "LONG": -0.18504999577999115, "LSOA21CD": "E01000880", "LSOA21NM": "Camden 004C", "LSOA21NMW": " ", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0, "WD24NM": "Frognal", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.1741648457733486, 51.55072399448624], [-0.17591902040889862, 51.55306153860705], [-0.17923990242638793, 51.550059819817875], [-0.18066997955142655, 51.55191299887841], [-0.1837357728680625, 51.550803723289135], [-0.18144537853368123, 51.54912303403218], [-0.17592843042091869, 51.54948752421331], [-0.1741648457733486, 51.55072399448624]]]], "type": "MultiPolygon"}, "id": "842", "properties": {"BNG_E": 526516, "BNG_N": 185089, "DISTRICT": "Camden", "GSS_CODE": "E05000133", "GlobalID": "{E770D1C5-5902-42BB-A46E-21F8CDAA1C3B}", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "LAT": 51.55052185058594, "LONG": -0.17666999995708466, "LSOA21CD": "E01000881", "LSOA21NM": "Camden 008A", "LSOA21NMW": " ", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0, "WD24NM": "Belsize", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.17117077921211793, 51.54963307271776], [-0.1741648457733486, 51.55072399448624], [-0.17592843042091869, 51.54948752421331], [-0.1754763960021043, 51.54535958438732], [-0.17269513912453668, 51.54697207551762], [-0.17197816400585456, 51.547949387759445], [-0.17117077921211793, 51.54963307271776]]]], "type": "MultiPolygon"}, "id": "843", "properties": {"BNG_E": 526749, "BNG_N": 184855, "DISTRICT": "Camden", "GSS_CODE": "E05000133", "GlobalID": "{B56E94EF-C6D9-463A-B867-57FF914E0DA2}", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "LAT": 51.54835891723633, "LONG": -0.17339999973773956, "LSOA21CD": "E01000882", "LSOA21NM": "Camden 008B", "LSOA21NMW": " ", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0, "WD24NM": "Belsize", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.17269513912453668, 51.54697207551762], [-0.1754763960021043, 51.54535958438732], [-0.17592843042091869, 51.54948752421331], [-0.18144537853368123, 51.54912303403218], [-0.17954863473889937, 51.54691204128673], [-0.17573217994681975, 51.544530395996155], [-0.17491770731354792, 51.543720451204024], [-0.17269513912453668, 51.54697207551762]]]], "type": "MultiPolygon"}, "id": "844", "properties": {"BNG_E": 526499, "BNG_N": 184708, "DISTRICT": "Camden", "GSS_CODE": "E05000133", "GlobalID": "{01560030-3146-4F1A-9A1F-354B3E51A05C}", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "LAT": 51.54710006713867, "LONG": -0.17704999446868896, "LSOA21CD": "E01000883", "LSOA21NM": "Camden 008C", "LSOA21NMW": " ", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0, "WD24NM": "Belsize", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.1873332755883688, 51.56235644390314], [-0.19037212686743393, 51.562765873593186], [-0.19247819315081502, 51.56145683730507], [-0.19693986496870594, 51.560599114314314], [-0.196817499963085, 51.55918318965541], [-0.19580203617681396, 51.55770163469628], [-0.18816877793349412, 51.55787079816097], [-0.1873332755883688, 51.56235644390314]]]], "type": "MultiPolygon"}, "id": "845", "properties": {"BNG_E": 525380, "BNG_N": 186092, "DISTRICT": "Camden", "GSS_CODE": "E05000133", "GlobalID": "{1F97BECF-A106-43D3-84D6-B93046575BE7}", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "LAT": 51.55978012084961, "LONG": -0.19268999993801117, "LSOA21CD": "E01000884", "LSOA21NM": "Camden 004D", "LSOA21NMW": " ", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0, "WD24NM": "Frognal", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.1797319365944075, 51.55771494708163], [-0.1873332755883688, 51.56235644390314], [-0.18816877793349412, 51.55787079816097], [-0.18939321297822936, 51.555551929222574], [-0.18242030624489305, 51.55530417961941], [-0.1786504048318711, 51.55673644415781], [-0.1797319365944075, 51.55771494708163]]]], "type": "MultiPolygon"}, "id": "846", "properties": {"BNG_E": 525993, "BNG_N": 185967, "DISTRICT": "Camden", "GSS_CODE": "E05000133", "GlobalID": "{95490879-631A-423A-BBBB-6EE6510AA903}", "HECTARES": 153.023, "LAGSSCODE": "E09000007", "LAT": 51.55852127075195, "LONG": -0.18389999866485596, "LSOA21CD": "E01000885", "LSOA21NM": "Camden 004E", "LSOA21NMW": " ", "NAME": "Frognal and Fitzjohns", "NONLD_AREA": 0.0, "WD24NM": "Frognal", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_d9079e2aaa453c548e0fee1fb9109c05.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_d9079e2aaa453c548e0fee1fb9109c05.addTo(map_df19f65919c349109024a08e92f35e4d);
+        
+    
+            var feature_group_a31e9b53e0c320ca1e513ad3afd306b6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_488b7e1e9bc0980ca68a8a6e9da019fd = L.marker(
+                [51.5586126, -0.1865224],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_370183ba335c5b4cbe4957280458fe98 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25d65b92fba75d9aeaf0c2b9ed027882 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d78fddcaa690106ce38cb27af8c35894 = $(`<div id="html_d78fddcaa690106ce38cb27af8c35894" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_25d65b92fba75d9aeaf0c2b9ed027882.setContent(html_d78fddcaa690106ce38cb27af8c35894);
+            
+        
+
+        marker_488b7e1e9bc0980ca68a8a6e9da019fd.bindPopup(popup_25d65b92fba75d9aeaf0c2b9ed027882)
+        ;
+
+        
+    
+    
+                marker_488b7e1e9bc0980ca68a8a6e9da019fd.setIcon(icon_370183ba335c5b4cbe4957280458fe98);
+            
+    
+            var marker_162bb375b89760be326c2511f5167d60 = L.marker(
+                [51.5566963, -0.1824453],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_d11e24227f5ac43f5f02af601228d207 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b8f0884e8ef658f5e2b95c18577fdfae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b4bebefd1b4cb07a6cca3c965d2b274d = $(`<div id="html_b4bebefd1b4cb07a6cca3c965d2b274d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_b8f0884e8ef658f5e2b95c18577fdfae.setContent(html_b4bebefd1b4cb07a6cca3c965d2b274d);
+            
+        
+
+        marker_162bb375b89760be326c2511f5167d60.bindPopup(popup_b8f0884e8ef658f5e2b95c18577fdfae)
+        ;
+
+        
+    
+    
+                marker_162bb375b89760be326c2511f5167d60.setIcon(icon_d11e24227f5ac43f5f02af601228d207);
+            
+    
+            var marker_cd70fe435f1b8e78daf4acc24c3e4495 = L.marker(
+                [51.5583259, -0.1834867],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_822328549d303bb0388c4147459b036f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9c55c9cf1fefc2e112442edc71e81154 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ab418cd89d1a42dfe0afb937e8fe3dd = $(`<div id="html_7ab418cd89d1a42dfe0afb937e8fe3dd" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004E (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_9c55c9cf1fefc2e112442edc71e81154.setContent(html_7ab418cd89d1a42dfe0afb937e8fe3dd);
+            
+        
+
+        marker_cd70fe435f1b8e78daf4acc24c3e4495.bindPopup(popup_9c55c9cf1fefc2e112442edc71e81154)
+        ;
+
+        
+    
+    
+                marker_cd70fe435f1b8e78daf4acc24c3e4495.setIcon(icon_822328549d303bb0388c4147459b036f);
+            
+    
+            var marker_2b15bc6c8aff015c03e69b4e1117fc43 = L.marker(
+                [51.5555189, -0.180761],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_6f8a884d2117e65ec9d7fb40e81f75bb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_547ab9018bea8492b0aad297911dadba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d123728e0d89e71a1ba8ad7c53534935 = $(`<div id="html_d123728e0d89e71a1ba8ad7c53534935" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004E (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_547ab9018bea8492b0aad297911dadba.setContent(html_d123728e0d89e71a1ba8ad7c53534935);
+            
+        
+
+        marker_2b15bc6c8aff015c03e69b4e1117fc43.bindPopup(popup_547ab9018bea8492b0aad297911dadba)
+        ;
+
+        
+    
+    
+                marker_2b15bc6c8aff015c03e69b4e1117fc43.setIcon(icon_6f8a884d2117e65ec9d7fb40e81f75bb);
+            
+    
+            var marker_fb7287eb3806d49bee2284d402c5e3b7 = L.marker(
+                [51.5571174, -0.1836046],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_2aeafa25fc9162a9888ec4d5b12d4528 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfb82efadb9234cfa030b320326b5f1e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9d729f41e263533220754f80b1282c86 = $(`<div id="html_9d729f41e263533220754f80b1282c86" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004E (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_bfb82efadb9234cfa030b320326b5f1e.setContent(html_9d729f41e263533220754f80b1282c86);
+            
+        
+
+        marker_fb7287eb3806d49bee2284d402c5e3b7.bindPopup(popup_bfb82efadb9234cfa030b320326b5f1e)
+        ;
+
+        
+    
+    
+                marker_fb7287eb3806d49bee2284d402c5e3b7.setIcon(icon_2aeafa25fc9162a9888ec4d5b12d4528);
+            
+    
+            var marker_20c74ca83bf433a02c48615ad101ec4c = L.marker(
+                [51.5542549, -0.1909828],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_ce70ccd61390a6cb372cbc378ae4354d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0bfa21cd8b97d8c8b80be1415ac43eb1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a887d12ab1c6c68e0d384bd7fe80ae67 = $(`<div id="html_a887d12ab1c6c68e0d384bd7fe80ae67" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0bfa21cd8b97d8c8b80be1415ac43eb1.setContent(html_a887d12ab1c6c68e0d384bd7fe80ae67);
+            
+        
+
+        marker_20c74ca83bf433a02c48615ad101ec4c.bindPopup(popup_0bfa21cd8b97d8c8b80be1415ac43eb1)
+        ;
+
+        
+    
+    
+                marker_20c74ca83bf433a02c48615ad101ec4c.setIcon(icon_ce70ccd61390a6cb372cbc378ae4354d);
+            
+    
+            var marker_08b439a12414cc1b1b96752429d34f61 = L.marker(
+                [51.5561876, -0.1904418],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_bbac011b19ce0ce2b0ad765cd5512f31 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_369e70494e3424c100be5782c6e50b47 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_87b19631c630fa753c4f7c64975aa588 = $(`<div id="html_87b19631c630fa753c4f7c64975aa588" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_369e70494e3424c100be5782c6e50b47.setContent(html_87b19631c630fa753c4f7c64975aa588);
+            
+        
+
+        marker_08b439a12414cc1b1b96752429d34f61.bindPopup(popup_369e70494e3424c100be5782c6e50b47)
+        ;
+
+        
+    
+    
+                marker_08b439a12414cc1b1b96752429d34f61.setIcon(icon_bbac011b19ce0ce2b0ad765cd5512f31);
+            
+    
+            var marker_3e3751bfe863d6e4b35a4f5a68b768a7 = L.marker(
+                [51.5551802, -0.1919142],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_05ceb49294c8036952bc94bd9d1613a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b4d3dbb289477a64eabd7b5aa8274100 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_06a190bd789eea4d38fc6f9cc258deb8 = $(`<div id="html_06a190bd789eea4d38fc6f9cc258deb8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_b4d3dbb289477a64eabd7b5aa8274100.setContent(html_06a190bd789eea4d38fc6f9cc258deb8);
+            
+        
+
+        marker_3e3751bfe863d6e4b35a4f5a68b768a7.bindPopup(popup_b4d3dbb289477a64eabd7b5aa8274100)
+        ;
+
+        
+    
+    
+                marker_3e3751bfe863d6e4b35a4f5a68b768a7.setIcon(icon_05ceb49294c8036952bc94bd9d1613a5);
+            
+    
+            var marker_545f90c475067aa911b9167c19646596 = L.marker(
+                [51.5519993, -0.1854379],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_fd1e100281cea13c4aef8fced573d6e3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5acb0d53e5a19a4e1ce958e73b740ab8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_739028980984457327921b10c592dac9 = $(`<div id="html_739028980984457327921b10c592dac9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5acb0d53e5a19a4e1ce958e73b740ab8.setContent(html_739028980984457327921b10c592dac9);
+            
+        
+
+        marker_545f90c475067aa911b9167c19646596.bindPopup(popup_5acb0d53e5a19a4e1ce958e73b740ab8)
+        ;
+
+        
+    
+    
+                marker_545f90c475067aa911b9167c19646596.setIcon(icon_fd1e100281cea13c4aef8fced573d6e3);
+            
+    
+            var marker_1fcac97855d7458d868904423f7cf028 = L.marker(
+                [51.5513833, -0.1821095],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_2b9f307f5a89fbe122c162f1baa521f2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bddaf0eeae1dbe4b4e26735f8ba2cb46 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a39cc2b8af227c58080e3fcc91a81146 = $(`<div id="html_a39cc2b8af227c58080e3fcc91a81146" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_bddaf0eeae1dbe4b4e26735f8ba2cb46.setContent(html_a39cc2b8af227c58080e3fcc91a81146);
+            
+        
+
+        marker_1fcac97855d7458d868904423f7cf028.bindPopup(popup_bddaf0eeae1dbe4b4e26735f8ba2cb46)
+        ;
+
+        
+    
+    
+                marker_1fcac97855d7458d868904423f7cf028.setIcon(icon_2b9f307f5a89fbe122c162f1baa521f2);
+            
+    
+            var marker_446b93cd410ce9160c8212bfef8086b2 = L.marker(
+                [51.5533953, -0.1825568],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_66f5e0487f8e1c12493c6fe6a28e1241 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7218ad2ee9c5eeb0eb05f046890f2bb9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_78e563fbce97dcc4dc8496b03b4074b9 = $(`<div id="html_78e563fbce97dcc4dc8496b03b4074b9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7218ad2ee9c5eeb0eb05f046890f2bb9.setContent(html_78e563fbce97dcc4dc8496b03b4074b9);
+            
+        
+
+        marker_446b93cd410ce9160c8212bfef8086b2.bindPopup(popup_7218ad2ee9c5eeb0eb05f046890f2bb9)
+        ;
+
+        
+    
+    
+                marker_446b93cd410ce9160c8212bfef8086b2.setIcon(icon_66f5e0487f8e1c12493c6fe6a28e1241);
+            
+    
+            var marker_b7a2bb88de3f42defb50a5214e0a4cf2 = L.marker(
+                [51.5519083, -0.1806315],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_a8ab6ac097c222bee399368e0526ea8c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_963400560fceac31172a805129df3ce9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b57446e73da64f69d605a7e546b7bbb9 = $(`<div id="html_b57446e73da64f69d605a7e546b7bbb9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_963400560fceac31172a805129df3ce9.setContent(html_b57446e73da64f69d605a7e546b7bbb9);
+            
+        
+
+        marker_b7a2bb88de3f42defb50a5214e0a4cf2.bindPopup(popup_963400560fceac31172a805129df3ce9)
+        ;
+
+        
+    
+    
+                marker_b7a2bb88de3f42defb50a5214e0a4cf2.setIcon(icon_a8ab6ac097c222bee399368e0526ea8c);
+            
+    
+            var marker_49cc3565908c4ea511d55ae2c3466d5f = L.marker(
+                [51.5555059, -0.1813626],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_e701bba8848221f5193d863483129bfc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_24fd9ffbfa13440451dbbd55e6a4d7ae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f1655584744fc935d793cad3755963b = $(`<div id="html_6f1655584744fc935d793cad3755963b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_24fd9ffbfa13440451dbbd55e6a4d7ae.setContent(html_6f1655584744fc935d793cad3755963b);
+            
+        
+
+        marker_49cc3565908c4ea511d55ae2c3466d5f.bindPopup(popup_24fd9ffbfa13440451dbbd55e6a4d7ae)
+        ;
+
+        
+    
+    
+                marker_49cc3565908c4ea511d55ae2c3466d5f.setIcon(icon_e701bba8848221f5193d863483129bfc);
+            
+    
+            var marker_29c796d8128b9e775f31e4460bbb1e6d = L.marker(
+                [51.5526388, -0.1785577],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_9fa1fba932ba01c0a0851dccb8d81934 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7628fa2d3cbe3d2a0982594cef364e59 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fee75e8fb1615a54937d26020c5e4897 = $(`<div id="html_fee75e8fb1615a54937d26020c5e4897" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 004B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7628fa2d3cbe3d2a0982594cef364e59.setContent(html_fee75e8fb1615a54937d26020c5e4897);
+            
+        
+
+        marker_29c796d8128b9e775f31e4460bbb1e6d.bindPopup(popup_7628fa2d3cbe3d2a0982594cef364e59)
+        ;
+
+        
+    
+    
+                marker_29c796d8128b9e775f31e4460bbb1e6d.setIcon(icon_9fa1fba932ba01c0a0851dccb8d81934);
+            
+    
+            var marker_5fc3123e6bc567858c3d2e96dae1854e = L.marker(
+                [51.5526388, -0.1785577],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_df08fc3de6f0e959b5d06e82c8332a2b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0562089db96b62989b2cd38b63b8eba1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9501eae9889065a5aa4c1bd34014d95f = $(`<div id="html_9501eae9889065a5aa4c1bd34014d95f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 008A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0562089db96b62989b2cd38b63b8eba1.setContent(html_9501eae9889065a5aa4c1bd34014d95f);
+            
+        
+
+        marker_5fc3123e6bc567858c3d2e96dae1854e.bindPopup(popup_0562089db96b62989b2cd38b63b8eba1)
+        ;
+
+        
+    
+    
+                marker_5fc3123e6bc567858c3d2e96dae1854e.setIcon(icon_df08fc3de6f0e959b5d06e82c8332a2b);
+            
+    
+            var marker_c11f976c9a0528434914761afb44c5b8 = L.marker(
+                [51.5526388, -0.1785577],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_6d25115af5c086cecc12e4b25dd4e412 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d02a440829ffc51d6e508f77bccd0915 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e2e406a7c75c6737e554a7a67964b5d2 = $(`<div id="html_e2e406a7c75c6737e554a7a67964b5d2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 008A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d02a440829ffc51d6e508f77bccd0915.setContent(html_e2e406a7c75c6737e554a7a67964b5d2);
+            
+        
+
+        marker_c11f976c9a0528434914761afb44c5b8.bindPopup(popup_d02a440829ffc51d6e508f77bccd0915)
+        ;
+
+        
+    
+    
+                marker_c11f976c9a0528434914761afb44c5b8.setIcon(icon_6d25115af5c086cecc12e4b25dd4e412);
+            
+    
+            var marker_18386e270026543284304fa9ee07909d = L.marker(
+                [51.549446, -0.1810464],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_fc08eab9995a8da83e677d435cb03026 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_26885e09423da157204802226be390bb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_680c354e38e3e8cd971a32fe14e57d5c = $(`<div id="html_680c354e38e3e8cd971a32fe14e57d5c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 008B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_26885e09423da157204802226be390bb.setContent(html_680c354e38e3e8cd971a32fe14e57d5c);
+            
+        
+
+        marker_18386e270026543284304fa9ee07909d.bindPopup(popup_26885e09423da157204802226be390bb)
+        ;
+
+        
+    
+    
+                marker_18386e270026543284304fa9ee07909d.setIcon(icon_fc08eab9995a8da83e677d435cb03026);
+            
+    
+            var marker_13c5bdad74ae02a09593fc9f19389725 = L.marker(
+                [51.549446, -0.1810464],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_bc23976806edcc48066613dc86092f8e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_40b767cab9225d30cd895d074544d13a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a08f97e01010f31667ffbd1ad02f1ab = $(`<div id="html_0a08f97e01010f31667ffbd1ad02f1ab" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 008B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_40b767cab9225d30cd895d074544d13a.setContent(html_0a08f97e01010f31667ffbd1ad02f1ab);
+            
+        
+
+        marker_13c5bdad74ae02a09593fc9f19389725.bindPopup(popup_40b767cab9225d30cd895d074544d13a)
+        ;
+
+        
+    
+    
+                marker_13c5bdad74ae02a09593fc9f19389725.setIcon(icon_bc23976806edcc48066613dc86092f8e);
+            
+    
+            var marker_0f2329244cfbcc42233964b8c45398c1 = L.marker(
+                [51.549446, -0.1810464],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_6a5eba117a161b67e1f21f9b9e5a105d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1bfd547312a422ac7c89a66927fbaf98 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9969ead0eeaed6b890339fb7cb2daa36 = $(`<div id="html_9969ead0eeaed6b890339fb7cb2daa36" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 008C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_1bfd547312a422ac7c89a66927fbaf98.setContent(html_9969ead0eeaed6b890339fb7cb2daa36);
+            
+        
+
+        marker_0f2329244cfbcc42233964b8c45398c1.bindPopup(popup_1bfd547312a422ac7c89a66927fbaf98)
+        ;
+
+        
+    
+    
+                marker_0f2329244cfbcc42233964b8c45398c1.setIcon(icon_6a5eba117a161b67e1f21f9b9e5a105d);
+            
+    
+            var marker_97e6c0a9b7604957ed4026176e5473cf = L.marker(
+                [51.549446, -0.1810464],
+                {
+}
+            ).addTo(feature_group_a31e9b53e0c320ca1e513ad3afd306b6);
+        
+    
+            var icon_d6bdd45477c0251c16386c8070d0311f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1011ac1174f8d4e599bf227886a13c6a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8cd00ae600bf6f2908c7659a9b3c8125 = $(`<div id="html_8cd00ae600bf6f2908c7659a9b3c8125" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Camden 008C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_1011ac1174f8d4e599bf227886a13c6a.setContent(html_8cd00ae600bf6f2908c7659a9b3c8125);
+            
+        
+
+        marker_97e6c0a9b7604957ed4026176e5473cf.bindPopup(popup_1011ac1174f8d4e599bf227886a13c6a)
+        ;
+
+        
+    
+    
+                marker_97e6c0a9b7604957ed4026176e5473cf.setIcon(icon_d6bdd45477c0251c16386c8070d0311f);
+            
+    
+            feature_group_a31e9b53e0c320ca1e513ad3afd306b6.addTo(map_df19f65919c349109024a08e92f35e4d);
+        
+    
+            var poly_line_8e7e94331cb08636acb3fe4d3582defc = L.polyline(
+                [[51.5586126, -0.1865224], [51.5580482, -0.1877625], [51.5570278, -0.1865529], [51.5561883, -0.1854028], [51.5560687, -0.1828052], [51.5564244, -0.1826624], [51.557108, -0.1838692], [51.5571174, -0.1836046], [51.557108, -0.1838692], [51.5564244, -0.1826624], [51.5566963, -0.1824453], [51.5575433, -0.1818693], [51.5586264, -0.1812012], [51.5589415, -0.1815226], [51.5587995, -0.1820169], [51.5583259, -0.1834867], [51.5587995, -0.1820169], [51.5589415, -0.1815226], [51.5586264, -0.1812012], [51.5575433, -0.1818693], [51.5566963, -0.1824453], [51.5555059, -0.1813626], [51.5555189, -0.180761], [51.5555059, -0.1813626], [51.5552873, -0.1828401], [51.5544953, -0.1826703], [51.5535832, -0.1819549], [51.5533953, -0.1825568], [51.5535832, -0.1819549], [51.5519083, -0.1806315], [51.5526388, -0.1785577], [51.5519083, -0.1806315], [51.5496303, -0.1811833], [51.5496124, -0.1812264], [51.549446, -0.1810464], [51.5496124, -0.1812264], [51.5496303, -0.1811833], [51.5519083, -0.1806315], [51.5513833, -0.1821095], [51.5533554, -0.1846219], [51.5519993, -0.1854379], [51.5533554, -0.1846219], [51.554055, -0.1844846], [51.5541339, -0.1840306], [51.5561883, -0.1854028], [51.5570278, -0.1865529], [51.5560412, -0.1883308], [51.5555097, -0.1894406], [51.5561876, -0.1904418], [51.5551606, -0.1906611], [51.5549541, -0.1907166], [51.5542549, -0.1909828], [51.5549541, -0.1907166], [51.5551606, -0.1906611], [51.5561876, -0.1904418], [51.5566431, -0.1917615], [51.5583642, -0.1951588], [51.5578374, -0.1957204], [51.556253, -0.1944625], [51.5556588, -0.1935264], [51.5551041, -0.192526], [51.5548605, -0.192083], [51.5551802, -0.1919142], [51.5548605, -0.192083], [51.5542549, -0.1909828], [51.5549541, -0.1907166], [51.5551606, -0.1906611], [51.5561876, -0.1904418], [51.5574911, -0.1889151], [51.5580482, -0.1877625], [51.5586126, -0.1865224]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_df19f65919c349109024a08e92f35e4d);
+        
+    
+            var layer_control_f1a01e620b9dc42de41515ed39be1656_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_d152417bbea6778565b46fcbc1b83386,
+                },
+                overlays :  {
+                    "Frognal and Fitzjohns Boundary" : geo_json_a3c10de6b43dee54c851726875d1b41e,
+                    "LSOA Median Crime Rates for Frognal and Fitzjohns" : geo_json_d9079e2aaa453c548e0fee1fb9109c05,
+                    "Patrol Waypoints" : feature_group_a31e9b53e0c320ca1e513ad3afd306b6,
+                },
+            };
+            let layer_control_f1a01e620b9dc42de41515ed39be1656 = L.control.layers(
+                layer_control_f1a01e620b9dc42de41515ed39be1656_layers.base_layers,
+                layer_control_f1a01e620b9dc42de41515ed39be1656_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_df19f65919c349109024a08e92f35e4d);
+
+        
+</script>
+</html>

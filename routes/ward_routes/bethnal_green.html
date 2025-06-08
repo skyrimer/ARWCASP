@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e464e2494cf0707cba47701f92e83d26 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e464e2494cf0707cba47701f92e83d26" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e464e2494cf0707cba47701f92e83d26 = L.map(
+                "map_e464e2494cf0707cba47701f92e83d26",
+                {
+                    center: [51.52638396822207, -0.04784021480877307],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b819458d2bc55913efec0f0aa04c5584 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b819458d2bc55913efec0f0aa04c5584.addTo(map_e464e2494cf0707cba47701f92e83d26);
+        
+    
+        function geo_json_126f4f702ce991d29c387a06995032ad_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_126f4f702ce991d29c387a06995032ad_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_126f4f702ce991d29c387a06995032ad = L.geoJson(null, {
+                onEachFeature: geo_json_126f4f702ce991d29c387a06995032ad_onEachFeature,
+            
+                style: geo_json_126f4f702ce991d29c387a06995032ad_styler,
+            ...{
+}
+        });
+
+        function geo_json_126f4f702ce991d29c387a06995032ad_add (data) {
+            geo_json_126f4f702ce991d29c387a06995032ad
+                .addData(data);
+        }
+            geo_json_126f4f702ce991d29c387a06995032ad_add({"features": [{"geometry": {"coordinates": [[[-0.056205176637136194, 51.52096335021708], [-0.056086135301983725, 51.52115205571469], [-0.05562876186816259, 51.52187284614012], [-0.05551091129947762, 51.52206696480832], [-0.055315995339025384, 51.52237937293113], [-0.05517727518974219, 51.52262528736948], [-0.05509890423115384, 51.52277142421553], [-0.05498957501627483, 51.523002542740244], [-0.054946113691986175, 51.52314386435322], [-0.0549390100673696, 51.523243625675974], [-0.05491615155556175, 51.52378004067801], [-0.05490213596350997, 51.52410893284937], [-0.05489488448245347, 51.52437950205493], [-0.05489300220472603, 51.52469421137525], [-0.054923129803536364, 51.52483234815114], [-0.05496605878104456, 51.52497690030557], [-0.055101499005049945, 51.52541624077549], [-0.05527929319884466, 51.52598025558076], [-0.055474112655036004, 51.52665252236011], [-0.055524190284099315, 51.52686650576754], [-0.055536399481706446, 51.526984477347845], [-0.05554598379920303, 51.52709710130317], [-0.05553623426152562, 51.52722549687992], [-0.05552277485663612, 51.527337738829885], [-0.055530230307354086, 51.527399893514115], [-0.055542481856998324, 51.527519663787984], [-0.05555816171604709, 51.528200647481654], [-0.05558741152579043, 51.528493397642], [-0.05581790277476667, 51.52921039576135], [-0.05585801236445925, 51.5293180416779], [-0.055504969224234355, 51.52941557486462], [-0.05522190141773002, 51.5294944891554], [-0.05473590989520402, 51.52963215868911], [-0.05436517417415226, 51.52973748606836], [-0.05418113731445315, 51.52979376740554], [-0.05403767200874862, 51.529843619421754], [-0.0538858489904695, 51.52988874769575], [-0.053755990081761296, 51.52992614919531], [-0.053412801197903446, 51.53002653663361], [-0.052556128107483925, 51.53023715727667], [-0.05222044891590927, 51.530331372917864], [-0.052230859522867594, 51.530357616825334], [-0.05224867259786214, 51.53041374059276], [-0.05223650481681561, 51.53046208461962], [-0.052198402383647056, 51.53051089699756], [-0.052120109499532545, 51.53058781001299], [-0.05138710699970256, 51.53131209745471], [-0.05117734268927661, 51.53153075587291], [-0.050862269381036065, 51.53185194825347], [-0.05066348023599314, 51.53205011110278], [-0.0502292582532818, 51.53249428289508], [-0.04961167878576733, 51.533111698711885], [-0.049205023968293155, 51.53351955596492], [-0.049066645368976466, 51.53365300378602], [-0.048647506113153195, 51.5335408489447], [-0.04753524684427645, 51.533185125612135], [-0.046710318722493226, 51.53288541962005], [-0.04631269941515875, 51.532742958723766], [-0.045618473384306274, 51.53242294668269], [-0.04484343621376914, 51.53203595639354], [-0.044508374439926376, 51.53184877275436], [-0.04419401297269906, 51.53171398550462], [-0.04317239770711408, 51.531231174176014], [-0.04296186474162558, 51.53109541859356], [-0.04270963409420937, 51.53089253057766], [-0.04250018666870213, 51.530701054102074], [-0.04222680548061813, 51.53038444782748], [-0.04198907716266708, 51.53007922404677], [-0.041591007062278126, 51.52951052212575], [-0.04139683286167982, 51.529232095299896], [-0.04099584404140204, 51.528698493472334], [-0.04068573260390753, 51.52826610764177], [-0.04023178216219236, 51.527656911181204], [-0.039595133702631624, 51.52673809935492], [-0.03943581281092301, 51.52652048475534], [-0.03936722592017371, 51.526437529014345], [-0.03924092511232105, 51.52628968933067], [-0.03905498050208988, 51.52608871018875], [-0.03876361299974123, 51.52579076357738], [-0.03813754346638542, 51.52522992361628], [-0.03774142775175515, 51.524852818058925], [-0.037159613021380634, 51.52433586518081], [-0.03706549156755622, 51.52424708668646], [-0.03728101184028588, 51.52416070297481], [-0.0380623651306769, 51.52379340652497], [-0.03838118880519906, 51.523618039204905], [-0.038639211972254485, 51.5234856156336], [-0.03883210787358857, 51.52339174864421], [-0.03909042763797161, 51.52328279305173], [-0.03936574620660069, 51.52318481919102], [-0.03963750873099095, 51.52309766320225], [-0.03990076041293839, 51.523012162369994], [-0.04045908571958294, 51.52283350964922], [-0.04091333052854501, 51.5226954589958], [-0.041498308669101265, 51.52256579273396], [-0.04208994657751961, 51.522449809694656], [-0.04259874602562992, 51.52235033145391], [-0.04280346097049106, 51.522318686478044], [-0.043068509900312246, 51.52228804779143], [-0.04343265939723908, 51.52226625369233], [-0.04386319998565128, 51.522245565721114], [-0.044091606706561266, 51.52222959667916], [-0.0442288510307862, 51.52222199618804], [-0.04449563494271996, 51.52218688819607], [-0.044934106956459725, 51.52211418633853], [-0.04569488126823203, 51.52198653034466], [-0.0462288224577661, 51.52187136316917], [-0.046711907858038616, 51.5217669438127], [-0.04728876772227374, 51.521659678590446], [-0.04825445893115609, 51.521459002159034], [-0.04897324951162552, 51.52130374618586], [-0.05003986797283018, 51.52106877379739], [-0.05007188537392918, 51.52106211405827], [-0.05102734215012116, 51.520863941779176], [-0.05319798408384747, 51.52042972205408], [-0.05389964459685821, 51.52030193089767], [-0.05535372690801302, 51.52003737854352], [-0.05636997328416521, 51.51983396770142], [-0.056377294312231686, 51.519832291014225], [-0.056441748028881585, 51.51994303733827], [-0.05648741323105613, 51.52009033138882], [-0.056492403395274934, 51.52017411118299], [-0.05649377612382617, 51.52024515510377], [-0.05647824003148933, 51.52033929290085], [-0.05646473718674556, 51.52041917025154], [-0.05643968968144494, 51.52053292848303], [-0.05639876981220471, 51.520648221696256], [-0.05623444367185952, 51.52091798612822], [-0.056205176637136194, 51.52096335021708]]], "type": "Polygon"}, "id": "527", "properties": {"DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "NAME": "Bethnal Green", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_126f4f702ce991d29c387a06995032ad.addTo(map_e464e2494cf0707cba47701f92e83d26);
+        
+    
+        function geo_json_af892d6dea4cfd3107225ee199445f6b_styler(feature) {
+            switch(feature.id) {
+                case "3998": case "4004": case "4006": case "4043": case "4044": case "4046": case "31090": case "31091": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                case "4005": case "31092": case "33663": 
+                    return {"color": "black", "fillColor": "#fd8c3c", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_af892d6dea4cfd3107225ee199445f6b_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_af892d6dea4cfd3107225ee199445f6b = L.geoJson(null, {
+                onEachFeature: geo_json_af892d6dea4cfd3107225ee199445f6b_onEachFeature,
+            
+                style: geo_json_af892d6dea4cfd3107225ee199445f6b_styler,
+            ...{
+}
+        });
+
+        function geo_json_af892d6dea4cfd3107225ee199445f6b_add (data) {
+            geo_json_af892d6dea4cfd3107225ee199445f6b
+                .addData(data);
+        }
+            geo_json_af892d6dea4cfd3107225ee199445f6b_add({"features": [{"geometry": {"coordinates": [[[[-0.04450814725176334, 51.53184894371401], [-0.05255970148797165, 51.534802327369064], [-0.05391997755959101, 51.53297645045173], [-0.05153156894544581, 51.53053055858048], [-0.04538243090096894, 51.53144121419851], [-0.04450814725176334, 51.53184894371401]]]], "type": "MultiPolygon"}, "id": "3998", "properties": {"BNG_E": 535390, "BNG_N": 183327, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{1C69E8B2-1FCF-40D4-B69B-8F9F1B577E29}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.53261947631836, "LONG": -0.04944000020623207, "LSOA21CD": "E01004201", "LSOA21NM": "Tower Hamlets 002D", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.04714316316856521, 51.5227983675305], [-0.048943744678988155, 51.524884796020146], [-0.05294402718440642, 51.522820894952325], [-0.049043953210776293, 51.521305622803126], [-0.046229587831528446, 51.52187228439781], [-0.04714316316856521, 51.5227983675305]]]], "type": "MultiPolygon"}, "id": "4004", "properties": {"BNG_E": 535416, "BNG_N": 182268, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{F448A0D7-756D-44EA-9F2F-0409A7B36A5B}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.523101806640625, "LONG": -0.049469999969005585, "LSOA21CD": "E01004207", "LSOA21NM": "Tower Hamlets 011A", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.049043953210776293, 51.521305622803126], [-0.05294402718440642, 51.522820894952325], [-0.05433831882226634, 51.522797036518966], [-0.05388002471343249, 51.52241848885989], [-0.05812545953606384, 51.52200706519757], [-0.0631420211127942, 51.519128185755605], [-0.0627518615892069, 51.51842432192414], [-0.0529854319319829, 51.520453084892594], [-0.049043953210776293, 51.521305622803126]]]], "type": "MultiPolygon"}, "id": "4005", "properties": {"BNG_E": 534995, "BNG_N": 181980, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{C9D0CFEB-6252-4130-9257-6DEC84E6AD99}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.52061080932617, "LONG": -0.055649999529123306, "LSOA21CD": "E01004208", "LSOA21NM": "Tower Hamlets 013C", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.05433831882226634, 51.522797036518966], [-0.053351600096783615, 51.527577664152126], [-0.05531467784407966, 51.527318474691945], [-0.05514705245519434, 51.522682079766454], [-0.05388002471343249, 51.52241848885989], [-0.05433831882226634, 51.522797036518966]]]], "type": "MultiPolygon"}, "id": "4006", "properties": {"BNG_E": 535114, "BNG_N": 182509, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{561F7872-BBDD-4E5A-9C2C-4014539FB728}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.52534103393555, "LONG": -0.05372999981045723, "LSOA21CD": "E01004209", "LSOA21NM": "Tower Hamlets 011B", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.04929760335835732, 51.52885624504307], [-0.05385513131243956, 51.52989789679197], [-0.0558587749428264, 51.52931811250196], [-0.05539524046306963, 51.52754017006569], [-0.05531467784407966, 51.527318474691945], [-0.053351600096783615, 51.527577664152126], [-0.04916803917925228, 51.525091498598556], [-0.04617698341580825, 51.52618752378649], [-0.04614909827989369, 51.52646004763899], [-0.04929760335835732, 51.52885624504307]]]], "type": "MultiPolygon"}, "id": "4042", "properties": {"BNG_E": 535297, "BNG_N": 182866, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{0D726F5F-DEB2-4F57-B3BA-89EEB6A13A19}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.528499603271484, "LONG": -0.0509600006043911, "LSOA21CD": "E01004259", "LSOA21NM": "Tower Hamlets 007A", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 2.0, "is_high_crime": true, "median": 2.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.04354622739106409, 51.526893674171134], [-0.04529766496746416, 51.52943625152781], [-0.04739915719915991, 51.529019257798616], [-0.04929760335835732, 51.52885624504307], [-0.04614909827989369, 51.52646004763899], [-0.04354622739106409, 51.526893674171134]]]], "type": "MultiPolygon"}, "id": "4043", "properties": {"BNG_E": 535620, "BNG_N": 182823, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{A2D5241F-D2B7-4D4E-9093-279252830E40}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.52804183959961, "LONG": -0.04631999880075455, "LSOA21CD": "E01004260", "LSOA21NM": "Tower Hamlets 007B", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.04714316316856521, 51.5227983675305], [-0.04382930837791875, 51.52384298754749], [-0.04617698341580825, 51.52618752378649], [-0.04916803917925228, 51.525091498598556], [-0.048943744678988155, 51.524884796020146], [-0.04714316316856521, 51.5227983675305]]]], "type": "MultiPolygon"}, "id": "4044", "properties": {"BNG_E": 535620, "BNG_N": 182435, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{6CA90D1D-2ED8-4264-87D6-38AD13104C03}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.52455139160156, "LONG": -0.046470001339912415, "LSOA21CD": "E01004263", "LSOA21NM": "Tower Hamlets 007C", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.04739915719915991, 51.529019257798616], [-0.04538243090096894, 51.53144121419851], [-0.05153156894544581, 51.53053055858048], [-0.052216656588803034, 51.53033233552331], [-0.05385513131243956, 51.52989789679197], [-0.04929760335835732, 51.52885624504307], [-0.04739915719915991, 51.529019257798616]]]], "type": "MultiPolygon"}, "id": "4046", "properties": {"BNG_E": 535334, "BNG_N": 183047, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{DA1D1373-AB1A-499C-AB4D-A555624BFD25}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.530120849609375, "LONG": -0.05034999921917915, "LSOA21CD": "E01004266", "LSOA21NM": "Tower Hamlets 007D", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.04002532467662405, 51.5273953024869], [-0.042229505824151053, 51.530386264729394], [-0.04529766496746416, 51.52943625152781], [-0.04354622739106409, 51.526893674171134], [-0.039966184837812516, 51.52730476140822], [-0.04002532467662405, 51.5273953024869]]]], "type": "MultiPolygon"}, "id": "31090", "properties": {"BNG_E": 535873, "BNG_N": 182898, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{153E5D04-BF36-40A5-B08E-689B27BF3EFA}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.528648376464844, "LONG": -0.04264000058174133, "LSOA21CD": "E01032785", "LSOA21NM": "Tower Hamlets 010E", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.042229505824151053, 51.530386264729394], [-0.04450814725176334, 51.53184894371401], [-0.04538243090096894, 51.53144121419851], [-0.04739915719915991, 51.529019257798616], [-0.04529766496746416, 51.52943625152781], [-0.042229505824151053, 51.530386264729394]]]], "type": "MultiPolygon"}, "id": "31091", "properties": {"BNG_E": 535703, "BNG_N": 183109, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{F2D92BC4-30BE-4908-8071-E689DF6A176D}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.53059005737305, "LONG": -0.045010000467300415, "LSOA21CD": "E01032786", "LSOA21NM": "Tower Hamlets 010F", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.04916803917925228, 51.525091498598556], [-0.053351600096783615, 51.527577664152126], [-0.05433831882226634, 51.522797036518966], [-0.05294402718440642, 51.522820894952325], [-0.048943744678988155, 51.524884796020146], [-0.04916803917925228, 51.525091498598556]]]], "type": "MultiPolygon"}, "id": "31092", "properties": {"BNG_E": 535257, "BNG_N": 182522, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{737674CF-6EAF-4726-ABED-33BE734EAD98}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.525421142578125, "LONG": -0.051660001277923584, "LSOA21CD": "E01032787", "LSOA21NM": "Tower Hamlets 011F", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.03709568267594542, 51.524236871103], [-0.039966184837812516, 51.52730476140822], [-0.04354622739106409, 51.526893674171134], [-0.04614909827989369, 51.52646004763899], [-0.04617698341580825, 51.52618752378649], [-0.04382930837791875, 51.52384298754749], [-0.04714316316856521, 51.5227983675305], [-0.046229587831528446, 51.52187228439781], [-0.04494712756157683, 51.520974980116364], [-0.03650374398359631, 51.521966764903254], [-0.03709568267594542, 51.524236871103]]]], "type": "MultiPolygon"}, "id": "33663", "properties": {"BNG_E": 535950, "BNG_N": 182415, "DISTRICT": "Tower Hamlets", "GSS_CODE": "E05009317", "GlobalID": "{452A401D-8EE7-461B-AFD3-CE7B095DE006}", "HECTARES": 121.357, "LAGSSCODE": "E09000030", "LAT": 51.52429962158203, "LONG": -0.04171999916434288, "LSOA21CD": "E01035670", "LSOA21NM": "Tower Hamlets 010G", "LSOA21NMW": " ", "NAME": "Bethnal Green", "NONLD_AREA": 0.0, "WD24NM": "Bethnal Green East", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_af892d6dea4cfd3107225ee199445f6b.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_af892d6dea4cfd3107225ee199445f6b.addTo(map_e464e2494cf0707cba47701f92e83d26);
+        
+    
+            var feature_group_aa1e25a45f2d15829d2a5a23e9b1423b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_f521b39a090d113f42e947f047e337a1 = L.marker(
+                [51.5277689, -0.0521406],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_4504f83e6e44e756fb35de228d5bf610 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8d981868f4bc698edd694656378523f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6829b43297f6df12b4c7d6a45abc5c62 = $(`<div id="html_6829b43297f6df12b4c7d6a45abc5c62" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 007A (Pt 1)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_8d981868f4bc698edd694656378523f7.setContent(html_6829b43297f6df12b4c7d6a45abc5c62);
+            
+        
+
+        marker_f521b39a090d113f42e947f047e337a1.bindPopup(popup_8d981868f4bc698edd694656378523f7)
+        ;
+
+        
+    
+    
+                marker_f521b39a090d113f42e947f047e337a1.setIcon(icon_4504f83e6e44e756fb35de228d5bf610);
+            
+    
+            var marker_de642a3195b0bc443453db91f0328842 = L.marker(
+                [51.5284003, -0.0497144],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_db38aeb38a9535bb35b3e96259a55c5b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_70e49c111f362d22ba0c76e78b18f6f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_47a12b481854c9b0a5e989408da0dac8 = $(`<div id="html_47a12b481854c9b0a5e989408da0dac8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 007A (Pt 2)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_70e49c111f362d22ba0c76e78b18f6f6.setContent(html_47a12b481854c9b0a5e989408da0dac8);
+            
+        
+
+        marker_de642a3195b0bc443453db91f0328842.bindPopup(popup_70e49c111f362d22ba0c76e78b18f6f6)
+        ;
+
+        
+    
+    
+                marker_de642a3195b0bc443453db91f0328842.setIcon(icon_db38aeb38a9535bb35b3e96259a55c5b);
+            
+    
+            var marker_d6bb199fdd2eb2c4de4e9f7f934f88d0 = L.marker(
+                [51.5272683, -0.0507761],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_8452484562e07df8eec18cb8813eee78 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_929d912d269c503492349e02579cbaa0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_847e17c39caee478b3b655b6479a6023 = $(`<div id="html_847e17c39caee478b3b655b6479a6023" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 007A (Pt 3)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_929d912d269c503492349e02579cbaa0.setContent(html_847e17c39caee478b3b655b6479a6023);
+            
+        
+
+        marker_d6bb199fdd2eb2c4de4e9f7f934f88d0.bindPopup(popup_929d912d269c503492349e02579cbaa0)
+        ;
+
+        
+    
+    
+                marker_d6bb199fdd2eb2c4de4e9f7f934f88d0.setIcon(icon_8452484562e07df8eec18cb8813eee78);
+            
+    
+            var marker_fac1340eac7939d60bef66f6e06d83ab = L.marker(
+                [51.5212678, -0.0541879],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_53d65cafc5e837f5a4871b018652ce1b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ca0405a8aa72186ba1e7829b407c9bfb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_58360dc8ad2992cfdfdae9ab339dd103 = $(`<div id="html_58360dc8ad2992cfdfdae9ab339dd103" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 013C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_ca0405a8aa72186ba1e7829b407c9bfb.setContent(html_58360dc8ad2992cfdfdae9ab339dd103);
+            
+        
+
+        marker_fac1340eac7939d60bef66f6e06d83ab.bindPopup(popup_ca0405a8aa72186ba1e7829b407c9bfb)
+        ;
+
+        
+    
+    
+                marker_fac1340eac7939d60bef66f6e06d83ab.setIcon(icon_53d65cafc5e837f5a4871b018652ce1b);
+            
+    
+            var marker_7e0f8383f26fc7e4fa88f048e1d77ff4 = L.marker(
+                [51.5228091, -0.0529672],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_c41aadc9a2bbe7087ba18697f1793972 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_748fb608835fe3efe30fd61cad2e192f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2ca055e5e52a7250beb9f77bdaf02007 = $(`<div id="html_2ca055e5e52a7250beb9f77bdaf02007" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 013C (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_748fb608835fe3efe30fd61cad2e192f.setContent(html_2ca055e5e52a7250beb9f77bdaf02007);
+            
+        
+
+        marker_7e0f8383f26fc7e4fa88f048e1d77ff4.bindPopup(popup_748fb608835fe3efe30fd61cad2e192f)
+        ;
+
+        
+    
+    
+                marker_7e0f8383f26fc7e4fa88f048e1d77ff4.setIcon(icon_c41aadc9a2bbe7087ba18697f1793972);
+            
+    
+            var marker_64a74c0f4cfa2c0f1d3d7e18f88d95d7 = L.marker(
+                [51.5201683, -0.0564757],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_5c0228caaab47748dfbe977748841d0f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67dcb3c9e63b010eeb10f273567e14d7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a92251f3f19f8955ac6a1397e3600f91 = $(`<div id="html_a92251f3f19f8955ac6a1397e3600f91" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 013C (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_67dcb3c9e63b010eeb10f273567e14d7.setContent(html_a92251f3f19f8955ac6a1397e3600f91);
+            
+        
+
+        marker_64a74c0f4cfa2c0f1d3d7e18f88d95d7.bindPopup(popup_67dcb3c9e63b010eeb10f273567e14d7)
+        ;
+
+        
+    
+    
+                marker_64a74c0f4cfa2c0f1d3d7e18f88d95d7.setIcon(icon_5c0228caaab47748dfbe977748841d0f);
+            
+    
+            var marker_45b126d5d4813c676b0328fdc0ade127 = L.marker(
+                [51.5263516, -0.0449506],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_8dc17b079086553f9deed929f485bcb4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ef4e943c5854736d356976f4847dcb5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d985f7c672a480b3e8ddbc7230515bbf = $(`<div id="html_d985f7c672a480b3e8ddbc7230515bbf" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 010G (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_7ef4e943c5854736d356976f4847dcb5.setContent(html_d985f7c672a480b3e8ddbc7230515bbf);
+            
+        
+
+        marker_45b126d5d4813c676b0328fdc0ade127.bindPopup(popup_7ef4e943c5854736d356976f4847dcb5)
+        ;
+
+        
+    
+    
+                marker_45b126d5d4813c676b0328fdc0ade127.setIcon(icon_8dc17b079086553f9deed929f485bcb4);
+            
+    
+            var marker_6a45bc9e8e96065b5155f5c8cf1373af = L.marker(
+                [51.5228277, -0.0405029],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_d5b35ea8c614c2d4bc91f1bdea958f9b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2193ae595793876421cec0f630743e12 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_080058149887b75390408386244d0548 = $(`<div id="html_080058149887b75390408386244d0548" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 010G (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_2193ae595793876421cec0f630743e12.setContent(html_080058149887b75390408386244d0548);
+            
+        
+
+        marker_6a45bc9e8e96065b5155f5c8cf1373af.bindPopup(popup_2193ae595793876421cec0f630743e12)
+        ;
+
+        
+    
+    
+                marker_6a45bc9e8e96065b5155f5c8cf1373af.setIcon(icon_d5b35ea8c614c2d4bc91f1bdea958f9b);
+            
+    
+            var marker_13e3b71af7b9001e6f48473387d414d5 = L.marker(
+                [51.5228476, -0.0459944],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_7487c2fbb2fd1e6fa8098bacb0010794 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8bd79d75e7d8a63f4a13dc56551fae09 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f3f625976573d02a855ca862c840124 = $(`<div id="html_8f3f625976573d02a855ca862c840124" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 010G (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_8bd79d75e7d8a63f4a13dc56551fae09.setContent(html_8f3f625976573d02a855ca862c840124);
+            
+        
+
+        marker_13e3b71af7b9001e6f48473387d414d5.bindPopup(popup_8bd79d75e7d8a63f4a13dc56551fae09)
+        ;
+
+        
+    
+    
+                marker_13e3b71af7b9001e6f48473387d414d5.setIcon(icon_7487c2fbb2fd1e6fa8098bacb0010794);
+            
+    
+            var marker_ddc1645e1c9cbc29d59387d4874b082f = L.marker(
+                [51.5241635, -0.0431288],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_791b933291caa49c0693c91fd486f488 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59c0237bea6e5d59e56d2dfd2fa6d5e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_99c601c13763593c7cfa09ecc0174771 = $(`<div id="html_99c601c13763593c7cfa09ecc0174771" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 010G (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_59c0237bea6e5d59e56d2dfd2fa6d5e8.setContent(html_99c601c13763593c7cfa09ecc0174771);
+            
+        
+
+        marker_ddc1645e1c9cbc29d59387d4874b082f.bindPopup(popup_59c0237bea6e5d59e56d2dfd2fa6d5e8)
+        ;
+
+        
+    
+    
+                marker_ddc1645e1c9cbc29d59387d4874b082f.setIcon(icon_791b933291caa49c0693c91fd486f488);
+            
+    
+            var marker_a06ac319a90feb65836a55190dd48316 = L.marker(
+                [51.5223709, -0.0460205],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_4a90d4a7e574c4e05ee603a5be51c5da = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7b0279d42ea193e0b407748dc604b22 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9948bd18812400e1aa82646abe538676 = $(`<div id="html_9948bd18812400e1aa82646abe538676" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 010G (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_f7b0279d42ea193e0b407748dc604b22.setContent(html_9948bd18812400e1aa82646abe538676);
+            
+        
+
+        marker_a06ac319a90feb65836a55190dd48316.bindPopup(popup_f7b0279d42ea193e0b407748dc604b22)
+        ;
+
+        
+    
+    
+                marker_a06ac319a90feb65836a55190dd48316.setIcon(icon_4a90d4a7e574c4e05ee603a5be51c5da);
+            
+    
+            var marker_36ffdbcc404f87e2ddd759aae16cbca5 = L.marker(
+                [51.5256284, -0.0507857],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_48be52194cdfbf9906ef5e6a3fe6e7f4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4a4b5fd34bc8817f9d5b6eec55770eed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3cd729d82ae842ed81c7526c3eb630b2 = $(`<div id="html_3cd729d82ae842ed81c7526c3eb630b2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 011F (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_4a4b5fd34bc8817f9d5b6eec55770eed.setContent(html_3cd729d82ae842ed81c7526c3eb630b2);
+            
+        
+
+        marker_36ffdbcc404f87e2ddd759aae16cbca5.bindPopup(popup_4a4b5fd34bc8817f9d5b6eec55770eed)
+        ;
+
+        
+    
+    
+                marker_36ffdbcc404f87e2ddd759aae16cbca5.setIcon(icon_48be52194cdfbf9906ef5e6a3fe6e7f4);
+            
+    
+            var marker_409d5ba8201a9919cfa8b6dd31d56680 = L.marker(
+                [51.5242871, -0.0539689],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_93e3a2144b6a54adbb288ce0d5a7c272 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c64c2006909d07a143e1535f4041cf5c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_699293b1466df9f3ff55a111cf58d5f4 = $(`<div id="html_699293b1466df9f3ff55a111cf58d5f4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 011F (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c64c2006909d07a143e1535f4041cf5c.setContent(html_699293b1466df9f3ff55a111cf58d5f4);
+            
+        
+
+        marker_409d5ba8201a9919cfa8b6dd31d56680.bindPopup(popup_c64c2006909d07a143e1535f4041cf5c)
+        ;
+
+        
+    
+    
+                marker_409d5ba8201a9919cfa8b6dd31d56680.setIcon(icon_93e3a2144b6a54adbb288ce0d5a7c272);
+            
+    
+            var marker_804cbf90f914e81ff5c6673efba6ee37 = L.marker(
+                [51.5273415, -0.055507],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_981db4f1e650039bd43c952bb1adc8ff = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0a2494ef45f7ce0841de9f77ab51c8a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79876feafffbbb023ae903c287d1470c = $(`<div id="html_79876feafffbbb023ae903c287d1470c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 011B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0a2494ef45f7ce0841de9f77ab51c8a1.setContent(html_79876feafffbbb023ae903c287d1470c);
+            
+        
+
+        marker_804cbf90f914e81ff5c6673efba6ee37.bindPopup(popup_0a2494ef45f7ce0841de9f77ab51c8a1)
+        ;
+
+        
+    
+    
+                marker_804cbf90f914e81ff5c6673efba6ee37.setIcon(icon_981db4f1e650039bd43c952bb1adc8ff);
+            
+    
+            var marker_9b687c92a2deeb3ddc0894168347c0b7 = L.marker(
+                [51.5231914, -0.0513925],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_9c0949e96a11aec7cc1ddf534b51b1a3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_61c93392c85361b2714a9c1fd315fe4e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8e5b6c30e4dc94356119a8f168a41737 = $(`<div id="html_8e5b6c30e4dc94356119a8f168a41737" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 011A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_61c93392c85361b2714a9c1fd315fe4e.setContent(html_8e5b6c30e4dc94356119a8f168a41737);
+            
+        
+
+        marker_9b687c92a2deeb3ddc0894168347c0b7.bindPopup(popup_61c93392c85361b2714a9c1fd315fe4e)
+        ;
+
+        
+    
+    
+                marker_9b687c92a2deeb3ddc0894168347c0b7.setIcon(icon_9c0949e96a11aec7cc1ddf534b51b1a3);
+            
+    
+            var marker_719373c32eb9c6f5bfc34a36c31e4067 = L.marker(
+                [51.5316723, -0.0447316],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_4f9d19fe72244f84e4c819e6fddb6d16 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_86b809dda5fbbb6444113b583f7ac402 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5533ee1b7a1d701fca6fae72123f347e = $(`<div id="html_5533ee1b7a1d701fca6fae72123f347e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 002D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_86b809dda5fbbb6444113b583f7ac402.setContent(html_5533ee1b7a1d701fca6fae72123f347e);
+            
+        
+
+        marker_719373c32eb9c6f5bfc34a36c31e4067.bindPopup(popup_86b809dda5fbbb6444113b583f7ac402)
+        ;
+
+        
+    
+    
+                marker_719373c32eb9c6f5bfc34a36c31e4067.setIcon(icon_4f9d19fe72244f84e4c819e6fddb6d16);
+            
+    
+            var marker_e29099b88b262973fb1454a152e14bf6 = L.marker(
+                [51.5313095, -0.0513619],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_7de8792acd19fa90e23e067078daf7a7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_411555c9f728cc96b8ac379f43f40b33 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6147205d30c479acf2c3efe51f1ec99b = $(`<div id="html_6147205d30c479acf2c3efe51f1ec99b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 002D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_411555c9f728cc96b8ac379f43f40b33.setContent(html_6147205d30c479acf2c3efe51f1ec99b);
+            
+        
+
+        marker_e29099b88b262973fb1454a152e14bf6.bindPopup(popup_411555c9f728cc96b8ac379f43f40b33)
+        ;
+
+        
+    
+    
+                marker_e29099b88b262973fb1454a152e14bf6.setIcon(icon_7de8792acd19fa90e23e067078daf7a7);
+            
+    
+            var marker_e5c70c148624fa39920383f48d75b22a = L.marker(
+                [51.5313095, -0.0513619],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_861c6d6eced1e4fee4ecff9914c2978c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_55720bc85e8c0778b876ef407fa3700f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_02cc1b25f826b9943a1e3dc3856dd320 = $(`<div id="html_02cc1b25f826b9943a1e3dc3856dd320" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 002D (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_55720bc85e8c0778b876ef407fa3700f.setContent(html_02cc1b25f826b9943a1e3dc3856dd320);
+            
+        
+
+        marker_e5c70c148624fa39920383f48d75b22a.bindPopup(popup_55720bc85e8c0778b876ef407fa3700f)
+        ;
+
+        
+    
+    
+                marker_e5c70c148624fa39920383f48d75b22a.setIcon(icon_861c6d6eced1e4fee4ecff9914c2978c);
+            
+    
+            var marker_7763cd8c53085c96cf372dd988c82a90 = L.marker(
+                [51.5271829, -0.0457378],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_76501e0198ce215d27f7b0f8cac56523 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_09772c27e94afb7132995ece442ddb1e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_825e55c6d94f1b36cc66872422a3f81b = $(`<div id="html_825e55c6d94f1b36cc66872422a3f81b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 007B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_09772c27e94afb7132995ece442ddb1e.setContent(html_825e55c6d94f1b36cc66872422a3f81b);
+            
+        
+
+        marker_7763cd8c53085c96cf372dd988c82a90.bindPopup(popup_09772c27e94afb7132995ece442ddb1e)
+        ;
+
+        
+    
+    
+                marker_7763cd8c53085c96cf372dd988c82a90.setIcon(icon_76501e0198ce215d27f7b0f8cac56523);
+            
+    
+            var marker_5ee26721271a02e813c9700ea03c90ec = L.marker(
+                [51.5297759, -0.0495502],
+                {
+}
+            ).addTo(feature_group_aa1e25a45f2d15829d2a5a23e9b1423b);
+        
+    
+            var icon_f2de098b61d42062c62a57cc4c651303 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d317d1b81498482eff6c374a39c6d51d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3332cf4081341eee47e7f94123ae7198 = $(`<div id="html_3332cf4081341eee47e7f94123ae7198" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Tower Hamlets 007D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d317d1b81498482eff6c374a39c6d51d.setContent(html_3332cf4081341eee47e7f94123ae7198);
+            
+        
+
+        marker_5ee26721271a02e813c9700ea03c90ec.bindPopup(popup_d317d1b81498482eff6c374a39c6d51d)
+        ;
+
+        
+    
+    
+                marker_5ee26721271a02e813c9700ea03c90ec.setIcon(icon_f2de098b61d42062c62a57cc4c651303);
+            
+    
+            feature_group_aa1e25a45f2d15829d2a5a23e9b1423b.addTo(map_e464e2494cf0707cba47701f92e83d26);
+        
+    
+            var poly_line_50c05b972ec2c9d8c9817c66796f0b99 = L.polyline(
+                [[51.5277689, -0.0521406], [51.5280835, -0.0523153], [51.5276474, -0.0528316], [51.5275759, -0.0533151], [51.5275239, -0.0537702], [51.5273415, -0.055507], [51.5275239, -0.0537702], [51.5275759, -0.0533151], [51.5276474, -0.0528316], [51.5280835, -0.0523153], [51.5277689, -0.0521406], [51.5279392, -0.051154], [51.5279724, -0.0510177], [51.5285287, -0.0512501], [51.5285765, -0.0512846], [51.5289891, -0.0501591], [51.5297759, -0.0495502], [51.5299742, -0.049656], [51.5300382, -0.0492549], [51.5301822, -0.0487012], [51.5303136, -0.0480773], [51.5307301, -0.0479379], [51.5303801, -0.0496833], [51.5308259, -0.0497353], [51.5303552, -0.0522053], [51.5313095, -0.0513619], [51.5303552, -0.0522053], [51.5308259, -0.0497353], [51.5303801, -0.0496833], [51.5307301, -0.0479379], [51.5303136, -0.0480773], [51.5301822, -0.0487012], [51.5300382, -0.0492549], [51.5299742, -0.049656], [51.5297759, -0.0495502], [51.5299742, -0.049656], [51.5300382, -0.0492549], [51.5301822, -0.0487012], [51.5303136, -0.0480773], [51.5307301, -0.0479379], [51.5310494, -0.0478428], [51.5310946, -0.047383], [51.5314402, -0.0453647], [51.5316723, -0.0447316], [51.5314402, -0.0453647], [51.5310946, -0.047383], [51.5310494, -0.0478428], [51.5307301, -0.0479379], [51.5303136, -0.0480773], [51.5295338, -0.0476884], [51.5290227, -0.0473666], [51.5288027, -0.0481654], [51.5283701, -0.0478746], [51.5283052, -0.0478366], [51.5278509, -0.0475664], [51.5270761, -0.0464846], [51.5271829, -0.0457378], [51.5270761, -0.0464846], [51.5278509, -0.0475664], [51.5283052, -0.0478366], [51.5280279, -0.0486836], [51.5278557, -0.0491797], [51.5284003, -0.0497144], [51.5278557, -0.0491797], [51.5272683, -0.0507761], [51.5268275, -0.0505719], [51.5258034, -0.0499482], [51.5256284, -0.0507857], [51.5259829, -0.0509808], [51.5261175, -0.0510578], [51.5266044, -0.0513783], [51.5265037, -0.051595], [51.5263387, -0.0519228], [51.5247946, -0.0530226], [51.5233925, -0.0530557], [51.5231634, -0.0530285], [51.5228091, -0.0529672], [51.5229039, -0.0520665], [51.5231914, -0.0513925], [51.5229039, -0.0520665], [51.5228091, -0.0529672], [51.522747, -0.0539462], [51.5227114, -0.0542997], [51.5226987, -0.0550914], [51.521914, -0.0555671], [51.5209607, -0.0561812], [51.5201683, -0.0564757], [51.5209607, -0.0561812], [51.521914, -0.0555671], [51.5226987, -0.0550914], [51.5227114, -0.0542997], [51.5224505, -0.0539263], [51.5224308, -0.0538855], [51.5219009, -0.0530638], [51.5212678, -0.0541879], [51.5219009, -0.0530638], [51.5224308, -0.0538855], [51.5224505, -0.0539263], [51.5227114, -0.0542997], [51.522747, -0.0539462], [51.5231317, -0.0539829], [51.5242871, -0.0539689], [51.5231317, -0.0539829], [51.5231634, -0.0530285], [51.5233925, -0.0530557], [51.5235797, -0.0521613], [51.5237544, -0.0518042], [51.5239973, -0.051191], [51.5243104, -0.0505214], [51.5246163, -0.0500659], [51.5248793, -0.0495475], [51.5249488, -0.049436], [51.525103, -0.0491465], [51.5253299, -0.0486904], [51.5257197, -0.0478664], [51.5260486, -0.0469169], [51.52541, -0.0464159], [51.5248745, -0.0460281], [51.5246356, -0.0467539], [51.524123, -0.0463902], [51.5237694, -0.0461301], [51.5231632, -0.045684], [51.5230439, -0.0461341], [51.5228476, -0.0459944], [51.5223709, -0.0460205], [51.5228476, -0.0459944], [51.5230439, -0.0461341], [51.5231632, -0.045684], [51.5233308, -0.0450514], [51.5237985, -0.0438801], [51.5238357, -0.0438093], [51.5241635, -0.0431288], [51.5225083, -0.0418445], [51.5228277, -0.0405029], [51.5225083, -0.0418445], [51.5241635, -0.0431288], [51.5254053, -0.0444779], [51.5262068, -0.0453157], [51.5263516, -0.0449506], [51.5262068, -0.0453157], [51.526168, -0.0462111], [51.5260486, -0.0469169], [51.5257197, -0.0478664], [51.5253299, -0.0486904], [51.525103, -0.0491465], [51.5249488, -0.049436], [51.5248793, -0.0495475], [51.5246163, -0.0500659], [51.5243104, -0.0505214], [51.5239973, -0.051191], [51.5237544, -0.0518042], [51.5235797, -0.0521613], [51.5233925, -0.0530557], [51.5247946, -0.0530226], [51.5263387, -0.0519228], [51.5265037, -0.051595], [51.5266044, -0.0513783], [51.5261175, -0.0510578], [51.5259829, -0.0509808], [51.5256284, -0.0507857], [51.5258034, -0.0499482], [51.5268275, -0.0505719], [51.5272683, -0.0507761], [51.5279392, -0.051154], [51.5277689, -0.0521406]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_e464e2494cf0707cba47701f92e83d26);
+        
+    
+            var layer_control_f01d2df70e2b7835e4e26d14a67e9e38_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_b819458d2bc55913efec0f0aa04c5584,
+                },
+                overlays :  {
+                    "Bethnal Green Boundary" : geo_json_126f4f702ce991d29c387a06995032ad,
+                    "LSOA Median Crime Rates for Bethnal Green" : geo_json_af892d6dea4cfd3107225ee199445f6b,
+                    "Patrol Waypoints" : feature_group_aa1e25a45f2d15829d2a5a23e9b1423b,
+                },
+            };
+            let layer_control_f01d2df70e2b7835e4e26d14a67e9e38 = L.control.layers(
+                layer_control_f01d2df70e2b7835e4e26d14a67e9e38_layers.base_layers,
+                layer_control_f01d2df70e2b7835e4e26d14a67e9e38_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_e464e2494cf0707cba47701f92e83d26);
+
+        
+</script>
+</html>

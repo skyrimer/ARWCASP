@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1c0ff42ff8ab1a899bde4034625b6879 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_1c0ff42ff8ab1a899bde4034625b6879" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1c0ff42ff8ab1a899bde4034625b6879 = L.map(
+                "map_1c0ff42ff8ab1a899bde4034625b6879",
+                {
+                    center: [51.39618564314268, -0.18202154202176035],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_917a7d7130a8f6285880ea064a386816 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_917a7d7130a8f6285880ea064a386816.addTo(map_1c0ff42ff8ab1a899bde4034625b6879);
+        
+    
+        function geo_json_3b6ecbcf3b0599106e43742aec430ca2_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_3b6ecbcf3b0599106e43742aec430ca2_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_3b6ecbcf3b0599106e43742aec430ca2 = L.geoJson(null, {
+                onEachFeature: geo_json_3b6ecbcf3b0599106e43742aec430ca2_onEachFeature,
+            
+                style: geo_json_3b6ecbcf3b0599106e43742aec430ca2_styler,
+            ...{
+}
+        });
+
+        function geo_json_3b6ecbcf3b0599106e43742aec430ca2_add (data) {
+            geo_json_3b6ecbcf3b0599106e43742aec430ca2
+                .addData(data);
+        }
+            geo_json_3b6ecbcf3b0599106e43742aec430ca2_add({"features": [{"geometry": {"coordinates": [[[-0.1896571998502699, 51.38606357535502], [-0.18924690177617148, 51.38764712634434], [-0.1887509805435561, 51.38946857740104], [-0.18843878776136985, 51.39067596953884], [-0.18821739855327993, 51.39147733577103], [-0.18810986536081817, 51.39187141495853], [-0.18784231416929426, 51.392967929040594], [-0.18721848541291924, 51.39532967408396], [-0.18684994705806737, 51.39650912962662], [-0.18670682908958533, 51.397256954309675], [-0.18669808542702923, 51.39747806394243], [-0.18670501564065195, 51.39755458653891], [-0.18673253422784597, 51.39773391419621], [-0.18681109362528822, 51.398073245253194], [-0.18687864764238304, 51.3982532822328], [-0.18691060802870396, 51.3983203030439], [-0.18697734472707134, 51.39844908408022], [-0.18709766461985539, 51.3986406354384], [-0.18715533987291405, 51.39874680107391], [-0.1875590442110695, 51.398753045817784], [-0.18766716150486448, 51.39878258712646], [-0.18772846603872714, 51.39886894061339], [-0.18792987892988577, 51.39882620617816], [-0.1879992950462511, 51.39881828954941], [-0.18807908766089423, 51.39879974527975], [-0.18821187838574846, 51.39878381839558], [-0.1882727549593483, 51.39880903271453], [-0.1887712561652613, 51.39863594920826], [-0.18937961901679434, 51.39822902217122], [-0.189492003205427, 51.39829458787839], [-0.18964389320998506, 51.39819714512824], [-0.18989013484476364, 51.39807859468175], [-0.1902824477851593, 51.39837332419148], [-0.19057795323195534, 51.398571263187726], [-0.19078242407157775, 51.39870927080577], [-0.19114644303604317, 51.39906649073128], [-0.19163962615343413, 51.39957502725943], [-0.19174667294756192, 51.39962882134307], [-0.1918262424815116, 51.39972714151326], [-0.1919870363777652, 51.39991490708111], [-0.1921047415472662, 51.400029098492304], [-0.19214609120607015, 51.40011073661494], [-0.19261297796323731, 51.40004502943898], [-0.19291097001423438, 51.40025558677695], [-0.1929470005348669, 51.40021658626015], [-0.19311495649749147, 51.400222772148034], [-0.19308433901386948, 51.40052445498404], [-0.19319331388425526, 51.400532428289836], [-0.19326282572461287, 51.40051911599162], [-0.1934900883146684, 51.40069882428476], [-0.19348077543913803, 51.400787771914075], [-0.19371356198719425, 51.400827320451306], [-0.19368534706052573, 51.40099589809581], [-0.19347298729768267, 51.40098543250619], [-0.19320908522424224, 51.401591067669095], [-0.19343137568409036, 51.40160528282825], [-0.19356305232438548, 51.40162079777373], [-0.19378904372256686, 51.40168550336236], [-0.19411086878128142, 51.40183610176082], [-0.1945703494608796, 51.40196185006462], [-0.1944810593489844, 51.40203787850662], [-0.19436492051392845, 51.402139474368305], [-0.1942655404540313, 51.40221885328861], [-0.19419862787621384, 51.40227445937241], [-0.1939587927182382, 51.402449754770494], [-0.19381881358257957, 51.402536598629844], [-0.19375100933883238, 51.402578705676916], [-0.19355288382693017, 51.402679126910385], [-0.19343907794578064, 51.40272142364776], [-0.19335032594026424, 51.40275062149089], [-0.19226954991268977, 51.40313949443135], [-0.1921105948375944, 51.403196376450644], [-0.19208558422416366, 51.40321136354576], [-0.19173901538915875, 51.40343256499567], [-0.19170038603639694, 51.403465232019244], [-0.19166421008359502, 51.40350782592012], [-0.19162560439463452, 51.40357294728576], [-0.19160260584005928, 51.40364810861544], [-0.19159662757679005, 51.403688471486056], [-0.19159860101090503, 51.40374963412918], [-0.19128020035886278, 51.403764498275024], [-0.18948112552230326, 51.40381412082641], [-0.18917870968927078, 51.403898449460485], [-0.18910709560684053, 51.40392880793454], [-0.18903757942209856, 51.403978077849025], [-0.18901342472201174, 51.40400737166941], [-0.1889852434210366, 51.404063573348445], [-0.18890135465328584, 51.40414957009196], [-0.18861432044930332, 51.40439056152822], [-0.1869444247506863, 51.40593304866339], [-0.18646277140389822, 51.40568106706632], [-0.1847718818905232, 51.404843716992865], [-0.1842774726669896, 51.40458514572181], [-0.18411281200418045, 51.40449539098461], [-0.1837136955446244, 51.40426436496447], [-0.18221173841852423, 51.4033823480047], [-0.17971715053117374, 51.40179059559375], [-0.17537461461377635, 51.398955113736996], [-0.17511024736994932, 51.39884302646378], [-0.17487473226049383, 51.39869102262752], [-0.17455072647694406, 51.39852586285948], [-0.17403081020048888, 51.3982948090892], [-0.1736245997787446, 51.39813735578841], [-0.1733643234267683, 51.39802991319813], [-0.17317586843555863, 51.39796134796147], [-0.17301124291438436, 51.39790753804132], [-0.17262021025940708, 51.39780066216696], [-0.17242509367019637, 51.397753567960436], [-0.17169731510975997, 51.397617253263135], [-0.17113730660917895, 51.3975302109794], [-0.17095294109060805, 51.397504858239934], [-0.16987091803523485, 51.39738278037529], [-0.1693895618996814, 51.397306038033946], [-0.1687119305462087, 51.39717579222235], [-0.16826163455169096, 51.397075257455306], [-0.1680524909071369, 51.39702344161344], [-0.1676299803608787, 51.396909853689536], [-0.167415504447672, 51.396846176333995], [-0.1679194345276208, 51.396357714870035], [-0.168901678872423, 51.39544861981041], [-0.1697263696469464, 51.394738523115386], [-0.16966652379408864, 51.39469083999075], [-0.16960446050550299, 51.39466011341876], [-0.1695681540902332, 51.39463437409869], [-0.16952694040837665, 51.39458608294658], [-0.16939352303616953, 51.394110132358364], [-0.16935292328047993, 51.394046477716074], [-0.16934321414392228, 51.39403733596429], [-0.16932391432678537, 51.394019054308934], [-0.1692465150377068, 51.39397469274051], [-0.16918420917394758, 51.39395304211217], [-0.16865043838180951, 51.39371176840254], [-0.1685723114575902, 51.39365301090001], [-0.1685425169315791, 51.393606695874034], [-0.16853240524988952, 51.393536415303075], [-0.1686041744954668, 51.393288422266565], [-0.1686159175645889, 51.39324365546529], [-0.1686216412145844, 51.39317452140027], [-0.16861478882532682, 51.393129463962545], [-0.16858859422130285, 51.393064236163944], [-0.16832981758115056, 51.392777813245736], [-0.16830670269841058, 51.39267406612358], [-0.16831043454639255, 51.39258062774321], [-0.1683153583332001, 51.39252856231168], [-0.16834398077696375, 51.392458797295355], [-0.16837103154625213, 51.39243135092981], [-0.16840788773681403, 51.39240765385708], [-0.16845907514879838, 51.3923841807824], [-0.1685158149225176, 51.39236708751926], [-0.1689889561456566, 51.39228907626451], [-0.16909058769114935, 51.39226369413954], [-0.16914018482950993, 51.39224738797557], [-0.16944157371912644, 51.392113559839984], [-0.16974751879508176, 51.39197539696952], [-0.16979607762771126, 51.391946488216426], [-0.16985696046428406, 51.39189979179541], [-0.16991698821840906, 51.391835910957724], [-0.16994285647530763, 51.39179945569658], [-0.16997165163182376, 51.3917252878551], [-0.17013406483942842, 51.391833907111184], [-0.17017112215888291, 51.391840778861265], [-0.17021971481180156, 51.39184962874764], [-0.1706867619739477, 51.39214109717311], [-0.17097698345973075, 51.39232282190857], [-0.1711439984259894, 51.3924261175191], [-0.1713173331649477, 51.39251063237641], [-0.17137917082638007, 51.392475637159386], [-0.17140484758633914, 51.39247963389077], [-0.17155506035700216, 51.39249905908515], [-0.17158080878414378, 51.39250125888298], [-0.17180552834367027, 51.39252463326536], [-0.1722005531257502, 51.39256585711127], [-0.1724883095909998, 51.39259551760251], [-0.17287142840139055, 51.39265003858334], [-0.17307149326556887, 51.39271518948076], [-0.17345017568033935, 51.392842458898336], [-0.17404095133564018, 51.393060325833744], [-0.17432567209890332, 51.39316635000159], [-0.17486756597909253, 51.39341851232896], [-0.1756037171399191, 51.39283645249242], [-0.17650893573500778, 51.39208530908703], [-0.17768587794574628, 51.3911162405659], [-0.1788728350269682, 51.39010856884153], [-0.17911379363443233, 51.389940603450384], [-0.17926457700397241, 51.38983506581602], [-0.17945132007879513, 51.3897281987976], [-0.17985298969009586, 51.38949701145739], [-0.180015689043308, 51.38959582223788], [-0.18005404098125707, 51.38957304377473], [-0.18048845684630135, 51.38931089767897], [-0.18134912315590404, 51.38880984812355], [-0.18223562058408577, 51.38830838394155], [-0.1824701999367103, 51.38815730396604], [-0.18271216208372595, 51.388035196121145], [-0.18272816242122722, 51.38802915123751], [-0.18274993022250763, 51.3880240948071], [-0.18289110174531892, 51.3879813338961], [-0.18316798642232943, 51.38791991019021], [-0.184054311778123, 51.3877151915453], [-0.18428925880337868, 51.387623448045595], [-0.1845308339534095, 51.387513916560096], [-0.18546599635985508, 51.387014890283616], [-0.18607591303949, 51.386712289106995], [-0.18702772530285772, 51.38622888123698], [-0.1884114728197945, 51.385435514955454], [-0.18844369695486918, 51.38545669030715], [-0.18899399574899495, 51.385825788312246], [-0.18946086369578882, 51.3858680646154], [-0.18956836994062204, 51.385873321800226], [-0.18954163336887575, 51.38596829316419], [-0.1896571998502699, 51.38606357535502]]], "type": "Polygon"}, "id": "416", "properties": {"DISTRICT": "Merton", "GSS_CODE": "E05000468", "HECTARES": 183.954, "LAGSSCODE": "E09000024", "NAME": "Ravensbury", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_3b6ecbcf3b0599106e43742aec430ca2.addTo(map_1c0ff42ff8ab1a899bde4034625b6879);
+        
+    
+        function geo_json_b5d108af034a2d77dffcc005eb35671a_styler(feature) {
+            switch(feature.id) {
+                case "3278": case "3280": case "3281": case "3282": case "3283": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_b5d108af034a2d77dffcc005eb35671a_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_b5d108af034a2d77dffcc005eb35671a = L.geoJson(null, {
+                onEachFeature: geo_json_b5d108af034a2d77dffcc005eb35671a_onEachFeature,
+            
+                style: geo_json_b5d108af034a2d77dffcc005eb35671a_styler,
+            ...{
+}
+        });
+
+        function geo_json_b5d108af034a2d77dffcc005eb35671a_add (data) {
+            geo_json_b5d108af034a2d77dffcc005eb35671a
+                .addData(data);
+        }
+            geo_json_b5d108af034a2d77dffcc005eb35671a_add({"features": [{"geometry": {"coordinates": [[[[-0.18176566501150573, 51.39139002338213], [-0.18445376616621917, 51.39553353678666], [-0.18741020461347008, 51.39460265368098], [-0.18867094929442924, 51.38977893037813], [-0.18176566501150573, 51.39139002338213]]]], "type": "MultiPolygon"}, "id": "3278", "properties": {"BNG_E": 526372, "BNG_N": 167413, "DISTRICT": "Merton", "GSS_CODE": "E05000468", "GlobalID": "{29CF8F18-F3CD-4370-89E8-11EFB1901179}", "HECTARES": 183.954, "LAGSSCODE": "E09000024", "LAT": 51.39168930053711, "LONG": -0.18505999445915222, "LSOA21CD": "E01003436", "LSOA21NM": "Merton 023B", "LSOA21NMW": " ", "NAME": "Ravensbury", "NONLD_AREA": 0.0, "WD24NM": "Ravensbury", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.18303719904428933, 51.39627459784137], [-0.186763627048461, 51.396961320061216], [-0.18685155846235013, 51.39650460939241], [-0.18741020461347008, 51.39460265368098], [-0.18445376616621917, 51.39553353678666], [-0.18176566501150573, 51.39139002338213], [-0.17926823143397452, 51.389842953987234], [-0.17486750703695916, 51.393417730038415], [-0.16997242687799824, 51.391724552161584], [-0.16872169978556517, 51.3923331819273], [-0.1780545943748397, 51.39616142113089], [-0.18303719904428933, 51.39627459784137]]]], "type": "MultiPolygon"}, "id": "3279", "properties": {"BNG_E": 526856, "BNG_N": 167617, "DISTRICT": "Merton", "GSS_CODE": "E05000468", "GlobalID": "{71E65D85-47C8-41CA-905A-DF97E618D6C2}", "HECTARES": 183.954, "LAGSSCODE": "E09000024", "LAT": 51.3934211730957, "LONG": -0.17803999781608582, "LSOA21CD": "E01003437", "LSOA21NM": "Merton 022C", "LSOA21NMW": " ", "NAME": "Ravensbury", "NONLD_AREA": 0.0, "WD24NM": "Ravensbury", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.17926823143397452, 51.389842953987234], [-0.18176566501150573, 51.39139002338213], [-0.18867094929442924, 51.38977893037813], [-0.18973602547230553, 51.386127406103164], [-0.1822397921083693, 51.38830624368301], [-0.17926823143397452, 51.389842953987234]]]], "type": "MultiPolygon"}, "id": "3280", "properties": {"BNG_E": 526347, "BNG_N": 167049, "DISTRICT": "Merton", "GSS_CODE": "E05000468", "GlobalID": "{B5F119F8-0829-4B54-BF88-0152C5BFE333}", "HECTARES": 183.954, "LAGSSCODE": "E09000024", "LAT": 51.388431549072266, "LONG": -0.1855500042438507, "LSOA21CD": "E01003438", "LSOA21NM": "Merton 024A", "LSOA21NMW": " ", "NAME": "Ravensbury", "NONLD_AREA": 0.0, "WD24NM": "Ravensbury", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.18745550000502798, 51.402063383502885], [-0.18385368344995204, 51.404345489413714], [-0.18694459061888516, 51.40593317259409], [-0.1916124438938907, 51.40361700639743], [-0.19461048120458463, 51.40178867141631], [-0.19451555563484613, 51.40173028306697], [-0.186763627048461, 51.396961320061216], [-0.18303719904428933, 51.39627459784137], [-0.18745550000502798, 51.402063383502885]]]], "type": "MultiPolygon"}, "id": "3281", "properties": {"BNG_E": 526093, "BNG_N": 168497, "DISTRICT": "Merton", "GSS_CODE": "E05000468", "GlobalID": "{EE034B36-A78B-4D0F-81F1-8FDA12DEE8B1}", "HECTARES": 183.954, "LAGSSCODE": "E09000024", "LAT": 51.4015007019043, "LONG": -0.18869000673294067, "LSOA21CD": "E01003439", "LSOA21NM": "Merton 023C", "LSOA21NMW": " ", "NAME": "Ravensbury", "NONLD_AREA": 0.0, "WD24NM": "St Helier", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.18265335370226898, 51.4036417607203], [-0.18385368344995204, 51.404345489413714], [-0.18745550000502798, 51.402063383502885], [-0.18303719904428933, 51.39627459784137], [-0.1780545943748397, 51.39616142113089], [-0.17449019456697332, 51.39849912938339], [-0.17511217036636714, 51.398843867172786], [-0.1762152629816197, 51.39950410770362], [-0.18039172563930458, 51.40222126474078], [-0.18265335370226898, 51.4036417607203]]]], "type": "MultiPolygon"}, "id": "3282", "properties": {"BNG_E": 526635, "BNG_N": 168253, "DISTRICT": "Merton", "GSS_CODE": "E05000468", "GlobalID": "{4107D20C-0E1C-4E3A-9B38-D31B91592E24}", "HECTARES": 183.954, "LAGSSCODE": "E09000024", "LAT": 51.3991813659668, "LONG": -0.18098999559879303, "LSOA21CD": "E01003440", "LSOA21NM": "Merton 022D", "LSOA21NMW": " ", "NAME": "Ravensbury", "NONLD_AREA": 0.0, "WD24NM": "Ravensbury", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.16810081079814612, 51.39703547598503], [-0.17449019456697332, 51.39849912938339], [-0.1780545943748397, 51.39616142113089], [-0.16872169978556517, 51.3923331819273], [-0.16810081079814612, 51.39703547598503]]]], "type": "MultiPolygon"}, "id": "3283", "properties": {"BNG_E": 527223, "BNG_N": 167850, "DISTRICT": "Merton", "GSS_CODE": "E05000468", "GlobalID": "{46CEEE65-24C3-4FC6-B921-A90BFEBA8D45}", "HECTARES": 183.954, "LAGSSCODE": "E09000024", "LAT": 51.39543151855469, "LONG": -0.17268000543117523, "LSOA21CD": "E01003441", "LSOA21NM": "Merton 022E", "LSOA21NMW": " ", "NAME": "Ravensbury", "NONLD_AREA": 0.0, "WD24NM": "Ravensbury", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_b5d108af034a2d77dffcc005eb35671a.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_b5d108af034a2d77dffcc005eb35671a.addTo(map_1c0ff42ff8ab1a899bde4034625b6879);
+        
+    
+            var feature_group_a0e138279bd3d75051e91ef538b5280e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_401cc4dc899266d56484b444dfd26948 = L.marker(
+                [51.3942588, -0.1739606],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_e072323db0cc8c985421771079483c92 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ce29223ee9b813272dab9feb1f80256 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bf440434056c8a40c5bb3e020153e92e = $(`<div id="html_bf440434056c8a40c5bb3e020153e92e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 022C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_9ce29223ee9b813272dab9feb1f80256.setContent(html_bf440434056c8a40c5bb3e020153e92e);
+            
+        
+
+        marker_401cc4dc899266d56484b444dfd26948.bindPopup(popup_9ce29223ee9b813272dab9feb1f80256)
+        ;
+
+        
+    
+    
+                marker_401cc4dc899266d56484b444dfd26948.setIcon(icon_e072323db0cc8c985421771079483c92);
+            
+    
+            var marker_1e39960ca04ebc2e4aec8daa66551c14 = L.marker(
+                [51.3958505, -0.1829898],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_7e4b595839cbf7fee70d5914de09dba5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2ccf8d16d545e488e61a15c38964466f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_14e1a98bda965d0e42b7bcd7738fba8c = $(`<div id="html_14e1a98bda965d0e42b7bcd7738fba8c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 022C (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_2ccf8d16d545e488e61a15c38964466f.setContent(html_14e1a98bda965d0e42b7bcd7738fba8c);
+            
+        
+
+        marker_1e39960ca04ebc2e4aec8daa66551c14.bindPopup(popup_2ccf8d16d545e488e61a15c38964466f)
+        ;
+
+        
+    
+    
+                marker_1e39960ca04ebc2e4aec8daa66551c14.setIcon(icon_7e4b595839cbf7fee70d5914de09dba5);
+            
+    
+            var marker_33d8a7b592575bf825b46961a15e5ce6 = L.marker(
+                [51.3913844, -0.1817382],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_2a07d2f6e13f42273daaba0d531bd133 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2d8f82da676c67517e716027307f09f5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d1e4f58bb95445abab902d4ad6692642 = $(`<div id="html_d1e4f58bb95445abab902d4ad6692642" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 022C (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_2d8f82da676c67517e716027307f09f5.setContent(html_d1e4f58bb95445abab902d4ad6692642);
+            
+        
+
+        marker_33d8a7b592575bf825b46961a15e5ce6.bindPopup(popup_2d8f82da676c67517e716027307f09f5)
+        ;
+
+        
+    
+    
+                marker_33d8a7b592575bf825b46961a15e5ce6.setIcon(icon_2a07d2f6e13f42273daaba0d531bd133);
+            
+    
+            var marker_3510a2de0a9aa7f0aa3b1950edccf4c3 = L.marker(
+                [51.395934, -0.1847613],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_9f07666d415bffaf05d7e1365b87b4a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f82f295075b43b66d18b64234d562bf8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1c538559757280529d9024f4014ebbcb = $(`<div id="html_1c538559757280529d9024f4014ebbcb" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 022C (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_f82f295075b43b66d18b64234d562bf8.setContent(html_1c538559757280529d9024f4014ebbcb);
+            
+        
+
+        marker_3510a2de0a9aa7f0aa3b1950edccf4c3.bindPopup(popup_f82f295075b43b66d18b64234d562bf8)
+        ;
+
+        
+    
+    
+                marker_3510a2de0a9aa7f0aa3b1950edccf4c3.setIcon(icon_9f07666d415bffaf05d7e1365b87b4a6);
+            
+    
+            var marker_a24aea4404838de63e65577a4a4faa22 = L.marker(
+                [51.393495, -0.1823072],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_440601fe2a086ab49ed4c9c31e4525d0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3710d1f30177edba5adb1b50fa1ae3d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3dace4f5630859cc897f7eea784982e0 = $(`<div id="html_3dace4f5630859cc897f7eea784982e0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 022C (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_3710d1f30177edba5adb1b50fa1ae3d2.setContent(html_3dace4f5630859cc897f7eea784982e0);
+            
+        
+
+        marker_a24aea4404838de63e65577a4a4faa22.bindPopup(popup_3710d1f30177edba5adb1b50fa1ae3d2)
+        ;
+
+        
+    
+    
+                marker_a24aea4404838de63e65577a4a4faa22.setIcon(icon_440601fe2a086ab49ed4c9c31e4525d0);
+            
+    
+            var marker_943c9a110e5a294aba47f83b1321d3c1 = L.marker(
+                [51.3925283, -0.185871],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_706ab7d8c693a12a7137a73f400c1251 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8bd318cb1549bba51e42f1fc42656b05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aac29e3876eec008b185c4887ecb942f = $(`<div id="html_aac29e3876eec008b185c4887ecb942f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 023B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8bd318cb1549bba51e42f1fc42656b05.setContent(html_aac29e3876eec008b185c4887ecb942f);
+            
+        
+
+        marker_943c9a110e5a294aba47f83b1321d3c1.bindPopup(popup_8bd318cb1549bba51e42f1fc42656b05)
+        ;
+
+        
+    
+    
+                marker_943c9a110e5a294aba47f83b1321d3c1.setIcon(icon_706ab7d8c693a12a7137a73f400c1251);
+            
+    
+            var marker_1df5d3cca5718ff9825bd9e73e6bc6bb = L.marker(
+                [51.393663, -0.1855515],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_372f9716521cd8db5f9206750f76e5ee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_13e4b12dbbafafd7dff0bffe32c8dd3d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed6580add90f828bbd0af6d41ec93b13 = $(`<div id="html_ed6580add90f828bbd0af6d41ec93b13" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 023B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_13e4b12dbbafafd7dff0bffe32c8dd3d.setContent(html_ed6580add90f828bbd0af6d41ec93b13);
+            
+        
+
+        marker_1df5d3cca5718ff9825bd9e73e6bc6bb.bindPopup(popup_13e4b12dbbafafd7dff0bffe32c8dd3d)
+        ;
+
+        
+    
+    
+                marker_1df5d3cca5718ff9825bd9e73e6bc6bb.setIcon(icon_372f9716521cd8db5f9206750f76e5ee);
+            
+    
+            var marker_a455f2f5f3ae44d1a999481759a907ba = L.marker(
+                [51.3945076, -0.1865483],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_b4ff532c0f51eb4fd6e9a4d6025cf465 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_772a17eb95061af3e58d95460e92c01f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d83fde8739e235e083f6c9ad5a1ef52 = $(`<div id="html_1d83fde8739e235e083f6c9ad5a1ef52" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 023B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_772a17eb95061af3e58d95460e92c01f.setContent(html_1d83fde8739e235e083f6c9ad5a1ef52);
+            
+        
+
+        marker_a455f2f5f3ae44d1a999481759a907ba.bindPopup(popup_772a17eb95061af3e58d95460e92c01f)
+        ;
+
+        
+    
+    
+                marker_a455f2f5f3ae44d1a999481759a907ba.setIcon(icon_b4ff532c0f51eb4fd6e9a4d6025cf465);
+            
+    
+            var marker_9f22464b3f6b07f4bcae0d0dd0b632a1 = L.marker(
+                [51.3900106, -0.1818599],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_a01639a5efcea898174aed1049ab467f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7eaba435730452696b94cccb87ff7c2d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9df19c60c0fc412bbb2ffbf3f679d7d0 = $(`<div id="html_9df19c60c0fc412bbb2ffbf3f679d7d0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 024A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7eaba435730452696b94cccb87ff7c2d.setContent(html_9df19c60c0fc412bbb2ffbf3f679d7d0);
+            
+        
+
+        marker_9f22464b3f6b07f4bcae0d0dd0b632a1.bindPopup(popup_7eaba435730452696b94cccb87ff7c2d)
+        ;
+
+        
+    
+    
+                marker_9f22464b3f6b07f4bcae0d0dd0b632a1.setIcon(icon_a01639a5efcea898174aed1049ab467f);
+            
+    
+            var marker_0f98012ab933cab2e25107675ce0dfef = L.marker(
+                [51.3892048, -0.1847614],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_8ce42321facc273b70414ff5166ee52b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5fa56bf80b79f5e11f79da430353c885 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f72431e961970bd216f28593e0c837d8 = $(`<div id="html_f72431e961970bd216f28593e0c837d8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 024A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5fa56bf80b79f5e11f79da430353c885.setContent(html_f72431e961970bd216f28593e0c837d8);
+            
+        
+
+        marker_0f98012ab933cab2e25107675ce0dfef.bindPopup(popup_5fa56bf80b79f5e11f79da430353c885)
+        ;
+
+        
+    
+    
+                marker_0f98012ab933cab2e25107675ce0dfef.setIcon(icon_8ce42321facc273b70414ff5166ee52b);
+            
+    
+            var marker_25d831934febf04230ccc803a183b838 = L.marker(
+                [51.3872659, -0.1880324],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_02c0ebccf25cbe1bdf8cf7ac2a0a63b3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03acb8cf8d42f64a8079043f6f54d9b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c96d2c80244b443cca13f88eccf5a205 = $(`<div id="html_c96d2c80244b443cca13f88eccf5a205" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 024A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_03acb8cf8d42f64a8079043f6f54d9b9.setContent(html_c96d2c80244b443cca13f88eccf5a205);
+            
+        
+
+        marker_25d831934febf04230ccc803a183b838.bindPopup(popup_03acb8cf8d42f64a8079043f6f54d9b9)
+        ;
+
+        
+    
+    
+                marker_25d831934febf04230ccc803a183b838.setIcon(icon_02c0ebccf25cbe1bdf8cf7ac2a0a63b3);
+            
+    
+            var marker_f5a9926a4cb3013074aee77856ced22a = L.marker(
+                [51.3887956, -0.1837852],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_d8db10dc6480f909a2d501dd18c83a80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bc8d5e799334373a50040ecee78ddd92 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ea493175c6725242236dcfaa2e607ac = $(`<div id="html_0ea493175c6725242236dcfaa2e607ac" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 024A (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_bc8d5e799334373a50040ecee78ddd92.setContent(html_0ea493175c6725242236dcfaa2e607ac);
+            
+        
+
+        marker_f5a9926a4cb3013074aee77856ced22a.bindPopup(popup_bc8d5e799334373a50040ecee78ddd92)
+        ;
+
+        
+    
+    
+                marker_f5a9926a4cb3013074aee77856ced22a.setIcon(icon_d8db10dc6480f909a2d501dd18c83a80);
+            
+    
+            var marker_6a1f64c6620048f5b2321e8c76092866 = L.marker(
+                [51.3988652, -0.1870175],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_5b382989fff5a9d571ceb2e2830e0f72 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_736cd17c3a2fd151871948727719e7ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_66f23a913f5d669d879f472842ad412a = $(`<div id="html_66f23a913f5d669d879f472842ad412a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 023C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_736cd17c3a2fd151871948727719e7ec.setContent(html_66f23a913f5d669d879f472842ad412a);
+            
+        
+
+        marker_6a1f64c6620048f5b2321e8c76092866.bindPopup(popup_736cd17c3a2fd151871948727719e7ec)
+        ;
+
+        
+    
+    
+                marker_6a1f64c6620048f5b2321e8c76092866.setIcon(icon_5b382989fff5a9d571ceb2e2830e0f72);
+            
+    
+            var marker_26f2e7196430fc7349e0fdce1652a9d1 = L.marker(
+                [51.4017553, -0.1807407],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_fe57cd5b64a50828d3006c748441a7f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a93096b44db013317c5c67e7e1d669d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_449b6baf7dfb9c8a39ea8c120aba51f2 = $(`<div id="html_449b6baf7dfb9c8a39ea8c120aba51f2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 023C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_a93096b44db013317c5c67e7e1d669d2.setContent(html_449b6baf7dfb9c8a39ea8c120aba51f2);
+            
+        
+
+        marker_26f2e7196430fc7349e0fdce1652a9d1.bindPopup(popup_a93096b44db013317c5c67e7e1d669d2)
+        ;
+
+        
+    
+    
+                marker_26f2e7196430fc7349e0fdce1652a9d1.setIcon(icon_fe57cd5b64a50828d3006c748441a7f7);
+            
+    
+            var marker_2360e9b3377ed70aac446610d59c29d6 = L.marker(
+                [51.3979282, -0.1866522],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_49fe4a164681d8bda681e58ca297a88b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_937f1c6fb2b312caa7060b7f145dda5d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_16d91313592fc2b13bd597391bafc6bc = $(`<div id="html_16d91313592fc2b13bd597391bafc6bc" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 023C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_937f1c6fb2b312caa7060b7f145dda5d.setContent(html_16d91313592fc2b13bd597391bafc6bc);
+            
+        
+
+        marker_2360e9b3377ed70aac446610d59c29d6.bindPopup(popup_937f1c6fb2b312caa7060b7f145dda5d)
+        ;
+
+        
+    
+    
+                marker_2360e9b3377ed70aac446610d59c29d6.setIcon(icon_49fe4a164681d8bda681e58ca297a88b);
+            
+    
+            var marker_82fe9512d47fa93046e73c2a5c35ecea = L.marker(
+                [51.3967233, -0.1845151],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_3c4d486653135f515701ece48b90ad50 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6bf624366e1cf9db7203e6aa567d62be = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8da2133077017e28886721713b8e1153 = $(`<div id="html_8da2133077017e28886721713b8e1153" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 023C (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_6bf624366e1cf9db7203e6aa567d62be.setContent(html_8da2133077017e28886721713b8e1153);
+            
+        
+
+        marker_82fe9512d47fa93046e73c2a5c35ecea.bindPopup(popup_6bf624366e1cf9db7203e6aa567d62be)
+        ;
+
+        
+    
+    
+                marker_82fe9512d47fa93046e73c2a5c35ecea.setIcon(icon_3c4d486653135f515701ece48b90ad50);
+            
+    
+            var marker_5e48dacf749c2611e1c390abe749bce2 = L.marker(
+                [51.3988652, -0.1870175],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_53d135fd515702fa60f6f598cb6f443b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_791cc4c042fdf2b9851749f62f162e56 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c4da9bf821e9ecfcf383d0dd1eb2dc99 = $(`<div id="html_c4da9bf821e9ecfcf383d0dd1eb2dc99" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 023C (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_791cc4c042fdf2b9851749f62f162e56.setContent(html_c4da9bf821e9ecfcf383d0dd1eb2dc99);
+            
+        
+
+        marker_5e48dacf749c2611e1c390abe749bce2.bindPopup(popup_791cc4c042fdf2b9851749f62f162e56)
+        ;
+
+        
+    
+    
+                marker_5e48dacf749c2611e1c390abe749bce2.setIcon(icon_53d135fd515702fa60f6f598cb6f443b);
+            
+    
+            var marker_d59f76befbf18ba001b9b7db8d3ef55d = L.marker(
+                [51.3973933, -0.1772045],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_4f68cd0a2545463493256e11496c6aeb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_abe0030928587a49151e26e33e793765 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5933846a8e4a137c5ce513aff1cbf87b = $(`<div id="html_5933846a8e4a137c5ce513aff1cbf87b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 022D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_abe0030928587a49151e26e33e793765.setContent(html_5933846a8e4a137c5ce513aff1cbf87b);
+            
+        
+
+        marker_d59f76befbf18ba001b9b7db8d3ef55d.bindPopup(popup_abe0030928587a49151e26e33e793765)
+        ;
+
+        
+    
+    
+                marker_d59f76befbf18ba001b9b7db8d3ef55d.setIcon(icon_4f68cd0a2545463493256e11496c6aeb);
+            
+    
+            var marker_f7d2617d7383e767f5a1683dd349e56c = L.marker(
+                [51.3984692, -0.1806073],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_bbc54b6017d81c317fa425d39dea064f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5da3fbdbd20de283d8fafdb0395ad765 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ab55e5bb34c47056e00bdad5bcfe5fc5 = $(`<div id="html_ab55e5bb34c47056e00bdad5bcfe5fc5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 022D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5da3fbdbd20de283d8fafdb0395ad765.setContent(html_ab55e5bb34c47056e00bdad5bcfe5fc5);
+            
+        
+
+        marker_f7d2617d7383e767f5a1683dd349e56c.bindPopup(popup_5da3fbdbd20de283d8fafdb0395ad765)
+        ;
+
+        
+    
+    
+                marker_f7d2617d7383e767f5a1683dd349e56c.setIcon(icon_bbc54b6017d81c317fa425d39dea064f);
+            
+    
+            var marker_723f5e868c78cf233ecb8be7936082c8 = L.marker(
+                [51.4000458, -0.1803387],
+                {
+}
+            ).addTo(feature_group_a0e138279bd3d75051e91ef538b5280e);
+        
+    
+            var icon_17cb1294b91995de0f5f84bd903d167b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d03c15d6d3ef5d006f5a45c04c144d71 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3cf292046c5bb72f69dc0d34ba133992 = $(`<div id="html_3cf292046c5bb72f69dc0d34ba133992" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Merton 022D (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d03c15d6d3ef5d006f5a45c04c144d71.setContent(html_3cf292046c5bb72f69dc0d34ba133992);
+            
+        
+
+        marker_723f5e868c78cf233ecb8be7936082c8.bindPopup(popup_d03c15d6d3ef5d006f5a45c04c144d71)
+        ;
+
+        
+    
+    
+                marker_723f5e868c78cf233ecb8be7936082c8.setIcon(icon_17cb1294b91995de0f5f84bd903d167b);
+            
+    
+            feature_group_a0e138279bd3d75051e91ef538b5280e.addTo(map_1c0ff42ff8ab1a899bde4034625b6879);
+        
+    
+            var poly_line_541e801832f715be9f25e41f9d817d5e = L.polyline(
+                [[51.3942588, -0.1739606], [51.3941885, -0.1740681], [51.3934646, -0.1749502], [51.3931953, -0.1752855], [51.3931076, -0.175395], [51.3933571, -0.1758801], [51.3945633, -0.1787288], [51.3935086, -0.1791187], [51.3938771, -0.1804027], [51.3940997, -0.1816212], [51.3942298, -0.1824452], [51.394277, -0.1824654], [51.3944343, -0.18543], [51.3951941, -0.1852216], [51.395934, -0.1847613], [51.3958505, -0.1829898], [51.3972878, -0.1836355], [51.3984992, -0.1848435], [51.3985842, -0.1853321], [51.3989423, -0.1866414], [51.3988652, -0.1870175], [51.3988296, -0.1870382], [51.3979282, -0.1866522], [51.3979898, -0.1859837], [51.3970146, -0.1860612], [51.3970202, -0.1853249], [51.3967233, -0.1845151], [51.3970202, -0.1853249], [51.3970146, -0.1860612], [51.3979898, -0.1859837], [51.3985842, -0.1853321], [51.3989423, -0.1866414], [51.3988652, -0.1870175], [51.3988296, -0.1870382], [51.3979282, -0.1866522], [51.3979898, -0.1859837], [51.3985842, -0.1853321], [51.3984992, -0.1848435], [51.3999276, -0.1810412], [51.3997944, -0.1805758], [51.4000458, -0.1803387], [51.4012915, -0.1804895], [51.4017553, -0.1807407], [51.4012915, -0.1804895], [51.4000458, -0.1803387], [51.3997944, -0.1805758], [51.3986938, -0.1768893], [51.3973933, -0.1772045], [51.3986938, -0.1768893], [51.3997944, -0.1805758], [51.3999276, -0.1810412], [51.3988143, -0.1817989], [51.3985992, -0.1819549], [51.3982494, -0.1807587], [51.3984692, -0.1806073], [51.3982494, -0.1807587], [51.3985992, -0.1819549], [51.3988143, -0.1817989], [51.3999276, -0.1810412], [51.3984992, -0.1848435], [51.3972878, -0.1836355], [51.3958505, -0.1829898], [51.395934, -0.1847613], [51.3951941, -0.1852216], [51.3944343, -0.18543], [51.393663, -0.1855515], [51.3935842, -0.1841219], [51.393495, -0.1823072], [51.393139, -0.1822681], [51.3929151, -0.1822436], [51.391963, -0.1837964], [51.3919028, -0.1834337], [51.3904885, -0.186481], [51.3895791, -0.1867321], [51.3887328, -0.1869547], [51.3884474, -0.1870298], [51.387198, -0.1873502], [51.3872659, -0.1880324], [51.387198, -0.1873502], [51.3884474, -0.1870298], [51.3887328, -0.1869547], [51.3895791, -0.1867321], [51.3904885, -0.186481], [51.3913278, -0.1862623], [51.3921985, -0.18605], [51.3922693, -0.186716], [51.3944696, -0.1861398], [51.3945076, -0.1865483], [51.3944696, -0.1861398], [51.3922693, -0.186716], [51.3921985, -0.18605], [51.3920483, -0.1846064], [51.391963, -0.1837964], [51.3929151, -0.1822436], [51.393139, -0.1822681], [51.3913844, -0.1817382], [51.3892048, -0.1847614], [51.3887956, -0.1837852], [51.3900106, -0.1818599], [51.3903812, -0.1812588], [51.3907551, -0.1806377], [51.3913844, -0.1817382], [51.3892048, -0.1847614], [51.3887956, -0.1837852], [51.3892048, -0.1847614], [51.3913844, -0.1817382], [51.3919113, -0.1823203], [51.3919028, -0.1834337], [51.391963, -0.1837964], [51.3929151, -0.1822436], [51.393139, -0.1822681], [51.393495, -0.1823072], [51.3935842, -0.1841219], [51.393663, -0.1855515], [51.3925283, -0.185871], [51.393663, -0.1855515], [51.3944343, -0.18543], [51.394277, -0.1824654], [51.3942298, -0.1824452], [51.3940997, -0.1816212], [51.3938771, -0.1804027], [51.3935086, -0.1791187], [51.3945633, -0.1787288], [51.3933571, -0.1758801], [51.3931076, -0.175395], [51.3931953, -0.1752855], [51.3934646, -0.1749502], [51.3941885, -0.1740681], [51.3942713, -0.1740354], [51.394374, -0.173934], [51.3944856, -0.1737838], [51.3942588, -0.1739606]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_1c0ff42ff8ab1a899bde4034625b6879);
+        
+    
+            var layer_control_a9b2fc9e1bcc02fc4d922b17eb7c9087_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_917a7d7130a8f6285880ea064a386816,
+                },
+                overlays :  {
+                    "Ravensbury Boundary" : geo_json_3b6ecbcf3b0599106e43742aec430ca2,
+                    "LSOA Median Crime Rates for Ravensbury" : geo_json_b5d108af034a2d77dffcc005eb35671a,
+                    "Patrol Waypoints" : feature_group_a0e138279bd3d75051e91ef538b5280e,
+                },
+            };
+            let layer_control_a9b2fc9e1bcc02fc4d922b17eb7c9087 = L.control.layers(
+                layer_control_a9b2fc9e1bcc02fc4d922b17eb7c9087_layers.base_layers,
+                layer_control_a9b2fc9e1bcc02fc4d922b17eb7c9087_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_1c0ff42ff8ab1a899bde4034625b6879);
+
+        
+</script>
+</html>

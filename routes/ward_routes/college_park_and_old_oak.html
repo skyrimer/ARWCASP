@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7d62c9f500e8745da3da3b731ea294bf {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7d62c9f500e8745da3da3b731ea294bf" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7d62c9f500e8745da3da3b731ea294bf = L.map(
+                "map_7d62c9f500e8745da3da3b731ea294bf",
+                {
+                    center: [51.52203348310674, -0.23769603168885173],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_21b50d83f55da15ee1521766ad3f961e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_21b50d83f55da15ee1521766ad3f961e.addTo(map_7d62c9f500e8745da3da3b731ea294bf);
+        
+    
+        function geo_json_7f530052edbdb5f0ee03d7f82e08e6bc_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_7f530052edbdb5f0ee03d7f82e08e6bc_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_7f530052edbdb5f0ee03d7f82e08e6bc = L.geoJson(null, {
+                onEachFeature: geo_json_7f530052edbdb5f0ee03d7f82e08e6bc_onEachFeature,
+            
+                style: geo_json_7f530052edbdb5f0ee03d7f82e08e6bc_styler,
+            ...{
+}
+        });
+
+        function geo_json_7f530052edbdb5f0ee03d7f82e08e6bc_add (data) {
+            geo_json_7f530052edbdb5f0ee03d7f82e08e6bc
+                .addData(data);
+        }
+            geo_json_7f530052edbdb5f0ee03d7f82e08e6bc_add({"features": [{"geometry": {"coordinates": [[[-0.24899631310475628, 51.51387973828732], [-0.24905185739991603, 51.51397136454983], [-0.24907053085429876, 51.514011198471664], [-0.24909187890036452, 51.51405565711863], [-0.24913276888697325, 51.51422887186851], [-0.2492839701659583, 51.51472035425023], [-0.2493612193189669, 51.51492467692765], [-0.24943991672452917, 51.51520282749396], [-0.2497521865565295, 51.51581717630554], [-0.25022650325355633, 51.517353868484946], [-0.2506048212613673, 51.51854023226302], [-0.25070477595690777, 51.5190920786791], [-0.2507135291820253, 51.5191272694459], [-0.25072073835746506, 51.51916243718555], [-0.2507280663174988, 51.51919760669593], [-0.2507325437067909, 51.51923273369575], [-0.2507354426120058, 51.51926873613589], [-0.25073695065238627, 51.519303818853956], [-0.2507368473797146, 51.51930651425458], [-0.2507370144778656, 51.51934247595554], [-0.25073567193008317, 51.519377516163175], [-0.2507327474417059, 51.51941352165781], [-0.2507271289949604, 51.519448498099536], [-0.25072151053895836, 51.519483474540735], [-0.2507130259744084, 51.51951571129896], [-0.2507032537975618, 51.51954433293356], [-0.25069205630676444, 51.51957293331151], [-0.25067946792507867, 51.51960061396554], [-0.25066684510175163, 51.51962919308474], [-0.2506514060807603, 51.51965683122328], [-0.2506373923454349, 51.519684490615816], [-0.25062806418917083, 51.519701522021386], [-0.2505987146198071, 51.519754124141016], [-0.2505678553254822, 51.51980580475683], [-0.2505341453399689, 51.51985744284827], [-0.2504990099653768, 51.519909059670795], [-0.25048534035649306, 51.51992773437585], [-0.25030505928061736, 51.52015707216597], [-0.2505891315654423, 51.520416709377024], [-0.2506918760498197, 51.5206321989022], [-0.2519234225568197, 51.52223510020905], [-0.25201854656938305, 51.522761611741295], [-0.2520930337559164, 51.52319081574905], [-0.25225514011503175, 51.52358527608816], [-0.2524524508536008, 51.52396677593557], [-0.25264110866306616, 51.52438500466969], [-0.2526605660939048, 51.5245939475978], [-0.2526391386352567, 51.524778009068285], [-0.2525292335291649, 51.52508750860815], [-0.2523927580392879, 51.525224817272615], [-0.2523035919638275, 51.525334063299006], [-0.25113498298705383, 51.526525234536116], [-0.2506679304294667, 51.52689862868105], [-0.2503649243999754, 51.5270946720072], [-0.2502953305013184, 51.52717993599925], [-0.25029498607508643, 51.527188920653685], [-0.25029467837240904, 51.52730857019106], [-0.2502956850142555, 51.52735982701738], [-0.2506210864446004, 51.52778279526181], [-0.250560494887617, 51.527822345721994], [-0.250236804447429, 51.52803066596018], [-0.25006606283240745, 51.52819631805195], [-0.25013569848220846, 51.52822162924514], [-0.25046843765841936, 51.528341661474016], [-0.25039240295062537, 51.52840884987894], [-0.24964451418121536, 51.52907480407691], [-0.2495687147947591, 51.52913579250953], [-0.24943478093028496, 51.52924346937782], [-0.24934288957992728, 51.52919714913337], [-0.24932585494857498, 51.529188804106546], [-0.24885442429653806, 51.52948930846699], [-0.2484772272062832, 51.529740875139446], [-0.24850816602206505, 51.52979887173047], [-0.24772595842563802, 51.53030778917944], [-0.24695563155791503, 51.5307297679381], [-0.24663487606358642, 51.530860720103284], [-0.24632962997437732, 51.530962326836324], [-0.24604886508866275, 51.53103004770473], [-0.24600676960762602, 51.53103661014881], [-0.2459226476771711, 51.531047938065726], [-0.2458401047023633, 51.53105839055364], [-0.2455506661629741, 51.53104866833123], [-0.24540650222947022, 51.53105100709117], [-0.2452690544794102, 51.53121256544655], [-0.24534015216809646, 51.53123700235535], [-0.24628672666697196, 51.53155600051338], [-0.24637246704590232, 51.531536605713875], [-0.24699456840809475, 51.53178332384472], [-0.24694457997487282, 51.531843707415526], [-0.24693867016192284, 51.53184901297519], [-0.24658266372132562, 51.532219645396815], [-0.24643542956457182, 51.532450280185316], [-0.24637116488102767, 51.53258515525638], [-0.24631136309181736, 51.53275237034653], [-0.24621395711844551, 51.532697874449546], [-0.2460378584233145, 51.53262781828591], [-0.24475789805065773, 51.532170691795116], [-0.24450443418410386, 51.532087788995184], [-0.2439341009795302, 51.531920133641265], [-0.24364942131457207, 51.53182678302391], [-0.24351357857663744, 51.5317950828399], [-0.24342897779985415, 51.531784826305206], [-0.24323019962894932, 51.53177915278705], [-0.24210320475104555, 51.53180542137238], [-0.24110186366011313, 51.53186242041658], [-0.240935435985899, 51.53187790457621], [-0.2404994564771946, 51.531928901034846], [-0.24012934931093835, 51.53195481368161], [-0.23949147132453094, 51.53197311108569], [-0.23936590750633793, 51.53197392360854], [-0.23925202140454516, 51.53197401229036], [-0.238569140904184, 51.53196016492993], [-0.23735008772737995, 51.53201826783314], [-0.23679973222103093, 51.532155721899336], [-0.23648576445429997, 51.53222381990777], [-0.23545279622706003, 51.53242503113538], [-0.2353875249599113, 51.532437534040355], [-0.23510420231287724, 51.532490806668484], [-0.2350882966395669, 51.532493264315285], [-0.23462870101855576, 51.53259512557666], [-0.2344238013219857, 51.53263699096948], [-0.23421837857586195, 51.53254490008931], [-0.23418860407841527, 51.53253096721677], [-0.2338599817594663, 51.53234172929795], [-0.23325306704943843, 51.53200527182906], [-0.23294910383765807, 51.531811817871166], [-0.23235487305500555, 51.53151959675127], [-0.23161407384035307, 51.53117841623193], [-0.23139406485451378, 51.531088797376796], [-0.23109805259004282, 51.53098805340113], [-0.23074236843239518, 51.53086582206058], [-0.23046962129489035, 51.530836536741546], [-0.23007716193870972, 51.53073082926972], [-0.22991882499499122, 51.53068789620486], [-0.2294284785846169, 51.53054385127264], [-0.2291980613750709, 51.530499020204154], [-0.22881199732409332, 51.53041857646658], [-0.22871630980708973, 51.53046747463858], [-0.22850311133032553, 51.53035269176242], [-0.22872766839674077, 51.529877734746236], [-0.22836571329834873, 51.52921313592371], [-0.2283248770994367, 51.52915048948527], [-0.22826991403773064, 51.52908124690425], [-0.22820756144228674, 51.52901557850992], [-0.228019332846964, 51.52885181774291], [-0.22782678814175783, 51.52864924535991], [-0.22774007408419958, 51.528543653490736], [-0.22758829236531594, 51.52832911078361], [-0.22750785910065727, 51.52817506862661], [-0.22745791290694717, 51.52805016458995], [-0.22741210565270006, 51.52789215065069], [-0.22737762105704198, 51.52770275353102], [-0.2273550577239329, 51.52750634468614], [-0.2273475837906334, 51.527288678189464], [-0.22735053382617648, 51.527102543665286], [-0.22741418537207556, 51.52628075742583], [-0.22741687045778458, 51.52624834475715], [-0.2273920073860638, 51.52596119385459], [-0.22737499681847673, 51.52584218130396], [-0.22729873207267554, 51.52531773146291], [-0.2272713858587228, 51.525167997303875], [-0.22719515136881474, 51.52479277880167], [-0.22661988654062473, 51.524795770241425], [-0.2267334298060223, 51.522353333800396], [-0.22672940793880095, 51.52197650946232], [-0.22682044038308014, 51.52193383544365], [-0.22807088507830478, 51.521357424929384], [-0.22807709588844066, 51.52119740998108], [-0.2283015574938071, 51.52109741746448], [-0.22672279796224182, 51.519772373856014], [-0.22676846901903264, 51.5197469937811], [-0.22670103843984918, 51.51969922729842], [-0.22662579265989335, 51.5196323740858], [-0.22656315499682925, 51.519577488119765], [-0.22652861836879815, 51.51953651173081], [-0.22648406424999648, 51.519533141149864], [-0.22647257812650476, 51.519532068500766], [-0.22642674408096675, 51.519488224318074], [-0.22636962188790938, 51.519511633147424], [-0.22589471808314515, 51.519083637450805], [-0.22567747672770078, 51.51888787928101], [-0.22529899999743658, 51.518501793874094], [-0.2250771806542938, 51.51827719781915], [-0.22491750449327258, 51.51812015641908], [-0.22474738818977996, 51.51797185671852], [-0.22446425525431427, 51.51765553416615], [-0.22427719681343264, 51.51749987533031], [-0.22429989580098111, 51.51747235047711], [-0.22431503544371734, 51.51745280203378], [-0.22366814890402334, 51.516742429612236], [-0.22292780919059715, 51.51591475861532], [-0.22275113595989443, 51.515712417519076], [-0.2226039984657075, 51.51564276422458], [-0.22247485540696102, 51.51540698152929], [-0.2224022075855424, 51.51527372995003], [-0.2222769832007979, 51.515083854578734], [-0.22203220415970384, 51.51474473352149], [-0.22175719874294422, 51.51433053799201], [-0.2214800863897041, 51.513897341249695], [-0.221478906239873, 51.513891030465906], [-0.22146325681666376, 51.51381078358109], [-0.2214971986018504, 51.51364408718229], [-0.2213599029287996, 51.51346841144882], [-0.22113163370129893, 51.51311155900952], [-0.2205380056940341, 51.512220381068005], [-0.22043589146286288, 51.51206600445391], [-0.22034595491535872, 51.511861379480756], [-0.22033392116677328, 51.51183782329389], [-0.22026888985980225, 51.511728958402216], [-0.2204561626668819, 51.511622033838876], [-0.22051929304940465, 51.511590628192366], [-0.2206266431253795, 51.511537418744126], [-0.22097591078914353, 51.511374516805446], [-0.22157578037580664, 51.51110762561504], [-0.22241508335686616, 51.51075787802944], [-0.22288090008707756, 51.510564463215125], [-0.22323385512207783, 51.51038273180572], [-0.22353734114687643, 51.51021112781326], [-0.22382643878760147, 51.51004281119343], [-0.22397418441539912, 51.50994975613052], [-0.22425706922031777, 51.50975167789715], [-0.22436879755965747, 51.50965897602585], [-0.2245529929459705, 51.50948097862417], [-0.22459787499537429, 51.51043844707769], [-0.2245962088121498, 51.510591339085586], [-0.22460583436838807, 51.51075330195455], [-0.22462970659748285, 51.51091557036233], [-0.22473141036172423, 51.51134062121141], [-0.2248821230197844, 51.511874381644596], [-0.22577667350765224, 51.51136542705366], [-0.2257241976760316, 51.5113061992942], [-0.226817671687937, 51.51068607483956], [-0.22834310211524483, 51.51174232821997], [-0.22738251164290735, 51.51228176864572], [-0.22738537588459565, 51.512284508883724], [-0.22753393987940995, 51.512317319456855], [-0.2276565457942323, 51.512351535571156], [-0.2277547232427951, 51.51238448346917], [-0.22783274734391729, 51.51241622780549], [-0.22798121384989556, 51.51249137846401], [-0.22821064538348304, 51.51262969196638], [-0.2294019815379982, 51.51350018788814], [-0.23009340162772055, 51.513991669087105], [-0.23009228206547033, 51.51424435636888], [-0.23011008380167294, 51.514526995594856], [-0.23009111692305217, 51.51464537516932], [-0.23008317337453113, 51.51485031335174], [-0.23046935963061727, 51.51481388786264], [-0.23111937144773173, 51.51474008684488], [-0.23544970843270294, 51.514382609556], [-0.23729545625519408, 51.51424494923288], [-0.2379165600764036, 51.51420843344888], [-0.2380981992269838, 51.51420666711161], [-0.23851414240148014, 51.514221005169226], [-0.23868386077511475, 51.51423254363565], [-0.23890664534056572, 51.51424847454701], [-0.239813308549323, 51.514356477049496], [-0.23996400629841477, 51.5143713241511], [-0.24036113313712065, 51.51438986820862], [-0.240565674164245, 51.51439203754095], [-0.24078336785333465, 51.51438900989185], [-0.2411631498650289, 51.51437043282651], [-0.24149144826494764, 51.51434029490779], [-0.2445382906025045, 51.514150311109915], [-0.2461930864135401, 51.514067187714005], [-0.2477027933191548, 51.513974591812115], [-0.24899631310475628, 51.51387973828732]]], "type": "Polygon"}, "id": "458", "properties": {"DISTRICT": "Hammersmith and Fulham", "GSS_CODE": "E05000253", "HECTARES": 343.654, "LAGSSCODE": "E09000013", "NAME": "College Park and Old Oak", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_7f530052edbdb5f0ee03d7f82e08e6bc.addTo(map_7d62c9f500e8745da3da3b731ea294bf);
+        
+    
+        function geo_json_0c2ab6125c220ac57c346a8639d24d6f_styler(feature) {
+            switch(feature.id) {
+                case "1777": case "1779": case "1780": case "2763": case "33479": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                case "1778": 
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#fd8c3c", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_0c2ab6125c220ac57c346a8639d24d6f_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_0c2ab6125c220ac57c346a8639d24d6f = L.geoJson(null, {
+                onEachFeature: geo_json_0c2ab6125c220ac57c346a8639d24d6f_onEachFeature,
+            
+                style: geo_json_0c2ab6125c220ac57c346a8639d24d6f_styler,
+            ...{
+}
+        });
+
+        function geo_json_0c2ab6125c220ac57c346a8639d24d6f_add (data) {
+            geo_json_0c2ab6125c220ac57c346a8639d24d6f
+                .addData(data);
+        }
+            geo_json_0c2ab6125c220ac57c346a8639d24d6f_add({"features": [{"geometry": {"coordinates": [[[[-0.2390786422331621, 51.51426456385773], [-0.2428709937858433, 51.51457272958004], [-0.24334535691844358, 51.51795082019438], [-0.249735740827358, 51.51574931645194], [-0.24919547158509986, 51.5141302949692], [-0.24899631533890587, 51.51387985166162], [-0.2390786422331621, 51.51426456385773]]]], "type": "MultiPolygon"}, "id": "1777", "properties": {"BNG_E": 521823, "BNG_N": 181124, "DISTRICT": "Hammersmith and Fulham", "GSS_CODE": "E05000253", "GlobalID": "{8F1529B7-B1C1-47C4-A87F-91418646D9D1}", "HECTARES": 343.654, "LAGSSCODE": "E09000013", "LAT": 51.51591110229492, "LONG": -0.24570000171661377, "LSOA21CD": "E01001875", "LSOA21NM": "Hammersmith and Fulham 001B", "LSOA21NMW": " ", "NAME": "College Park and Old Oak", "NONLD_AREA": 0.0, "WD24NM": "College Park \u0026 Old Oak", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.23069262838001492, 51.51479331986038], [-0.23427568327043521, 51.5208761295575], [-0.24229477333631338, 51.524522541382346], [-0.2513410768785749, 51.521476247964564], [-0.2511508102532176, 51.52122787832057], [-0.2504012151854058, 51.52003458972343], [-0.24334535691844358, 51.51795082019438], [-0.2428709937858433, 51.51457272958004], [-0.2390786422331621, 51.51426456385773], [-0.23881553014784665, 51.514242079285886], [-0.23617070170711568, 51.5143289609644], [-0.2319033696020725, 51.514683877468585], [-0.23069262838001492, 51.51479331986038]]]], "type": "MultiPolygon"}, "id": "1778", "properties": {"BNG_E": 522139, "BNG_N": 181487, "DISTRICT": "Hammersmith and Fulham", "GSS_CODE": "E05000253", "GlobalID": "{7D880402-1AC1-40F1-9B5B-DAE5F2902E7D}", "HECTARES": 343.654, "LAGSSCODE": "E09000013", "LAT": 51.51911163330078, "LONG": -0.24101999402046204, "LSOA21CD": "E01001876", "LSOA21NM": "Hammersmith and Fulham 001C", "LSOA21NMW": " ", "NAME": "College Park and Old Oak", "NONLD_AREA": 0.0, "WD24NM": "College Park \u0026 Old Oak", "crime_rate": 2.0, "is_high_crime": true, "median": 2.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.24022509724131857, 51.53194739430455], [-0.2463947289405134, 51.5327987729189], [-0.2505565439987262, 51.527809173098134], [-0.2513410768785749, 51.521476247964564], [-0.24229477333631338, 51.524522541382346], [-0.2272069837935549, 51.52485128600215], [-0.22737532595925664, 51.52583972174457], [-0.22850321404709334, 51.53035300056464], [-0.22862969504900735, 51.53042094696338], [-0.23392748080493594, 51.53235287190643], [-0.24022509724131857, 51.53194739430455]]]], "type": "MultiPolygon"}, "id": "1779", "properties": {"BNG_E": 522271, "BNG_N": 182371, "DISTRICT": "Hammersmith and Fulham", "GSS_CODE": "E05000253", "GlobalID": "{C4252516-66C3-4C8E-9497-A8E1DD876EE6}", "HECTARES": 343.654, "LAGSSCODE": "E09000013", "LAT": 51.52701950073242, "LONG": -0.2388100028038025, "LSOA21CD": "E01001877", "LSOA21NM": "Hammersmith and Fulham 001D", "LSOA21NMW": " ", "NAME": "College Park and Old Oak", "NONLD_AREA": 0.0, "WD24NM": "College Park \u0026 Old Oak", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.24334535691844358, 51.51795082019438], [-0.2504012151854058, 51.52003458972343], [-0.249735740827358, 51.51574931645194], [-0.24334535691844358, 51.51795082019438]]]], "type": "MultiPolygon"}, "id": "1780", "properties": {"BNG_E": 521694, "BNG_N": 181332, "DISTRICT": "Hammersmith and Fulham", "GSS_CODE": "E05000253", "GlobalID": "{3E55CA9D-1C68-4001-9D6C-C480C400C209}", "HECTARES": 343.654, "LAGSSCODE": "E09000013", "LAT": 51.5178108215332, "LONG": -0.24748000502586365, "LSOA21CD": "E01001878", "LSOA21NM": "Hammersmith and Fulham 001E", "LSOA21NMW": " ", "NAME": "College Park and Old Oak", "NONLD_AREA": 0.0, "WD24NM": "College Park \u0026 Old Oak", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.22333334597566668, 51.522656284309015], [-0.22662006082200323, 51.52479417479423], [-0.22752945313789466, 51.52160711662104], [-0.22333334597566668, 51.522656284309015]]]], "type": "MultiPolygon"}, "id": "2763", "properties": {"BNG_E": 523215, "BNG_N": 182016, "DISTRICT": "Hammersmith and Fulham", "GSS_CODE": "E05000253", "GlobalID": "{449574ED-0450-4562-B847-FA348ED1859F}", "HECTARES": 343.654, "LAGSSCODE": "E09000013", "LAT": 51.52362823486328, "LONG": -0.22532999515533447, "LSOA21CD": "E01002907", "LSOA21NM": "Kensington and Chelsea 002D", "LSOA21NMW": " ", "NAME": "College Park and Old Oak", "NONLD_AREA": 0.0, "WD24NM": "Dalgarno", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.22662006082200323, 51.52479417479423], [-0.2272069837935549, 51.52485128600215], [-0.24229477333631338, 51.524522541382346], [-0.23427568327043521, 51.5208761295575], [-0.23069262838001492, 51.51479331986038], [-0.22833579860055847, 51.51174936091784], [-0.22776026914173195, 51.51133915599264], [-0.2252253734008513, 51.5129064943111], [-0.2296268925535114, 51.51641142866693], [-0.22261343617100726, 51.51551883318927], [-0.22470476545057896, 51.51792306330082], [-0.22663759589195628, 51.519549185962404], [-0.22752945313789466, 51.52160711662104], [-0.22662006082200323, 51.52479417479423]]]], "type": "MultiPolygon"}, "id": "33478", "properties": {"BNG_E": 522732, "BNG_N": 181803, "DISTRICT": "Hammersmith and Fulham", "GSS_CODE": "E05000253", "GlobalID": "{613C3C1F-23DF-4722-AAD8-01B7245843F3}", "HECTARES": 343.654, "LAGSSCODE": "E09000013", "LAT": 51.521820068359375, "LONG": -0.23236000537872314, "LSOA21CD": "E01035484", "LSOA21NM": "Hammersmith and Fulham 001F", "LSOA21NMW": " ", "NAME": "College Park and Old Oak", "NONLD_AREA": 0.0, "WD24NM": "College Park \u0026 Old Oak", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.22261343617100726, 51.51551883318927], [-0.2296268925535114, 51.51641142866693], [-0.2252253734008513, 51.5129064943111], [-0.22776026914173195, 51.51133915599264], [-0.22469866905195515, 51.511321991448945], [-0.2245984339428211, 51.50948973518044], [-0.22026941619797769, 51.511728697548676], [-0.22261343617100726, 51.51551883318927]]]], "type": "MultiPolygon"}, "id": "33479", "properties": {"BNG_E": 523267, "BNG_N": 180927, "DISTRICT": "Hammersmith and Fulham", "GSS_CODE": "E05000253", "GlobalID": "{3C33C615-43B3-4B57-ACE9-5D91245EE594}", "HECTARES": 343.654, "LAGSSCODE": "E09000013", "LAT": 51.51382827758789, "LONG": -0.22495999932289124, "LSOA21CD": "E01035485", "LSOA21NM": "Hammersmith and Fulham 001G", "LSOA21NMW": " ", "NAME": "College Park and Old Oak", "NONLD_AREA": 0.0, "WD24NM": "College Park \u0026 Old Oak", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_0c2ab6125c220ac57c346a8639d24d6f.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_0c2ab6125c220ac57c346a8639d24d6f.addTo(map_7d62c9f500e8745da3da3b731ea294bf);
+        
+    
+            var feature_group_7d9ca649b65f9bf2285912fc5f0daa32 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_eb697ae0a2715a331b92faa5f0811e62 = L.marker(
+                [51.5195442, -0.2457226],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_4bd2095aee90c880b5fbdfa4300a8616 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_29421afe5bf337e41504750801d5e8c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6775de0b7f315885f04f66657b6bdd04 = $(`<div id="html_6775de0b7f315885f04f66657b6bdd04" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001C (Pt 1)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_29421afe5bf337e41504750801d5e8c6.setContent(html_6775de0b7f315885f04f66657b6bdd04);
+            
+        
+
+        marker_eb697ae0a2715a331b92faa5f0811e62.bindPopup(popup_29421afe5bf337e41504750801d5e8c6)
+        ;
+
+        
+    
+    
+                marker_eb697ae0a2715a331b92faa5f0811e62.setIcon(icon_4bd2095aee90c880b5fbdfa4300a8616);
+            
+    
+            var marker_ba8ae1a3ee4d5d13373fb784ff42e70a = L.marker(
+                [51.5174819, -0.2432791],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_80862eecc29f953477819064f7885190 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fed4a7a51d1489bffabbacf61f12ceae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c4b7f8bd28274adfb05ca28590143a8e = $(`<div id="html_c4b7f8bd28274adfb05ca28590143a8e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001C (Pt 2)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_fed4a7a51d1489bffabbacf61f12ceae.setContent(html_c4b7f8bd28274adfb05ca28590143a8e);
+            
+        
+
+        marker_ba8ae1a3ee4d5d13373fb784ff42e70a.bindPopup(popup_fed4a7a51d1489bffabbacf61f12ceae)
+        ;
+
+        
+    
+    
+                marker_ba8ae1a3ee4d5d13373fb784ff42e70a.setIcon(icon_80862eecc29f953477819064f7885190);
+            
+    
+            var marker_ab398135136195b25fa3846b8886c3fa = L.marker(
+                [51.5155898, -0.2428919],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_a708a29013d8a52e19c602389006daf5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b7026ce67023c22788e0e1064688ce53 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_70e2d5be836df2b3c7221f47d4b1305e = $(`<div id="html_70e2d5be836df2b3c7221f47d4b1305e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001C (Pt 3)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_b7026ce67023c22788e0e1064688ce53.setContent(html_70e2d5be836df2b3c7221f47d4b1305e);
+            
+        
+
+        marker_ab398135136195b25fa3846b8886c3fa.bindPopup(popup_b7026ce67023c22788e0e1064688ce53)
+        ;
+
+        
+    
+    
+                marker_ab398135136195b25fa3846b8886c3fa.setIcon(icon_a708a29013d8a52e19c602389006daf5);
+            
+    
+            var marker_28fef9409b978f8a41146d40131c4ffc = L.marker(
+                [51.5169995, -0.2272594],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_6ba5aa57ee6ae4c881d3a3f6d1ba66a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a98a55da022ff175720bf320a8948940 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a23ac0fa712b6ee493cce7ac65046c3c = $(`<div id="html_a23ac0fa712b6ee493cce7ac65046c3c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001C (Pt 4)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_a98a55da022ff175720bf320a8948940.setContent(html_a23ac0fa712b6ee493cce7ac65046c3c);
+            
+        
+
+        marker_28fef9409b978f8a41146d40131c4ffc.bindPopup(popup_a98a55da022ff175720bf320a8948940)
+        ;
+
+        
+    
+    
+                marker_28fef9409b978f8a41146d40131c4ffc.setIcon(icon_6ba5aa57ee6ae4c881d3a3f6d1ba66a5);
+            
+    
+            var marker_d4c92f87038e9c9156801c55ef22f1a6 = L.marker(
+                [51.5174819, -0.2432791],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_c1e171aee481abbf34d9986c102beb91 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c9bf2a8c7a56f801fc64b57e4b2c2ca3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_297f1fd3757a13da596a799b4954c343 = $(`<div id="html_297f1fd3757a13da596a799b4954c343" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001C (Pt 5)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_c9bf2a8c7a56f801fc64b57e4b2c2ca3.setContent(html_297f1fd3757a13da596a799b4954c343);
+            
+        
+
+        marker_d4c92f87038e9c9156801c55ef22f1a6.bindPopup(popup_c9bf2a8c7a56f801fc64b57e4b2c2ca3)
+        ;
+
+        
+    
+    
+                marker_d4c92f87038e9c9156801c55ef22f1a6.setIcon(icon_c1e171aee481abbf34d9986c102beb91);
+            
+    
+            var marker_0c30ab54fc2d1ade4c2427964404e507 = L.marker(
+                [51.5208444, -0.2290967],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_ce1e071d9fe37eed56763a006a8132fe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bf5daab3b53f130153ae701f5616a468 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dcd0ef22ce2da33ba39b2beb3ec53bae = $(`<div id="html_dcd0ef22ce2da33ba39b2beb3ec53bae" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001F (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_bf5daab3b53f130153ae701f5616a468.setContent(html_dcd0ef22ce2da33ba39b2beb3ec53bae);
+            
+        
+
+        marker_0c30ab54fc2d1ade4c2427964404e507.bindPopup(popup_bf5daab3b53f130153ae701f5616a468)
+        ;
+
+        
+    
+    
+                marker_0c30ab54fc2d1ade4c2427964404e507.setIcon(icon_ce1e071d9fe37eed56763a006a8132fe);
+            
+    
+            var marker_6d49879d3403258caeff4263910df152 = L.marker(
+                [51.5248704, -0.2321856],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_acfa283d63abd6f2e3f4cbe3d622ff31 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1e7e214ba37f05a5921c571709ca73a0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cec949bc43d4d22e030fa0f4932c90ea = $(`<div id="html_cec949bc43d4d22e030fa0f4932c90ea" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001F (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_1e7e214ba37f05a5921c571709ca73a0.setContent(html_cec949bc43d4d22e030fa0f4932c90ea);
+            
+        
+
+        marker_6d49879d3403258caeff4263910df152.bindPopup(popup_1e7e214ba37f05a5921c571709ca73a0)
+        ;
+
+        
+    
+    
+                marker_6d49879d3403258caeff4263910df152.setIcon(icon_acfa283d63abd6f2e3f4cbe3d622ff31);
+            
+    
+            var marker_f9be92c73030840ed2dbbef02a9cb6b2 = L.marker(
+                [51.5125431, -0.2265603],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_2e7f1f5f086dee13669fc852751c7898 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_24bb1f7e2d2b1a92ee501f0bb63f53c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_69d25af49a2a65f517a7116a0675df0b = $(`<div id="html_69d25af49a2a65f517a7116a0675df0b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001F (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_24bb1f7e2d2b1a92ee501f0bb63f53c6.setContent(html_69d25af49a2a65f517a7116a0675df0b);
+            
+        
+
+        marker_f9be92c73030840ed2dbbef02a9cb6b2.bindPopup(popup_24bb1f7e2d2b1a92ee501f0bb63f53c6)
+        ;
+
+        
+    
+    
+                marker_f9be92c73030840ed2dbbef02a9cb6b2.setIcon(icon_2e7f1f5f086dee13669fc852751c7898);
+            
+    
+            var marker_1c102fa3dcfe1d1845047af9d65676b5 = L.marker(
+                [51.5183159, -0.2278158],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_b49356f0aa877fe40229ee7b8a97b696 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_588529fac8f014c5272a806012e33d6a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a8519ae87a28c5b98448be54585bf76d = $(`<div id="html_a8519ae87a28c5b98448be54585bf76d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001F (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_588529fac8f014c5272a806012e33d6a.setContent(html_a8519ae87a28c5b98448be54585bf76d);
+            
+        
+
+        marker_1c102fa3dcfe1d1845047af9d65676b5.bindPopup(popup_588529fac8f014c5272a806012e33d6a)
+        ;
+
+        
+    
+    
+                marker_1c102fa3dcfe1d1845047af9d65676b5.setIcon(icon_b49356f0aa877fe40229ee7b8a97b696);
+            
+    
+            var marker_2c009c087cee94e1be51a1f218cc73b4 = L.marker(
+                [51.5125431, -0.2265603],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_8dede689fcb9cf240abbfbfb397186ec = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7be0f6c0e9e48452553e0822f7c6257a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a834c6e82c55772b482da11a1367b3e = $(`<div id="html_1a834c6e82c55772b482da11a1367b3e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001F (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_7be0f6c0e9e48452553e0822f7c6257a.setContent(html_1a834c6e82c55772b482da11a1367b3e);
+            
+        
+
+        marker_2c009c087cee94e1be51a1f218cc73b4.bindPopup(popup_7be0f6c0e9e48452553e0822f7c6257a)
+        ;
+
+        
+    
+    
+                marker_2c009c087cee94e1be51a1f218cc73b4.setIcon(icon_8dede689fcb9cf240abbfbfb397186ec);
+            
+    
+            var marker_123e0c4d10ee24acf20a092fea20fb78 = L.marker(
+                [51.5142386, -0.2460127],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_5c330539ba013a8f64efceb32193090d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ab300493db0068c9c9368f89585cec0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ebeb8c3123d246a552eaf463f7e47e25 = $(`<div id="html_ebeb8c3123d246a552eaf463f7e47e25" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3ab300493db0068c9c9368f89585cec0.setContent(html_ebeb8c3123d246a552eaf463f7e47e25);
+            
+        
+
+        marker_123e0c4d10ee24acf20a092fea20fb78.bindPopup(popup_3ab300493db0068c9c9368f89585cec0)
+        ;
+
+        
+    
+    
+                marker_123e0c4d10ee24acf20a092fea20fb78.setIcon(icon_5c330539ba013a8f64efceb32193090d);
+            
+    
+            var marker_5c222c0e9f7d31fe22769de94224a022 = L.marker(
+                [51.5170724, -0.245187],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_7173f9da37ec7f3dc74e0cb2070b031c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_805a32e2512ba3de1d8a5d352d0639c0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a7e1de83b21aba84bc32b7e7b0a7e359 = $(`<div id="html_a7e1de83b21aba84bc32b7e7b0a7e359" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_805a32e2512ba3de1d8a5d352d0639c0.setContent(html_a7e1de83b21aba84bc32b7e7b0a7e359);
+            
+        
+
+        marker_5c222c0e9f7d31fe22769de94224a022.bindPopup(popup_805a32e2512ba3de1d8a5d352d0639c0)
+        ;
+
+        
+    
+    
+                marker_5c222c0e9f7d31fe22769de94224a022.setIcon(icon_7173f9da37ec7f3dc74e0cb2070b031c);
+            
+    
+            var marker_556d1be34dc6b78e4cbfab3666d5d54f = L.marker(
+                [51.5161191, -0.2435653],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_b618849a1dc0e79a974c0fee554aa359 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_94d03cf719d86e583f5f2f9d26027078 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9589b4330635676c6c04b56c786fd358 = $(`<div id="html_9589b4330635676c6c04b56c786fd358" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_94d03cf719d86e583f5f2f9d26027078.setContent(html_9589b4330635676c6c04b56c786fd358);
+            
+        
+
+        marker_556d1be34dc6b78e4cbfab3666d5d54f.bindPopup(popup_94d03cf719d86e583f5f2f9d26027078)
+        ;
+
+        
+    
+    
+                marker_556d1be34dc6b78e4cbfab3666d5d54f.setIcon(icon_b618849a1dc0e79a974c0fee554aa359);
+            
+    
+            var marker_cb18d75211fd8ca779ae572a8d85bffe = L.marker(
+                [51.5275424, -0.2355217],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_48005b02728baea436b0ad9f8d05d913 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fa835b56029a4c3edc1bc095e239e5d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee4a51a60cae40fbb7e1ad09e5afd657 = $(`<div id="html_ee4a51a60cae40fbb7e1ad09e5afd657" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_fa835b56029a4c3edc1bc095e239e5d6.setContent(html_ee4a51a60cae40fbb7e1ad09e5afd657);
+            
+        
+
+        marker_cb18d75211fd8ca779ae572a8d85bffe.bindPopup(popup_fa835b56029a4c3edc1bc095e239e5d6)
+        ;
+
+        
+    
+    
+                marker_cb18d75211fd8ca779ae572a8d85bffe.setIcon(icon_48005b02728baea436b0ad9f8d05d913);
+            
+    
+            var marker_3659208cf9497ae617817c4bd3787712 = L.marker(
+                [51.5275424, -0.2355217],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_cabb95fb29851bef79cd7146afca740a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_49d6f43f719fb9c1c27802e476db068e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6e710901db39e3b03e512469724c5a80 = $(`<div id="html_6e710901db39e3b03e512469724c5a80" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_49d6f43f719fb9c1c27802e476db068e.setContent(html_6e710901db39e3b03e512469724c5a80);
+            
+        
+
+        marker_3659208cf9497ae617817c4bd3787712.bindPopup(popup_49d6f43f719fb9c1c27802e476db068e)
+        ;
+
+        
+    
+    
+                marker_3659208cf9497ae617817c4bd3787712.setIcon(icon_cabb95fb29851bef79cd7146afca740a);
+            
+    
+            var marker_a5ac45caecfe5ee7f096ea25cca24253 = L.marker(
+                [51.5275424, -0.2355217],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_6226b5e5cd609181d5efb7589904f9c9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3c57c1b228470da76646c7467b398299 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ad9b4996a00f77d0e4572f5b1b888fd7 = $(`<div id="html_ad9b4996a00f77d0e4572f5b1b888fd7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001D (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3c57c1b228470da76646c7467b398299.setContent(html_ad9b4996a00f77d0e4572f5b1b888fd7);
+            
+        
+
+        marker_a5ac45caecfe5ee7f096ea25cca24253.bindPopup(popup_3c57c1b228470da76646c7467b398299)
+        ;
+
+        
+    
+    
+                marker_a5ac45caecfe5ee7f096ea25cca24253.setIcon(icon_6226b5e5cd609181d5efb7589904f9c9);
+            
+    
+            var marker_a36d483e144912560e13d02bca9b293f = L.marker(
+                [51.5279262, -0.2422835],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_bd6a7f88309137e3a0281552651755af = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_75f8b20ee619f4de7675289d7f1fa24d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_41790633bf22a7b0baa8acc9583bb1b0 = $(`<div id="html_41790633bf22a7b0baa8acc9583bb1b0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001D (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_75f8b20ee619f4de7675289d7f1fa24d.setContent(html_41790633bf22a7b0baa8acc9583bb1b0);
+            
+        
+
+        marker_a36d483e144912560e13d02bca9b293f.bindPopup(popup_75f8b20ee619f4de7675289d7f1fa24d)
+        ;
+
+        
+    
+    
+                marker_a36d483e144912560e13d02bca9b293f.setIcon(icon_bd6a7f88309137e3a0281552651755af);
+            
+    
+            var marker_b65f561a6e53b2898321e8c9829d9c5f = L.marker(
+                [51.5285493, -0.2463149],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_236708cf35812bd3f0a6c69502217ddf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_adcb2ae75f94e8acc256311634b6a813 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_644dfb7a0227116c08754bc1994ea1b5 = $(`<div id="html_644dfb7a0227116c08754bc1994ea1b5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001D (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_adcb2ae75f94e8acc256311634b6a813.setContent(html_644dfb7a0227116c08754bc1994ea1b5);
+            
+        
+
+        marker_b65f561a6e53b2898321e8c9829d9c5f.bindPopup(popup_adcb2ae75f94e8acc256311634b6a813)
+        ;
+
+        
+    
+    
+                marker_b65f561a6e53b2898321e8c9829d9c5f.setIcon(icon_236708cf35812bd3f0a6c69502217ddf);
+            
+    
+            var marker_3efddadec02937b85d61a5a7123a546f = L.marker(
+                [51.5183802, -0.2474626],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_151b2aad1883373f9b0c49aeebc915ee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a551ed765058b673d70ae6b89e67e66d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bc101037c1f0e703e94d3362ec54e33e = $(`<div id="html_bc101037c1f0e703e94d3362ec54e33e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_a551ed765058b673d70ae6b89e67e66d.setContent(html_bc101037c1f0e703e94d3362ec54e33e);
+            
+        
+
+        marker_3efddadec02937b85d61a5a7123a546f.bindPopup(popup_a551ed765058b673d70ae6b89e67e66d)
+        ;
+
+        
+    
+    
+                marker_3efddadec02937b85d61a5a7123a546f.setIcon(icon_151b2aad1883373f9b0c49aeebc915ee);
+            
+    
+            var marker_6948b18a5004972ba92166fd7afdfe44 = L.marker(
+                [51.5183802, -0.2474626],
+                {
+}
+            ).addTo(feature_group_7d9ca649b65f9bf2285912fc5f0daa32);
+        
+    
+            var icon_690f900571d9cf14ddbf4f7ed6273ad1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_10b53e9ee1c2d152ad14a98216e2204d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_083da3c04efe373d5e1f0f85b72665a4 = $(`<div id="html_083da3c04efe373d5e1f0f85b72665a4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hammersmith and Fulham 001E (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_10b53e9ee1c2d152ad14a98216e2204d.setContent(html_083da3c04efe373d5e1f0f85b72665a4);
+            
+        
+
+        marker_6948b18a5004972ba92166fd7afdfe44.bindPopup(popup_10b53e9ee1c2d152ad14a98216e2204d)
+        ;
+
+        
+    
+    
+                marker_6948b18a5004972ba92166fd7afdfe44.setIcon(icon_690f900571d9cf14ddbf4f7ed6273ad1);
+            
+    
+            feature_group_7d9ca649b65f9bf2285912fc5f0daa32.addTo(map_7d62c9f500e8745da3da3b731ea294bf);
+        
+    
+            var poly_line_a0f34d0a982e37774b90f4695d680dbf = L.polyline(
+                [[51.5195442, -0.2457226], [51.5186653, -0.2442168], [51.5174819, -0.2432791], [51.5162803, -0.2438414], [51.5161191, -0.2435653], [51.5155898, -0.2428919], [51.5169995, -0.2272594], [51.5157435, -0.2265332], [51.5155536, -0.2263341], [51.5153796, -0.2262182], [51.5153184, -0.2261887], [51.5150038, -0.2260583], [51.5148607, -0.2259825], [51.514081, -0.2257529], [51.5128708, -0.2252131], [51.5125431, -0.2265603], [51.5128708, -0.2252131], [51.514081, -0.2257529], [51.5149931, -0.2262134], [51.5153102, -0.2263722], [51.515452, -0.2264461], [51.5157435, -0.2265332], [51.5169995, -0.2272594], [51.5171134, -0.2273146], [51.5175718, -0.2257014], [51.5180343, -0.2261759], [51.5186075, -0.226764], [51.5183159, -0.2278158], [51.5189937, -0.2280886], [51.5208444, -0.2290967], [51.5248704, -0.2321856], [51.5208444, -0.2290967], [51.5275424, -0.2355217], [51.5279262, -0.2422835], [51.5287701, -0.2446501], [51.5285493, -0.2463149], [51.5287701, -0.2446501], [51.5279262, -0.2422835], [51.5275424, -0.2355217], [51.5208444, -0.2290967], [51.5189937, -0.2280886], [51.5183159, -0.2278158], [51.5186075, -0.226764], [51.5180343, -0.2261759], [51.5175718, -0.2257014], [51.5171134, -0.2273146], [51.5169995, -0.2272594], [51.5155898, -0.2428919], [51.5161191, -0.2435653], [51.5162803, -0.2438414], [51.5166655, -0.2445313], [51.5170724, -0.245187], [51.5175156, -0.245932], [51.517078, -0.2465848], [51.5162942, -0.2477869], [51.5162788, -0.2478105], [51.5153494, -0.2464728], [51.5153731, -0.2460148], [51.5148002, -0.2459236], [51.5147588, -0.2459179], [51.5142515, -0.2458239], [51.5142386, -0.2460127], [51.5142515, -0.2458239], [51.5147588, -0.2459179], [51.5148002, -0.2459236], [51.5153731, -0.2460148], [51.5153494, -0.2464728], [51.5162788, -0.2478105], [51.5162942, -0.2477869], [51.517078, -0.2465848], [51.5183802, -0.2474626], [51.5191402, -0.2487207], [51.5191454, -0.2463148], [51.5195442, -0.2457226]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_7d62c9f500e8745da3da3b731ea294bf);
+        
+    
+            var layer_control_a526e525b4b7e7f0926c33296f1909fe_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_21b50d83f55da15ee1521766ad3f961e,
+                },
+                overlays :  {
+                    "College Park and Old Oak Boundary" : geo_json_7f530052edbdb5f0ee03d7f82e08e6bc,
+                    "LSOA Median Crime Rates for College Park and Old Oak" : geo_json_0c2ab6125c220ac57c346a8639d24d6f,
+                    "Patrol Waypoints" : feature_group_7d9ca649b65f9bf2285912fc5f0daa32,
+                },
+            };
+            let layer_control_a526e525b4b7e7f0926c33296f1909fe = L.control.layers(
+                layer_control_a526e525b4b7e7f0926c33296f1909fe_layers.base_layers,
+                layer_control_a526e525b4b7e7f0926c33296f1909fe_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_7d62c9f500e8745da3da3b731ea294bf);
+
+        
+</script>
+</html>

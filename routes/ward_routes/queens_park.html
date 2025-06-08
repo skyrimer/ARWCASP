@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_08e5581156591590a1de1ff0ec41ade6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_08e5581156591590a1de1ff0ec41ade6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_08e5581156591590a1de1ff0ec41ade6 = L.map(
+                "map_08e5581156591590a1de1ff0ec41ade6",
+                {
+                    center: [51.53516646306601, -0.21378470966472501],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3e26d06f4d927877dd33e044ff8e027b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3e26d06f4d927877dd33e044ff8e027b.addTo(map_08e5581156591590a1de1ff0ec41ade6);
+        
+    
+        function geo_json_281730e98089baaf01a37ddd6aeb849e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_281730e98089baaf01a37ddd6aeb849e_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_281730e98089baaf01a37ddd6aeb849e = L.geoJson(null, {
+                onEachFeature: geo_json_281730e98089baaf01a37ddd6aeb849e_onEachFeature,
+            
+                style: geo_json_281730e98089baaf01a37ddd6aeb849e_styler,
+            ...{
+}
+        });
+
+        function geo_json_281730e98089baaf01a37ddd6aeb849e_add (data) {
+            geo_json_281730e98089baaf01a37ddd6aeb849e
+                .addData(data);
+        }
+            geo_json_281730e98089baaf01a37ddd6aeb849e_add({"features": [{"geometry": {"coordinates": [[[-0.22363367713180926, 51.52992476838075], [-0.22360148173462294, 51.52993956354185], [-0.22311473471651877, 51.530036563543604], [-0.2232369800515748, 51.53030100769133], [-0.22360770493988677, 51.531074532167956], [-0.2250608418467366, 51.530930126147304], [-0.2253737265683012, 51.53081979016645], [-0.2255588259295105, 51.53095393131955], [-0.22557429307195886, 51.53114924422274], [-0.22565796547504233, 51.53177638056591], [-0.2256701126114868, 51.531873654262405], [-0.22564349759802818, 51.532668220732496], [-0.2256146955667169, 51.533262191364464], [-0.22591136439666812, 51.53412277772773], [-0.2261711972750058, 51.53478134461615], [-0.22646767094460774, 51.53557710980427], [-0.2268547509233028, 51.53652266524695], [-0.22686140523921158, 51.53653804848944], [-0.22697578604147853, 51.53685900515034], [-0.22646116045921386, 51.536931325501456], [-0.22631830421902982, 51.5365631009266], [-0.22621077209721116, 51.53628629717678], [-0.2228619572723138, 51.536823728983265], [-0.2221523769114359, 51.536938026093985], [-0.22243089515404818, 51.537152608055244], [-0.2225605186393946, 51.537231075304476], [-0.22194392272921454, 51.537329609410534], [-0.2223484353367528, 51.53767924011365], [-0.22224980389170024, 51.53772988642943], [-0.2221248491988542, 51.5377909215186], [-0.22208603945037336, 51.53775257617635], [-0.22172742847493965, 51.537924330040774], [-0.22175518141266964, 51.53795351809887], [-0.2214863202595696, 51.5380797946988], [-0.22129673220249124, 51.538173201245336], [-0.22027178947639037, 51.53864499457817], [-0.22007338231416038, 51.538741861300686], [-0.21998551205301076, 51.53877558836121], [-0.21992595388445993, 51.538714452972016], [-0.21983658758066052, 51.53874995518345], [-0.21988845539060028, 51.53882535762262], [-0.2194481646974694, 51.539021036652734], [-0.2194084327058776, 51.53904290814724], [-0.21889535000156773, 51.53929402619204], [-0.21864538422014676, 51.53941707717973], [-0.2182322812712334, 51.53906550529471], [-0.2181512997070756, 51.53899586289681], [-0.21809588101800156, 51.5389383853637], [-0.2180512034122088, 51.53893770675778], [-0.21799107322606703, 51.53892780360595], [-0.217897545160979, 51.538884130799346], [-0.21762382902614535, 51.53869298453405], [-0.2165730493352488, 51.53801779253759], [-0.2158337712366916, 51.53756506200829], [-0.21553688368180135, 51.53737706436825], [-0.215024638073886, 51.53705363914356], [-0.21439784468867676, 51.537448822239256], [-0.21437261616710515, 51.53746461991591], [-0.21383184005251438, 51.53783674682861], [-0.2133373370662683, 51.53816552589629], [-0.21285924666956857, 51.53851522950233], [-0.21218194536675986, 51.539021105189924], [-0.2114210456820611, 51.53959672208341], [-0.2110678082913239, 51.53989078703537], [-0.21073021614472068, 51.54018598853046], [-0.2103480534460085, 51.54052006435837], [-0.20944070052479585, 51.541296604222666], [-0.20920337697467806, 51.541502534509746], [-0.20907096254983557, 51.54160749204119], [-0.20888934099601428, 51.5417513432841], [-0.20857039974383276, 51.54197661290379], [-0.20827232360871442, 51.54218520956919], [-0.2076635798948572, 51.54259582552001], [-0.20706843937249536, 51.542215362498624], [-0.20646334004768252, 51.54187070340906], [-0.20619594962104784, 51.54170389960445], [-0.20587148496281404, 51.54151905181177], [-0.20559521221259816, 51.54135750466145], [-0.205347585002769, 51.54123855730807], [-0.2049630407948843, 51.54107894826508], [-0.20457971660582425, 51.54092466060812], [-0.20446308706529723, 51.5408851184179], [-0.20429216063682323, 51.540829462340504], [-0.20402274390757924, 51.5407507227293], [-0.20319220142416558, 51.538991641829874], [-0.20261908850780475, 51.5377976437281], [-0.2024017383592176, 51.537644183367306], [-0.20214498932614247, 51.53775441980918], [-0.20179937611905607, 51.53744967153543], [-0.20129891295286384, 51.537049952837094], [-0.2010139868091978, 51.536780293974175], [-0.200590795119857, 51.536396140782465], [-0.2003386242503563, 51.53613417448196], [-0.2000596879708332, 51.535821453878974], [-0.19974011545505801, 51.53548113948132], [-0.19962814329972287, 51.5353571593608], [-0.19932566311474031, 51.53502070201844], [-0.1993813572694003, 51.53499818330063], [-0.20016319254647813, 51.53480692081903], [-0.20064803241560544, 51.53468850065732], [-0.20119053208130225, 51.53456997376292], [-0.20156544319097483, 51.53449571234201], [-0.2029999489455439, 51.53424341519847], [-0.20344563996994688, 51.534164838088415], [-0.2035081893986271, 51.53415231122495], [-0.20437316305263195, 51.533971283793306], [-0.20426344949074113, 51.53375645548149], [-0.2041453305834265, 51.53360721406309], [-0.20400866414387703, 51.533488253997966], [-0.20388461109934283, 51.533381083773506], [-0.20359580948706588, 51.53317079445872], [-0.20334304668660289, 51.533035582096055], [-0.2029922435863796, 51.53290255323368], [-0.2030731963915282, 51.532896601401916], [-0.20326557452800514, 51.532880669375665], [-0.2035983521119474, 51.53288576573639], [-0.20405713142191897, 51.53291526480154], [-0.2046039699027764, 51.53294251387879], [-0.20530989840696656, 51.5329569116457], [-0.20553079289832119, 51.532950401994775], [-0.20586909764136666, 51.53292680898975], [-0.2062595679076212, 51.532897719776116], [-0.20660860609346196, 51.53285810706366], [-0.20679762797229184, 51.53285191685687], [-0.20710526029446588, 51.532840437196], [-0.20733599264210267, 51.53283767043507], [-0.20764814883737737, 51.532819965600275], [-0.20794691711850574, 51.53277688389669], [-0.20868202988415102, 51.532635284153585], [-0.20895865496391436, 51.53256570135362], [-0.20933570353052935, 51.5324725692188], [-0.2096870976571997, 51.532372751480835], [-0.21010177893164042, 51.53224144505477], [-0.2101850363815218, 51.53221304891615], [-0.21084175441670946, 51.532011805724025], [-0.21105137505319368, 51.53195917573663], [-0.21140239131286828, 51.531905195251575], [-0.21173510652476255, 51.531841944914376], [-0.21225817202876557, 51.531811261055395], [-0.21266251187286364, 51.53179494770938], [-0.21281707194943203, 51.53178831265919], [-0.21306268004535142, 51.531775872477375], [-0.21326775380509017, 51.53176641034688], [-0.21363252821337572, 51.53169186625705], [-0.21382007455065904, 51.531653368817864], [-0.21404657500138166, 51.53161276718511], [-0.21418574194030635, 51.531592411248006], [-0.2146946894117597, 51.53151835046502], [-0.21520732669619996, 51.531389415793946], [-0.2152688167019527, 51.531364280818096], [-0.21530565744566588, 51.53134326572305], [-0.21532808780624235, 51.531322930370074], [-0.21535097490887622, 51.531290915189956], [-0.21536275968664514, 51.5312479433169], [-0.21536048548189488, 51.53119666672136], [-0.21532476902122477, 51.531076468796954], [-0.2152923205575845, 51.53098517791372], [-0.21516747762117272, 51.5305633638004], [-0.21510344902702175, 51.53039508894848], [-0.21509699033712534, 51.53033835477524], [-0.2151045133546638, 51.53025845979146], [-0.2151293895731126, 51.53017253596127], [-0.21517799744337457, 51.530072499579035], [-0.21522876344458625, 51.52999326250905], [-0.21526502073870712, 51.52995066296908], [-0.21531408659719742, 51.529911854213694], [-0.21537589073369826, 51.52987863312302], [-0.21547103243860263, 51.529844031281996], [-0.21556223159000354, 51.529797772516766], [-0.21568715811992148, 51.52977360227707], [-0.21584725223766274, 51.52973468407341], [-0.21588363478515088, 51.529725348604984], [-0.21594771485314224, 51.529560910373355], [-0.2160403235070858, 51.52925657477133], [-0.21607639427909123, 51.52907274197515], [-0.21608843562431554, 51.528874160025204], [-0.21602889291694555, 51.527928153981236], [-0.21639191837689, 51.52808299526126], [-0.21666694964896485, 51.5282022464793], [-0.21706711937582993, 51.52836484217004], [-0.21733175388146306, 51.52845516634192], [-0.21797900113040633, 51.528640391989796], [-0.21826021070997143, 51.528711188220456], [-0.21871236794674997, 51.52879986239658], [-0.21905775367886543, 51.52885275255312], [-0.21951728714079435, 51.528935242714674], [-0.2207146750692208, 51.52913869062678], [-0.22100550996519433, 51.52918535370302], [-0.22152655934662818, 51.52927865763017], [-0.22167803890873403, 51.529314216401666], [-0.22190372832021285, 51.529367171406484], [-0.22229656710371162, 51.5294989826561], [-0.22266891852064497, 51.529634977082935], [-0.22281987188933583, 51.529684101018766], [-0.22308737688633953, 51.529774455561174], [-0.22338809814385482, 51.52986351457901], [-0.22363367713180926, 51.52992476838075]]], "type": "Polygon"}, "id": "182", "properties": {"DISTRICT": "Brent", "GSS_CODE": "E05000098", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "NAME": "Queens Park", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_281730e98089baaf01a37ddd6aeb849e.addTo(map_08e5581156591590a1de1ff0ec41ade6);
+        
+    
+        function geo_json_214cfe5588b150ef97686f24e8c86a02_styler(feature) {
+            switch(feature.id) {
+                case "556": case "558": case "559": case "561": case "562": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                case "557": case "560": 
+                    return {"color": "black", "fillColor": "#fd8c3c", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_214cfe5588b150ef97686f24e8c86a02_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_214cfe5588b150ef97686f24e8c86a02 = L.geoJson(null, {
+                onEachFeature: geo_json_214cfe5588b150ef97686f24e8c86a02_onEachFeature,
+            
+                style: geo_json_214cfe5588b150ef97686f24e8c86a02_styler,
+            ...{
+}
+        });
+
+        function geo_json_214cfe5588b150ef97686f24e8c86a02_add (data) {
+            geo_json_214cfe5588b150ef97686f24e8c86a02
+                .addData(data);
+        }
+            geo_json_214cfe5588b150ef97686f24e8c86a02_add({"features": [{"geometry": {"coordinates": [[[[-0.21982542488719728, 51.52899030338304], [-0.21976487379688503, 51.53193379993608], [-0.2254317623471697, 51.5308796144749], [-0.22365988338467957, 51.529953117066874], [-0.21982542488719728, 51.52899030338304]]]], "type": "MultiPolygon"}, "id": "556", "properties": {"BNG_E": 523551, "BNG_N": 182791, "DISTRICT": "Brent", "GSS_CODE": "E05000098", "GlobalID": "{AD52429F-373B-4D03-87DA-5E39E0DA4726}", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "LAT": 51.530521392822266, "LONG": -0.22021999955177307, "LSOA21CD": "E01000579", "LSOA21NM": "Brent 032A", "LSOA21NMW": " ", "NAME": "Queens Park", "NONLD_AREA": 0.0, "WD24NM": "Queens Park", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2038887575168063, 51.54046649915026], [-0.20770800128433659, 51.542624419845346], [-0.20934737015779473, 51.541443107694846], [-0.21201277496028112, 51.53919343428147], [-0.21106347725038344, 51.53353231394296], [-0.20241609191191526, 51.53765289672101], [-0.2032513125989762, 51.53911623597442], [-0.2038887575168063, 51.54046649915026]]]], "type": "MultiPolygon"}, "id": "557", "properties": {"BNG_E": 524365, "BNG_N": 183668, "DISTRICT": "Brent", "GSS_CODE": "E05000098", "GlobalID": "{CA3BC3A2-90D2-44E0-88FA-0D89B756CBE1}", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "LAT": 51.5382194519043, "LONG": -0.2081799954175949, "LSOA21CD": "E01000580", "LSOA21NM": "Brent 032B", "LSOA21NMW": " ", "NAME": "Queens Park", "NONLD_AREA": 0.0, "WD24NM": "Queens Park", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2171617659882381, 51.53845485121377], [-0.21940835895543379, 51.53904257232156], [-0.22189830500180932, 51.5378946468634], [-0.2222333678588616, 51.53692562504299], [-0.22034963382622114, 51.53495783842819], [-0.21838516212494513, 51.53390360783221], [-0.21501408133387406, 51.53708506318167], [-0.2171617659882381, 51.53845485121377]]]], "type": "MultiPolygon"}, "id": "558", "properties": {"BNG_E": 523635, "BNG_N": 183539, "DISTRICT": "Brent", "GSS_CODE": "E05000098", "GlobalID": "{B1FC9888-4C65-4322-8236-8A228E5EBC10}", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "LAT": 51.5372314453125, "LONG": -0.21875, "LSOA21CD": "E01000581", "LSOA21NM": "Brent 030E", "LSOA21NMW": " ", "NAME": "Queens Park", "NONLD_AREA": 0.0, "WD24NM": "Queens Park", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.21106347725038344, 51.53353231394296], [-0.21201277496028112, 51.53919343428147], [-0.21501408133387406, 51.53708506318167], [-0.21838516212494513, 51.53390360783221], [-0.2096141389258694, 51.53298242139876], [-0.21106347725038344, 51.53353231394296]]]], "type": "MultiPolygon"}, "id": "559", "properties": {"BNG_E": 523978, "BNG_N": 183216, "DISTRICT": "Brent", "GSS_CODE": "E05000098", "GlobalID": "{A87C42FB-4D6B-407B-A113-3118C1B88F24}", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "LAT": 51.53424835205078, "LONG": -0.213919997215271, "LSOA21CD": "E01000582", "LSOA21NM": "Brent 032C", "LSOA21NMW": " ", "NAME": "Queens Park", "NONLD_AREA": 0.0, "WD24NM": "Queens Park", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.19938185508032064, 51.534998161781296], [-0.20241609191191526, 51.53765289672101], [-0.21106347725038344, 51.53353231394296], [-0.2096141389258694, 51.53298242139876], [-0.21000367374427248, 51.53227887699313], [-0.20311660858583, 51.53290753351927], [-0.19938185508032064, 51.534998161781296]]]], "type": "MultiPolygon"}, "id": "560", "properties": {"BNG_E": 524716, "BNG_N": 183316, "DISTRICT": "Brent", "GSS_CODE": "E05000098", "GlobalID": "{C2B315D8-F55B-4474-9327-F708C2AA04F5}", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "LAT": 51.53498077392578, "LONG": -0.2032500058412552, "LSOA21CD": "E01000583", "LSOA21NM": "Brent 032D", "LSOA21NMW": " ", "NAME": "Queens Park", "NONLD_AREA": 0.0, "WD24NM": "Queens Park", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.22034963382622114, 51.53495783842819], [-0.2222333678588616, 51.53692562504299], [-0.226861452120799, 51.53654343968383], [-0.2260167760855555, 51.5344308953183], [-0.22561447081472852, 51.533262482672924], [-0.22125825970170868, 51.534138941794104], [-0.22034963382622114, 51.53495783842819]]]], "type": "MultiPolygon"}, "id": "561", "properties": {"BNG_E": 523325, "BNG_N": 183294, "DISTRICT": "Brent", "GSS_CODE": "E05000098", "GlobalID": "{64D694BD-25BB-44E7-83FC-03F6B2D6324E}", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "LAT": 51.535091400146484, "LONG": -0.2232999950647354, "LSOA21CD": "E01000584", "LSOA21NM": "Brent 033E", "LSOA21NMW": " ", "NAME": "Queens Park", "NONLD_AREA": 0.0, "WD24NM": "Queens Park", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.21976487379688503, 51.53193379993608], [-0.22125825970170868, 51.534138941794104], [-0.22561447081472852, 51.533262482672924], [-0.2254317623471697, 51.5308796144749], [-0.21976487379688503, 51.53193379993608]]]], "type": "MultiPolygon"}, "id": "562", "properties": {"BNG_E": 523380, "BNG_N": 183007, "DISTRICT": "Brent", "GSS_CODE": "E05000098", "GlobalID": "{6F29BAB7-05A9-46E6-9E7C-6A3166E3012A}", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "LAT": 51.532501220703125, "LONG": -0.2226099967956543, "LSOA21CD": "E01000585", "LSOA21NM": "Brent 033F", "LSOA21NMW": " ", "NAME": "Queens Park", "NONLD_AREA": 0.0, "WD24NM": "Queens Park", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.21838516212494513, 51.53390360783221], [-0.22034963382622114, 51.53495783842819], [-0.22125825970170868, 51.534138941794104], [-0.21976487379688503, 51.53193379993608], [-0.21982542488719728, 51.52899030338304], [-0.2160301465523606, 51.527928183003745], [-0.2108425403751734, 51.53201189696181], [-0.21074059076771312, 51.53204306987792], [-0.21000367374427248, 51.53227887699313], [-0.2096141389258694, 51.53298242139876], [-0.21838516212494513, 51.53390360783221]]]], "type": "MultiPolygon"}, "id": "563", "properties": {"BNG_E": 523876, "BNG_N": 182874, "DISTRICT": "Brent", "GSS_CODE": "E05000098", "GlobalID": "{AA9BBDC6-3C7C-4188-8140-C844B0AF5198}", "HECTARES": 148.562, "LAGSSCODE": "E09000005", "LAT": 51.53120040893555, "LONG": -0.21550999581813812, "LSOA21CD": "E01000586", "LSOA21NM": "Brent 032E", "LSOA21NMW": " ", "NAME": "Queens Park", "NONLD_AREA": 0.0, "WD24NM": "Queens Park", "crime_rate": 2.0, "is_high_crime": true, "median": 2.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_214cfe5588b150ef97686f24e8c86a02.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_214cfe5588b150ef97686f24e8c86a02.addTo(map_08e5581156591590a1de1ff0ec41ade6);
+        
+    
+            var feature_group_99d26bbfb0b1e48efbc4108c5ff6088c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_28a0d1293c6b891f206219c67b490d94 = L.marker(
+                [51.5316598, -0.2194987],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_53bb4ff4b11d8db02aceb56b46c22b15 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ee6a4038a3a6b7e3ff9a1c8885c44d82 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_43ae48dd19580de9b9b5f1ecdc2b9e4b = $(`<div id="html_43ae48dd19580de9b9b5f1ecdc2b9e4b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032E (Pt 1)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_ee6a4038a3a6b7e3ff9a1c8885c44d82.setContent(html_43ae48dd19580de9b9b5f1ecdc2b9e4b);
+            
+        
+
+        marker_28a0d1293c6b891f206219c67b490d94.bindPopup(popup_ee6a4038a3a6b7e3ff9a1c8885c44d82)
+        ;
+
+        
+    
+    
+                marker_28a0d1293c6b891f206219c67b490d94.setIcon(icon_53bb4ff4b11d8db02aceb56b46c22b15);
+            
+    
+            var marker_ed874a97a0e0ec08a740dca811b39646 = L.marker(
+                [51.5329114, -0.2181374],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_d6fad0c814f40e65bd4eede41f0bf85f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_df7abb20bb1005547ef0ba2e8e69ba05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8132513e822c1e8edb567652852aabd5 = $(`<div id="html_8132513e822c1e8edb567652852aabd5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032E (Pt 2)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_df7abb20bb1005547ef0ba2e8e69ba05.setContent(html_8132513e822c1e8edb567652852aabd5);
+            
+        
+
+        marker_ed874a97a0e0ec08a740dca811b39646.bindPopup(popup_df7abb20bb1005547ef0ba2e8e69ba05)
+        ;
+
+        
+    
+    
+                marker_ed874a97a0e0ec08a740dca811b39646.setIcon(icon_d6fad0c814f40e65bd4eede41f0bf85f);
+            
+    
+            var marker_c5867c62d7423892e70cbdf1886854aa = L.marker(
+                [51.5314306, -0.2204856],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_4c1810cd52d7e8df79f83200522523f2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_68f53544f6f9c4c621b14974614c8883 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5d8355cf56d87592ae5f47807f44965 = $(`<div id="html_c5d8355cf56d87592ae5f47807f44965" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032E (Pt 3)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_68f53544f6f9c4c621b14974614c8883.setContent(html_c5d8355cf56d87592ae5f47807f44965);
+            
+        
+
+        marker_c5867c62d7423892e70cbdf1886854aa.bindPopup(popup_68f53544f6f9c4c621b14974614c8883)
+        ;
+
+        
+    
+    
+                marker_c5867c62d7423892e70cbdf1886854aa.setIcon(icon_4c1810cd52d7e8df79f83200522523f2);
+            
+    
+            var marker_d4b2e6590ec6cdac3bbc3e6cc1f9e708 = L.marker(
+                [51.5297908, -0.2158741],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_9b88b3fc48b3e7004db30902389b72ac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_23bc701a6423133648d7691cad21bfe5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_132b4e124a086557424009263ae8158e = $(`<div id="html_132b4e124a086557424009263ae8158e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032E (Pt 4)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_23bc701a6423133648d7691cad21bfe5.setContent(html_132b4e124a086557424009263ae8158e);
+            
+        
+
+        marker_d4b2e6590ec6cdac3bbc3e6cc1f9e708.bindPopup(popup_23bc701a6423133648d7691cad21bfe5)
+        ;
+
+        
+    
+    
+                marker_d4b2e6590ec6cdac3bbc3e6cc1f9e708.setIcon(icon_9b88b3fc48b3e7004db30902389b72ac);
+            
+    
+            var marker_bc7bb96b8bb38b2f9655164c593ccba9 = L.marker(
+                [51.5297908, -0.2158741],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_126fda239a125e0b12429f869cef79aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_edc33ad58ca766803c4f45297bba37a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_82dc51202a620cb62699df82af75b9b7 = $(`<div id="html_82dc51202a620cb62699df82af75b9b7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032E (Pt 5)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_edc33ad58ca766803c4f45297bba37a4.setContent(html_82dc51202a620cb62699df82af75b9b7);
+            
+        
+
+        marker_bc7bb96b8bb38b2f9655164c593ccba9.bindPopup(popup_edc33ad58ca766803c4f45297bba37a4)
+        ;
+
+        
+    
+    
+                marker_bc7bb96b8bb38b2f9655164c593ccba9.setIcon(icon_126fda239a125e0b12429f869cef79aa);
+            
+    
+            var marker_205d4ac6240821021868512fa4b8c37e = L.marker(
+                [51.5367951, -0.2095312],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_59603da694168e6689332f160a07df1b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2ab32fd3bd5ac77b96f7ac521bc2fdf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f386f202f604925ea213c997725956d4 = $(`<div id="html_f386f202f604925ea213c997725956d4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_a2ab32fd3bd5ac77b96f7ac521bc2fdf.setContent(html_f386f202f604925ea213c997725956d4);
+            
+        
+
+        marker_205d4ac6240821021868512fa4b8c37e.bindPopup(popup_a2ab32fd3bd5ac77b96f7ac521bc2fdf)
+        ;
+
+        
+    
+    
+                marker_205d4ac6240821021868512fa4b8c37e.setIcon(icon_59603da694168e6689332f160a07df1b);
+            
+    
+            var marker_c6e1385149a2b70cd05c28f3ac3be0f9 = L.marker(
+                [51.5376499, -0.2069024],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_003566ebf0dc5e24018b2605f432ebe1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fae01bba7eedc126522c3923d024ede6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7e377c952f6442e85b6fcff12f3a1cca = $(`<div id="html_7e377c952f6442e85b6fcff12f3a1cca" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_fae01bba7eedc126522c3923d024ede6.setContent(html_7e377c952f6442e85b6fcff12f3a1cca);
+            
+        
+
+        marker_c6e1385149a2b70cd05c28f3ac3be0f9.bindPopup(popup_fae01bba7eedc126522c3923d024ede6)
+        ;
+
+        
+    
+    
+                marker_c6e1385149a2b70cd05c28f3ac3be0f9.setIcon(icon_003566ebf0dc5e24018b2605f432ebe1);
+            
+    
+            var marker_1eab12cfe3f306441e45fe1ba3a72f98 = L.marker(
+                [51.5370176, -0.2026202],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_5b3b381b39ce359999695d8cac424d8d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5e0cc2226dd07a8eaaebd2b0f69abc89 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0731c67f85a46ff9dd674ae6df9c5703 = $(`<div id="html_0731c67f85a46ff9dd674ae6df9c5703" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032B (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_5e0cc2226dd07a8eaaebd2b0f69abc89.setContent(html_0731c67f85a46ff9dd674ae6df9c5703);
+            
+        
+
+        marker_1eab12cfe3f306441e45fe1ba3a72f98.bindPopup(popup_5e0cc2226dd07a8eaaebd2b0f69abc89)
+        ;
+
+        
+    
+    
+                marker_1eab12cfe3f306441e45fe1ba3a72f98.setIcon(icon_5b3b381b39ce359999695d8cac424d8d);
+            
+    
+            var marker_fde67dd722dada32bb55735aca9aa012 = L.marker(
+                [51.5401689, -0.2090724],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_7626b7cf8c436b9039a66b777075c8ae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6122b0dfdd8884d5da34b5bca8de94f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7d1cfb590f49347270bddee02b856a5d = $(`<div id="html_7d1cfb590f49347270bddee02b856a5d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032B (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_6122b0dfdd8884d5da34b5bca8de94f8.setContent(html_7d1cfb590f49347270bddee02b856a5d);
+            
+        
+
+        marker_fde67dd722dada32bb55735aca9aa012.bindPopup(popup_6122b0dfdd8884d5da34b5bca8de94f8)
+        ;
+
+        
+    
+    
+                marker_fde67dd722dada32bb55735aca9aa012.setIcon(icon_7626b7cf8c436b9039a66b777075c8ae);
+            
+    
+            var marker_809e524d734a3a6702d53f4941281f21 = L.marker(
+                [51.5391659, -0.2098391],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_c5d53180eb425f72224a78e43fd16615 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4f941610589f46218054a2149218c1af = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0400149597f0ecc5ad4f6a52076dc907 = $(`<div id="html_0400149597f0ecc5ad4f6a52076dc907" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032B (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_4f941610589f46218054a2149218c1af.setContent(html_0400149597f0ecc5ad4f6a52076dc907);
+            
+        
+
+        marker_809e524d734a3a6702d53f4941281f21.bindPopup(popup_4f941610589f46218054a2149218c1af)
+        ;
+
+        
+    
+    
+                marker_809e524d734a3a6702d53f4941281f21.setIcon(icon_c5d53180eb425f72224a78e43fd16615);
+            
+    
+            var marker_efb762ef4e05871d8d61a5234dcad78b = L.marker(
+                [51.5366217, -0.2035611],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_b5dc63a2d26379b44d8af2ed72df06d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52318a916de4a229fd889ee3bdd27c91 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1ee73c02369683efa94de10ffeb98833 = $(`<div id="html_1ee73c02369683efa94de10ffeb98833" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032D (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_52318a916de4a229fd889ee3bdd27c91.setContent(html_1ee73c02369683efa94de10ffeb98833);
+            
+        
+
+        marker_efb762ef4e05871d8d61a5234dcad78b.bindPopup(popup_52318a916de4a229fd889ee3bdd27c91)
+        ;
+
+        
+    
+    
+                marker_efb762ef4e05871d8d61a5234dcad78b.setIcon(icon_b5dc63a2d26379b44d8af2ed72df06d5);
+            
+    
+            var marker_4686777ce659ec67a8e3048226a85690 = L.marker(
+                [51.5342205, -0.2073667],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_99c21030e4d812457197990c27f6374e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c9b3caf368738478610dc66a050ab05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5112c538992763335037c9aead0d86e = $(`<div id="html_c5112c538992763335037c9aead0d86e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032D (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_4c9b3caf368738478610dc66a050ab05.setContent(html_c5112c538992763335037c9aead0d86e);
+            
+        
+
+        marker_4686777ce659ec67a8e3048226a85690.bindPopup(popup_4c9b3caf368738478610dc66a050ab05)
+        ;
+
+        
+    
+    
+                marker_4686777ce659ec67a8e3048226a85690.setIcon(icon_99c21030e4d812457197990c27f6374e);
+            
+    
+            var marker_46d92a625ba8f230ffbb6f56e345a365 = L.marker(
+                [51.5342205, -0.2073667],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_f8043ce2b57ec54657bde1a56f5f04f5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c59ff2447649a72a0226c8ab39f667ba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_48a394a503acd088617ec69e8447cbb9 = $(`<div id="html_48a394a503acd088617ec69e8447cbb9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032D (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c59ff2447649a72a0226c8ab39f667ba.setContent(html_48a394a503acd088617ec69e8447cbb9);
+            
+        
+
+        marker_46d92a625ba8f230ffbb6f56e345a365.bindPopup(popup_c59ff2447649a72a0226c8ab39f667ba)
+        ;
+
+        
+    
+    
+                marker_46d92a625ba8f230ffbb6f56e345a365.setIcon(icon_f8043ce2b57ec54657bde1a56f5f04f5);
+            
+    
+            var marker_1d3121cc1fce4eea558c79d2c4494949 = L.marker(
+                [51.5357329, -0.201363],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_a97d85f1cb789a828e5eabb797ee247e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1fb350cad4f91a80d76936c605e5b805 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_40573638372ae78cf57fde8de8f84514 = $(`<div id="html_40573638372ae78cf57fde8de8f84514" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032D (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_1fb350cad4f91a80d76936c605e5b805.setContent(html_40573638372ae78cf57fde8de8f84514);
+            
+        
+
+        marker_1d3121cc1fce4eea558c79d2c4494949.bindPopup(popup_1fb350cad4f91a80d76936c605e5b805)
+        ;
+
+        
+    
+    
+                marker_1d3121cc1fce4eea558c79d2c4494949.setIcon(icon_a97d85f1cb789a828e5eabb797ee247e);
+            
+    
+            var marker_27b2dff63f26d96f1638e43f83df9a88 = L.marker(
+                [51.5315563, -0.2255884],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_f0fe376a9acbe158954d96f8b7a0666e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b0f8104b8b8585a6f91a1dcddf0cf6b8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eda518123ee724692ea0f68e7e2e4b11 = $(`<div id="html_eda518123ee724692ea0f68e7e2e4b11" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_b0f8104b8b8585a6f91a1dcddf0cf6b8.setContent(html_eda518123ee724692ea0f68e7e2e4b11);
+            
+        
+
+        marker_27b2dff63f26d96f1638e43f83df9a88.bindPopup(popup_b0f8104b8b8585a6f91a1dcddf0cf6b8)
+        ;
+
+        
+    
+    
+                marker_27b2dff63f26d96f1638e43f83df9a88.setIcon(icon_f0fe376a9acbe158954d96f8b7a0666e);
+            
+    
+            var marker_c20852c3d11863c2ff76ec043d74a5a4 = L.marker(
+                [51.5365056, -0.2140934],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_0468d882156b77b8626df4cecea38e04 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c63df6c556a0fb9516143e056deeb33f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ec844a980800e9a4bc3210a2b494b8e = $(`<div id="html_4ec844a980800e9a4bc3210a2b494b8e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c63df6c556a0fb9516143e056deeb33f.setContent(html_4ec844a980800e9a4bc3210a2b494b8e);
+            
+        
+
+        marker_c20852c3d11863c2ff76ec043d74a5a4.bindPopup(popup_c63df6c556a0fb9516143e056deeb33f)
+        ;
+
+        
+    
+    
+                marker_c20852c3d11863c2ff76ec043d74a5a4.setIcon(icon_0468d882156b77b8626df4cecea38e04);
+            
+    
+            var marker_1d5ecb0080e744a186bb418ae765b94f = L.marker(
+                [51.534957, -0.2152415],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_b98dec0ce45cd647c82aa1e067e44dc9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_751d354aee5f3034961be495dfd59f0e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ce38f821cf497bfd07efc63da146844b = $(`<div id="html_ce38f821cf497bfd07efc63da146844b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_751d354aee5f3034961be495dfd59f0e.setContent(html_ce38f821cf497bfd07efc63da146844b);
+            
+        
+
+        marker_1d5ecb0080e744a186bb418ae765b94f.bindPopup(popup_751d354aee5f3034961be495dfd59f0e)
+        ;
+
+        
+    
+    
+                marker_1d5ecb0080e744a186bb418ae765b94f.setIcon(icon_b98dec0ce45cd647c82aa1e067e44dc9);
+            
+    
+            var marker_49ec83167c2b510fc87087f88ef44a98 = L.marker(
+                [51.5356797, -0.2132379],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_527ec531cfb336066644cb6c4ecd7dae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_51ea9f1470414fca7844f1dcb974eaad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cdc2e8fb1991dfb7a16ade03fa1d5b4d = $(`<div id="html_cdc2e8fb1991dfb7a16ade03fa1d5b4d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 032C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_51ea9f1470414fca7844f1dcb974eaad.setContent(html_cdc2e8fb1991dfb7a16ade03fa1d5b4d);
+            
+        
+
+        marker_49ec83167c2b510fc87087f88ef44a98.bindPopup(popup_51ea9f1470414fca7844f1dcb974eaad)
+        ;
+
+        
+    
+    
+                marker_49ec83167c2b510fc87087f88ef44a98.setIcon(icon_527ec531cfb336066644cb6c4ecd7dae);
+            
+    
+            var marker_f68d6eb6edd59772cc8345e80b74ac91 = L.marker(
+                [51.5356796, -0.2204112],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_33eb233516870a4aa1676de80aa9f293 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bb3e5e7ce80e7f421f1ca34d494e0cae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a27a4cd2db9debf2c1309c8cd2f8943e = $(`<div id="html_a27a4cd2db9debf2c1309c8cd2f8943e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 030E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_bb3e5e7ce80e7f421f1ca34d494e0cae.setContent(html_a27a4cd2db9debf2c1309c8cd2f8943e);
+            
+        
+
+        marker_f68d6eb6edd59772cc8345e80b74ac91.bindPopup(popup_bb3e5e7ce80e7f421f1ca34d494e0cae)
+        ;
+
+        
+    
+    
+                marker_f68d6eb6edd59772cc8345e80b74ac91.setIcon(icon_33eb233516870a4aa1676de80aa9f293);
+            
+    
+            var marker_bfbe554f884724c64d685a6da186724d = L.marker(
+                [51.5378234, -0.2206235],
+                {
+}
+            ).addTo(feature_group_99d26bbfb0b1e48efbc4108c5ff6088c);
+        
+    
+            var icon_66a51aeed9fed42503146ca07c53ec97 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0af91721bb75c9363f5ce1fb1cc6a47b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b703063a50e5ecd6f5df06a84d062169 = $(`<div id="html_b703063a50e5ecd6f5df06a84d062169" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Brent 030E (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0af91721bb75c9363f5ce1fb1cc6a47b.setContent(html_b703063a50e5ecd6f5df06a84d062169);
+            
+        
+
+        marker_bfbe554f884724c64d685a6da186724d.bindPopup(popup_0af91721bb75c9363f5ce1fb1cc6a47b)
+        ;
+
+        
+    
+    
+                marker_bfbe554f884724c64d685a6da186724d.setIcon(icon_66a51aeed9fed42503146ca07c53ec97);
+            
+    
+            feature_group_99d26bbfb0b1e48efbc4108c5ff6088c.addTo(map_08e5581156591590a1de1ff0ec41ade6);
+        
+    
+            var poly_line_56f883f9da861415ea26a38b9af095db = L.polyline(
+                [[51.5316598, -0.2194987], [51.5321875, -0.2198787], [51.5327274, -0.2179994], [51.5329114, -0.2181374], [51.5337518, -0.2142181], [51.5342174, -0.2117454], [51.5335204, -0.2110473], [51.5342205, -0.2073667], [51.5349941, -0.208001], [51.5354157, -0.2067131], [51.5358354, -0.2054311], [51.5358668, -0.2054539], [51.5366217, -0.2035611], [51.5370176, -0.2026202], [51.536456, -0.2020706], [51.5357329, -0.201363], [51.536456, -0.2020706], [51.536082, -0.2030369], [51.5366217, -0.2035611], [51.5358668, -0.2054539], [51.5358354, -0.2054311], [51.5354157, -0.2067131], [51.5349941, -0.208001], [51.5356035, -0.2085129], [51.5361874, -0.2090273], [51.5367951, -0.2095312], [51.5374098, -0.2100409], [51.5379976, -0.2105555], [51.5384886, -0.21092], [51.5391659, -0.2098391], [51.5394026, -0.2103903], [51.5403015, -0.2092563], [51.5404741, -0.2093871], [51.5403343, -0.2092028], [51.5401689, -0.2090724], [51.5403015, -0.2092563], [51.5394026, -0.2103903], [51.5391659, -0.2098391], [51.5384886, -0.21092], [51.5379976, -0.2105555], [51.5374098, -0.2100409], [51.5367951, -0.2095312], [51.5376499, -0.2069024], [51.5367951, -0.2095312], [51.5361874, -0.2090273], [51.5356035, -0.2085129], [51.5349941, -0.208001], [51.5342205, -0.2073667], [51.5335204, -0.2110473], [51.5342174, -0.2117454], [51.5349148, -0.2124555], [51.5356797, -0.2132379], [51.5365056, -0.2140934], [51.5356797, -0.2132379], [51.534957, -0.2152415], [51.5343936, -0.2147311], [51.5337518, -0.2142181], [51.5329114, -0.2181374], [51.5327274, -0.2179994], [51.5321183, -0.2175689], [51.5309893, -0.2167837], [51.5297908, -0.2158741], [51.5309893, -0.2167837], [51.5321183, -0.2175689], [51.5327274, -0.2179994], [51.5321875, -0.2198787], [51.5327714, -0.2202943], [51.5334051, -0.2205485], [51.5340719, -0.2207401], [51.533416, -0.2219307], [51.5328101, -0.2214897], [51.5321351, -0.2209984], [51.5314306, -0.2204856], [51.5321351, -0.2209984], [51.5315563, -0.2255884], [51.5321921, -0.2256283], [51.5327179, -0.2256169], [51.5337634, -0.2257659], [51.5344385, -0.2260022], [51.5351509, -0.2262808], [51.5358605, -0.2265575], [51.5365406, -0.2268201], [51.5373016, -0.2219161], [51.5376701, -0.2209808], [51.5378234, -0.2206235], [51.5376701, -0.2209808], [51.5373016, -0.2219161], [51.5365406, -0.2268201], [51.5358605, -0.2265575], [51.5351509, -0.2262808], [51.5344385, -0.2260022], [51.5356796, -0.2204112], [51.5344385, -0.2260022], [51.5337634, -0.2257659], [51.5327179, -0.2256169], [51.533416, -0.2219307], [51.5340719, -0.2207401], [51.5338173, -0.2191388], [51.5334051, -0.2205485], [51.5327714, -0.2202943], [51.5321875, -0.2198787], [51.5316598, -0.2194987]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_08e5581156591590a1de1ff0ec41ade6);
+        
+    
+            var layer_control_03ad984cf85dacb6878adbb56ea92297_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_3e26d06f4d927877dd33e044ff8e027b,
+                },
+                overlays :  {
+                    "Queens Park Boundary" : geo_json_281730e98089baaf01a37ddd6aeb849e,
+                    "LSOA Median Crime Rates for Queens Park" : geo_json_214cfe5588b150ef97686f24e8c86a02,
+                    "Patrol Waypoints" : feature_group_99d26bbfb0b1e48efbc4108c5ff6088c,
+                },
+            };
+            let layer_control_03ad984cf85dacb6878adbb56ea92297 = L.control.layers(
+                layer_control_03ad984cf85dacb6878adbb56ea92297_layers.base_layers,
+                layer_control_03ad984cf85dacb6878adbb56ea92297_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_08e5581156591590a1de1ff0ec41ade6);
+
+        
+</script>
+</html>

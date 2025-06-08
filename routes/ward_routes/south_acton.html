@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_0a0cc609a3ed508e1afce3e0afb3ac8e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_0a0cc609a3ed508e1afce3e0afb3ac8e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_0a0cc609a3ed508e1afce3e0afb3ac8e = L.map(
+                "map_0a0cc609a3ed508e1afce3e0afb3ac8e",
+                {
+                    center: [51.50660488827355, -0.27738852105739426],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_19e7c358c85e9ab7c013cded8613f6c4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_19e7c358c85e9ab7c013cded8613f6c4.addTo(map_0a0cc609a3ed508e1afce3e0afb3ac8e);
+        
+    
+        function geo_json_e7336c9a19463b800f9cc43181c3ea1f_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_e7336c9a19463b800f9cc43181c3ea1f_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_e7336c9a19463b800f9cc43181c3ea1f = L.geoJson(null, {
+                onEachFeature: geo_json_e7336c9a19463b800f9cc43181c3ea1f_onEachFeature,
+            
+                style: geo_json_e7336c9a19463b800f9cc43181c3ea1f_styler,
+            ...{
+}
+        });
+
+        function geo_json_e7336c9a19463b800f9cc43181c3ea1f_add (data) {
+            geo_json_e7336c9a19463b800f9cc43181c3ea1f
+                .addData(data);
+        }
+            geo_json_e7336c9a19463b800f9cc43181c3ea1f_add({"features": [{"geometry": {"coordinates": [[[-0.2883865263868174, 51.51489543973337], [-0.28632093391721203, 51.5149040262448], [-0.284672654312333, 51.514932074534364], [-0.2824329374311039, 51.51504583347429], [-0.28239743227385733, 51.51472608667431], [-0.2823918520524886, 51.514492180912164], [-0.2823850575968823, 51.5143284675074], [-0.28234707155462563, 51.51384408152274], [-0.2818771478794436, 51.513846188942075], [-0.28177636499452346, 51.51395717476862], [-0.28153014302246765, 51.51387535665726], [-0.2808490500848069, 51.51393459751008], [-0.2808191301584669, 51.51400338027403], [-0.28039036646388343, 51.51402316558346], [-0.2804004568222766, 51.5144809830938], [-0.2794152475806751, 51.51454393756129], [-0.2794229491682862, 51.51429853968203], [-0.2789620292991944, 51.51429177773538], [-0.2789572513643348, 51.51411272112524], [-0.2787508448675948, 51.51419788216611], [-0.2781970858573882, 51.51382647779215], [-0.2783033090174773, 51.51376052375196], [-0.2781004952968152, 51.51371259773229], [-0.27791510571541367, 51.513659533304526], [-0.2778167189312652, 51.513631119451645], [-0.27747415484412846, 51.51350472724625], [-0.27724888164037836, 51.51340334030116], [-0.27638601010208824, 51.512895236956474], [-0.27594985892706775, 51.51268916393852], [-0.2757539911687272, 51.51261166961654], [-0.2754781520828149, 51.51247447571293], [-0.2753457197940887, 51.51239431742335], [-0.27519683163164055, 51.51229054355673], [-0.27499432064536233, 51.51211846760184], [-0.2740059688781695, 51.51130995003196], [-0.27308515788845716, 51.510777505858314], [-0.2728920046347019, 51.51062543136397], [-0.2726769054295891, 51.510444176123826], [-0.27312620644151503, 51.509996717592614], [-0.2736005015541587, 51.51033371480961], [-0.27386260039951715, 51.51049129768909], [-0.27426507882697776, 51.51074812508262], [-0.2744532012758943, 51.51076617542107], [-0.2747026165043325, 51.51087592390948], [-0.27472348300814164, 51.51089600837316], [-0.2749073824188512, 51.510871743856256], [-0.27445212657145907, 51.510373215925874], [-0.2744544009995791, 51.51031301779644], [-0.27434966657380816, 51.510223287117206], [-0.27492729614784367, 51.51007715961021], [-0.27473129442158717, 51.50981168500288], [-0.2746527717957581, 51.509641432022924], [-0.27457344934452077, 51.50945147957542], [-0.2745139443499179, 51.50930937459664], [-0.27443564138847626, 51.50909246766384], [-0.27438317575284177, 51.50903137429031], [-0.27432049431006794, 51.50897651334169], [-0.27394847480139095, 51.50882900060491], [-0.2743033214074494, 51.50859140769113], [-0.2741763584100463, 51.508212777418315], [-0.27358409664801936, 51.507907308249095], [-0.2730821001260625, 51.507731719148296], [-0.27235774907875165, 51.507491812161014], [-0.27231211780695574, 51.50747945328358], [-0.2720895630063865, 51.50742034819059], [-0.27130109217625287, 51.50727388284764], [-0.2703476366277961, 51.5070322944558], [-0.26967439799725146, 51.506848861220305], [-0.2694112520715943, 51.50679823186527], [-0.2692619430391247, 51.50678164504957], [-0.26914272930240773, 51.506773503091374], [-0.2682601139645484, 51.506754181976355], [-0.2673768244122404, 51.50671506668742], [-0.2655033370240549, 51.50660826576485], [-0.2637153648269718, 51.50652427634442], [-0.26387686487383133, 51.506291943163504], [-0.263977356558043, 51.50607677628115], [-0.26418518790331946, 51.505613101517305], [-0.26434713504017676, 51.50533133036286], [-0.26463976709071474, 51.504874393440154], [-0.2647968112423878, 51.504646487964074], [-0.2651279913778914, 51.50419722206714], [-0.26514916604851724, 51.504171464832694], [-0.2654819913814549, 51.50375377650209], [-0.2656648255203156, 51.50353164515275], [-0.26595525224465255, 51.50320412558515], [-0.26657268130769296, 51.50253973609911], [-0.26726541990530117, 51.50186566825122], [-0.2676132883064628, 51.501545286096906], [-0.26796671451341636, 51.50122858092153], [-0.2686960910238118, 51.500611681560514], [-0.2692258735412907, 51.50020498078955], [-0.2698477168023023, 51.49976358663292], [-0.2704892855054513, 51.49933425674687], [-0.2707489365280687, 51.499171684066205], [-0.2710086670246247, 51.49901010086686], [-0.27232707513660914, 51.49824444975481], [-0.27266647412467865, 51.49806785483711], [-0.27266805145918793, 51.49806697908749], [-0.27329655717478035, 51.49775251114716], [-0.2742606790347941, 51.497285567287015], [-0.2757080495687906, 51.49794710991335], [-0.2763077124467355, 51.49828324355592], [-0.27673886352250227, 51.498539585870404], [-0.27729553542035257, 51.49898296028701], [-0.2778960956347961, 51.49948819695444], [-0.27805894465858744, 51.49963981870967], [-0.27821153041102564, 51.4997958743563], [-0.27839099012048935, 51.500001678284995], [-0.27854183495654394, 51.50020715182202], [-0.27869096842401136, 51.50041709493363], [-0.2788340520340516, 51.50063315201922], [-0.27897133309994115, 51.50085191060633], [-0.2792199145853496, 51.5012917430118], [-0.27943043322465533, 51.5016320387993], [-0.2795515355057547, 51.50178214694917], [-0.2796784868465748, 51.501931531677975], [-0.2798520215535166, 51.50210578202975], [-0.2798960179120175, 51.50208575075971], [-0.2802566387223368, 51.50241835749814], [-0.2807360560363739, 51.50281113820897], [-0.28078352024217074, 51.50285049007687], [-0.28077109138943074, 51.50291242736133], [-0.28051783734451013, 51.50309480350035], [-0.28182513929054726, 51.50377309351972], [-0.2826173393150069, 51.50420200209564], [-0.2834778029572608, 51.50465788476411], [-0.2843733974163144, 51.50513414229889], [-0.2851724866142548, 51.50549472176812], [-0.28547880686733595, 51.505664611982496], [-0.2860200841477387, 51.506063668576175], [-0.2864106860693903, 51.50640667254384], [-0.28670724609955955, 51.506643840233686], [-0.28690687029604145, 51.50685540886912], [-0.2871620581996854, 51.507156787408654], [-0.2873157818386127, 51.50736319010519], [-0.28744880036575815, 51.50757998811219], [-0.2875630387763445, 51.507800197577154], [-0.2878175090771802, 51.508431578877506], [-0.28745964410095126, 51.508523443945826], [-0.2879020072382889, 51.51029153854201], [-0.2881712936345295, 51.51037278099504], [-0.2881491079390686, 51.51058110987937], [-0.28821558541572784, 51.51061444325949], [-0.2880892647709391, 51.51206031281987], [-0.2880118704905564, 51.512397378473345], [-0.2877857208594045, 51.51304781370496], [-0.2877358655717968, 51.513261941476365], [-0.28772172480797614, 51.51336970220479], [-0.28771405376487164, 51.51361231404158], [-0.2877348240813976, 51.513828461637665], [-0.28775528013234275, 51.51393573851591], [-0.2878158633298606, 51.51412639691387], [-0.2878920301678535, 51.51428491956605], [-0.28796963339987774, 51.51440831312848], [-0.2880875423020011, 51.51456915294168], [-0.28819220556651753, 51.514696627078564], [-0.288282273544403, 51.51479503097211], [-0.2883865263868174, 51.51489543973337]]], "type": "Polygon"}, "id": "105", "properties": {"DISTRICT": "Ealing", "GSS_CODE": "E05000188", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "NAME": "South Acton", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_e7336c9a19463b800f9cc43181c3ea1f.addTo(map_0a0cc609a3ed508e1afce3e0afb3ac8e);
+        
+    
+        function geo_json_68425839b4980b018578aa21667caa23_styler(feature) {
+            switch(feature.id) {
+                case "1147": case "1296": case "1298": case "1299": case "1300": case "1302": case "1303": case "1304": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_68425839b4980b018578aa21667caa23_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_68425839b4980b018578aa21667caa23 = L.geoJson(null, {
+                onEachFeature: geo_json_68425839b4980b018578aa21667caa23_onEachFeature,
+            
+                style: geo_json_68425839b4980b018578aa21667caa23_styler,
+            ...{
+}
+        });
+
+        function geo_json_68425839b4980b018578aa21667caa23_add (data) {
+            geo_json_68425839b4980b018578aa21667caa23
+                .addData(data);
+        }
+            geo_json_68425839b4980b018578aa21667caa23_add({"features": [{"geometry": {"coordinates": [[[[-0.27170636443659313, 51.51622167114112], [-0.28071746194421254, 51.518156314956705], [-0.28454190816986363, 51.515638258588375], [-0.2885473538045486, 51.51504490498207], [-0.28838669996121374, 51.51489685791893], [-0.2743980466072814, 51.51163064036722], [-0.2726752691115766, 51.510449548036426], [-0.2705855857006229, 51.51197442571489], [-0.2716466839656527, 51.515619985371615], [-0.27170636443659313, 51.51622167114112]]]], "type": "MultiPolygon"}, "id": "1147", "properties": {"BNG_E": 519756, "BNG_N": 180879, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{03663B2E-9626-4878-B677-42A3A68DB677}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.5141487121582, "LONG": -0.2755500078201294, "LSOA21CD": "E01001197", "LSOA21NM": "Ealing 021B", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "North Acton", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2743980466072814, 51.51163064036722], [-0.28838669996121374, 51.51489685791893], [-0.288125376504666, 51.511647860232216], [-0.28151486141415355, 51.51063576496746], [-0.27836658137398684, 51.509736320740295], [-0.2743980466072814, 51.51163064036722]]]], "type": "MultiPolygon"}, "id": "1296", "properties": {"BNG_E": 519342, "BNG_N": 180675, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{849547F2-1F4E-4335-ACE1-C9AD3AF9B2AD}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.51240921020508, "LONG": -0.2815900146961212, "LSOA21CD": "E01001350", "LSOA21NM": "Ealing 027C", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "Ealing Common", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2726752691115766, 51.510449548036426], [-0.2743980466072814, 51.51163064036722], [-0.27836658137398684, 51.509736320740295], [-0.27613231253269344, 51.50545228309301], [-0.27472569355648246, 51.50569513992326], [-0.270110283942159, 51.5062807234798], [-0.26937886046096077, 51.50450476615954], [-0.26943382466226995, 51.50680254440195], [-0.2741770098109169, 51.50821303278981], [-0.2726752691115766, 51.510449548036426]]]], "type": "MultiPolygon"}, "id": "1297", "properties": {"BNG_E": 519781, "BNG_N": 180204, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{5263DFAB-5FA8-479E-8453-67F15C166403}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.508079528808594, "LONG": -0.27542001008987427, "LSOA21CD": "E01001351", "LSOA21NM": "Ealing 025E", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "South Acton", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.28151486141415355, 51.51063576496746], [-0.288125376504666, 51.511647860232216], [-0.2877159873964439, 51.508179848105534], [-0.28690821499085395, 51.50685590046406], [-0.28151486141415355, 51.51063576496746]]]], "type": "MultiPolygon"}, "id": "1298", "properties": {"BNG_E": 519150, "BNG_N": 180349, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{000334BD-C882-4826-8F63-9C6EEF9A9FBC}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.509521484375, "LONG": -0.28446000814437866, "LSOA21CD": "E01001352", "LSOA21NM": "Ealing 027D", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "Ealing Common", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.27613231253269344, 51.50545228309301], [-0.2844348525602563, 51.5069892256559], [-0.28414302493255594, 51.50501179054079], [-0.2805580175988748, 51.503107374453144], [-0.2727087124489878, 51.503414320772706], [-0.27472569355648246, 51.50569513992326], [-0.27613231253269344, 51.50545228309301]]]], "type": "MultiPolygon"}, "id": "1299", "properties": {"BNG_E": 519602, "BNG_N": 179787, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{C944EF2D-9C0F-472D-A646-66CBBDA961D4}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.504371643066406, "LONG": -0.27814000844955444, "LSOA21CD": "E01001353", "LSOA21NM": "Ealing 033A", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "South Acton", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.27836658137398684, 51.509736320740295], [-0.28151486141415355, 51.51063576496746], [-0.28690821499085395, 51.50685590046406], [-0.28414302493255594, 51.50501179054079], [-0.2844348525602563, 51.5069892256559], [-0.27613231253269344, 51.50545228309301], [-0.27836658137398684, 51.509736320740295]]]], "type": "MultiPolygon"}, "id": "1300", "properties": {"BNG_E": 519361, "BNG_N": 180161, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{F3421D55-418D-4FE6-ADDC-6A9C89DCCAC4}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.50777816772461, "LONG": -0.2814899981021881, "LSOA21CD": "E01001354", "LSOA21NM": "Ealing 027E", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "South Acton", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2678290513161833, 51.506735287388594], [-0.26943382466226995, 51.50680254440195], [-0.26937886046096077, 51.50450476615954], [-0.2684905782733154, 51.500785626236095], [-0.2661727093504192, 51.50297011922783], [-0.2645739596060263, 51.50497698089443], [-0.26371754715117895, 51.50651779725767], [-0.2678290513161833, 51.506735287388594]]]], "type": "MultiPolygon"}, "id": "1301", "properties": {"BNG_E": 520378, "BNG_N": 179805, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{E71009BC-EB6F-4A77-A635-4D01E96B5D48}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.504371643066406, "LONG": -0.2669599950313568, "LSOA21CD": "E01001355", "LSOA21NM": "Ealing 033B", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "South Acton", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.27207571429226196, 51.50259823681578], [-0.270110283942159, 51.5062807234798], [-0.27472569355648246, 51.50569513992326], [-0.2727087124489878, 51.503414320772706], [-0.27207571429226196, 51.50259823681578]]]], "type": "MultiPolygon"}, "id": "1302", "properties": {"BNG_E": 519998, "BNG_N": 179835, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{5A0E3FE1-EE44-45EC-9778-889E6000C9DA}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.50471878051758, "LONG": -0.2724199891090393, "LSOA21CD": "E01001356", "LSOA21NM": "Ealing 033C", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "South Acton", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.26937886046096077, 51.50450476615954], [-0.270110283942159, 51.5062807234798], [-0.27207571429226196, 51.50259823681578], [-0.2703537281400142, 51.49942464035239], [-0.2684905782733154, 51.500785626236095], [-0.26937886046096077, 51.50450476615954]]]], "type": "MultiPolygon"}, "id": "1303", "properties": {"BNG_E": 520116, "BNG_N": 179475, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{B6B2C8EF-0E15-4BEE-9649-9D45A9CA30D0}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.501461029052734, "LONG": -0.2708500027656555, "LSOA21CD": "E01001357", "LSOA21NM": "Ealing 033D", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "South Acton", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.27207571429226196, 51.50259823681578], [-0.2727087124489878, 51.503414320772706], [-0.2805580175988748, 51.503107374453144], [-0.2807310249985048, 51.50279464547888], [-0.2742607743478463, 51.49728505303555], [-0.2703537281400142, 51.49942464035239], [-0.27207571429226196, 51.50259823681578]]]], "type": "MultiPolygon"}, "id": "1304", "properties": {"BNG_E": 519844, "BNG_N": 179349, "DISTRICT": "Ealing", "GSS_CODE": "E05000188", "GlobalID": "{8F19C483-95F0-4066-9F71-DEC85E667C8E}", "HECTARES": 171.92, "LAGSSCODE": "E09000009", "LAT": 51.50038146972656, "LONG": -0.27480998635292053, "LSOA21CD": "E01001358", "LSOA21NM": "Ealing 033E", "LSOA21NMW": " ", "NAME": "South Acton", "NONLD_AREA": 0.0, "WD24NM": "South Acton", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_68425839b4980b018578aa21667caa23.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_68425839b4980b018578aa21667caa23.addTo(map_0a0cc609a3ed508e1afce3e0afb3ac8e);
+        
+    
+            var feature_group_fc5896e86eff56e0e5db35d6f1b09571 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_f60eb799f5911ba116fc00f99abebbbe = L.marker(
+                [51.5047912, -0.2672767],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_46d778b5b0d3d78cea4a3bdc93c7e51f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ceae7b9f82eb6e65c427da8ebd010454 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_21329567fe30b75b65b22a37be667310 = $(`<div id="html_21329567fe30b75b65b22a37be667310" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 033B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_ceae7b9f82eb6e65c427da8ebd010454.setContent(html_21329567fe30b75b65b22a37be667310);
+            
+        
+
+        marker_f60eb799f5911ba116fc00f99abebbbe.bindPopup(popup_ceae7b9f82eb6e65c427da8ebd010454)
+        ;
+
+        
+    
+    
+                marker_f60eb799f5911ba116fc00f99abebbbe.setIcon(icon_46d778b5b0d3d78cea4a3bdc93c7e51f);
+            
+    
+            var marker_0f29b4711bc4b03617554d3a335cd717 = L.marker(
+                [51.5036268, -0.2689809],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_4d087285cde7efea1a25423e7a30f58f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a27d33c10b2f35d3510e0ee51fb4f614 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a2c6df9200ca665ea508e146fd4fee5f = $(`<div id="html_a2c6df9200ca665ea508e146fd4fee5f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 033B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_a27d33c10b2f35d3510e0ee51fb4f614.setContent(html_a2c6df9200ca665ea508e146fd4fee5f);
+            
+        
+
+        marker_0f29b4711bc4b03617554d3a335cd717.bindPopup(popup_a27d33c10b2f35d3510e0ee51fb4f614)
+        ;
+
+        
+    
+    
+                marker_0f29b4711bc4b03617554d3a335cd717.setIcon(icon_4d087285cde7efea1a25423e7a30f58f);
+            
+    
+            var marker_eb558ae5e14b8a006d63aec65cfa46b7 = L.marker(
+                [51.5059353, -0.2679227],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_dd8ba330201db7e064d054748ffa4c78 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf685cc23918e79b676ddbfd416dda48 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_56dae412abffbd3db18365ce58ee27ef = $(`<div id="html_56dae412abffbd3db18365ce58ee27ef" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 033B (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_cf685cc23918e79b676ddbfd416dda48.setContent(html_56dae412abffbd3db18365ce58ee27ef);
+            
+        
+
+        marker_eb558ae5e14b8a006d63aec65cfa46b7.bindPopup(popup_cf685cc23918e79b676ddbfd416dda48)
+        ;
+
+        
+    
+    
+                marker_eb558ae5e14b8a006d63aec65cfa46b7.setIcon(icon_dd8ba330201db7e064d054748ffa4c78);
+            
+    
+            var marker_2d2442c489ec5aae324c112b23c3e14c = L.marker(
+                [51.5066792, -0.2734942],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_6e663a0852046e28433d702ac4c342b7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b0f57a4b5f9d66976c9db77e6151b4d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cab433c6abd2740d7786dcaf34bcda8e = $(`<div id="html_cab433c6abd2740d7786dcaf34bcda8e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 025E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_b0f57a4b5f9d66976c9db77e6151b4d3.setContent(html_cab433c6abd2740d7786dcaf34bcda8e);
+            
+        
+
+        marker_2d2442c489ec5aae324c112b23c3e14c.bindPopup(popup_b0f57a4b5f9d66976c9db77e6151b4d3)
+        ;
+
+        
+    
+    
+                marker_2d2442c489ec5aae324c112b23c3e14c.setIcon(icon_6e663a0852046e28433d702ac4c342b7);
+            
+    
+            var marker_ad49052caa654227cce9322d6f3aa73b = L.marker(
+                [51.5078276, -0.2754237],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_915ea5152770789cf6b57de940156951 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fc5d7c0e7da9db95f1387497bd27d074 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_75a42ed8829865e61078706efb96f04b = $(`<div id="html_75a42ed8829865e61078706efb96f04b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 025E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_fc5d7c0e7da9db95f1387497bd27d074.setContent(html_75a42ed8829865e61078706efb96f04b);
+            
+        
+
+        marker_ad49052caa654227cce9322d6f3aa73b.bindPopup(popup_fc5d7c0e7da9db95f1387497bd27d074)
+        ;
+
+        
+    
+    
+                marker_ad49052caa654227cce9322d6f3aa73b.setIcon(icon_915ea5152770789cf6b57de940156951);
+            
+    
+            var marker_5aed6b4a90a1061bb164d2de3717753a = L.marker(
+                [51.508344, -0.2753808],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_aaa1b3d506f834571d0d623ce97b5383 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6aae10365bbddfc41dbf2fab8d4d6bca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_577e3a579c070699616723be103667f9 = $(`<div id="html_577e3a579c070699616723be103667f9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 025E (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_6aae10365bbddfc41dbf2fab8d4d6bca.setContent(html_577e3a579c070699616723be103667f9);
+            
+        
+
+        marker_5aed6b4a90a1061bb164d2de3717753a.bindPopup(popup_6aae10365bbddfc41dbf2fab8d4d6bca)
+        ;
+
+        
+    
+    
+                marker_5aed6b4a90a1061bb164d2de3717753a.setIcon(icon_aaa1b3d506f834571d0d623ce97b5383);
+            
+    
+            var marker_5f1f6fc7135eac548fe276f589ecd1bc = L.marker(
+                [51.5060268, -0.2720411],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_8c2a2ce7700b7145aa5a287a1855c7c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_78cf67e59ca6a63e86f2217368735270 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_353284a16094c3562763cfd07c8e714e = $(`<div id="html_353284a16094c3562763cfd07c8e714e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 025E (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_78cf67e59ca6a63e86f2217368735270.setContent(html_353284a16094c3562763cfd07c8e714e);
+            
+        
+
+        marker_5f1f6fc7135eac548fe276f589ecd1bc.bindPopup(popup_78cf67e59ca6a63e86f2217368735270)
+        ;
+
+        
+    
+    
+                marker_5f1f6fc7135eac548fe276f589ecd1bc.setIcon(icon_8c2a2ce7700b7145aa5a287a1855c7c1);
+            
+    
+            var marker_ff85e900cfcc761da02b676ffdcc9ec9 = L.marker(
+                [51.5125886, -0.2842946],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_00daa3c826ffc14261d25f127520eae4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_360bdf69f7d1d457292b292374f1880a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5fcbad09e3a23b465d10cbc14d5b30c = $(`<div id="html_b5fcbad09e3a23b465d10cbc14d5b30c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 027C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_360bdf69f7d1d457292b292374f1880a.setContent(html_b5fcbad09e3a23b465d10cbc14d5b30c);
+            
+        
+
+        marker_ff85e900cfcc761da02b676ffdcc9ec9.bindPopup(popup_360bdf69f7d1d457292b292374f1880a)
+        ;
+
+        
+    
+    
+                marker_ff85e900cfcc761da02b676ffdcc9ec9.setIcon(icon_00daa3c826ffc14261d25f127520eae4);
+            
+    
+            var marker_babf4f23a86cf65cb046bdfea05b13c5 = L.marker(
+                [51.5122644, -0.2853755],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_c78c62b26a34507b385a7c98b35f7f92 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2b28e835bef20cd7336657d9cfba12ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5474855a3db6be1f0635bba875ed8cc4 = $(`<div id="html_5474855a3db6be1f0635bba875ed8cc4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 027C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_2b28e835bef20cd7336657d9cfba12ee.setContent(html_5474855a3db6be1f0635bba875ed8cc4);
+            
+        
+
+        marker_babf4f23a86cf65cb046bdfea05b13c5.bindPopup(popup_2b28e835bef20cd7336657d9cfba12ee)
+        ;
+
+        
+    
+    
+                marker_babf4f23a86cf65cb046bdfea05b13c5.setIcon(icon_c78c62b26a34507b385a7c98b35f7f92);
+            
+    
+            var marker_b1fcc81f9a1781fe2de2a48bd9f44567 = L.marker(
+                [51.5098524, -0.2807545],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_d90902a88cb54508f6b0a64872d77151 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_06b141dfb8f32b374039fa22f0eda9b4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_526dbd1ad785145f4c03e25e80f9acd7 = $(`<div id="html_526dbd1ad785145f4c03e25e80f9acd7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 027C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_06b141dfb8f32b374039fa22f0eda9b4.setContent(html_526dbd1ad785145f4c03e25e80f9acd7);
+            
+        
+
+        marker_b1fcc81f9a1781fe2de2a48bd9f44567.bindPopup(popup_06b141dfb8f32b374039fa22f0eda9b4)
+        ;
+
+        
+    
+    
+                marker_b1fcc81f9a1781fe2de2a48bd9f44567.setIcon(icon_d90902a88cb54508f6b0a64872d77151);
+            
+    
+            var marker_fa8216e562c2d7aeb618d3bc3a2628d6 = L.marker(
+                [51.5125886, -0.2842946],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_1b2f5d3b318bd42a18437cfc6e24537e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_39640d2d0f3d69524e033eff301f7a4b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5ec7b5789236b497f805a0ee1b627989 = $(`<div id="html_5ec7b5789236b497f805a0ee1b627989" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 027C (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_39640d2d0f3d69524e033eff301f7a4b.setContent(html_5ec7b5789236b497f805a0ee1b627989);
+            
+        
+
+        marker_fa8216e562c2d7aeb618d3bc3a2628d6.bindPopup(popup_39640d2d0f3d69524e033eff301f7a4b)
+        ;
+
+        
+    
+    
+                marker_fa8216e562c2d7aeb618d3bc3a2628d6.setIcon(icon_1b2f5d3b318bd42a18437cfc6e24537e);
+            
+    
+            var marker_7b0371ec6877abb0ee92d201bb515d14 = L.marker(
+                [51.5143074, -0.2864306],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_37b50591a3c598221eeb81f68bfb0544 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_66f21144a7da1c092ef9f8a4bad615a0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_653483e6f9c85582620c361107b4e20e = $(`<div id="html_653483e6f9c85582620c361107b4e20e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 027C (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_66f21144a7da1c092ef9f8a4bad615a0.setContent(html_653483e6f9c85582620c361107b4e20e);
+            
+        
+
+        marker_7b0371ec6877abb0ee92d201bb515d14.bindPopup(popup_66f21144a7da1c092ef9f8a4bad615a0)
+        ;
+
+        
+    
+    
+                marker_7b0371ec6877abb0ee92d201bb515d14.setIcon(icon_37b50591a3c598221eeb81f68bfb0544);
+            
+    
+            var marker_a9c5330c0ab812088f2cb7d6ff8542ce = L.marker(
+                [51.5143893, -0.2837179],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_10726a16ba790a862d24e281c7ce5efe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b520e66a485f78ebb0323589b7b4fe8c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9a729d653d640b32c005d3f9273e2162 = $(`<div id="html_9a729d653d640b32c005d3f9273e2162" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 021B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_b520e66a485f78ebb0323589b7b4fe8c.setContent(html_9a729d653d640b32c005d3f9273e2162);
+            
+        
+
+        marker_a9c5330c0ab812088f2cb7d6ff8542ce.bindPopup(popup_b520e66a485f78ebb0323589b7b4fe8c)
+        ;
+
+        
+    
+    
+                marker_a9c5330c0ab812088f2cb7d6ff8542ce.setIcon(icon_10726a16ba790a862d24e281c7ce5efe);
+            
+    
+            var marker_5b02690fa224cc5abd87a431b47c205b = L.marker(
+                [51.5137674, -0.2782937],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_a130dc06cf008d6b31c29b9741c5defb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7605cdde906daf215250af232fdd8164 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_febf56e987071c9c8892527dabc7bd3a = $(`<div id="html_febf56e987071c9c8892527dabc7bd3a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 021B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7605cdde906daf215250af232fdd8164.setContent(html_febf56e987071c9c8892527dabc7bd3a);
+            
+        
+
+        marker_5b02690fa224cc5abd87a431b47c205b.bindPopup(popup_7605cdde906daf215250af232fdd8164)
+        ;
+
+        
+    
+    
+                marker_5b02690fa224cc5abd87a431b47c205b.setIcon(icon_a130dc06cf008d6b31c29b9741c5defb);
+            
+    
+            var marker_472729502d08272395b457b2a06fe763 = L.marker(
+                [51.5137674, -0.2782937],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_2b4dd028999a1ee1363463f809642de1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2fb04e5a2f6b83c064495b71dc10c656 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b1bd3608cb986694866daf3e6ec4984 = $(`<div id="html_3b1bd3608cb986694866daf3e6ec4984" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 021B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_2fb04e5a2f6b83c064495b71dc10c656.setContent(html_3b1bd3608cb986694866daf3e6ec4984);
+            
+        
+
+        marker_472729502d08272395b457b2a06fe763.bindPopup(popup_2fb04e5a2f6b83c064495b71dc10c656)
+        ;
+
+        
+    
+    
+                marker_472729502d08272395b457b2a06fe763.setIcon(icon_2b4dd028999a1ee1363463f809642de1);
+            
+    
+            var marker_0c2df12086147d0b00773299bd78702b = L.marker(
+                [51.5143893, -0.2837179],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_8a4aca21402d4fd9876510e8910ce20d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_14dec5a0fb09d99ddee0d8820701c23e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e4427eb380c500c42f26b545ae5326c9 = $(`<div id="html_e4427eb380c500c42f26b545ae5326c9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 021B (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_14dec5a0fb09d99ddee0d8820701c23e.setContent(html_e4427eb380c500c42f26b545ae5326c9);
+            
+        
+
+        marker_0c2df12086147d0b00773299bd78702b.bindPopup(popup_14dec5a0fb09d99ddee0d8820701c23e)
+        ;
+
+        
+    
+    
+                marker_0c2df12086147d0b00773299bd78702b.setIcon(icon_8a4aca21402d4fd9876510e8910ce20d);
+            
+    
+            var marker_c5deb74cb96d32ac09aa8609956c31bf = L.marker(
+                [51.5143893, -0.2837179],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_9d603929a2dad129fa0ed0373a5aed6b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3450f28791b1e8243868e5de672c5b5a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c2573ad531ce42cd56da8231fb1b6ecd = $(`<div id="html_c2573ad531ce42cd56da8231fb1b6ecd" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 021B (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3450f28791b1e8243868e5de672c5b5a.setContent(html_c2573ad531ce42cd56da8231fb1b6ecd);
+            
+        
+
+        marker_c5deb74cb96d32ac09aa8609956c31bf.bindPopup(popup_3450f28791b1e8243868e5de672c5b5a)
+        ;
+
+        
+    
+    
+                marker_c5deb74cb96d32ac09aa8609956c31bf.setIcon(icon_9d603929a2dad129fa0ed0373a5aed6b);
+            
+    
+            var marker_7ebdf34b033575af543a0f6eb218e24b = L.marker(
+                [51.503001, -0.2793281],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_8dc960e4b06c311d157e07a523f7f2d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7f4e9d46b0e0d1890b04de89862c70cf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a461ec827f50b14b4bbe5ca13aad66b = $(`<div id="html_0a461ec827f50b14b4bbe5ca13aad66b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 033A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7f4e9d46b0e0d1890b04de89862c70cf.setContent(html_0a461ec827f50b14b4bbe5ca13aad66b);
+            
+        
+
+        marker_7ebdf34b033575af543a0f6eb218e24b.bindPopup(popup_7f4e9d46b0e0d1890b04de89862c70cf)
+        ;
+
+        
+    
+    
+                marker_7ebdf34b033575af543a0f6eb218e24b.setIcon(icon_8dc960e4b06c311d157e07a523f7f2d5);
+            
+    
+            var marker_f39734e44aaf9b275e06200236f2b7e4 = L.marker(
+                [51.5050693, -0.2753697],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_e3800a5e425efb84e68a642752563f11 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eff1cfee1351eba8089ba4b179208a93 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f2492b0518750e8ac2551aad8d732ca9 = $(`<div id="html_f2492b0518750e8ac2551aad8d732ca9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 033A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_eff1cfee1351eba8089ba4b179208a93.setContent(html_f2492b0518750e8ac2551aad8d732ca9);
+            
+        
+
+        marker_f39734e44aaf9b275e06200236f2b7e4.bindPopup(popup_eff1cfee1351eba8089ba4b179208a93)
+        ;
+
+        
+    
+    
+                marker_f39734e44aaf9b275e06200236f2b7e4.setIcon(icon_e3800a5e425efb84e68a642752563f11);
+            
+    
+            var marker_82110abf639b4f91d4da6780d0c300c5 = L.marker(
+                [51.5046195, -0.2794348],
+                {
+}
+            ).addTo(feature_group_fc5896e86eff56e0e5db35d6f1b09571);
+        
+    
+            var icon_76d6d4374460111f9035b27b2c11847f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_136707c831831333e17aa2433eb987f3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d5bd0c059819df3b0a133bdde14ca554 = $(`<div id="html_d5bd0c059819df3b0a133bdde14ca554" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 033A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_136707c831831333e17aa2433eb987f3.setContent(html_d5bd0c059819df3b0a133bdde14ca554);
+            
+        
+
+        marker_82110abf639b4f91d4da6780d0c300c5.bindPopup(popup_136707c831831333e17aa2433eb987f3)
+        ;
+
+        
+    
+    
+                marker_82110abf639b4f91d4da6780d0c300c5.setIcon(icon_76d6d4374460111f9035b27b2c11847f);
+            
+    
+            feature_group_fc5896e86eff56e0e5db35d6f1b09571.addTo(map_0a0cc609a3ed508e1afce3e0afb3ac8e);
+        
+    
+            var poly_line_f3209734d693ab0e8b9afe1b8be7b08a = L.polyline(
+                [[51.5047912, -0.2672767], [51.5044093, -0.2688538], [51.50441, -0.2690368], [51.5039815, -0.2690117], [51.5038621, -0.2690063], [51.5036268, -0.2689809], [51.5028423, -0.2689423], [51.5022431, -0.2689511], [51.5021308, -0.2688962], [51.5020089, -0.2693841], [51.5018221, -0.2704975], [51.5017907, -0.2707412], [51.5016611, -0.2714879], [51.501468, -0.2725667], [51.5011249, -0.2746259], [51.500948, -0.2756384], [51.5019302, -0.2760838], [51.5019237, -0.2761254], [51.5025832, -0.2766124], [51.5024387, -0.2775652], [51.502222, -0.2788448], [51.5029111, -0.2795411], [51.503001, -0.2793281], [51.5029111, -0.2795411], [51.502222, -0.2788448], [51.5024387, -0.2775652], [51.5025832, -0.2766124], [51.5019237, -0.2761254], [51.5019302, -0.2760838], [51.500948, -0.2756384], [51.5011249, -0.2746259], [51.501468, -0.2725667], [51.5016611, -0.2714879], [51.5017907, -0.2707412], [51.5018221, -0.2704975], [51.5020089, -0.2693841], [51.5036468, -0.2701906], [51.5038621, -0.2690063], [51.5036268, -0.2689809], [51.5042192, -0.2669055], [51.5047912, -0.2672767], [51.5044093, -0.2688538], [51.50441, -0.2690368], [51.5047262, -0.2701273], [51.5050114, -0.2713013], [51.5051859, -0.2720578], [51.5053208, -0.273048], [51.5053322, -0.2732906], [51.5053458, -0.2736718], [51.5053954, -0.2739814], [51.5063863, -0.2744186], [51.5053858, -0.278974], [51.5069657, -0.2773217], [51.5070285, -0.2772658], [51.5083855, -0.2777493], [51.5083359, -0.2762568], [51.5083344, -0.2759619], [51.508344, -0.2753808], [51.5080771, -0.2753953], [51.5078276, -0.2754237], [51.5080771, -0.2753953], [51.508344, -0.2753808], [51.5083344, -0.2759619], [51.5083359, -0.2762568], [51.5083855, -0.2777493], [51.508416, -0.278338], [51.5084324, -0.2786314], [51.5084587, -0.279104], [51.5089532, -0.2811052], [51.5097771, -0.2813068], [51.5098524, -0.2807545], [51.5097771, -0.2813068], [51.5089532, -0.2811052], [51.5089334, -0.2830388], [51.5106695, -0.2828223], [51.5106483, -0.2840803], [51.5117817, -0.2840557], [51.5119608, -0.2818442], [51.5132057, -0.2821503], [51.5137674, -0.2782937], [51.5132057, -0.2821503], [51.5129877, -0.2832974], [51.5143893, -0.2837179], [51.5143343, -0.2857724], [51.5143074, -0.2864306], [51.5143343, -0.2857724], [51.5122644, -0.2853755], [51.5125886, -0.2842946], [51.5117817, -0.2840557], [51.5106483, -0.2840803], [51.5106695, -0.2828223], [51.5089334, -0.2830388], [51.5089532, -0.2811052], [51.5084587, -0.279104], [51.5084324, -0.2786314], [51.508416, -0.278338], [51.5083855, -0.2777493], [51.5070285, -0.2772658], [51.5069657, -0.2773217], [51.5053858, -0.278974], [51.5063863, -0.2744186], [51.5066164, -0.273712], [51.5063363, -0.2731744], [51.5063908, -0.2725652], [51.5061088, -0.2720897], [51.5060268, -0.2720411], [51.5061088, -0.2720897], [51.5063908, -0.2725652], [51.5063363, -0.2731744], [51.5066164, -0.273712], [51.5066792, -0.2734942], [51.5066164, -0.273712], [51.5063863, -0.2744186], [51.5053858, -0.278974], [51.5046195, -0.2794348], [51.5046806, -0.278231], [51.5048132, -0.2764064], [51.5050693, -0.2753697], [51.5048132, -0.2764064], [51.5046806, -0.278231], [51.5046195, -0.2794348], [51.5033644, -0.2801535], [51.5029111, -0.2795411], [51.502222, -0.2788448], [51.5024387, -0.2775652], [51.5025832, -0.2766124], [51.5019237, -0.2761254], [51.5019302, -0.2760838], [51.500948, -0.2756384], [51.5011249, -0.2746259], [51.501468, -0.2725667], [51.5016611, -0.2714879], [51.5017907, -0.2707412], [51.5018221, -0.2704975], [51.5020089, -0.2693841], [51.5036468, -0.2701906], [51.5038621, -0.2690063], [51.5036268, -0.2689809], [51.5042192, -0.2669055], [51.5047912, -0.2672767], [51.5050433, -0.2662374], [51.5051444, -0.2658743], [51.5060548, -0.2663058], [51.5061351, -0.266336], [51.5058865, -0.2677502], [51.5059353, -0.2679227], [51.5065625, -0.2681624], [51.5067274, -0.2679667], [51.5066436, -0.2665107], [51.5061351, -0.266336], [51.5060548, -0.2663058], [51.5051444, -0.2658743], [51.5050433, -0.2662374], [51.5047912, -0.2672767]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_0a0cc609a3ed508e1afce3e0afb3ac8e);
+        
+    
+            var layer_control_3b55fec5eea24bf8b834a354f7dc1c90_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_19e7c358c85e9ab7c013cded8613f6c4,
+                },
+                overlays :  {
+                    "South Acton Boundary" : geo_json_e7336c9a19463b800f9cc43181c3ea1f,
+                    "LSOA Median Crime Rates for South Acton" : geo_json_68425839b4980b018578aa21667caa23,
+                    "Patrol Waypoints" : feature_group_fc5896e86eff56e0e5db35d6f1b09571,
+                },
+            };
+            let layer_control_3b55fec5eea24bf8b834a354f7dc1c90 = L.control.layers(
+                layer_control_3b55fec5eea24bf8b834a354f7dc1c90_layers.base_layers,
+                layer_control_3b55fec5eea24bf8b834a354f7dc1c90_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_0a0cc609a3ed508e1afce3e0afb3ac8e);
+
+        
+</script>
+</html>

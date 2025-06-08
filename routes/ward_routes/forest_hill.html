@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_889c2f301eaf5fff1f973ae841837c72 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_889c2f301eaf5fff1f973ae841837c72" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_889c2f301eaf5fff1f973ae841837c72 = L.map(
+                "map_889c2f301eaf5fff1f973ae841837c72",
+                {
+                    center: [51.44054437686285, -0.058118262823043956],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_672de0d9170f2be5c341f9feef4575cf = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_672de0d9170f2be5c341f9feef4575cf.addTo(map_889c2f301eaf5fff1f973ae841837c72);
+        
+    
+        function geo_json_4d538722c45ce35c435b3ee44aa091e9_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_4d538722c45ce35c435b3ee44aa091e9_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_4d538722c45ce35c435b3ee44aa091e9 = L.geoJson(null, {
+                onEachFeature: geo_json_4d538722c45ce35c435b3ee44aa091e9_onEachFeature,
+            
+                style: geo_json_4d538722c45ce35c435b3ee44aa091e9_styler,
+            ...{
+}
+        });
+
+        function geo_json_4d538722c45ce35c435b3ee44aa091e9_add (data) {
+            geo_json_4d538722c45ce35c435b3ee44aa091e9
+                .addData(data);
+        }
+            geo_json_4d538722c45ce35c435b3ee44aa091e9_add({"features": [{"geometry": {"coordinates": [[[-0.06221994696104632, 51.447352077353145], [-0.06207974329847911, 51.447535854948384], [-0.0618268978301169, 51.447796073882685], [-0.06138355735196801, 51.44813854811761], [-0.060972612681580766, 51.44842761588574], [-0.059677657278095084, 51.448998816721556], [-0.05906150898774436, 51.449307855367735], [-0.058687433932504904, 51.4495076245263], [-0.05861886520386638, 51.44956312668323], [-0.058100675474481375, 51.44994030948546], [-0.05758947354310654, 51.45031760581404], [-0.05756128444583925, 51.45033871499389], [-0.05654346355207214, 51.44993967503004], [-0.05543547043111033, 51.44949328068418], [-0.05474878224142742, 51.44919411370184], [-0.054331297791937835, 51.448993807489764], [-0.054081349963887006, 51.44881345216601], [-0.054007587027343214, 51.44875379186202], [-0.05395391951727953, 51.448729436700845], [-0.05390836963443584, 51.44871789235495], [-0.05378780605025691, 51.44870959764137], [-0.053644935420070976, 51.44871801365363], [-0.053579618728174155, 51.448730414302624], [-0.05346452700291872, 51.44876365458262], [-0.053069936580452885, 51.448837113638454], [-0.050954580468570224, 51.44950786550401], [-0.04993544478151191, 51.44984881297539], [-0.04936636022797088, 51.450031823190876], [-0.049086665250610104, 51.45011257484005], [-0.04872170509693815, 51.45013077368373], [-0.04823978898102708, 51.45009218436056], [-0.04775795037649549, 51.450051796314916], [-0.04694149704448285, 51.44996088107884], [-0.046511438954902694, 51.44991955257115], [-0.04615078258539397, 51.449873086184496], [-0.04587853253258509, 51.449843285784276], [-0.04574846019599879, 51.44978807561286], [-0.04690030827420897, 51.44829558222841], [-0.04798174348070865, 51.44696381738427], [-0.04874314098030741, 51.44598191582998], [-0.049519774583810516, 51.44498138362389], [-0.05048714918996105, 51.44375827654977], [-0.05095390407652921, 51.443203975360184], [-0.051175931531913285, 51.442924387839874], [-0.05139068570895282, 51.44264557800557], [-0.051777955709115, 51.44209894231394], [-0.05179022075645236, 51.44208116589954], [-0.05215070940951618, 51.44152518362264], [-0.05239318576536351, 51.44110200156885], [-0.052631411213082686, 51.44064197873577], [-0.052726780885014556, 51.44043040703081], [-0.0528175338206308, 51.440224152634165], [-0.05295908148706817, 51.43983893920819], [-0.05310383971687943, 51.43938095882383], [-0.05326801093436449, 51.438767681394914], [-0.053357155314650136, 51.43832846538194], [-0.05339116407998727, 51.438103377728964], [-0.053462085808248, 51.437417439268174], [-0.053487653735228215, 51.43698624729395], [-0.053514706562464466, 51.43651732136011], [-0.0535091408103287, 51.436277102286], [-0.053462115151116305, 51.43575920843196], [-0.053395602345178796, 51.43529232458248], [-0.05334463101464291, 51.4349677430251], [-0.05325257765602302, 51.434596629362375], [-0.05314664978063531, 51.43424497355422], [-0.05309951128440368, 51.43372986442776], [-0.05351740648320476, 51.43371343082406], [-0.053675054381961296, 51.433626956467315], [-0.0537716419251538, 51.4335872056761], [-0.05426775909224816, 51.43345789343023], [-0.0544174550290686, 51.43342172077965], [-0.05535290091816208, 51.43321240147191], [-0.05592546957501298, 51.43311222010882], [-0.05644499726757478, 51.43276923172863], [-0.057267028195881434, 51.43217944167066], [-0.057994541148101264, 51.43164741480747], [-0.05871485808978242, 51.431147628805014], [-0.05911262360327436, 51.43096182732678], [-0.05941468425101602, 51.43079233033359], [-0.05959714186031415, 51.43096805176518], [-0.05985671100836917, 51.4308859535391], [-0.0600866393008437, 51.430825929400385], [-0.060454100717346713, 51.43074210942204], [-0.06093656790395805, 51.43062863563801], [-0.06123001314217993, 51.43056156896086], [-0.06131956719312204, 51.43055316114599], [-0.06142900092570778, 51.43054867812918], [-0.06171932713847991, 51.43055527778019], [-0.061990245637542456, 51.430580435093084], [-0.0624514774450193, 51.43062671831806], [-0.06296008575042139, 51.43067746867161], [-0.06344031361074919, 51.43071776883849], [-0.06449311242564577, 51.430825060595076], [-0.06474399757356186, 51.430847183651004], [-0.06512778601696056, 51.43088768249596], [-0.06596574036849076, 51.430973433784416], [-0.0661503718990069, 51.43099715757815], [-0.06636476964528713, 51.43102946327804], [-0.0665990490654104, 51.431068479541814], [-0.06712345554677016, 51.431152645942596], [-0.0672449431900627, 51.43117173061163], [-0.06766943715459355, 51.43123716568482], [-0.06817988400950344, 51.43131210705341], [-0.06854607545168385, 51.4313621937573], [-0.06876016983696916, 51.43140177205587], [-0.06924944692474598, 51.43150063326542], [-0.06944514695258884, 51.4315685857996], [-0.06966541723010936, 51.431633346613296], [-0.06975900050983688, 51.43166725230269], [-0.06991961390368963, 51.43171215088028], [-0.07004394532679478, 51.43173136935935], [-0.07018989191479424, 51.431749954687085], [-0.07032064126035519, 51.43175480443778], [-0.07052202770493676, 51.43175542282596], [-0.0706851829978449, 51.43174282538372], [-0.07118970379841877, 51.431682714232345], [-0.07144649134424123, 51.431666262474344], [-0.07169210622047499, 51.4316756977036], [-0.0718769707296359, 51.43169402219143], [-0.07198100447712344, 51.43171641084816], [-0.0720929728198214, 51.431756011162996], [-0.07228814506035244, 51.43183662630664], [-0.07286168266348111, 51.43208699321386], [-0.0727640378128949, 51.432186166967305], [-0.072708697601167, 51.43223560168881], [-0.07263005864600183, 51.4322918453592], [-0.07254003485054727, 51.43234520471924], [-0.07246088568813838, 51.43238256062819], [-0.07238337686507641, 51.43241194225169], [-0.07221593757458686, 51.43245863407773], [-0.072076901258181, 51.43248151952964], [-0.07160778888337739, 51.43248369140433], [-0.07133490111663679, 51.43247111021267], [-0.07110988747451395, 51.432451225147744], [-0.07094314360766764, 51.43244758190718], [-0.0706952696727958, 51.43245788622272], [-0.07039292326906377, 51.43249696065308], [-0.07018721218303138, 51.43253133234859], [-0.06998415637851158, 51.432570242471066], [-0.06962227303683928, 51.43265688121427], [-0.06952914795868456, 51.43268240771477], [-0.06902156538312089, 51.43284575789858], [-0.06860214853234665, 51.4329998605102], [-0.06775328084832964, 51.433444455889344], [-0.06715151300308013, 51.43369174142168], [-0.06670878699266414, 51.43392276803375], [-0.06614431346692144, 51.434309111561], [-0.06604295006316263, 51.434391946308345], [-0.06597399588698961, 51.434457335489704], [-0.06590908226650871, 51.43453097232158], [-0.0658342616849646, 51.43463132611863], [-0.06578800051527862, 51.43470428176741], [-0.06560680863271547, 51.43507896684281], [-0.0654157803019249, 51.43541123568259], [-0.06508635467978086, 51.43591931404743], [-0.0648002715774256, 51.43628867023147], [-0.06461118427706802, 51.436678596522775], [-0.06456032701748207, 51.43679283038008], [-0.0645305294871792, 51.436883138626506], [-0.06446716395951112, 51.436987366659686], [-0.06442027310202147, 51.43704143210587], [-0.06436487999708605, 51.437091761077006], [-0.0642448949465875, 51.43717428677015], [-0.06415815277517192, 51.437216905808846], [-0.06398277703418478, 51.437282334176295], [-0.06355071823271644, 51.43749554496831], [-0.06345674783400364, 51.437540741114], [-0.06345736404398865, 51.437627146413625], [-0.06354362597234575, 51.43776701952387], [-0.06370069596147025, 51.43792972850878], [-0.0637068426072436, 51.4379891648803], [-0.06373349326054434, 51.438208964202445], [-0.06375227292780154, 51.43899078600086], [-0.0638009329937298, 51.439540167179594], [-0.0640535643636787, 51.44084916638494], [-0.06428001769023184, 51.44090325098682], [-0.06467123278780014, 51.44100860227698], [-0.0650262031564855, 51.44115749542167], [-0.0646116609212002, 51.44153372052516], [-0.06427746647736872, 51.44184744122939], [-0.06421872793964059, 51.44190940203956], [-0.06416576075408287, 51.44197235714701], [-0.06408274252161367, 51.44209783665959], [-0.06387041537484629, 51.44252594537941], [-0.06373361977676004, 51.44286809725524], [-0.06366555221781187, 51.4433553161175], [-0.06374972999103919, 51.44415341089247], [-0.0637438404987919, 51.44422532444856], [-0.06371330126333798, 51.444537765966885], [-0.06364001227559088, 51.44480895585619], [-0.0634841440374881, 51.44526235965231], [-0.06336508327055994, 51.44555805540364], [-0.06324463607484722, 51.445852829111224], [-0.06308385554474759, 51.446183795714106], [-0.0629014221196164, 51.44644877643442], [-0.06256900602239003, 51.44695760720289], [-0.062343199373900655, 51.447193101810875], [-0.06221994696104632, 51.447352077353145]]], "type": "Polygon"}, "id": "262", "properties": {"DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "NAME": "Forest Hill", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_4d538722c45ce35c435b3ee44aa091e9.addTo(map_889c2f301eaf5fff1f973ae841837c72);
+        
+    
+        function geo_json_1258b9c8cc43c5e5938ba384783cb4f8_styler(feature) {
+            switch(feature.id) {
+                case "3102": case "3105": case "3106": case "3107": case "3108": case "3109": case "3110": case "3822": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_1258b9c8cc43c5e5938ba384783cb4f8_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_1258b9c8cc43c5e5938ba384783cb4f8 = L.geoJson(null, {
+                onEachFeature: geo_json_1258b9c8cc43c5e5938ba384783cb4f8_onEachFeature,
+            
+                style: geo_json_1258b9c8cc43c5e5938ba384783cb4f8_styler,
+            ...{
+}
+        });
+
+        function geo_json_1258b9c8cc43c5e5938ba384783cb4f8_add (data) {
+            geo_json_1258b9c8cc43c5e5938ba384783cb4f8
+                .addData(data);
+        }
+            geo_json_1258b9c8cc43c5e5938ba384783cb4f8_add({"features": [{"geometry": {"coordinates": [[[[-0.05484938179869769, 51.44545858913401], [-0.05970388935375561, 51.44684826406994], [-0.06374114187117204, 51.44406410487021], [-0.06500198998202678, 51.44118051344804], [-0.06406493076755818, 51.44085075231151], [-0.058943143975482455, 51.44030111682436], [-0.05942844016816924, 51.44254785788168], [-0.05400605983722243, 51.441533080690526], [-0.05484938179869769, 51.44545858913401]]]], "type": "MultiPolygon"}, "id": "3102", "properties": {"BNG_E": 535047, "BNG_N": 173378, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{E46A8D87-EF98-4790-8C8E-54583D6DC127}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.44329833984375, "LONG": -0.05818000063300133, "LSOA21CD": "E01003254", "LSOA21NM": "Lewisham 021A", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.05400605983722243, 51.441533080690526], [-0.05942844016816924, 51.44254785788168], [-0.058943143975482455, 51.44030111682436], [-0.057928945249627696, 51.437389790488886], [-0.05340461673427252, 51.43799360860436], [-0.05278763779932559, 51.440291983593745], [-0.052331837890517825, 51.441210573458754], [-0.05400605983722243, 51.441533080690526]]]], "type": "MultiPolygon"}, "id": "3103", "properties": {"BNG_E": 535224, "BNG_N": 172983, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{65DB5870-4BCA-4B54-8F54-2B6613E2AF27}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.4397087097168, "LONG": -0.0557899996638298, "LSOA21CD": "E01003255", "LSOA21NM": "Lewisham 021B", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.05343634621977772, 51.43557463527916], [-0.05340461673427252, 51.43799360860436], [-0.057928945249627696, 51.437389790488886], [-0.05937430914968283, 51.43478186110013], [-0.05876555129586053, 51.4311242787691], [-0.05310082925440132, 51.43372997033365], [-0.05343634621977772, 51.43557463527916]]]], "type": "MultiPolygon"}, "id": "3104", "properties": {"BNG_E": 535199, "BNG_N": 172569, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{796CA4A1-E1DC-420F-9D31-F44EB3BA9ED1}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.43598937988281, "LONG": -0.05631000176072121, "LSOA21CD": "E01003256", "LSOA21NM": "Lewisham 028A", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.058943143975482455, 51.44030111682436], [-0.06406493076755818, 51.44085075231151], [-0.06501348738092261, 51.43601293031385], [-0.05937430914968283, 51.43478186110013], [-0.057928945249627696, 51.437389790488886], [-0.058943143975482455, 51.44030111682436]]]], "type": "MultiPolygon"}, "id": "3105", "properties": {"BNG_E": 534840, "BNG_N": 172789, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{E0E0F77C-95BF-4B32-905B-C080C7BB6AFB}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.43806076049805, "LONG": -0.06137999892234802, "LSOA21CD": "E01003257", "LSOA21NM": "Lewisham 028B", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.06269343291642833, 51.4306506046668], [-0.06650261844992672, 51.43406390342631], [-0.07285951733866876, 51.4320880722764], [-0.06604054538367299, 51.43098290654732], [-0.06269343291642833, 51.4306506046668]]]], "type": "MultiPolygon"}, "id": "3106", "properties": {"BNG_E": 534423, "BNG_N": 172149, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{3D338D3B-C695-49D6-8126-D3B1F2B01472}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.43239974975586, "LONG": -0.06762000173330307, "LSOA21CD": "E01003258", "LSOA21NM": "Lewisham 028C", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.05937430914968283, 51.43478186110013], [-0.06501348738092261, 51.43601293031385], [-0.06650261844992672, 51.43406390342631], [-0.06269343291642833, 51.4306506046668], [-0.059470244472355695, 51.43084357170606], [-0.05876555129586053, 51.4311242787691], [-0.05937430914968283, 51.43478186110013]]]], "type": "MultiPolygon"}, "id": "3107", "properties": {"BNG_E": 534802, "BNG_N": 172229, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{80773981-8B9E-4DAC-B1B3-DC352983DEB4}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.43302917480469, "LONG": -0.062139999121427536, "LSOA21CD": "E01003259", "LSOA21NM": "Lewisham 028D", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.05461691435834821, 51.446000300400435], [-0.05394562095239744, 51.44872696660482], [-0.0604119874107704, 51.44867520214195], [-0.06222108071994383, 51.447350947192305], [-0.06374114187117204, 51.44406410487021], [-0.05970388935375561, 51.44684826406994], [-0.05484938179869769, 51.44545858913401], [-0.05461691435834821, 51.446000300400435]]]], "type": "MultiPolygon"}, "id": "3108", "properties": {"BNG_E": 534985, "BNG_N": 173799, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{AC770FB0-7438-4807-93CB-D60195907918}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.44710159301758, "LONG": -0.05891000106930733, "LSOA21CD": "E01003260", "LSOA21NM": "Lewisham 021C", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.046151561250657426, 51.44987333456676], [-0.04803435363878329, 51.45008337745425], [-0.05394562095239744, 51.44872696660482], [-0.05461691435834821, 51.446000300400435], [-0.04896842330021224, 51.445692019170885], [-0.04713024647762094, 51.44801104017225], [-0.046151561250657426, 51.44987333456676]]]], "type": "MultiPolygon"}, "id": "3109", "properties": {"BNG_E": 535500, "BNG_N": 173908, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{00DDD63E-F677-49F0-A6B0-AAFDEDED1B4D}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.447959899902344, "LONG": -0.05147000029683113, "LSOA21CD": "E01003261", "LSOA21NM": "Lewisham 021D", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.04896842330021224, 51.445692019170885], [-0.05461691435834821, 51.446000300400435], [-0.05484938179869769, 51.44545858913401], [-0.05400605983722243, 51.441533080690526], [-0.052331837890517825, 51.441210573458754], [-0.051786380814596356, 51.4420867293974], [-0.049519918717639555, 51.444981676338394], [-0.04896842330021224, 51.445692019170885]]]], "type": "MultiPolygon"}, "id": "3110", "properties": {"BNG_E": 535457, "BNG_N": 173490, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{BE131FA3-6EC2-4223-8D1D-F0AFD68553AA}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.444210052490234, "LONG": -0.05225000157952309, "LSOA21CD": "E01003262", "LSOA21NM": "Lewisham 021E", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Forest Hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.05590091432892973, 51.4559486161098], [-0.05605698293763724, 51.45637668403911], [-0.05868893642934437, 51.45507139632149], [-0.0604119874107704, 51.44867520214195], [-0.05394562095239744, 51.44872696660482], [-0.04803435363878329, 51.45008337745425], [-0.05590091432892973, 51.4559486161098]]]], "type": "MultiPolygon"}, "id": "3822", "properties": {"BNG_E": 535285, "BNG_N": 174290, "DISTRICT": "Lewisham", "GSS_CODE": "E05000444", "GlobalID": "{7428B6A9-B940-47EE-BFBF-DD8DFB5AE97B}", "HECTARES": 182.785, "LAGSSCODE": "E09000023", "LAT": 51.451438903808594, "LONG": -0.054409999400377274, "LSOA21CD": "E01004017", "LSOA21NM": "Southwark 029C", "LSOA21NMW": " ", "NAME": "Forest Hill", "NONLD_AREA": 0.0, "WD24NM": "Peckham Rye", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_1258b9c8cc43c5e5938ba384783cb4f8.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_1258b9c8cc43c5e5938ba384783cb4f8.addTo(map_889c2f301eaf5fff1f973ae841837c72);
+        
+    
+            var feature_group_bfdf61a51af116341644693a3cb2fa26 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_c79204296ac2330c3c8ceb5033f09a9e = L.marker(
+                [51.4378996, -0.0562873],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_2d1d05ef9fe0d87ff39826200abcaa71 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_26426abf709f1c0aaad26d8e434fa169 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a8f9d8e39d17b1b82e545c26a368b8d3 = $(`<div id="html_a8f9d8e39d17b1b82e545c26a368b8d3" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 021B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_26426abf709f1c0aaad26d8e434fa169.setContent(html_a8f9d8e39d17b1b82e545c26a368b8d3);
+            
+        
+
+        marker_c79204296ac2330c3c8ceb5033f09a9e.bindPopup(popup_26426abf709f1c0aaad26d8e434fa169)
+        ;
+
+        
+    
+    
+                marker_c79204296ac2330c3c8ceb5033f09a9e.setIcon(icon_2d1d05ef9fe0d87ff39826200abcaa71);
+            
+    
+            var marker_7313bc72221e6451aeeef93accff95d8 = L.marker(
+                [51.4400238, -0.0591805],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_9f183eb8d116eb7ef4e302b19893d1e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_820941eee0b1c66e95e00545bc3809b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2f0cca29ec7db972e84f0c360d08be29 = $(`<div id="html_2f0cca29ec7db972e84f0c360d08be29" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 021B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_820941eee0b1c66e95e00545bc3809b9.setContent(html_2f0cca29ec7db972e84f0c360d08be29);
+            
+        
+
+        marker_7313bc72221e6451aeeef93accff95d8.bindPopup(popup_820941eee0b1c66e95e00545bc3809b9)
+        ;
+
+        
+    
+    
+                marker_7313bc72221e6451aeeef93accff95d8.setIcon(icon_9f183eb8d116eb7ef4e302b19893d1e5);
+            
+    
+            var marker_2e3cdaed5806f8aade51c882a2fbca24 = L.marker(
+                [51.4390063, -0.0584201],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_b097049dd7ee99e5056e2cd683fbf902 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6fb57f3e134befac359886ade7e067a0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f32188b3412794cba652abdeb944bc40 = $(`<div id="html_f32188b3412794cba652abdeb944bc40" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 021B (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_6fb57f3e134befac359886ade7e067a0.setContent(html_f32188b3412794cba652abdeb944bc40);
+            
+        
+
+        marker_2e3cdaed5806f8aade51c882a2fbca24.bindPopup(popup_6fb57f3e134befac359886ade7e067a0)
+        ;
+
+        
+    
+    
+                marker_2e3cdaed5806f8aade51c882a2fbca24.setIcon(icon_b097049dd7ee99e5056e2cd683fbf902);
+            
+    
+            var marker_2a601bcae551671967d2c2612e08d283 = L.marker(
+                [51.4355883, -0.0557988],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_74570c186b42812747ff627445a2fb18 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a648391f2573a89fe975347639e6ea85 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7349df11fa3744a237fc5753774afcf4 = $(`<div id="html_7349df11fa3744a237fc5753774afcf4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028A (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_a648391f2573a89fe975347639e6ea85.setContent(html_7349df11fa3744a237fc5753774afcf4);
+            
+        
+
+        marker_2a601bcae551671967d2c2612e08d283.bindPopup(popup_a648391f2573a89fe975347639e6ea85)
+        ;
+
+        
+    
+    
+                marker_2a601bcae551671967d2c2612e08d283.setIcon(icon_74570c186b42812747ff627445a2fb18);
+            
+    
+            var marker_b0efff4fc9cc37063f40d92e656a8c7d = L.marker(
+                [51.4369811, -0.0572117],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_d2d029195795e5520fad37595eda5625 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_83154dc13711000bd3131bc6441dcfe6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_219fcde7861eb5feb456445abc725423 = $(`<div id="html_219fcde7861eb5feb456445abc725423" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028A (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_83154dc13711000bd3131bc6441dcfe6.setContent(html_219fcde7861eb5feb456445abc725423);
+            
+        
+
+        marker_b0efff4fc9cc37063f40d92e656a8c7d.bindPopup(popup_83154dc13711000bd3131bc6441dcfe6)
+        ;
+
+        
+    
+    
+                marker_b0efff4fc9cc37063f40d92e656a8c7d.setIcon(icon_d2d029195795e5520fad37595eda5625);
+            
+    
+            var marker_e253bc621d8be4fbc1ce31ad7dd9f7dd = L.marker(
+                [51.4367022, -0.055907],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_53fb00a00d2e83e233584f7f022f161e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_316f997b02fdfa40bda89752edbf808a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6dc8eea9d7e44a3b04a4946945aa1124 = $(`<div id="html_6dc8eea9d7e44a3b04a4946945aa1124" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028A (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_316f997b02fdfa40bda89752edbf808a.setContent(html_6dc8eea9d7e44a3b04a4946945aa1124);
+            
+        
+
+        marker_e253bc621d8be4fbc1ce31ad7dd9f7dd.bindPopup(popup_316f997b02fdfa40bda89752edbf808a)
+        ;
+
+        
+    
+    
+                marker_e253bc621d8be4fbc1ce31ad7dd9f7dd.setIcon(icon_53fb00a00d2e83e233584f7f022f161e);
+            
+    
+            var marker_0160bfd5da1bd44aac2271369195bf88 = L.marker(
+                [51.4340088, -0.0535477],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_eedafcf9589894ebae31d71e87c6da13 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c9085e394519a5813806e3399d0a7a75 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_30f7aeb3f63d7688bd6d94c4aa0521dd = $(`<div id="html_30f7aeb3f63d7688bd6d94c4aa0521dd" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028A (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c9085e394519a5813806e3399d0a7a75.setContent(html_30f7aeb3f63d7688bd6d94c4aa0521dd);
+            
+        
+
+        marker_0160bfd5da1bd44aac2271369195bf88.bindPopup(popup_c9085e394519a5813806e3399d0a7a75)
+        ;
+
+        
+    
+    
+                marker_0160bfd5da1bd44aac2271369195bf88.setIcon(icon_eedafcf9589894ebae31d71e87c6da13);
+            
+    
+            var marker_90be8be36753820e6da98a7f1c8929b0 = L.marker(
+                [51.4408217, -0.0635722],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_31d4754b27fe963f8d5a876f6bae92ec = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_68e732e7d646e929f71bd28853b37dc3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b10cfc3335ab7130fc7855b2b4792cbe = $(`<div id="html_b10cfc3335ab7130fc7855b2b4792cbe" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 021A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_68e732e7d646e929f71bd28853b37dc3.setContent(html_b10cfc3335ab7130fc7855b2b4792cbe);
+            
+        
+
+        marker_90be8be36753820e6da98a7f1c8929b0.bindPopup(popup_68e732e7d646e929f71bd28853b37dc3)
+        ;
+
+        
+    
+    
+                marker_90be8be36753820e6da98a7f1c8929b0.setIcon(icon_31d4754b27fe963f8d5a876f6bae92ec);
+            
+    
+            var marker_5268c3da73961412c5d170e4edcc6735 = L.marker(
+                [51.4425481, -0.0570291],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_209fa8ca791438136978baa18e7dbdde = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_44b8f753bd5fdbdde3cbaa534ed81308 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f393a2aa630992d5a2266549cfdaa267 = $(`<div id="html_f393a2aa630992d5a2266549cfdaa267" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 021A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_44b8f753bd5fdbdde3cbaa534ed81308.setContent(html_f393a2aa630992d5a2266549cfdaa267);
+            
+        
+
+        marker_5268c3da73961412c5d170e4edcc6735.bindPopup(popup_44b8f753bd5fdbdde3cbaa534ed81308)
+        ;
+
+        
+    
+    
+                marker_5268c3da73961412c5d170e4edcc6735.setIcon(icon_209fa8ca791438136978baa18e7dbdde);
+            
+    
+            var marker_4826a9df68ad947cb544eb899ecf010f = L.marker(
+                [51.444098, -0.0584447],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_80b00aec2d5a8fdcd38876af42a7072e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9e5a5a860c07b18a14fd54fdf278957e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_948740a370dc8318cf1ddd56582b59eb = $(`<div id="html_948740a370dc8318cf1ddd56582b59eb" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 021A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9e5a5a860c07b18a14fd54fdf278957e.setContent(html_948740a370dc8318cf1ddd56582b59eb);
+            
+        
+
+        marker_4826a9df68ad947cb544eb899ecf010f.bindPopup(popup_9e5a5a860c07b18a14fd54fdf278957e)
+        ;
+
+        
+    
+    
+                marker_4826a9df68ad947cb544eb899ecf010f.setIcon(icon_80b00aec2d5a8fdcd38876af42a7072e);
+            
+    
+            var marker_afbac2882271460681fd2de404dceb14 = L.marker(
+                [51.4425145, -0.0600304],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_ba35ead3dda063bf2d1eab91c7beb92f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5b1a6e18b6abff1e7477da96a93f5926 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79a4ddaa60b5d0d2b1f82981094c2d6b = $(`<div id="html_79a4ddaa60b5d0d2b1f82981094c2d6b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 021A (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5b1a6e18b6abff1e7477da96a93f5926.setContent(html_79a4ddaa60b5d0d2b1f82981094c2d6b);
+            
+        
+
+        marker_afbac2882271460681fd2de404dceb14.bindPopup(popup_5b1a6e18b6abff1e7477da96a93f5926)
+        ;
+
+        
+    
+    
+                marker_afbac2882271460681fd2de404dceb14.setIcon(icon_ba35ead3dda063bf2d1eab91c7beb92f);
+            
+    
+            var marker_322a14adbdc379d4fe58f77fe062d399 = L.marker(
+                [51.4454996, -0.0589854],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_cd2dff45817fc0581f7bd69935de0723 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8d780e50a6d8913747362590eb112260 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_edcdc93c8154cb44656c9779e07d7f7a = $(`<div id="html_edcdc93c8154cb44656c9779e07d7f7a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 021A (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8d780e50a6d8913747362590eb112260.setContent(html_edcdc93c8154cb44656c9779e07d7f7a);
+            
+        
+
+        marker_322a14adbdc379d4fe58f77fe062d399.bindPopup(popup_8d780e50a6d8913747362590eb112260)
+        ;
+
+        
+    
+    
+                marker_322a14adbdc379d4fe58f77fe062d399.setIcon(icon_cd2dff45817fc0581f7bd69935de0723);
+            
+    
+            var marker_a84ec5c23270ec5f692a1cacf0812439 = L.marker(
+                [51.4377456, -0.060309],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_7f85885bc0f3b0580a5de36ccc569487 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59f69c269695e07778e428f2c4f69509 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4426c27314cd51db7f0cbc1a3b4d5ef9 = $(`<div id="html_4426c27314cd51db7f0cbc1a3b4d5ef9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_59f69c269695e07778e428f2c4f69509.setContent(html_4426c27314cd51db7f0cbc1a3b4d5ef9);
+            
+        
+
+        marker_a84ec5c23270ec5f692a1cacf0812439.bindPopup(popup_59f69c269695e07778e428f2c4f69509)
+        ;
+
+        
+    
+    
+                marker_a84ec5c23270ec5f692a1cacf0812439.setIcon(icon_7f85885bc0f3b0580a5de36ccc569487);
+            
+    
+            var marker_3ff1b0526ac81141fdfb0033b7c9cc18 = L.marker(
+                [51.4374106, -0.0634149],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_9a113223eef112286ef09c7b00ca7ade = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_60383692d58bec78b9efcdbde0e472df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1c8e104ca6e20b9f877910bc5db53e0 = $(`<div id="html_f1c8e104ca6e20b9f877910bc5db53e0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_60383692d58bec78b9efcdbde0e472df.setContent(html_f1c8e104ca6e20b9f877910bc5db53e0);
+            
+        
+
+        marker_3ff1b0526ac81141fdfb0033b7c9cc18.bindPopup(popup_60383692d58bec78b9efcdbde0e472df)
+        ;
+
+        
+    
+    
+                marker_3ff1b0526ac81141fdfb0033b7c9cc18.setIcon(icon_9a113223eef112286ef09c7b00ca7ade);
+            
+    
+            var marker_e9034a3d316804516d5713165dbd45d9 = L.marker(
+                [51.4387582, -0.06152],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_ee9e12fa427d41166e722db2e9d0ffb4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d97df95dd042dfe476bb94d0d343e15a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bde36d2217caf9e1ae7ac0655823ce1c = $(`<div id="html_bde36d2217caf9e1ae7ac0655823ce1c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d97df95dd042dfe476bb94d0d343e15a.setContent(html_bde36d2217caf9e1ae7ac0655823ce1c);
+            
+        
+
+        marker_e9034a3d316804516d5713165dbd45d9.bindPopup(popup_d97df95dd042dfe476bb94d0d343e15a)
+        ;
+
+        
+    
+    
+                marker_e9034a3d316804516d5713165dbd45d9.setIcon(icon_ee9e12fa427d41166e722db2e9d0ffb4);
+            
+    
+            var marker_557bed5bc79c00024e68565e4d03e512 = L.marker(
+                [51.4390063, -0.0584201],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_fdb5b446cd38b236a02f7f0bf4f16c29 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ea88ab54156cc65d6cd1738c9f1c71f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b3082e8c704b8c83be2eb4073033d122 = $(`<div id="html_b3082e8c704b8c83be2eb4073033d122" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028B (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_ea88ab54156cc65d6cd1738c9f1c71f7.setContent(html_b3082e8c704b8c83be2eb4073033d122);
+            
+        
+
+        marker_557bed5bc79c00024e68565e4d03e512.bindPopup(popup_ea88ab54156cc65d6cd1738c9f1c71f7)
+        ;
+
+        
+    
+    
+                marker_557bed5bc79c00024e68565e4d03e512.setIcon(icon_fdb5b446cd38b236a02f7f0bf4f16c29);
+            
+    
+            var marker_6fa534d788e77717ff90f47fcf547b6b = L.marker(
+                [51.4324843, -0.0637507],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_40022f5a212bf8530a0bd69f75da2774 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e2a85a05276d970cff086cb3ebb8bebc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_059d30fdf48a17b3b9b9e9740ff585d9 = $(`<div id="html_059d30fdf48a17b3b9b9e9740ff585d9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_e2a85a05276d970cff086cb3ebb8bebc.setContent(html_059d30fdf48a17b3b9b9e9740ff585d9);
+            
+        
+
+        marker_6fa534d788e77717ff90f47fcf547b6b.bindPopup(popup_e2a85a05276d970cff086cb3ebb8bebc)
+        ;
+
+        
+    
+    
+                marker_6fa534d788e77717ff90f47fcf547b6b.setIcon(icon_40022f5a212bf8530a0bd69f75da2774);
+            
+    
+            var marker_16258962a5553b47701e6d63d75e8207 = L.marker(
+                [51.4333933, -0.0646246],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_c142207182cab47351a33aef9c1287f1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e0c83e3bd95360287d208081b78865a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_865d014214cfc0c8ce701de5b5386af2 = $(`<div id="html_865d014214cfc0c8ce701de5b5386af2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_e0c83e3bd95360287d208081b78865a1.setContent(html_865d014214cfc0c8ce701de5b5386af2);
+            
+        
+
+        marker_16258962a5553b47701e6d63d75e8207.bindPopup(popup_e0c83e3bd95360287d208081b78865a1)
+        ;
+
+        
+    
+    
+                marker_16258962a5553b47701e6d63d75e8207.setIcon(icon_c142207182cab47351a33aef9c1287f1);
+            
+    
+            var marker_ff33676276b79c99130775d9a10fba77 = L.marker(
+                [51.4333422, -0.0604724],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_62322440ed12c76c9ea4ce0f809d8a7a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0e61b70bb1d351e291d109834a497921 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_949795f272bf117979521b376cfe9838 = $(`<div id="html_949795f272bf117979521b376cfe9838" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0e61b70bb1d351e291d109834a497921.setContent(html_949795f272bf117979521b376cfe9838);
+            
+        
+
+        marker_ff33676276b79c99130775d9a10fba77.bindPopup(popup_0e61b70bb1d351e291d109834a497921)
+        ;
+
+        
+    
+    
+                marker_ff33676276b79c99130775d9a10fba77.setIcon(icon_62322440ed12c76c9ea4ce0f809d8a7a);
+            
+    
+            var marker_e638c2eebdfa19afa7cad4585fa98350 = L.marker(
+                [51.4313468, -0.0599831],
+                {
+}
+            ).addTo(feature_group_bfdf61a51af116341644693a3cb2fa26);
+        
+    
+            var icon_a770f6a26911822b23d2896cb47faab9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_96a9b0dd4ccd07cd03c9308a710cb773 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_178bba0e56b36f1e64e3acc2a69d8de3 = $(`<div id="html_178bba0e56b36f1e64e3acc2a69d8de3" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Lewisham 028D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_96a9b0dd4ccd07cd03c9308a710cb773.setContent(html_178bba0e56b36f1e64e3acc2a69d8de3);
+            
+        
+
+        marker_e638c2eebdfa19afa7cad4585fa98350.bindPopup(popup_96a9b0dd4ccd07cd03c9308a710cb773)
+        ;
+
+        
+    
+    
+                marker_e638c2eebdfa19afa7cad4585fa98350.setIcon(icon_a770f6a26911822b23d2896cb47faab9);
+            
+    
+            feature_group_bfdf61a51af116341644693a3cb2fa26.addTo(map_889c2f301eaf5fff1f973ae841837c72);
+        
+    
+            var poly_line_33f1af53ae4eec5cdd335d0f920d100f = L.polyline(
+                [[51.4378996, -0.0562873], [51.4369811, -0.0572117], [51.4360788, -0.0571573], [51.4355883, -0.0557988], [51.4360788, -0.0571573], [51.436309, -0.0588515], [51.4362357, -0.0591658], [51.4356524, -0.0594802], [51.4348029, -0.0569466], [51.4344942, -0.0567344], [51.433916, -0.0563164], [51.434308, -0.0548474], [51.4340335, -0.0546535], [51.4337489, -0.0544992], [51.4340088, -0.0535477], [51.4337489, -0.0544992], [51.4340335, -0.0546535], [51.434308, -0.0548474], [51.433916, -0.0563164], [51.4344942, -0.0567344], [51.4348029, -0.0569466], [51.4337902, -0.0583113], [51.433202, -0.0589556], [51.4316085, -0.0594339], [51.4313468, -0.0599831], [51.4320359, -0.0606607], [51.4322228, -0.0607047], [51.4325989, -0.061078], [51.4329136, -0.0612969], [51.4333422, -0.0604724], [51.4329136, -0.0612969], [51.4330897, -0.061419], [51.4336652, -0.0617929], [51.4338051, -0.061896], [51.4327936, -0.0635898], [51.4324843, -0.0637507], [51.4327936, -0.0635898], [51.4333933, -0.0646246], [51.4327936, -0.0635898], [51.4338051, -0.061896], [51.4344927, -0.0622926], [51.4346037, -0.0623538], [51.4346948, -0.0624182], [51.4352787, -0.062689], [51.4355554, -0.0627334], [51.4374106, -0.0634149], [51.4355554, -0.0627334], [51.4362357, -0.0591658], [51.436309, -0.0588515], [51.4368242, -0.0591598], [51.4369811, -0.0572117], [51.4378996, -0.0562873], [51.4375856, -0.0552425], [51.437428, -0.054675], [51.4378971, -0.0544754], [51.4388499, -0.0539629], [51.4390383, -0.0540186], [51.4391836, -0.0543465], [51.4392573, -0.0545548], [51.4398734, -0.0563652], [51.4401133, -0.057065], [51.4402359, -0.0573879], [51.4405418, -0.058772], [51.4405329, -0.0604684], [51.4387582, -0.06152], [51.438388, -0.0620172], [51.4377456, -0.060309], [51.438388, -0.0620172], [51.4387582, -0.06152], [51.4405329, -0.0604684], [51.4405278, -0.0615169], [51.4408217, -0.0635722], [51.4405278, -0.0615169], [51.4405329, -0.0604684], [51.4405418, -0.058772], [51.4400238, -0.0591805], [51.4405418, -0.058772], [51.4402359, -0.0573879], [51.4390063, -0.0584201], [51.4402359, -0.0573879], [51.4401133, -0.057065], [51.4415582, -0.0556803], [51.4415948, -0.0557765], [51.4421126, -0.0574404], [51.4425481, -0.0570291], [51.4426044, -0.0575086], [51.4430076, -0.0595739], [51.444098, -0.0584447], [51.4454996, -0.0589854], [51.444098, -0.0584447], [51.4430076, -0.0595739], [51.4426526, -0.0599081], [51.4425145, -0.0600304], [51.4426526, -0.0599081], [51.4430076, -0.0595739], [51.4426044, -0.0575086], [51.4425481, -0.0570291], [51.4435289, -0.0560906], [51.4434879, -0.0534842], [51.4415991, -0.0530512], [51.4402208, -0.05357], [51.4397479, -0.0537791], [51.4392459, -0.0537926], [51.4391029, -0.0538155], [51.4390102, -0.0538587], [51.4388499, -0.0539629], [51.4378971, -0.0544754], [51.437428, -0.054675], [51.4375856, -0.0552425], [51.4367022, -0.055907], [51.4375856, -0.0552425], [51.4378996, -0.0562873]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_889c2f301eaf5fff1f973ae841837c72);
+        
+    
+            var layer_control_254edd3d8b51e4919aedb63c5611c634_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_672de0d9170f2be5c341f9feef4575cf,
+                },
+                overlays :  {
+                    "Forest Hill Boundary" : geo_json_4d538722c45ce35c435b3ee44aa091e9,
+                    "LSOA Median Crime Rates for Forest Hill" : geo_json_1258b9c8cc43c5e5938ba384783cb4f8,
+                    "Patrol Waypoints" : feature_group_bfdf61a51af116341644693a3cb2fa26,
+                },
+            };
+            let layer_control_254edd3d8b51e4919aedb63c5611c634 = L.control.layers(
+                layer_control_254edd3d8b51e4919aedb63c5611c634_layers.base_layers,
+                layer_control_254edd3d8b51e4919aedb63c5611c634_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_889c2f301eaf5fff1f973ae841837c72);
+
+        
+</script>
+</html>

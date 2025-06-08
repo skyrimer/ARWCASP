@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8873505f845e79a45fdc103a9c8589e2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_8873505f845e79a45fdc103a9c8589e2" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8873505f845e79a45fdc103a9c8589e2 = L.map(
+                "map_8873505f845e79a45fdc103a9c8589e2",
+                {
+                    center: [51.51152384259431, -0.40973002363663813],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7cfccd910855dd533cada53acd87f3f5 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7cfccd910855dd533cada53acd87f3f5.addTo(map_8873505f845e79a45fdc103a9c8589e2);
+        
+    
+        function geo_json_6aeb52364e5e03c43b7b77b7178d8c68_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_6aeb52364e5e03c43b7b77b7178d8c68_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_6aeb52364e5e03c43b7b77b7178d8c68 = L.geoJson(null, {
+                onEachFeature: geo_json_6aeb52364e5e03c43b7b77b7178d8c68_onEachFeature,
+            
+                style: geo_json_6aeb52364e5e03c43b7b77b7178d8c68_styler,
+            ...{
+}
+        });
+
+        function geo_json_6aeb52364e5e03c43b7b77b7178d8c68_add (data) {
+            geo_json_6aeb52364e5e03c43b7b77b7178d8c68
+                .addData(data);
+        }
+            geo_json_6aeb52364e5e03c43b7b77b7178d8c68_add({"features": [{"geometry": {"coordinates": [[[-0.4069051796320886, 51.49969377799747], [-0.4069801984413421, 51.499610204135685], [-0.40727071379041396, 51.49970683303966], [-0.4076890896273799, 51.49989770079754], [-0.40836976216493026, 51.50008502488165], [-0.40928522685289154, 51.50031508405589], [-0.4092173567385228, 51.50040495919447], [-0.4110175361939042, 51.50088252982601], [-0.41166499198432416, 51.501154786399226], [-0.41379312777527205, 51.50210709372767], [-0.4148869950429313, 51.502596715356134], [-0.41615909543540736, 51.50314078359867], [-0.41655568446892033, 51.503297254282664], [-0.4175008301149329, 51.50367148380285], [-0.4195899096501644, 51.50463664187506], [-0.419149890044438, 51.50527455102593], [-0.41911238569513093, 51.50531809483672], [-0.41911408038305725, 51.50556092810677], [-0.4190980893424222, 51.50564881114315], [-0.41911481504828957, 51.50603747929405], [-0.41909704275030785, 51.506218021591465], [-0.4190705592599211, 51.50644429367668], [-0.41903772215735724, 51.506558918584375], [-0.4190097762822612, 51.506659225972165], [-0.41880501934487524, 51.50695591112683], [-0.4187427556048732, 51.50709000638553], [-0.41872918365128814, 51.50714915509634], [-0.41895576448842575, 51.50730323546346], [-0.41905186695915975, 51.507358558562764], [-0.4195498638640658, 51.507665613648655], [-0.41988701470346457, 51.507876018762936], [-0.4202405460199426, 51.50811100543394], [-0.4199162480732875, 51.508281126370626], [-0.4199148230019246, 51.50828110717396], [-0.4189172553527079, 51.50950041498802], [-0.4181811140407887, 51.51040860251477], [-0.41756869152818354, 51.51115394404952], [-0.41763727677117407, 51.511173747519535], [-0.4193800318383822, 51.51165670448518], [-0.4194116228964035, 51.511619373677206], [-0.41968425603545506, 51.51165540968662], [-0.41968354093433613, 51.51167607622444], [-0.4196696605594377, 51.51195016313168], [-0.41970564649803643, 51.51195064794178], [-0.41970861563492956, 51.51195068794213], [-0.4197131111878603, 51.51211265191147], [-0.4196367366190925, 51.5123625237994], [-0.4193590098242332, 51.5123911444701], [-0.4190789865805946, 51.5124449045249], [-0.418906175261763, 51.51248392770129], [-0.4190159214674448, 51.51251956752861], [-0.41963439700061744, 51.512718571868795], [-0.4196148074708165, 51.51282798153437], [-0.41961433594825054, 51.51288281197532], [-0.41964215717298575, 51.51299564717325], [-0.4196676704533505, 51.51304813079814], [-0.41972749107833257, 51.51311186416691], [-0.4197668463536278, 51.51314206014901], [-0.4198476096721431, 51.513180904594414], [-0.41997776659940805, 51.51321052570434], [-0.4199833742387089, 51.51321329812808], [-0.41999113643518193, 51.51307136640819], [-0.4209801193930195, 51.513105359502454], [-0.4221394681804116, 51.51316770593185], [-0.42294648519969985, 51.51321002218893], [-0.42366195641095, 51.51331582807486], [-0.4240749229571736, 51.51337630351507], [-0.4244046164798174, 51.513387924066684], [-0.4247188635855214, 51.5133444096042], [-0.42488231031363727, 51.51365953353764], [-0.4255076864068707, 51.51433163368902], [-0.4260902535171069, 51.515032731850354], [-0.4263922753917316, 51.51576152758168], [-0.4265793093275272, 51.51618933567454], [-0.4267715797815177, 51.516506641250594], [-0.4271349359614208, 51.51692162047301], [-0.4271392119992171, 51.516921677806614], [-0.4273625499947217, 51.5171755725592], [-0.4273030906474877, 51.517480422654124], [-0.4272806993082691, 51.51758539095869], [-0.42724648142651783, 51.517740452696685], [-0.4271872584159068, 51.51787279500324], [-0.42705591329665005, 51.51804273572387], [-0.42614290071835154, 51.519107806389115], [-0.4257171672118127, 51.51958492648207], [-0.4257110988612954, 51.51959203674328], [-0.42569170594083144, 51.51961335158366], [-0.42604944639188574, 51.51977106544267], [-0.4263818543806113, 51.519912167166225], [-0.42609484805650877, 51.52029496047477], [-0.42502350098322167, 51.52193431243712], [-0.4246348385822362, 51.522420915887146], [-0.42452312824611504, 51.52269279002705], [-0.424067971989909, 51.523349391244246], [-0.42348925699523887, 51.52324362874323], [-0.42305417722194083, 51.523153278670996], [-0.4225172886163988, 51.52300663142703], [-0.42209308700752557, 51.52289394998731], [-0.4220459731234574, 51.52288162976523], [-0.42194304785676634, 51.52285417538091], [-0.42063237176745283, 51.52244899448058], [-0.4199439812969546, 51.52222298481782], [-0.4193642580146493, 51.52198225396253], [-0.41852328404170874, 51.52166698050478], [-0.417535424255301, 51.52126611607041], [-0.4167112955683158, 51.52096274320574], [-0.4159535803606004, 51.5206602612863], [-0.4159521549056421, 51.52066024203823], [-0.41325488171839697, 51.519593307655484], [-0.41084473400097005, 51.51877202171142], [-0.409042388430945, 51.51825127362074], [-0.4076323469669884, 51.51793539360157], [-0.4070192096977675, 51.51782809306163], [-0.40683512053401155, 51.51781480548226], [-0.4062404513088614, 51.51775728460811], [-0.40557188255657006, 51.517709543865706], [-0.4047850032505598, 51.517585576431166], [-0.40393882993457975, 51.517383396094054], [-0.4033373288089247, 51.51714768256412], [-0.4028591004984303, 51.51689395702845], [-0.40247096589439396, 51.51666024485435], [-0.40214603816827466, 51.51638963581583], [-0.40126465280341705, 51.51608087844084], [-0.40124186209656343, 51.51607337610472], [-0.3984265353905839, 51.51559798477901], [-0.39640397768497726, 51.51503798546757], [-0.3958014363886806, 51.51487782165031], [-0.39507957900905616, 51.51458288544825], [-0.39442120619650434, 51.51425015816066], [-0.39361407055014686, 51.513839786923725], [-0.393344030837497, 51.513733606417844], [-0.3933126989739146, 51.51372238967371], [-0.39285938580865887, 51.51362088932898], [-0.3924983605785929, 51.5135205620717], [-0.3920435944382259, 51.51341993760518], [-0.39134759745842707, 51.513296226150494], [-0.390573538285412, 51.51321629795579], [-0.39044291821887117, 51.513203718118874], [-0.39051872233516177, 51.51301507628153], [-0.3906331121677615, 51.512834065630784], [-0.39075787239090765, 51.51256779530276], [-0.39091646969213667, 51.512197708866], [-0.3910869009610987, 51.511818794856026], [-0.39154726231905534, 51.51073439193919], [-0.39224819723167387, 51.50916406697519], [-0.39263996267929285, 51.508308854927314], [-0.3927697638498921, 51.50802017728785], [-0.39286124942234857, 51.50779390222589], [-0.39294678279622586, 51.50765573422057], [-0.393020570851244, 51.507527203982235], [-0.3931174325252185, 51.50739458485433], [-0.39329723643340087, 51.507197387304544], [-0.3934158309518583, 51.507105519147714], [-0.39358623985492086, 51.50696932224626], [-0.39372331908631514, 51.50688220177197], [-0.3938932448680904, 51.5068036216108], [-0.39394302310855855, 51.50678003109084], [-0.39399292004828834, 51.50675644217513], [-0.3940440600110507, 51.506734668191704], [-0.39409528708655134, 51.50671379434602], [-0.39435995851993083, 51.50660315896658], [-0.39500298151444213, 51.50634847219331], [-0.39573504659925895, 51.50605814214677], [-0.39649459316741165, 51.50576647522058], [-0.39775559468511346, 51.505268419391406], [-0.39907020776580593, 51.504758496309876], [-0.3998699535779416, 51.50443040879754], [-0.4004898641345584, 51.504213133454094], [-0.4012252643974015, 51.50403257871044], [-0.4013050639749484, 51.50401658602811], [-0.4015184190565543, 51.5039727475684], [-0.4017304462643232, 51.503926103830906], [-0.40194117070821345, 51.5038759359916], [-0.40215044531528055, 51.503823051124265], [-0.40221002642807707, 51.50380768136334], [-0.40228276353486064, 51.50378979387826], [-0.4023539883471178, 51.50377098678251], [-0.40242518167952834, 51.50375307818178], [-0.4024965565411485, 51.503733374076795], [-0.4025663876819654, 51.50371364890443], [-0.40263628159871895, 51.503692126612016], [-0.40270478195101717, 51.503669686333836], [-0.40277046696324753, 51.50364621881471], [-0.40278214210003416, 51.5036418829658], [-0.40285662468343947, 51.50361143336042], [-0.4029312573227176, 51.50358008678445], [-0.40300298411407326, 51.50354690266328], [-0.40307331729957097, 51.50351280055805], [-0.4031422568779939, 51.50347778047118], [-0.40320983425448415, 51.503440943865925], [-0.4032760180192727, 51.503403189283844], [-0.4033393518615999, 51.50336539586978], [-0.40340260139956285, 51.50332661241078], [-0.4034646043298288, 51.50328610391283], [-0.4035250949049202, 51.50324467583084], [-0.40358276696532713, 51.5032023103896], [-0.4036390454155524, 51.50315902698629], [-0.4036938115144773, 51.503114824006886], [-0.40388933859546594, 51.50292142024384], [-0.40427292178215685, 51.50254089277006], [-0.4051419250413861, 51.501587851081695], [-0.40516441354188043, 51.50156298579405], [-0.40634159378595497, 51.500321871103885], [-0.4069051796320886, 51.49969377799747]]], "type": "Polygon"}, "id": "145", "properties": {"DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "NAME": "Townfield", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_6aeb52364e5e03c43b7b77b7178d8c68.addTo(map_8873505f845e79a45fdc103a9c8589e2);
+        
+    
+        function geo_json_d82af55120b3580d2a0f4d2b0fc63a75_styler(feature) {
+            switch(feature.id) {
+                case "1311": case "2292": case "2386": case "2388": case "2389": case "2390": case "2391": case "2392": case "32648": case "32649": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_d82af55120b3580d2a0f4d2b0fc63a75_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_d82af55120b3580d2a0f4d2b0fc63a75 = L.geoJson(null, {
+                onEachFeature: geo_json_d82af55120b3580d2a0f4d2b0fc63a75_onEachFeature,
+            
+                style: geo_json_d82af55120b3580d2a0f4d2b0fc63a75_styler,
+            ...{
+}
+        });
+
+        function geo_json_d82af55120b3580d2a0f4d2b0fc63a75_add (data) {
+            geo_json_d82af55120b3580d2a0f4d2b0fc63a75
+                .addData(data);
+        }
+            geo_json_d82af55120b3580d2a0f4d2b0fc63a75_add({"features": [{"geometry": {"coordinates": [[[[-0.38860906159709746, 51.51101994873335], [-0.39067781501776294, 51.513003982459765], [-0.39260140237469765, 51.50851382007497], [-0.40388883285537275, 51.50292155205927], [-0.39707006980027715, 51.50344773420406], [-0.38917076289550684, 51.50444722602743], [-0.388871614923034, 51.504490299685095], [-0.38485501192632116, 51.50999675090891], [-0.38860906159709746, 51.51101994873335]]]], "type": "MultiPolygon"}, "id": "1311", "properties": {"BNG_E": 511818, "BNG_N": 179999, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{4F7DC00D-379A-4413-A7DC-3F3ED11877CC}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.507869720458984, "LONG": -0.39017999172210693, "LSOA21CD": "E01001365", "LSOA21NM": "Ealing 026F", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Southall West", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.4256642713076214, 51.51961399497584], [-0.424860220279438, 51.522139467237224], [-0.42916628440627413, 51.51946018041745], [-0.43310039578649434, 51.517466324535036], [-0.4340996652353133, 51.51473285850986], [-0.42647517331260887, 51.5159500683566], [-0.4256642713076214, 51.51961399497584]]]], "type": "MultiPolygon"}, "id": "2292", "properties": {"BNG_E": 509066, "BNG_N": 180868, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{88760CBA-C5ED-41A6-9D46-36FDC89CEC4D}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.51622009277344, "LONG": -0.4295499920845032, "LSOA21CD": "E01002404", "LSOA21NM": "Hillingdon 024E", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Wood End", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.4096585828375331, 51.510652645062734], [-0.40426563578124913, 51.514148787574904], [-0.41085650837604665, 51.515827896500134], [-0.41248790421743814, 51.51561398518812], [-0.41281488461448657, 51.51257592038368], [-0.4096585828375331, 51.510652645062734]]]], "type": "MultiPolygon"}, "id": "2386", "properties": {"BNG_E": 510520, "BNG_N": 180577, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{9379D872-0AC2-4805-8D86-0D78B5AAFE1E}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.51332092285156, "LONG": -0.4086900055408478, "LSOA21CD": "E01002501", "LSOA21NM": "Hillingdon 026B", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Wood End", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.41248790421743814, 51.51561398518812], [-0.4185465369273161, 51.517316127271464], [-0.4198468336759251, 51.513179996117636], [-0.41822766675675754, 51.51050398664247], [-0.41597984472176247, 51.51401908652858], [-0.41281488461448657, 51.51257592038368], [-0.41248790421743814, 51.51561398518812]]]], "type": "MultiPolygon"}, "id": "2387", "properties": {"BNG_E": 510013, "BNG_N": 180812, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{BF84BD7C-5F1A-4FE4-913B-97411FCAE834}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.51552963256836, "LONG": -0.4159199893474579, "LSOA21CD": "E01002502", "LSOA21NM": "Hillingdon 026C", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Hayes Town", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.41281488461448657, 51.51257592038368], [-0.41597984472176247, 51.51401908652858], [-0.41822766675675754, 51.51050398664247], [-0.41954265177699057, 51.508762942022535], [-0.4116816030015669, 51.508949223331456], [-0.4090626563097733, 51.51033528543528], [-0.4096585828375331, 51.510652645062734], [-0.41281488461448657, 51.51257592038368]]]], "type": "MultiPolygon"}, "id": "2388", "properties": {"BNG_E": 510141, "BNG_N": 180413, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{18EB084C-641D-4ABB-9950-006B06905980}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.51192092895508, "LONG": -0.4142000079154968, "LSOA21CD": "E01002503", "LSOA21NM": "Hillingdon 027C", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Hayes Town", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.4012417391074733, 51.5161110719362], [-0.407643063543296, 51.51793779377782], [-0.41085650837604665, 51.515827896500134], [-0.40426563578124913, 51.514148787574904], [-0.4096585828375331, 51.510652645062734], [-0.4090626563097733, 51.51033528543528], [-0.40485578273864603, 51.508425599537595], [-0.40288451042686046, 51.51292796431444], [-0.39260140237469765, 51.50851382007497], [-0.39067781501776294, 51.513003982459765], [-0.39057312823573037, 51.513217487660825], [-0.39627325529899377, 51.51500320025139], [-0.4012417391074733, 51.5161110719362]]]], "type": "MultiPolygon"}, "id": "2389", "properties": {"BNG_E": 511273, "BNG_N": 180566, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{6CB1934D-BAD0-4E20-A62D-35CF80D035B1}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.51306915283203, "LONG": -0.39785000681877136, "LSOA21CD": "E01002505", "LSOA21NM": "Hillingdon 026D", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Wood End", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.4124641627742214, 51.50151214711982], [-0.4166217524227633, 51.50751932973592], [-0.4116816030015669, 51.508949223331456], [-0.41954265177699057, 51.508762942022535], [-0.41909531200466166, 51.50528238279153], [-0.4186508865409, 51.504202502817584], [-0.4124641627742214, 51.50151214711982]]]], "type": "MultiPolygon"}, "id": "2390", "properties": {"BNG_E": 510043, "BNG_N": 179681, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{2D28CC1E-DF4E-4FFA-87B3-1A7F34E0D707}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.5053596496582, "LONG": -0.4158399999141693, "LSOA21CD": "E01002506", "LSOA21NM": "Hillingdon 027E", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Hayes Town", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.39260140237469765, 51.50851382007497], [-0.40288451042686046, 51.51292796431444], [-0.40485578273864603, 51.508425599537595], [-0.4090626563097733, 51.51033528543528], [-0.4116816030015669, 51.508949223331456], [-0.4166217524227633, 51.50751932973592], [-0.4124641627742214, 51.50151214711982], [-0.40928595223692643, 51.500315985241606], [-0.4069057672603567, 51.49969377136309], [-0.40388883285537275, 51.50292155205927], [-0.39260140237469765, 51.50851382007497]]]], "type": "MultiPolygon"}, "id": "2391", "properties": {"BNG_E": 510829, "BNG_N": 179799, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{2F0C36BD-DA59-4055-AED2-2B48D8B804CE}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.50627136230469, "LONG": -0.40448999404907227, "LSOA21CD": "E01002507", "LSOA21NM": "Hillingdon 027F", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Hayes Town", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.4080965101704186, 51.518039571338], [-0.4214215721677183, 51.52272644068409], [-0.42410591623531096, 51.520413976653], [-0.4185465369273161, 51.517316127271464], [-0.41248790421743814, 51.51561398518812], [-0.41085650837604665, 51.515827896500134], [-0.407643063543296, 51.51793779377782], [-0.4080965101704186, 51.518039571338]]]], "type": "MultiPolygon"}, "id": "2392", "properties": {"BNG_E": 510037, "BNG_N": 181211, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{193D3EE0-2BD0-4DA1-B811-EF77679C8386}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.51911163330078, "LONG": -0.41545000672340393, "LSOA21CD": "E01002508", "LSOA21NM": "Hillingdon 026E", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Wood End", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.4220834303845227, 51.52291512588472], [-0.42404939262469743, 51.52337688452031], [-0.424860220279438, 51.522139467237224], [-0.4256642713076214, 51.51961399497584], [-0.4199922603345326, 51.51307494682085], [-0.4198468336759251, 51.513179996117636], [-0.4185465369273161, 51.517316127271464], [-0.42410591623531096, 51.520413976653], [-0.4214215721677183, 51.52272644068409], [-0.4220834303845227, 51.52291512588472]]]], "type": "MultiPolygon"}, "id": "32648", "properties": {"BNG_E": 509568, "BNG_N": 181074, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{25B08497-CECA-4668-848A-0DE785153711}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.51797103881836, "LONG": -0.42225000262260437, "LSOA21CD": "E01034610", "LSOA21NM": "Hillingdon 027G", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Wood End", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.4199922603345326, 51.51307494682085], [-0.4256642713076214, 51.51961399497584], [-0.42647517331260887, 51.5159500683566], [-0.42269852716195166, 51.51319710021296], [-0.4199922603345326, 51.51307494682085]]]], "type": "MultiPolygon"}, "id": "32649", "properties": {"BNG_E": 509477, "BNG_N": 180738, "DISTRICT": "Hillingdon", "GSS_CODE": "E05000339", "GlobalID": "{1C645947-EAED-484F-A3D6-E1ADC0546D80}", "HECTARES": 349.833, "LAGSSCODE": "E09000017", "LAT": 51.51496887207031, "LONG": -0.4236699938774109, "LSOA21CD": "E01034611", "LSOA21NM": "Hillingdon 027H", "LSOA21NMW": " ", "NAME": "Townfield", "NONLD_AREA": 0.0, "WD24NM": "Hayes Town", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_d82af55120b3580d2a0f4d2b0fc63a75.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_d82af55120b3580d2a0f4d2b0fc63a75.addTo(map_8873505f845e79a45fdc103a9c8589e2);
+        
+    
+            var feature_group_e4ffb44463ca6b9c24e1902ab4ecef22 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_5053e8ed942ee1e50748b93ce201e0af = L.marker(
+                [51.5150981, -0.4143624],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_c70d6e1410d143d9493125bd20147e56 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd8ebb1c717a20286c179426da931793 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fefb7a27e5baf9768da252a165746208 = $(`<div id="html_fefb7a27e5baf9768da252a165746208" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 026C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_cd8ebb1c717a20286c179426da931793.setContent(html_fefb7a27e5baf9768da252a165746208);
+            
+        
+
+        marker_5053e8ed942ee1e50748b93ce201e0af.bindPopup(popup_cd8ebb1c717a20286c179426da931793)
+        ;
+
+        
+    
+    
+                marker_5053e8ed942ee1e50748b93ce201e0af.setIcon(icon_c70d6e1410d143d9493125bd20147e56);
+            
+    
+            var marker_6873efab6bfcd00afabae0f17cd42bf7 = L.marker(
+                [51.5170787, -0.4180224],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_cf2e26877e240d88257eb57e2c3a563c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a9a82464389e34dacc14b00624c66673 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_adc40a68e516623fbbe0106f2cae5406 = $(`<div id="html_adc40a68e516623fbbe0106f2cae5406" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 026C (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_a9a82464389e34dacc14b00624c66673.setContent(html_adc40a68e516623fbbe0106f2cae5406);
+            
+        
+
+        marker_6873efab6bfcd00afabae0f17cd42bf7.bindPopup(popup_a9a82464389e34dacc14b00624c66673)
+        ;
+
+        
+    
+    
+                marker_6873efab6bfcd00afabae0f17cd42bf7.setIcon(icon_cf2e26877e240d88257eb57e2c3a563c);
+            
+    
+            var marker_b089f544930ca6b6c925f40d7a17e2ac = L.marker(
+                [51.5158366, -0.417735],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_18c0d4d140fe28b2128cd6da36abaad8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_00df5719c315d42453b316ff58145985 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b860145e213047a5e47e0cbdcd8a5387 = $(`<div id="html_b860145e213047a5e47e0cbdcd8a5387" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 026C (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_00df5719c315d42453b316ff58145985.setContent(html_b860145e213047a5e47e0cbdcd8a5387);
+            
+        
+
+        marker_b089f544930ca6b6c925f40d7a17e2ac.bindPopup(popup_00df5719c315d42453b316ff58145985)
+        ;
+
+        
+    
+    
+                marker_b089f544930ca6b6c925f40d7a17e2ac.setIcon(icon_18c0d4d140fe28b2128cd6da36abaad8);
+            
+    
+            var marker_8dea76da9c0c3334a6a60cbd85f39993 = L.marker(
+                [51.5124937, -0.4188995],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_a93d5a85f19be044c07ea6959cc923a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_62228575f760a48bbd4974844d0320c4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_583dff72b8c1467ac7bea2868b34eb81 = $(`<div id="html_583dff72b8c1467ac7bea2868b34eb81" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 026C (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_62228575f760a48bbd4974844d0320c4.setContent(html_583dff72b8c1467ac7bea2868b34eb81);
+            
+        
+
+        marker_8dea76da9c0c3334a6a60cbd85f39993.bindPopup(popup_62228575f760a48bbd4974844d0320c4)
+        ;
+
+        
+    
+    
+                marker_8dea76da9c0c3334a6a60cbd85f39993.setIcon(icon_a93d5a85f19be044c07ea6959cc923a6);
+            
+    
+            var marker_836d9e93447e9f38e5ebb7378a73713a = L.marker(
+                [51.5174022, -0.4270573],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_e469d8b8eb59962dd7ac470c1122aeaa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_56291463877182b09419d90748d5a053 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d031ed09ef3d9d6b478b240410375493 = $(`<div id="html_d031ed09ef3d9d6b478b240410375493" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 024E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_56291463877182b09419d90748d5a053.setContent(html_d031ed09ef3d9d6b478b240410375493);
+            
+        
+
+        marker_836d9e93447e9f38e5ebb7378a73713a.bindPopup(popup_56291463877182b09419d90748d5a053)
+        ;
+
+        
+    
+    
+                marker_836d9e93447e9f38e5ebb7378a73713a.setIcon(icon_e469d8b8eb59962dd7ac470c1122aeaa);
+            
+    
+            var marker_62e8af4644e3a97aba1705884bacff51 = L.marker(
+                [51.519618, -0.4256919],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_ad4789c53ca5008e467cd2391bf59109 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3813e2051fcb58ef4f19d3897f216f87 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6b9f508b166fbc3e82faa36fd7e5bc0c = $(`<div id="html_6b9f508b166fbc3e82faa36fd7e5bc0c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 024E (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3813e2051fcb58ef4f19d3897f216f87.setContent(html_6b9f508b166fbc3e82faa36fd7e5bc0c);
+            
+        
+
+        marker_62e8af4644e3a97aba1705884bacff51.bindPopup(popup_3813e2051fcb58ef4f19d3897f216f87)
+        ;
+
+        
+    
+    
+                marker_62e8af4644e3a97aba1705884bacff51.setIcon(icon_ad4789c53ca5008e467cd2391bf59109);
+            
+    
+            var marker_72104a732a850ce191d4d4f6c197895b = L.marker(
+                [51.5174022, -0.4270573],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_2b62bba8c08da4f253b4269c567aed58 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7146b115d72a4fb3ce1a1323f3667e96 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dfa6f20a418b8b40cae6a818987a13c8 = $(`<div id="html_dfa6f20a418b8b40cae6a818987a13c8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 024E (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7146b115d72a4fb3ce1a1323f3667e96.setContent(html_dfa6f20a418b8b40cae6a818987a13c8);
+            
+        
+
+        marker_72104a732a850ce191d4d4f6c197895b.bindPopup(popup_7146b115d72a4fb3ce1a1323f3667e96)
+        ;
+
+        
+    
+    
+                marker_72104a732a850ce191d4d4f6c197895b.setIcon(icon_2b62bba8c08da4f253b4269c567aed58);
+            
+    
+            var marker_098a27dcf4620e53d012ce7f368d323e = L.marker(
+                [51.5174022, -0.4270573],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_8ed2c9eceabc66ff8108f61bd6304d70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3810f01fcd150467c3bb4bab2fefc57 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ef52e68b09f54c3efb31b550529f0dc = $(`<div id="html_0ef52e68b09f54c3efb31b550529f0dc" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 024E (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_b3810f01fcd150467c3bb4bab2fefc57.setContent(html_0ef52e68b09f54c3efb31b550529f0dc);
+            
+        
+
+        marker_098a27dcf4620e53d012ce7f368d323e.bindPopup(popup_b3810f01fcd150467c3bb4bab2fefc57)
+        ;
+
+        
+    
+    
+                marker_098a27dcf4620e53d012ce7f368d323e.setIcon(icon_8ed2c9eceabc66ff8108f61bd6304d70);
+            
+    
+            var marker_f9e916d0212106722a627915d6d6cab0 = L.marker(
+                [51.5128604, -0.4030655],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_b90bd235456ecc6f71a0769154cabaa4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eb2afe1b4004173f6c8a44c9c516e217 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e76642655e84e5a45ee353aa30ac3fb2 = $(`<div id="html_e76642655e84e5a45ee353aa30ac3fb2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 026F (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_eb2afe1b4004173f6c8a44c9c516e217.setContent(html_e76642655e84e5a45ee353aa30ac3fb2);
+            
+        
+
+        marker_f9e916d0212106722a627915d6d6cab0.bindPopup(popup_eb2afe1b4004173f6c8a44c9c516e217)
+        ;
+
+        
+    
+    
+                marker_f9e916d0212106722a627915d6d6cab0.setIcon(icon_b90bd235456ecc6f71a0769154cabaa4);
+            
+    
+            var marker_b0baa64bd6d723bb4346237dbf789dc7 = L.marker(
+                [51.5128604, -0.4030655],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_7b875c1dbcae1b2bac142396c97eb245 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d6acbe0052bb6fdc28874e919d6ee167 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_34663fccf9688d130b29b55f5be708e1 = $(`<div id="html_34663fccf9688d130b29b55f5be708e1" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 026F (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d6acbe0052bb6fdc28874e919d6ee167.setContent(html_34663fccf9688d130b29b55f5be708e1);
+            
+        
+
+        marker_b0baa64bd6d723bb4346237dbf789dc7.bindPopup(popup_d6acbe0052bb6fdc28874e919d6ee167)
+        ;
+
+        
+    
+    
+                marker_b0baa64bd6d723bb4346237dbf789dc7.setIcon(icon_7b875c1dbcae1b2bac142396c97eb245);
+            
+    
+            var marker_34d31bb9870562864df8fd5d8582dab8 = L.marker(
+                [51.5061634, -0.4053556],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_6b1ec3bc54d6804f3d563a520630b000 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dff7bd025c2164303ee25275d2c8a2d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_439946f5c1ca7490a867bc367f98dfbd = $(`<div id="html_439946f5c1ca7490a867bc367f98dfbd" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 026F (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_dff7bd025c2164303ee25275d2c8a2d6.setContent(html_439946f5c1ca7490a867bc367f98dfbd);
+            
+        
+
+        marker_34d31bb9870562864df8fd5d8582dab8.bindPopup(popup_dff7bd025c2164303ee25275d2c8a2d6)
+        ;
+
+        
+    
+    
+                marker_34d31bb9870562864df8fd5d8582dab8.setIcon(icon_6b1ec3bc54d6804f3d563a520630b000);
+            
+    
+            var marker_e5d5f2c78ff91ed3cde57d9187d40e5b = L.marker(
+                [51.5061634, -0.4053556],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_cc10fd8e83296c6a7be24f1f36b56855 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b160766c46ca22b61f40baf427868c06 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d88436a71233500bba4bca4ad0846fb = $(`<div id="html_6d88436a71233500bba4bca4ad0846fb" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 026F (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_b160766c46ca22b61f40baf427868c06.setContent(html_6d88436a71233500bba4bca4ad0846fb);
+            
+        
+
+        marker_e5d5f2c78ff91ed3cde57d9187d40e5b.bindPopup(popup_b160766c46ca22b61f40baf427868c06)
+        ;
+
+        
+    
+    
+                marker_e5d5f2c78ff91ed3cde57d9187d40e5b.setIcon(icon_cc10fd8e83296c6a7be24f1f36b56855);
+            
+    
+            var marker_faddaf1ef5f9d57d6963ff7afc50e42b = L.marker(
+                [51.5038443, -0.4055096],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_f0af9775715f4792e4878bcd47da5523 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c3d802b6187457a45915a6ddae1669d8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_82e5ecf3633c502d2698d31f74313dc5 = $(`<div id="html_82e5ecf3633c502d2698d31f74313dc5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Ealing 026F (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c3d802b6187457a45915a6ddae1669d8.setContent(html_82e5ecf3633c502d2698d31f74313dc5);
+            
+        
+
+        marker_faddaf1ef5f9d57d6963ff7afc50e42b.bindPopup(popup_c3d802b6187457a45915a6ddae1669d8)
+        ;
+
+        
+    
+    
+                marker_faddaf1ef5f9d57d6963ff7afc50e42b.setIcon(icon_f0af9775715f4792e4878bcd47da5523);
+            
+    
+            var marker_560480eb2535ef83e5250c042a479c4b = L.marker(
+                [51.5142574, -0.4087636],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_3cf18ab1ccc9e2638601d6f8f6e9730d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0889cdab08aae358069edec67e33788d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fc075165504aa781bfae72f03de86eca = $(`<div id="html_fc075165504aa781bfae72f03de86eca" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 026B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0889cdab08aae358069edec67e33788d.setContent(html_fc075165504aa781bfae72f03de86eca);
+            
+        
+
+        marker_560480eb2535ef83e5250c042a479c4b.bindPopup(popup_0889cdab08aae358069edec67e33788d)
+        ;
+
+        
+    
+    
+                marker_560480eb2535ef83e5250c042a479c4b.setIcon(icon_3cf18ab1ccc9e2638601d6f8f6e9730d);
+            
+    
+            var marker_941f7ce63560aa59aede46cd2225dd26 = L.marker(
+                [51.513291, -0.4094977],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_de2c0955da9c58f4b93e558f5f8b7259 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b05e2cf6ca1f73bf07dfbc19f657aa99 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_660bd45e875918d38e5a178d0cdc3554 = $(`<div id="html_660bd45e875918d38e5a178d0cdc3554" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 026B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_b05e2cf6ca1f73bf07dfbc19f657aa99.setContent(html_660bd45e875918d38e5a178d0cdc3554);
+            
+        
+
+        marker_941f7ce63560aa59aede46cd2225dd26.bindPopup(popup_b05e2cf6ca1f73bf07dfbc19f657aa99)
+        ;
+
+        
+    
+    
+                marker_941f7ce63560aa59aede46cd2225dd26.setIcon(icon_de2c0955da9c58f4b93e558f5f8b7259);
+            
+    
+            var marker_4fc3446ba3a2e5debe5a175587bcad2b = L.marker(
+                [51.5154165, -0.4116729],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_65905db955d06b431896689c1a444928 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3b1684d49ca406f448ca54f8b7f37af4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a7f9a3b1a9612d00b2831f5158133725 = $(`<div id="html_a7f9a3b1a9612d00b2831f5158133725" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 026B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3b1684d49ca406f448ca54f8b7f37af4.setContent(html_a7f9a3b1a9612d00b2831f5158133725);
+            
+        
+
+        marker_4fc3446ba3a2e5debe5a175587bcad2b.bindPopup(popup_3b1684d49ca406f448ca54f8b7f37af4)
+        ;
+
+        
+    
+    
+                marker_4fc3446ba3a2e5debe5a175587bcad2b.setIcon(icon_65905db955d06b431896689c1a444928);
+            
+    
+            var marker_bf1313583701f72fc01da62d52855b25 = L.marker(
+                [51.5104215, -0.4180187],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_c6b42e4ade20a1fee4f574ec25d9205e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b83f7ff2839662a06c896a3d9cce124e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74d0578768db5480053a5d1ec187600f = $(`<div id="html_74d0578768db5480053a5d1ec187600f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 027C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_b83f7ff2839662a06c896a3d9cce124e.setContent(html_74d0578768db5480053a5d1ec187600f);
+            
+        
+
+        marker_bf1313583701f72fc01da62d52855b25.bindPopup(popup_b83f7ff2839662a06c896a3d9cce124e)
+        ;
+
+        
+    
+    
+                marker_bf1313583701f72fc01da62d52855b25.setIcon(icon_c6b42e4ade20a1fee4f574ec25d9205e);
+            
+    
+            var marker_44d226072e6db6d77a99472297cca451 = L.marker(
+                [51.5121785, -0.4152946],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_5402ea2668cd5c86c9c8ec49d6ec4ae5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_99c242ef8a2813549c5d3d8f0f11b57a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b39ff1b4f59c18f7c518999be3bb3af9 = $(`<div id="html_b39ff1b4f59c18f7c518999be3bb3af9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 027C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_99c242ef8a2813549c5d3d8f0f11b57a.setContent(html_b39ff1b4f59c18f7c518999be3bb3af9);
+            
+        
+
+        marker_44d226072e6db6d77a99472297cca451.bindPopup(popup_99c242ef8a2813549c5d3d8f0f11b57a)
+        ;
+
+        
+    
+    
+                marker_44d226072e6db6d77a99472297cca451.setIcon(icon_5402ea2668cd5c86c9c8ec49d6ec4ae5);
+            
+    
+            var marker_881093aa42afe57fcd9efaadfd10bf0a = L.marker(
+                [51.511497, -0.415856],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_58b95283e05154058cc06cd56ad9a6bb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3fb7a22dd9f09ca771713e1d5365a2bb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ea6f6a3e6904b1f7a17ef8aa662af1b6 = $(`<div id="html_ea6f6a3e6904b1f7a17ef8aa662af1b6" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 027C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3fb7a22dd9f09ca771713e1d5365a2bb.setContent(html_ea6f6a3e6904b1f7a17ef8aa662af1b6);
+            
+        
+
+        marker_881093aa42afe57fcd9efaadfd10bf0a.bindPopup(popup_3fb7a22dd9f09ca771713e1d5365a2bb)
+        ;
+
+        
+    
+    
+                marker_881093aa42afe57fcd9efaadfd10bf0a.setIcon(icon_58b95283e05154058cc06cd56ad9a6bb);
+            
+    
+            var marker_a229a17211577e53f28b215a754c9463 = L.marker(
+                [51.5120404, -0.4129822],
+                {
+}
+            ).addTo(feature_group_e4ffb44463ca6b9c24e1902ab4ecef22);
+        
+    
+            var icon_3b282937d61a1ec07fe00465db4eb7a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8dc4f4fd07e1d65bc7878ab64fd82daa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b5f8f64098308c39a4b4d2e15183bea = $(`<div id="html_3b5f8f64098308c39a4b4d2e15183bea" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hillingdon 027C (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8dc4f4fd07e1d65bc7878ab64fd82daa.setContent(html_3b5f8f64098308c39a4b4d2e15183bea);
+            
+        
+
+        marker_a229a17211577e53f28b215a754c9463.bindPopup(popup_8dc4f4fd07e1d65bc7878ab64fd82daa)
+        ;
+
+        
+    
+    
+                marker_a229a17211577e53f28b215a754c9463.setIcon(icon_3b282937d61a1ec07fe00465db4eb7a1);
+            
+    
+            feature_group_e4ffb44463ca6b9c24e1902ab4ecef22.addTo(map_8873505f845e79a45fdc103a9c8589e2);
+        
+    
+            var poly_line_78ca8d09584ab00ff54266f3409e7504 = L.polyline(
+                [[51.5150981, -0.4143624], [51.515707, -0.4138904], [51.51638, -0.4153667], [51.5172399, -0.4145599], [51.5175097, -0.415776], [51.5174705, -0.4168973], [51.5169991, -0.4170189], [51.5167264, -0.4170951], [51.5158366, -0.417735], [51.5167264, -0.4170951], [51.5169991, -0.4170189], [51.5174705, -0.4168973], [51.5175097, -0.415776], [51.5178952, -0.4149705], [51.5185357, -0.414221], [51.5191518, -0.4136617], [51.5188363, -0.4126767], [51.5185038, -0.4116154], [51.518805, -0.4113715], [51.5189324, -0.4114096], [51.5195143, -0.4132326], [51.5210831, -0.4171798], [51.5218607, -0.4191433], [51.5226735, -0.4216262], [51.5219145, -0.4223613], [51.5215883, -0.4230371], [51.5212748, -0.4236774], [51.5213842, -0.4240298], [51.5200495, -0.4238581], [51.5199053, -0.4237637], [51.5191363, -0.4236436], [51.5192591, -0.4242444], [51.5193946, -0.4249322], [51.519618, -0.4256919], [51.5191233, -0.4261164], [51.5188625, -0.426342], [51.5179025, -0.4271283], [51.5177526, -0.4272097], [51.5174022, -0.4270573], [51.5173018, -0.4269311], [51.5171899, -0.4263325], [51.5171468, -0.4259566], [51.5162674, -0.4200317], [51.5161747, -0.4196155], [51.5158366, -0.417735], [51.5167264, -0.4170951], [51.5169991, -0.4170189], [51.5170787, -0.4180224], [51.5169991, -0.4170189], [51.5174705, -0.4168973], [51.5175097, -0.415776], [51.5172399, -0.4145599], [51.51638, -0.4153667], [51.515707, -0.4138904], [51.5150981, -0.4143624], [51.5144493, -0.4130279], [51.5140129, -0.412442], [51.5135096, -0.4129433], [51.5122974, -0.4137844], [51.5111603, -0.4147429], [51.5104644, -0.4152737], [51.5101706, -0.4143032], [51.5098769, -0.413177], [51.5091638, -0.4113196], [51.5080313, -0.409354], [51.5069949, -0.4103497], [51.5081328, -0.4129675], [51.5091886, -0.415363], [51.5083888, -0.4161178], [51.5076124, -0.4171168], [51.5063539, -0.4138001], [51.5063165, -0.4127958], [51.5059211, -0.4117745], [51.5053728, -0.4122704], [51.5050952, -0.4114399], [51.5041649, -0.4086987], [51.5053525, -0.4073515], [51.5055831, -0.4068683], [51.5059082, -0.4061022], [51.5128604, -0.4030655], [51.5158425, -0.4019662], [51.5159134, -0.4020132], [51.5176317, -0.4051613], [51.5177107, -0.4060125], [51.5175179, -0.4069023], [51.5169297, -0.4081496], [51.516661, -0.4085473], [51.5161797, -0.4089581], [51.5165337, -0.4101588], [51.5168985, -0.4113855], [51.5172766, -0.4126139], [51.516882, -0.4129119], [51.515707, -0.4138904], [51.5150981, -0.4143624], [51.5144493, -0.4130279], [51.5140129, -0.412442], [51.5135096, -0.4129433], [51.5122974, -0.4137844], [51.5111603, -0.4147429], [51.5104644, -0.4152737], [51.5101706, -0.4143032], [51.5098769, -0.413177], [51.5091638, -0.4113196], [51.5080313, -0.409354], [51.5069949, -0.4103497], [51.5081328, -0.4129675], [51.5091886, -0.415363], [51.5083888, -0.4161178], [51.5076124, -0.4171168], [51.5063539, -0.4138001], [51.5063165, -0.4127958], [51.5059211, -0.4117745], [51.5053728, -0.4122704], [51.5050952, -0.4114399], [51.5041649, -0.4086987], [51.5039585, -0.406756], [51.5043356, -0.4059187], [51.50452, -0.4057873], [51.5061634, -0.4053556], [51.50452, -0.4057873], [51.5039222, -0.4059011], [51.5038443, -0.4055096], [51.5038427, -0.4059192], [51.5038526, -0.4060654], [51.5039375, -0.4065007], [51.5039585, -0.406756], [51.5041649, -0.4086987], [51.5050952, -0.4114399], [51.5053728, -0.4122704], [51.5059211, -0.4117745], [51.5063165, -0.4127958], [51.5063539, -0.4138001], [51.5076124, -0.4171168], [51.5072921, -0.4178719], [51.5097671, -0.4159589], [51.5101157, -0.4170265], [51.5104215, -0.4180187], [51.5101157, -0.4170265], [51.5097671, -0.4159589], [51.5104644, -0.4152737], [51.5111603, -0.4147429], [51.511497, -0.415856], [51.5118105, -0.4168205], [51.5117644, -0.4170624], [51.5119222, -0.4171697], [51.5122141, -0.4180524], [51.5124937, -0.4188995], [51.5122141, -0.4180524], [51.5119222, -0.4171697], [51.5119877, -0.4169017], [51.5118105, -0.4168205], [51.511497, -0.415856], [51.5121785, -0.4152946], [51.511497, -0.415856], [51.5111603, -0.4147429], [51.5122974, -0.4137844], [51.5120404, -0.4129822], [51.5122974, -0.4137844], [51.5135096, -0.4129433], [51.5140129, -0.412442], [51.5140176, -0.410712], [51.5140602, -0.4100985], [51.5138038, -0.4090771], [51.5142574, -0.4087636], [51.5138038, -0.4090771], [51.513291, -0.4094977], [51.5138038, -0.4090771], [51.5140602, -0.4100985], [51.5143913, -0.4103646], [51.514895, -0.4099644], [51.5151996, -0.4109287], [51.5154165, -0.4116729], [51.5151996, -0.4109287], [51.514895, -0.4099644], [51.5143913, -0.4103646], [51.5140602, -0.4100985], [51.5140176, -0.410712], [51.5140129, -0.412442], [51.5144493, -0.4130279], [51.5150981, -0.4143624]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8873505f845e79a45fdc103a9c8589e2);
+        
+    
+            var layer_control_d947f4f8165f99f2cf9082672df1d0ce_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_7cfccd910855dd533cada53acd87f3f5,
+                },
+                overlays :  {
+                    "Townfield Boundary" : geo_json_6aeb52364e5e03c43b7b77b7178d8c68,
+                    "LSOA Median Crime Rates for Townfield" : geo_json_d82af55120b3580d2a0f4d2b0fc63a75,
+                    "Patrol Waypoints" : feature_group_e4ffb44463ca6b9c24e1902ab4ecef22,
+                },
+            };
+            let layer_control_d947f4f8165f99f2cf9082672df1d0ce = L.control.layers(
+                layer_control_d947f4f8165f99f2cf9082672df1d0ce_layers.base_layers,
+                layer_control_d947f4f8165f99f2cf9082672df1d0ce_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_8873505f845e79a45fdc103a9c8589e2);
+
+        
+</script>
+</html>

@@ -1,4 +1,5 @@
 import patrol
+import patrol_ward
 import os
 
 def get_boroughs():
@@ -154,7 +155,7 @@ def generate_wards(override=False):
             continue
 
         print(f"Generating patrol route for {ward}...")
-        patrol.process_location(ward, True)
+        patrol_ward.process_location(ward)
 
 def check_boroughs():
     """
@@ -171,6 +172,21 @@ def check_boroughs():
     if allexist:
         print("All borough patrol routes exist.")
 
+def check_wards():
+    """
+    Checks if all ward patrol routes exist.
+    """
+    wards = get_wards()
+
+    allexist = True
+    for ward in wards:
+        if not route_exists(ward, True):
+            print(f"Patrol route for {ward} does not exist.")
+            allexist = False
+    
+    if allexist:
+        print("All ward patrol routes exist.")
+
 def create_point_image(location):
     """
     Creates an image of all of the points the patrol route uses.
@@ -183,15 +199,16 @@ if __name__ == "__main__":
     #generate_boroughs(True)
     #print("All borough patrol routes generated successfully.")
 
-    #generate_wards()
+    generate_wards()
     #print("All ward patrol routes generated successfully.")
 
     # Example usage
     #patrol.process_location("City of London")
 
     #check_boroughs()
+    #check_wards()
 
-    create_point_image("City of London")
+    #create_point_image("City of London")
 
     pass
 

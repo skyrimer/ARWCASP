@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b4f406bb0dc3153a3ef87521da39c4a7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_b4f406bb0dc3153a3ef87521da39c4a7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b4f406bb0dc3153a3ef87521da39c4a7 = L.map(
+                "map_b4f406bb0dc3153a3ef87521da39c4a7",
+                {
+                    center: [51.47105228686986, 0.03917740306794106],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_631c46084683955a1dada3803890836b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_631c46084683955a1dada3803890836b.addTo(map_b4f406bb0dc3153a3ef87521da39c4a7);
+        
+    
+        function geo_json_319318381b0449e0aebe91618dfc3255_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_319318381b0449e0aebe91618dfc3255_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_319318381b0449e0aebe91618dfc3255 = L.geoJson(null, {
+                onEachFeature: geo_json_319318381b0449e0aebe91618dfc3255_onEachFeature,
+            
+                style: geo_json_319318381b0449e0aebe91618dfc3255_styler,
+            ...{
+}
+        });
+
+        function geo_json_319318381b0449e0aebe91618dfc3255_add (data) {
+            geo_json_319318381b0449e0aebe91618dfc3255
+                .addData(data);
+        }
+            geo_json_319318381b0449e0aebe91618dfc3255_add({"features": [{"geometry": {"coordinates": [[[0.05334865213917815, 51.468110294567914], [0.05297791579450239, 51.46806284601426], [0.05278749246056031, 51.46802302740693], [0.05250221356063276, 51.467985768251495], [0.05260410623692717, 51.4678490409989], [0.051915109472164794, 51.46747892777637], [0.051573118173866804, 51.46733378734773], [0.05120064365801574, 51.4671838750563], [0.050806979663500645, 51.467040535524795], [0.050659618463520205, 51.466997263116625], [0.050499019775858994, 51.46691556408803], [0.05020756015220009, 51.46671109940406], [0.05006801401473991, 51.46664881011449], [0.04998200906277155, 51.466591877591526], [0.049800644259309676, 51.46649705540101], [0.04968203935484307, 51.466419925239386], [0.0496053952259168, 51.466349343442666], [0.04955957644732926, 51.466259343214844], [0.049387124835067575, 51.466138203010075], [0.049255545293213694, 51.46599665951624], [0.04914763263822796, 51.4659329171587], [0.0490943489297183, 51.4659014836978], [0.04876310437911301, 51.465770531682715], [0.04857178173197439, 51.46567588163838], [0.04850667123558626, 51.465637462399265], [0.048405916944979185, 51.465476409951286], [0.04826388487477399, 51.46536111965064], [0.04811419832774563, 51.46526574140355], [0.047528351422725365, 51.46494684290554], [0.0472769302897123, 51.464795613076944], [0.0471096488373046, 51.46469424767344], [0.04707533373107765, 51.46469934199364], [0.047041734482683194, 51.464656775614806], [0.04689175105771999, 51.46458648373633], [0.04683091155926756, 51.46454529193846], [0.04652153226759859, 51.46438797015131], [0.046344667960337343, 51.46442522040607], [0.04629473163264947, 51.46437035267575], [0.04622796044168551, 51.46432656704008], [0.04588827771203799, 51.4642002493871], [0.045515829876757626, 51.4640817845479], [0.04539386364528781, 51.46409110479742], [0.045324235064396236, 51.46414266487077], [0.045194504141711736, 51.46429956003219], [0.04457503191331529, 51.464130561132976], [0.04274504714247165, 51.46390075741056], [0.04067150933114511, 51.46363381005131], [0.039866516269173216, 51.46353364425029], [0.03967199023526967, 51.46346501728293], [0.03897336713028695, 51.462970931288766], [0.03887174775604857, 51.46295202119735], [0.038803038087431976, 51.462960408347804], [0.03873222829321384, 51.46288971807708], [0.038924907670873164, 51.46230452022491], [0.038813150077455436, 51.462252522615145], [0.03785347341233961, 51.46271611260667], [0.036899447228063674, 51.46321106215126], [0.03612145875481068, 51.46361852830735], [0.03610043153713649, 51.46363147981168], [0.03537763272229897, 51.46398574923171], [0.034228361787157366, 51.464495753526755], [0.03334237351547254, 51.464870013021546], [0.03283185269413724, 51.46504428643251], [0.031532035273077866, 51.46544000158263], [0.029972179011084184, 51.46591221667356], [0.029852457393359576, 51.466135448608284], [0.029671041381921125, 51.4665226509632], [0.029463613514618167, 51.46694437614753], [0.02920185569306047, 51.46737243543158], [0.028936794412723538, 51.46785458233066], [0.028808884734747523, 51.4680861358549], [0.028356378359420183, 51.46888977789862], [0.027694290623273717, 51.470064921725275], [0.027374809881707665, 51.47061902840996], [0.026985659109731785, 51.471229987977395], [0.02667901410475053, 51.47165351289399], [0.026336463096652264, 51.472110831333865], [0.025651853867746564, 51.473007565999644], [0.025196035402251377, 51.473639539278025], [0.02503610541154243, 51.47389681388108], [0.024419357356863926, 51.47499195069264], [0.023911691677460357, 51.47591798356518], [0.02363878137652008, 51.476423627152606], [0.025147867354959132, 51.47616013987188], [0.02516057819250109, 51.476350602065885], [0.02515973781247304, 51.47646029679285], [0.025162165089435203, 51.476515094971326], [0.025285911195744495, 51.47651295743686], [0.0254240928493751, 51.476512368431], [0.025530953885228608, 51.47651771447557], [0.025532677962791416, 51.476460147527966], [0.02564206794134682, 51.476458257634626], [0.025639830001408213, 51.476375586627064], [0.025803994258305984, 51.476374548263095], [0.02598255422992897, 51.47637415992956], [0.02604179894561706, 51.47637942929091], [0.026162896216965582, 51.47638183169213], [0.02618741650054565, 51.47638320597674], [0.02630701122731785, 51.47638653321405], [0.0262936211705478, 51.47630944905973], [0.02640585818780381, 51.47630750924616], [0.026428008779440248, 51.47631971265671], [0.026577618606216335, 51.476317126726535], [0.026689855622612002, 51.47631518664097], [0.026691388972463263, 51.4762854925305], [0.026810863167995958, 51.47628342722562], [0.02710296387216356, 51.476278377278696], [0.027145680352305246, 51.47665801338783], [0.02708243020958903, 51.47698554050844], [0.027032630039359618, 51.47745308188183], [0.027136208603859773, 51.47745129108093], [0.02726453469118867, 51.47729264310937], [0.027407659764180525, 51.47717320598664], [0.027472122614350017, 51.47716759617937], [0.02749497599606684, 51.477259889768774], [0.0275894148414773, 51.47724746839584], [0.02763125795922001, 51.477248542805164], [0.027673260445956145, 51.47725321051667], [0.029321185080393167, 51.477362248960496], [0.02931877992458126, 51.47727328775672], [0.029309588505018542, 51.47638674481814], [0.02930699357799856, 51.47600191984089], [0.0307585432791318, 51.47577531659239], [0.031331122361321566, 51.475698870200496], [0.03176176864878623, 51.47563476991592], [0.03202957024017449, 51.47560136013426], [0.03325807697501377, 51.47544332065314], [0.03332411886622568, 51.47543857923974], [0.033316317670665896, 51.47532723614433], [0.03331969532458127, 51.475275034447634], [0.033319655374625695, 51.475274136121165], [0.03438059634922597, 51.47513427405921], [0.0344016610840722, 51.47518874872964], [0.034672540402342515, 51.47587026962117], [0.03485029921682261, 51.47633746163751], [0.035179227697292786, 51.47690101141922], [0.03568930341676791, 51.47778065694733], [0.03627680567871868, 51.47875065553286], [0.036468680809462695, 51.47908094898807], [0.036556852773685984, 51.47918370370365], [0.036631059227296946, 51.4792021931414], [0.03650364517261967, 51.479380703979544], [0.03713543485031895, 51.479467721533595], [0.03755747658184417, 51.47953230941174], [0.037840676038250816, 51.479553548971474], [0.03813279563313889, 51.47954847132497], [0.0388729875397844, 51.479483368958675], [0.03972811063574461, 51.479410059269675], [0.04072839918682374, 51.47930095300352], [0.04171931792510046, 51.479205486628736], [0.04318708608100648, 51.47904857089725], [0.04390681427767337, 51.47897758999889], [0.04398857620910432, 51.478936607753155], [0.044049486659233465, 51.47888340269239], [0.04399488590174151, 51.47885198986077], [0.04405490856872831, 51.47877893192742], [0.044165135801738774, 51.47866553167187], [0.04421365308065586, 51.478592764149354], [0.044139163522039906, 51.47856799129364], [0.04415959265825489, 51.47854156352919], [0.04409539099145448, 51.47852380343866], [0.044472775729689586, 51.478301368597236], [0.044807627737373776, 51.47805989586258], [0.04521447154144593, 51.47778480159869], [0.04549753514014071, 51.47757758387451], [0.045638748858067485, 51.477450965371524], [0.04561683385187782, 51.47744415557182], [0.04572842267432269, 51.47736399378203], [0.04581967873360837, 51.47727789353217], [0.04553138771567631, 51.47714528360022], [0.045749440089220376, 51.47689964252984], [0.045996971463013896, 51.476575181896386], [0.046623569362570984, 51.47583846601361], [0.047057876192666284, 51.47531026075578], [0.047227995684535874, 51.47534684724904], [0.047509993768964746, 51.47604963211592], [0.04754447156586269, 51.47614342719521], [0.047787742905955166, 51.4761086116984], [0.04814256466651358, 51.47605656368382], [0.04821266563723769, 51.475983417364944], [0.04845291562654283, 51.47578314347507], [0.04864085133277177, 51.4756396124179], [0.048666714940207294, 51.475639160484796], [0.04885656471965007, 51.47547213117079], [0.0489502689595839, 51.4754435229718], [0.048032680215032715, 51.4746637418718], [0.047689446048588234, 51.47439634482652], [0.047492600426472964, 51.474213595408834], [0.04739085277990118, 51.474062538680634], [0.04733204599979378, 51.473907945044935], [0.04733382825960679, 51.473754181290424], [0.04771073348405323, 51.473135185564395], [0.047932731277384025, 51.47281925760056], [0.04802409685395038, 51.47264046446336], [0.04809406055512196, 51.47249809588768], [0.04820540145598413, 51.47247637230523], [0.049428046554143096, 51.47219060362773], [0.05079893743538874, 51.471869864187894], [0.052226192488929075, 51.47158857793607], [0.05391060947246508, 51.47129467798033], [0.05500125374873161, 51.47111643868482], [0.05487838760627048, 51.470559220431156], [0.054659345145946704, 51.46981929807358], [0.05458142635317191, 51.469622878643584], [0.05455468927951728, 51.469572102917674], [0.054415744624335564, 51.4693649756392], [0.05430426572091537, 51.46922218646122], [0.05334865213917815, 51.468110294567914]]], "type": "Polygon"}, "id": "283", "properties": {"DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_319318381b0449e0aebe91618dfc3255.addTo(map_b4f406bb0dc3153a3ef87521da39c4a7);
+        
+    
+        function geo_json_17ea60735003f04c190652c92954275d_styler(feature) {
+            switch(feature.id) {
+                case "1574": case "1576": case "1578": case "1579": case "1580": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_17ea60735003f04c190652c92954275d_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_17ea60735003f04c190652c92954275d = L.geoJson(null, {
+                onEachFeature: geo_json_17ea60735003f04c190652c92954275d_onEachFeature,
+            
+                style: geo_json_17ea60735003f04c190652c92954275d_styler,
+            ...{
+}
+        });
+
+        function geo_json_17ea60735003f04c190652c92954275d_add (data) {
+            geo_json_17ea60735003f04c190652c92954275d
+                .addData(data);
+        }
+            geo_json_17ea60735003f04c190652c92954275d_add({"features": [{"geometry": {"coordinates": [[[[0.04279001943613711, 51.47140952696031], [0.03521979112711952, 51.47213055432139], [0.031575362128328656, 51.4699578205934], [0.03303475135012693, 51.464947833337504], [0.034896269004718955, 51.46418099866185], [0.039408449558334085, 51.469324230088176], [0.04191669094277711, 51.47059006666214], [0.04279001943613711, 51.47140952696031]]]], "type": "MultiPolygon"}, "id": "1574", "properties": {"BNG_E": 541591, "BNG_N": 176565, "DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "GlobalID": "{D59D2788-96E4-409A-A9E2-38B172C755E3}", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "LAT": 51.470340728759766, "LONG": 0.03719000145792961, "LSOA21CD": "E01001645", "LSOA21NM": "Greenwich 022A", "LSOA21NMW": " ", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Park", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.051391348888232435, 51.47175337830115], [0.04754518009773832, 51.47614683461869], [0.04706303290784282, 51.475311025857685], [0.04279001943613711, 51.47140952696031], [0.04191669094277711, 51.47059006666214], [0.051391348888232435, 51.47175337830115]]]], "type": "MultiPolygon"}, "id": "1575", "properties": {"BNG_E": 542200, "BNG_N": 176764, "DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "GlobalID": "{8766BD74-33C5-4858-9658-732F337392EB}", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "LAT": 51.471981048583984, "LONG": 0.046032000333070755, "LSOA21CD": "E01001646", "LSOA21NM": "Greenwich 019A", "LSOA21NMW": " ", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Park", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.0349467720543702, 51.47249804572898], [0.02517117930736995, 51.47367870247566], [0.025733333053135816, 51.472895892217196], [0.02895080149157995, 51.46782186832597], [0.02992647870212727, 51.46592178393903], [0.03303475135012693, 51.464947833337504], [0.031575362128328656, 51.4699578205934], [0.03521979112711952, 51.47213055432139], [0.0349467720543702, 51.47249804572898]]]], "type": "MultiPolygon"}, "id": "1576", "properties": {"BNG_E": 541099, "BNG_N": 176510, "DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "GlobalID": "{5A0189E6-245A-42D0-B932-E3A8764F87A5}", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "LAT": 51.469970703125, "LONG": 0.0300890002399683, "LSOA21CD": "E01001647", "LSOA21NM": "Greenwich 022B", "LSOA21NMW": " ", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Park", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.055000442305973715, 51.47111551606342], [0.051391348888232435, 51.47175337830115], [0.04191669094277711, 51.47059006666214], [0.039408449558334085, 51.469324230088176], [0.04447150267753488, 51.468244952852515], [0.045195403442010514, 51.46430022760038], [0.04654454930553804, 51.46438114864623], [0.05336826683533766, 51.468106851320776], [0.055000442305973715, 51.47111551606342]]]], "type": "MultiPolygon"}, "id": "1577", "properties": {"BNG_E": 542289, "BNG_N": 176252, "DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "GlobalID": "{E58E84C2-6AF0-4C56-967F-665C0C4746E5}", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "LAT": 51.46736145019531, "LONG": 0.04710699990391731, "LSOA21CD": "E01001648", "LSOA21NM": "Greenwich 022C", "LSOA21NMW": " ", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Park", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.045195403442010514, 51.46430022760038], [0.04447150267753488, 51.468244952852515], [0.039408449558334085, 51.469324230088176], [0.034896269004718955, 51.46418099866185], [0.038228977521940974, 51.46249640598361], [0.03892427944726958, 51.46230430362059], [0.045195403442010514, 51.46430022760038]]]], "type": "MultiPolygon"}, "id": "1578", "properties": {"BNG_E": 541810, "BNG_N": 176116, "DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "GlobalID": "{BD3E1CE2-A5B5-4D2E-9BE0-22738A9D621F}", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "LAT": 51.466251373291016, "LONG": 0.040160998702049255, "LSOA21CD": "E01001649", "LSOA21NM": "Greenwich 022D", "LSOA21NMW": " ", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Park", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.043930359430574446, 51.47897014247496], [0.036500281444243374, 51.47938929839581], [0.03331864469584671, 51.475308719434295], [0.0373123444409263, 51.474323502438416], [0.04398339358316397, 51.47884578579524], [0.043930359430574446, 51.47897014247496]]]], "type": "MultiPolygon"}, "id": "1579", "properties": {"BNG_E": 541676, "BNG_N": 177320, "DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "GlobalID": "{805E7594-83C4-4331-A1CA-E54F14D762E5}", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "LAT": 51.47711181640625, "LONG": 0.038715001195669174, "LSOA21CD": "E01001650", "LSOA21NM": "Greenwich 019B", "LSOA21NMW": " ", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0, "WD24NM": "Charlton Hornfair", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.04706303290784282, 51.475311025857685], [0.04398339358316397, 51.47884578579524], [0.0373123444409263, 51.474323502438416], [0.0349467720543702, 51.47249804572898], [0.03521979112711952, 51.47213055432139], [0.04279001943613711, 51.47140952696031], [0.04706303290784282, 51.475311025857685]]]], "type": "MultiPolygon"}, "id": "1580", "properties": {"BNG_E": 541847, "BNG_N": 177080, "DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "GlobalID": "{E5D953F5-31BC-483A-A60A-E926E945A525}", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "LAT": 51.474910736083984, "LONG": 0.04108000174164772, "LSOA21CD": "E01001651", "LSOA21NM": "Greenwich 019C", "LSOA21NMW": " ", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0, "WD24NM": "Charlton Hornfair", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.029317845291721604, 51.47725570294948], [0.028234003716230683, 51.47729039625514], [0.023540747045437255, 51.47643927854626], [0.024021637842731036, 51.47560085397644], [0.02517117930736995, 51.47367870247566], [0.0349467720543702, 51.47249804572898], [0.0373123444409263, 51.474323502438416], [0.03331864469584671, 51.475308719434295], [0.029317845291721604, 51.47725570294948]]]], "type": "MultiPolygon"}, "id": "1581", "properties": {"BNG_E": 541024, "BNG_N": 177057, "DISTRICT": "Greenwich", "GSS_CODE": "E05000223", "GlobalID": "{3BE10544-6028-48F6-9DEB-2F17003D4CFD}", "HECTARES": 237.454, "LAGSSCODE": "E09000011", "LAT": 51.474910736083984, "LONG": 0.029227999970316887, "LSOA21CD": "E01001652", "LSOA21NM": "Greenwich 019D", "LSOA21NMW": " ", "NAME": "Kidbrooke with Hornfair", "NONLD_AREA": 0.0, "WD24NM": "Kidbrooke Park", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_17ea60735003f04c190652c92954275d.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_17ea60735003f04c190652c92954275d.addTo(map_b4f406bb0dc3153a3ef87521da39c4a7);
+        
+    
+            var feature_group_5d686d35bcd69c0c2fd00f2feadbf90d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_a5d73b34a9033290387656005311f442 = L.marker(
+                [51.4732228, 0.0458944],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_3d2b2c9cc436a7b081f95253ccd676ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_15241ca3ef34b0585364027206347fc5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d7325bfd76af925e536b9fd9e093f4d8 = $(`<div id="html_d7325bfd76af925e536b9fd9e093f4d8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 019A (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_15241ca3ef34b0585364027206347fc5.setContent(html_d7325bfd76af925e536b9fd9e093f4d8);
+            
+        
+
+        marker_a5d73b34a9033290387656005311f442.bindPopup(popup_15241ca3ef34b0585364027206347fc5)
+        ;
+
+        
+    
+    
+                marker_a5d73b34a9033290387656005311f442.setIcon(icon_3d2b2c9cc436a7b081f95253ccd676ca);
+            
+    
+            var marker_2d478949b89f3b8fd4adb0dcb26b689e = L.marker(
+                [51.472086, 0.0465804],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_ca94b9a2c8b4adb3a48fc2750e8e9030 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2d90be583c7aef8f57acfbfa657ad64f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_20c4b391cbee54542669cc90e6753f7e = $(`<div id="html_20c4b391cbee54542669cc90e6753f7e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 019A (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_2d90be583c7aef8f57acfbfa657ad64f.setContent(html_20c4b391cbee54542669cc90e6753f7e);
+            
+        
+
+        marker_2d478949b89f3b8fd4adb0dcb26b689e.bindPopup(popup_2d90be583c7aef8f57acfbfa657ad64f)
+        ;
+
+        
+    
+    
+                marker_2d478949b89f3b8fd4adb0dcb26b689e.setIcon(icon_ca94b9a2c8b4adb3a48fc2750e8e9030);
+            
+    
+            var marker_014300ebf764871565b6e3169c53314d = L.marker(
+                [51.4714916, 0.0501861],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_5f810c429d9198065987d6fb1f3d4aa8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d8378e13f585b1b1ab2ff7f03d99b13c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a31dc2bdfc368b5f804ae51cc3e95cf = $(`<div id="html_1a31dc2bdfc368b5f804ae51cc3e95cf" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 019A (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_d8378e13f585b1b1ab2ff7f03d99b13c.setContent(html_1a31dc2bdfc368b5f804ae51cc3e95cf);
+            
+        
+
+        marker_014300ebf764871565b6e3169c53314d.bindPopup(popup_d8378e13f585b1b1ab2ff7f03d99b13c)
+        ;
+
+        
+    
+    
+                marker_014300ebf764871565b6e3169c53314d.setIcon(icon_5f810c429d9198065987d6fb1f3d4aa8);
+            
+    
+            var marker_06cd8d79d3e08c6942caa4a157a87571 = L.marker(
+                [51.4692997, 0.0503934],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_617ffe68cf991c675a7698616a9aaf1b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_39d13b2bc2dd2b8b1b9e584789ee88df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_440c69fc0e4bad9f55e84444d84e5bcf = $(`<div id="html_440c69fc0e4bad9f55e84444d84e5bcf" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_39d13b2bc2dd2b8b1b9e584789ee88df.setContent(html_440c69fc0e4bad9f55e84444d84e5bcf);
+            
+        
+
+        marker_06cd8d79d3e08c6942caa4a157a87571.bindPopup(popup_39d13b2bc2dd2b8b1b9e584789ee88df)
+        ;
+
+        
+    
+    
+                marker_06cd8d79d3e08c6942caa4a157a87571.setIcon(icon_617ffe68cf991c675a7698616a9aaf1b);
+            
+    
+            var marker_fc55fb76fba612110993c5e0df98659c = L.marker(
+                [51.4683565, 0.0451443],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_156043d9a2a2c66a58da3a9d341c184c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_09eb3850b3614ca690e649525195be36 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b457e8a547ffed3d2e4f6612644264c1 = $(`<div id="html_b457e8a547ffed3d2e4f6612644264c1" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022C (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_09eb3850b3614ca690e649525195be36.setContent(html_b457e8a547ffed3d2e4f6612644264c1);
+            
+        
+
+        marker_fc55fb76fba612110993c5e0df98659c.bindPopup(popup_09eb3850b3614ca690e649525195be36)
+        ;
+
+        
+    
+    
+                marker_fc55fb76fba612110993c5e0df98659c.setIcon(icon_156043d9a2a2c66a58da3a9d341c184c);
+            
+    
+            var marker_4e8df9e856a7e968feb3ae1b91415d8c = L.marker(
+                [51.4693732, 0.0507972],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_8b59a1090ae55a67e17c894bc514f924 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a3edad51c096c7d186b6b25bc1645297 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ac57d671ee4e08ae6cd5c5262bf1f98 = $(`<div id="html_9ac57d671ee4e08ae6cd5c5262bf1f98" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022C (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_a3edad51c096c7d186b6b25bc1645297.setContent(html_9ac57d671ee4e08ae6cd5c5262bf1f98);
+            
+        
+
+        marker_4e8df9e856a7e968feb3ae1b91415d8c.bindPopup(popup_a3edad51c096c7d186b6b25bc1645297)
+        ;
+
+        
+    
+    
+                marker_4e8df9e856a7e968feb3ae1b91415d8c.setIcon(icon_8b59a1090ae55a67e17c894bc514f924);
+            
+    
+            var marker_b00751e5bc0391afc46e8c1d989026c9 = L.marker(
+                [51.4715326, 0.0478301],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_f11e34121606a2149e185cc70e3acf10 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_160e11c343a755df1f78684fe4dd8472 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e4634f96ee76d424fa28e435703c258 = $(`<div id="html_2e4634f96ee76d424fa28e435703c258" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022C (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_160e11c343a755df1f78684fe4dd8472.setContent(html_2e4634f96ee76d424fa28e435703c258);
+            
+        
+
+        marker_b00751e5bc0391afc46e8c1d989026c9.bindPopup(popup_160e11c343a755df1f78684fe4dd8472)
+        ;
+
+        
+    
+    
+                marker_b00751e5bc0391afc46e8c1d989026c9.setIcon(icon_f11e34121606a2149e185cc70e3acf10);
+            
+    
+            var marker_2891ada32c79c02c35a56a207beec0d4 = L.marker(
+                [51.4693184, 0.0394452],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_4751f61f5c993a9bdc381aa9a71eedc4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a494a3d476be1982861484ae839479a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17bf6bd30df47c3c16d4cc735929ee99 = $(`<div id="html_17bf6bd30df47c3c16d4cc735929ee99" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022C (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_a494a3d476be1982861484ae839479a2.setContent(html_17bf6bd30df47c3c16d4cc735929ee99);
+            
+        
+
+        marker_2891ada32c79c02c35a56a207beec0d4.bindPopup(popup_a494a3d476be1982861484ae839479a2)
+        ;
+
+        
+    
+    
+                marker_2891ada32c79c02c35a56a207beec0d4.setIcon(icon_4751f61f5c993a9bdc381aa9a71eedc4);
+            
+    
+            var marker_2b9db70a553a409d8528df639ca52456 = L.marker(
+                [51.4752518, 0.0273426],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_d15994eb3d875ce0b20d24b23948af86 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_85c05e0a489519e8ce1ef4fb99dea36f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6ee37e4d3f427fbd3c980851477ed3a9 = $(`<div id="html_6ee37e4d3f427fbd3c980851477ed3a9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 019D (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_85c05e0a489519e8ce1ef4fb99dea36f.setContent(html_6ee37e4d3f427fbd3c980851477ed3a9);
+            
+        
+
+        marker_2b9db70a553a409d8528df639ca52456.bindPopup(popup_85c05e0a489519e8ce1ef4fb99dea36f)
+        ;
+
+        
+    
+    
+                marker_2b9db70a553a409d8528df639ca52456.setIcon(icon_d15994eb3d875ce0b20d24b23948af86);
+            
+    
+            var marker_e63ad718027eccdd03406b9efaf2c746 = L.marker(
+                [51.4745915, 0.0355817],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_ecabda3389e0661c29a0c6fbbf5e180e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d0ee3d32febd3a225334fd9c712eeeae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a7cbbca2b3d0d394b17c54bd69efcb8a = $(`<div id="html_a7cbbca2b3d0d394b17c54bd69efcb8a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 019D (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_d0ee3d32febd3a225334fd9c712eeeae.setContent(html_a7cbbca2b3d0d394b17c54bd69efcb8a);
+            
+        
+
+        marker_e63ad718027eccdd03406b9efaf2c746.bindPopup(popup_d0ee3d32febd3a225334fd9c712eeeae)
+        ;
+
+        
+    
+    
+                marker_e63ad718027eccdd03406b9efaf2c746.setIcon(icon_ecabda3389e0661c29a0c6fbbf5e180e);
+            
+    
+            var marker_1cc36c9600bf089e7c0f02122a9598fd = L.marker(
+                [51.4752518, 0.0273426],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_1d5ac824574a3fcfef4d36cee43f41b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59671dba064371b7d1f46428e72f13ff = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c8c261612afedbf2f90c1d6162c8ec8 = $(`<div id="html_3c8c261612afedbf2f90c1d6162c8ec8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 019D (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_59671dba064371b7d1f46428e72f13ff.setContent(html_3c8c261612afedbf2f90c1d6162c8ec8);
+            
+        
+
+        marker_1cc36c9600bf089e7c0f02122a9598fd.bindPopup(popup_59671dba064371b7d1f46428e72f13ff)
+        ;
+
+        
+    
+    
+                marker_1cc36c9600bf089e7c0f02122a9598fd.setIcon(icon_1d5ac824574a3fcfef4d36cee43f41b0);
+            
+    
+            var marker_53b80297e097a45d8dd7bbd7051923c1 = L.marker(
+                [51.4749435, 0.0333059],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_524f64fb8aeb32d9fe2eba283e074354 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6bad4aac26068ff1f23edcc87c37658 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e53b1bc0b5fb26018f980e9ea1a318c5 = $(`<div id="html_e53b1bc0b5fb26018f980e9ea1a318c5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 019D (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_e6bad4aac26068ff1f23edcc87c37658.setContent(html_e53b1bc0b5fb26018f980e9ea1a318c5);
+            
+        
+
+        marker_53b80297e097a45d8dd7bbd7051923c1.bindPopup(popup_e6bad4aac26068ff1f23edcc87c37658)
+        ;
+
+        
+    
+    
+                marker_53b80297e097a45d8dd7bbd7051923c1.setIcon(icon_524f64fb8aeb32d9fe2eba283e074354);
+            
+    
+            var marker_654ead127a4a828615b1a25069b2c559 = L.marker(
+                [51.4734731, 0.0307277],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_c33b1cd20efd856a3dd9c2d7188b18e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c3b2c410a0c66309376a9927c4fda636 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a9d84b9a5559c6526af0e7ab1da4d0b9 = $(`<div id="html_a9d84b9a5559c6526af0e7ab1da4d0b9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 019D (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c3b2c410a0c66309376a9927c4fda636.setContent(html_a9d84b9a5559c6526af0e7ab1da4d0b9);
+            
+        
+
+        marker_654ead127a4a828615b1a25069b2c559.bindPopup(popup_c3b2c410a0c66309376a9927c4fda636)
+        ;
+
+        
+    
+    
+                marker_654ead127a4a828615b1a25069b2c559.setIcon(icon_c33b1cd20efd856a3dd9c2d7188b18e5);
+            
+    
+            var marker_f2dab74a3de3948f97a2e88f53ddf7b0 = L.marker(
+                [51.4686393, 0.0375973],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_9838b68b1f130a7cb9408ab2db04bc74 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6b0e571cdbbd009848cdf7f754e3e23b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d4bf02d282977ffec470e1edc0022627 = $(`<div id="html_d4bf02d282977ffec470e1edc0022627" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_6b0e571cdbbd009848cdf7f754e3e23b.setContent(html_d4bf02d282977ffec470e1edc0022627);
+            
+        
+
+        marker_f2dab74a3de3948f97a2e88f53ddf7b0.bindPopup(popup_6b0e571cdbbd009848cdf7f754e3e23b)
+        ;
+
+        
+    
+    
+                marker_f2dab74a3de3948f97a2e88f53ddf7b0.setIcon(icon_9838b68b1f130a7cb9408ab2db04bc74);
+            
+    
+            var marker_e6962750d1e9e30f5b0f39dc3f5283a2 = L.marker(
+                [51.4684176, 0.0347557],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_4f5f23235cc57063a76e9ca1666cd88b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1100d72c73510a97450ff82bbf8afa61 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9a108c06358da204c6bd563bd1a2bd7a = $(`<div id="html_9a108c06358da204c6bd563bd1a2bd7a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_1100d72c73510a97450ff82bbf8afa61.setContent(html_9a108c06358da204c6bd563bd1a2bd7a);
+            
+        
+
+        marker_e6962750d1e9e30f5b0f39dc3f5283a2.bindPopup(popup_1100d72c73510a97450ff82bbf8afa61)
+        ;
+
+        
+    
+    
+                marker_e6962750d1e9e30f5b0f39dc3f5283a2.setIcon(icon_4f5f23235cc57063a76e9ca1666cd88b);
+            
+    
+            var marker_0136e9a59a669c8f1bbacea6edfd64bc = L.marker(
+                [51.4707503, 0.0408456],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_56148e7990177c2dbf4fba1aee296142 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f4717802105633b612b92382f7081a0d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0596c1e35695eec2fec160ab3f4bd390 = $(`<div id="html_0596c1e35695eec2fec160ab3f4bd390" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f4717802105633b612b92382f7081a0d.setContent(html_0596c1e35695eec2fec160ab3f4bd390);
+            
+        
+
+        marker_0136e9a59a669c8f1bbacea6edfd64bc.bindPopup(popup_f4717802105633b612b92382f7081a0d)
+        ;
+
+        
+    
+    
+                marker_0136e9a59a669c8f1bbacea6edfd64bc.setIcon(icon_56148e7990177c2dbf4fba1aee296142);
+            
+    
+            var marker_f5300f4178862df83c91ee728ad9eadf = L.marker(
+                [51.469477, 0.0332979],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_951ccbf239c63ed4562fec5050c8ef39 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfdd11e16183943b1ddfcc25eb3e1f4f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ad84a986de5ed23f8b3de23b4822b8c2 = $(`<div id="html_ad84a986de5ed23f8b3de23b4822b8c2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022A (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_bfdd11e16183943b1ddfcc25eb3e1f4f.setContent(html_ad84a986de5ed23f8b3de23b4822b8c2);
+            
+        
+
+        marker_f5300f4178862df83c91ee728ad9eadf.bindPopup(popup_bfdd11e16183943b1ddfcc25eb3e1f4f)
+        ;
+
+        
+    
+    
+                marker_f5300f4178862df83c91ee728ad9eadf.setIcon(icon_951ccbf239c63ed4562fec5050c8ef39);
+            
+    
+            var marker_ab47f820975c5296c20d5dd502951d5f = L.marker(
+                [51.4653556, 0.0351546],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_de7b1b01f72c8b0a9fc840a1b13f6383 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c7fb82a459d42aa5a3b9c27d5c86f195 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6193a85bbc4b2c36fe381e376ce6e946 = $(`<div id="html_6193a85bbc4b2c36fe381e376ce6e946" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022A (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c7fb82a459d42aa5a3b9c27d5c86f195.setContent(html_6193a85bbc4b2c36fe381e376ce6e946);
+            
+        
+
+        marker_ab47f820975c5296c20d5dd502951d5f.bindPopup(popup_c7fb82a459d42aa5a3b9c27d5c86f195)
+        ;
+
+        
+    
+    
+                marker_ab47f820975c5296c20d5dd502951d5f.setIcon(icon_de7b1b01f72c8b0a9fc840a1b13f6383);
+            
+    
+            var marker_f2a0d47f25817218136a2ceac62f2b5f = L.marker(
+                [51.4715758, 0.0321428],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_a74c365cef7b7d61e9b905b0ecb7206c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cabaeabbe4543e5c37362194ed349428 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb4e77828b3dc4a6059c9554f72b4bd4 = $(`<div id="html_fb4e77828b3dc4a6059c9554f72b4bd4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_cabaeabbe4543e5c37362194ed349428.setContent(html_fb4e77828b3dc4a6059c9554f72b4bd4);
+            
+        
+
+        marker_f2a0d47f25817218136a2ceac62f2b5f.bindPopup(popup_cabaeabbe4543e5c37362194ed349428)
+        ;
+
+        
+    
+    
+                marker_f2a0d47f25817218136a2ceac62f2b5f.setIcon(icon_a74c365cef7b7d61e9b905b0ecb7206c);
+            
+    
+            var marker_30f31472dee5939346a27df169533cd0 = L.marker(
+                [51.4701449, 0.0308021],
+                {
+}
+            ).addTo(feature_group_5d686d35bcd69c0c2fd00f2feadbf90d);
+        
+    
+            var icon_726347f9b2e6bded90b3521419bc158f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_17517ba69c7ba95de8beee813d1a24bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_029a41de95b6aefc265c3e2ed5eaa290 = $(`<div id="html_029a41de95b6aefc265c3e2ed5eaa290" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Greenwich 022B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_17517ba69c7ba95de8beee813d1a24bc.setContent(html_029a41de95b6aefc265c3e2ed5eaa290);
+            
+        
+
+        marker_30f31472dee5939346a27df169533cd0.bindPopup(popup_17517ba69c7ba95de8beee813d1a24bc)
+        ;
+
+        
+    
+    
+                marker_30f31472dee5939346a27df169533cd0.setIcon(icon_726347f9b2e6bded90b3521419bc158f);
+            
+    
+            feature_group_5d686d35bcd69c0c2fd00f2feadbf90d.addTo(map_b4f406bb0dc3153a3ef87521da39c4a7);
+        
+    
+            var poly_line_0eabdae5b5ace46e79abc4c5ea9d09a6 = L.polyline(
+                [[51.4732228, 0.0458944], [51.4732786, 0.0456318], [51.4733363, 0.04537], [51.4733943, 0.0451112], [51.473505, 0.0444905], [51.4736895, 0.0433341], [51.4734366, 0.0432271], [51.4735519, 0.0425207], [51.4720335, 0.045108], [51.4711288, 0.044762], [51.4709315, 0.0446846], [51.4702195, 0.0444106], [51.4683565, 0.0451443], [51.4682508, 0.0445071], [51.4673911, 0.0450199], [51.4672831, 0.0454782], [51.4677628, 0.0472594], [51.4680178, 0.0481368], [51.4691188, 0.049407], [51.4692997, 0.0503934], [51.4693732, 0.0507972], [51.4692997, 0.0503934], [51.4691188, 0.049407], [51.4680178, 0.0481368], [51.4677628, 0.0472594], [51.4672831, 0.0454782], [51.4673911, 0.0450199], [51.4682508, 0.0445071], [51.4683565, 0.0451443], [51.4702195, 0.0444106], [51.4707503, 0.0408456], [51.4709105, 0.0398139], [51.4702912, 0.039359], [51.4697877, 0.0387165], [51.4693184, 0.0394452], [51.4697877, 0.0387165], [51.4690876, 0.0365193], [51.4684657, 0.0366987], [51.4686393, 0.0375973], [51.4684657, 0.0366987], [51.4690876, 0.0365193], [51.468858, 0.0336466], [51.469477, 0.0332979], [51.468858, 0.0336466], [51.4684176, 0.0347557], [51.468858, 0.0336466], [51.4686052, 0.0325069], [51.4683528, 0.0313787], [51.4680659, 0.0300995], [51.4658246, 0.0339723], [51.4649831, 0.0330214], [51.46492, 0.0331976], [51.4639379, 0.0355335], [51.4630276, 0.0372568], [51.4632242, 0.0375134], [51.463465, 0.0378193], [51.4639462, 0.0368751], [51.4640607, 0.0366451], [51.4646134, 0.0355619], [51.4653556, 0.0351546], [51.4646134, 0.0355619], [51.4640607, 0.0366451], [51.4639462, 0.0368751], [51.463465, 0.0378193], [51.4632242, 0.0375134], [51.4630276, 0.0372568], [51.4639379, 0.0355335], [51.46492, 0.0331976], [51.4649831, 0.0330214], [51.4658246, 0.0339723], [51.4680659, 0.0300995], [51.4683528, 0.0313787], [51.4686052, 0.0325069], [51.468858, 0.0336466], [51.469477, 0.0332979], [51.4708, 0.0325556], [51.4701449, 0.0308021], [51.4683528, 0.0313787], [51.4686052, 0.0325069], [51.468858, 0.0336466], [51.469477, 0.0332979], [51.4708, 0.0325556], [51.4715758, 0.0321428], [51.4726284, 0.0313591], [51.4734731, 0.0307277], [51.4739707, 0.0303412], [51.4736881, 0.0277057], [51.4752518, 0.0273426], [51.4736881, 0.0277057], [51.4739707, 0.0303412], [51.4734731, 0.0307277], [51.4738638, 0.0322159], [51.4736725, 0.0352907], [51.4745915, 0.0355817], [51.474637, 0.0352792], [51.4747946, 0.0342605], [51.4749435, 0.0333059], [51.4747946, 0.0342605], [51.4763089, 0.0348571], [51.4762601, 0.0361022], [51.474637, 0.0352792], [51.4745915, 0.0355817], [51.4736725, 0.0352907], [51.4731611, 0.0387148], [51.4720833, 0.0383737], [51.4711288, 0.044762], [51.4720335, 0.045108], [51.4730094, 0.0455917], [51.4726505, 0.0472515], [51.4726199, 0.0476265], [51.4725519, 0.0475962], [51.4720777, 0.0473428], [51.4717262, 0.0471494], [51.4716811, 0.0471179], [51.4716184, 0.0473923], [51.4715326, 0.0478301], [51.4716184, 0.0473923], [51.4716811, 0.0471179], [51.4717262, 0.0471494], [51.4718632, 0.0464655], [51.472086, 0.0465804], [51.4718632, 0.0464655], [51.4717262, 0.0471494], [51.4720777, 0.0473428], [51.4717473, 0.048888], [51.4716784, 0.0492261], [51.4715784, 0.0497347], [51.4714916, 0.0501861], [51.4715784, 0.0497347], [51.4716784, 0.0492261], [51.4717473, 0.048888], [51.4720777, 0.0473428], [51.4725519, 0.0475962], [51.4726505, 0.0472515], [51.4730094, 0.0455917], [51.4720335, 0.045108], [51.4735519, 0.0425207], [51.4734366, 0.0432271], [51.4736895, 0.0433341], [51.473505, 0.0444905], [51.4733943, 0.0451112], [51.4733363, 0.04537], [51.4732786, 0.0456318], [51.4732228, 0.0458944]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_b4f406bb0dc3153a3ef87521da39c4a7);
+        
+    
+            var layer_control_24f86be9d6371420706df8251f9877a8_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_631c46084683955a1dada3803890836b,
+                },
+                overlays :  {
+                    "Kidbrooke with Hornfair Boundary" : geo_json_319318381b0449e0aebe91618dfc3255,
+                    "LSOA Median Crime Rates for Kidbrooke with Hornfair" : geo_json_17ea60735003f04c190652c92954275d,
+                    "Patrol Waypoints" : feature_group_5d686d35bcd69c0c2fd00f2feadbf90d,
+                },
+            };
+            let layer_control_24f86be9d6371420706df8251f9877a8 = L.control.layers(
+                layer_control_24f86be9d6371420706df8251f9877a8_layers.base_layers,
+                layer_control_24f86be9d6371420706df8251f9877a8_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_b4f406bb0dc3153a3ef87521da39c4a7);
+
+        
+</script>
+</html>

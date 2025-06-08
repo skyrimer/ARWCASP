@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4f195a4d099321777780d5e2ee36dc92 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_4f195a4d099321777780d5e2ee36dc92" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4f195a4d099321777780d5e2ee36dc92 = L.map(
+                "map_4f195a4d099321777780d5e2ee36dc92",
+                {
+                    center: [51.54955788221092, -0.086781016311601],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f953f1f73413f61bfc316d3cce6fcfed = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f953f1f73413f61bfc316d3cce6fcfed.addTo(map_4f195a4d099321777780d5e2ee36dc92);
+        
+    
+        function geo_json_87688c7ba127d56377ae8af3443ef249_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_87688c7ba127d56377ae8af3443ef249_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_87688c7ba127d56377ae8af3443ef249 = L.geoJson(null, {
+                onEachFeature: geo_json_87688c7ba127d56377ae8af3443ef249_onEachFeature,
+            
+                style: geo_json_87688c7ba127d56377ae8af3443ef249_styler,
+            ...{
+}
+        });
+
+        function geo_json_87688c7ba127d56377ae8af3443ef249_add (data) {
+            geo_json_87688c7ba127d56377ae8af3443ef249
+                .addData(data);
+        }
+            geo_json_87688c7ba127d56377ae8af3443ef249_add({"features": [{"geometry": {"coordinates": [[[-0.09858488565184516, 51.54679032971345], [-0.09847652290634337, 51.54724454292641], [-0.0983041953915702, 51.54791797259558], [-0.09825494402785533, 51.54806101319468], [-0.09793413046564547, 51.548145801634526], [-0.09756859831888993, 51.548230673159054], [-0.09694093205409925, 51.54837332229235], [-0.0966654352209854, 51.54844355947188], [-0.0964730348711749, 51.548491680552104], [-0.09631183945611961, 51.54855289357842], [-0.0963664769575826, 51.54862569962492], [-0.09639010139911265, 51.5487520319509], [-0.09641661088457087, 51.548806401697384], [-0.0962061553992164, 51.54901065427126], [-0.09601098067247626, 51.54919636549852], [-0.09575695842725564, 51.54937303031982], [-0.09546189318942776, 51.54953005956678], [-0.09520978073247846, 51.549660905547924], [-0.09494542972557339, 51.549774381487325], [-0.09453710771015854, 51.549881023664916], [-0.09459508037792057, 51.54994228767975], [-0.09479485713590223, 51.55044366439079], [-0.09482621318345433, 51.550521487023225], [-0.09451186898571545, 51.55058749239956], [-0.09451791691531189, 51.55065052017368], [-0.09452704166777028, 51.550776527464045], [-0.09456703545494008, 51.551131470338625], [-0.09445096094345218, 51.551216877381044], [-0.09444116240463836, 51.55145135551954], [-0.09420646325208461, 51.55144125034256], [-0.09400574807033334, 51.551446080690205], [-0.09384720434842957, 51.55147766667648], [-0.09377367661045159, 51.55151252168125], [-0.09369492887968735, 51.55156697978164], [-0.09367581287532334, 51.55157476011766], [-0.09340886485252801, 51.5514058165842], [-0.0932095759491593, 51.55141066874668], [-0.09314029396577525, 51.55141223969941], [-0.09307773424366218, 51.551460667538976], [-0.09305219590623508, 51.55148551416463], [-0.09299380248027309, 51.55146559626671], [-0.09285192316172382, 51.55165037058924], [-0.09266705925148322, 51.55162309255181], [-0.09266559549679061, 51.55162396774895], [-0.09266555791903582, 51.55162486613164], [-0.09265958048558712, 51.55169668844352], [-0.09269588653234866, 51.551968864630126], [-0.0927892882401644, 51.55259626228356], [-0.09279957945397777, 51.552697116842815], [-0.0928769814878589, 51.553397162611], [-0.09293203561552957, 51.55339176455517], [-0.09293341909993788, 51.553634515237846], [-0.09294208357590532, 51.55380555469833], [-0.09234813379224961, 51.553796797834984], [-0.09238007929101912, 51.55406800413941], [-0.09242381315265931, 51.554401432621994], [-0.09205499684970754, 51.554426900284376], [-0.0915836892263734, 51.554451598704084], [-0.09120611735455056, 51.554441860540905], [-0.09074649192539462, 51.55442898793388], [-0.09039337301367138, 51.554423241049136], [-0.09040338882090185, 51.554150020142146], [-0.09025786731718549, 51.554145853541826], [-0.09003742394592411, 51.554138669127575], [-0.08987283027437865, 51.55407306000283], [-0.08975344914705673, 51.5540297626347], [-0.08964609234747152, 51.553977670994726], [-0.08952912040852312, 51.55391094888803], [-0.08929968489118145, 51.55374089879432], [-0.08904998263625082, 51.55381324645171], [-0.08858846292228673, 51.55394785936771], [-0.08774481899753574, 51.552944859082395], [-0.08765601364276326, 51.55289576493221], [-0.08755238099114292, 51.552823055175246], [-0.0873566278179595, 51.552743449620905], [-0.08699338898474135, 51.55266740589387], [-0.08678896474441165, 51.552624426855814], [-0.08650984428540585, 51.552573127168245], [-0.08635141786483572, 51.55253368443759], [-0.08627030480671638, 51.55250539155649], [-0.08607887730055726, 51.552427652390364], [-0.08563963214770705, 51.55220463752046], [-0.08550441536636692, 51.55216197636297], [-0.08540438017614975, 51.55213966705879], [-0.08530122864891107, 51.552123599771235], [-0.08518046118767497, 51.55211353784623], [-0.08469864281530236, 51.55204633949467], [-0.08463247622851397, 51.552041663325085], [-0.08451256924915988, 51.552045099675425], [-0.08437891518349162, 51.552067190329716], [-0.08371422676385305, 51.55212915412337], [-0.08321763449327038, 51.55213902190494], [-0.08112144003859188, 51.55197619994326], [-0.08028757479575023, 51.55190951792142], [-0.07996329165846976, 51.55186906061728], [-0.07972485695859702, 51.551812117566584], [-0.07957940524939962, 51.5517387161776], [-0.07950911885157355, 51.55169351489251], [-0.07946132672063069, 51.55166486370558], [-0.07933326009442253, 51.55158815061238], [-0.07904104379635706, 51.55133425482665], [-0.0788687490900059, 51.55114435272702], [-0.07880294945603468, 51.5510632646621], [-0.0786839899537133, 51.550942649196756], [-0.07790522627879767, 51.54967363681394], [-0.07774958146478181, 51.54946422783039], [-0.07771824243299419, 51.54942056255362], [-0.0770903899636967, 51.54867732225599], [-0.07691625577525751, 51.54842994111223], [-0.07675752956874604, 51.548158449487445], [-0.07672889291861586, 51.548118424211275], [-0.07663569479048199, 51.547934310236485], [-0.07644102060875338, 51.54731692438967], [-0.07641513801115166, 51.546974791577064], [-0.07637388647891444, 51.546653083651265], [-0.07635768485250718, 51.546422585059204], [-0.07637787123245672, 51.546352794345076], [-0.07683935927688643, 51.54607978364502], [-0.0783209919203533, 51.54624169883727], [-0.07971978622010968, 51.54634910869036], [-0.08316591760832566, 51.54657627444363], [-0.08383831572576554, 51.54660344065156], [-0.08432030600424018, 51.54663117986252], [-0.0845308355091406, 51.54663003253545], [-0.08473592692724755, 51.54662528996987], [-0.08514891992782678, 51.54657719283761], [-0.08559656703157466, 51.54656472056121], [-0.08718508576410021, 51.54665446008698], [-0.08786224198074252, 51.546775266137686], [-0.08862148802568244, 51.54686405300793], [-0.08894635007850996, 51.546890022179504], [-0.08921560552699781, 51.54690070087102], [-0.0892702757955769, 51.54690428826824], [-0.0893163087148088, 51.5469068359747], [-0.09001537127779409, 51.5469505828696], [-0.09077702865406649, 51.54701602113743], [-0.09180775398509883, 51.54709670899245], [-0.09283056782670368, 51.547196048130395], [-0.09333743049898177, 51.547215074689326], [-0.09455925343227854, 51.54721065254931], [-0.0961077859122387, 51.547290631549906], [-0.09665400488313969, 51.54730129250024], [-0.09674224426920412, 51.54729553208614], [-0.09683074606397368, 51.547283482906636], [-0.09689757561374822, 51.547269284116226], [-0.09702629289453103, 51.54722822035132], [-0.09796336361816259, 51.54696014350331], [-0.09858488565184516, 51.54679032971345]]], "type": "Polygon"}, "id": "554", "properties": {"DISTRICT": "Islington", "GSS_CODE": "E05000377", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "NAME": "Mildmay", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_87688c7ba127d56377ae8af3443ef249.addTo(map_4f195a4d099321777780d5e2ee36dc92);
+        
+    
+        function geo_json_177af938362d9eb5c4dfea336c467982_styler(feature) {
+            switch(feature.id) {
+                case "2636": case "2638": case "2641": case "2642": case "2643": case "31757": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_177af938362d9eb5c4dfea336c467982_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_177af938362d9eb5c4dfea336c467982 = L.geoJson(null, {
+                onEachFeature: geo_json_177af938362d9eb5c4dfea336c467982_onEachFeature,
+            
+                style: geo_json_177af938362d9eb5c4dfea336c467982_styler,
+            ...{
+}
+        });
+
+        function geo_json_177af938362d9eb5c4dfea336c467982_add (data) {
+            geo_json_177af938362d9eb5c4dfea336c467982
+                .addData(data);
+        }
+            geo_json_177af938362d9eb5c4dfea336c467982_add({"features": [{"geometry": {"coordinates": [[[[-0.09144524143807578, 51.549311727899884], [-0.09465764038459741, 51.549849027489856], [-0.09846544730159311, 51.54729518243451], [-0.09857901706488909, 51.54679229611366], [-0.09732500919202722, 51.54714315901173], [-0.09214465943239568, 51.54712912271012], [-0.08855344658433255, 51.548182077397], [-0.09144524143807578, 51.549311727899884]]]], "type": "MultiPolygon"}, "id": "2636", "properties": {"BNG_E": 532336, "BNG_N": 184986, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{29A820FF-46EF-40E2-B866-832EBCD53608}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.54825973510742, "LONG": -0.09282000362873077, "LSOA21CD": "E01002775", "LSOA21NM": "Islington 014D", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Mildmay", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.08437733720915666, 51.54898091415025], [-0.08575155440013671, 51.55011562044865], [-0.08722029361857883, 51.54928808309691], [-0.08855344658433255, 51.548182077397], [-0.09214465943239568, 51.54712912271012], [-0.08920383194746612, 51.54689907126914], [-0.08383900272060835, 51.54660257003215], [-0.0827717353444838, 51.54655048965437], [-0.08253128743194248, 51.546782910571196], [-0.08437733720915666, 51.54898091415025]]]], "type": "MultiPolygon"}, "id": "2637", "properties": {"BNG_E": 532844, "BNG_N": 185008, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{F08A5FB9-8025-4BC7-9AD6-C2A42DDFD6FE}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.54833984375, "LONG": -0.08549000322818756, "LSOA21CD": "E01002776", "LSOA21NM": "Islington 014E", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Mildmay", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.07947240131442201, 51.550184720794896], [-0.08428191392331061, 51.551115079871295], [-0.08437733720915666, 51.54898091415025], [-0.08253128743194248, 51.546782910571196], [-0.07947240131442201, 51.550184720794896]]]], "type": "MultiPolygon"}, "id": "2638", "properties": {"BNG_E": 533096, "BNG_N": 185079, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{6E81DCA1-E92E-40F1-AFED-EF87AD779FFC}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.54890823364258, "LONG": -0.08183000236749649, "LSOA21CD": "E01002777", "LSOA21NM": "Islington 012A", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Mildmay", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.07751218585821368, 51.54917705587468], [-0.07848424615014044, 51.55058813199174], [-0.07947240131442201, 51.550184720794896], [-0.08253128743194248, 51.546782910571196], [-0.0827717353444838, 51.54655048965437], [-0.0768395740919119, 51.546079817857745], [-0.07751218585821368, 51.54917705587468]]]], "type": "MultiPolygon"}, "id": "2639", "properties": {"BNG_E": 533262, "BNG_N": 184893, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{62294A64-5515-4319-AA2D-CD7AFCB86BBD}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.54719924926758, "LONG": -0.07951000332832336, "LSOA21CD": "E01002778", "LSOA21NM": "Islington 012B", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Mildmay", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.08835471146293264, 51.55363148972382], [-0.09039477080225328, 51.55442351515312], [-0.09207980602534496, 51.55442477869868], [-0.09111063361251384, 51.55023392481073], [-0.0868491369417157, 51.551421279299795], [-0.08722029361857883, 51.54928808309691], [-0.08575155440013671, 51.55011562044865], [-0.08542743293076442, 51.55214503274974], [-0.08835471146293264, 51.55363148972382]]]], "type": "MultiPolygon"}, "id": "2640", "properties": {"BNG_E": 532638, "BNG_N": 185394, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{B55FA7C2-3F09-41C9-921D-DFE5A1361200}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.551849365234375, "LONG": -0.08831000328063965, "LSOA21CD": "E01002779", "LSOA21NM": "Islington 012C", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Mildmay", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.08722029361857883, 51.54928808309691], [-0.0868491369417157, 51.551421279299795], [-0.09111063361251384, 51.55023392481073], [-0.09144524143807578, 51.549311727899884], [-0.08855344658433255, 51.548182077397], [-0.08722029361857883, 51.54928808309691]]]], "type": "MultiPolygon"}, "id": "2641", "properties": {"BNG_E": 532600, "BNG_N": 185195, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{D22CACE3-DF4D-4265-98DE-D36A00F66882}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.550071716308594, "LONG": -0.08893000334501266, "LSOA21CD": "E01002780", "LSOA21NM": "Islington 014F", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Mildmay", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.09111063361251384, 51.55023392481073], [-0.09207980602534496, 51.55442477869868], [-0.09242422433323655, 51.55440159403073], [-0.09293256799966715, 51.55339173547068], [-0.09465764038459741, 51.549849027489856], [-0.09144524143807578, 51.549311727899884], [-0.09111063361251384, 51.55023392481073]]]], "type": "MultiPolygon"}, "id": "2642", "properties": {"BNG_E": 532323, "BNG_N": 185221, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{BC938B3C-D388-40ED-9C72-98F85EBE4C45}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.55036926269531, "LONG": -0.09291999787092209, "LSOA21CD": "E01002781", "LSOA21NM": "Islington 012D", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Mildmay", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.08514425615272428, 51.55210853282152], [-0.08542743293076442, 51.55214503274974], [-0.08575155440013671, 51.55011562044865], [-0.08437733720915666, 51.54898091415025], [-0.08428191392331061, 51.551115079871295], [-0.07947240131442201, 51.550184720794896], [-0.07848424615014044, 51.55058813199174], [-0.07944355513932012, 51.5516534834559], [-0.08514425615272428, 51.55210853282152]]]], "type": "MultiPolygon"}, "id": "2643", "properties": {"BNG_E": 533054, "BNG_N": 185329, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{5012A935-2122-4A78-8802-0EAE82C8CC01}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.551170349121094, "LONG": -0.08234000205993652, "LSOA21CD": "E01002782", "LSOA21NM": "Islington 012E", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Mildmay", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.07471329291961686, 51.54852454470001], [-0.07192243570764482, 51.550863154556694], [-0.07751218585821368, 51.54917705587468], [-0.0768395740919119, 51.546079817857745], [-0.07571074929867358, 51.546202030118614], [-0.07353964324530263, 51.54726488377964], [-0.07471329291961686, 51.54852454470001]]]], "type": "MultiPolygon"}, "id": "31757", "properties": {"BNG_E": 533509, "BNG_N": 185065, "DISTRICT": "Islington", "GSS_CODE": "E05000377", "GlobalID": "{A0A81E10-C943-46BF-B001-AC4CBCE390A4}", "HECTARES": 82.68, "LAGSSCODE": "E09000019", "LAT": 51.54869079589844, "LONG": -0.07587999850511551, "LSOA21CD": "E01033699", "LSOA21NM": "Hackney 030A", "LSOA21NMW": " ", "NAME": "Mildmay", "NONLD_AREA": 0.0, "WD24NM": "Dalston", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_177af938362d9eb5c4dfea336c467982.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_177af938362d9eb5c4dfea336c467982.addTo(map_4f195a4d099321777780d5e2ee36dc92);
+        
+    
+            var feature_group_66e383cb04a24cdd1d767cb15dae73e1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_d40a589dd719bde9f2673b4f7f8b9505 = L.marker(
+                [51.5480835, -0.0878899],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_a0e70e8fc4ce7b1af2b73b665942cd79 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f534c31a9418411db48b8dbaa5603a1e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6bb186997ba1e66e30abb6d36ffa8534 = $(`<div id="html_6bb186997ba1e66e30abb6d36ffa8534" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 014E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_f534c31a9418411db48b8dbaa5603a1e.setContent(html_6bb186997ba1e66e30abb6d36ffa8534);
+            
+        
+
+        marker_d40a589dd719bde9f2673b4f7f8b9505.bindPopup(popup_f534c31a9418411db48b8dbaa5603a1e)
+        ;
+
+        
+    
+    
+                marker_d40a589dd719bde9f2673b4f7f8b9505.setIcon(icon_a0e70e8fc4ce7b1af2b73b665942cd79);
+            
+    
+            var marker_8e6f4051d2fba607853383ba5d55b6ce = L.marker(
+                [51.5474669, -0.0882949],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_8bacee299a2a8a6aa32e7b7d94f17e38 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dfd33fa6e56ecaf79137046b99f18cca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5540046f14555b7b7e7f107d3b095a7a = $(`<div id="html_5540046f14555b7b7e7f107d3b095a7a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 014E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_dfd33fa6e56ecaf79137046b99f18cca.setContent(html_5540046f14555b7b7e7f107d3b095a7a);
+            
+        
+
+        marker_8e6f4051d2fba607853383ba5d55b6ce.bindPopup(popup_dfd33fa6e56ecaf79137046b99f18cca)
+        ;
+
+        
+    
+    
+                marker_8e6f4051d2fba607853383ba5d55b6ce.setIcon(icon_8bacee299a2a8a6aa32e7b7d94f17e38);
+            
+    
+            var marker_2a8e99d7bebfbc6d78cba50114214ed5 = L.marker(
+                [51.551951, -0.085541],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_e3d811730aa3a1c052f3586aac565dbd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_76b9f88d5f7a18793c36052f6d14ccc7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ab5485b9dedc14ec51005c40b3d1d29 = $(`<div id="html_0ab5485b9dedc14ec51005c40b3d1d29" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 012C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_76b9f88d5f7a18793c36052f6d14ccc7.setContent(html_0ab5485b9dedc14ec51005c40b3d1d29);
+            
+        
+
+        marker_2a8e99d7bebfbc6d78cba50114214ed5.bindPopup(popup_76b9f88d5f7a18793c36052f6d14ccc7)
+        ;
+
+        
+    
+    
+                marker_2a8e99d7bebfbc6d78cba50114214ed5.setIcon(icon_e3d811730aa3a1c052f3586aac565dbd);
+            
+    
+            var marker_561a5ca2b5ce4c5d48cc2679fd4f324e = L.marker(
+                [51.551951, -0.085541],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_9da753f9b2ebad32049abcf7a40c6da0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_642143e6457d9522ef0e91b724bcab8a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_963d3bed876efff84e5db2e7fb2440c2 = $(`<div id="html_963d3bed876efff84e5db2e7fb2440c2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 012C (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_642143e6457d9522ef0e91b724bcab8a.setContent(html_963d3bed876efff84e5db2e7fb2440c2);
+            
+        
+
+        marker_561a5ca2b5ce4c5d48cc2679fd4f324e.bindPopup(popup_642143e6457d9522ef0e91b724bcab8a)
+        ;
+
+        
+    
+    
+                marker_561a5ca2b5ce4c5d48cc2679fd4f324e.setIcon(icon_9da753f9b2ebad32049abcf7a40c6da0);
+            
+    
+            var marker_6e508862e2751e17d508c7ee63b826aa = L.marker(
+                [51.5483108, -0.0803802],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_d5e9625e27c5020db82afd5508c11e86 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_66de1f4569fdef4e9ee76d784c7245b6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_65a24069d90224617db219340641a4fe = $(`<div id="html_65a24069d90224617db219340641a4fe" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 012B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_66de1f4569fdef4e9ee76d784c7245b6.setContent(html_65a24069d90224617db219340641a4fe);
+            
+        
+
+        marker_6e508862e2751e17d508c7ee63b826aa.bindPopup(popup_66de1f4569fdef4e9ee76d784c7245b6)
+        ;
+
+        
+    
+    
+                marker_6e508862e2751e17d508c7ee63b826aa.setIcon(icon_d5e9625e27c5020db82afd5508c11e86);
+            
+    
+            var marker_271c400c7b0d1825daf4c310b561db3d = L.marker(
+                [51.5483108, -0.0803802],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_d3bdf5a29de781538e402cf475370644 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d541ddea3c2d430dd0993d549c9cb2e6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d13eb405ac44ba6f04f6ee435edc7f57 = $(`<div id="html_d13eb405ac44ba6f04f6ee435edc7f57" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 012B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_d541ddea3c2d430dd0993d549c9cb2e6.setContent(html_d13eb405ac44ba6f04f6ee435edc7f57);
+            
+        
+
+        marker_271c400c7b0d1825daf4c310b561db3d.bindPopup(popup_d541ddea3c2d430dd0993d549c9cb2e6)
+        ;
+
+        
+    
+    
+                marker_271c400c7b0d1825daf4c310b561db3d.setIcon(icon_d3bdf5a29de781538e402cf475370644);
+            
+    
+            var marker_3973eadd57b2472637ae3a2de9d7ab51 = L.marker(
+                [51.5480807, -0.0929225],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_4ad78f41345c203c3b71b3e1f67e838b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e8fc0d22ba2df21d566b168c25630d03 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e7263e1477d33feed7cdf660716a117f = $(`<div id="html_e7263e1477d33feed7cdf660716a117f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 014D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_e8fc0d22ba2df21d566b168c25630d03.setContent(html_e7263e1477d33feed7cdf660716a117f);
+            
+        
+
+        marker_3973eadd57b2472637ae3a2de9d7ab51.bindPopup(popup_e8fc0d22ba2df21d566b168c25630d03)
+        ;
+
+        
+    
+    
+                marker_3973eadd57b2472637ae3a2de9d7ab51.setIcon(icon_4ad78f41345c203c3b71b3e1f67e838b);
+            
+    
+            var marker_96f0904a7b11a3a33ca3bfbb491f91e6 = L.marker(
+                [51.5471457, -0.0923115],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_a32fccbe875b3e7305373a2d5898a3b9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_62bc01fdb7c4969919b6669925e2cd42 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d8fd1a15d8094de85fbf7c03562f550e = $(`<div id="html_d8fd1a15d8094de85fbf7c03562f550e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 014D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_62bc01fdb7c4969919b6669925e2cd42.setContent(html_d8fd1a15d8094de85fbf7c03562f550e);
+            
+        
+
+        marker_96f0904a7b11a3a33ca3bfbb491f91e6.bindPopup(popup_62bc01fdb7c4969919b6669925e2cd42)
+        ;
+
+        
+    
+    
+                marker_96f0904a7b11a3a33ca3bfbb491f91e6.setIcon(icon_a32fccbe875b3e7305373a2d5898a3b9);
+            
+    
+            var marker_58aa77ace28be74aea34342e8da9e78f = L.marker(
+                [51.5502039, -0.0820579],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_96be636659246fabb4fddeab5b1f671d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd2308b40ef5efc9ff29e5797f7626c3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_30b6be1e5e2ba5361224c5d44c47830b = $(`<div id="html_30b6be1e5e2ba5361224c5d44c47830b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 012A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_cd2308b40ef5efc9ff29e5797f7626c3.setContent(html_30b6be1e5e2ba5361224c5d44c47830b);
+            
+        
+
+        marker_58aa77ace28be74aea34342e8da9e78f.bindPopup(popup_cd2308b40ef5efc9ff29e5797f7626c3)
+        ;
+
+        
+    
+    
+                marker_58aa77ace28be74aea34342e8da9e78f.setIcon(icon_96be636659246fabb4fddeab5b1f671d);
+            
+    
+            var marker_abc404b9422de358bcc329d67988e897 = L.marker(
+                [51.5492956, -0.0913676],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_96476f0714743b6a1bde85d484af2f52 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd19c63d46cc67dbdb17666acc84e79a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_54e6c17a77f874afb3f6a56c4ca3be75 = $(`<div id="html_54e6c17a77f874afb3f6a56c4ca3be75" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 014F (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_cd19c63d46cc67dbdb17666acc84e79a.setContent(html_54e6c17a77f874afb3f6a56c4ca3be75);
+            
+        
+
+        marker_abc404b9422de358bcc329d67988e897.bindPopup(popup_cd19c63d46cc67dbdb17666acc84e79a)
+        ;
+
+        
+    
+    
+                marker_abc404b9422de358bcc329d67988e897.setIcon(icon_96476f0714743b6a1bde85d484af2f52);
+            
+    
+            var marker_44d8532cab3680361fd5d61b6ed4e5a2 = L.marker(
+                [51.5497305, -0.095016],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_49136a028acb96096514d2fea7898ad1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aa5198b6cffab0c04b5c0aca88b19e5d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_60f0d9350c5cd660316502cb07cda91d = $(`<div id="html_60f0d9350c5cd660316502cb07cda91d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 012D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_aa5198b6cffab0c04b5c0aca88b19e5d.setContent(html_60f0d9350c5cd660316502cb07cda91d);
+            
+        
+
+        marker_44d8532cab3680361fd5d61b6ed4e5a2.bindPopup(popup_aa5198b6cffab0c04b5c0aca88b19e5d)
+        ;
+
+        
+    
+    
+                marker_44d8532cab3680361fd5d61b6ed4e5a2.setIcon(icon_49136a028acb96096514d2fea7898ad1);
+            
+    
+            var marker_e461109a7821fc6af7db271ddf018373 = L.marker(
+                [51.551951, -0.085541],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_b995d17c5cde8311e895ba6bff682f66 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_04e07c97a725bae776161d2005455579 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca7e820cb5e423c03c76242dc424bb9e = $(`<div id="html_ca7e820cb5e423c03c76242dc424bb9e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Islington 012E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_04e07c97a725bae776161d2005455579.setContent(html_ca7e820cb5e423c03c76242dc424bb9e);
+            
+        
+
+        marker_e461109a7821fc6af7db271ddf018373.bindPopup(popup_04e07c97a725bae776161d2005455579)
+        ;
+
+        
+    
+    
+                marker_e461109a7821fc6af7db271ddf018373.setIcon(icon_b995d17c5cde8311e895ba6bff682f66);
+            
+    
+            var marker_2f047e6423123ccb1b93aba98e7a09ad = L.marker(
+                [51.5485004, -0.0788001],
+                {
+}
+            ).addTo(feature_group_66e383cb04a24cdd1d767cb15dae73e1);
+        
+    
+            var icon_476b9c1323d365cc3128c7d05a90e0cb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_710e2cf90b4736e390ec02e7414ceaa2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3e266e882e23e9f0447d23d6a194af9 = $(`<div id="html_f3e266e882e23e9f0447d23d6a194af9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hackney 030A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_710e2cf90b4736e390ec02e7414ceaa2.setContent(html_f3e266e882e23e9f0447d23d6a194af9);
+            
+        
+
+        marker_2f047e6423123ccb1b93aba98e7a09ad.bindPopup(popup_710e2cf90b4736e390ec02e7414ceaa2)
+        ;
+
+        
+    
+    
+                marker_2f047e6423123ccb1b93aba98e7a09ad.setIcon(icon_476b9c1323d365cc3128c7d05a90e0cb);
+            
+    
+            feature_group_66e383cb04a24cdd1d767cb15dae73e1.addTo(map_4f195a4d099321777780d5e2ee36dc92);
+        
+    
+            var poly_line_1cef24c41135248a60fb5f31a3d4fd18 = L.polyline(
+                [[51.5480835, -0.0878899], [51.5474669, -0.0882949], [51.5480835, -0.0878899], [51.5481397, -0.0880483], [51.5471361, -0.0918941], [51.5470574, -0.0912518], [51.5471457, -0.0923115], [51.5471361, -0.0918941], [51.5481397, -0.0880483], [51.5480835, -0.0878899], [51.5483384, -0.0875965], [51.5487846, -0.0874103], [51.5486273, -0.0842348], [51.5483108, -0.0803802], [51.5486192, -0.0798901], [51.5488988, -0.0794628], [51.5487123, -0.0787569], [51.5485004, -0.0788001], [51.5487123, -0.0787569], [51.5488988, -0.0794628], [51.5489833, -0.0793212], [51.5496909, -0.0832107], [51.5504975, -0.0833194], [51.5502039, -0.0820579], [51.5504975, -0.0833194], [51.5505359, -0.0834696], [51.5508475, -0.0847536], [51.5505957, -0.0847543], [51.5509293, -0.0849817], [51.5509279, -0.0857325], [51.5511307, -0.0859058], [51.551951, -0.085541], [51.5519908, -0.0854788], [51.5520812, -0.0851141], [51.5520383, -0.0848343], [51.5519008, -0.0845327], [51.5510482, -0.0847766], [51.5509293, -0.0849817], [51.5509279, -0.0857325], [51.5508727, -0.0860977], [51.5504537, -0.0864278], [51.5508305, -0.0905039], [51.550275, -0.0908457], [51.5501947, -0.0908093], [51.5501229, -0.0909877], [51.5502429, -0.0910863], [51.5504951, -0.0922524], [51.5497305, -0.095016], [51.5504951, -0.0922524], [51.5502429, -0.0910863], [51.5503, -0.0909659], [51.550275, -0.0908457], [51.5501947, -0.0908093], [51.5501229, -0.0909877], [51.5493557, -0.0914576], [51.5492956, -0.0913676], [51.5492196, -0.0914915], [51.5479479, -0.0920687], [51.5480807, -0.0929225], [51.5479479, -0.0920687], [51.5492196, -0.0914915], [51.5492714, -0.0915853], [51.5493557, -0.0914576], [51.5501229, -0.0909877], [51.5502429, -0.0910863], [51.5503, -0.0909659], [51.550275, -0.0908457], [51.5501947, -0.0908093], [51.5498413, -0.0869296], [51.5492734, -0.0871756], [51.5491478, -0.0872281], [51.5487846, -0.0874103], [51.5483384, -0.0875965], [51.5480835, -0.0878899]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_4f195a4d099321777780d5e2ee36dc92);
+        
+    
+            var layer_control_e47f0aab96f7483c0afcb2597f5a2ffc_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_f953f1f73413f61bfc316d3cce6fcfed,
+                },
+                overlays :  {
+                    "Mildmay Boundary" : geo_json_87688c7ba127d56377ae8af3443ef249,
+                    "LSOA Median Crime Rates for Mildmay" : geo_json_177af938362d9eb5c4dfea336c467982,
+                    "Patrol Waypoints" : feature_group_66e383cb04a24cdd1d767cb15dae73e1,
+                },
+            };
+            let layer_control_e47f0aab96f7483c0afcb2597f5a2ffc = L.control.layers(
+                layer_control_e47f0aab96f7483c0afcb2597f5a2ffc_layers.base_layers,
+                layer_control_e47f0aab96f7483c0afcb2597f5a2ffc_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_4f195a4d099321777780d5e2ee36dc92);
+
+        
+</script>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a39c2e23d52cc70c3da3d16e4338c80e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a39c2e23d52cc70c3da3d16e4338c80e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a39c2e23d52cc70c3da3d16e4338c80e = L.map(
+                "map_a39c2e23d52cc70c3da3d16e4338c80e",
+                {
+                    center: [51.483333104455184, -0.27052274981043506],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b2d585843c1f7f5593fbbbaf2646a402 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b2d585843c1f7f5593fbbbaf2646a402.addTo(map_a39c2e23d52cc70c3da3d16e4338c80e);
+        
+    
+        function geo_json_dc754ba644b3dba7a05319cf85790cd7_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_dc754ba644b3dba7a05319cf85790cd7_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_dc754ba644b3dba7a05319cf85790cd7 = L.geoJson(null, {
+                onEachFeature: geo_json_dc754ba644b3dba7a05319cf85790cd7_onEachFeature,
+            
+                style: geo_json_dc754ba644b3dba7a05319cf85790cd7_styler,
+            ...{
+}
+        });
+
+        function geo_json_dc754ba644b3dba7a05319cf85790cd7_add (data) {
+            geo_json_dc754ba644b3dba7a05319cf85790cd7
+                .addData(data);
+        }
+            geo_json_dc754ba644b3dba7a05319cf85790cd7_add({"features": [{"geometry": {"coordinates": [[[-0.2691487937898444, 51.47355934140936], [-0.26992357409844814, 51.47310132572215], [-0.27084132301340047, 51.47369398896096], [-0.2715899230402189, 51.47427066689456], [-0.27225769814945905, 51.47489109821737], [-0.2725542821932686, 51.47519581843525], [-0.2728480730618348, 51.475502294693214], [-0.27348938340216805, 51.47628684292384], [-0.27394403926740424, 51.47687086365137], [-0.2746837262568902, 51.477953607461714], [-0.27612044215511555, 51.4807902628331], [-0.27624153141577384, 51.481055534762305], [-0.2763344581472055, 51.481226898378836], [-0.2764375442847223, 51.48139652337287], [-0.27656163431688185, 51.48157913261912], [-0.27669752515827306, 51.48175742023203], [-0.276832639729595, 51.48191852570041], [-0.2769876054899232, 51.48208540647771], [-0.2778365124874063, 51.48283252508657], [-0.27867409738943105, 51.48349946169627], [-0.2794302036066836, 51.483997087027326], [-0.2797967878406839, 51.48417057468008], [-0.2798498615152323, 51.484211807398125], [-0.2799006450301126, 51.48424131973261], [-0.27999856463530687, 51.4842805132319], [-0.2801087067714692, 51.48430100728636], [-0.280265270738722, 51.48431229321945], [-0.28046730678806425, 51.484339618312404], [-0.28055584852923654, 51.48435979521045], [-0.28068976448695776, 51.48439861693609], [-0.28081771344015993, 51.48444454288493], [-0.2821280106687513, 51.48506714138747], [-0.28232732621744927, 51.48520490823985], [-0.2826182611072881, 51.48562557755514], [-0.28273379785985825, 51.48573334932638], [-0.2828124301684429, 51.48578664169995], [-0.28287313719479823, 51.48582079293735], [-0.2839906560246127, 51.48632278065873], [-0.2847009147275944, 51.48654802820141], [-0.285709684661789, 51.486765139643914], [-0.2867978841168994, 51.48697351396171], [-0.28692692405703135, 51.48699068170041], [-0.28711063010653254, 51.487006849814186], [-0.28725016315768814, 51.48701338268977], [-0.28744898954744075, 51.48701269046824], [-0.28745753542871516, 51.4870128152665], [-0.2874644594310555, 51.48729079135519], [-0.2874699232443381, 51.487683815645724], [-0.28747222557304636, 51.48785375662786], [-0.2874919914085436, 51.48828663478154], [-0.2875012031224663, 51.48842431333942], [-0.28749544324992526, 51.48857804481696], [-0.2875172795432621, 51.488686241359844], [-0.28755488673723195, 51.488798264110216], [-0.287572312128965, 51.48891008204908], [-0.28755383227535963, 51.48898173064905], [-0.2875027901809673, 51.48903492414364], [-0.2874052464687244, 51.489140568291056], [-0.2872179056125515, 51.48925919469012], [-0.28684695802877214, 51.48946962162886], [-0.28670470708759904, 51.4895385629777], [-0.28577614431116566, 51.48998356357078], [-0.28553386916099704, 51.49010686808326], [-0.28526673915258016, 51.49024050655395], [-0.28453782563352836, 51.49062458882357], [-0.2842740074044023, 51.49074577766529], [-0.2833208959997291, 51.49111578443438], [-0.2832043701032115, 51.491150936868586], [-0.28312296050934527, 51.491171320615585], [-0.28304463600686114, 51.49118545660836], [-0.28295198210351136, 51.49119848376907], [-0.2826662826532664, 51.49120958310078], [-0.28247692012575926, 51.49122658756227], [-0.282124673716033, 51.49144086949846], [-0.2819688046876207, 51.49136936466098], [-0.28170545507726696, 51.49125034694966], [-0.2814023352269262, 51.491111957131], [-0.28096624872888776, 51.49091219489519], [-0.28065036385420356, 51.490769121081904], [-0.28030047968785754, 51.490611164147545], [-0.27972125980179685, 51.490349066483205], [-0.27955270004589583, 51.49027098945381], [-0.279341624230969, 51.490177095599705], [-0.27898150769583935, 51.49002617638376], [-0.27860844149388164, 51.48987227912235], [-0.27834322442305864, 51.489762306036496], [-0.27815287663773297, 51.489692087827265], [-0.27708743676144576, 51.489332938933465], [-0.276789182582636, 51.4892583462839], [-0.2761868351377023, 51.489037334115935], [-0.27534052450694074, 51.48882972198671], [-0.27422364587562387, 51.48857587016927], [-0.2730355754198624, 51.48834262473928], [-0.27303406632818167, 51.4883417035339], [-0.2714224691565736, 51.488184820436906], [-0.27036948616553436, 51.488073103623925], [-0.268597270515809, 51.487745702729505], [-0.2682376529880714, 51.48769274664386], [-0.2679982181959497, 51.487664938076314], [-0.26754442482553675, 51.48762766958348], [-0.2673302187948264, 51.48761731302745], [-0.2669617448778822, 51.48761007028906], [-0.26536986213521213, 51.48761709986411], [-0.2642306267064478, 51.48761642478894], [-0.2615156713562364, 51.48761306644175], [-0.258747698792502, 51.48760166613273], [-0.2585445078707752, 51.487339651685566], [-0.2584053752251112, 51.48717307143221], [-0.25808254342623493, 51.486875117879705], [-0.2573905184182052, 51.48632436726838], [-0.25661987435088973, 51.485721201556395], [-0.2560368830422694, 51.485261152937966], [-0.2558778169800507, 51.485125647659416], [-0.25577154262048307, 51.485041360419146], [-0.255692890702659, 51.484952090048516], [-0.2556533268676155, 51.48485611928767], [-0.2556725905971718, 51.48476830534929], [-0.2557320697848237, 51.4846442312246], [-0.2554837929449803, 51.48458111513341], [-0.2557573959400735, 51.48401783587561], [-0.25594096825623996, 51.48377235656174], [-0.2563245405979867, 51.48334555915716], [-0.2567548126806991, 51.482976899866586], [-0.2569032598528121, 51.482861339565545], [-0.2570871181856348, 51.48276068915382], [-0.25733936568152815, 51.48267894459122], [-0.25752151004113033, 51.48262321726543], [-0.2575985199689389, 51.482568624505305], [-0.2576555596972284, 51.48250834106864], [-0.2577415767075909, 51.48240434798994], [-0.25785213396531154, 51.48222349665154], [-0.25803940099995354, 51.481883675581535], [-0.25821735849376776, 51.48163541237116], [-0.2585003768504255, 51.48138781022137], [-0.2594489744021133, 51.48060611285888], [-0.261428761624241, 51.47891338732902], [-0.26279480351036116, 51.477754704326664], [-0.26345000704812144, 51.4771880701397], [-0.2636679034828111, 51.4770248947622], [-0.26402319131913554, 51.476808016019575], [-0.26533025846790464, 51.47598303279285], [-0.2660310191941043, 51.47554102826343], [-0.2688438742370218, 51.473739131912744], [-0.2691487937898444, 51.47355934140936]]], "type": "Polygon"}, "id": "84", "properties": {"DISTRICT": "Hounslow", "GSS_CODE": "E05000349", "HECTARES": 208.007, "LAGSSCODE": "E09000018", "NAME": "Chiswick Riverside", "NONLD_AREA": 15.584}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_dc754ba644b3dba7a05319cf85790cd7.addTo(map_a39c2e23d52cc70c3da3d16e4338c80e);
+        
+    
+        function geo_json_fa927e1ed384365dfebfcab8adcbecfd_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_fa927e1ed384365dfebfcab8adcbecfd_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_fa927e1ed384365dfebfcab8adcbecfd = L.geoJson(null, {
+                onEachFeature: geo_json_fa927e1ed384365dfebfcab8adcbecfd_onEachFeature,
+            
+                style: geo_json_fa927e1ed384365dfebfcab8adcbecfd_styler,
+            ...{
+}
+        });
+
+        function geo_json_fa927e1ed384365dfebfcab8adcbecfd_add (data) {
+            geo_json_fa927e1ed384365dfebfcab8adcbecfd
+                .addData(data);
+        }
+            geo_json_fa927e1ed384365dfebfcab8adcbecfd_add({"features": [{"geometry": {"coordinates": [[[[-0.27024071395213783, 51.48804950410023], [-0.2740632567373285, 51.48854441241203], [-0.2742915277290389, 51.48305605169259], [-0.2704549635480949, 51.48164596556252], [-0.26753090496499243, 51.485601679884276], [-0.27286506650391945, 51.48623421444414], [-0.27024071395213783, 51.48804950410023]]]], "type": "MultiPolygon"}, "id": "2451", "properties": {"BNG_E": 520124, "BNG_N": 177498, "DISTRICT": "Hounslow", "GSS_CODE": "E05000349", "GlobalID": "{7F1BA234-606E-4A68-8110-DE7338819B0D}", "HECTARES": 208.007, "LAGSSCODE": "E09000018", "LAT": 51.48368835449219, "LONG": -0.27140000462532043, "LSOA21CD": "E01002576", "LSOA21NM": "Hounslow 008A", "LSOA21NMW": " ", "NAME": "Chiswick Riverside", "NONLD_AREA": 15.584, "WD24NM": "Chiswick Riverside", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.26718323380510217, 51.48761456525974], [-0.27024071395213783, 51.48804950410023], [-0.27286506650391945, 51.48623421444414], [-0.26753090496499243, 51.485601679884276], [-0.25759014680359427, 51.482574190750995], [-0.25571632650635945, 51.484677383948345], [-0.25874751268526325, 51.487601529355935], [-0.26718323380510217, 51.48761456525974]]]], "type": "MultiPolygon"}, "id": "2452", "properties": {"BNG_E": 520912, "BNG_N": 177688, "DISTRICT": "Hounslow", "GSS_CODE": "E05000349", "GlobalID": "{07866CEE-7058-4235-8907-6E5EF60C5BEC}", "HECTARES": 208.007, "LAGSSCODE": "E09000018", "LAT": 51.4852294921875, "LONG": -0.25999000668525696, "LSOA21CD": "E01002577", "LSOA21NM": "Hounslow 007C", "LSOA21NMW": " ", "NAME": "Chiswick Riverside", "NONLD_AREA": 15.584, "WD24NM": "Chiswick Riverside", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.25759014680359427, 51.482574190750995], [-0.26753090496499243, 51.485601679884276], [-0.2704549635480949, 51.48164596556252], [-0.26446358402517317, 51.47652984774981], [-0.25778279849234426, 51.48233701489243], [-0.25759014680359427, 51.482574190750995]]]], "type": "MultiPolygon"}, "id": "2453", "properties": {"BNG_E": 520639, "BNG_N": 177192, "DISTRICT": "Hounslow", "GSS_CODE": "E05000349", "GlobalID": "{B4865CB1-7F38-4BD7-B5A9-BD050984639B}", "HECTARES": 208.007, "LAGSSCODE": "E09000018", "LAT": 51.480831146240234, "LONG": -0.26409000158309937, "LSOA21CD": "E01002578", "LSOA21NM": "Hounslow 007D", "LSOA21NMW": " ", "NAME": "Chiswick Riverside", "NONLD_AREA": 15.584, "WD24NM": "Chiswick Homefields", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2742915277290389, 51.48305605169259], [-0.2768676837934653, 51.483198995269355], [-0.2733939201458408, 51.47886137773891], [-0.26917697263028484, 51.47359453284366], [-0.26909016465577745, 51.47358818871502], [-0.26446358402517317, 51.47652984774981], [-0.2704549635480949, 51.48164596556252], [-0.2742915277290389, 51.48305605169259]]]], "type": "MultiPolygon"}, "id": "2454", "properties": {"BNG_E": 520183, "BNG_N": 176898, "DISTRICT": "Hounslow", "GSS_CODE": "E05000349", "GlobalID": "{2F156488-5E28-4368-9780-C0F16FCBBF3A}", "HECTARES": 208.007, "LAGSSCODE": "E09000018", "LAT": 51.47827911376953, "LONG": -0.2707599997520447, "LSOA21CD": "E01002579", "LSOA21NM": "Hounslow 008B", "LSOA21NMW": " ", "NAME": "Chiswick Riverside", "NONLD_AREA": 15.584, "WD24NM": "Chiswick Homefields", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2802362563426507, 51.49058194286022], [-0.2821245083255019, 51.49144174592066], [-0.2871378447756459, 51.4893043982887], [-0.28380822215449064, 51.487210599467716], [-0.2802362563426507, 51.49058194286022]]]], "type": "MultiPolygon"}, "id": "2455", "properties": {"BNG_E": 519239, "BNG_N": 178106, "DISTRICT": "Hounslow", "GSS_CODE": "E05000349", "GlobalID": "{5E539977-053B-4ECC-93A8-79A395DD9F2E}", "HECTARES": 208.007, "LAGSSCODE": "E09000018", "LAT": 51.489341735839844, "LONG": -0.28393998742103577, "LSOA21CD": "E01002580", "LSOA21NM": "Hounslow 008C", "LSOA21NMW": " ", "NAME": "Chiswick Riverside", "NONLD_AREA": 15.584, "WD24NM": "Chiswick Riverside", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.27678916208121096, 51.48925740492521], [-0.2802362563426507, 51.49058194286022], [-0.28380822215449064, 51.487210599467716], [-0.2871378447756459, 51.4893043982887], [-0.2875725404396594, 51.48890965766606], [-0.28748521398600246, 51.48768060338469], [-0.2868942042062063, 51.487451311837994], [-0.27924707955917927, 51.48436252565401], [-0.27678916208121096, 51.48925740492521]]]], "type": "MultiPolygon"}, "id": "2456", "properties": {"BNG_E": 519499, "BNG_N": 177922, "DISTRICT": "Hounslow", "GSS_CODE": "E05000349", "GlobalID": "{C81CADA4-239B-4AAE-B0FA-5F7CF3E3C3A0}", "HECTARES": 208.007, "LAGSSCODE": "E09000018", "LAT": 51.48762893676758, "LONG": -0.28025999665260315, "LSOA21CD": "E01002581", "LSOA21NM": "Hounslow 008D", "LSOA21NMW": " ", "NAME": "Chiswick Riverside", "NONLD_AREA": 15.584, "WD24NM": "Chiswick Riverside", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.27565919797873256, 51.48890809881814], [-0.27678916208121096, 51.48925740492521], [-0.27924707955917927, 51.48436252565401], [-0.27710719135961076, 51.483498029749505], [-0.2768676837934653, 51.483198995269355], [-0.2742915277290389, 51.48305605169259], [-0.2740632567373285, 51.48854441241203], [-0.27565919797873256, 51.48890809881814]]]], "type": "MultiPolygon"}, "id": "2457", "properties": {"BNG_E": 519783, "BNG_N": 177765, "DISTRICT": "Hounslow", "GSS_CODE": "E05000349", "GlobalID": "{9033DEF1-60C0-4728-8932-B20B7ECE1798}", "HECTARES": 208.007, "LAGSSCODE": "E09000018", "LAT": 51.48616027832031, "LONG": -0.2762199938297272, "LSOA21CD": "E01002582", "LSOA21NM": "Hounslow 008E", "LSOA21NMW": " ", "NAME": "Chiswick Riverside", "NONLD_AREA": 15.584, "WD24NM": "Chiswick Riverside", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_fa927e1ed384365dfebfcab8adcbecfd.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_fa927e1ed384365dfebfcab8adcbecfd.addTo(map_a39c2e23d52cc70c3da3d16e4338c80e);
+        
+    
+            var feature_group_024d1924309a2ec830efac3b89f78514 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_b5d0cd39c6a9f4e56c3a4a4b32192c14 = L.marker(
+                [51.4849158, -0.2689653],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_850f38b592e09d7b5eebb3aab7aa76d1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_886bf48534093c235ae8b4a4d78c23e6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_af2a9c11e6f2645c95fbed0f50c2d9dc = $(`<div id="html_af2a9c11e6f2645c95fbed0f50c2d9dc" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_886bf48534093c235ae8b4a4d78c23e6.setContent(html_af2a9c11e6f2645c95fbed0f50c2d9dc);
+            
+        
+
+        marker_b5d0cd39c6a9f4e56c3a4a4b32192c14.bindPopup(popup_886bf48534093c235ae8b4a4d78c23e6)
+        ;
+
+        
+    
+    
+                marker_b5d0cd39c6a9f4e56c3a4a4b32192c14.setIcon(icon_850f38b592e09d7b5eebb3aab7aa76d1);
+            
+    
+            var marker_36f316a40dcb451ecb467183310aa46a = L.marker(
+                [51.4836713, -0.2726616],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_bdeb34a4ea63d66a17762c09a4071dfc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_835d698ee589f5e51bfe5909e92f9183 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77665f82fae19d1dd93a7e2f5ac5aa63 = $(`<div id="html_77665f82fae19d1dd93a7e2f5ac5aa63" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_835d698ee589f5e51bfe5909e92f9183.setContent(html_77665f82fae19d1dd93a7e2f5ac5aa63);
+            
+        
+
+        marker_36f316a40dcb451ecb467183310aa46a.bindPopup(popup_835d698ee589f5e51bfe5909e92f9183)
+        ;
+
+        
+    
+    
+                marker_36f316a40dcb451ecb467183310aa46a.setIcon(icon_bdeb34a4ea63d66a17762c09a4071dfc);
+            
+    
+            var marker_41b91f4acc96feaf2dc2df23517572b7 = L.marker(
+                [51.4848379, -0.2719287],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_d56a20618c8f45b84181b990d0b0474a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a6ebacd262d8f64e5aefc004d0ac03e0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5fab01806913ef52663b907b70f39025 = $(`<div id="html_5fab01806913ef52663b907b70f39025" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_a6ebacd262d8f64e5aefc004d0ac03e0.setContent(html_5fab01806913ef52663b907b70f39025);
+            
+        
+
+        marker_41b91f4acc96feaf2dc2df23517572b7.bindPopup(popup_a6ebacd262d8f64e5aefc004d0ac03e0)
+        ;
+
+        
+    
+    
+                marker_41b91f4acc96feaf2dc2df23517572b7.setIcon(icon_d56a20618c8f45b84181b990d0b0474a);
+            
+    
+            var marker_f271f19dc8ec16800858b34b2675564a = L.marker(
+                [51.4829469, -0.270457],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_520f45d3abc5c72d10ecd5db413716ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a4421cb7291d91f1f584a2d5f151bcc1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5e58764b51ecb7dcdb501802f1dd86f = $(`<div id="html_b5e58764b51ecb7dcdb501802f1dd86f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008A (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_a4421cb7291d91f1f584a2d5f151bcc1.setContent(html_b5e58764b51ecb7dcdb501802f1dd86f);
+            
+        
+
+        marker_f271f19dc8ec16800858b34b2675564a.bindPopup(popup_a4421cb7291d91f1f584a2d5f151bcc1)
+        ;
+
+        
+    
+    
+                marker_f271f19dc8ec16800858b34b2675564a.setIcon(icon_520f45d3abc5c72d10ecd5db413716ab);
+            
+    
+            var marker_3db42546b69bc27ec82b5777706b5ffc = L.marker(
+                [51.48546, -0.2641635],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_2902b7ec833488b84075040d821ba8f1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_960767c2ac438ce68c7eb6899617a3f9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d87f43eab66930a59a42c92000ae06a5 = $(`<div id="html_d87f43eab66930a59a42c92000ae06a5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_960767c2ac438ce68c7eb6899617a3f9.setContent(html_d87f43eab66930a59a42c92000ae06a5);
+            
+        
+
+        marker_3db42546b69bc27ec82b5777706b5ffc.bindPopup(popup_960767c2ac438ce68c7eb6899617a3f9)
+        ;
+
+        
+    
+    
+                marker_3db42546b69bc27ec82b5777706b5ffc.setIcon(icon_2902b7ec833488b84075040d821ba8f1);
+            
+    
+            var marker_d6d2486b3e6ec36adc3c636593c314b0 = L.marker(
+                [51.4859744, -0.2666188],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_9c27e95e720c8ccf0b2d8ad833240812 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_30a8e921c76266cfda1359fa7b11dbff = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8143daaa57f6d50e3cd6781ce05e1c8a = $(`<div id="html_8143daaa57f6d50e3cd6781ce05e1c8a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_30a8e921c76266cfda1359fa7b11dbff.setContent(html_8143daaa57f6d50e3cd6781ce05e1c8a);
+            
+        
+
+        marker_d6d2486b3e6ec36adc3c636593c314b0.bindPopup(popup_30a8e921c76266cfda1359fa7b11dbff)
+        ;
+
+        
+    
+    
+                marker_d6d2486b3e6ec36adc3c636593c314b0.setIcon(icon_9c27e95e720c8ccf0b2d8ad833240812);
+            
+    
+            var marker_d01a2b2a3a8a38834cb7649ac8a91691 = L.marker(
+                [51.4865887, -0.2697706],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_fef37b0dc9d49dd88dd709766c872eee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_20d077a060075559a810cf0a1ece7439 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5cfd9b29ee067703abf11035cb6ae26f = $(`<div id="html_5cfd9b29ee067703abf11035cb6ae26f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_20d077a060075559a810cf0a1ece7439.setContent(html_5cfd9b29ee067703abf11035cb6ae26f);
+            
+        
+
+        marker_d01a2b2a3a8a38834cb7649ac8a91691.bindPopup(popup_20d077a060075559a810cf0a1ece7439)
+        ;
+
+        
+    
+    
+                marker_d01a2b2a3a8a38834cb7649ac8a91691.setIcon(icon_fef37b0dc9d49dd88dd709766c872eee);
+            
+    
+            var marker_8d689146d4aaa9c84cc3f97236cc591c = L.marker(
+                [51.48546, -0.2641635],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_1e197f006c13d42ae3a037679d42cddf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_108cbf3fba77ed70fb07947bf0240827 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5a9b7ea81054e8faf2005214517f2204 = $(`<div id="html_5a9b7ea81054e8faf2005214517f2204" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007C (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_108cbf3fba77ed70fb07947bf0240827.setContent(html_5a9b7ea81054e8faf2005214517f2204);
+            
+        
+
+        marker_8d689146d4aaa9c84cc3f97236cc591c.bindPopup(popup_108cbf3fba77ed70fb07947bf0240827)
+        ;
+
+        
+    
+    
+                marker_8d689146d4aaa9c84cc3f97236cc591c.setIcon(icon_1e197f006c13d42ae3a037679d42cddf);
+            
+    
+            var marker_e8f61879dfceb33d7f85aefc13288b9b = L.marker(
+                [51.4875655, -0.2612595],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_a0549d0c98c5d9e1a6867b18e2f2bfb5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fa7e52fa52162758a9568d54a0fe4443 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f13f0b3022b0734c06990935c9b47ea3 = $(`<div id="html_f13f0b3022b0734c06990935c9b47ea3" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007C (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_fa7e52fa52162758a9568d54a0fe4443.setContent(html_f13f0b3022b0734c06990935c9b47ea3);
+            
+        
+
+        marker_e8f61879dfceb33d7f85aefc13288b9b.bindPopup(popup_fa7e52fa52162758a9568d54a0fe4443)
+        ;
+
+        
+    
+    
+                marker_e8f61879dfceb33d7f85aefc13288b9b.setIcon(icon_a0549d0c98c5d9e1a6867b18e2f2bfb5);
+            
+    
+            var marker_384095360903e048d0c18c67038a1bc2 = L.marker(
+                [51.4825463, -0.2581381],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_0ad120851fcd9c562ed125fa7855f807 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_58f90481c861ccdcafb500249e0b3e82 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_51264e45d741a0eddbc4386b35960a4e = $(`<div id="html_51264e45d741a0eddbc4386b35960a4e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_58f90481c861ccdcafb500249e0b3e82.setContent(html_51264e45d741a0eddbc4386b35960a4e);
+            
+        
+
+        marker_384095360903e048d0c18c67038a1bc2.bindPopup(popup_58f90481c861ccdcafb500249e0b3e82)
+        ;
+
+        
+    
+    
+                marker_384095360903e048d0c18c67038a1bc2.setIcon(icon_0ad120851fcd9c562ed125fa7855f807);
+            
+    
+            var marker_448f5aa5224f92b3e8337b366d041f34 = L.marker(
+                [51.4799582, -0.2645187],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_3f653c36125ebb243a405f95188df403 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f559b39bec34056fdf77b81e0230bd1b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1e900ac5f24865d8af8e7c9338c2b947 = $(`<div id="html_1e900ac5f24865d8af8e7c9338c2b947" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f559b39bec34056fdf77b81e0230bd1b.setContent(html_1e900ac5f24865d8af8e7c9338c2b947);
+            
+        
+
+        marker_448f5aa5224f92b3e8337b366d041f34.bindPopup(popup_f559b39bec34056fdf77b81e0230bd1b)
+        ;
+
+        
+    
+    
+                marker_448f5aa5224f92b3e8337b366d041f34.setIcon(icon_3f653c36125ebb243a405f95188df403);
+            
+    
+            var marker_208dec476cd73140dd49d2437a258e78 = L.marker(
+                [51.4825463, -0.2581381],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_dbeac3502ad151ceb907c8a7db1512a3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3a30d84560994ea6cf199b7221bd68ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9b96f6f7258a5b01ec5e128c4c9b629f = $(`<div id="html_9b96f6f7258a5b01ec5e128c4c9b629f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007D (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3a30d84560994ea6cf199b7221bd68ab.setContent(html_9b96f6f7258a5b01ec5e128c4c9b629f);
+            
+        
+
+        marker_208dec476cd73140dd49d2437a258e78.bindPopup(popup_3a30d84560994ea6cf199b7221bd68ab)
+        ;
+
+        
+    
+    
+                marker_208dec476cd73140dd49d2437a258e78.setIcon(icon_dbeac3502ad151ceb907c8a7db1512a3);
+            
+    
+            var marker_e1c2043db9734c26bbb66319508f6ebd = L.marker(
+                [51.482181, -0.2664081],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_fa152b8a0123725ad8c87f38500728bf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_17a663ea99a31dbba8bf9c4a429c4121 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00ce61592b9ff556f5b1785360f89b1d = $(`<div id="html_00ce61592b9ff556f5b1785360f89b1d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007D (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_17a663ea99a31dbba8bf9c4a429c4121.setContent(html_00ce61592b9ff556f5b1785360f89b1d);
+            
+        
+
+        marker_e1c2043db9734c26bbb66319508f6ebd.bindPopup(popup_17a663ea99a31dbba8bf9c4a429c4121)
+        ;
+
+        
+    
+    
+                marker_e1c2043db9734c26bbb66319508f6ebd.setIcon(icon_fa152b8a0123725ad8c87f38500728bf);
+            
+    
+            var marker_c012065400388f9257010de5fae3d6a2 = L.marker(
+                [51.4805643, -0.2698611],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_dfd1099268bab1001490e87a97d8d9f5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ad9044a8e65329bb6f36a4edc7c79e07 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_13442bb6c968ef59125c0fc7f8551c70 = $(`<div id="html_13442bb6c968ef59125c0fc7f8551c70" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 007D (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_ad9044a8e65329bb6f36a4edc7c79e07.setContent(html_13442bb6c968ef59125c0fc7f8551c70);
+            
+        
+
+        marker_c012065400388f9257010de5fae3d6a2.bindPopup(popup_ad9044a8e65329bb6f36a4edc7c79e07)
+        ;
+
+        
+    
+    
+                marker_c012065400388f9257010de5fae3d6a2.setIcon(icon_dfd1099268bab1001490e87a97d8d9f5);
+            
+    
+            var marker_376a3452c87fccc5618c3922b8fa7ad4 = L.marker(
+                [51.4780384, -0.2684802],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_a8f9b36e6b4f3d1f18099bb9d942f177 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4181dded224bdeb5bc47b0e55016a43e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2fb550efa51da726bc930728bed21773 = $(`<div id="html_2fb550efa51da726bc930728bed21773" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_4181dded224bdeb5bc47b0e55016a43e.setContent(html_2fb550efa51da726bc930728bed21773);
+            
+        
+
+        marker_376a3452c87fccc5618c3922b8fa7ad4.bindPopup(popup_4181dded224bdeb5bc47b0e55016a43e)
+        ;
+
+        
+    
+    
+                marker_376a3452c87fccc5618c3922b8fa7ad4.setIcon(icon_a8f9b36e6b4f3d1f18099bb9d942f177);
+            
+    
+            var marker_4cd8bacd4ca702749a7344899ff8895d = L.marker(
+                [51.4799025, -0.2730601],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_aadb2bb15274a43eb6f4c507c35eccaf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_becf3a6169a0e8b993aaa10edcaec632 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d33f56b66537c0f308c041ab05b7af28 = $(`<div id="html_d33f56b66537c0f308c041ab05b7af28" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_becf3a6169a0e8b993aaa10edcaec632.setContent(html_d33f56b66537c0f308c041ab05b7af28);
+            
+        
+
+        marker_4cd8bacd4ca702749a7344899ff8895d.bindPopup(popup_becf3a6169a0e8b993aaa10edcaec632)
+        ;
+
+        
+    
+    
+                marker_4cd8bacd4ca702749a7344899ff8895d.setIcon(icon_aadb2bb15274a43eb6f4c507c35eccaf);
+            
+    
+            var marker_95abef6435c3b3e423efa7ff745f8407 = L.marker(
+                [51.482518, -0.2746518],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_6d7eb40819a4c2140a8ba1db9c32c3dc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5f5cc4a8db31032e1c6fe43e6520ca39 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b9e4c47c428afea0872b8809b336067 = $(`<div id="html_3b9e4c47c428afea0872b8809b336067" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5f5cc4a8db31032e1c6fe43e6520ca39.setContent(html_3b9e4c47c428afea0872b8809b336067);
+            
+        
+
+        marker_95abef6435c3b3e423efa7ff745f8407.bindPopup(popup_5f5cc4a8db31032e1c6fe43e6520ca39)
+        ;
+
+        
+    
+    
+                marker_95abef6435c3b3e423efa7ff745f8407.setIcon(icon_6d7eb40819a4c2140a8ba1db9c32c3dc);
+            
+    
+            var marker_72dc8f570486c73167fec6d9437f8281 = L.marker(
+                [51.4814442, -0.2727381],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_9fb4836ea5941678280fafd5a2ffa89e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9fe4e0619acb1dbd2f36d2affb939700 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fe1c7c97616cf96e6a9340e4e1dee600 = $(`<div id="html_fe1c7c97616cf96e6a9340e4e1dee600" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008B (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9fe4e0619acb1dbd2f36d2affb939700.setContent(html_fe1c7c97616cf96e6a9340e4e1dee600);
+            
+        
+
+        marker_72dc8f570486c73167fec6d9437f8281.bindPopup(popup_9fe4e0619acb1dbd2f36d2affb939700)
+        ;
+
+        
+    
+    
+                marker_72dc8f570486c73167fec6d9437f8281.setIcon(icon_9fb4836ea5941678280fafd5a2ffa89e);
+            
+    
+            var marker_9c2255783428c3a0ee3afa89f1d2fef6 = L.marker(
+                [51.4805643, -0.2698611],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_1c3819920f1bb55b06811113a74eb237 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_13e3561f9a148bb2a25e4cec270d8b0b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6835f2ff3f42ec7bbffd471cf10ff12e = $(`<div id="html_6835f2ff3f42ec7bbffd471cf10ff12e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008B (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_13e3561f9a148bb2a25e4cec270d8b0b.setContent(html_6835f2ff3f42ec7bbffd471cf10ff12e);
+            
+        
+
+        marker_9c2255783428c3a0ee3afa89f1d2fef6.bindPopup(popup_13e3561f9a148bb2a25e4cec270d8b0b)
+        ;
+
+        
+    
+    
+                marker_9c2255783428c3a0ee3afa89f1d2fef6.setIcon(icon_1c3819920f1bb55b06811113a74eb237);
+            
+    
+            var marker_13690266645df39aa23ef5cb8341fc98 = L.marker(
+                [51.4883608, -0.2849152],
+                {
+}
+            ).addTo(feature_group_024d1924309a2ec830efac3b89f78514);
+        
+    
+            var icon_ca6b1514c166cd84ecc121a211e853dd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_362365a8b26ec8a159ffae7ce80e8184 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3f2ac90c3a3685491a808c28d74387c9 = $(`<div id="html_3f2ac90c3a3685491a808c28d74387c9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Hounslow 008C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_362365a8b26ec8a159ffae7ce80e8184.setContent(html_3f2ac90c3a3685491a808c28d74387c9);
+            
+        
+
+        marker_13690266645df39aa23ef5cb8341fc98.bindPopup(popup_362365a8b26ec8a159ffae7ce80e8184)
+        ;
+
+        
+    
+    
+                marker_13690266645df39aa23ef5cb8341fc98.setIcon(icon_ca6b1514c166cd84ecc121a211e853dd);
+            
+    
+            feature_group_024d1924309a2ec830efac3b89f78514.addTo(map_a39c2e23d52cc70c3da3d16e4338c80e);
+        
+    
+            var poly_line_bf7da26cbd83500a4216a573fd8e2fa6 = L.polyline(
+                [[51.4849158, -0.2689653], [51.4843618, -0.267767], [51.4858713, -0.2661088], [51.4859744, -0.2666188], [51.4858713, -0.2661088], [51.4857299, -0.2654049], [51.48546, -0.2641635], [51.4875655, -0.2612595], [51.48546, -0.2641635], [51.4843618, -0.267767], [51.4849158, -0.2689653], [51.4851048, -0.2695285], [51.4851106, -0.2695467], [51.4854845, -0.2705115], [51.4865887, -0.2697706], [51.4854845, -0.2705115], [51.4858751, -0.2711456], [51.4856637, -0.2715334], [51.4854156, -0.2719074], [51.4850918, -0.2723871], [51.4848379, -0.2719287], [51.4850918, -0.2723871], [51.4849352, -0.272622], [51.4845763, -0.2731043], [51.4838619, -0.2741599], [51.4833126, -0.2732119], [51.4836713, -0.2726616], [51.4833126, -0.2732119], [51.4838619, -0.2741599], [51.4829947, -0.2754344], [51.4832922, -0.2763327], [51.4840296, -0.2768231], [51.484233, -0.2772392], [51.4845754, -0.2778604], [51.4848007, -0.2781505], [51.4862912, -0.2803851], [51.4869223, -0.282109], [51.4871197, -0.2827036], [51.4871854, -0.2834263], [51.4872242, -0.2845848], [51.4881383, -0.2848788], [51.4883608, -0.2849152], [51.4881383, -0.2848788], [51.4872242, -0.2845848], [51.4871854, -0.2834263], [51.4871197, -0.2827036], [51.4869223, -0.282109], [51.4862912, -0.2803851], [51.4848007, -0.2781505], [51.4845754, -0.2778604], [51.484233, -0.2772392], [51.4840296, -0.2768231], [51.4832922, -0.2763327], [51.4829947, -0.2754344], [51.482518, -0.2746518], [51.4814442, -0.2727381], [51.4816378, -0.2709126], [51.4816434, -0.2705182], [51.4816458, -0.2704259], [51.4818401, -0.2704824], [51.4833414, -0.2697212], [51.4834335, -0.2696737], [51.4830307, -0.2674898], [51.4829472, -0.2652961], [51.4824854, -0.2659711], [51.482181, -0.2664081], [51.4824854, -0.2659711], [51.4829472, -0.2652961], [51.4815714, -0.2631471], [51.4816228, -0.2628199], [51.4825463, -0.2581381], [51.4816228, -0.2628199], [51.4815714, -0.2631471], [51.4829472, -0.2652961], [51.4830307, -0.2674898], [51.4814506, -0.2681562], [51.4813938, -0.2672373], [51.4813473, -0.2662885], [51.4799582, -0.2645187], [51.4813473, -0.2662885], [51.4813938, -0.2672373], [51.4814506, -0.2681562], [51.4830307, -0.2674898], [51.4834335, -0.2696737], [51.4833414, -0.2697212], [51.4818401, -0.2704824], [51.4816458, -0.2704259], [51.4816863, -0.2699667], [51.4805643, -0.2698611], [51.4794872, -0.2694393], [51.4780384, -0.2684802], [51.4773514, -0.2705126], [51.4784777, -0.2717705], [51.4791033, -0.2723823], [51.4799025, -0.2730601], [51.4806732, -0.2736161], [51.4811879, -0.2739142], [51.482518, -0.2746518], [51.4829947, -0.2754344], [51.4838619, -0.2741599], [51.4845763, -0.2731043], [51.4835273, -0.271163], [51.4829469, -0.270457], [51.4835273, -0.271163], [51.4843032, -0.2702413], [51.4845599, -0.2700528], [51.4846921, -0.2699558], [51.4851106, -0.2695467], [51.4851048, -0.2695285], [51.4849158, -0.2689653]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_a39c2e23d52cc70c3da3d16e4338c80e);
+        
+    
+            var layer_control_ad1140c52edde644425b5e46e55b2525_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_b2d585843c1f7f5593fbbbaf2646a402,
+                },
+                overlays :  {
+                    "Chiswick Riverside Boundary" : geo_json_dc754ba644b3dba7a05319cf85790cd7,
+                    "LSOA Median Crime Rates for Chiswick Riverside" : geo_json_fa927e1ed384365dfebfcab8adcbecfd,
+                    "Patrol Waypoints" : feature_group_024d1924309a2ec830efac3b89f78514,
+                },
+            };
+            let layer_control_ad1140c52edde644425b5e46e55b2525 = L.control.layers(
+                layer_control_ad1140c52edde644425b5e46e55b2525_layers.base_layers,
+                layer_control_ad1140c52edde644425b5e46e55b2525_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_a39c2e23d52cc70c3da3d16e4338c80e);
+
+        
+</script>
+</html>

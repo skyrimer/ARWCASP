@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_94907d39cf39e49e38aa0e59a871668e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_94907d39cf39e49e38aa0e59a871668e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_94907d39cf39e49e38aa0e59a871668e = L.map(
+                "map_94907d39cf39e49e38aa0e59a871668e",
+                {
+                    center: [51.57481518171206, -0.21270573268185983],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3f6021de462ca7dab716d74fb1a96f7d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3f6021de462ca7dab716d74fb1a96f7d.addTo(map_94907d39cf39e49e38aa0e59a871668e);
+        
+    
+        function geo_json_0142d00780513613046e843d28f1a1aa_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_0142d00780513613046e843d28f1a1aa_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_0142d00780513613046e843d28f1a1aa = L.geoJson(null, {
+                onEachFeature: geo_json_0142d00780513613046e843d28f1a1aa_onEachFeature,
+            
+                style: geo_json_0142d00780513613046e843d28f1a1aa_styler,
+            ...{
+}
+        });
+
+        function geo_json_0142d00780513613046e843d28f1a1aa_add (data) {
+            geo_json_0142d00780513613046e843d28f1a1aa
+                .addData(data);
+        }
+            geo_json_0142d00780513613046e843d28f1a1aa_add({"features": [{"geometry": {"coordinates": [[[-0.2120339529555672, 51.58101320494422], [-0.21183136016322499, 51.58121148882323], [-0.2117191935572336, 51.58134651392633], [-0.2116149138344322, 51.58150494258318], [-0.2115268935764683, 51.581649325218066], [-0.21145053188154822, 51.58179379556701], [-0.2113872359225463, 51.58193585796611], [-0.21131076428648618, 51.58215584051257], [-0.21117140338210688, 51.582946882690216], [-0.21111010271279992, 51.58322292271366], [-0.21105758374074995, 51.583420795782544], [-0.21101702502050723, 51.58353533630758], [-0.21080481615935406, 51.58401134519583], [-0.2106841222678802, 51.58425411637229], [-0.21006249197980564, 51.5854541188571], [-0.2095308154783503, 51.58642076789583], [-0.20939919510986194, 51.58661114057257], [-0.20924207774924092, 51.58682638527271], [-0.20910614211200076, 51.5869781257364], [-0.20877961738010206, 51.58731843914624], [-0.20828297719813896, 51.58768671990283], [-0.20771649476108345, 51.587993700684095], [-0.20710115103248777, 51.588299033371776], [-0.20641709810861056, 51.58851431429411], [-0.20559399109476945, 51.58870310308758], [-0.2048823299282106, 51.58888469091674], [-0.20428371751147648, 51.58901847062911], [-0.20367710047010779, 51.58913783107695], [-0.20347463115851014, 51.589183276710536], [-0.20284483927638483, 51.58934084419148], [-0.2022012365049251, 51.589480307140214], [-0.20161208117020732, 51.589630399722225], [-0.2012513879392873, 51.58969777921859], [-0.2008479655728736, 51.589750029092436], [-0.20043815058855224, 51.58978330107168], [-0.20012588520629743, 51.58979379529531], [-0.1998057652654429, 51.58978618869287], [-0.19984459576964506, 51.589020676897555], [-0.20021777038532104, 51.589004824673786], [-0.20041456621033701, 51.5889915708937], [-0.200381705381392, 51.588726768063935], [-0.20039737184057566, 51.588477902010155], [-0.20043051366952463, 51.588295828134804], [-0.2004503268185708, 51.58779441333462], [-0.2004695394515671, 51.58730818198585], [-0.2004680299956231, 51.58683430843436], [-0.20044697386849103, 51.586746694974636], [-0.20053595304272495, 51.58672378692126], [-0.20053190517621125, 51.58653404084677], [-0.20051615376881712, 51.586273006286525], [-0.20049125489821107, 51.58606577004146], [-0.20047684842800415, 51.58588215795067], [-0.20039157753754838, 51.58588354738], [-0.20025573209107816, 51.58588775710303], [-0.2002725574061598, 51.58498607194779], [-0.20038386254124102, 51.58498238489728], [-0.2003975653262737, 51.58492775744274], [-0.20040381648800662, 51.58476954351549], [-0.20037728678961053, 51.58449216200382], [-0.20037071183593727, 51.584330245379995], [-0.20036541837872004, 51.584135895342904], [-0.20038242953551869, 51.584033672849294], [-0.2003697461294432, 51.583878764461744], [-0.2003417165556866, 51.58378394208461], [-0.20039258518612385, 51.58377663132981], [-0.2003584812659288, 51.583507224414404], [-0.20020929331180648, 51.583117387686414], [-0.2002006991196571, 51.58300659183298], [-0.2002543943225658, 51.582924709407685], [-0.20042940481123614, 51.58284468725871], [-0.20048400174115474, 51.58281226228578], [-0.1997478162884483, 51.58237557579257], [-0.19963472149814548, 51.58231630635707], [-0.1995084144859457, 51.58226312695078], [-0.19934887699360462, 51.5822076395947], [-0.19915777425799167, 51.58214986970513], [-0.1997769232890875, 51.58200645281691], [-0.1997716636028572, 51.581991988502075], [-0.19968063743822806, 51.58177483765299], [-0.19961534248807594, 51.58156608236365], [-0.19990100097587155, 51.581531808290954], [-0.1998162323688185, 51.58130387588823], [-0.19982535658926764, 51.58125367312549], [-0.1998308577322025, 51.581225889216256], [-0.19984037246472125, 51.581165803693004], [-0.19974774636519316, 51.580953033307495], [-0.19966781525283683, 51.58096708975271], [-0.19947591398722164, 51.581001902751005], [-0.1994613962654476, 51.580748977503724], [-0.19930784305399077, 51.58039772842042], [-0.1992097188473758, 51.58014352023928], [-0.1989394209431081, 51.58018980493278], [-0.19845524888034538, 51.57896389917131], [-0.19792714447700288, 51.579035799939575], [-0.1974789680257045, 51.57795976267499], [-0.19747761203334369, 51.57795794389155], [-0.1971509376468126, 51.57716784833263], [-0.19712060270226442, 51.577095464060825], [-0.1975152336015491, 51.577007043465954], [-0.19751669620215068, 51.577006166952735], [-0.19979366414354038, 51.57661401356335], [-0.20006012514375393, 51.5764805572011], [-0.2002914906120359, 51.57632579563532], [-0.20046235419922379, 51.57638325350564], [-0.2011536044615751, 51.57587325340049], [-0.2025797375358487, 51.57487710304622], [-0.2026096265120739, 51.57485238946228], [-0.20413832755551115, 51.57572020318001], [-0.2050544510572169, 51.57513981534927], [-0.20580814173892856, 51.574655914520086], [-0.2063139880740168, 51.57441633867434], [-0.20740946003989869, 51.573863845182316], [-0.20682247433183942, 51.57363184089493], [-0.20783378424852442, 51.57316444916443], [-0.20793571631170374, 51.57310487536245], [-0.20799920032130328, 51.57299428172153], [-0.2080469439600856, 51.57280892245926], [-0.20807045691396867, 51.57268603169753], [-0.20819408618956128, 51.57258903193687], [-0.20839656885685373, 51.57250492265737], [-0.20865716368569753, 51.5724467816018], [-0.2092186754864449, 51.57229443482073], [-0.209699507377182, 51.57217861157532], [-0.21060089502266033, 51.572006181676805], [-0.21076290642227657, 51.571922350186036], [-0.21022475636866494, 51.57144379873534], [-0.20982305964079923, 51.571053718169395], [-0.2090878443886459, 51.570337521692394], [-0.2081701896236829, 51.569305510664435], [-0.20793800633325887, 51.5690106962277], [-0.20742350754977038, 51.56825911329219], [-0.20712588183454292, 51.567792401655296], [-0.20672648160820212, 51.56708842177637], [-0.20691027560043904, 51.56703729170776], [-0.20708257163626126, 51.566985086695915], [-0.2072054450617786, 51.56690695496385], [-0.20815795940584886, 51.566424188959395], [-0.20917054144662514, 51.56591994747611], [-0.21036760024832893, 51.56530694780684], [-0.21085360035074838, 51.56505446437493], [-0.21083495371727928, 51.565017321956795], [-0.21203053986658238, 51.56440428303278], [-0.21279825684530407, 51.56406888301095], [-0.21319912098511126, 51.56396342462577], [-0.21367417186092555, 51.5635129877118], [-0.21446545456696886, 51.563091543838205], [-0.21498841331693075, 51.562926896597254], [-0.21538670796688641, 51.56340321025675], [-0.21546699046020404, 51.56337925984818], [-0.21566308812682833, 51.56345685712739], [-0.2173219597316304, 51.564682565641846], [-0.2175656566567744, 51.564537936374975], [-0.21791115406724404, 51.564448791361265], [-0.22238978489166863, 51.56329555293832], [-0.22267513266938205, 51.563528215540074], [-0.22343099606155162, 51.56412327774212], [-0.2241075088198376, 51.56471893197437], [-0.22462015050994147, 51.56515469211304], [-0.2250716858594471, 51.565488840277034], [-0.22518622365793448, 51.56558415617235], [-0.2254898356065506, 51.56586482357678], [-0.22570535445044085, 51.56603709009582], [-0.22594226551503777, 51.566216062356084], [-0.22642650350874205, 51.56656328521033], [-0.2267205541162339, 51.56679346212687], [-0.22689375348731494, 51.56690395648057], [-0.22718806890554735, 51.56705403741681], [-0.22773836167388326, 51.56737348538822], [-0.22803095909020418, 51.5675281229963], [-0.22839800767351032, 51.5677017735152], [-0.22863797104138725, 51.5678394333688], [-0.22881904150086568, 51.567968023144985], [-0.22893764349305262, 51.568072386362715], [-0.2293829256902125, 51.56853227965752], [-0.2298073831902652, 51.56893432260145], [-0.2301690768627002, 51.56920956078809], [-0.23054677735222154, 51.569550664391826], [-0.23091976996940264, 51.56983236338509], [-0.23132891517889917, 51.57018202919407], [-0.23188160938421898, 51.570628338780416], [-0.23223558557534527, 51.57095289772235], [-0.23066828992874203, 51.57155064887301], [-0.22992441055535848, 51.571866747564094], [-0.22958588413001002, 51.57199918402576], [-0.22910312317971968, 51.57216908780896], [-0.228342015609423, 51.57240751479507], [-0.22790301032294197, 51.57252593369012], [-0.22774451630043774, 51.57255680226372], [-0.22707140920575808, 51.572685976069906], [-0.2260109973620921, 51.57290107717135], [-0.2245390791865845, 51.57316028618921], [-0.22385821938173744, 51.573265052006164], [-0.22350887189440816, 51.573341660681834], [-0.22318200042060954, 51.57343380132442], [-0.2227330122139296, 51.57358791895703], [-0.22232116007068217, 51.573750778119866], [-0.22212869950629063, 51.57383776007239], [-0.2219433132155681, 51.573929433674834], [-0.2217558578456763, 51.57403447037268], [-0.2215531498830175, 51.57416444694505], [-0.22131413559992996, 51.57433441669233], [-0.22109984394657434, 51.57450197389842], [-0.22093848238347086, 51.57464255480124], [-0.220668884487423, 51.57489476536464], [-0.22005973108104804, 51.57552667712526], [-0.2197159255384796, 51.5758658595804], [-0.2193621380875347, 51.576168031576394], [-0.21919986839747937, 51.5762950218015], [-0.2190114451850251, 51.57642440171973], [-0.21876872894166285, 51.57657893767307], [-0.21856041981336566, 51.57670253128659], [-0.21838936912420634, 51.576795315926475], [-0.21793762229315783, 51.577018684548406], [-0.2165136956942491, 51.577631010872814], [-0.215979885325307, 51.57784674211545], [-0.21577250937179174, 51.577946162563585], [-0.21557360643613907, 51.578051015441964], [-0.21536098728598585, 51.57817184096823], [-0.21486453374021255, 51.57846643606797], [-0.21446756185149718, 51.57872748265622], [-0.2142790227801384, 51.57886224714763], [-0.21413450210090584, 51.57897601587945], [-0.21394036660064517, 51.579141169951804], [-0.21372196954574182, 51.57933930642967], [-0.2131450880694654, 51.57991503844126], [-0.21251422260614816, 51.58054388397218], [-0.2120339529555672, 51.58101320494422]]], "type": "Polygon"}, "id": "194", "properties": {"DISTRICT": "Barnet", "GSS_CODE": "E05000053", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "NAME": "Golders Green", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_0142d00780513613046e843d28f1a1aa.addTo(map_94907d39cf39e49e38aa0e59a871668e);
+        
+    
+        function geo_json_77861abe7b244c9005176eafd5b56ae0_styler(feature) {
+            switch(feature.id) {
+                case "202": case "203": case "205": case "206": case "207": case "209": case "211": case "212": 
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_77861abe7b244c9005176eafd5b56ae0_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_77861abe7b244c9005176eafd5b56ae0 = L.geoJson(null, {
+                onEachFeature: geo_json_77861abe7b244c9005176eafd5b56ae0_onEachFeature,
+            
+                style: geo_json_77861abe7b244c9005176eafd5b56ae0_styler,
+            ...{
+}
+        });
+
+        function geo_json_77861abe7b244c9005176eafd5b56ae0_add (data) {
+            geo_json_77861abe7b244c9005176eafd5b56ae0
+                .addData(data);
+        }
+            geo_json_77861abe7b244c9005176eafd5b56ae0_add({"features": [{"geometry": {"coordinates": [[[[-0.20640973454000264, 51.58243876531222], [-0.2109864159026544, 51.5836043150896], [-0.21206085259545185, 51.581023509532145], [-0.21449481320425368, 51.57870965558385], [-0.21297621845497033, 51.578049996232565], [-0.20398671602893226, 51.57924468726653], [-0.2039230557421102, 51.58007377816233], [-0.20640973454000264, 51.58243876531222]]]], "type": "MultiPolygon"}, "id": "202", "properties": {"BNG_E": 524187, "BNG_N": 188463, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{9EBE0464-27BC-41FB-9B1B-DE426C8F91AD}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.58135986328125, "LONG": -0.2090499997138977, "LSOA21CD": "E01000215", "LSOA21NM": "Barnet 037B", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Golders Green", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.1979056974445662, 51.579032343778806], [-0.20035671474106678, 51.58274633034737], [-0.2039230557421102, 51.58007377816233], [-0.20398671602893226, 51.57924468726653], [-0.20046993159039972, 51.57633551784521], [-0.19711724234674402, 51.577071195205754], [-0.1979056974445662, 51.579032343778806]]]], "type": "MultiPolygon"}, "id": "203", "properties": {"BNG_E": 524768, "BNG_N": 188278, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{00874FB3-CC4D-4537-B9B0-B253062354FA}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.57957077026367, "LONG": -0.2007399946451187, "LSOA21CD": "E01000216", "LSOA21NM": "Barnet 035E", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Golders Green", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.20035671474106678, 51.58274633034737], [-0.20052004647016977, 51.58628631520746], [-0.20640973454000264, 51.58243876531222], [-0.2039230557421102, 51.58007377816233], [-0.20035671474106678, 51.58274633034737]]]], "type": "MultiPolygon"}, "id": "204", "properties": {"BNG_E": 524583, "BNG_N": 188653, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{6D20FD3E-CD63-42E4-B75C-8654EF0F2A61}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.58298110961914, "LONG": -0.20327000319957733, "LSOA21CD": "E01000217", "LSOA21NM": "Barnet 035F", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Golders Green", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.20046993159039972, 51.57633551784521], [-0.20398671602893226, 51.57924468726653], [-0.21297621845497033, 51.578049996232565], [-0.21059460851873235, 51.57709266128592], [-0.20412849986824338, 51.575710545227174], [-0.20263683698512505, 51.57484259114997], [-0.20046993159039972, 51.57633551784521]]]], "type": "MultiPolygon"}, "id": "205", "properties": {"BNG_E": 524565, "BNG_N": 188001, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{E9E7FBD3-FF01-4A11-AE99-1EFE642E4540}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.57712173461914, "LONG": -0.2037699967622757, "LSOA21CD": "E01000218", "LSOA21NM": "Barnet 037C", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Golders Green", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.21297621845497033, 51.578049996232565], [-0.21449481320425368, 51.57870965558385], [-0.21670462719191996, 51.577548759710496], [-0.2181090886172193, 51.57693393978328], [-0.21160489287360953, 51.574082416315164], [-0.20660525881107325, 51.57464852278443], [-0.21059460851873235, 51.57709266128592], [-0.21297621845497033, 51.578049996232565]]]], "type": "MultiPolygon"}, "id": "206", "properties": {"BNG_E": 523932, "BNG_N": 187892, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{236C2754-F6E4-4BC8-BD68-70EF35E74FD8}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.57627868652344, "LONG": -0.21292999386787415, "LSOA21CD": "E01000219", "LSOA21NM": "Barnet 037D", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Golders Green", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.20412849986824338, 51.575710545227174], [-0.21059460851873235, 51.57709266128592], [-0.20660525881107325, 51.57464852278443], [-0.21160489287360953, 51.574082416315164], [-0.210250187465452, 51.57206553634093], [-0.20412849986824338, 51.575710545227174]]]], "type": "MultiPolygon"}, "id": "207", "properties": {"BNG_E": 524286, "BNG_N": 187908, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{318E9376-950D-453E-89D8-FD6B8713DA77}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.576351165771484, "LONG": -0.20781999826431274, "LSOA21CD": "E01000220", "LSOA21NM": "Barnet 037E", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Golders Green", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.21160489287360953, 51.574082416315164], [-0.2181090886172193, 51.57693393978328], [-0.2298221137500233, 51.57190634591536], [-0.22052168713270398, 51.570382072307886], [-0.2107001390378183, 51.57195103722541], [-0.210250187465452, 51.57206553634093], [-0.21160489287360953, 51.574082416315164]]]], "type": "MultiPolygon"}, "id": "208", "properties": {"BNG_E": 523607, "BNG_N": 187551, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{E558E816-73D3-4C61-84F4-6D2470D66070}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.57329177856445, "LONG": -0.217739999294281, "LSOA21CD": "E01000221", "LSOA21NM": "Barnet 039B", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Cricklewood", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.20908759146076322, 51.570337715260266], [-0.2107001390378183, 51.57195103722541], [-0.22052168713270398, 51.570382072307886], [-0.21774967560702876, 51.56683881773302], [-0.2082747578913013, 51.566365906511926], [-0.20672704343614456, 51.56709209993586], [-0.20908759146076322, 51.570337715260266]]]], "type": "MultiPolygon"}, "id": "209", "properties": {"BNG_E": 523860, "BNG_N": 187175, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{7376FCEB-FEB3-418D-AC27-F323D3B610FA}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.56985092163086, "LONG": -0.21422000229358673, "LSOA21CD": "E01000222", "LSOA21NM": "Barnet 040C", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Cricklewood", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.22052168713270398, 51.570382072307886], [-0.2298221137500233, 51.57190634591536], [-0.23051816346413703, 51.57161415647024], [-0.23223532020955615, 51.57095264977387], [-0.2293966764110256, 51.568543571860765], [-0.22217690287825315, 51.56312150697934], [-0.21519123480191485, 51.56324137976267], [-0.21774967560702876, 51.56683881773302], [-0.22052168713270398, 51.570382072307886]]]], "type": "MultiPolygon"}, "id": "210", "properties": {"BNG_E": 523232, "BNG_N": 186915, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{29020B0C-98C5-4BB5-B455-406D13AC8F00}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.567649841308594, "LONG": -0.2233700007200241, "LSOA21CD": "E01000223", "LSOA21NM": "Barnet 039C", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Cricklewood", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.2082747578913013, 51.566365906511926], [-0.21774967560702876, 51.56683881773302], [-0.21519123480191485, 51.56324137976267], [-0.21494361125695619, 51.562933617520834], [-0.21212315953794506, 51.56435265428918], [-0.2082747578913013, 51.566365906511926]]]], "type": "MultiPolygon"}, "id": "211", "properties": {"BNG_E": 523919, "BNG_N": 186687, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{3E037897-45EB-4397-9D1E-1F4537C3A605}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.56544876098633, "LONG": -0.21355000138282776, "LSOA21CD": "E01000224", "LSOA21NM": "Barnet 040D", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Cricklewood", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.20052004647016977, 51.58628631520746], [-0.19979735778640215, 51.58977861921996], [-0.20312111896885413, 51.58928514871876], [-0.20513105790380437, 51.588828717580526], [-0.20886926243763684, 51.587214054346106], [-0.2109864159026544, 51.5836043150896], [-0.20640973454000264, 51.58243876531222], [-0.20052004647016977, 51.58628631520746]]]], "type": "MultiPolygon"}, "id": "212", "properties": {"BNG_E": 524386, "BNG_N": 188988, "DISTRICT": "Barnet", "GSS_CODE": "E05000053", "GlobalID": "{55416D53-F994-4454-8E36-2AACBCD4B9EF}", "HECTARES": 297.292, "LAGSSCODE": "E09000003", "LAT": 51.586029052734375, "LONG": -0.20600000023841858, "LSOA21CD": "E01000225", "LSOA21NM": "Barnet 037F", "LSOA21NMW": " ", "NAME": "Golders Green", "NONLD_AREA": 0.0, "WD24NM": "Golders Green", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_77861abe7b244c9005176eafd5b56ae0.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_77861abe7b244c9005176eafd5b56ae0.addTo(map_94907d39cf39e49e38aa0e59a871668e);
+        
+    
+            var feature_group_19e9b8809c232672146106830bf9cc51 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_6e344317b230fef7c50bd043b452338c = L.marker(
+                [51.5803154, -0.2067267],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_3ba89f87a07c0292c71b862f5a99967c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0f815822e8ccf8039010a636ad803798 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2440ab300cedf3aace9c14ecd8bf2383 = $(`<div id="html_2440ab300cedf3aace9c14ecd8bf2383" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_0f815822e8ccf8039010a636ad803798.setContent(html_2440ab300cedf3aace9c14ecd8bf2383);
+            
+        
+
+        marker_6e344317b230fef7c50bd043b452338c.bindPopup(popup_0f815822e8ccf8039010a636ad803798)
+        ;
+
+        
+    
+    
+                marker_6e344317b230fef7c50bd043b452338c.setIcon(icon_3ba89f87a07c0292c71b862f5a99967c);
+            
+    
+            var marker_d87b8da67d2cf0e939f9f3f7570e2470 = L.marker(
+                [51.5796182, -0.2105944],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_ade6babe037dac1a791b37b6f6c7a992 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0c07bda040b49a63b52d62c2bf73bd8c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1820f3f81647d3e933c16845d1bb971f = $(`<div id="html_1820f3f81647d3e933c16845d1bb971f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_0c07bda040b49a63b52d62c2bf73bd8c.setContent(html_1820f3f81647d3e933c16845d1bb971f);
+            
+        
+
+        marker_d87b8da67d2cf0e939f9f3f7570e2470.bindPopup(popup_0c07bda040b49a63b52d62c2bf73bd8c)
+        ;
+
+        
+    
+    
+                marker_d87b8da67d2cf0e939f9f3f7570e2470.setIcon(icon_ade6babe037dac1a791b37b6f6c7a992);
+            
+    
+            var marker_318100936f28aced46ea359144e50d26 = L.marker(
+                [51.5797053, -0.2061195],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_1f1ec49227345bb8628facdcfa41a73e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5487cdd36a87b6bdde5b826e8ba1e798 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b624e254c0cb43a3898469de7fea4be3 = $(`<div id="html_b624e254c0cb43a3898469de7fea4be3" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037B (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_5487cdd36a87b6bdde5b826e8ba1e798.setContent(html_b624e254c0cb43a3898469de7fea4be3);
+            
+        
+
+        marker_318100936f28aced46ea359144e50d26.bindPopup(popup_5487cdd36a87b6bdde5b826e8ba1e798)
+        ;
+
+        
+    
+    
+                marker_318100936f28aced46ea359144e50d26.setIcon(icon_1f1ec49227345bb8628facdcfa41a73e);
+            
+    
+            var marker_9d621d6953c1456ff8a6e7e92e756f30 = L.marker(
+                [51.5795379, -0.2091059],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_2ca49aee127af5e579b35a6b2720bcc6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ccf8786de51adb6f953e72cc8f63b287 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_acd72382d4076992dff30aad5f385c7a = $(`<div id="html_acd72382d4076992dff30aad5f385c7a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037B (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_ccf8786de51adb6f953e72cc8f63b287.setContent(html_acd72382d4076992dff30aad5f385c7a);
+            
+        
+
+        marker_9d621d6953c1456ff8a6e7e92e756f30.bindPopup(popup_ccf8786de51adb6f953e72cc8f63b287)
+        ;
+
+        
+    
+    
+                marker_9d621d6953c1456ff8a6e7e92e756f30.setIcon(icon_2ca49aee127af5e579b35a6b2720bcc6);
+            
+    
+            var marker_76b201680887c4a2358765b8e5f1960f = L.marker(
+                [51.5833169, -0.2099355],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_4b9526f3dfef3113d15c2d21779ade3f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7cfb67462ae5fa12d9ad58b1603008aa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_10fafadf81dc8c2cd6598c2bf6abcc19 = $(`<div id="html_10fafadf81dc8c2cd6598c2bf6abcc19" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037B (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_7cfb67462ae5fa12d9ad58b1603008aa.setContent(html_10fafadf81dc8c2cd6598c2bf6abcc19);
+            
+        
+
+        marker_76b201680887c4a2358765b8e5f1960f.bindPopup(popup_7cfb67462ae5fa12d9ad58b1603008aa)
+        ;
+
+        
+    
+    
+                marker_76b201680887c4a2358765b8e5f1960f.setIcon(icon_4b9526f3dfef3113d15c2d21779ade3f);
+            
+    
+            var marker_7aafd2e716f85c02e52bee3013d3f14a = L.marker(
+                [51.5805466, -0.199792],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_bc2889f0c10bca710519d4521d124243 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_709f3473b9b04ee19b7988ffd56edee7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_73611974696ddf2b9f6ff2c0ac92714c = $(`<div id="html_73611974696ddf2b9f6ff2c0ac92714c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 035E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_709f3473b9b04ee19b7988ffd56edee7.setContent(html_73611974696ddf2b9f6ff2c0ac92714c);
+            
+        
+
+        marker_7aafd2e716f85c02e52bee3013d3f14a.bindPopup(popup_709f3473b9b04ee19b7988ffd56edee7)
+        ;
+
+        
+    
+    
+                marker_7aafd2e716f85c02e52bee3013d3f14a.setIcon(icon_bc2889f0c10bca710519d4521d124243);
+            
+    
+            var marker_417bd7f79deccba47524a37046020ff4 = L.marker(
+                [51.5771276, -0.2021829],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_e9234e55c7c0fbea268de8b51006d8ff = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dad84c0802c58fe5681de817e6eac38b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c49b0c31889dccd3679fba6e5ef6333c = $(`<div id="html_c49b0c31889dccd3679fba6e5ef6333c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 035E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_dad84c0802c58fe5681de817e6eac38b.setContent(html_c49b0c31889dccd3679fba6e5ef6333c);
+            
+        
+
+        marker_417bd7f79deccba47524a37046020ff4.bindPopup(popup_dad84c0802c58fe5681de817e6eac38b)
+        ;
+
+        
+    
+    
+                marker_417bd7f79deccba47524a37046020ff4.setIcon(icon_e9234e55c7c0fbea268de8b51006d8ff);
+            
+    
+            var marker_23ec9150d5a6a12dc2717df21d34b141 = L.marker(
+                [51.5771276, -0.2021829],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_13f773d48c2a5a2344b1191cdcda9dde = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ffdb775b5ea617911f5ba0ba187b786 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_76a354eaff36964890fa8efba879361b = $(`<div id="html_76a354eaff36964890fa8efba879361b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 035E (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_9ffdb775b5ea617911f5ba0ba187b786.setContent(html_76a354eaff36964890fa8efba879361b);
+            
+        
+
+        marker_23ec9150d5a6a12dc2717df21d34b141.bindPopup(popup_9ffdb775b5ea617911f5ba0ba187b786)
+        ;
+
+        
+    
+    
+                marker_23ec9150d5a6a12dc2717df21d34b141.setIcon(icon_13f773d48c2a5a2344b1191cdcda9dde);
+            
+    
+            var marker_95f5121791ffacbfa608b73c49c0c949 = L.marker(
+                [51.5771276, -0.2021829],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_43207695752577611af3556311e3243b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eaee35f66ee2f277e9fb03305a146922 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_efb6c87c5e3ee5fbd427950b98075ed7 = $(`<div id="html_efb6c87c5e3ee5fbd427950b98075ed7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037C (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_eaee35f66ee2f277e9fb03305a146922.setContent(html_efb6c87c5e3ee5fbd427950b98075ed7);
+            
+        
+
+        marker_95f5121791ffacbfa608b73c49c0c949.bindPopup(popup_eaee35f66ee2f277e9fb03305a146922)
+        ;
+
+        
+    
+    
+                marker_95f5121791ffacbfa608b73c49c0c949.setIcon(icon_43207695752577611af3556311e3243b);
+            
+    
+            var marker_d3a35fae34738dc043f183106b88ed3a = L.marker(
+                [51.5765521, -0.2053992],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_a28a7a80dd135c537436a1baf275165a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_62ad89053f661d985a1f296da4b0d04a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_227eac566bc6cde33e2e749fe2648958 = $(`<div id="html_227eac566bc6cde33e2e749fe2648958" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037C (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_62ad89053f661d985a1f296da4b0d04a.setContent(html_227eac566bc6cde33e2e749fe2648958);
+            
+        
+
+        marker_d3a35fae34738dc043f183106b88ed3a.bindPopup(popup_62ad89053f661d985a1f296da4b0d04a)
+        ;
+
+        
+    
+    
+                marker_d3a35fae34738dc043f183106b88ed3a.setIcon(icon_a28a7a80dd135c537436a1baf275165a);
+            
+    
+            var marker_9201b95ec63e32cb123b7bccce5cfc2e = L.marker(
+                [51.5778224, -0.206472],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_7ad7a378353cf26ddc4e1ea6b3d56643 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e1bb5fb54dfb2dd84c4ecfc6bae541b7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e65f7df8bc8b6ca92efc01411f12167f = $(`<div id="html_e65f7df8bc8b6ca92efc01411f12167f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037C (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_e1bb5fb54dfb2dd84c4ecfc6bae541b7.setContent(html_e65f7df8bc8b6ca92efc01411f12167f);
+            
+        
+
+        marker_9201b95ec63e32cb123b7bccce5cfc2e.bindPopup(popup_e1bb5fb54dfb2dd84c4ecfc6bae541b7)
+        ;
+
+        
+    
+    
+                marker_9201b95ec63e32cb123b7bccce5cfc2e.setIcon(icon_7ad7a378353cf26ddc4e1ea6b3d56643);
+            
+    
+            var marker_122aea54456d5acb5ac11ab63fcfde49 = L.marker(
+                [51.58512, -0.2082093],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_2314f6123b669a5b6757f338a894ce23 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5a6f397daeb1fd1f26929d6be53b1d38 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_55c15a040e901e3f5c16ceb866eef423 = $(`<div id="html_55c15a040e901e3f5c16ceb866eef423" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037F (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_5a6f397daeb1fd1f26929d6be53b1d38.setContent(html_55c15a040e901e3f5c16ceb866eef423);
+            
+        
+
+        marker_122aea54456d5acb5ac11ab63fcfde49.bindPopup(popup_5a6f397daeb1fd1f26929d6be53b1d38)
+        ;
+
+        
+    
+    
+                marker_122aea54456d5acb5ac11ab63fcfde49.setIcon(icon_2314f6123b669a5b6757f338a894ce23);
+            
+    
+            var marker_5561e2760382eefa71df4e912f1aa41f = L.marker(
+                [51.5845726, -0.2042255],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_3476d733e767aa8fbf67f99b2479838c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d58c55cdcf580bb498bfb026689d0eb5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_066b39fab5fcc26063baa7039953e356 = $(`<div id="html_066b39fab5fcc26063baa7039953e356" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037F (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_d58c55cdcf580bb498bfb026689d0eb5.setContent(html_066b39fab5fcc26063baa7039953e356);
+            
+        
+
+        marker_5561e2760382eefa71df4e912f1aa41f.bindPopup(popup_d58c55cdcf580bb498bfb026689d0eb5)
+        ;
+
+        
+    
+    
+                marker_5561e2760382eefa71df4e912f1aa41f.setIcon(icon_3476d733e767aa8fbf67f99b2479838c);
+            
+    
+            var marker_04635bf94e4733203d73bac7697ce504 = L.marker(
+                [51.5869862, -0.2060359],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_9272d883913588e26299f8a913dbb526 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_092df2e348da42134c38f9924529bf9a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_98114148a8e979ab3a940662dae25ab9 = $(`<div id="html_98114148a8e979ab3a940662dae25ab9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037F (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_092df2e348da42134c38f9924529bf9a.setContent(html_98114148a8e979ab3a940662dae25ab9);
+            
+        
+
+        marker_04635bf94e4733203d73bac7697ce504.bindPopup(popup_092df2e348da42134c38f9924529bf9a)
+        ;
+
+        
+    
+    
+                marker_04635bf94e4733203d73bac7697ce504.setIcon(icon_9272d883913588e26299f8a913dbb526);
+            
+    
+            var marker_c086a810f8707ecadec22795f08ee977 = L.marker(
+                [51.5856744, -0.2059287],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_8d3f00dbf21223c4e85c670e53df6104 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e25a71efcd96be806d403286f618c16b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c58946859d0ed358c868d0a0f17bcd5c = $(`<div id="html_c58946859d0ed358c868d0a0f17bcd5c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037F (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_e25a71efcd96be806d403286f618c16b.setContent(html_c58946859d0ed358c868d0a0f17bcd5c);
+            
+        
+
+        marker_c086a810f8707ecadec22795f08ee977.bindPopup(popup_e25a71efcd96be806d403286f618c16b)
+        ;
+
+        
+    
+    
+                marker_c086a810f8707ecadec22795f08ee977.setIcon(icon_8d3f00dbf21223c4e85c670e53df6104);
+            
+    
+            var marker_6079394857099732496796058131d9f0 = L.marker(
+                [51.5870205, -0.2030704],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_ad181dda7b1c4475047fcfc451a0bece = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a3743040223117410dad3bb1979a2edc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96e34dc568418631b8e73a2feae7b7a6 = $(`<div id="html_96e34dc568418631b8e73a2feae7b7a6" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037F (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_a3743040223117410dad3bb1979a2edc.setContent(html_96e34dc568418631b8e73a2feae7b7a6);
+            
+        
+
+        marker_6079394857099732496796058131d9f0.bindPopup(popup_a3743040223117410dad3bb1979a2edc)
+        ;
+
+        
+    
+    
+                marker_6079394857099732496796058131d9f0.setIcon(icon_ad181dda7b1c4475047fcfc451a0bece);
+            
+    
+            var marker_4d894a655b80ce22af2183fc1f737857 = L.marker(
+                [51.5774444, -0.2120595],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_c3e57730a3ec96d0f2e8dc6681ec4937 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_30d93d535558ebde70230d945625640a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1f3fb4763342bfc01066603a5374db23 = $(`<div id="html_1f3fb4763342bfc01066603a5374db23" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037D (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_30d93d535558ebde70230d945625640a.setContent(html_1f3fb4763342bfc01066603a5374db23);
+            
+        
+
+        marker_4d894a655b80ce22af2183fc1f737857.bindPopup(popup_30d93d535558ebde70230d945625640a)
+        ;
+
+        
+    
+    
+                marker_4d894a655b80ce22af2183fc1f737857.setIcon(icon_c3e57730a3ec96d0f2e8dc6681ec4937);
+            
+    
+            var marker_9d20b48c17bf3ca655f40b623d967587 = L.marker(
+                [51.5774544, -0.2137123],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_5b404c267a87526bcb799c5effb56bde = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d8c8995e32aa2cd133ce8b89b050116b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e7bdaef77b3bbf31b8baaa85d936c1bf = $(`<div id="html_e7bdaef77b3bbf31b8baaa85d936c1bf" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037D (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_d8c8995e32aa2cd133ce8b89b050116b.setContent(html_e7bdaef77b3bbf31b8baaa85d936c1bf);
+            
+        
+
+        marker_9d20b48c17bf3ca655f40b623d967587.bindPopup(popup_d8c8995e32aa2cd133ce8b89b050116b)
+        ;
+
+        
+    
+    
+                marker_9d20b48c17bf3ca655f40b623d967587.setIcon(icon_5b404c267a87526bcb799c5effb56bde);
+            
+    
+            var marker_bc555e1316b3bbd4ec33697480609639 = L.marker(
+                [51.5774544, -0.2137123],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_b9f42d0b2401485b760dfd8ea3f2c553 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35655625d59b72d44baadc533e68a43a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b2d8c8327f372df01fc487e2fef75157 = $(`<div id="html_b2d8c8327f372df01fc487e2fef75157" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037D (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_35655625d59b72d44baadc533e68a43a.setContent(html_b2d8c8327f372df01fc487e2fef75157);
+            
+        
+
+        marker_bc555e1316b3bbd4ec33697480609639.bindPopup(popup_35655625d59b72d44baadc533e68a43a)
+        ;
+
+        
+    
+    
+                marker_bc555e1316b3bbd4ec33697480609639.setIcon(icon_b9f42d0b2401485b760dfd8ea3f2c553);
+            
+    
+            var marker_f2259f038b83ab9c23aff5395543f49c = L.marker(
+                [51.5743919, -0.2084386],
+                {
+}
+            ).addTo(feature_group_19e9b8809c232672146106830bf9cc51);
+        
+    
+            var icon_ffa23904d0f9ad8f3574e191ec477ca2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dc982a51f1483d7280e747a796f8bbef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_62a25dd5fdb3c07c56b54c5b3fc2fce9 = $(`<div id="html_62a25dd5fdb3c07c56b54c5b3fc2fce9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barnet 037E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_dc982a51f1483d7280e747a796f8bbef.setContent(html_62a25dd5fdb3c07c56b54c5b3fc2fce9);
+            
+        
+
+        marker_f2259f038b83ab9c23aff5395543f49c.bindPopup(popup_dc982a51f1483d7280e747a796f8bbef)
+        ;
+
+        
+    
+    
+                marker_f2259f038b83ab9c23aff5395543f49c.setIcon(icon_ffa23904d0f9ad8f3574e191ec477ca2);
+            
+    
+            feature_group_19e9b8809c232672146106830bf9cc51.addTo(map_94907d39cf39e49e38aa0e59a871668e);
+        
+    
+            var poly_line_6abced820c9221ea548591a405f7faae = L.polyline(
+                [[51.5803154, -0.2067267], [51.5799834, -0.2070107], [51.5787807, -0.2082208], [51.5790641, -0.2085507], [51.5787045, -0.2094515], [51.5779616, -0.2112641], [51.5774444, -0.2120595], [51.5780433, -0.2129813], [51.5774544, -0.2137123], [51.5780433, -0.2129813], [51.5796182, -0.2105944], [51.5797984, -0.2093851], [51.5795379, -0.2091059], [51.5808625, -0.2076762], [51.5839947, -0.2069865], [51.5859268, -0.2066938], [51.5860428, -0.2078465], [51.58512, -0.2082093], [51.5860428, -0.2078465], [51.5859268, -0.2066938], [51.5856744, -0.2059287], [51.5870205, -0.2030704], [51.5877601, -0.2035757], [51.5869862, -0.2060359], [51.5877601, -0.2035757], [51.5870205, -0.2030704], [51.5863752, -0.2025812], [51.5856029, -0.2022043], [51.5845726, -0.2042255], [51.5856029, -0.2022043], [51.5863752, -0.2025812], [51.5851202, -0.2051], [51.5853197, -0.205421], [51.5841895, -0.2056345], [51.5834189, -0.204156], [51.5829257, -0.2028729], [51.5824343, -0.2015939], [51.5823275, -0.2008108], [51.5806078, -0.2017006], [51.5805466, -0.199792], [51.5806078, -0.2017006], [51.5805799, -0.2028444], [51.5806612, -0.206089], [51.5808625, -0.2076762], [51.5795379, -0.2091059], [51.5797984, -0.2093851], [51.5796182, -0.2105944], [51.5780433, -0.2129813], [51.5783367, -0.2137753], [51.5806355, -0.2109237], [51.5807315, -0.2112995], [51.5815011, -0.2101355], [51.5833169, -0.2099355], [51.5815011, -0.2101355], [51.5807315, -0.2112995], [51.5806355, -0.2109237], [51.5783367, -0.2137753], [51.5780433, -0.2129813], [51.5774444, -0.2120595], [51.5768521, -0.2113996], [51.5769126, -0.2111865], [51.5758874, -0.209736], [51.5763237, -0.2089394], [51.5760049, -0.208505], [51.5756707, -0.2080463], [51.5750406, -0.2071826], [51.5743919, -0.2084386], [51.5750406, -0.2071826], [51.5756707, -0.2080463], [51.5760049, -0.208505], [51.5763237, -0.2089394], [51.5765269, -0.2092163], [51.5777455, -0.2071045], [51.5775731, -0.2068784], [51.5778224, -0.206472], [51.5792049, -0.2047417], [51.5788633, -0.2040281], [51.5784102, -0.2032139], [51.5761541, -0.2047984], [51.575736, -0.2041574], [51.5771276, -0.2021829], [51.575736, -0.2041574], [51.5761541, -0.2047984], [51.5784102, -0.2032139], [51.5771247, -0.2045443], [51.5765521, -0.2053992], [51.5771247, -0.2045443], [51.5788633, -0.2040281], [51.5792049, -0.2047417], [51.5797053, -0.2061195], [51.5799834, -0.2070107], [51.5803154, -0.2067267]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_94907d39cf39e49e38aa0e59a871668e);
+        
+    
+            var layer_control_580d46d06da71ac3fc92f79c5392acc2_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_3f6021de462ca7dab716d74fb1a96f7d,
+                },
+                overlays :  {
+                    "Golders Green Boundary" : geo_json_0142d00780513613046e843d28f1a1aa,
+                    "LSOA Median Crime Rates for Golders Green" : geo_json_77861abe7b244c9005176eafd5b56ae0,
+                    "Patrol Waypoints" : feature_group_19e9b8809c232672146106830bf9cc51,
+                },
+            };
+            let layer_control_580d46d06da71ac3fc92f79c5392acc2 = L.control.layers(
+                layer_control_580d46d06da71ac3fc92f79c5392acc2_layers.base_layers,
+                layer_control_580d46d06da71ac3fc92f79c5392acc2_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_94907d39cf39e49e38aa0e59a871668e);
+
+        
+</script>
+</html>

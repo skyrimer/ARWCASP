@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f9a1de259a722ca07324a63680eae215 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f9a1de259a722ca07324a63680eae215" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f9a1de259a722ca07324a63680eae215 = L.map(
+                "map_f9a1de259a722ca07324a63680eae215",
+                {
+                    center: [51.49208516816354, -0.14388073128656395],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f36848a23f2a7592bc743072134cfa5c = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f36848a23f2a7592bc743072134cfa5c.addTo(map_f9a1de259a722ca07324a63680eae215);
+        
+    
+        function geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3 = L.geoJson(null, {
+                onEachFeature: geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3_onEachFeature,
+            
+                style: geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3_styler,
+            ...{
+}
+        });
+
+        function geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3_add (data) {
+            geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3
+                .addData(data);
+        }
+            geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3_add({"features": [{"geometry": {"coordinates": [[[-0.1426321510702505, 51.496577758474665], [-0.14218510228745693, 51.49563275523959], [-0.1421405423679913, 51.49556012966785], [-0.14207492616953138, 51.49547368555216], [-0.1420032781232872, 51.49539244990553], [-0.14190622394330624, 51.495299214626684], [-0.14173131466461897, 51.49506710936567], [-0.14115602459209936, 51.49444020203385], [-0.1410168995295258, 51.49431843024088], [-0.1409454432903485, 51.49423548886008], [-0.14085343341674508, 51.494158514558656], [-0.14079583131260856, 51.4941233496027], [-0.14065166590206235, 51.49405543720681], [-0.13936403065236097, 51.49341272919238], [-0.13816104146478358, 51.49281270452221], [-0.1389520904839538, 51.4925267044018], [-0.1378743908345289, 51.491397267931], [-0.13755864952262556, 51.49112156584377], [-0.1392134199829841, 51.48957414168889], [-0.1398827796920931, 51.4889498897833], [-0.13917716619961487, 51.48862395607154], [-0.1387403878096025, 51.48842185197923], [-0.1386017938883572, 51.48835762130037], [-0.13848681992135317, 51.48828207845078], [-0.138428125298972, 51.48816607507047], [-0.13849044539013278, 51.48815807441561], [-0.1391552262525051, 51.488066050025424], [-0.1404067229408479, 51.48789441678512], [-0.14121729696721444, 51.48779750068602], [-0.1433619851730615, 51.48751763735113], [-0.14423708008362424, 51.48799285440583], [-0.14660958079723962, 51.48909146129761], [-0.14689329487403513, 51.4892353793397], [-0.14717559768172983, 51.48944930616042], [-0.14763582759856614, 51.489680516822794], [-0.14783343210981112, 51.489780729601186], [-0.1479417416272048, 51.48988052068076], [-0.14798072633949047, 51.490020480714925], [-0.14809300860462257, 51.49002225396161], [-0.1482919942369551, 51.490053265094225], [-0.14877584451625334, 51.4902704602376], [-0.14980135872564507, 51.49077039437316], [-0.1493667914972009, 51.49114848696611], [-0.14895404602952536, 51.4914890747151], [-0.14850112913726085, 51.4918946534478], [-0.14789468460335792, 51.4925684932879], [-0.14811017369147922, 51.492620442194344], [-0.1484753431966373, 51.492709904766826], [-0.14986685634352176, 51.493136504322116], [-0.15033027405883884, 51.493325411609696], [-0.1485966101742366, 51.49469464294585], [-0.1482711804476317, 51.49501053591898], [-0.14736022449669176, 51.495945756693985], [-0.1462735987510027, 51.49702023499943], [-0.14625170712022964, 51.4971323532208], [-0.14630820324895222, 51.49723303467765], [-0.14610030052792275, 51.49717221258806], [-0.14505326917901398, 51.496772594263696], [-0.14484211999434915, 51.49672160751185], [-0.1426321510702505, 51.496577758474665]]], "type": "Polygon"}, "id": "495", "properties": {"DISTRICT": "City of Westminster", "GSS_CODE": "E05000647", "HECTARES": 57.354, "LAGSSCODE": "E09000033", "NAME": "Warwick", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3.addTo(map_f9a1de259a722ca07324a63680eae215);
+        
+    
+        function geo_json_df85c033ae31b8872242a7631299a943_styler(feature) {
+            switch(feature.id) {
+                case "4492": 
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+                case "4493": 
+                    return {"color": "black", "fillColor": "#fd8c3c", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_df85c033ae31b8872242a7631299a943_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_df85c033ae31b8872242a7631299a943 = L.geoJson(null, {
+                onEachFeature: geo_json_df85c033ae31b8872242a7631299a943_onEachFeature,
+            
+                style: geo_json_df85c033ae31b8872242a7631299a943_styler,
+            ...{
+}
+        });
+
+        function geo_json_df85c033ae31b8872242a7631299a943_add (data) {
+            geo_json_df85c033ae31b8872242a7631299a943
+                .addData(data);
+        }
+            geo_json_df85c033ae31b8872242a7631299a943_add({"features": [{"geometry": {"coordinates": [[[[-0.14000546974483502, 51.49373361688189], [-0.14126077310744567, 51.49455476030771], [-0.14342875125680976, 51.492970501238986], [-0.14226266051135467, 51.490075718079076], [-0.1410753757396964, 51.48951735075663], [-0.13858520720953618, 51.4901616423715], [-0.13831338642794294, 51.49041568033365], [-0.1381593165043733, 51.49281097163348], [-0.14000546974483502, 51.49373361688189]]]], "type": "MultiPolygon"}, "id": "4492", "properties": {"BNG_E": 529172, "BNG_N": 178653, "DISTRICT": "City of Westminster", "GSS_CODE": "E05000647", "GlobalID": "{8F013D64-45A7-45FB-9DEB-348845F2EAD3}", "HECTARES": 57.354, "LAGSSCODE": "E09000033", "LAT": 51.49208068847656, "LONG": -0.14074000716209412, "LSOA21CD": "E01004749", "LSOA21NM": "Westminster 022B", "LSOA21NMW": " ", "NAME": "Warwick", "NONLD_AREA": 0.0, "WD24NM": "Pimlico North", "crime_rate": 2.0, "is_high_crime": true, "median": 2.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.14263251625014725, 51.496576443556094], [-0.14630813843433374, 51.497232230984395], [-0.14853978573696128, 51.49475132034871], [-0.15032920721324916, 51.49332560640217], [-0.1484377841496076, 51.4901192108303], [-0.14684960331223482, 51.48921304447365], [-0.14342875125680976, 51.492970501238986], [-0.14126077310744567, 51.49455476030771], [-0.14263251625014725, 51.496576443556094]]]], "type": "MultiPolygon"}, "id": "4493", "properties": {"BNG_E": 528818, "BNG_N": 178883, "DISTRICT": "City of Westminster", "GSS_CODE": "E05000647", "GlobalID": "{7CB64649-8746-4D36-B6C0-C5582AC9189D}", "HECTARES": 57.354, "LAGSSCODE": "E09000033", "LAT": 51.49422073364258, "LONG": -0.14575999975204468, "LSOA21CD": "E01004750", "LSOA21NM": "Westminster 023E", "LSOA21NMW": " ", "NAME": "Warwick", "NONLD_AREA": 0.0, "WD24NM": "Pimlico North", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.14226266051135467, 51.490075718079076], [-0.14342875125680976, 51.492970501238986], [-0.14684960331223482, 51.48921304447365], [-0.14642472989750974, 51.48900598478337], [-0.14549769673373109, 51.48857635832155], [-0.14226266051135467, 51.490075718079076]]]], "type": "MultiPolygon"}, "id": "4494", "properties": {"BNG_E": 528928, "BNG_N": 178530, "DISTRICT": "City of Westminster", "GSS_CODE": "E05000647", "GlobalID": "{5219F2FE-59B7-4860-9605-47962FDDE43C}", "HECTARES": 57.354, "LAGSSCODE": "E09000033", "LAT": 51.491031646728516, "LONG": -0.14429999887943268, "LSOA21CD": "E01004751", "LSOA21NM": "Westminster 022C", "LSOA21NMW": " ", "NAME": "Warwick", "NONLD_AREA": 0.0, "WD24NM": "Pimlico North", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.13848026802599894, 51.488133523384654], [-0.13858520720953618, 51.4901616423715], [-0.1410753757396964, 51.48951735075663], [-0.13948634244350752, 51.48801306599539], [-0.13848026802599894, 51.488133523384654]]]], "type": "MultiPolygon"}, "id": "4495", "properties": {"BNG_E": 529237, "BNG_N": 178379, "DISTRICT": "City of Westminster", "GSS_CODE": "E05000647", "GlobalID": "{10C46D88-110E-47A3-A26E-06758AD93948}", "HECTARES": 57.354, "LAGSSCODE": "E09000033", "LAT": 51.489601135253906, "LONG": -0.1399099975824356, "LSOA21CD": "E01004752", "LSOA21NM": "Westminster 022D", "LSOA21NMW": " ", "NAME": "Warwick", "NONLD_AREA": 0.0, "WD24NM": "Pimlico North", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.1410753757396964, 51.48951735075663], [-0.14226266051135467, 51.490075718079076], [-0.14549769673373109, 51.48857635832155], [-0.14291613817123516, 51.48757556800199], [-0.1413946936684185, 51.48777365104249], [-0.13948634244350752, 51.48801306599539], [-0.1410753757396964, 51.48951735075663]]]], "type": "MultiPolygon"}, "id": "4496", "properties": {"BNG_E": 529002, "BNG_N": 178285, "DISTRICT": "City of Westminster", "GSS_CODE": "E05000647", "GlobalID": "{967074C0-EA53-45D0-BA45-FFCBEA4009A2}", "HECTARES": 57.354, "LAGSSCODE": "E09000033", "LAT": 51.48881149291992, "LONG": -0.14332999289035797, "LSOA21CD": "E01004753", "LSOA21NM": "Westminster 022E", "LSOA21NMW": " ", "NAME": "Warwick", "NONLD_AREA": 0.0, "WD24NM": "Pimlico South", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_df85c033ae31b8872242a7631299a943.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_df85c033ae31b8872242a7631299a943.addTo(map_f9a1de259a722ca07324a63680eae215);
+        
+    
+            var feature_group_09354aaf743eb1611a2f642c98914b22 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_f3f009e0aa5aab6a7d7853d597e3c751 = L.marker(
+                [51.4929526, -0.1396883],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_0d0e9a4b78de8be220c20ac775d066fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_645792357fec7563a458427108653c04 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c007d400d27a9c46bf5f1ca4c9290d77 = $(`<div id="html_c007d400d27a9c46bf5f1ca4c9290d77" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 022B (Pt 1)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_645792357fec7563a458427108653c04.setContent(html_c007d400d27a9c46bf5f1ca4c9290d77);
+            
+        
+
+        marker_f3f009e0aa5aab6a7d7853d597e3c751.bindPopup(popup_645792357fec7563a458427108653c04)
+        ;
+
+        
+    
+    
+                marker_f3f009e0aa5aab6a7d7853d597e3c751.setIcon(icon_0d0e9a4b78de8be220c20ac775d066fc);
+            
+    
+            var marker_e52baf73183f99380536f1444cac5169 = L.marker(
+                [51.49016, -0.1391586],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_07d5f1ece471e75c24ec7ae7cd9304d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67c35c2590ef42543c71258f098d41f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_73c1521933575ca1df9e4efdc94668f0 = $(`<div id="html_73c1521933575ca1df9e4efdc94668f0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 022B (Pt 2)<br><b>Median Crime:</b> 2.00</div>`)[0];
+                popup_67c35c2590ef42543c71258f098d41f6.setContent(html_73c1521933575ca1df9e4efdc94668f0);
+            
+        
+
+        marker_e52baf73183f99380536f1444cac5169.bindPopup(popup_67c35c2590ef42543c71258f098d41f6)
+        ;
+
+        
+    
+    
+                marker_e52baf73183f99380536f1444cac5169.setIcon(icon_07d5f1ece471e75c24ec7ae7cd9304d5);
+            
+    
+            var marker_488d0febcefca528d5f932d5fed5d146 = L.marker(
+                [51.4900367, -0.147961],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_979f6615b1fb581995d174f52ebd5b8d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_503f4d4243b717fcb04b8b2acb33e592 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b41d48e493dc0a4f5e7f1e44a1b7fb98 = $(`<div id="html_b41d48e493dc0a4f5e7f1e44a1b7fb98" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 023E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_503f4d4243b717fcb04b8b2acb33e592.setContent(html_b41d48e493dc0a4f5e7f1e44a1b7fb98);
+            
+        
+
+        marker_488d0febcefca528d5f932d5fed5d146.bindPopup(popup_503f4d4243b717fcb04b8b2acb33e592)
+        ;
+
+        
+    
+    
+                marker_488d0febcefca528d5f932d5fed5d146.setIcon(icon_979f6615b1fb581995d174f52ebd5b8d);
+            
+    
+            var marker_d3ab8059e29f5d889bddb4b5b6f8de3b = L.marker(
+                [51.4903673, -0.146212],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_ebf0d5b16f776295bd340c499d8ccb0d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_66d3b527a77f4a924e9dfe1b3ea58335 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0689a68a82c7201b58b3447ebb5636e8 = $(`<div id="html_0689a68a82c7201b58b3447ebb5636e8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 023E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_66d3b527a77f4a924e9dfe1b3ea58335.setContent(html_0689a68a82c7201b58b3447ebb5636e8);
+            
+        
+
+        marker_d3ab8059e29f5d889bddb4b5b6f8de3b.bindPopup(popup_66d3b527a77f4a924e9dfe1b3ea58335)
+        ;
+
+        
+    
+    
+                marker_d3ab8059e29f5d889bddb4b5b6f8de3b.setIcon(icon_ebf0d5b16f776295bd340c499d8ccb0d);
+            
+    
+            var marker_022ef232fbbece3093bf6e140bfa3e52 = L.marker(
+                [51.4915634, -0.14674],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_a55b271c407715afbc552c6d42d345ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e8b69cf3652392fbc23e2092a8c18a59 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8d249a8c1cdd1580b6e2e8ab87c9409b = $(`<div id="html_8d249a8c1cdd1580b6e2e8ab87c9409b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 023E (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_e8b69cf3652392fbc23e2092a8c18a59.setContent(html_8d249a8c1cdd1580b6e2e8ab87c9409b);
+            
+        
+
+        marker_022ef232fbbece3093bf6e140bfa3e52.bindPopup(popup_e8b69cf3652392fbc23e2092a8c18a59)
+        ;
+
+        
+    
+    
+                marker_022ef232fbbece3093bf6e140bfa3e52.setIcon(icon_a55b271c407715afbc552c6d42d345ea);
+            
+    
+            var marker_740343651257ada1b85875936f92d22b = L.marker(
+                [51.4960426, -0.1432535],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_79ae7192badd9d8d992ca5057b871e82 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c71135a93bae1e240c629dac3f7b5846 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_113b2c29df47deb87f359767735a2e2b = $(`<div id="html_113b2c29df47deb87f359767735a2e2b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 023E (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_c71135a93bae1e240c629dac3f7b5846.setContent(html_113b2c29df47deb87f359767735a2e2b);
+            
+        
+
+        marker_740343651257ada1b85875936f92d22b.bindPopup(popup_c71135a93bae1e240c629dac3f7b5846)
+        ;
+
+        
+    
+    
+                marker_740343651257ada1b85875936f92d22b.setIcon(icon_79ae7192badd9d8d992ca5057b871e82);
+            
+    
+            var marker_ba26536b3c3fd40accd85ecf694aeae9 = L.marker(
+                [51.494499, -0.1423606],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_1a93c9efc5986f4bb8f684bf51f95a2b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6a40d501a64dc98fa5045ad14a7a32e2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_019f9d5fd4281943d8043c10420f2a72 = $(`<div id="html_019f9d5fd4281943d8043c10420f2a72" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 023E (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_6a40d501a64dc98fa5045ad14a7a32e2.setContent(html_019f9d5fd4281943d8043c10420f2a72);
+            
+        
+
+        marker_ba26536b3c3fd40accd85ecf694aeae9.bindPopup(popup_6a40d501a64dc98fa5045ad14a7a32e2)
+        ;
+
+        
+    
+    
+                marker_ba26536b3c3fd40accd85ecf694aeae9.setIcon(icon_1a93c9efc5986f4bb8f684bf51f95a2b);
+            
+    
+            var marker_474ff839d2cb17e8de284b3e62e23fbc = L.marker(
+                [51.4907244, -0.1450064],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_3632995dd4213d9a92ecb36d879a9daf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_51713a679c9fc538b677349d3954d3ef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5aff9ec6b8722c1b34da7ee3178ca039 = $(`<div id="html_5aff9ec6b8722c1b34da7ee3178ca039" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 022C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_51713a679c9fc538b677349d3954d3ef.setContent(html_5aff9ec6b8722c1b34da7ee3178ca039);
+            
+        
+
+        marker_474ff839d2cb17e8de284b3e62e23fbc.bindPopup(popup_51713a679c9fc538b677349d3954d3ef)
+        ;
+
+        
+    
+    
+                marker_474ff839d2cb17e8de284b3e62e23fbc.setIcon(icon_3632995dd4213d9a92ecb36d879a9daf);
+            
+    
+            var marker_66aa1377e51381c754329a72db370cb8 = L.marker(
+                [51.4888563, -0.1399816],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_f400e505f375ec75b8e653901a802861 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5005546edac3daa3f8514b4b3e37db59 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_10b65d33c9786906407afa9d111173b0 = $(`<div id="html_10b65d33c9786906407afa9d111173b0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 022D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5005546edac3daa3f8514b4b3e37db59.setContent(html_10b65d33c9786906407afa9d111173b0);
+            
+        
+
+        marker_66aa1377e51381c754329a72db370cb8.bindPopup(popup_5005546edac3daa3f8514b4b3e37db59)
+        ;
+
+        
+    
+    
+                marker_66aa1377e51381c754329a72db370cb8.setIcon(icon_f400e505f375ec75b8e653901a802861);
+            
+    
+            var marker_1f31f2b6f60934295120f670b580e112 = L.marker(
+                [51.4879229, -0.1411396],
+                {
+}
+            ).addTo(feature_group_09354aaf743eb1611a2f642c98914b22);
+        
+    
+            var icon_fd72f041ac8e287989873b6bfb4a7b44 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_95095e15b0ef86708ba2fa80d4a4134b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a36320cd34c3298342b80458681ccfc = $(`<div id="html_8a36320cd34c3298342b80458681ccfc" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Westminster 022E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_95095e15b0ef86708ba2fa80d4a4134b.setContent(html_8a36320cd34c3298342b80458681ccfc);
+            
+        
+
+        marker_1f31f2b6f60934295120f670b580e112.bindPopup(popup_95095e15b0ef86708ba2fa80d4a4134b)
+        ;
+
+        
+    
+    
+                marker_1f31f2b6f60934295120f670b580e112.setIcon(icon_fd72f041ac8e287989873b6bfb4a7b44);
+            
+    
+            feature_group_09354aaf743eb1611a2f642c98914b22.addTo(map_f9a1de259a722ca07324a63680eae215);
+        
+    
+            var poly_line_ad1ef289a5bf640362355a92a52c0a23 = L.polyline(
+                [[51.4929526, -0.1396883], [51.4929068, -0.1396413], [51.4926159, -0.1403676], [51.4937686, -0.1417958], [51.4943528, -0.1422361], [51.494499, -0.1423606], [51.4946431, -0.1424291], [51.495011, -0.1426615], [51.4960426, -0.1432535], [51.4960494, -0.1446858], [51.4961725, -0.144516], [51.4961387, -0.1431605], [51.4962717, -0.1430113], [51.4961571, -0.1424983], [51.4951866, -0.1418633], [51.4946577, -0.1417631], [51.4945574, -0.1421351], [51.4943528, -0.1422361], [51.494499, -0.1423606], [51.4946431, -0.1424291], [51.495011, -0.1426615], [51.4960426, -0.1432535], [51.4960494, -0.1446858], [51.4961725, -0.144516], [51.4961387, -0.1431605], [51.4962717, -0.1430113], [51.4961571, -0.1424983], [51.4951866, -0.1418633], [51.4946577, -0.1417631], [51.4945574, -0.1421351], [51.4943528, -0.1422361], [51.4937686, -0.1417958], [51.4926159, -0.1403676], [51.4922249, -0.1399398], [51.4910854, -0.1396925], [51.4912314, -0.1400137], [51.4898515, -0.141769], [51.4898065, -0.1416738], [51.4895029, -0.1410314], [51.49016, -0.1391586], [51.4895029, -0.1410314], [51.4898065, -0.1416738], [51.4898515, -0.141769], [51.4900564, -0.142235], [51.4901542, -0.1424396], [51.4904727, -0.1431188], [51.4900654, -0.1436324], [51.4896632, -0.1427698], [51.4893929, -0.1421726], [51.4890921, -0.1415592], [51.4885384, -0.1403781], [51.4888563, -0.1399816], [51.4885384, -0.1403781], [51.4881444, -0.1408305], [51.487964, -0.1410702], [51.4879229, -0.1411396], [51.487964, -0.1410702], [51.4881444, -0.1408305], [51.4887076, -0.1420345], [51.4892967, -0.1432601], [51.4889327, -0.1437396], [51.4893077, -0.1445229], [51.4897993, -0.1455981], [51.4897387, -0.1458646], [51.4899883, -0.1460115], [51.4900284, -0.1460359], [51.4900587, -0.1460517], [51.4903673, -0.146212], [51.4905021, -0.1457568], [51.4896837, -0.1440748], [51.4893077, -0.1445229], [51.4889402, -0.1449769], [51.4894037, -0.1456675], [51.4891983, -0.1467199], [51.4892195, -0.1467555], [51.4900367, -0.147961], [51.4892195, -0.1467555], [51.4891983, -0.1467199], [51.4889341, -0.1462512], [51.4885532, -0.1454336], [51.4889402, -0.1449769], [51.4893077, -0.1445229], [51.4896837, -0.1440748], [51.4900654, -0.1436324], [51.4907244, -0.1450064], [51.4914414, -0.1464908], [51.4915634, -0.14674], [51.4914414, -0.1464908], [51.4905021, -0.1457568], [51.4896837, -0.1440748], [51.4900654, -0.1436324], [51.4907244, -0.1450064], [51.4914414, -0.1464908], [51.4905021, -0.1457568], [51.4896837, -0.1440748], [51.4892967, -0.1432601], [51.4896632, -0.1427698], [51.4893929, -0.1421726], [51.4898065, -0.1416738], [51.4898515, -0.141769], [51.4912314, -0.1400137], [51.4910854, -0.1396925], [51.4922249, -0.1399398], [51.4926159, -0.1403676], [51.4929068, -0.1396413], [51.4929526, -0.1396883]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_f9a1de259a722ca07324a63680eae215);
+        
+    
+            var layer_control_f8427bf580b3c35b29300fcc2a38b594_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_f36848a23f2a7592bc743072134cfa5c,
+                },
+                overlays :  {
+                    "Warwick Boundary" : geo_json_d5ecb8e9be7c5f0f981b440b9355d2e3,
+                    "LSOA Median Crime Rates for Warwick" : geo_json_df85c033ae31b8872242a7631299a943,
+                    "Patrol Waypoints" : feature_group_09354aaf743eb1611a2f642c98914b22,
+                },
+            };
+            let layer_control_f8427bf580b3c35b29300fcc2a38b594 = L.control.layers(
+                layer_control_f8427bf580b3c35b29300fcc2a38b594_layers.base_layers,
+                layer_control_f8427bf580b3c35b29300fcc2a38b594_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_f9a1de259a722ca07324a63680eae215);
+
+        
+</script>
+</html>

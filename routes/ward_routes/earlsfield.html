@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3ecd8c8c3e93d304fe2e9e64cf55094c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3ecd8c8c3e93d304fe2e9e64cf55094c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3ecd8c8c3e93d304fe2e9e64cf55094c = L.map(
+                "map_3ecd8c8c3e93d304fe2e9e64cf55094c",
+                {
+                    center: [51.44018247880939, -0.1857315844489114],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b0711653ead170b589ce7f857738556e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b0711653ead170b589ce7f857738556e.addTo(map_3ecd8c8c3e93d304fe2e9e64cf55094c);
+        
+    
+        function geo_json_8c690f34308333173c0fefa82493603c_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_8c690f34308333173c0fefa82493603c_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_8c690f34308333173c0fefa82493603c = L.geoJson(null, {
+                onEachFeature: geo_json_8c690f34308333173c0fefa82493603c_onEachFeature,
+            
+                style: geo_json_8c690f34308333173c0fefa82493603c_styler,
+            ...{
+}
+        });
+
+        function geo_json_8c690f34308333173c0fefa82493603c_add (data) {
+            geo_json_8c690f34308333173c0fefa82493603c
+                .addData(data);
+        }
+            geo_json_8c690f34308333173c0fefa82493603c_add({"features": [{"geometry": {"coordinates": [[[-0.1886925517077748, 51.45148587197707], [-0.18764785404709058, 51.450316043674135], [-0.18737916658834758, 51.45012211132068], [-0.18723084441548038, 51.45019982858457], [-0.1870550000940891, 51.450022703939766], [-0.1869416092241691, 51.449907586814376], [-0.18680448525055945, 51.4498074753447], [-0.18672007468799154, 51.44972166402978], [-0.18639722639886433, 51.4494064260108], [-0.18609818250103885, 51.44911043432994], [-0.18593564281646388, 51.448963090795395], [-0.18573609149703732, 51.44876761728264], [-0.18548925493596433, 51.448531765749635], [-0.18532895798913251, 51.44836386901408], [-0.18521546675816017, 51.4482874054711], [-0.18516353979759087, 51.448253338693405], [-0.18515799017715204, 51.448249656789535], [-0.184894434861894, 51.44836073789712], [-0.18486634275331698, 51.448345019976855], [-0.18462253711445517, 51.448287214973455], [-0.18480709213495616, 51.44809768737152], [-0.18502230209303594, 51.447931019132426], [-0.1870956229365199, 51.447145732521804], [-0.1870881446146301, 51.44707990017197], [-0.1862811208905343, 51.44576351099471], [-0.18580574242655748, 51.445594335443374], [-0.18493142141554458, 51.44528853702392], [-0.18645445832529736, 51.44371234270318], [-0.18714724354905862, 51.44300808560762], [-0.1863758230362838, 51.442354987810326], [-0.1850691419580863, 51.443011979405846], [-0.18309607401433015, 51.44403441110708], [-0.1819236452836663, 51.44275457910513], [-0.17979566421664683, 51.44050399544732], [-0.17863573666163085, 51.43927826288764], [-0.17895484191289646, 51.439070067992276], [-0.1785658149998603, 51.43883208186399], [-0.17880332472385427, 51.43868285242233], [-0.17886567120910726, 51.4387080940436], [-0.17869259166526663, 51.43824862334697], [-0.17833903652778516, 51.438419333283996], [-0.17681820050846841, 51.43700907149288], [-0.17562978474480592, 51.43592490646263], [-0.17485742457693718, 51.435233957867815], [-0.17474404986096823, 51.43511712044475], [-0.17455101709141663, 51.434942315464255], [-0.17430822860923664, 51.43471827907091], [-0.174350280574304, 51.43471084304184], [-0.17475759711682898, 51.43463438842989], [-0.1753577760628291, 51.43451967066485], [-0.17585932577470786, 51.43442409198628], [-0.17649696441841956, 51.43430986146684], [-0.17780038623466923, 51.433841884468535], [-0.17877294465430485, 51.43347843074195], [-0.17882557507386393, 51.43345848157769], [-0.17913585452654363, 51.4333608160135], [-0.17943413361535004, 51.43327554924525], [-0.17970753821212934, 51.43320427943368], [-0.1796567333786772, 51.433178318442444], [-0.17948371704389662, 51.43311440945795], [-0.1790118089978882, 51.43297222902974], [-0.17916346239311184, 51.43273805802947], [-0.1792063753798281, 51.43267309763719], [-0.17930911399327454, 51.43251458160838], [-0.17934924153452367, 51.43244508289647], [-0.17981868941960563, 51.43257742469768], [-0.17994051064419372, 51.432625165369174], [-0.18002907952604852, 51.43267688460971], [-0.18009687028769703, 51.432711200174566], [-0.1801234930270125, 51.43272779552619], [-0.1801800235126165, 51.432752946212716], [-0.18057855595830785, 51.432932729899626], [-0.1811248830329597, 51.432724459961825], [-0.18273838530867342, 51.4321640578551], [-0.1828508761832796, 51.4321181548566], [-0.18297848240111925, 51.4320590010707], [-0.1831180031182756, 51.43198654683348], [-0.18343635954081888, 51.43179540928577], [-0.1837702264600558, 51.431500227246275], [-0.18383570137935965, 51.43144640278507], [-0.18390953303448906, 51.431397202765936], [-0.18398294869132034, 51.431361481252324], [-0.18407494324360707, 51.43132685662925], [-0.18421752807439906, 51.431287711558944], [-0.18424827884513031, 51.431272005930374], [-0.18425675429127844, 51.431276632222854], [-0.18433809450631106, 51.43132823622383], [-0.1844070562110881, 51.431368950330985], [-0.1843933471653319, 51.43146043595302], [-0.1843798829715979, 51.43161755234374], [-0.18441960749515646, 51.4317405215247], [-0.18458019850009794, 51.43193539482589], [-0.18473680460527533, 51.432123104083225], [-0.18491263416614945, 51.43225977792673], [-0.18528844159009505, 51.432507517578685], [-0.1854307323659962, 51.43269140823535], [-0.1857615743458599, 51.43316409904465], [-0.18642448333752015, 51.43295581090982], [-0.18657371754289684, 51.432964502706774], [-0.18728931041329477, 51.432986359469304], [-0.18730113290779388, 51.432906441474394], [-0.18741939801952145, 51.432097193247166], [-0.18745389434385826, 51.432097726690415], [-0.1882434573088873, 51.43210543853654], [-0.1883326371620282, 51.43206995797773], [-0.1883583385121605, 51.43210991118282], [-0.18925414380105574, 51.431830589621406], [-0.18924452940056943, 51.43181875410623], [-0.18908894788329547, 51.43160769281513], [-0.18911951960803186, 51.43159647814648], [-0.18979676801673495, 51.43135153366193], [-0.1899578033201016, 51.43153570825423], [-0.19022440655824407, 51.43177994756823], [-0.190342471194014, 51.43188695331215], [-0.19040891015249325, 51.43198866693056], [-0.19044911271018686, 51.43209995436062], [-0.19047316208838422, 51.43222079149345], [-0.19054262960668614, 51.4323899766997], [-0.1906679296710843, 51.43256910359741], [-0.19084489616979877, 51.43278858376067], [-0.19106212565407238, 51.43304284696637], [-0.1911440010202429, 51.433264365187284], [-0.19115957006283396, 51.43330865638461], [-0.19116882993682946, 51.433365526099905], [-0.19117684824260628, 51.43341779176101], [-0.19118506739899968, 51.433461969532225], [-0.1911832575675943, 51.43350779053692], [-0.1911455103933237, 51.433628572853756], [-0.1911320442259446, 51.4336391530284], [-0.19111869660064573, 51.43364973503084], [-0.19110392284002842, 51.43366038492318], [-0.19107426384758006, 51.43368150318234], [-0.1910595291048878, 51.433691164772746], [-0.1910461459577016, 51.43370264521753], [-0.1910327982939193, 51.43371322720971], [-0.19095120654059347, 51.43377579689325], [-0.19086668633710463, 51.433837422323506], [-0.19078089736240114, 51.43389812911131], [-0.19077940378429972, 51.433899904055274], [-0.19063953850517676, 51.434089321769505], [-0.1903733873005944, 51.43459872114618], [-0.1902659583689298, 51.43480473124991], [-0.19018459426600862, 51.4350085366005], [-0.1900688295873384, 51.43527833661529], [-0.18988694911925463, 51.43580422912259], [-0.1897601212281817, 51.436173736708994], [-0.1896435159191791, 51.43657567607399], [-0.1894420467963994, 51.437338690774496], [-0.1893500315047914, 51.43762863483203], [-0.1892674689347305, 51.438117493349274], [-0.18921594490596527, 51.43854740748042], [-0.18954782083227403, 51.43855792774285], [-0.18972832088317157, 51.438616453300575], [-0.18993506094599655, 51.43877346446093], [-0.19027129454686115, 51.43885686879483], [-0.19053525226897702, 51.43891398455022], [-0.1906673067986936, 51.43891961892252], [-0.1906460626830382, 51.43894985694232], [-0.19053024723307163, 51.4391126757467], [-0.19046507113641198, 51.43930594310135], [-0.19046169299934898, 51.43931937592237], [-0.19042034943956165, 51.4393088487153], [-0.19031352606836616, 51.43928013975291], [-0.19029198187428553, 51.43931495796605], [-0.19021046642944558, 51.43945034715511], [-0.18996326260831223, 51.43973160253128], [-0.18994109613831836, 51.439821160046684], [-0.1898866713232736, 51.44003347204875], [-0.18980256232452197, 51.440048355181936], [-0.18975908502728792, 51.44005577475379], [-0.18994591255840096, 51.44042554081051], [-0.19007086320501312, 51.440797048149925], [-0.19006325875653304, 51.44098940616124], [-0.1900366363649086, 51.4411886625049], [-0.19003031188332134, 51.44131262653992], [-0.19002601401492647, 51.44142133890317], [-0.1900396879626592, 51.441474590899844], [-0.19006291594921482, 51.4415442622689], [-0.19014217019503613, 51.44179630629018], [-0.19013092667946094, 51.44200568904505], [-0.1900887277570109, 51.442274826688326], [-0.1900677975071563, 51.44243812108612], [-0.19009856649598667, 51.44249712089696], [-0.19015509312232204, 51.44256182246572], [-0.19016444930155998, 51.44257724987595], [-0.19023325893587487, 51.442622363098295], [-0.19029080384765687, 51.4426583123989], [-0.1903417672748014, 51.4426806751055], [-0.19043531061403643, 51.44271538206411], [-0.19058836451329436, 51.44273932057207], [-0.1908511203730014, 51.44275236602789], [-0.19093441745934056, 51.44275814653315], [-0.19110530371825182, 51.44276617760779], [-0.19144262725533184, 51.44275070546038], [-0.19160732202683217, 51.44273526634724], [-0.19187941164027456, 51.44276733242901], [-0.19201644807670062, 51.44283336477631], [-0.19208624490753795, 51.44288658309757], [-0.19223198428947585, 51.443023680294004], [-0.19235815452505317, 51.44314258549488], [-0.19252559021402607, 51.443349239656825], [-0.19270175888325597, 51.44362623987942], [-0.19290770152890613, 51.443984608534535], [-0.1930057379619239, 51.444200170970774], [-0.1930447191367843, 51.44434281337161], [-0.19317341587072587, 51.44505617333549], [-0.19335434357104683, 51.446087683870694], [-0.19338889127099343, 51.44634272225698], [-0.19339583308415537, 51.4465666794026], [-0.19339939808436007, 51.446840119211835], [-0.1933958789774778, 51.447076590977396], [-0.19336791478738977, 51.44727402915733], [-0.19330746275647848, 51.44738367407478], [-0.1932505832748579, 51.44755010070159], [-0.19305097582763622, 51.44779424818236], [-0.19301767848772036, 51.44783517867507], [-0.19283557450377814, 51.44799958490408], [-0.19254969948744885, 51.44824069354076], [-0.19242899009771386, 51.44834671194866], [-0.19235599497812533, 51.448410314153044], [-0.1922868785735834, 51.44851991484376], [-0.19223250477160547, 51.44861976397592], [-0.19222507378945913, 51.44866370021124], [-0.1922350457128108, 51.448921955865885], [-0.19235164009294153, 51.449175562665864], [-0.19234880137582874, 51.44924743860379], [-0.19234457876237968, 51.44935435405965], [-0.1921925519859184, 51.44970639411277], [-0.1921163992881525, 51.449885918000355], [-0.19207060947919916, 51.450023747169965], [-0.19199619145201927, 51.450123287059064], [-0.19179709499137831, 51.450317995492206], [-0.19170820413118617, 51.450417401866005], [-0.19167448434594958, 51.45050498336818], [-0.1915839046570247, 51.45101349678557], [-0.1914940719424832, 51.451503052808846], [-0.19152659479630824, 51.45155389830877], [-0.19169842261408243, 51.451686094210395], [-0.1918355863594511, 51.45178260446053], [-0.19201083351080248, 51.451936428533166], [-0.19207681940557722, 51.452053416651104], [-0.19211843018109373, 51.452129574014954], [-0.19211116723739888, 51.452202280686], [-0.19209948582001113, 51.45224264526113], [-0.19201102998617176, 51.45229791785846], [-0.19193332030247154, 51.45236953805413], [-0.1917886348975671, 51.452571468492316], [-0.19166082582906047, 51.452745700299126], [-0.19165759514125527, 51.45282745909719], [-0.1916544673949381, 51.45290661239388], [-0.1916710433918293, 51.452997666669035], [-0.19171134388207708, 51.453143026638756], [-0.1915049828006357, 51.45319387306572], [-0.19145119926606255, 51.45320652830595], [-0.19133659717712126, 51.453010487276124], [-0.19130958590140498, 51.45292826191381], [-0.19126484055822068, 51.452751278455864], [-0.19120946649447262, 51.452585008836], [-0.19108992536046981, 51.45244193209487], [-0.19095228242548692, 51.45228248386253], [-0.1905308963802704, 51.451766069962716], [-0.19037384375908945, 51.451551392751625], [-0.19026237922990524, 51.451384256785325], [-0.19007637512341385, 51.45106754562435], [-0.19005873884205543, 51.4510394044514], [-0.18957078138138295, 51.451186497236556], [-0.18877844894148396, 51.45145933022112], [-0.1886925517077748, 51.45148587197707]]], "type": "Polygon"}, "id": "436", "properties": {"DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "NAME": "Earlsfield", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_8c690f34308333173c0fefa82493603c.addTo(map_3ecd8c8c3e93d304fe2e9e64cf55094c);
+        
+    
+        function geo_json_dfafa2cba3faa9f968432e631a2a90a3_styler(feature) {
+            switch(feature.id) {
+                case "4253": case "4254": case "4255": case "4256": case "4257": case "4258": case "4260": case "4357": 
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_dfafa2cba3faa9f968432e631a2a90a3_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_dfafa2cba3faa9f968432e631a2a90a3 = L.geoJson(null, {
+                onEachFeature: geo_json_dfafa2cba3faa9f968432e631a2a90a3_onEachFeature,
+            
+                style: geo_json_dfafa2cba3faa9f968432e631a2a90a3_styler,
+            ...{
+}
+        });
+
+        function geo_json_dfafa2cba3faa9f968432e631a2a90a3_add (data) {
+            geo_json_dfafa2cba3faa9f968432e631a2a90a3
+                .addData(data);
+        }
+            geo_json_dfafa2cba3faa9f968432e631a2a90a3_add({"features": [{"geometry": {"coordinates": [[[[-0.18071689998882334, 51.4370420722507], [-0.1832202733147955, 51.43880297494938], [-0.18680439924785977, 51.43734830487767], [-0.18520486683907442, 51.433873365573284], [-0.1822640465278019, 51.43618645774673], [-0.18071689998882334, 51.4370420722507]]]], "type": "MultiPolygon"}, "id": "4253", "properties": {"BNG_E": 526338, "BNG_N": 172449, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{65ABEAAA-AF61-4DD5-AEFB-5B73BFE6AF9C}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.43695831298828, "LONG": -0.18376000225543976, "LSOA21CD": "E01004490", "LSOA21NM": "Wandsworth 031A", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandsworth Common", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.1743343336237077, 51.434696501106544], [-0.177661156507908, 51.43779152716671], [-0.18071689998882334, 51.4370420722507], [-0.1822640465278019, 51.43618645774673], [-0.18059332430842967, 51.43292731246637], [-0.17572537491500884, 51.434447931848865], [-0.1743343336237077, 51.434696501106544]]]], "type": "MultiPolygon"}, "id": "4254", "properties": {"BNG_E": 526740, "BNG_N": 172253, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{12641ADD-17E1-43AC-9B0B-8801D36E7A42}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.43510818481445, "LONG": -0.1780499964952469, "LSOA21CD": "E01004491", "LSOA21NM": "Wandsworth 031B", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandsworth Common", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.18680439924785977, 51.43734830487767], [-0.18931046223316744, 51.4381226072616], [-0.19120389233547286, 51.43324936741279], [-0.18432294732598012, 51.43123238488554], [-0.1837062405946561, 51.431556751342384], [-0.18059332430842967, 51.43292731246637], [-0.1822640465278019, 51.43618645774673], [-0.18520486683907442, 51.433873365573284], [-0.18680439924785977, 51.43734830487767]]]], "type": "MultiPolygon"}, "id": "4255", "properties": {"BNG_E": 526057, "BNG_N": 172192, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{F0999441-9756-4397-898C-676F9F751762}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.43471145629883, "LONG": -0.18788999319076538, "LSOA21CD": "E01004492", "LSOA21NM": "Wandsworth 031C", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandsworth Common", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.18493253506078924, 51.445286709263975], [-0.1868752448878617, 51.449870691608], [-0.18747274314625406, 51.44757712973406], [-0.1922698968811895, 51.44884473207286], [-0.19342862807966218, 51.44677178983393], [-0.18724511920871706, 51.444738075686466], [-0.18522470402063568, 51.44498439427993], [-0.18493253506078924, 51.445286709263975]]]], "type": "MultiPolygon"}, "id": "4256", "properties": {"BNG_E": 525945, "BNG_N": 173469, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{A9B9FB9E-529B-41DC-BC17-AB688A959D3D}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.44620895385742, "LONG": -0.18905000388622284, "LSOA21CD": "E01004493", "LSOA21NM": "Wandsworth 019A", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandle", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.1887204175565524, 51.45149280995884], [-0.19150480059320912, 51.453193687123765], [-0.1922698968811895, 51.44884473207286], [-0.18747274314625406, 51.44757712973406], [-0.1868752448878617, 51.449870691608], [-0.1887204175565524, 51.45149280995884]]]], "type": "MultiPolygon"}, "id": "4257", "properties": {"BNG_E": 525898, "BNG_N": 173805, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{6BCB835F-BFF1-4430-B63C-996D8E3C8115}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.449241638183594, "LONG": -0.18960000574588776, "LSOA21CD": "E01004494", "LSOA21NM": "Wandsworth 018A", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandle", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.18724511920871706, 51.444738075686466], [-0.19342862807966218, 51.44677178983393], [-0.19317929591942504, 51.44497315291718], [-0.19022284720506183, 51.44258269046472], [-0.18724511920871706, 51.444738075686466]]]], "type": "MultiPolygon"}, "id": "4258", "properties": {"BNG_E": 525866, "BNG_N": 173309, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{ACBFB810-94D7-4899-9AD3-3361249A8672}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.44478988647461, "LONG": -0.19023999571800232, "LSOA21CD": "E01004495", "LSOA21NM": "Wandsworth 024A", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandle", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.18538699177133564, 51.44285166820636], [-0.18522470402063568, 51.44498439427993], [-0.18724511920871706, 51.444738075686466], [-0.19022284720506183, 51.44258269046472], [-0.19008396025127566, 51.441445204389844], [-0.19025378833169448, 51.438895391245545], [-0.18353623243943948, 51.441044258214276], [-0.18538699177133564, 51.44285166820636]]]], "type": "MultiPolygon"}, "id": "4259", "properties": {"BNG_E": 526074, "BNG_N": 173080, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{AE40CF38-814C-47AD-AED4-C6EDB2DF293C}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.442691802978516, "LONG": -0.1873299926519394, "LSOA21CD": "E01004496", "LSOA21NM": "Wandsworth 024B", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandsworth Common", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.17870121940784434, 51.439318029506836], [-0.1830967238613008, 51.4440348907177], [-0.18538699177133564, 51.44285166820636], [-0.18353623243943948, 51.441044258214276], [-0.1832202733147955, 51.43880297494938], [-0.18071689998882334, 51.4370420722507], [-0.177661156507908, 51.43779152716671], [-0.17870121940784434, 51.439318029506836]]]], "type": "MultiPolygon"}, "id": "4260", "properties": {"BNG_E": 526486, "BNG_N": 172786, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{7EF995B0-3ED6-465A-9530-700CA2D281AB}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.43996047973633, "LONG": -0.18151000142097473, "LSOA21CD": "E01004497", "LSOA21NM": "Wandsworth 024C", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandsworth Common", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.1832202733147955, 51.43880297494938], [-0.18353623243943948, 51.441044258214276], [-0.19025378833169448, 51.438895391245545], [-0.18931046223316744, 51.4381226072616], [-0.18680439924785977, 51.43734830487767], [-0.1832202733147955, 51.43880297494938]]]], "type": "MultiPolygon"}, "id": "4261", "properties": {"BNG_E": 526132, "BNG_N": 172681, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{9D930067-5E1B-4A9F-B61A-50539D527AC5}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.439090728759766, "LONG": -0.18663999438285828, "LSOA21CD": "E01004498", "LSOA21NM": "Wandsworth 031D", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Wandsworth Common", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.19022284720506183, 51.44258269046472], [-0.19317929591942504, 51.44497315291718], [-0.19412690666312168, 51.444960714161446], [-0.197354808781745, 51.44020074419523], [-0.19008396025127566, 51.441445204389844], [-0.19022284720506183, 51.44258269046472]]]], "type": "MultiPolygon"}, "id": "4357", "properties": {"BNG_E": 525593, "BNG_N": 173084, "DISTRICT": "Wandsworth", "GSS_CODE": "E05000612", "GlobalID": "{BA0D99F5-00B1-4DEA-BD4D-D0B07C3B10D6}", "HECTARES": 140.341, "LAGSSCODE": "E09000032", "LAT": 51.44282913208008, "LONG": -0.19425000250339508, "LSOA21CD": "E01004598", "LSOA21NM": "Wandsworth 025D", "LSOA21NMW": " ", "NAME": "Earlsfield", "NONLD_AREA": 0.0, "WD24NM": "Southfields", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_dfafa2cba3faa9f968432e631a2a90a3.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_dfafa2cba3faa9f968432e631a2a90a3.addTo(map_3ecd8c8c3e93d304fe2e9e64cf55094c);
+        
+    
+            var feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_1328f2e7f8b28bf9e5e651fc23ab49b1 = L.marker(
+                [51.4439119, -0.1872373],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_9b3d48cf42687dc769d0a95bdf2e48d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fe099a52acafd268bedc5d7ff3b1d513 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5d84d8ead1a97d4dd216af5f5fb1e66 = $(`<div id="html_b5d84d8ead1a97d4dd216af5f5fb1e66" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 024B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_fe099a52acafd268bedc5d7ff3b1d513.setContent(html_b5d84d8ead1a97d4dd216af5f5fb1e66);
+            
+        
+
+        marker_1328f2e7f8b28bf9e5e651fc23ab49b1.bindPopup(popup_fe099a52acafd268bedc5d7ff3b1d513)
+        ;
+
+        
+    
+    
+                marker_1328f2e7f8b28bf9e5e651fc23ab49b1.setIcon(icon_9b3d48cf42687dc769d0a95bdf2e48d5);
+            
+    
+            var marker_4e1b6191746e306ba3b76043baaa91a7 = L.marker(
+                [51.4414454, -0.1873214],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_6530e89092aa0a43d7701210de471d95 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_63ee08d0c7638370432f15d182e601df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5ac046665849b086e973512975ad2cd9 = $(`<div id="html_5ac046665849b086e973512975ad2cd9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 024B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_63ee08d0c7638370432f15d182e601df.setContent(html_5ac046665849b086e973512975ad2cd9);
+            
+        
+
+        marker_4e1b6191746e306ba3b76043baaa91a7.bindPopup(popup_63ee08d0c7638370432f15d182e601df)
+        ;
+
+        
+    
+    
+                marker_4e1b6191746e306ba3b76043baaa91a7.setIcon(icon_6530e89092aa0a43d7701210de471d95);
+            
+    
+            var marker_d681cbaf00c41f9aa885ec4e5c55df2d = L.marker(
+                [51.4405365, -0.1858761],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_bfcd42dd2f2c6b16f5cab17f99184158 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35530bd8b332e14783b55b74ea052d7f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d471b091d0de3dd9544fa2dc661030a9 = $(`<div id="html_d471b091d0de3dd9544fa2dc661030a9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 024B (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_35530bd8b332e14783b55b74ea052d7f.setContent(html_d471b091d0de3dd9544fa2dc661030a9);
+            
+        
+
+        marker_d681cbaf00c41f9aa885ec4e5c55df2d.bindPopup(popup_35530bd8b332e14783b55b74ea052d7f)
+        ;
+
+        
+    
+    
+                marker_d681cbaf00c41f9aa885ec4e5c55df2d.setIcon(icon_bfcd42dd2f2c6b16f5cab17f99184158);
+            
+    
+            var marker_050a9ff9e9f542a2afe83d1d479a1d29 = L.marker(
+                [51.4392788, -0.186805],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_fba77dff48e1cc4820e002664558e1d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aaaf30dcdb458d93db423bca1699646b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_adf64732f2d4e1e0d7e2bc8a8d5e998b = $(`<div id="html_adf64732f2d4e1e0d7e2bc8a8d5e998b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031D (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_aaaf30dcdb458d93db423bca1699646b.setContent(html_adf64732f2d4e1e0d7e2bc8a8d5e998b);
+            
+        
+
+        marker_050a9ff9e9f542a2afe83d1d479a1d29.bindPopup(popup_aaaf30dcdb458d93db423bca1699646b)
+        ;
+
+        
+    
+    
+                marker_050a9ff9e9f542a2afe83d1d479a1d29.setIcon(icon_fba77dff48e1cc4820e002664558e1d8);
+            
+    
+            var marker_612e92c7b909df6c6f7c62fda2d125a6 = L.marker(
+                [51.4395129, -0.1833733],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_f045d5afe46f7baaf592fc199c73de1d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_09c57629a2036353b596878d84cebe9b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a71fa3673c38a659c5ca7c7a1a53760e = $(`<div id="html_a71fa3673c38a659c5ca7c7a1a53760e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031D (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_09c57629a2036353b596878d84cebe9b.setContent(html_a71fa3673c38a659c5ca7c7a1a53760e);
+            
+        
+
+        marker_612e92c7b909df6c6f7c62fda2d125a6.bindPopup(popup_09c57629a2036353b596878d84cebe9b)
+        ;
+
+        
+    
+    
+                marker_612e92c7b909df6c6f7c62fda2d125a6.setIcon(icon_f045d5afe46f7baaf592fc199c73de1d);
+            
+    
+            var marker_641d2f4137e5784108535b3980e21c15 = L.marker(
+                [51.4336524, -0.1801215],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_9bbf4afedd18c3db48d0bda3d3bb31ed = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_91d2270c389611fcf0a6491fca6f2bfa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e6c51703808da8eb4639f5ba53b9f628 = $(`<div id="html_e6c51703808da8eb4639f5ba53b9f628" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_91d2270c389611fcf0a6491fca6f2bfa.setContent(html_e6c51703808da8eb4639f5ba53b9f628);
+            
+        
+
+        marker_641d2f4137e5784108535b3980e21c15.bindPopup(popup_91d2270c389611fcf0a6491fca6f2bfa)
+        ;
+
+        
+    
+    
+                marker_641d2f4137e5784108535b3980e21c15.setIcon(icon_9bbf4afedd18c3db48d0bda3d3bb31ed);
+            
+    
+            var marker_5e1f24b95989e583aff06f80873dda01 = L.marker(
+                [51.434779, -0.1807564],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_16bf9be25853daa462d975f2cdfae6be = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2e58aa6139d2aaa56dc5a11e01dfb0e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_89a39247928e6fa2ed31ee5c3a7b90e8 = $(`<div id="html_89a39247928e6fa2ed31ee5c3a7b90e8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c2e58aa6139d2aaa56dc5a11e01dfb0e.setContent(html_89a39247928e6fa2ed31ee5c3a7b90e8);
+            
+        
+
+        marker_5e1f24b95989e583aff06f80873dda01.bindPopup(popup_c2e58aa6139d2aaa56dc5a11e01dfb0e)
+        ;
+
+        
+    
+    
+                marker_5e1f24b95989e583aff06f80873dda01.setIcon(icon_16bf9be25853daa462d975f2cdfae6be);
+            
+    
+            var marker_5591e6bb030f62ab1c892ea46d3c8be1 = L.marker(
+                [51.4346244, -0.1772549],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_13256a298a993a3d412717b6a7d00b3e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_209ccf9140668fbaea617b473cb9b3a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ac0935f350791a1f1106661a773e2e8b = $(`<div id="html_ac0935f350791a1f1106661a773e2e8b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_209ccf9140668fbaea617b473cb9b3a4.setContent(html_ac0935f350791a1f1106661a773e2e8b);
+            
+        
+
+        marker_5591e6bb030f62ab1c892ea46d3c8be1.bindPopup(popup_209ccf9140668fbaea617b473cb9b3a4)
+        ;
+
+        
+    
+    
+                marker_5591e6bb030f62ab1c892ea46d3c8be1.setIcon(icon_13256a298a993a3d412717b6a7d00b3e);
+            
+    
+            var marker_44c1625dde6acbc8d66024b31c7ae121 = L.marker(
+                [51.4353759, -0.1842465],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_1c5e6e216ed724f8c4c853769d87e0ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fe06ad0ca38cdae0b880761256d43245 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_706f5928c627db647ad6f67c9d7deb78 = $(`<div id="html_706f5928c627db647ad6f67c9d7deb78" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_fe06ad0ca38cdae0b880761256d43245.setContent(html_706f5928c627db647ad6f67c9d7deb78);
+            
+        
+
+        marker_44c1625dde6acbc8d66024b31c7ae121.bindPopup(popup_fe06ad0ca38cdae0b880761256d43245)
+        ;
+
+        
+    
+    
+                marker_44c1625dde6acbc8d66024b31c7ae121.setIcon(icon_1c5e6e216ed724f8c4c853769d87e0ca);
+            
+    
+            var marker_004366025a902fbe5d049b3d05dbe233 = L.marker(
+                [51.4347722, -0.1836842],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_113d323317e2121a6a639f3fc3bfb128 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ceb96161f32da99b77e4c692f8bced1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_10590c22d03ea038afb815448113d360 = $(`<div id="html_10590c22d03ea038afb815448113d360" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9ceb96161f32da99b77e4c692f8bced1.setContent(html_10590c22d03ea038afb815448113d360);
+            
+        
+
+        marker_004366025a902fbe5d049b3d05dbe233.bindPopup(popup_9ceb96161f32da99b77e4c692f8bced1)
+        ;
+
+        
+    
+    
+                marker_004366025a902fbe5d049b3d05dbe233.setIcon(icon_113d323317e2121a6a639f3fc3bfb128);
+            
+    
+            var marker_1034eaeef6e0b2478fa7da6fe2ddce15 = L.marker(
+                [51.4353386, -0.187029],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_6c9056c98844e3bfb7f9ec382b204f7b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ef4a52eab246fa898658ada9120c3fd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7587b4ba56cf001a890d9d65107398b0 = $(`<div id="html_7587b4ba56cf001a890d9d65107398b0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9ef4a52eab246fa898658ada9120c3fd.setContent(html_7587b4ba56cf001a890d9d65107398b0);
+            
+        
+
+        marker_1034eaeef6e0b2478fa7da6fe2ddce15.bindPopup(popup_9ef4a52eab246fa898658ada9120c3fd)
+        ;
+
+        
+    
+    
+                marker_1034eaeef6e0b2478fa7da6fe2ddce15.setIcon(icon_6c9056c98844e3bfb7f9ec382b204f7b);
+            
+    
+            var marker_befdd2b1fa5c6003bd1e944077361c81 = L.marker(
+                [51.4341482, -0.1878126],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_fc88361d905c2102c3224459356f231d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0ac3eccef5f337af05131a6db1683c7d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c2376fb5234c51f8f0eb3f9e0641dcf = $(`<div id="html_3c2376fb5234c51f8f0eb3f9e0641dcf" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0ac3eccef5f337af05131a6db1683c7d.setContent(html_3c2376fb5234c51f8f0eb3f9e0641dcf);
+            
+        
+
+        marker_befdd2b1fa5c6003bd1e944077361c81.bindPopup(popup_0ac3eccef5f337af05131a6db1683c7d)
+        ;
+
+        
+    
+    
+                marker_befdd2b1fa5c6003bd1e944077361c81.setIcon(icon_fc88361d905c2102c3224459356f231d);
+            
+    
+            var marker_ddd515b9d6e9dadf91e00f95144e0f00 = L.marker(
+                [51.4330272, -0.1875595],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_0732dc8a132fa276f7916bc37eed25ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7a03e628ab38f2d41f73f18372650610 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_624b20778da608705891d6ab77780bb4 = $(`<div id="html_624b20778da608705891d6ab77780bb4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7a03e628ab38f2d41f73f18372650610.setContent(html_624b20778da608705891d6ab77780bb4);
+            
+        
+
+        marker_ddd515b9d6e9dadf91e00f95144e0f00.bindPopup(popup_7a03e628ab38f2d41f73f18372650610)
+        ;
+
+        
+    
+    
+                marker_ddd515b9d6e9dadf91e00f95144e0f00.setIcon(icon_0732dc8a132fa276f7916bc37eed25ca);
+            
+    
+            var marker_26c949d538806dce9e9ebdea6a1a644e = L.marker(
+                [51.4331128, -0.1837209],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_bc7ca77e5d0413b8df855ff2abdcaeba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3accc0e21e94e892da785dc64597d195 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6854cdf482dc3301d73253ed57852d87 = $(`<div id="html_6854cdf482dc3301d73253ed57852d87" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031C (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3accc0e21e94e892da785dc64597d195.setContent(html_6854cdf482dc3301d73253ed57852d87);
+            
+        
+
+        marker_26c949d538806dce9e9ebdea6a1a644e.bindPopup(popup_3accc0e21e94e892da785dc64597d195)
+        ;
+
+        
+    
+    
+                marker_26c949d538806dce9e9ebdea6a1a644e.setIcon(icon_bc7ca77e5d0413b8df855ff2abdcaeba);
+            
+    
+            var marker_6da6c61fb4775e680c62f5fcbc9834ae = L.marker(
+                [51.432993, -0.1822129],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_6cc94c83237f1f4ba7158772d63b6ad8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f0d5f2ec7cb16ad268e0029c76014d8f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ac15231a4fb02dd02a1b1a9187d9275 = $(`<div id="html_4ac15231a4fb02dd02a1b1a9187d9275" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 031C (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f0d5f2ec7cb16ad268e0029c76014d8f.setContent(html_4ac15231a4fb02dd02a1b1a9187d9275);
+            
+        
+
+        marker_6da6c61fb4775e680c62f5fcbc9834ae.bindPopup(popup_f0d5f2ec7cb16ad268e0029c76014d8f)
+        ;
+
+        
+    
+    
+                marker_6da6c61fb4775e680c62f5fcbc9834ae.setIcon(icon_6cc94c83237f1f4ba7158772d63b6ad8);
+            
+    
+            var marker_1ceefc33845709aa2789d72b669aae8b = L.marker(
+                [51.445862, -0.1893753],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_c908e4177b6d6eb75ffc023b651b6c7f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d35eb5fb101f0886c01dfa7d9fda67c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da4cd9be7551cb5eba9547d323ac37c4 = $(`<div id="html_da4cd9be7551cb5eba9547d323ac37c4" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 019A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d35eb5fb101f0886c01dfa7d9fda67c9.setContent(html_da4cd9be7551cb5eba9547d323ac37c4);
+            
+        
+
+        marker_1ceefc33845709aa2789d72b669aae8b.bindPopup(popup_d35eb5fb101f0886c01dfa7d9fda67c9)
+        ;
+
+        
+    
+    
+                marker_1ceefc33845709aa2789d72b669aae8b.setIcon(icon_c908e4177b6d6eb75ffc023b651b6c7f);
+            
+    
+            var marker_befc518b0685c5d72985ba5b76d50ea8 = L.marker(
+                [51.445862, -0.1893753],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_5260a4347b8c133e3323079eb9dc3b16 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_18524c275f0eed73ff50f303f0a06e39 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e9cbbc2a9b59cc14e5cbcecf07d8c69 = $(`<div id="html_2e9cbbc2a9b59cc14e5cbcecf07d8c69" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 019A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_18524c275f0eed73ff50f303f0a06e39.setContent(html_2e9cbbc2a9b59cc14e5cbcecf07d8c69);
+            
+        
+
+        marker_befc518b0685c5d72985ba5b76d50ea8.bindPopup(popup_18524c275f0eed73ff50f303f0a06e39)
+        ;
+
+        
+    
+    
+                marker_befc518b0685c5d72985ba5b76d50ea8.setIcon(icon_5260a4347b8c133e3323079eb9dc3b16);
+            
+    
+            var marker_aa2e86261a5c336859b29b74d35886a0 = L.marker(
+                [51.4470432, -0.1926352],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_a4263d0fbc7bab1818d1bd276e0d5c01 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1d0b9330e37683acb74810e773ef73bf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c000b8b95f5e825e98064613c5f67c03 = $(`<div id="html_c000b8b95f5e825e98064613c5f67c03" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 019A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_1d0b9330e37683acb74810e773ef73bf.setContent(html_c000b8b95f5e825e98064613c5f67c03);
+            
+        
+
+        marker_aa2e86261a5c336859b29b74d35886a0.bindPopup(popup_1d0b9330e37683acb74810e773ef73bf)
+        ;
+
+        
+    
+    
+                marker_aa2e86261a5c336859b29b74d35886a0.setIcon(icon_a4263d0fbc7bab1818d1bd276e0d5c01);
+            
+    
+            var marker_d70e3036b0df1ed7e70c3dc6c76c5266 = L.marker(
+                [51.444242, -0.1890083],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_c0956639e5e633aa92d98dba3e4faf2f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cdf0c687d008e2e48f6d3d16910283c5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_993074fbf2556efb9805cb965a36e04f = $(`<div id="html_993074fbf2556efb9805cb965a36e04f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 024A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_cdf0c687d008e2e48f6d3d16910283c5.setContent(html_993074fbf2556efb9805cb965a36e04f);
+            
+        
+
+        marker_d70e3036b0df1ed7e70c3dc6c76c5266.bindPopup(popup_cdf0c687d008e2e48f6d3d16910283c5)
+        ;
+
+        
+    
+    
+                marker_d70e3036b0df1ed7e70c3dc6c76c5266.setIcon(icon_c0956639e5e633aa92d98dba3e4faf2f);
+            
+    
+            var marker_acffbb1cb4df8744d53c7c8fdc62a17f = L.marker(
+                [51.4505763, -0.1899533],
+                {
+}
+            ).addTo(feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f);
+        
+    
+            var icon_77c0548a3a370bc69b11d57eec2dbe9c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0082d9cc873313ff2958298333e35449 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_59676e6ef044bb11ad2949cb3d5dd473 = $(`<div id="html_59676e6ef044bb11ad2949cb3d5dd473" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Wandsworth 018A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0082d9cc873313ff2958298333e35449.setContent(html_59676e6ef044bb11ad2949cb3d5dd473);
+            
+        
+
+        marker_acffbb1cb4df8744d53c7c8fdc62a17f.bindPopup(popup_0082d9cc873313ff2958298333e35449)
+        ;
+
+        
+    
+    
+                marker_acffbb1cb4df8744d53c7c8fdc62a17f.setIcon(icon_77c0548a3a370bc69b11d57eec2dbe9c);
+            
+    
+            feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f.addTo(map_3ecd8c8c3e93d304fe2e9e64cf55094c);
+        
+    
+            var poly_line_4ea6946e01fc59f4f95c6e3c7e71ef0c = L.polyline(
+                [[51.4439119, -0.1872373], [51.4440115, -0.187606], [51.4444851, -0.1879793], [51.4442029, -0.1887349], [51.444242, -0.1890083], [51.4442029, -0.1887349], [51.4437286, -0.1884047], [51.4433323, -0.1894609], [51.4428096, -0.1888475], [51.4425204, -0.1885129], [51.4417143, -0.1875679], [51.4414454, -0.1873214], [51.4398033, -0.1889116], [51.4394437, -0.1886397], [51.4393185, -0.1884998], [51.439285, -0.1885793], [51.4387545, -0.188384], [51.4392788, -0.186805], [51.4391856, -0.1867974], [51.4400922, -0.1839291], [51.4395129, -0.1833733], [51.4389424, -0.1828293], [51.4383415, -0.1822795], [51.4374421, -0.1845921], [51.4370327, -0.1841952], [51.4361349, -0.1865763], [51.4362884, -0.1866345], [51.4353386, -0.187029], [51.4341482, -0.1878126], [51.4337988, -0.1874371], [51.4330272, -0.1875595], [51.4337988, -0.1874371], [51.4343612, -0.1853561], [51.4341252, -0.1852764], [51.4347722, -0.1836842], [51.4352204, -0.184203], [51.4352665, -0.1841171], [51.4353759, -0.1842465], [51.4352665, -0.1841171], [51.4352204, -0.184203], [51.4347722, -0.1836842], [51.4346929, -0.1835924], [51.4344032, -0.183243], [51.4334955, -0.1847479], [51.4331128, -0.1837209], [51.432993, -0.1822129], [51.4340275, -0.1825981], [51.4343162, -0.1820615], [51.4346277, -0.1813114], [51.4339907, -0.1808398], [51.4343428, -0.1798228], [51.4339853, -0.1794629], [51.4336524, -0.1801215], [51.4339853, -0.1794629], [51.4343428, -0.1798228], [51.4346567, -0.1800674], [51.4347126, -0.1806], [51.434779, -0.1807564], [51.4347126, -0.1806], [51.4346567, -0.1800674], [51.4350532, -0.179846], [51.4354728, -0.1794754], [51.4358475, -0.1791459], [51.4359942, -0.1795477], [51.4358645, -0.1777565], [51.43524, -0.1775284], [51.4346244, -0.1772549], [51.43524, -0.1775284], [51.4358645, -0.1777565], [51.4359942, -0.1795477], [51.4361493, -0.1800026], [51.4376573, -0.181568], [51.4383415, -0.1822795], [51.4389424, -0.1828293], [51.4395129, -0.1833733], [51.4400922, -0.1839291], [51.4406577, -0.1845089], [51.4403682, -0.1852615], [51.4401441, -0.185924], [51.4405365, -0.1858761], [51.4401441, -0.185924], [51.4398564, -0.1868249], [51.4399338, -0.1868273], [51.4404343, -0.1868447], [51.4398033, -0.1889116], [51.4414454, -0.1873214], [51.4417143, -0.1875679], [51.4425204, -0.1885129], [51.4428096, -0.1888475], [51.4433323, -0.1894609], [51.4439022, -0.1900584], [51.4444515, -0.1903441], [51.4450921, -0.1894441], [51.4454005, -0.1894316], [51.4458017, -0.1893825], [51.4458986, -0.1885212], [51.4469991, -0.1885307], [51.4470081, -0.1893366], [51.4470432, -0.1926352], [51.4478387, -0.1920463], [51.4489097, -0.1915588], [51.4494652, -0.1915661], [51.4494932, -0.1905626], [51.4495585, -0.190134], [51.4495965, -0.1897077], [51.450077, -0.1898266], [51.4505522, -0.1899472], [51.4505763, -0.1899533], [51.4504288, -0.1907722], [51.4494932, -0.1905626], [51.4495585, -0.190134], [51.4495965, -0.1897077], [51.4488194, -0.1896111], [51.4488204, -0.190626], [51.4478387, -0.1920463], [51.4470432, -0.1926352], [51.4470081, -0.1893366], [51.4469991, -0.1885307], [51.4458986, -0.1885212], [51.4458017, -0.1893825], [51.445862, -0.1893753], [51.4458017, -0.1893825], [51.4454005, -0.1894316], [51.4450921, -0.1894441], [51.4444515, -0.1903441], [51.4439022, -0.1900584], [51.4433323, -0.1894609], [51.4437286, -0.1884047], [51.4440115, -0.187606], [51.4439119, -0.1872373]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_3ecd8c8c3e93d304fe2e9e64cf55094c);
+        
+    
+            var layer_control_fc7ba2a99c6db3408bd1335377150c62_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_b0711653ead170b589ce7f857738556e,
+                },
+                overlays :  {
+                    "Earlsfield Boundary" : geo_json_8c690f34308333173c0fefa82493603c,
+                    "LSOA Median Crime Rates for Earlsfield" : geo_json_dfafa2cba3faa9f968432e631a2a90a3,
+                    "Patrol Waypoints" : feature_group_d211f8a1de9d4ae1f5ca3f2b7242357f,
+                },
+            };
+            let layer_control_fc7ba2a99c6db3408bd1335377150c62 = L.control.layers(
+                layer_control_fc7ba2a99c6db3408bd1335377150c62_layers.base_layers,
+                layer_control_fc7ba2a99c6db3408bd1335377150c62_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_3ecd8c8c3e93d304fe2e9e64cf55094c);
+
+        
+</script>
+</html>

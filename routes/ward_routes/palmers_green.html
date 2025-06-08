@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7ee5af103452eac792836e7888b486fd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7ee5af103452eac792836e7888b486fd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7ee5af103452eac792836e7888b486fd = L.map(
+                "map_7ee5af103452eac792836e7888b486fd",
+                {
+                    center: [51.61914159088966, -0.09947213028340104],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0a9ccc1030babd317c35986937a37b49 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0a9ccc1030babd317c35986937a37b49.addTo(map_7ee5af103452eac792836e7888b486fd);
+        
+    
+        function geo_json_825937465472b84d6e3332a6a9b271f9_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_825937465472b84d6e3332a6a9b271f9_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_825937465472b84d6e3332a6a9b271f9 = L.geoJson(null, {
+                onEachFeature: geo_json_825937465472b84d6e3332a6a9b271f9_onEachFeature,
+            
+                style: geo_json_825937465472b84d6e3332a6a9b271f9_styler,
+            ...{
+}
+        });
+
+        function geo_json_825937465472b84d6e3332a6a9b271f9_add (data) {
+            geo_json_825937465472b84d6e3332a6a9b271f9
+                .addData(data);
+        }
+            geo_json_825937465472b84d6e3332a6a9b271f9_add({"features": [{"geometry": {"coordinates": [[[-0.11206274800070629, 51.61870571577486], [-0.11152113093752603, 51.618494642954445], [-0.11095350786773886, 51.6183191083958], [-0.11060947252423228, 51.61818591610052], [-0.11026522111631064, 51.61857691591903], [-0.10968385283697756, 51.61921949756941], [-0.10931542407343076, 51.619673123964304], [-0.10895103433357105, 51.62006379562229], [-0.10852092210608195, 51.620542496357515], [-0.10817524353765927, 51.620932568139025], [-0.10791544963118463, 51.62127368020746], [-0.10759058995156304, 51.62116595977132], [-0.10714653719176137, 51.6210058836661], [-0.10690340751284454, 51.62091206486899], [-0.10655936866437225, 51.62077877084115], [-0.10631710876456293, 51.620698449577716], [-0.10598574480248434, 51.62126773334361], [-0.10570108860437531, 51.621684852974084], [-0.10544036732821786, 51.622013358940926], [-0.10498891569439273, 51.62251687403209], [-0.1045363682171048, 51.62304644020282], [-0.10436376692254423, 51.62323513645121], [-0.10419325745756798, 51.623373613114985], [-0.10382688318461646, 51.623601521217374], [-0.10325675827919932, 51.623762218691155], [-0.10261497611644123, 51.62391015839597], [-0.10210678695653234, 51.62407364931196], [-0.10191117950952368, 51.624156789109236], [-0.10166314546391117, 51.62428591781457], [-0.10106391182413545, 51.624658383793786], [-0.10070119395091126, 51.624866563774496], [-0.09970813057165848, 51.6255725559025], [-0.0995673861502204, 51.62568804429212], [-0.09951172397306389, 51.625742970022166], [-0.0994312377830174, 51.6258360601954], [-0.09931652636869785, 51.62598703006759], [-0.09923957656356845, 51.62610094386446], [-0.09909744725383206, 51.62635494249271], [-0.0988452340670335, 51.62682291407754], [-0.0981561429218198, 51.62668499613038], [-0.09713364247181773, 51.626535287585405], [-0.09669371281544115, 51.626449944448964], [-0.09602456891550777, 51.6262825809628], [-0.09587587852148975, 51.626243311038344], [-0.0951514834368121, 51.62604996472912], [-0.09443717930485244, 51.625857586786395], [-0.09417844207960875, 51.625792255806644], [-0.09407895682869676, 51.62575288339825], [-0.093982366402453, 51.625712658921174], [-0.09384451977748809, 51.625622230508476], [-0.09366286046527218, 51.62547724137429], [-0.0935539383260424, 51.62538737219985], [-0.0934833753276673, 51.62534577200868], [-0.09336290798716286, 51.625289786624876], [-0.09317593733692232, 51.62523460879385], [-0.09293255415378494, 51.62518390815663], [-0.09272248751613578, 51.62516251577376], [-0.09249060507659704, 51.62514436447047], [-0.09164977791351872, 51.62510912347029], [-0.09048146701790694, 51.62502899479685], [-0.09010353646869337, 51.62501385697619], [-0.08963668711006759, 51.62505390697204], [-0.08943665999783657, 51.625068631422565], [-0.08928542448950515, 51.625058978128486], [-0.08903421336625425, 51.625018929769965], [-0.0896236911847348, 51.62395387850123], [-0.08963437533310407, 51.62394056760688], [-0.08994149781029141, 51.623471710598714], [-0.08810086765676187, 51.62312971036324], [-0.08687864302568016, 51.62289125517884], [-0.08624632445326391, 51.622742505019914], [-0.08532203122804638, 51.62249540531009], [-0.0845137673722175, 51.62227086822502], [-0.08387248315401949, 51.62209498931452], [-0.08329536580503234, 51.6219398423437], [-0.08271418013386782, 51.62181348348413], [-0.08273431237172073, 51.62178234781226], [-0.0829969849346317, 51.621377509437046], [-0.08330007271060567, 51.621005603938855], [-0.08362403529939612, 51.62062154255411], [-0.08396874149329782, 51.62025669755546], [-0.08432455238497731, 51.619834497720866], [-0.08475449952216603, 51.619368467250055], [-0.08509975423952373, 51.61899014314156], [-0.08532557238550673, 51.61873842489068], [-0.08544543138301444, 51.61856768474241], [-0.08563115797789862, 51.61830910902371], [-0.08585859519777256, 51.61801875979504], [-0.08604556260685187, 51.61772775028937], [-0.08613329536116299, 51.617601434897615], [-0.08624514422229398, 51.61738031006098], [-0.08630286823082003, 51.61720855603701], [-0.08644072605787996, 51.61688438180437], [-0.08650451493138071, 51.61667317118433], [-0.08653476838725088, 51.616571180001976], [-0.08654524024958767, 51.61649493693849], [-0.08657772658778437, 51.6163398521009], [-0.08709408130602768, 51.61635815656199], [-0.08776811654469101, 51.61637093663124], [-0.08836051562106637, 51.61636799963407], [-0.0889065474712418, 51.616368799700105], [-0.08934874730615901, 51.61636341230108], [-0.08940083313535441, 51.61636246210534], [-0.09000390854727612, 51.616343508850385], [-0.09091636601562567, 51.616319695660906], [-0.09167731426536915, 51.61629341241258], [-0.09239670687458025, 51.616258358068215], [-0.09355148857285815, 51.616206997635544], [-0.09399286452337807, 51.61618710571106], [-0.09460523269534711, 51.61615659291555], [-0.09495702827082815, 51.61613713114051], [-0.09540035405402557, 51.61610476968817], [-0.09566427091302229, 51.61608208194943], [-0.09584999988258457, 51.61606082228683], [-0.09616362779723843, 51.616022758077676], [-0.09630441818231218, 51.616005263768024], [-0.09702305516065973, 51.615919735829614], [-0.09712372388984368, 51.61589619620213], [-0.09769752901357719, 51.615748174221984], [-0.09785152158159587, 51.615694033660326], [-0.09817785046244797, 51.615591353140786], [-0.09850335443533718, 51.615511222860285], [-0.09919575791070495, 51.61529220707992], [-0.10118496464037294, 51.61466256928261], [-0.10320938292381854, 51.61395255846736], [-0.10569299115278737, 51.613104198978405], [-0.10742915938591609, 51.6125467860244], [-0.10744370884194093, 51.612543424671365], [-0.10755643179814141, 51.61250748473656], [-0.10787332222575373, 51.61242449283272], [-0.10815825835768166, 51.61237964136723], [-0.10846354102219756, 51.61233233023551], [-0.10863481191906138, 51.612311716448545], [-0.10880112625826709, 51.61230720425595], [-0.1091189745868255, 51.61230423395614], [-0.10946848594949968, 51.6123044697051], [-0.11001012308405789, 51.612341060383315], [-0.11085193642474094, 51.61238158096276], [-0.1112202217100471, 51.61241726387095], [-0.11129493574173445, 51.612424758933805], [-0.11181864157278734, 51.612474537470504], [-0.11212658057339768, 51.61250376300359], [-0.11258420976515966, 51.612541687586706], [-0.11303432159855903, 51.61255701496591], [-0.11335600898685842, 51.61256488268466], [-0.11370816271806257, 51.612573239104144], [-0.1139260675404907, 51.61257674052809], [-0.11404876546918581, 51.61257871193299], [-0.11445512890641918, 51.612566361478954], [-0.11568495575919742, 51.612479940092484], [-0.11467932662841958, 51.613604961209205], [-0.11412950645435649, 51.614219303878784], [-0.1143882692536379, 51.614248632309575], [-0.1146757901777415, 51.61424785665493], [-0.11481352607121689, 51.614234786056294], [-0.1148832755735315, 51.61422421943298], [-0.1149168524364196, 51.61421576882471], [-0.11534950415448247, 51.613988890672225], [-0.11537721193725997, 51.61398124468558], [-0.11542962970415535, 51.613972197440695], [-0.1158834842784201, 51.61392914003335], [-0.11629047704620295, 51.613867349232294], [-0.11626889815981432, 51.61396858794203], [-0.11619945740638875, 51.61407813828614], [-0.11533881795695002, 51.61504897880921], [-0.11557259958138152, 51.61512375159971], [-0.11592156672928888, 51.61520666561247], [-0.11564887727785675, 51.615513426264855], [-0.11480411230212668, 51.61641349812257], [-0.1146203894109173, 51.6165589693953], [-0.11447965375209511, 51.61678505037676], [-0.11423697991713883, 51.6167838491522], [-0.11241867252586978, 51.6188310040853], [-0.11206274800070629, 51.61870571577486]]], "type": "Polygon"}, "id": "313", "properties": {"DISTRICT": "Enfield", "GSS_CODE": "E05000205", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "NAME": "Palmers Green", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_825937465472b84d6e3332a6a9b271f9.addTo(map_7ee5af103452eac792836e7888b486fd);
+        
+    
+        function geo_json_fab4cd04de981d5d4cd4ecd16650f74a_styler(feature) {
+            switch(feature.id) {
+                case "1436": case "1440": case "1442": case "1443": case "1444": 
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_fab4cd04de981d5d4cd4ecd16650f74a_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_fab4cd04de981d5d4cd4ecd16650f74a = L.geoJson(null, {
+                onEachFeature: geo_json_fab4cd04de981d5d4cd4ecd16650f74a_onEachFeature,
+            
+                style: geo_json_fab4cd04de981d5d4cd4ecd16650f74a_styler,
+            ...{
+}
+        });
+
+        function geo_json_fab4cd04de981d5d4cd4ecd16650f74a_add (data) {
+            geo_json_fab4cd04de981d5d4cd4ecd16650f74a
+                .addData(data);
+        }
+            geo_json_fab4cd04de981d5d4cd4ecd16650f74a_add({"features": [{"geometry": {"coordinates": [[[[-0.09209417127541637, 51.62512737461486], [-0.09884295454059024, 51.626823332189744], [-0.09939169255163045, 51.62589008913658], [-0.10220948634625686, 51.62403961882702], [-0.0997344821400103, 51.62242364517341], [-0.09244377667862975, 51.62367784122864], [-0.09209417127541637, 51.62512737461486]]]], "type": "MultiPolygon"}, "id": "1436", "properties": {"BNG_E": 531825, "BNG_N": 193417, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{1E6AEDBD-53BA-4FE8-9B46-E32E6B321338}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.624141693115234, "LONG": -0.09702000021934509, "LSOA21CD": "E01001493", "LSOA21NM": "Enfield 026B", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Highfield", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.08903011901811711, 51.62502755201794], [-0.09209417127541637, 51.62512737461486], [-0.09244377667862975, 51.62367784122864], [-0.09424904330265972, 51.6191624364174], [-0.09042812040396953, 51.618006825328365], [-0.09117815524668597, 51.61980231952691], [-0.08991111990050879, 51.62344713577666], [-0.08903011901811711, 51.62502755201794]]]], "type": "MultiPolygon"}, "id": "1437", "properties": {"BNG_E": 532230, "BNG_N": 193139, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{CBEF2DFF-308A-49F4-B465-7F59306D0541}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.621551513671875, "LONG": -0.091279998421669, "LSOA21CD": "E01001494", "LSOA21NM": "Enfield 026C", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Highfield", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.0997344821400103, 51.62242364517341], [-0.10220948634625686, 51.62403961882702], [-0.10614478722830964, 51.62091367059425], [-0.10112354974864515, 51.619776673198196], [-0.0997344821400103, 51.62242364517341]]]], "type": "MultiPolygon"}, "id": "1438", "properties": {"BNG_E": 531426, "BNG_N": 193110, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{1E4DEECC-C511-46AB-8E32-024BCFC5378B}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.62147903442383, "LONG": -0.10289999842643738, "LSOA21CD": "E01001495", "LSOA21NM": "Enfield 029A", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Palmers Green", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.09424904330265972, 51.6191624364174], [-0.09244377667862975, 51.62367784122864], [-0.0997344821400103, 51.62242364517341], [-0.10112354974864515, 51.619776673198196], [-0.10044745933841828, 51.61722944412463], [-0.09985775406617017, 51.617044781842566], [-0.09424904330265972, 51.6191624364174]]]], "type": "MultiPolygon"}, "id": "1439", "properties": {"BNG_E": 531838, "BNG_N": 192892, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{80976F8E-A52A-485E-A532-7FF9BB31E2C5}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.61941909790039, "LONG": -0.09702999889850616, "LSOA21CD": "E01001496", "LSOA21NM": "Enfield 026D", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Highfield", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.08272551021132446, 51.621780125816656], [-0.08991111990050879, 51.62344713577666], [-0.09117815524668597, 51.61980231952691], [-0.08581308960464873, 51.618071282285584], [-0.08272551021132446, 51.621780125816656]]]], "type": "MultiPolygon"}, "id": "1440", "properties": {"BNG_E": 532533, "BNG_N": 193026, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{B15107EC-D8F4-4F49-B7BB-4202CF984AB6}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.620460510253906, "LONG": -0.08694999665021896, "LSOA21CD": "E01001497", "LSOA21NM": "Enfield 031E", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Highfield", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.10708313184879364, 51.62100684646932], [-0.1078893681275313, 51.621281396985914], [-0.11068632191932228, 51.618212675397665], [-0.10784328163468938, 51.61700743034313], [-0.10044745933841828, 51.61722944412463], [-0.10112354974864515, 51.619776673198196], [-0.10614478722830964, 51.62091367059425], [-0.10708313184879364, 51.62100684646932]]]], "type": "MultiPolygon"}, "id": "1441", "properties": {"BNG_E": 531252, "BNG_N": 192813, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{2C0B0F8D-1C63-4223-9F95-439C63E8C915}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.61885070800781, "LONG": -0.10552000254392624, "LSOA21CD": "E01001498", "LSOA21NM": "Enfield 029B", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Palmers Green", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.08581308960464873, 51.618071282285584], [-0.09117815524668597, 51.61980231952691], [-0.09042812040396953, 51.618006825328365], [-0.09424904330265972, 51.6191624364174], [-0.09985775406617017, 51.617044781842566], [-0.0989642365858475, 51.615362914814014], [-0.0865781289751066, 51.61633936721356], [-0.08581308960464873, 51.618071282285584]]]], "type": "MultiPolygon"}, "id": "1442", "properties": {"BNG_E": 532318, "BNG_N": 192692, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{200B9647-E7E9-4AD5-B5EE-5C574F6D8B9C}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.61751174926758, "LONG": -0.09018000215291977, "LSOA21CD": "E01001499", "LSOA21NM": "Enfield 031F", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Highfield", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.09985775406617017, 51.617044781842566], [-0.10044745933841828, 51.61722944412463], [-0.10784328163468938, 51.61700743034313], [-0.1034897209672065, 51.6144687406287], [-0.10920080541494051, 51.61430903082885], [-0.10819904910644748, 51.61237840185665], [-0.10236977874199796, 51.614235450838805], [-0.0989642365858475, 51.615362914814014], [-0.09985775406617017, 51.617044781842566]]]], "type": "MultiPolygon"}, "id": "1443", "properties": {"BNG_E": 531443, "BNG_N": 192426, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{D73C8107-014C-4AF3-9953-1872450A488E}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.61532974243164, "LONG": -0.10290999710559845, "LSOA21CD": "E01001500", "LSOA21NM": "Enfield 035D", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Palmers Green", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.11068632191932228, 51.618212675397665], [-0.11206154070939148, 51.61870548435252], [-0.11570328381140187, 51.61246046893977], [-0.11011875821819422, 51.612331456341266], [-0.10819904910644748, 51.61237840185665], [-0.10920080541494051, 51.61430903082885], [-0.1034897209672065, 51.6144687406287], [-0.10784328163468938, 51.61700743034313], [-0.11068632191932228, 51.618212675397665]]]], "type": "MultiPolygon"}, "id": "1444", "properties": {"BNG_E": 530876, "BNG_N": 192438, "DISTRICT": "Enfield", "GSS_CODE": "E05000205", "GlobalID": "{488DCBBB-851A-4E9F-AE19-FE6133B7933D}", "HECTARES": 194.212, "LAGSSCODE": "E09000010", "LAT": 51.615570068359375, "LONG": -0.11108999699354172, "LSOA21CD": "E01001501", "LSOA21NM": "Enfield 036E", "LSOA21NMW": " ", "NAME": "Palmers Green", "NONLD_AREA": 0.0, "WD24NM": "Palmers Green", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_fab4cd04de981d5d4cd4ecd16650f74a.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_fab4cd04de981d5d4cd4ecd16650f74a.addTo(map_7ee5af103452eac792836e7888b486fd);
+        
+    
+            var feature_group_9f9590afcc7c9f77b5ca23310bb6fb57 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_dfd3d4d5ea041c5975c9fd16ef60d84b = L.marker(
+                [51.6240562, -0.0941318],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_b349ec39b8aba73a68ac79fc2dd11a9c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_73cda53506934b1177a9c45a6c094b5e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ae06c1635d4870c40e1825d1f987bfe0 = $(`<div id="html_ae06c1635d4870c40e1825d1f987bfe0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 026B (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_73cda53506934b1177a9c45a6c094b5e.setContent(html_ae06c1635d4870c40e1825d1f987bfe0);
+            
+        
+
+        marker_dfd3d4d5ea041c5975c9fd16ef60d84b.bindPopup(popup_73cda53506934b1177a9c45a6c094b5e)
+        ;
+
+        
+    
+    
+                marker_dfd3d4d5ea041c5975c9fd16ef60d84b.setIcon(icon_b349ec39b8aba73a68ac79fc2dd11a9c);
+            
+    
+            var marker_7b669d72b5d541854e1c520abc377719 = L.marker(
+                [51.6259968, -0.0992881],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_9c2ccbb829af14636ae05a5006827fa6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_655605c4021bac706b7c5e6cbebd73d0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1288d126205d8e9375dd82636a632683 = $(`<div id="html_1288d126205d8e9375dd82636a632683" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 026B (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_655605c4021bac706b7c5e6cbebd73d0.setContent(html_1288d126205d8e9375dd82636a632683);
+            
+        
+
+        marker_7b669d72b5d541854e1c520abc377719.bindPopup(popup_655605c4021bac706b7c5e6cbebd73d0)
+        ;
+
+        
+    
+    
+                marker_7b669d72b5d541854e1c520abc377719.setIcon(icon_9c2ccbb829af14636ae05a5006827fa6);
+            
+    
+            var marker_33aee2b2b0922b89f5f89c0e016f2116 = L.marker(
+                [51.6259968, -0.0992881],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_6f7558cc77e54558f652215542666b91 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_21a8df05afbd423be525eae7ffdf67e3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3d5f57a956e92d55e068afd94752dd68 = $(`<div id="html_3d5f57a956e92d55e068afd94752dd68" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 026B (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_21a8df05afbd423be525eae7ffdf67e3.setContent(html_3d5f57a956e92d55e068afd94752dd68);
+            
+        
+
+        marker_33aee2b2b0922b89f5f89c0e016f2116.bindPopup(popup_21a8df05afbd423be525eae7ffdf67e3)
+        ;
+
+        
+    
+    
+                marker_33aee2b2b0922b89f5f89c0e016f2116.setIcon(icon_6f7558cc77e54558f652215542666b91);
+            
+    
+            var marker_ba0cd1cfb538893e59ef71bc2b550486 = L.marker(
+                [51.6232576, -0.0999819],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_32c03a327cbbb983230358f4bc700659 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6606b0c7891934a11b41b44f533002e0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1559a277ffdb28178f7b69a57b5b4346 = $(`<div id="html_1559a277ffdb28178f7b69a57b5b4346" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 026B (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_6606b0c7891934a11b41b44f533002e0.setContent(html_1559a277ffdb28178f7b69a57b5b4346);
+            
+        
+
+        marker_ba0cd1cfb538893e59ef71bc2b550486.bindPopup(popup_6606b0c7891934a11b41b44f533002e0)
+        ;
+
+        
+    
+    
+                marker_ba0cd1cfb538893e59ef71bc2b550486.setIcon(icon_32c03a327cbbb983230358f4bc700659);
+            
+    
+            var marker_611d2291856f42a853f022fd019220fc = L.marker(
+                [51.6198558, -0.0851406],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_4e36faf05ac11c3681d1a09b0ca513fb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1ce3f6ca02bf2fdb99860d11cb1ab41f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_250bb44715df103df942a26b50e86cbf = $(`<div id="html_250bb44715df103df942a26b50e86cbf" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 031E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_1ce3f6ca02bf2fdb99860d11cb1ab41f.setContent(html_250bb44715df103df942a26b50e86cbf);
+            
+        
+
+        marker_611d2291856f42a853f022fd019220fc.bindPopup(popup_1ce3f6ca02bf2fdb99860d11cb1ab41f)
+        ;
+
+        
+    
+    
+                marker_611d2291856f42a853f022fd019220fc.setIcon(icon_4e36faf05ac11c3681d1a09b0ca513fb);
+            
+    
+            var marker_1d1932c580a480dbd40838020dd6081a = L.marker(
+                [51.620663, -0.0897206],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_6efe25a283d8d50cbf985543bbf6f0ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_be45ff6abe0cbd1ac26a01d4ac8bb669 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d64372190f66fb4da94eb5c7819c03a = $(`<div id="html_5d64372190f66fb4da94eb5c7819c03a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 031E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_be45ff6abe0cbd1ac26a01d4ac8bb669.setContent(html_5d64372190f66fb4da94eb5c7819c03a);
+            
+        
+
+        marker_1d1932c580a480dbd40838020dd6081a.bindPopup(popup_be45ff6abe0cbd1ac26a01d4ac8bb669)
+        ;
+
+        
+    
+    
+                marker_1d1932c580a480dbd40838020dd6081a.setIcon(icon_6efe25a283d8d50cbf985543bbf6f0ab);
+            
+    
+            var marker_1216ff8d267ab3d16bf80b7403464b3e = L.marker(
+                [51.620663, -0.0897206],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_5067704e4c0a355811c6042aa7fc14aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_76641e6975e2eaa129842ae58037de8c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5f37d40554150547ffa2163b77bba60 = $(`<div id="html_c5f37d40554150547ffa2163b77bba60" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 031E (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_76641e6975e2eaa129842ae58037de8c.setContent(html_c5f37d40554150547ffa2163b77bba60);
+            
+        
+
+        marker_1216ff8d267ab3d16bf80b7403464b3e.bindPopup(popup_76641e6975e2eaa129842ae58037de8c)
+        ;
+
+        
+    
+    
+                marker_1216ff8d267ab3d16bf80b7403464b3e.setIcon(icon_5067704e4c0a355811c6042aa7fc14aa);
+            
+    
+            var marker_98034a424334532ece83c41c714eb74e = L.marker(
+                [51.6211268, -0.0871431],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_91f53b13ed784ebd8c37427e35c69531 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e27f08abe1647e3ed53f64289a1181b2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b2014b675014b1ce542b0f4f214028bc = $(`<div id="html_b2014b675014b1ce542b0f4f214028bc" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 031E (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_e27f08abe1647e3ed53f64289a1181b2.setContent(html_b2014b675014b1ce542b0f4f214028bc);
+            
+        
+
+        marker_98034a424334532ece83c41c714eb74e.bindPopup(popup_e27f08abe1647e3ed53f64289a1181b2)
+        ;
+
+        
+    
+    
+                marker_98034a424334532ece83c41c714eb74e.setIcon(icon_91f53b13ed784ebd8c37427e35c69531);
+            
+    
+            var marker_1234791667aefc84c36299ccd9f5b9b6 = L.marker(
+                [51.6144028, -0.1067502],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_0adb1182d3e7710834aad82d03a957ad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ce2afd055751c5ec94c01936f6a98455 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2a87aa6756bc746e5fd1a50c81d72732 = $(`<div id="html_2a87aa6756bc746e5fd1a50c81d72732" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 036E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_ce2afd055751c5ec94c01936f6a98455.setContent(html_2a87aa6756bc746e5fd1a50c81d72732);
+            
+        
+
+        marker_1234791667aefc84c36299ccd9f5b9b6.bindPopup(popup_ce2afd055751c5ec94c01936f6a98455)
+        ;
+
+        
+    
+    
+                marker_1234791667aefc84c36299ccd9f5b9b6.setIcon(icon_0adb1182d3e7710834aad82d03a957ad);
+            
+    
+            var marker_9065f0838f245c76087ae390a1735ad1 = L.marker(
+                [51.614616, -0.1055143],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_6f91d7ab5d105dba5fb18a6638a925d4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_afabfb724d089d381c473456c08c480a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d567b2e50f51bce76e8807acf43bbc29 = $(`<div id="html_d567b2e50f51bce76e8807acf43bbc29" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 036E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_afabfb724d089d381c473456c08c480a.setContent(html_d567b2e50f51bce76e8807acf43bbc29);
+            
+        
+
+        marker_9065f0838f245c76087ae390a1735ad1.bindPopup(popup_afabfb724d089d381c473456c08c480a)
+        ;
+
+        
+    
+    
+                marker_9065f0838f245c76087ae390a1735ad1.setIcon(icon_6f91d7ab5d105dba5fb18a6638a925d4);
+            
+    
+            var marker_7a61bfbac4e41c5d23336aa3fa7f7c6a = L.marker(
+                [51.6128821, -0.113521],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_05c1dd984a2cd4f405b8a8a8c38a8360 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_757389e08e45d6871a48269df331be1a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6e7ddc31f91f5be48a926b7fe4c7c71c = $(`<div id="html_6e7ddc31f91f5be48a926b7fe4c7c71c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 036E (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_757389e08e45d6871a48269df331be1a.setContent(html_6e7ddc31f91f5be48a926b7fe4c7c71c);
+            
+        
+
+        marker_7a61bfbac4e41c5d23336aa3fa7f7c6a.bindPopup(popup_757389e08e45d6871a48269df331be1a)
+        ;
+
+        
+    
+    
+                marker_7a61bfbac4e41c5d23336aa3fa7f7c6a.setIcon(icon_05c1dd984a2cd4f405b8a8a8c38a8360);
+            
+    
+            var marker_6fc86098b678ceff5d57eb65fba14512 = L.marker(
+                [51.6151387, -0.1069865],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_f8c3bbba22b9600da814d91fcd2b7029 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ed7ed9292e67d2846cbcc2e9e73edb55 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a9830001d0de79be215aa9146f26aeff = $(`<div id="html_a9830001d0de79be215aa9146f26aeff" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 036E (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_ed7ed9292e67d2846cbcc2e9e73edb55.setContent(html_a9830001d0de79be215aa9146f26aeff);
+            
+        
+
+        marker_6fc86098b678ceff5d57eb65fba14512.bindPopup(popup_ed7ed9292e67d2846cbcc2e9e73edb55)
+        ;
+
+        
+    
+    
+                marker_6fc86098b678ceff5d57eb65fba14512.setIcon(icon_f8c3bbba22b9600da814d91fcd2b7029);
+            
+    
+            var marker_da964c3bbf5041209663288e1deca0df = L.marker(
+                [51.6128821, -0.113521],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_2f69d0cf2aa75ef1161935e9dc154345 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0c48189d6f871af1179ad574b66e0732 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17d0ad42221cb7512b647286538c6531 = $(`<div id="html_17d0ad42221cb7512b647286538c6531" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 036E (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_0c48189d6f871af1179ad574b66e0732.setContent(html_17d0ad42221cb7512b647286538c6531);
+            
+        
+
+        marker_da964c3bbf5041209663288e1deca0df.bindPopup(popup_0c48189d6f871af1179ad574b66e0732)
+        ;
+
+        
+    
+    
+                marker_da964c3bbf5041209663288e1deca0df.setIcon(icon_2f69d0cf2aa75ef1161935e9dc154345);
+            
+    
+            var marker_3bf0cfe63424a5f6c932a38ed6af8041 = L.marker(
+                [51.613165, -0.1077176],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_7d6ed3326f9b4ef7c54a87838478cc01 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_88cdf16d9d1ad29ff21b651754d82bd8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ad2ade665f520816432eae91efe700d = $(`<div id="html_0ad2ade665f520816432eae91efe700d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 035D (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_88cdf16d9d1ad29ff21b651754d82bd8.setContent(html_0ad2ade665f520816432eae91efe700d);
+            
+        
+
+        marker_3bf0cfe63424a5f6c932a38ed6af8041.bindPopup(popup_88cdf16d9d1ad29ff21b651754d82bd8)
+        ;
+
+        
+    
+    
+                marker_3bf0cfe63424a5f6c932a38ed6af8041.setIcon(icon_7d6ed3326f9b4ef7c54a87838478cc01);
+            
+    
+            var marker_123dd4293b39c427c4e857c87bacda29 = L.marker(
+                [51.6155025, -0.1000312],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_7b8db7ff74c5b5b78774416fb094b4cb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7c125760627100bd5d255863f7e2e1bf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a818b393e2e3cfb2f7f1ff1fbda9d3e = $(`<div id="html_4a818b393e2e3cfb2f7f1ff1fbda9d3e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 035D (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_7c125760627100bd5d255863f7e2e1bf.setContent(html_4a818b393e2e3cfb2f7f1ff1fbda9d3e);
+            
+        
+
+        marker_123dd4293b39c427c4e857c87bacda29.bindPopup(popup_7c125760627100bd5d255863f7e2e1bf)
+        ;
+
+        
+    
+    
+                marker_123dd4293b39c427c4e857c87bacda29.setIcon(icon_7b8db7ff74c5b5b78774416fb094b4cb);
+            
+    
+            var marker_962104750b88536fbb15a7a70922ac0e = L.marker(
+                [51.6170421, -0.0998385],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_8374bf49428f1c0afed32293a0172859 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d7c42a438e53b604cc72d394727a3df6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc50262ecbac7d04b77bd002cafc06c0 = $(`<div id="html_dc50262ecbac7d04b77bd002cafc06c0" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 035D (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_d7c42a438e53b604cc72d394727a3df6.setContent(html_dc50262ecbac7d04b77bd002cafc06c0);
+            
+        
+
+        marker_962104750b88536fbb15a7a70922ac0e.bindPopup(popup_d7c42a438e53b604cc72d394727a3df6)
+        ;
+
+        
+    
+    
+                marker_962104750b88536fbb15a7a70922ac0e.setIcon(icon_8374bf49428f1c0afed32293a0172859);
+            
+    
+            var marker_65243b6056782ed316f5be73c20cb975 = L.marker(
+                [51.6196106, -0.0912928],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_17fbba2f751dc582774a0ff9776fb756 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4fe6da3d86966ceda9c2054872c85de5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1f3f3d3d99b0787adb8c9cf5036301aa = $(`<div id="html_1f3f3d3d99b0787adb8c9cf5036301aa" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 031F (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_4fe6da3d86966ceda9c2054872c85de5.setContent(html_1f3f3d3d99b0787adb8c9cf5036301aa);
+            
+        
+
+        marker_65243b6056782ed316f5be73c20cb975.bindPopup(popup_4fe6da3d86966ceda9c2054872c85de5)
+        ;
+
+        
+    
+    
+                marker_65243b6056782ed316f5be73c20cb975.setIcon(icon_17fbba2f751dc582774a0ff9776fb756);
+            
+    
+            var marker_08c85f9a2c3fe4201ccb2c1c6b74130c = L.marker(
+                [51.6177391, -0.0990598],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_c8adf826df484939aa512b250c3addb1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fd56869b612bbaa41306646492573a38 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_58b6ace21bc93b479863f06858526c56 = $(`<div id="html_58b6ace21bc93b479863f06858526c56" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 031F (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_fd56869b612bbaa41306646492573a38.setContent(html_58b6ace21bc93b479863f06858526c56);
+            
+        
+
+        marker_08c85f9a2c3fe4201ccb2c1c6b74130c.bindPopup(popup_fd56869b612bbaa41306646492573a38)
+        ;
+
+        
+    
+    
+                marker_08c85f9a2c3fe4201ccb2c1c6b74130c.setIcon(icon_c8adf826df484939aa512b250c3addb1);
+            
+    
+            var marker_d5ed2f6328556d9ccb4368cd18987f42 = L.marker(
+                [51.6166284, -0.0878477],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_6c4eac33ff36c0d3895f31db0034a4e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_afb009c63989e8f3100587cabe5cf56d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_461fc9014c023fe773a5a615ffda1e1c = $(`<div id="html_461fc9014c023fe773a5a615ffda1e1c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 031F (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_afb009c63989e8f3100587cabe5cf56d.setContent(html_461fc9014c023fe773a5a615ffda1e1c);
+            
+        
+
+        marker_d5ed2f6328556d9ccb4368cd18987f42.bindPopup(popup_afb009c63989e8f3100587cabe5cf56d)
+        ;
+
+        
+    
+    
+                marker_d5ed2f6328556d9ccb4368cd18987f42.setIcon(icon_6c4eac33ff36c0d3895f31db0034a4e5);
+            
+    
+            var marker_f7df8e49a67ef2974525813d31a4a8ce = L.marker(
+                [51.6166065, -0.0959231],
+                {
+}
+            ).addTo(feature_group_9f9590afcc7c9f77b5ca23310bb6fb57);
+        
+    
+            var icon_7f2976c80e2cd46070d8d7a837d1d34b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ad7d2d1daf1f66f1703472e4114553b5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8b4d5689d4c338b0d256413e8ab18277 = $(`<div id="html_8b4d5689d4c338b0d256413e8ab18277" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Enfield 031F (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_ad7d2d1daf1f66f1703472e4114553b5.setContent(html_8b4d5689d4c338b0d256413e8ab18277);
+            
+        
+
+        marker_f7df8e49a67ef2974525813d31a4a8ce.bindPopup(popup_ad7d2d1daf1f66f1703472e4114553b5)
+        ;
+
+        
+    
+    
+                marker_f7df8e49a67ef2974525813d31a4a8ce.setIcon(icon_7f2976c80e2cd46070d8d7a837d1d34b);
+            
+    
+            feature_group_9f9590afcc7c9f77b5ca23310bb6fb57.addTo(map_7ee5af103452eac792836e7888b486fd);
+        
+    
+            var poly_line_720947dec144b007c303c6d58acbc570 = L.polyline(
+                [[51.6240562, -0.0941318], [51.6237473, -0.0923817], [51.6247164, -0.0921311], [51.6247088, -0.0913916], [51.6246219, -0.0907048], [51.6240557, -0.090928], [51.6232138, -0.0913238], [51.6229936, -0.0901669], [51.6207847, -0.0909347], [51.620663, -0.0897206], [51.6203385, -0.0866078], [51.6202635, -0.0854738], [51.6198558, -0.0851406], [51.6202635, -0.0854738], [51.6203385, -0.0866078], [51.6210096, -0.0860961], [51.6211268, -0.0871431], [51.6212613, -0.0883694], [51.6213875, -0.0896322], [51.620663, -0.0897206], [51.6207847, -0.0909347], [51.6196106, -0.0912928], [51.6201699, -0.0928904], [51.6201852, -0.0929487], [51.6195377, -0.0937959], [51.6181761, -0.0907262], [51.6180099, -0.0904446], [51.617223, -0.0886956], [51.6177932, -0.0879935], [51.6173588, -0.0874558], [51.6166284, -0.0878477], [51.6166684, -0.0873528], [51.6170032, -0.0871368], [51.6170925, -0.0872349], [51.6171164, -0.0872582], [51.6172164, -0.0870447], [51.6173588, -0.0874558], [51.6177932, -0.0879935], [51.617223, -0.0886956], [51.6165666, -0.0911205], [51.6164707, -0.0924165], [51.6172808, -0.0922534], [51.6172443, -0.0927344], [51.6170463, -0.0953408], [51.6166065, -0.0959231], [51.6170463, -0.0953408], [51.6176112, -0.0948455], [51.6179416, -0.0961673], [51.6172541, -0.096854], [51.6177391, -0.0990598], [51.6170421, -0.0998385], [51.617662, -0.1013812], [51.6165636, -0.1047724], [51.6155094, -0.1063318], [51.6151387, -0.1069865], [51.614616, -0.1055143], [51.6144028, -0.1067502], [51.6142482, -0.1080447], [51.6143602, -0.1097114], [51.6145934, -0.1096925], [51.6134207, -0.1128261], [51.6128821, -0.113521], [51.6134207, -0.1128261], [51.6130656, -0.1096833], [51.6128036, -0.1096494], [51.613165, -0.1077176], [51.6128036, -0.1096494], [51.6130656, -0.1096833], [51.6134207, -0.1128261], [51.6145934, -0.1096925], [51.6143602, -0.1097114], [51.6142482, -0.1080447], [51.6144028, -0.1067502], [51.614616, -0.1055143], [51.6151387, -0.1069865], [51.6155094, -0.1063318], [51.6165636, -0.1047724], [51.617662, -0.1013812], [51.6193066, -0.1003684], [51.6200896, -0.1007845], [51.6216405, -0.100802], [51.6225412, -0.10038], [51.6226242, -0.1006019], [51.6225913, -0.1003145], [51.6232576, -0.0999819], [51.6239389, -0.0994399], [51.624657, -0.0990746], [51.625222, -0.0989758], [51.6259968, -0.0992881], [51.625222, -0.0989758], [51.624657, -0.0990746], [51.6239389, -0.0994399], [51.6232576, -0.0999819], [51.6225913, -0.1003145], [51.6224331, -0.0997503], [51.6221992, -0.09909], [51.6231135, -0.0965504], [51.6230665, -0.0946111], [51.6239858, -0.0941666], [51.6240562, -0.0941318], [51.6237473, -0.0923817], [51.6236779, -0.0924112], [51.6233939, -0.0925215], [51.622328, -0.0931576], [51.6221136, -0.0932842], [51.6215992, -0.0935904], [51.6215135, -0.0936451], [51.6205404, -0.094197], [51.6179416, -0.0961673], [51.6172541, -0.096854], [51.6166039, -0.097635], [51.6167958, -0.0986822], [51.6170421, -0.0998385], [51.6164204, -0.1005516], [51.6162092, -0.1011628], [51.6155025, -0.1000312], [51.6162092, -0.1011628], [51.6164204, -0.1005516], [51.6170421, -0.0998385], [51.6167958, -0.0986822], [51.6166039, -0.097635], [51.6172541, -0.096854], [51.6179416, -0.0961673], [51.6205404, -0.094197], [51.6215135, -0.0936451], [51.6215992, -0.0935904], [51.6221136, -0.0932842], [51.622328, -0.0931576], [51.6233939, -0.0925215], [51.6236779, -0.0924112], [51.6239858, -0.0941666], [51.6240562, -0.0941318]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_7ee5af103452eac792836e7888b486fd);
+        
+    
+            var layer_control_364b8f291d1ecebd8d529d0d4af79d2f_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_0a9ccc1030babd317c35986937a37b49,
+                },
+                overlays :  {
+                    "Palmers Green Boundary" : geo_json_825937465472b84d6e3332a6a9b271f9,
+                    "LSOA Median Crime Rates for Palmers Green" : geo_json_fab4cd04de981d5d4cd4ecd16650f74a,
+                    "Patrol Waypoints" : feature_group_9f9590afcc7c9f77b5ca23310bb6fb57,
+                },
+            };
+            let layer_control_364b8f291d1ecebd8d529d0d4af79d2f = L.control.layers(
+                layer_control_364b8f291d1ecebd8d529d0d4af79d2f_layers.base_layers,
+                layer_control_364b8f291d1ecebd8d529d0d4af79d2f_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_7ee5af103452eac792836e7888b486fd);
+
+        
+</script>
+</html>

@@ -7,9 +7,8 @@ from shapely.geometry import Polygon, Point, LineString
 from python_tsp.heuristics import solve_tsp_local_search
 import warnings
 import random
-import networkx as nx # Added for graph component analysis
+import networkx as nx
 import networkit as nk
-import torch
 import os
 
 # For colormaps

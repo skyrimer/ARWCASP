@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f652012e5756cd2071e4b479464a4f0c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f652012e5756cd2071e4b479464a4f0c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f652012e5756cd2071e4b479464a4f0c = L.map(
+                "map_f652012e5756cd2071e4b479464a4f0c",
+                {
+                    center: [51.56774466521138, 0.14216642701735072],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c170ad16e12ab279f53539a31e2a3258 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c170ad16e12ab279f53539a31e2a3258.addTo(map_f652012e5756cd2071e4b479464a4f0c);
+        
+    
+        function geo_json_0cb1d421589c51a88b2a9498e77314ee_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_0cb1d421589c51a88b2a9498e77314ee_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_0cb1d421589c51a88b2a9498e77314ee = L.geoJson(null, {
+                onEachFeature: geo_json_0cb1d421589c51a88b2a9498e77314ee_onEachFeature,
+            
+                style: geo_json_0cb1d421589c51a88b2a9498e77314ee_styler,
+            ...{
+}
+        });
+
+        function geo_json_0cb1d421589c51a88b2a9498e77314ee_add (data) {
+            geo_json_0cb1d421589c51a88b2a9498e77314ee
+                .addData(data);
+        }
+            geo_json_0cb1d421589c51a88b2a9498e77314ee_add({"features": [{"geometry": {"coordinates": [[[0.15427558232171815, 51.56614239697809], [0.1539933561599577, 51.56612420425968], [0.15042541552569297, 51.565612303460114], [0.1505396779632258, 51.56522264053496], [0.15016121771511629, 51.565181839080594], [0.15031163253292062, 51.56457754645402], [0.15029744227318279, 51.56406248685845], [0.15017614867892085, 51.563725688511425], [0.15010182637271172, 51.5630984540398], [0.15008632894107798, 51.56215719162059], [0.15008141346682463, 51.56205299506827], [0.15013830870010467, 51.561730911319394], [0.1500448708904333, 51.56167679442823], [0.14999840657163963, 51.561576955394976], [0.1499856479839544, 51.56146031624585], [0.149989207598521, 51.561381946125394], [0.14954620772467206, 51.561381972525005], [0.14881330383255822, 51.561291112073256], [0.14783919907462384, 51.561072416930436], [0.14705604814848264, 51.56101572927732], [0.14587742571560108, 51.561018413951025], [0.14378776751683126, 51.5610071711016], [0.14295493990294175, 51.56106014548777], [0.14106145628165007, 51.56123406507715], [0.13942517580999392, 51.561322441904466], [0.13829710538206855, 51.56135559418167], [0.13720365410292398, 51.561330477688564], [0.13618034329469447, 51.56132214421277], [0.13617535573747097, 51.56210914805074], [0.136195903516459, 51.562760743827255], [0.1364142525706192, 51.56277205124401], [0.13636574338548713, 51.563153310284775], [0.13756460085327676, 51.563210587341054], [0.13747147407473817, 51.564547779477714], [0.13746270221565146, 51.56467020610783], [0.1371600367178327, 51.564677517923705], [0.13692704874850925, 51.567061289232775], [0.13609110829318052, 51.56680671588968], [0.13557870925113294, 51.566649635204804], [0.13462000968296337, 51.5666059484606], [0.129362741825248, 51.566531567278076], [0.1293165780229025, 51.5665315060897], [0.12934417200506798, 51.566628099379486], [0.12937955389937963, 51.566641841534164], [0.12949479117465312, 51.56685470552213], [0.1296377642340632, 51.567414087415614], [0.1297299040492904, 51.567718171367986], [0.12972495889205954, 51.56776510003795], [0.12971833912353647, 51.5678398388004], [0.12967714347181705, 51.568101392063625], [0.1296532098295034, 51.568177344112385], [0.12960088948603288, 51.56838416918886], [0.12961524949422892, 51.56863032969102], [0.12968633333429197, 51.56882241843505], [0.12980828354415946, 51.56902347299308], [0.13004844586035214, 51.56934554699455], [0.1302079349108105, 51.56966998426443], [0.130368056267716, 51.57000789512195], [0.13044381327297716, 51.57027182007436], [0.13045773869086302, 51.57032281130145], [0.13043695818886766, 51.57052726594969], [0.13042472265681798, 51.57063456128208], [0.13038669698400399, 51.570686495817625], [0.13035847366036313, 51.57069869552305], [0.13030325066845574, 51.57072127465766], [0.13009040176557515, 51.57067569305323], [0.13002620870295142, 51.570753275061044], [0.1319207455545822, 51.57108845249685], [0.13369558319972646, 51.571392512628215], [0.13478570544318583, 51.5715903357194], [0.13628489180340075, 51.57180047981858], [0.137277731568359, 51.57195321217442], [0.13780777660570132, 51.57199300176089], [0.13872424292851335, 51.5720267346993], [0.1396090829501392, 51.57206094731853], [0.1397652010765882, 51.57206619144348], [0.14080605030034696, 51.572136207630386], [0.14197435689670726, 51.57224713067719], [0.14126201627371376, 51.573855444197626], [0.14114072279972975, 51.57419128401232], [0.14158182289451718, 51.57427223669022], [0.14154245855579548, 51.57444736505002], [0.1414735386131314, 51.57448737071716], [0.1413941907434028, 51.574733352318354], [0.14180848644609215, 51.57476543717619], [0.14184538602073876, 51.575244031117236], [0.1419253207908671, 51.575256057220855], [0.14196693607681488, 51.57531103675365], [0.14219927730105544, 51.575342755813615], [0.14339672148544302, 51.57545403225033], [0.14337900973992204, 51.57563146275237], [0.14354436907956536, 51.575648220374426], [0.14355912523052503, 51.575625475292995], [0.14395672555422695, 51.575638888303615], [0.14399194672884927, 51.57549979562124], [0.1454352598565027, 51.57559118508793], [0.1455635877849512, 51.5755897375547], [0.14653520650604915, 51.575658362226974], [0.14698359940549807, 51.57567892693327], [0.1480359171272693, 51.575775640297024], [0.1481110754205626, 51.575623228861936], [0.148183401232421, 51.575322440910256], [0.14820493100019608, 51.57519609392434], [0.14818419969504873, 51.57506431743627], [0.14808924230139342, 51.57461007259539], [0.14801742706210824, 51.57437404586105], [0.14801951050427167, 51.5739261155268], [0.14803609315206795, 51.57369737072891], [0.14803548935942815, 51.573316106999336], [0.14791572505696038, 51.57313310121378], [0.1478961787232791, 51.57311727666124], [0.1489608605554258, 51.57323263447232], [0.1491858574609592, 51.57194345239157], [0.14926268452341254, 51.57146088885181], [0.1491275263591394, 51.57144088911234], [0.1492613125696192, 51.57048340796459], [0.1492903135250347, 51.570273404691456], [0.14947340246174753, 51.57014679472961], [0.14965896689788172, 51.570102939007946], [0.14970187964326911, 51.569882701574834], [0.14975235053598657, 51.56969657835613], [0.14816959866694024, 51.56955106801193], [0.14664228944128985, 51.569415400141864], [0.1467121811831918, 51.56921444872505], [0.14682219386303288, 51.56900646998541], [0.14675940890058933, 51.56896176871034], [0.14674863688870207, 51.56888464997022], [0.14676045693304607, 51.56876935895615], [0.14693971073918316, 51.568775968177384], [0.14711246248351986, 51.56876831177214], [0.1472386465392675, 51.568719253369345], [0.1473083524055062, 51.56866844154404], [0.1473712853193681, 51.56856480127192], [0.14874916805554936, 51.568620486236426], [0.14892482166927828, 51.568459940315236], [0.1493300235965951, 51.56811619391365], [0.14942142183803048, 51.56809653907859], [0.14957761185376292, 51.56810356678286], [0.14976210307989796, 51.56810018647593], [0.14980083921931764, 51.56809408257178], [0.14986490464920046, 51.568077625282946], [0.1499198602221819, 51.56804964760727], [0.1499573672388953, 51.568017494537926], [0.14999062668717247, 51.56795835873271], [0.1500581431674099, 51.567891492865634], [0.15024059063185138, 51.5678422991314], [0.1503592861836602, 51.56782124424871], [0.15057872637344866, 51.567792049472885], [0.15075570230923419, 51.567780714150516], [0.15083650138747734, 51.56778103098787], [0.1509090619064091, 51.567821055778715], [0.1509820382334904, 51.56786736605667], [0.15113621166509464, 51.5680156650239], [0.15119773569251616, 51.568036113504725], [0.1512590817987217, 51.56805027206115], [0.15143662132299568, 51.56799037818806], [0.15176241126418252, 51.56783237893956], [0.1523589437776278, 51.56747702144358], [0.15257859254111575, 51.567301188528546], [0.15317556198227955, 51.56692514122517], [0.15363825910259235, 51.566608194054155], [0.15405479500566022, 51.56629389057332], [0.15427558232171815, 51.56614239697809]]], "type": "Polygon"}, "id": "628", "properties": {"DISTRICT": "Barking and Dagenham", "GSS_CODE": "E05000042", "HECTARES": 155.399, "LAGSSCODE": "E09000002", "NAME": "Whalebone", "NONLD_AREA": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_0cb1d421589c51a88b2a9498e77314ee.addTo(map_f652012e5756cd2071e4b479464a4f0c);
+        
+    
+        function geo_json_5cefb67d8391d6ce539cbe61ef0d26c1_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_5cefb67d8391d6ce539cbe61ef0d26c1_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_5cefb67d8391d6ce539cbe61ef0d26c1 = L.geoJson(null, {
+                onEachFeature: geo_json_5cefb67d8391d6ce539cbe61ef0d26c1_onEachFeature,
+            
+                style: geo_json_5cefb67d8391d6ce539cbe61ef0d26c1_styler,
+            ...{
+}
+        });
+
+        function geo_json_5cefb67d8391d6ce539cbe61ef0d26c1_add (data) {
+            geo_json_5cefb67d8391d6ce539cbe61ef0d26c1
+                .addData(data);
+        }
+            geo_json_5cefb67d8391d6ce539cbe61ef0d26c1_add({"features": [{"geometry": {"coordinates": [[[[0.1481158407201473, 51.569546483980844], [0.14698337426421404, 51.57567788940316], [0.14150724208938045, 51.574258465353424], [0.14250644604618876, 51.573115290640814], [0.1481158407201473, 51.569546483980844]]]], "type": "MultiPolygon"}, "id": "101", "properties": {"BNG_E": 548788, "BNG_N": 188239, "DISTRICT": "Barking and Dagenham", "GSS_CODE": "E05000042", "GlobalID": "{9CAFA71B-805C-4D9A-8ACA-42A494FEE4F9}", "HECTARES": 155.399, "LAGSSCODE": "E09000002", "LAT": 51.57339096069336, "LONG": 0.14565899968147278, "LSOA21CD": "E01000110", "LSOA21NM": "Barking and Dagenham 002C", "LSOA21NMW": " ", "NAME": "Whalebone", "NONLD_AREA": 0.0, "WD24NM": "Chadwell Heath", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.1481158407201473, 51.569546483980844], [0.14250644604618876, 51.573115290640814], [0.1399195844315829, 51.567801680678095], [0.1453788852595623, 51.56469739962331], [0.14987806703171988, 51.568069946091164], [0.1481158407201473, 51.569546483980844]]]], "type": "MultiPolygon"}, "id": "102", "properties": {"BNG_E": 548755, "BNG_N": 187740, "DISTRICT": "Barking and Dagenham", "GSS_CODE": "E05000042", "GlobalID": "{B3F99258-73B0-4F9F-9AD3-4BB401BB9B42}", "HECTARES": 155.399, "LAGSSCODE": "E09000002", "LAT": 51.56892013549805, "LONG": 0.14497199654579163, "LSOA21CD": "E01000111", "LSOA21NM": "Barking and Dagenham 002D", "LSOA21NMW": " ", "NAME": "Whalebone", "NONLD_AREA": 0.0, "WD24NM": "Whalebone", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.14250644604618876, 51.573115290640814], [0.14150724208938045, 51.574258465353424], [0.13951792967867024, 51.57205682464728], [0.13572769936318443, 51.571722040322626], [0.13786258206786595, 51.56871917775296], [0.12973570962684192, 51.56791559894403], [0.12936234058625853, 51.566529486254375], [0.13146820256296604, 51.56656007810439], [0.13692713322026925, 51.56705573032511], [0.1399195844315829, 51.567801680678095], [0.14250644604618876, 51.573115290640814]]]], "type": "MultiPolygon"}, "id": "103", "properties": {"BNG_E": 548355, "BNG_N": 187885, "DISTRICT": "Barking and Dagenham", "GSS_CODE": "E05000042", "GlobalID": "{C28EBE75-CF31-4D13-BABD-911AB6DF638E}", "HECTARES": 155.399, "LAGSSCODE": "E09000002", "LAT": 51.57032012939453, "LONG": 0.1392659991979599, "LSOA21CD": "E01000112", "LSOA21NM": "Barking and Dagenham 002E", "LSOA21NMW": " ", "NAME": "Whalebone", "NONLD_AREA": 0.0, "WD24NM": "Whalebone", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.12973570962684192, 51.56791559894403], [0.13786258206786595, 51.56871917775296], [0.13572769936318443, 51.571722040322626], [0.13002585132799746, 51.570756378143656], [0.12967663030416518, 51.568101391754226], [0.12973570962684192, 51.56791559894403]]]], "type": "MultiPolygon"}, "id": "104", "properties": {"BNG_E": 547929, "BNG_N": 187816, "DISTRICT": "Barking and Dagenham", "GSS_CODE": "E05000042", "GlobalID": "{4776949A-4766-4386-A7A3-4F344A793DE5}", "HECTARES": 155.399, "LAGSSCODE": "E09000002", "LAT": 51.569820404052734, "LONG": 0.13309399783611298, "LSOA21CD": "E01000113", "LSOA21NM": "Barking and Dagenham 002F", "LSOA21NMW": " ", "NAME": "Whalebone", "NONLD_AREA": 0.0, "WD24NM": "Whalebone", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.15438713194724046, 51.56606579895384], [0.14987806703171988, 51.568069946091164], [0.1453788852595623, 51.56469739962331], [0.14383330357442833, 51.56150488415134], [0.14382452129495715, 51.56100775214453], [0.14787206825878674, 51.56108361130076], [0.14998132457677466, 51.56138166646556], [0.15042572317737524, 51.56561206173226], [0.15438713194724046, 51.56606579895384]]]], "type": "MultiPolygon"}, "id": "105", "properties": {"BNG_E": 549058, "BNG_N": 187251, "DISTRICT": "Barking and Dagenham", "GSS_CODE": "E05000042", "GlobalID": "{B40F0CB8-2989-4D3A-AC88-581C2227DED3}", "HECTARES": 155.399, "LAGSSCODE": "E09000002", "LAT": 51.5644416809082, "LONG": 0.14913299679756165, "LSOA21CD": "E01000114", "LSOA21NM": "Barking and Dagenham 004E", "LSOA21NMW": " ", "NAME": "Whalebone", "NONLD_AREA": 0.0, "WD24NM": "Whalebone", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.1453788852595623, 51.56469739962331], [0.1399195844315829, 51.567801680678095], [0.13692713322026925, 51.56705573032511], [0.13641421221917133, 51.56278083065774], [0.14319885621778938, 51.56429365655946], [0.14383330357442833, 51.56150488415134], [0.1453788852595623, 51.56469739962331]]]], "type": "MultiPolygon"}, "id": "32507", "properties": {"BNG_E": 548530, "BNG_N": 187249, "DISTRICT": "Barking and Dagenham", "GSS_CODE": "E05000042", "GlobalID": "{F9978146-54F2-4281-B99C-3CB52E1C3996}", "HECTARES": 155.399, "LAGSSCODE": "E09000002", "LAT": 51.56455993652344, "LONG": 0.14151999354362488, "LSOA21CD": "E01034469", "LSOA21NM": "Barking and Dagenham 004F", "LSOA21NMW": " ", "NAME": "Whalebone", "NONLD_AREA": 0.0, "WD24NM": "Whalebone", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.14383330357442833, 51.56150488415134], [0.14319885621778938, 51.56429365655946], [0.13641421221917133, 51.56278083065774], [0.13618983424511538, 51.56132244715808], [0.1432764568521231, 51.56103949521155], [0.14382452129495715, 51.56100775214453], [0.14383330357442833, 51.56150488415134]]]], "type": "MultiPolygon"}, "id": "32508", "properties": {"BNG_E": 548429, "BNG_N": 187040, "DISTRICT": "Barking and Dagenham", "GSS_CODE": "E05000042", "GlobalID": "{95EB3C45-1515-4419-B9B4-64ADD56659E0}", "HECTARES": 155.399, "LAGSSCODE": "E09000002", "LAT": 51.56270980834961, "LONG": 0.13997599482536316, "LSOA21CD": "E01034470", "LSOA21NM": "Barking and Dagenham 004G", "LSOA21NMW": " ", "NAME": "Whalebone", "NONLD_AREA": 0.0, "WD24NM": "Whalebone", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_5cefb67d8391d6ce539cbe61ef0d26c1.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_5cefb67d8391d6ce539cbe61ef0d26c1.addTo(map_f652012e5756cd2071e4b479464a4f0c);
+        
+    
+            var feature_group_564981f6497e9afd6a6440182bac59d1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_4fd0f897133c5d84e770c6066f9b73f0 = L.marker(
+                [51.5715104, 0.143307],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_04cace16faae6c0fdbae23eba70fb31a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7daf5117fc206eb016141cdc8e588255 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5e42dde6d1db185bf203cb140d1b43a = $(`<div id="html_b5e42dde6d1db185bf203cb140d1b43a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7daf5117fc206eb016141cdc8e588255.setContent(html_b5e42dde6d1db185bf203cb140d1b43a);
+            
+        
+
+        marker_4fd0f897133c5d84e770c6066f9b73f0.bindPopup(popup_7daf5117fc206eb016141cdc8e588255)
+        ;
+
+        
+    
+    
+                marker_4fd0f897133c5d84e770c6066f9b73f0.setIcon(icon_04cace16faae6c0fdbae23eba70fb31a);
+            
+    
+            var marker_f2231c8824517221ac796996945d96a8 = L.marker(
+                [51.5715104, 0.143307],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_afb621544281e1ded4fab001c7bba860 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c749dbc4330047275bdd5958380de5b6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5226ae0e74d5baa529de538cea5756bd = $(`<div id="html_5226ae0e74d5baa529de538cea5756bd" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c749dbc4330047275bdd5958380de5b6.setContent(html_5226ae0e74d5baa529de538cea5756bd);
+            
+        
+
+        marker_f2231c8824517221ac796996945d96a8.bindPopup(popup_c749dbc4330047275bdd5958380de5b6)
+        ;
+
+        
+    
+    
+                marker_f2231c8824517221ac796996945d96a8.setIcon(icon_afb621544281e1ded4fab001c7bba860);
+            
+    
+            var marker_a2b93a12dc931cf4473865afc7d227db = L.marker(
+                [51.568757, 0.1433083],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_c3d18487561e9e91ef28bb83f32b6f79 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f1e851e17800c2ba9af51971d32dd96a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_794d34e73d73683c6f20858e9c5f7c5f = $(`<div id="html_794d34e73d73683c6f20858e9c5f7c5f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f1e851e17800c2ba9af51971d32dd96a.setContent(html_794d34e73d73683c6f20858e9c5f7c5f);
+            
+        
+
+        marker_a2b93a12dc931cf4473865afc7d227db.bindPopup(popup_f1e851e17800c2ba9af51971d32dd96a)
+        ;
+
+        
+    
+    
+                marker_a2b93a12dc931cf4473865afc7d227db.setIcon(icon_c3d18487561e9e91ef28bb83f32b6f79);
+            
+    
+            var marker_166586c23a915735f878810bf63db8f9 = L.marker(
+                [51.5682783, 0.1477071],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_45ef9d1d01a79433418711fe60a3400e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e714f47f70b561c19d111353b23f9ac0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5317e37c4ecbd613b4e2c4ceb0c921a8 = $(`<div id="html_5317e37c4ecbd613b4e2c4ceb0c921a8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_e714f47f70b561c19d111353b23f9ac0.setContent(html_5317e37c4ecbd613b4e2c4ceb0c921a8);
+            
+        
+
+        marker_166586c23a915735f878810bf63db8f9.bindPopup(popup_e714f47f70b561c19d111353b23f9ac0)
+        ;
+
+        
+    
+    
+                marker_166586c23a915735f878810bf63db8f9.setIcon(icon_45ef9d1d01a79433418711fe60a3400e);
+            
+    
+            var marker_db76bf5aea8d23ccb70dfdca8b679f9d = L.marker(
+                [51.5721741, 0.1419868],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_b689633ae46309fa5fc83ef9fccb5f88 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2414ae8ccc422ea71c2c125236afa0a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_65074840f5b0a8641397e0306602bd1f = $(`<div id="html_65074840f5b0a8641397e0306602bd1f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002D (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_2414ae8ccc422ea71c2c125236afa0a1.setContent(html_65074840f5b0a8641397e0306602bd1f);
+            
+        
+
+        marker_db76bf5aea8d23ccb70dfdca8b679f9d.bindPopup(popup_2414ae8ccc422ea71c2c125236afa0a1)
+        ;
+
+        
+    
+    
+                marker_db76bf5aea8d23ccb70dfdca8b679f9d.setIcon(icon_b689633ae46309fa5fc83ef9fccb5f88);
+            
+    
+            var marker_8730fe3e4b87559e1685daf9927a5099 = L.marker(
+                [51.5682463, 0.1466943],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_77511b7afd9d9c66708efd114d54c49e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d825560af0605961820463c42cb9a8c4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f2fdd5e3c043936dc4fb350975874b00 = $(`<div id="html_f2fdd5e3c043936dc4fb350975874b00" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002D (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d825560af0605961820463c42cb9a8c4.setContent(html_f2fdd5e3c043936dc4fb350975874b00);
+            
+        
+
+        marker_8730fe3e4b87559e1685daf9927a5099.bindPopup(popup_d825560af0605961820463c42cb9a8c4)
+        ;
+
+        
+    
+    
+                marker_8730fe3e4b87559e1685daf9927a5099.setIcon(icon_77511b7afd9d9c66708efd114d54c49e);
+            
+    
+            var marker_49ebd95a48dccebd3c040a2c283fe3cc = L.marker(
+                [51.5708677, 0.143348],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_81dc9832d852c616a6b283d9827fc584 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a38e2e908cef841c7d6bbfaf48b5a652 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b5a7fdb059d3c80a7ac796bb418219c = $(`<div id="html_5b5a7fdb059d3c80a7ac796bb418219c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002D (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_a38e2e908cef841c7d6bbfaf48b5a652.setContent(html_5b5a7fdb059d3c80a7ac796bb418219c);
+            
+        
+
+        marker_49ebd95a48dccebd3c040a2c283fe3cc.bindPopup(popup_a38e2e908cef841c7d6bbfaf48b5a652)
+        ;
+
+        
+    
+    
+                marker_49ebd95a48dccebd3c040a2c283fe3cc.setIcon(icon_81dc9832d852c616a6b283d9827fc584);
+            
+    
+            var marker_392aa56f6a2d93362504501a0c898e26 = L.marker(
+                [51.5684589, 0.1313508],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_c16ab23d75e3d308c42ab0451d993176 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_93d947064e0a90bfd04dbcad2c80155b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_feaa166da69cbf8f61f95fbf0f92b619 = $(`<div id="html_feaa166da69cbf8f61f95fbf0f92b619" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_93d947064e0a90bfd04dbcad2c80155b.setContent(html_feaa166da69cbf8f61f95fbf0f92b619);
+            
+        
+
+        marker_392aa56f6a2d93362504501a0c898e26.bindPopup(popup_93d947064e0a90bfd04dbcad2c80155b)
+        ;
+
+        
+    
+    
+                marker_392aa56f6a2d93362504501a0c898e26.setIcon(icon_c16ab23d75e3d308c42ab0451d993176);
+            
+    
+            var marker_41c0d09f3191e607909bd422db71b851 = L.marker(
+                [51.5684589, 0.1313508],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_f50d1857d9fc50ab2062414375bbae7f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_725a0faf1019ddb44fd6b36aeeff32d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_07f1abaadda99271a85a69fe922855f2 = $(`<div id="html_07f1abaadda99271a85a69fe922855f2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002E (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_725a0faf1019ddb44fd6b36aeeff32d2.setContent(html_07f1abaadda99271a85a69fe922855f2);
+            
+        
+
+        marker_41c0d09f3191e607909bd422db71b851.bindPopup(popup_725a0faf1019ddb44fd6b36aeeff32d2)
+        ;
+
+        
+    
+    
+                marker_41c0d09f3191e607909bd422db71b851.setIcon(icon_f50d1857d9fc50ab2062414375bbae7f);
+            
+    
+            var marker_b56d4f317f0aa2545766a2776870c424 = L.marker(
+                [51.5684589, 0.1313508],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_c4c8e51b5f22a4008948262ea5c880b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_543374f571b93ff9a7394f963d1a0937 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e756b60603e453066265c149f43ce663 = $(`<div id="html_e756b60603e453066265c149f43ce663" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002E (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_543374f571b93ff9a7394f963d1a0937.setContent(html_e756b60603e453066265c149f43ce663);
+            
+        
+
+        marker_b56d4f317f0aa2545766a2776870c424.bindPopup(popup_543374f571b93ff9a7394f963d1a0937)
+        ;
+
+        
+    
+    
+                marker_b56d4f317f0aa2545766a2776870c424.setIcon(icon_c4c8e51b5f22a4008948262ea5c880b0);
+            
+    
+            var marker_5fd072abd423e2533c75f7ca0b4e6d0c = L.marker(
+                [51.5708756, 0.140569],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_6276466078dba1b0ce45f4bb17b43bc3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_38132ae35389c76cb948bbeffe9f726b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_420a5ccbbef61bd37a1947658d3ecc0c = $(`<div id="html_420a5ccbbef61bd37a1947658d3ecc0c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002E (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_38132ae35389c76cb948bbeffe9f726b.setContent(html_420a5ccbbef61bd37a1947658d3ecc0c);
+            
+        
+
+        marker_5fd072abd423e2533c75f7ca0b4e6d0c.bindPopup(popup_38132ae35389c76cb948bbeffe9f726b)
+        ;
+
+        
+    
+    
+                marker_5fd072abd423e2533c75f7ca0b4e6d0c.setIcon(icon_6276466078dba1b0ce45f4bb17b43bc3);
+            
+    
+            var marker_acfb3cf62b50b2bb9828b94f851c3fdc = L.marker(
+                [51.5666342, 0.1351639],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_2e9f1a2482ff63e72fa4a28069b21554 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9dfa5b9d671ee0594ee6c045894da61d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c2f5c01206925775d5304e48aaef6576 = $(`<div id="html_c2f5c01206925775d5304e48aaef6576" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002E (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9dfa5b9d671ee0594ee6c045894da61d.setContent(html_c2f5c01206925775d5304e48aaef6576);
+            
+        
+
+        marker_acfb3cf62b50b2bb9828b94f851c3fdc.bindPopup(popup_9dfa5b9d671ee0594ee6c045894da61d)
+        ;
+
+        
+    
+    
+                marker_acfb3cf62b50b2bb9828b94f851c3fdc.setIcon(icon_2e9f1a2482ff63e72fa4a28069b21554);
+            
+    
+            var marker_1b5327818111909b504be9820dae2f2c = L.marker(
+                [51.5707475, 0.1360371],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_e68aef767f4e4513be41016d45d3394f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25505e51055231403a67850795b30cce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d185d7212d4d67deb49f937247b0fcc = $(`<div id="html_5d185d7212d4d67deb49f937247b0fcc" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002F (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_25505e51055231403a67850795b30cce.setContent(html_5d185d7212d4d67deb49f937247b0fcc);
+            
+        
+
+        marker_1b5327818111909b504be9820dae2f2c.bindPopup(popup_25505e51055231403a67850795b30cce)
+        ;
+
+        
+    
+    
+                marker_1b5327818111909b504be9820dae2f2c.setIcon(icon_e68aef767f4e4513be41016d45d3394f);
+            
+    
+            var marker_8d15b7f0341df08abb48ac4bdc3ac5c3 = L.marker(
+                [51.5689017, 0.1346896],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_1bfafdfbff0e99f65c59fadfd256b1a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9cf00586dac88ac6411133690aec2ee3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_78bdf36a66d2e84b628136ccd3c9f066 = $(`<div id="html_78bdf36a66d2e84b628136ccd3c9f066" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002F (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9cf00586dac88ac6411133690aec2ee3.setContent(html_78bdf36a66d2e84b628136ccd3c9f066);
+            
+        
+
+        marker_8d15b7f0341df08abb48ac4bdc3ac5c3.bindPopup(popup_9cf00586dac88ac6411133690aec2ee3)
+        ;
+
+        
+    
+    
+                marker_8d15b7f0341df08abb48ac4bdc3ac5c3.setIcon(icon_1bfafdfbff0e99f65c59fadfd256b1a1);
+            
+    
+            var marker_32d9c93a7cc94c73f09b32ed6dc7f6a0 = L.marker(
+                [51.5697819, 0.1320546],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_4d8e82f40eb24a4a3dc8dbe818dbdb14 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0a295b3005a96ec60c546e29f7e70476 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bcdccb34f667d094179d84ac6f789528 = $(`<div id="html_bcdccb34f667d094179d84ac6f789528" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 002F (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_0a295b3005a96ec60c546e29f7e70476.setContent(html_bcdccb34f667d094179d84ac6f789528);
+            
+        
+
+        marker_32d9c93a7cc94c73f09b32ed6dc7f6a0.bindPopup(popup_0a295b3005a96ec60c546e29f7e70476)
+        ;
+
+        
+    
+    
+                marker_32d9c93a7cc94c73f09b32ed6dc7f6a0.setIcon(icon_4d8e82f40eb24a4a3dc8dbe818dbdb14);
+            
+    
+            var marker_f0ef9897380d81d46fe9b032dd43ae75 = L.marker(
+                [51.5651678, 0.149604],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_719e1b14e43a002b4da3bcc86da15371 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4fedd9601e48001242c29080174f7886 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c37eb4a84f1142920f022004fa361f8d = $(`<div id="html_c37eb4a84f1142920f022004fa361f8d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 004E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_4fedd9601e48001242c29080174f7886.setContent(html_c37eb4a84f1142920f022004fa361f8d);
+            
+        
+
+        marker_f0ef9897380d81d46fe9b032dd43ae75.bindPopup(popup_4fedd9601e48001242c29080174f7886)
+        ;
+
+        
+    
+    
+                marker_f0ef9897380d81d46fe9b032dd43ae75.setIcon(icon_719e1b14e43a002b4da3bcc86da15371);
+            
+    
+            var marker_8ceb97068c2927a443daaaf91677b4df = L.marker(
+                [51.5667631, 0.1508056],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_e1c2b2b18a228e9b3e541ab71351aafd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7784fec30763808c6fef68937b8f5e4a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_13a2e05d7d4fca5815c7f60669b8235f = $(`<div id="html_13a2e05d7d4fca5815c7f60669b8235f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 004E (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_7784fec30763808c6fef68937b8f5e4a.setContent(html_13a2e05d7d4fca5815c7f60669b8235f);
+            
+        
+
+        marker_8ceb97068c2927a443daaaf91677b4df.bindPopup(popup_7784fec30763808c6fef68937b8f5e4a)
+        ;
+
+        
+    
+    
+                marker_8ceb97068c2927a443daaaf91677b4df.setIcon(icon_e1c2b2b18a228e9b3e541ab71351aafd);
+            
+    
+            var marker_5088134189c16e6ab5a85e5f4d99e421 = L.marker(
+                [51.563946, 0.1496726],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_3055deafbc4eb66b0e84bd351c481d91 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e46632895669d84cec3beb3f7c1f04aa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b8f52418adc2648c5b7b582142b54ae2 = $(`<div id="html_b8f52418adc2648c5b7b582142b54ae2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 004E (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_e46632895669d84cec3beb3f7c1f04aa.setContent(html_b8f52418adc2648c5b7b582142b54ae2);
+            
+        
+
+        marker_5088134189c16e6ab5a85e5f4d99e421.bindPopup(popup_e46632895669d84cec3beb3f7c1f04aa)
+        ;
+
+        
+    
+    
+                marker_5088134189c16e6ab5a85e5f4d99e421.setIcon(icon_3055deafbc4eb66b0e84bd351c481d91);
+            
+    
+            var marker_4b5431f2dbd078609375b5d121c50d87 = L.marker(
+                [51.5645809, 0.1497413],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_e92675f6fdeacb89043c5b04107f0c0e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_193acf239ad9f7f7cfb8ca1c5ce83611 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_95479481309d1280624b1e220bf7a50a = $(`<div id="html_95479481309d1280624b1e220bf7a50a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 004E (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_193acf239ad9f7f7cfb8ca1c5ce83611.setContent(html_95479481309d1280624b1e220bf7a50a);
+            
+        
+
+        marker_4b5431f2dbd078609375b5d121c50d87.bindPopup(popup_193acf239ad9f7f7cfb8ca1c5ce83611)
+        ;
+
+        
+    
+    
+                marker_4b5431f2dbd078609375b5d121c50d87.setIcon(icon_e92675f6fdeacb89043c5b04107f0c0e);
+            
+    
+            var marker_cd35bd9068c32a409dcbb94eec6138bf = L.marker(
+                [51.563071, 0.1481792],
+                {
+}
+            ).addTo(feature_group_564981f6497e9afd6a6440182bac59d1);
+        
+    
+            var icon_c17fe8536a9085242e073fcae98231ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3889d33612b64a219e505a7c7038d8e6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_299e12e17f5bdf3419101dd771d2374a = $(`<div id="html_299e12e17f5bdf3419101dd771d2374a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Barking and Dagenham 004E (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3889d33612b64a219e505a7c7038d8e6.setContent(html_299e12e17f5bdf3419101dd771d2374a);
+            
+        
+
+        marker_cd35bd9068c32a409dcbb94eec6138bf.bindPopup(popup_3889d33612b64a219e505a7c7038d8e6)
+        ;
+
+        
+    
+    
+                marker_cd35bd9068c32a409dcbb94eec6138bf.setIcon(icon_c17fe8536a9085242e073fcae98231ef);
+            
+    
+            feature_group_564981f6497e9afd6a6440182bac59d1.addTo(map_f652012e5756cd2071e4b479464a4f0c);
+        
+    
+            var poly_line_6488ddc5e0f4b1a139694871e6d6d107 = L.polyline(
+                [[51.5715104, 0.143307], [51.5708677, 0.143348], [51.5708455, 0.1427583], [51.5707901, 0.1426281], [51.5690113, 0.1442361], [51.5677325, 0.144754], [51.5676805, 0.1447786], [51.5664369, 0.1453413], [51.5664728, 0.1455743], [51.5665234, 0.1458805], [51.5682463, 0.1466943], [51.5682783, 0.1477071], [51.5673126, 0.1489517], [51.5669498, 0.1486684], [51.5663576, 0.1490461], [51.5657761, 0.1494237], [51.5651678, 0.149604], [51.5659308, 0.1505481], [51.5666991, 0.1502477], [51.5667631, 0.1508056], [51.5666991, 0.1502477], [51.5659308, 0.1505481], [51.5651678, 0.149604], [51.5645809, 0.1497413], [51.563946, 0.1496726], [51.5632737, 0.1495954], [51.563071, 0.1481792], [51.5630123, 0.147853], [51.5636152, 0.1476041], [51.5641754, 0.1473724], [51.564789, 0.147132], [51.5646742, 0.146287], [51.5664728, 0.1455743], [51.5664369, 0.1453413], [51.5676805, 0.1447786], [51.567535, 0.1437488], [51.5666342, 0.1351639], [51.567535, 0.1437488], [51.568757, 0.1433083], [51.567535, 0.1437488], [51.5676805, 0.1447786], [51.5677325, 0.144754], [51.5708397, 0.1425226], [51.570894, 0.1425247], [51.5710431, 0.1424407], [51.5719587, 0.1421788], [51.5721741, 0.1419868], [51.5721674, 0.141406], [51.5720997, 0.1405175], [51.5708756, 0.140569], [51.5707796, 0.1387494], [51.5702994, 0.138758], [51.5700487, 0.1387665], [51.5697286, 0.1387837], [51.5696539, 0.1374962], [51.5696006, 0.1368182], [51.5701714, 0.1367839], [51.5707475, 0.1360371], [51.5705715, 0.1343119], [51.5700113, 0.1344493], [51.5697819, 0.1320546], [51.5693178, 0.1323035], [51.5690457, 0.132355], [51.568987, 0.1314538], [51.5684589, 0.1313508], [51.568987, 0.1314538], [51.5690457, 0.132355], [51.5689017, 0.1346896], [51.5691523, 0.137603], [51.5696539, 0.1374962], [51.5697286, 0.1387837], [51.5700487, 0.1387665], [51.5702994, 0.138758], [51.5707796, 0.1387494], [51.5708756, 0.140569], [51.5709396, 0.1415904], [51.5709922, 0.1422151], [51.5710431, 0.1424407], [51.5719587, 0.1421788], [51.5721741, 0.1419868], [51.5721674, 0.141406], [51.5720997, 0.1405175], [51.5708756, 0.140569], [51.5709396, 0.1415904], [51.5709922, 0.1422151], [51.5710431, 0.1424407], [51.570894, 0.1425247], [51.5708503, 0.1425755], [51.5708455, 0.1427583], [51.5708677, 0.143348], [51.5715104, 0.143307]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_f652012e5756cd2071e4b479464a4f0c);
+        
+    
+            var layer_control_9900b5d53f273ef98a2b3edabde1a5da_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_c170ad16e12ab279f53539a31e2a3258,
+                },
+                overlays :  {
+                    "Whalebone Boundary" : geo_json_0cb1d421589c51a88b2a9498e77314ee,
+                    "LSOA Median Crime Rates for Whalebone" : geo_json_5cefb67d8391d6ce539cbe61ef0d26c1,
+                    "Patrol Waypoints" : feature_group_564981f6497e9afd6a6440182bac59d1,
+                },
+            };
+            let layer_control_9900b5d53f273ef98a2b3edabde1a5da = L.control.layers(
+                layer_control_9900b5d53f273ef98a2b3edabde1a5da_layers.base_layers,
+                layer_control_9900b5d53f273ef98a2b3edabde1a5da_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_f652012e5756cd2071e4b479464a4f0c);
+
+        
+</script>
+</html>

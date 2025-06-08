@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_85aa3e17fae51eb73d38a9e64e3ee5be {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_85aa3e17fae51eb73d38a9e64e3ee5be" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_85aa3e17fae51eb73d38a9e64e3ee5be = L.map(
+                "map_85aa3e17fae51eb73d38a9e64e3ee5be",
+                {
+                    center: [51.5028583926245, 0.13504998951027497],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c9a1011a0c800712117977d36c83efb4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c9a1011a0c800712117977d36c83efb4.addTo(map_85aa3e17fae51eb73d38a9e64e3ee5be);
+        
+    
+        function geo_json_e8c956e4d33874d97dbfa702d4e08a12_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_e8c956e4d33874d97dbfa702d4e08a12_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_e8c956e4d33874d97dbfa702d4e08a12 = L.geoJson(null, {
+                onEachFeature: geo_json_e8c956e4d33874d97dbfa702d4e08a12_onEachFeature,
+            
+                style: geo_json_e8c956e4d33874d97dbfa702d4e08a12_styler,
+            ...{
+}
+        });
+
+        function geo_json_e8c956e4d33874d97dbfa702d4e08a12_add (data) {
+            geo_json_e8c956e4d33874d97dbfa702d4e08a12
+                .addData(data);
+        }
+            geo_json_e8c956e4d33874d97dbfa702d4e08a12_add({"features": [{"geometry": {"coordinates": [[[0.12098199150356945, 51.500771526195244], [0.12092676153663774, 51.50135257737846], [0.12091946836198694, 51.50166116543352], [0.12091489247112905, 51.501964310165086], [0.12094529340327617, 51.502432243198605], [0.12092911620011959, 51.50307911585199], [0.12085727151111024, 51.50379622030675], [0.12082330009787612, 51.504927270692086], [0.12084760680656235, 51.50606985325386], [0.12077984997974495, 51.50662946387947], [0.12074611884791905, 51.5070186330287], [0.12072348793956555, 51.50740121831651], [0.12069745256851087, 51.50783331157636], [0.12070589529840005, 51.50845007055844], [0.12069475672576846, 51.50870658429242], [0.12067917723237889, 51.5089595822197], [0.12062532794468171, 51.50944522085498], [0.12059994217762642, 51.509768520080655], [0.12057911578532933, 51.51009533294013], [0.12053519830430967, 51.51104307083218], [0.12021091315729576, 51.51144468522443], [0.1190742253150971, 51.512727821443995], [0.11829676701186626, 51.51358443341471], [0.11930477908145015, 51.5139673666231], [0.11997971633809192, 51.51422496514349], [0.1204381531943046, 51.51438299673916], [0.1207673983282422, 51.51448942138041], [0.12110343945450125, 51.514588619890134], [0.12158228326556504, 51.51472020622637], [0.1218214974529346, 51.51478150729837], [0.12223694261433392, 51.51488106397911], [0.122935783320422, 51.51506170601551], [0.12337230705038148, 51.51515188687762], [0.12386214145293192, 51.5152410107777], [0.12439640745864644, 51.515322135587866], [0.12521120543713973, 51.51542523532643], [0.12526912786516525, 51.51543137787726], [0.12528064544659379, 51.5154311691554], [0.1262955148609742, 51.515466714769424], [0.12700803680088035, 51.515506836586475], [0.12771415560197336, 51.51553448388722], [0.12822896802273717, 51.515542224096976], [0.1288065514329001, 51.51553264016481], [0.12900218272478176, 51.51552549276775], [0.1305271176322266, 51.51543127149083], [0.13179305665899377, 51.51528779696464], [0.1326958759452306, 51.51520656250117], [0.13359445365438632, 51.51500411951252], [0.1359261399629857, 51.51459478272081], [0.13684659316456088, 51.51437024961993], [0.1379901886138837, 51.514074214320274], [0.13904230725827144, 51.51376635088622], [0.139924956232262, 51.51341032580784], [0.1408722076174535, 51.51304861949776], [0.14233176907179204, 51.51248776276597], [0.1434507264160298, 51.512007822789826], [0.14453940428429185, 51.511589559615395], [0.14685923755243813, 51.510721535365015], [0.1480934815956501, 51.51036530381327], [0.14919864498660743, 51.51008694333171], [0.14993926309535316, 51.50989985493638], [0.15032075263408454, 51.50982804027869], [0.1511048946783076, 51.50967970366955], [0.15261179038649464, 51.50936157582054], [0.15325954828224353, 51.509254386405786], [0.15277226007183015, 51.508515969130265], [0.1513953161164399, 51.50648461729583], [0.15126766394311827, 51.50628189036749], [0.15120006867987903, 51.50616355937205], [0.15081840256872048, 51.505585111779034], [0.15068163263694132, 51.50537535921045], [0.15058211153385304, 51.505219854116426], [0.15056815704824691, 51.505198533306626], [0.15043762915476958, 51.504997656284374], [0.15035223317664012, 51.50486706481477], [0.15029607362465952, 51.50477450557578], [0.15019375665694584, 51.50462264754566], [0.1499793896710082, 51.5042938469186], [0.14983666786205121, 51.50407611122722], [0.14972647454668156, 51.50391082183507], [0.14964553342982292, 51.50372081218043], [0.14921476082212357, 51.50304976046329], [0.14898587642729597, 51.50271762799561], [0.14903267334013093, 51.502699688791814], [0.14908646137227244, 51.502678834447195], [0.1490545437986867, 51.50264435721336], [0.14901077399430646, 51.50260290493825], [0.14897575409057834, 51.502563090355395], [0.14895999640446977, 51.502533711127775], [0.1489424967763519, 51.502530435705005], [0.1489611514708398, 51.50240422956825], [0.14903604047494307, 51.5022813980926], [0.14911133886886707, 51.50222787431678], [0.14927471721515115, 51.502147563261644], [0.1513686253293161, 51.50172608849688], [0.15145535913405175, 51.50161023034406], [0.15130906933500313, 51.50144030037626], [0.15014750268965707, 51.50018012651622], [0.14994196471578056, 51.50006872934475], [0.14972353639560002, 51.49995855707155], [0.14965527437504053, 51.49982576298988], [0.1496006817920332, 51.49964515954336], [0.1492455082093132, 51.49923173270821], [0.14901696427752936, 51.49896702132372], [0.14889376695890383, 51.49861587003807], [0.14880902698127652, 51.498435728799954], [0.15243397450546822, 51.49767051655592], [0.15316981711681138, 51.49757060978945], [0.15321473748388356, 51.49733154150905], [0.15325313296437235, 51.49710778665742], [0.15324907957961237, 51.49689829678184], [0.15321636654106802, 51.49663269418515], [0.1531990889113082, 51.49626611655835], [0.15309243349269983, 51.495898483040534], [0.15296725447518061, 51.49556625178364], [0.15282605343066874, 51.495259487453254], [0.1525835298086352, 51.495003130822134], [0.15231202699497876, 51.49477706359881], [0.1520222991943195, 51.494620465806825], [0.1516454724999502, 51.494480839074185], [0.15140984813478958, 51.494433827885906], [0.1512084604571639, 51.4943772876912], [0.15071191330865774, 51.49432616143383], [0.15021588264958358, 51.49428850908403], [0.14991961562760273, 51.49426786976027], [0.14970658310959264, 51.49427177563732], [0.14969966074705393, 51.49424583063105], [0.14967130715440213, 51.494132982557375], [0.14960157933908735, 51.49387794694971], [0.14950532978582143, 51.49357673775121], [0.14941317284575353, 51.49317817820656], [0.14926479526018363, 51.492657571667834], [0.14912172810525798, 51.492219488618915], [0.14909086705327015, 51.49208609851812], [0.14851754385825366, 51.49205614901595], [0.1483502296485359, 51.49205202249455], [0.14704770549815566, 51.49201645475031], [0.14391714204395184, 51.4918885374018], [0.14285080038462905, 51.491851391292705], [0.1417771746622668, 51.49181337960982], [0.13877653630797165, 51.49172250910287], [0.1385759872499321, 51.49171627777152], [0.13526270151549263, 51.49156350218417], [0.1339637136368973, 51.49153950203802], [0.12917173323077955, 51.49137210158715], [0.128895255079625, 51.49137532372914], [0.12811612660099, 51.49134811203513], [0.1271926277509724, 51.491314524126444], [0.12564291961578644, 51.49125991796685], [0.1228219945070761, 51.491159897120504], [0.12127505994671683, 51.4911033849859], [0.12124149293778998, 51.49134232467466], [0.12123300279651225, 51.49258709298634], [0.12118784557760764, 51.49329023067873], [0.12119652821769895, 51.49369472612942], [0.12116430040004092, 51.49520342846621], [0.12108530729539124, 51.496201249859915], [0.1210823253860084, 51.49629309452441], [0.12104510242292087, 51.49735399107493], [0.12102334131979374, 51.49884002749512], [0.12099912138734598, 51.49974605573327], [0.12098199150356945, 51.500771526195244]]], "type": "Polygon"}, "id": "303", "properties": {"DISTRICT": "Bexley", "GSS_CODE": "E05011232", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "NAME": "Thamesmead East", "NONLD_AREA": 85.721}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_e8c956e4d33874d97dbfa702d4e08a12.addTo(map_85aa3e17fae51eb73d38a9e64e3ee5be);
+        
+    
+        function geo_json_d274c1b01c538c637efcf084db01f69f_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_d274c1b01c538c637efcf084db01f69f_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_d274c1b01c538c637efcf084db01f69f = L.geoJson(null, {
+                onEachFeature: geo_json_d274c1b01c538c637efcf084db01f69f_onEachFeature,
+            
+                style: geo_json_d274c1b01c538c637efcf084db01f69f_styler,
+            ...{
+}
+        });
+
+        function geo_json_d274c1b01c538c637efcf084db01f69f_add (data) {
+            geo_json_d274c1b01c538c637efcf084db01f69f
+                .addData(data);
+        }
+            geo_json_d274c1b01c538c637efcf084db01f69f_add({"features": [{"geometry": {"coordinates": [[[[0.12193183963259079, 51.49085319198812], [0.1282454167148075, 51.49337936613134], [0.12803758881912372, 51.49569303285725], [0.1280187885437372, 51.495902325847055], [0.12793083988407553, 51.49587243343884], [0.1211940332737751, 51.493582384222904], [0.12119588532439224, 51.49315215955862], [0.12131167240089684, 51.49083743501548], [0.12193183963259079, 51.49085319198812]]]], "type": "MultiPolygon"}, "id": "400", "properties": {"BNG_E": 547569, "BNG_N": 179298, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{A2B0A41C-C07F-4CD4-B035-5DD9B3AB370E}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.493370056152344, "LONG": 0.12433899939060211, "LSOA21CD": "E01000416", "LSOA21NM": "Bexley 002A", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.13769966226042327, 51.49167677811902], [0.129158735655098, 51.491371494962635], [0.12910083952210819, 51.49357920663216], [0.1282454167148075, 51.49337936613134], [0.12193183963259079, 51.49085319198812], [0.13576123036937138, 51.48482879067666], [0.13696788387274986, 51.487438067955374], [0.13893615903141265, 51.490477626765404], [0.13877571698797156, 51.49172339110795], [0.13769966226042327, 51.49167677811902]]]], "type": "MultiPolygon"}, "id": "402", "properties": {"BNG_E": 548032, "BNG_N": 178851, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{90BCDA31-289F-4218-A011-BB305E3938DC}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.48923873901367, "LONG": 0.1308159977197647, "LSOA21CD": "E01000418", "LSOA21NM": "Bexley 002B", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Belvedere", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.1290918784391126, 51.4939211251521], [0.12903194280382332, 51.4963429659726], [0.12763405644298428, 51.49637119867734], [0.12108229947856324, 51.496291811436386], [0.121121129471416, 51.49574777359853], [0.1211940332737751, 51.493582384222904], [0.12793083988407553, 51.49587243343884], [0.1280187885437372, 51.495902325847055], [0.12803758881912372, 51.49569303285725], [0.1282454167148075, 51.49337936613134], [0.12910083952210819, 51.49357920663216], [0.1290918784391126, 51.4939211251521]]]], "type": "MultiPolygon"}, "id": "406", "properties": {"BNG_E": 547412, "BNG_N": 179468, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{7A2B615C-D6D8-41A3-A0CA-0A9E5DA3D350}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.49494171142578, "LONG": 0.1221499964594841, "LSOA21CD": "E01000422", "LSOA21NM": "Bexley 002C", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.13769966226042327, 51.49167677811902], [0.1318344301134257, 51.4949432440352], [0.1290918784391126, 51.4939211251521], [0.12910083952210819, 51.49357920663216], [0.129158735655098, 51.491371494962635], [0.13769966226042327, 51.49167677811902]]]], "type": "MultiPolygon"}, "id": "447", "properties": {"BNG_E": 548118, "BNG_N": 179291, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{20AF56AE-FAA8-4197-B95C-62514F6B3C7C}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.49317169189453, "LONG": 0.1322380006313324, "LSOA21CD": "E01000464", "LSOA21NM": "Bexley 002D", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.14978307105476074, 51.49421977590695], [0.1318344301134257, 51.4949432440352], [0.13769966226042327, 51.49167677811902], [0.13877571698797156, 51.49172339110795], [0.1492149305641727, 51.492092910867136], [0.14978307105476074, 51.49421977590695]]]], "type": "MultiPolygon"}, "id": "448", "properties": {"BNG_E": 548822, "BNG_N": 179364, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{17EE82A7-F0D6-4FEF-A6C3-BF643D8F174C}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.4936408996582, "LONG": 0.14240199327468872, "LSOA21CD": "E01000465", "LSOA21NM": "Bexley 002E", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.1343211123130668, 51.51126542289784], [0.12988816306537943, 51.50748592967636], [0.13095859770458135, 51.504016906469836], [0.13054797320998526, 51.4997389935534], [0.12512727110451624, 51.49919892033957], [0.12763405644298428, 51.49637119867734], [0.12903194280382332, 51.4963429659726], [0.1290918784391126, 51.4939211251521], [0.1318344301134257, 51.4949432440352], [0.14978307105476074, 51.49421977590695], [0.153126653948399, 51.49589030314215], [0.14880810044512874, 51.49843595746304], [0.1519846038343675, 51.50615611269896], [0.15126766397361158, 51.50628189054867], [0.14440201739930622, 51.50840565027417], [0.1438217651223163, 51.50777141091609], [0.1343211123130668, 51.51126542289784]]]], "type": "MultiPolygon"}, "id": "449", "properties": {"BNG_E": 548588, "BNG_N": 180246, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{0283CC7E-28FD-4610-889F-1B733408E544}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.50162124633789, "LONG": 0.1394059956073761, "LSOA21CD": "E01000466", "LSOA21NM": "Bexley 001A", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.12649738358328763, 51.508783163223384], [0.1253797486579689, 51.5125850470754], [0.12021091269726036, 51.51144468568726], [0.11911218657913218, 51.51134981433792], [0.12076179144019891, 51.50683226512263], [0.1208413417294299, 51.505793706012795], [0.12649738358328763, 51.508783163223384]]]], "type": "MultiPolygon"}, "id": "450", "properties": {"BNG_E": 547455, "BNG_N": 181134, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{8A064F3F-BBB8-473E-936D-DE1481B02F4D}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.5098991394043, "LONG": 0.12346500158309937, "LSOA21CD": "E01000467", "LSOA21NM": "Bexley 001B", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.14440201739930622, 51.50840565027417], [0.1285926097723477, 51.51329373209213], [0.1253797486579689, 51.5125850470754], [0.12649738358328763, 51.508783163223384], [0.12988816306537943, 51.50748592967636], [0.1343211123130668, 51.51126542289784], [0.1438217651223163, 51.50777141091609], [0.14440201739930622, 51.50840565027417]]]], "type": "MultiPolygon"}, "id": "451", "properties": {"BNG_E": 547893, "BNG_N": 181181, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{0CF6F73C-16DC-4751-A42B-3BD1555D28A0}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.51020812988281, "LONG": 0.1297920048236847, "LSOA21CD": "E01000468", "LSOA21NM": "Bexley 001C", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.12988816306537943, 51.50748592967636], [0.12649738358328763, 51.508783163223384], [0.1208413417294299, 51.505793706012795], [0.12093003477189543, 51.50220975392133], [0.12091606248458144, 51.501844055514326], [0.13095859770458135, 51.504016906469836], [0.12988816306537943, 51.50748592967636]]]], "type": "MultiPolygon"}, "id": "452", "properties": {"BNG_E": 547704, "BNG_N": 180643, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{C1890A4F-C7FE-480E-AE6B-5B3B18F59504}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.50542068481445, "LONG": 0.12684500217437744, "LSOA21CD": "E01000469", "LSOA21NM": "Bexley 001D", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[0.12763405644298428, 51.49637119867734], [0.12512727110451624, 51.49919892033957], [0.13054797320998526, 51.4997389935534], [0.13095859770458135, 51.504016906469836], [0.12091606248458144, 51.501844055514326], [0.12098136543491676, 51.500771612718374], [0.12108229947856324, 51.496291811436386], [0.12763405644298428, 51.49637119867734]]]], "type": "MultiPolygon"}, "id": "453", "properties": {"BNG_E": 547637, "BNG_N": 180057, "DISTRICT": "Bexley", "GSS_CODE": "E05011232", "GlobalID": "{9435970C-49E8-4E64-8E7C-CBD670EDC00D}", "HECTARES": 514.392, "LAGSSCODE": "E09000004", "LAT": 51.500179290771484, "LONG": 0.12563499808311462, "LSOA21CD": "E01000470", "LSOA21NM": "Bexley 002F", "LSOA21NMW": " ", "NAME": "Thamesmead East", "NONLD_AREA": 85.721, "WD24NM": "Thamesmead East", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_d274c1b01c538c637efcf084db01f69f.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_d274c1b01c538c637efcf084db01f69f.addTo(map_85aa3e17fae51eb73d38a9e64e3ee5be);
+        
+    
+            var feature_group_c2de87cdad5111c91641fb6f5054da59 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_4fff1912cf0c190ae16fc7812dc867e1 = L.marker(
+                [51.4944758, 0.1271229],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_6937c325da51c4bd922fca9dde9b10d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf53f5de1d55b2861c01ea7cf31dae4d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e04bae8f1c3243076a286ba287d46060 = $(`<div id="html_e04bae8f1c3243076a286ba287d46060" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_cf53f5de1d55b2861c01ea7cf31dae4d.setContent(html_e04bae8f1c3243076a286ba287d46060);
+            
+        
+
+        marker_4fff1912cf0c190ae16fc7812dc867e1.bindPopup(popup_cf53f5de1d55b2861c01ea7cf31dae4d)
+        ;
+
+        
+    
+    
+                marker_4fff1912cf0c190ae16fc7812dc867e1.setIcon(icon_6937c325da51c4bd922fca9dde9b10d8);
+            
+    
+            var marker_fd46a524040fc48d769c0ec8a3c60edf = L.marker(
+                [51.4920406, 0.1224675],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_95b6e9dcce98eff6b303a0705dbf4090 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6900b2745c360f9a244c5015871d5f89 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_97351a19cb2f025881d0870f68cf927b = $(`<div id="html_97351a19cb2f025881d0870f68cf927b" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_6900b2745c360f9a244c5015871d5f89.setContent(html_97351a19cb2f025881d0870f68cf927b);
+            
+        
+
+        marker_fd46a524040fc48d769c0ec8a3c60edf.bindPopup(popup_6900b2745c360f9a244c5015871d5f89)
+        ;
+
+        
+    
+    
+                marker_fd46a524040fc48d769c0ec8a3c60edf.setIcon(icon_95b6e9dcce98eff6b303a0705dbf4090);
+            
+    
+            var marker_393657bbbaea32f024fc93ca93361316 = L.marker(
+                [51.4918513, 0.1353968],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_75d1e61fa2d58395b412cafab359d307 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f853f1572aac73c0da85de86419781bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61535204f85993ef23feb3591cf7461a = $(`<div id="html_61535204f85993ef23feb3591cf7461a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_f853f1572aac73c0da85de86419781bd.setContent(html_61535204f85993ef23feb3591cf7461a);
+            
+        
+
+        marker_393657bbbaea32f024fc93ca93361316.bindPopup(popup_f853f1572aac73c0da85de86419781bd)
+        ;
+
+        
+    
+    
+                marker_393657bbbaea32f024fc93ca93361316.setIcon(icon_75d1e61fa2d58395b412cafab359d307);
+            
+    
+            var marker_e0349f92c9e094ab6ceea83a8e907985 = L.marker(
+                [51.4914499, 0.1260232],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_80904bfed7b1d1df4c80e1064fd5bfa2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_658c97ba5b1dcb5d7431d7ea3029bf30 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3750b7509d5cc812b205f312437e3131 = $(`<div id="html_3750b7509d5cc812b205f312437e3131" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_658c97ba5b1dcb5d7431d7ea3029bf30.setContent(html_3750b7509d5cc812b205f312437e3131);
+            
+        
+
+        marker_e0349f92c9e094ab6ceea83a8e907985.bindPopup(popup_658c97ba5b1dcb5d7431d7ea3029bf30)
+        ;
+
+        
+    
+    
+                marker_e0349f92c9e094ab6ceea83a8e907985.setIcon(icon_80904bfed7b1d1df4c80e1064fd5bfa2);
+            
+    
+            var marker_e3fa477263321415936a9e9f97409572 = L.marker(
+                [51.4918513, 0.1353968],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_b8240de99d9800bbff31ad4dcda3bcd3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d7a5c2e907098efe9ef06c4ee82ddb86 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b9ef9f0aa5a30a263a4d0b7c2dddcd4d = $(`<div id="html_b9ef9f0aa5a30a263a4d0b7c2dddcd4d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d7a5c2e907098efe9ef06c4ee82ddb86.setContent(html_b9ef9f0aa5a30a263a4d0b7c2dddcd4d);
+            
+        
+
+        marker_e3fa477263321415936a9e9f97409572.bindPopup(popup_d7a5c2e907098efe9ef06c4ee82ddb86)
+        ;
+
+        
+    
+    
+                marker_e3fa477263321415936a9e9f97409572.setIcon(icon_b8240de99d9800bbff31ad4dcda3bcd3);
+            
+    
+            var marker_bc3194d5dd2709103f44d2e7d5161563 = L.marker(
+                [51.4918178, 0.1248937],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_3d1bf3c2be508565f3c051f28c4652b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c141a75dfdd629db7a6d6bb52c48f262 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f8c9074ed44755dabda0479e5ff93328 = $(`<div id="html_f8c9074ed44755dabda0479e5ff93328" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002B (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c141a75dfdd629db7a6d6bb52c48f262.setContent(html_f8c9074ed44755dabda0479e5ff93328);
+            
+        
+
+        marker_bc3194d5dd2709103f44d2e7d5161563.bindPopup(popup_c141a75dfdd629db7a6d6bb52c48f262)
+        ;
+
+        
+    
+    
+                marker_bc3194d5dd2709103f44d2e7d5161563.setIcon(icon_3d1bf3c2be508565f3c051f28c4652b6);
+            
+    
+            var marker_ca36bf1e70e69599bc50c1e9f0079ab6 = L.marker(
+                [51.4915571, 0.1291963],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_cb60801321bef69b8736cd1f474a9b61 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_077ef27ea043ed99d301b2be785443a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5c0139893e83495d6dd55e399fbdddac = $(`<div id="html_5c0139893e83495d6dd55e399fbdddac" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002B (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_077ef27ea043ed99d301b2be785443a2.setContent(html_5c0139893e83495d6dd55e399fbdddac);
+            
+        
+
+        marker_ca36bf1e70e69599bc50c1e9f0079ab6.bindPopup(popup_077ef27ea043ed99d301b2be785443a2)
+        ;
+
+        
+    
+    
+                marker_ca36bf1e70e69599bc50c1e9f0079ab6.setIcon(icon_cb60801321bef69b8736cd1f474a9b61);
+            
+    
+            var marker_7ca0b80855e3f2741c828f4caac84170 = L.marker(
+                [51.4958882, 0.1265293],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_bc5e334b0c7fc03fcab6952a51452e8d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8669968f8db3aea9c799b1c47a766398 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_804820469d25fd7248bb5b4894f80d1f = $(`<div id="html_804820469d25fd7248bb5b4894f80d1f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8669968f8db3aea9c799b1c47a766398.setContent(html_804820469d25fd7248bb5b4894f80d1f);
+            
+        
+
+        marker_7ca0b80855e3f2741c828f4caac84170.bindPopup(popup_8669968f8db3aea9c799b1c47a766398)
+        ;
+
+        
+    
+    
+                marker_7ca0b80855e3f2741c828f4caac84170.setIcon(icon_bc5e334b0c7fc03fcab6952a51452e8d);
+            
+    
+            var marker_2433fe9f470823fe6fb4ca5db78b8b0b = L.marker(
+                [51.4954494, 0.1240093],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_f1eabd5321281c08adc2294226233442 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4334375ab880f09720450473fc9047b1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_839fd28693f4d6f842803805fa8a659d = $(`<div id="html_839fd28693f4d6f842803805fa8a659d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_4334375ab880f09720450473fc9047b1.setContent(html_839fd28693f4d6f842803805fa8a659d);
+            
+        
+
+        marker_2433fe9f470823fe6fb4ca5db78b8b0b.bindPopup(popup_4334375ab880f09720450473fc9047b1)
+        ;
+
+        
+    
+    
+                marker_2433fe9f470823fe6fb4ca5db78b8b0b.setIcon(icon_f1eabd5321281c08adc2294226233442);
+            
+    
+            var marker_32098a22086cf50fb394892f15635583 = L.marker(
+                [51.492922, 0.1300006],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_577c785f4a886f4adf1d8925696c4008 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c63b5a06cdb8b05385c76d954e4a927 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fad4df507ff0cf515a8daa5393e5063c = $(`<div id="html_fad4df507ff0cf515a8daa5393e5063c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002D (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_4c63b5a06cdb8b05385c76d954e4a927.setContent(html_fad4df507ff0cf515a8daa5393e5063c);
+            
+        
+
+        marker_32098a22086cf50fb394892f15635583.bindPopup(popup_4c63b5a06cdb8b05385c76d954e4a927)
+        ;
+
+        
+    
+    
+                marker_32098a22086cf50fb394892f15635583.setIcon(icon_577c785f4a886f4adf1d8925696c4008);
+            
+    
+            var marker_445d59fe4823df60f3f5a4c98c51f643 = L.marker(
+                [51.4924871, 0.135329],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_4c3a539cd96276d696abe5520221cb3b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9e44fd6b0792fe44d973605adc68e124 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a1d40347acbc18fbe779615bb987395 = $(`<div id="html_1a1d40347acbc18fbe779615bb987395" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002D (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9e44fd6b0792fe44d973605adc68e124.setContent(html_1a1d40347acbc18fbe779615bb987395);
+            
+        
+
+        marker_445d59fe4823df60f3f5a4c98c51f643.bindPopup(popup_9e44fd6b0792fe44d973605adc68e124)
+        ;
+
+        
+    
+    
+                marker_445d59fe4823df60f3f5a4c98c51f643.setIcon(icon_4c3a539cd96276d696abe5520221cb3b);
+            
+    
+            var marker_33239899ca7ce0a6c247c7eec431c1c7 = L.marker(
+                [51.4939235, 0.1383297],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_bcbcc7ad3af98b5d479e5fc62684a5be = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5a84d2fd2bb46dc7a3f1867f5b49dc71 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_03d7a56426061f9014db909fdf2912a7 = $(`<div id="html_03d7a56426061f9014db909fdf2912a7" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002E (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_5a84d2fd2bb46dc7a3f1867f5b49dc71.setContent(html_03d7a56426061f9014db909fdf2912a7);
+            
+        
+
+        marker_33239899ca7ce0a6c247c7eec431c1c7.bindPopup(popup_5a84d2fd2bb46dc7a3f1867f5b49dc71)
+        ;
+
+        
+    
+    
+                marker_33239899ca7ce0a6c247c7eec431c1c7.setIcon(icon_bcbcc7ad3af98b5d479e5fc62684a5be);
+            
+    
+            var marker_6d101f1ad40cd65dcafdc079fd44b10a = L.marker(
+                [51.4923763, 0.1411177],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_c3c01db2c2133a571dae2dac2af9105b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_90d17c04685e690775c0a169f6fb92df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7609b8ea217629be3444b221a639de40 = $(`<div id="html_7609b8ea217629be3444b221a639de40" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002E (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_90d17c04685e690775c0a169f6fb92df.setContent(html_7609b8ea217629be3444b221a639de40);
+            
+        
+
+        marker_6d101f1ad40cd65dcafdc079fd44b10a.bindPopup(popup_90d17c04685e690775c0a169f6fb92df)
+        ;
+
+        
+    
+    
+                marker_6d101f1ad40cd65dcafdc079fd44b10a.setIcon(icon_c3c01db2c2133a571dae2dac2af9105b);
+            
+    
+            var marker_51c624f2fad483583b2690d148e13ee2 = L.marker(
+                [51.4926172, 0.1385227],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_134a346716ec01820c24f5d5f65de52d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_66e406ba61874f47251eac84b91f512f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c638320b280a900aefba2e0ec4de94f5 = $(`<div id="html_c638320b280a900aefba2e0ec4de94f5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002E (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_66e406ba61874f47251eac84b91f512f.setContent(html_c638320b280a900aefba2e0ec4de94f5);
+            
+        
+
+        marker_51c624f2fad483583b2690d148e13ee2.bindPopup(popup_66e406ba61874f47251eac84b91f512f)
+        ;
+
+        
+    
+    
+                marker_51c624f2fad483583b2690d148e13ee2.setIcon(icon_134a346716ec01820c24f5d5f65de52d);
+            
+    
+            var marker_163fa6e1075c310501fbeec5843dcc4b = L.marker(
+                [51.4923763, 0.1411177],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_71e833d1406d095594d00e0f1ffaa93e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c99eef401e57e4ff8f22f28703b38b1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_72642937e95eda12cc897fa64dbed600 = $(`<div id="html_72642937e95eda12cc897fa64dbed600" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002E (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_6c99eef401e57e4ff8f22f28703b38b1.setContent(html_72642937e95eda12cc897fa64dbed600);
+            
+        
+
+        marker_163fa6e1075c310501fbeec5843dcc4b.bindPopup(popup_6c99eef401e57e4ff8f22f28703b38b1)
+        ;
+
+        
+    
+    
+                marker_163fa6e1075c310501fbeec5843dcc4b.setIcon(icon_71e833d1406d095594d00e0f1ffaa93e);
+            
+    
+            var marker_52c3d5f8708f7abd549b6ca202e620af = L.marker(
+                [51.4927684, 0.1451114],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_27eaa815e857451e73f6d0e7a0364ace = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8fd85dfe3111c2e7885785ba55e79ed3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_62fe1b93a0feefd872976b4302e3f1e9 = $(`<div id="html_62fe1b93a0feefd872976b4302e3f1e9" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 002E (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8fd85dfe3111c2e7885785ba55e79ed3.setContent(html_62fe1b93a0feefd872976b4302e3f1e9);
+            
+        
+
+        marker_52c3d5f8708f7abd549b6ca202e620af.bindPopup(popup_8fd85dfe3111c2e7885785ba55e79ed3)
+        ;
+
+        
+    
+    
+                marker_52c3d5f8708f7abd549b6ca202e620af.setIcon(icon_27eaa815e857451e73f6d0e7a0364ace);
+            
+    
+            var marker_a298e29250d6e37efb160edd21272bcf = L.marker(
+                [51.5029857, 0.125943],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_cabb8f2f1ead36ef20c4c1e3793f5124 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d7030f3d5b2888592fdf76ade464ce7f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9946f597ca826bf8e8eb3e83814cd40c = $(`<div id="html_9946f597ca826bf8e8eb3e83814cd40c" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 001A (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_d7030f3d5b2888592fdf76ade464ce7f.setContent(html_9946f597ca826bf8e8eb3e83814cd40c);
+            
+        
+
+        marker_a298e29250d6e37efb160edd21272bcf.bindPopup(popup_d7030f3d5b2888592fdf76ade464ce7f)
+        ;
+
+        
+    
+    
+                marker_a298e29250d6e37efb160edd21272bcf.setIcon(icon_cabb8f2f1ead36ef20c4c1e3793f5124);
+            
+    
+            var marker_30379a587d0a26f0995dabb5ae2036c4 = L.marker(
+                [51.5029857, 0.125943],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_450206b846f4538a549288d3cbb11804 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c72591e95001ffdd6b53887f3c32409f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7097e33d52857127185bfce64031b1a8 = $(`<div id="html_7097e33d52857127185bfce64031b1a8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 001A (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_c72591e95001ffdd6b53887f3c32409f.setContent(html_7097e33d52857127185bfce64031b1a8);
+            
+        
+
+        marker_30379a587d0a26f0995dabb5ae2036c4.bindPopup(popup_c72591e95001ffdd6b53887f3c32409f)
+        ;
+
+        
+    
+    
+                marker_30379a587d0a26f0995dabb5ae2036c4.setIcon(icon_450206b846f4538a549288d3cbb11804);
+            
+    
+            var marker_ec449341633483c075276110e2290bef = L.marker(
+                [51.4970758, 0.1493],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_06d9c8b7da19ed30ca2dea039f1fbf94 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_92da8e5c0b37e7ce291b032ac3dbe459 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_907bf56ee101980727759f69a63f07af = $(`<div id="html_907bf56ee101980727759f69a63f07af" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 001A (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_92da8e5c0b37e7ce291b032ac3dbe459.setContent(html_907bf56ee101980727759f69a63f07af);
+            
+        
+
+        marker_ec449341633483c075276110e2290bef.bindPopup(popup_92da8e5c0b37e7ce291b032ac3dbe459)
+        ;
+
+        
+    
+    
+                marker_ec449341633483c075276110e2290bef.setIcon(icon_06d9c8b7da19ed30ca2dea039f1fbf94);
+            
+    
+            var marker_aab0b142b1250859e8cbd54dcd6d2293 = L.marker(
+                [51.4939358, 0.1381423],
+                {
+}
+            ).addTo(feature_group_c2de87cdad5111c91641fb6f5054da59);
+        
+    
+            var icon_12bdfd4f5e2913be80e0060958f50493 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_befe864ef4a7547b5084ee0fefd0cf09 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33c42aa39e7df7af7c79164ac78e73e5 = $(`<div id="html_33c42aa39e7df7af7c79164ac78e73e5" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Bexley 001A (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_befe864ef4a7547b5084ee0fefd0cf09.setContent(html_33c42aa39e7df7af7c79164ac78e73e5);
+            
+        
+
+        marker_aab0b142b1250859e8cbd54dcd6d2293.bindPopup(popup_befe864ef4a7547b5084ee0fefd0cf09)
+        ;
+
+        
+    
+    
+                marker_aab0b142b1250859e8cbd54dcd6d2293.setIcon(icon_12bdfd4f5e2913be80e0060958f50493);
+            
+    
+            feature_group_c2de87cdad5111c91641fb6f5054da59.addTo(map_85aa3e17fae51eb73d38a9e64e3ee5be);
+        
+    
+            var poly_line_8248073103d86ae21d146d2b3e325a69 = L.polyline(
+                [[51.4944758, 0.1271229], [51.4937592, 0.1266067], [51.4932602, 0.1218763], [51.4920406, 0.1224675], [51.491619, 0.1224902], [51.4918178, 0.1248937], [51.4914499, 0.1260232], [51.4915571, 0.1291963], [51.4954978, 0.1290801], [51.4958273, 0.1290786], [51.4959125, 0.1283708], [51.4958931, 0.1272711], [51.4958882, 0.1265293], [51.495882, 0.125779], [51.4958718, 0.1250303], [51.495864, 0.1242835], [51.4954494, 0.1240093], [51.495864, 0.1242835], [51.4958718, 0.1250303], [51.495882, 0.125779], [51.4958882, 0.1265293], [51.4958931, 0.1272711], [51.4959125, 0.1283708], [51.4958273, 0.1290786], [51.4954978, 0.1290801], [51.4915571, 0.1291963], [51.4929276, 0.1336444], [51.493942, 0.1346332], [51.4946495, 0.1353593], [51.4947258, 0.135291], [51.4947987, 0.1353595], [51.4947368, 0.135567], [51.4939358, 0.1381423], [51.4939235, 0.1383297], [51.4938121, 0.1383444], [51.4937728, 0.1382098], [51.4935578, 0.1381998], [51.4933158, 0.1381772], [51.493156, 0.1382904], [51.493039, 0.1384426], [51.4926172, 0.1385227], [51.493039, 0.1384426], [51.493156, 0.1382904], [51.4933158, 0.1381772], [51.4935578, 0.1381998], [51.4937728, 0.1382098], [51.4938279, 0.1380913], [51.4939358, 0.1381423], [51.4939235, 0.1383297], [51.4940067, 0.1413693], [51.4939019, 0.1413736], [51.4934584, 0.1413304], [51.4923763, 0.1411177], [51.4934584, 0.1413304], [51.4939019, 0.1413736], [51.4940067, 0.1413693], [51.4940741, 0.1430057], [51.4942962, 0.1429733], [51.4941886, 0.1430524], [51.4940775, 0.1432859], [51.4941397, 0.1450546], [51.4947995, 0.1522485], [51.4954344, 0.1527795], [51.4973983, 0.1531172], [51.497464, 0.1529998], [51.4977305, 0.1519162], [51.4970758, 0.1493], [51.4946689, 0.1514671], [51.4954344, 0.1527795], [51.4973983, 0.1531172], [51.497464, 0.1529998], [51.4977305, 0.1519162], [51.5029857, 0.125943], [51.5014353, 0.1217435], [51.5008755, 0.1215316], [51.4985166, 0.1215375], [51.4964837, 0.1213004], [51.496374, 0.1214498], [51.4962144, 0.1214746], [51.4960803, 0.1213344], [51.4937932, 0.1212262], [51.4937112, 0.1212886], [51.4944274, 0.1226335], [51.4944338, 0.1233789], [51.4944436, 0.1241341], [51.4944576, 0.1248761], [51.4944625, 0.1256248], [51.4944703, 0.1263715], [51.4944758, 0.1271229], [51.4937592, 0.1266067], [51.4932602, 0.1218763], [51.4920406, 0.1224675], [51.491619, 0.1224902], [51.4918178, 0.1248937], [51.4914499, 0.1260232], [51.4915571, 0.1291963], [51.4929276, 0.1336444], [51.493942, 0.1346332], [51.4946495, 0.1353593], [51.4947258, 0.135291], [51.4947987, 0.1353595], [51.4947368, 0.135567], [51.4939358, 0.1381423], [51.4939235, 0.1383297], [51.4940067, 0.1413693], [51.4940741, 0.1430057], [51.4942962, 0.1429733], [51.4941886, 0.1430524], [51.4940775, 0.1432859], [51.4941397, 0.1450546], [51.4940388, 0.1450652], [51.4927684, 0.1451114], [51.4940388, 0.1450652], [51.4939636, 0.1430251], [51.4939019, 0.1413736], [51.4938121, 0.1383444], [51.4937728, 0.1382098], [51.4938279, 0.1380913], [51.4939358, 0.1381423], [51.4939235, 0.1383297], [51.4938121, 0.1383444], [51.4937728, 0.1382098], [51.4938279, 0.1380913], [51.4939358, 0.1381423], [51.4939235, 0.1383297], [51.4938121, 0.1383444], [51.4937728, 0.1382098], [51.4938279, 0.1380913], [51.4946391, 0.1354545], [51.4946495, 0.1353593], [51.493942, 0.1346332], [51.4937425, 0.1353263], [51.4928492, 0.1356187], [51.4924871, 0.135329], [51.4928492, 0.1356187], [51.4918513, 0.1353968], [51.4928492, 0.1356187], [51.4937425, 0.1353263], [51.493942, 0.1346332], [51.4929276, 0.1336444], [51.4929229, 0.1303023], [51.492922, 0.1300006], [51.4929229, 0.1303023], [51.4929276, 0.1336444], [51.4915571, 0.1291963], [51.4929276, 0.1336444], [51.493942, 0.1346332], [51.4946495, 0.1353593], [51.4947258, 0.135291], [51.4947987, 0.1353595], [51.4947368, 0.135567], [51.4939358, 0.1381423], [51.4939235, 0.1383297], [51.4940067, 0.1413693], [51.4940741, 0.1430057], [51.4942962, 0.1429733], [51.4941886, 0.1430524], [51.4940775, 0.1432859], [51.4941397, 0.1450546], [51.4947995, 0.1522485], [51.4954344, 0.1527795], [51.4973983, 0.1531172], [51.497464, 0.1529998], [51.4977305, 0.1519162], [51.5029857, 0.125943], [51.5014353, 0.1217435], [51.5008755, 0.1215316], [51.4985166, 0.1215375], [51.4964837, 0.1213004], [51.496374, 0.1214498], [51.4962144, 0.1214746], [51.4960803, 0.1213344], [51.4937932, 0.1212262], [51.4937112, 0.1212886], [51.4944274, 0.1226335], [51.4944338, 0.1233789], [51.4944436, 0.1241341], [51.4944576, 0.1248761], [51.4944625, 0.1256248], [51.4944703, 0.1263715], [51.4944758, 0.1271229]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_85aa3e17fae51eb73d38a9e64e3ee5be);
+        
+    
+            var layer_control_d59238106ec1b49878fa891c6b0f3f6e_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_c9a1011a0c800712117977d36c83efb4,
+                },
+                overlays :  {
+                    "Thamesmead East Boundary" : geo_json_e8c956e4d33874d97dbfa702d4e08a12,
+                    "LSOA Median Crime Rates for Thamesmead East" : geo_json_d274c1b01c538c637efcf084db01f69f,
+                    "Patrol Waypoints" : feature_group_c2de87cdad5111c91641fb6f5054da59,
+                },
+            };
+            let layer_control_d59238106ec1b49878fa891c6b0f3f6e = L.control.layers(
+                layer_control_d59238106ec1b49878fa891c6b0f3f6e_layers.base_layers,
+                layer_control_d59238106ec1b49878fa891c6b0f3f6e_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_85aa3e17fae51eb73d38a9e64e3ee5be);
+
+        
+</script>
+</html>
