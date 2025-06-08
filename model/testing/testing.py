@@ -14,6 +14,7 @@ class PredictionTester:
         """
         # 1) Store occupation_idx as Tensor and NumPy
         self.occupation_idx = data["occupation_idx"]  # Tensor shape (N,)
+        self.ward_idx = data["ward_idx"]
         self.occ_idx_np = self.occupation_idx.cpu().numpy()  # NumPy array shape (N,)
         # Build string labels array in the same order
         self.occ_labels = np.array(
@@ -44,6 +45,7 @@ class PredictionTester:
         )
         self.predictions = predictive(
             self.occupation_idx,
+            self.ward_idx,
             self.X_static,
             self.X_dynamic,
             self.X_seasonal,
@@ -158,10 +160,13 @@ class PredictionTester:
             raise ValueError("Can only save pandas DataFrame or Series.")
 
     def __repr__(self):
-        return f"Tester(occupation_idx={self.occupation_idx.shape}, " \
-               f"X_static={self.X_static.shape}, X_dynamic={self.X_dynamic.shape}, " \
-               f"X_seasonal={self.X_seasonal.shape}, X_time_trend={self.X_time_trend.shape}, " \
-               f"X_temporal={self.X_temporal.shape}, X_spatial={self.X_spatial.shape})"
+       return (
+            f"Tester(occupation_idx={self.occupation_idx.shape}, ward_idx={self.ward_idx.shape}, "
+            f"X_static={self.X_static.shape}, X_dynamic={self.X_dynamic.shape}, "
+            f"X_seasonal={self.X_seasonal.shape}, X_time_trend={self.X_time_trend.shape}, "
+            f"X_temporal={self.X_temporal.shape}, X_spatial={self.X_spatial.shape})"
+        )
+
 
 
 import torch
@@ -186,6 +191,7 @@ class StatisticalTester:
         factors_map: dict mapping factor‐names → list of column labels for that factor
         """
         self.occupation_idx = data["occupation_idx"]  # Tensor shape (N,)
+        self.ward_idx      = data["ward_idx"]
         self.X_static      = data["X_static"]
         self.X_dynamic     = data["X_dynamic"]
         self.X_seasonal    = data["X_seasonal"]
@@ -215,6 +221,7 @@ class StatisticalTester:
         )
         self.posterior_samples = predictive(
             self.occupation_idx,
+            self.ward_idx,
             self.X_static,
             self.X_dynamic,
             self.X_seasonal,
@@ -298,7 +305,7 @@ class StatisticalTester:
 
     def __repr__(self):
         return (
-            f"StatisticalTester(occupation_idx={self.occupation_idx.shape}, "
+            f"StatisticalTester(occupation_idx={self.occupation_idx.shape}, ward_idx={self.ward_idx.shape}, "
             f"X_static={self.X_static.shape}, X_dynamic={self.X_dynamic.shape}, "
             f"X_seasonal={self.X_seasonal.shape}, X_time_trend={self.X_time_trend.shape}, "
             f"X_temporal={self.X_temporal.shape}, X_spatial={self.X_spatial.shape})"

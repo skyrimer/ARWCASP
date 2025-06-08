@@ -89,6 +89,11 @@ def create_all_features(gdf: gpd.GeoDataFrame, static, dynamic) -> gpd.GeoDataFr
         gdf["lag1_sum_neighbors"] = df["lag1_sum_neighbors"].fillna(0)
         gdf["lag1_mean_neighbors"] = df["lag1_mean_neighbors"].fillna(0)
         gdf["lag1_median_neighbors"] = df["lag1_median_neighbors"].fillna(0)
+        with detect_new_columns(gdf) as interaction_cols:
+            gdf["lag_1_x_n_neighbors"] = gdf["lag_1"] * gdf["n_neighbors"]
+            gdf["lag1_diff_neighbors"] = gdf["lag_1"] - gdf["lag1_mean_neighbors"]
+
+    dynamic.extend(interaction_cols)
 
     return (
         gdf.dropna().drop(columns=["geometry", "period"]).pipe(downcast_numeric),

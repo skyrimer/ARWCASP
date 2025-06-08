@@ -1,9 +1,21 @@
 import numpy as np
 import torch
-from pyro.infer import (SVI, JitTrace_ELBO, RenyiELBO, Trace_ELBO,
-                        TraceGraph_ELBO, Predictive)
-from pyro.infer.autoguide import (AutoDiagonalNormal, AutoIAFNormal,
-                                  AutoLowRankMultivariateNormal)
+import pandas as pd
+from itertools import product
+import pyro
+from pyro.infer import (
+    SVI,
+    JitTrace_ELBO,
+    RenyiELBO,
+    Trace_ELBO,
+    TraceGraph_ELBO,
+    Predictive,
+)
+from pyro.infer.autoguide import (
+    AutoDiagonalNormal,
+    AutoIAFNormal,
+    AutoLowRankMultivariateNormal,
+)
 from pyro.optim import ClippedAdam
 from tqdm import tqdm
 
@@ -17,7 +29,8 @@ def prepare_model_data(
     spatial_cols,
     device,
     means = None,
-    stds = None
+    stds = None,
+    ward_idx_map=None
     ):
     """
     Prepares and standardizes model input data from a DataFrame for training.
@@ -44,11 +57,27 @@ def prepare_model_data(
     """
     # 1) Extract target & LSOA index
     idx = df["occupation_idx"].astype(np.int16).values
+    if ward_idx_map is None:
+        ward_idx_map = (
+            df[["occupation_idx", "ward_idx"]]
+            .drop_duplicates("occupation_idx")
+            .sort_values("occupation_idx")
+            .set_index("occupation_idx")
+            ["ward_idx"]
+            .astype(np.int16)
+            .values
+        )
+    max_idx = idx.max()
+    if ward_idx_map.shape[0] <= max_idx:
+        raise ValueError(
+            "ward_idx_map too short for occupation indices: "
+            f"len={ward_idx_map.shape[0]}, max_idx={max_idx}"
+        )
     y = df["burglaries"].astype(np.int16).values
 
     # 2) Full list of feature columns (exclude target & index)
     feat_cols = [c for c in df.columns if c not in (
-        "burglaries", "occupation_idx")]
+       "burglaries", "occupation_idx", "ward_idx")]
 
     # 3) Sanity check: ensure all provided col names appear in feat_cols
     for col_list, name in [
@@ -83,6 +112,7 @@ def prepare_model_data(
 
     return {
         "occupation_idx": torch.tensor(idx, dtype=torch.long, device=device),
+        "ward_idx": torch.tensor(ward_idx_map, dtype=torch.long, device=device),
         "X_static": torch.tensor(X[:, static_idx], dtype=torch.float32, device=device),
         "X_dynamic": torch.tensor(X[:, dynamic_idx], dtype=torch.float32, device=device),
         "X_seasonal": torch.tensor(X[:, seasonal_idx], dtype=torch.float32, device=device),
@@ -135,6 +165,7 @@ def create_learner(
 def train_model(data, svi, num_steps):
     losses = []
     occupation_idx = data["occupation_idx"]        # (N,)
+    ward_idx = data["ward_idx"]
     X_static = data["X_static"]        # (N, n_static)
     X_dynamic = data["X_dynamic"]       # (N, n_dynamic)
     X_seasonal = data["X_seasonal"]      # (N, n_seasonal)
@@ -147,6 +178,7 @@ def train_model(data, svi, num_steps):
     for _ in tqdm(range(num_steps), desc="Training SVI"):
         loss = svi.step(
             occupation_idx,
+            ward_idx,
             X_static,
             X_dynamic,
             X_seasonal,
@@ -158,5 +190,84 @@ def train_model(data, svi, num_steps):
         losses.append(loss)
     return svi, losses, data["means"], data["stds"]
 
+def grid_search(
+    model_function,
+    train_df,
+    val_df,
+    static_cols,
+    dynamic_cols,
+    seasonal_cols,
+    time_trend_cols,
+    temporal_cols,
+    spatial_cols,
+    device,
+    param_grid,
+    ward_idx_map=None,
+    num_steps: int = 200,
+):
+    """Simple hyperparameter grid search.
+
+    Args:
+        model_function: Pyro model to train.
+        train_df: Training DataFrame.
+        val_df: Validation DataFrame.
+        *_cols: Feature column names for ``prepare_model_data``.
+        device: Torch device.
+        param_grid: Dict with keys ``"lr"`` and ``"guide_type"``.
+        ward_idx_map: Optional LSOA-to-ward mapping. If ``None``, a mapping is
+            built from ``train_df`` and reused for validation.
+        num_steps: Number of SVI training steps per run.
+
+    Returns:
+        pandas.DataFrame summarising the validation loss for each setting.
+    """
+
+    results = []
+    for lr, guide_type in product(param_grid["lr"], param_grid["guide_type"]):
+        pyro.clear_param_store()
+        svi = create_learner(model_function, lr=lr, guide_type=guide_type)
+
+        train_ds = prepare_model_data(
+            train_df,
+            static_cols,
+            dynamic_cols,
+            seasonal_cols,
+            time_trend_cols,
+            temporal_cols,
+            spatial_cols,
+            device,
+            ward_idx_map=ward_idx_map,
+        )
+        ward_idx_current = train_ds["ward_idx"].cpu().numpy()
+        svi, _, means, stds = train_model(train_ds, svi, num_steps=num_steps)
+
+        val_ds = prepare_model_data(
+            val_df,
+            static_cols,
+            dynamic_cols,
+            seasonal_cols,
+            time_trend_cols,
+            temporal_cols,
+            spatial_cols,
+            device,
+            means,
+            stds,
+            ward_idx_current,
+        )
+
+        val_loss = svi.evaluate_loss(
+            val_ds["occupation_idx"],
+            val_ds["ward_idx"],
+            val_ds["X_static"],
+            val_ds["X_dynamic"],
+            val_ds["X_seasonal"],
+            val_ds["X_time_trend"],
+            val_ds["X_temporal"],
+            val_ds["X_spatial"],
+            val_ds["y"],
+        )
+        results.append({"lr": lr, "guide_type": guide_type, "val_loss": val_loss})
+
+    return pd.DataFrame(results).sort_values("val_loss").reset_index(drop=True)
 
 

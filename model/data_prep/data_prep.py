@@ -2,8 +2,10 @@ from typing import Literal, Tuple
 
 import geopandas as gpd
 import pandas as pd
+import numpy as np
 from feature_engineering.all_features import create_all_features
 from utils.utils import downcast_numeric
+
 
 
 def get_raw_data(path: str, occupation_type: Literal["lsoa", "msoa", "borough"]) -> gpd.GeoDataFrame:
@@ -50,6 +52,23 @@ def get_static_and_dynamic_cols(gdf: gpd.GeoDataFrame) -> Tuple[list, list]:
     return (max_nunique[max_nunique == 1].index.tolist(),
             max_nunique[max_nunique > 1].index.tolist())
 
+def add_ward_idx(
+    gdf: gpd.GeoDataFrame,
+    lookup_path: str = "../processed_data/LSOA_to_Ward_LAD_lookup.csv",
+) -> tuple[gpd.GeoDataFrame, dict, dict]:
+    """Attach ward indices based on an LSOA→Ward lookup."""
+    lookup = pd.read_csv(lookup_path)
+    lookup = lookup.rename(columns={"LSOA21CD": "occupation", "WD24NM": "ward"})
+    merged = gdf.merge(lookup[["occupation", "ward"]], on="occupation", how="left")
+    if merged["ward"].isna().any():
+        raise ValueError("Missing ward mapping for some LSOAs")
+    _, uniques = pd.factorize(merged["ward"], sort=False)
+    name_to_code = {name: code for code, name in enumerate(uniques)}
+    code_to_name = dict(enumerate(uniques))
+    merged = merged.assign(ward_idx=merged["ward"].map(name_to_code))
+    merged = merged.drop(columns=["ward"])
+    return merged, name_to_code, code_to_name
+
 
 def prepare_all_data(path: str, occupation_type: Literal["lsoa", "msoa", "borough"]) -> pd.DataFrame:
     """
@@ -58,7 +77,30 @@ def prepare_all_data(path: str, occupation_type: Literal["lsoa", "msoa", "boroug
     """
     gdf = get_raw_data(path, occupation_type)
 
+    gdf, ward_to_code, code_to_ward = add_ward_idx(gdf)
     gdf, name_to_code, code_to_name = convert_occupation_to_idx(gdf)
     static, dynamic = get_static_and_dynamic_cols(gdf)
+    if "ward_idx" in static:
+        static.remove("ward_idx")
 
-    return (create_all_features(gdf, static, dynamic), (name_to_code, code_to_name))
+    gdf, *feature_lists = create_all_features(gdf, static, dynamic)
+
+    ward_idx_map = (
+        gdf[["occupation_idx", "ward_idx"]]
+        .drop_duplicates("occupation_idx")
+        .sort_values("occupation_idx")
+        .set_index("occupation_idx")["ward_idx"]
+        .astype(np.int16)
+        .values
+    )
+
+    assert ward_idx_map.shape[0] == gdf["occupation_idx"].nunique(), (
+        "Ward index map length mismatch after feature creation"
+    )
+
+    return (
+        (gdf, *feature_lists),
+        (name_to_code, code_to_name),
+        ward_idx_map,
+    )
+

@@ -5,6 +5,7 @@ import pyro.distributions as dist
 
 def burglary_model(
     occupation_idx,
+    ward_idx_map,
     X_static,
     X_dynamic,
     X_seasonal,
@@ -31,7 +32,24 @@ def burglary_model(
     """
 
     # Dimensions
-    n_lsoas    = occupation_idx.max().item() + 1   # total number of LSOAs 
+    n_lsoas    = ward_idx_map.shape[0]  # total number of LSOAs
+    assert ward_idx_map.max().item() < n_lsoas, (
+        "ward_idx_map must include an entry for each LSOA index")
+    # Ensure feature tensors are 2D
+    if X_static.dim() == 1:
+        X_static = X_static.unsqueeze(1)
+    if X_dynamic.dim() == 1:
+        X_dynamic = X_dynamic.unsqueeze(1)
+    if X_seasonal.dim() == 1:
+        X_seasonal = X_seasonal.unsqueeze(1)
+    if X_time_trend.dim() == 1:
+        X_time_trend = X_time_trend.unsqueeze(1)
+    if X_temporal.dim() == 1:
+        X_temporal = X_temporal.unsqueeze(1)
+    if X_spatial.dim() == 1:
+        X_spatial = X_spatial.unsqueeze(1)
+
+    n_wards    = ward_idx_map.max().item() + 1     # total number of wards
     n_static   = X_static.shape[1]                 # number of static covariates 
     n_dynamic  = X_dynamic.shape[1]                # number of dynamic covariates 
     n_seasonal = X_seasonal.shape[1]               # number of seasonal covariates 
@@ -40,11 +58,14 @@ def burglary_model(
     n_spatial  = X_spatial.shape[1]                # number of spatial covariates 
 
     # Hierarchical intercept (random effect by LSOA)
-    mu_a    = pyro.sample("mu_a",    dist.Normal(0., 1.0)) # overall mean of intercepts 
-    sigma_a = pyro.sample("sigma_a", dist.HalfNormal(1.0)) # shared SD of LSOA intercepts 
-    with pyro.plate("ls", n_lsoas): # plate over LSOAs 
-        a = pyro.sample("a", dist.Normal(mu_a, sigma_a)) # random intercept for each LSOA 
+    mu_w = pyro.sample("mu_w", dist.Normal(0.0, 1.0))
+    sigma_w = pyro.sample("sigma_w", dist.HalfNormal(1.0))
+    with pyro.plate("wards", n_wards):
+        w = pyro.sample("w", dist.Normal(mu_w, sigma_w))
 
+    sigma_a = pyro.sample("sigma_a", dist.HalfNormal(1.0))
+    with pyro.plate("ls", n_lsoas):
+        a = pyro.sample("a", dist.Normal(w[ward_idx_map], sigma_a))
     # Coefficients for each covariate group
     b_static    = pyro.sample("b_static",    dist.Normal(0., 1.0)
                               .expand([n_static]).to_event(1))
