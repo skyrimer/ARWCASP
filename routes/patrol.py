@@ -4,8 +4,6 @@ import pandas as pd
 import numpy as np
 import folium
 from shapely.geometry import Polygon, Point, LineString
-from scipy.spatial.distance import cdist
-from python_tsp.exact import solve_tsp_dynamic_programming
 from python_tsp.heuristics import solve_tsp_local_search
 import warnings
 import random
@@ -34,7 +32,7 @@ warnings.filterwarnings('ignore', 'Geometry is in a geographic CRS. Results from
 # --- Configuration ---
 POINTS_PER_LSOA_MIN = 0 # Minimum points to generate for any high-crime LSOA
 POINTS_PER_LSOA_MAX_CAP = 25 # Maximum points to generate for a single LSOA, regardless of size
-LSOA_MAJORITY_AREA_THRESHOLD = 0.1 # Percentage of LSOA area that must be within the ward (e.g., 0.3 for 30%)
+LSOA_MAJORITY_AREA_THRESHOLD = 0.3 # Percentage of LSOA area that must be within the ward (e.g., 0.3 for 30%)
 
 # --- IMPORTANT: Configure your LSOA Shapefile Path here ---
 LSOA_SHAPEFILE_PATH = "../data/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BSC_V4.gpkg"
@@ -424,32 +422,6 @@ def calculate_optimal_route(G, waypoints_df):
     
     print("   Distance matrix calculated.")
 
-    # --- GPU-accelerated TSP (optional) ---
-    # There is no mature, easy-to-use GPU TSP solver for Python that works cross-platform.
-    # If you have an NVIDIA GPU, you can try PyTorch or CuPy for brute-force/heuristic TSP on small problems.
-    # For large problems, use a fast CPU heuristic (as you do) or call an external solver like LKH or Concorde.
-    # Example: Use PyTorch for nearest neighbor TSP (works on CUDA and ROCm for AMD):
-
-    
-    
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    dm = torch.tensor(distance_matrix, device=device)
-    n = dm.shape[0]
-    visited = torch.zeros(n, dtype=torch.bool, device=device)
-    path = [0]
-    visited[0] = True
-    for _ in range(n-1):
-        last = path[-1]
-        dists = dm[last].clone()
-        dists[visited] = float('inf')
-        next_idx = torch.argmin(dists).item()
-        path.append(next_idx)
-        visited[next_idx] = True
-    path.append(path[0])
-    permutation = path
-    distance = float(dm[path[:-1], path[1:]].sum().cpu().numpy())
-
-    # Otherwise, use your current local search heuristic (CPU)
     permutation, distance = solve_tsp_local_search(distance_matrix)
 
     
@@ -672,9 +644,6 @@ def process_location(location_name, ward):
     #print("\n--- Route Summary ---")
     #print(f"Number of Waypoints: {len(patrol_waypoints_df)}")
     #print(f"Total Route Distance: {total_route_distance / 1000:.2f} km")
-    #estimated_cycle_time_minutes = (total_route_distance / 4.167) / 60
-    #print(f"Estimated Cycle Time: {estimated_cycle_time_minutes:.1f} minutes (at 15 km/h avg speed)")
-    #print(f"Waypoint Sequence (TSP Order): {optimal_node_sequence}")
 
     # Check if the "ward route" directory exists, if not create it
 
