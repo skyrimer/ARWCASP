@@ -171,17 +171,27 @@ def check_boroughs():
     if allexist:
         print("All borough patrol routes exist.")
 
+def create_point_image(location):
+    """
+    Creates an image of all of the points the patrol route uses.
+    """
+
+    patrol.process_location(location, False, True)
+    
+
 if __name__ == "__main__":
-    generate_boroughs(True)
+    #generate_boroughs(True)
     #print("All borough patrol routes generated successfully.")
 
     #generate_wards()
     #print("All ward patrol routes generated successfully.")
 
     # Example usage
-    #patrol.process_location("City of London")  
+    #patrol.process_location("City of London")
 
     #check_boroughs()
+
+    create_point_image("City of London")
 
     pass
 

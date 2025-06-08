@@ -544,12 +544,16 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
     # Add Patrol Waypoints
     waypoint_group = folium.FeatureGroup(name='Patrol Waypoints').add_to(m)
     for idx, row in waypoints_df.iterrows():
-        # Differentiate start point with a different icon/color
-        is_start_point = (row['nearest_node_id'] == optimal_node_sequence[0])
-        if is_start_point:
-            icon = folium.Icon(color='green', icon='play', prefix='fa')
-        else:
+
+        if not optimal_node_sequence:
             icon = folium.Icon(color='blue', icon='circle', prefix='fa')
+        else:
+            # Differentiate start point with a different icon/color
+            is_start_point = (row['nearest_node_id'] == optimal_node_sequence[0])
+            if is_start_point:
+                icon = folium.Icon(color='green', icon='play', prefix='fa')
+            else:
+                icon = folium.Icon(color='blue', icon='circle', prefix='fa')
 
         folium.Marker(
             location=[row['waypoint_lat'], row['waypoint_lon']],
@@ -557,8 +561,9 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
             icon=icon
         ).add_to(waypoint_group)
 
-    # Add Optimized Cycle Route - now ensuring it follows the network paths
+    # Add Optimized Cycle Route
     full_route_latlons = []
+
     if route_segments:
         # Concatenate all route segments into a single list of node IDs
         # The segments are already detailed paths from OSMnx, so just flatten them
@@ -601,7 +606,7 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
     m.save(output_file)
     print(f"   Interactive map saved to {output_file}")
 
-def process_location(location_name, ward):
+def process_location(location_name, ward, only_points=False):
     """
     Main function to process the ward or borough, download area boundary, load LSOA boundaries,
     extract graph network, get crime, and select waypoints, calculate the optimal route,
@@ -633,6 +638,26 @@ def process_location(location_name, ward):
 
     if patrol_waypoints_df.empty:
         print("No patrol waypoints selected. Exiting.")
+        return
+    
+    if only_points:
+        print("Only generating waypoints, not calculating route.")
+        
+        # Display the waypoints on a map
+        print("Visualizing waypoints on an interactive map...")
+        OUTPUT_MAP_FILE = os.path.join("waypoints", f"{location_name.replace(' ', '_').lower()}_waypoints.html")
+        if not os.path.exists("waypoints"):
+            os.makedirs("waypoints")
+        visualize_route(
+            area_gdf,
+            lsoas_with_crime_gdf,
+            patrol_waypoints_df,
+            G,
+            [],
+            [],
+            OUTPUT_MAP_FILE,
+            location_name
+        )
         return
     
     optimal_node_sequence, total_route_distance, route_segments = calculate_optimal_route(G, patrol_waypoints_df)
