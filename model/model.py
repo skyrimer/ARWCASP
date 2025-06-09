@@ -67,18 +67,47 @@ def burglary_model(
     with pyro.plate("ls", n_lsoas):
         a = pyro.sample("a", dist.Normal(w[ward_idx_map], sigma_a))
     # Coefficients for each covariate group
-    b_static    = pyro.sample("b_static",    dist.Normal(0., 1.0)
-                              .expand([n_static]).to_event(1))
-    b_dynamic   = pyro.sample("b_dynamic",   dist.Normal(0., 1.0)
-                              .expand([n_dynamic]).to_event(1)) 
-    b_seasonal  = pyro.sample("b_seasonal",  dist.Normal(0., 1.0)
-                              .expand([n_seasonal]).to_event(1))
-    b_time_tr   = pyro.sample("b_time_tr",   dist.Normal(0., 1.0)
-                              .expand([n_time_tr]).to_event(1))
-    b_temporal  = pyro.sample("b_temporal",  dist.Normal(0., 1.0)
-                              .expand([n_temporal]).to_event(1))
-    b_spatial  = pyro.sample("b_spatial",  dist.Normal(0., 1.0)
-                              .expand([n_spatial]).to_event(1))
+    if n_static:
+        b_static = pyro.sample(
+            "b_static", dist.Normal(0.0, 1.0).expand([n_static]).to_event(1)
+        )
+    else:
+        b_static = torch.tensor([], device=X_static.device)
+
+    if n_dynamic:
+        b_dynamic = pyro.sample(
+            "b_dynamic", dist.Normal(0.0, 1.0).expand([n_dynamic]).to_event(1)
+        )
+    else:
+        b_dynamic = torch.tensor([], device=X_dynamic.device)
+
+    if n_seasonal:
+        b_seasonal = pyro.sample(
+            "b_seasonal", dist.Normal(0.0, 1.0).expand([n_seasonal]).to_event(1)
+        )
+    else:
+        b_seasonal = torch.tensor([], device=X_seasonal.device)
+
+    if n_time_tr:
+        b_time_tr = pyro.sample(
+            "b_time_tr", dist.Normal(0.0, 1.0).expand([n_time_tr]).to_event(1)
+        )
+    else:
+        b_time_tr = torch.tensor([], device=X_time_trend.device)
+
+    if n_temporal:
+        b_temporal = pyro.sample(
+            "b_temporal", dist.Normal(0.0, 1.0).expand([n_temporal]).to_event(1)
+        )
+    else:
+        b_temporal = torch.tensor([], device=X_temporal.device)
+
+    if n_spatial:
+        b_spatial = pyro.sample(
+            "b_spatial", dist.Normal(0.0, 1.0).expand([n_spatial]).to_event(1)
+        )
+    else:
+        b_spatial = torch.tensor([], device=X_spatial.device)
 
 
     N = occupation_idx.shape[0]

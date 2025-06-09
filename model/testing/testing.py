@@ -240,7 +240,10 @@ class StatisticalTester:
         """
         if self.posterior_samples is None:
             raise RuntimeError("No posterior_samples found. Call predict(num_samples) first.")
-
+        if factor not in self.posterior_samples:
+            return pd.DataFrame(
+                columns=["col", "mean", "ci_lower", "ci_upper", "p_val", "significant_CI"]
+            )
         samples = self.posterior_samples[factor]
         # If shape is (n_samples, 1, n_cols), squeeze to (n_samples, n_cols)
         if samples.ndim == 3 and samples.size(1) == 1:
