@@ -9,7 +9,6 @@ from pyro.infer import (
     RenyiELBO,
     Trace_ELBO,
     TraceGraph_ELBO,
-    Predictive,
 )
 from pyro.infer.autoguide import (
     AutoDiagonalNormal,

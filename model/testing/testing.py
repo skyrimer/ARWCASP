@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import torch
 from pyro.infer import Predictive
+from scipy.stats import norm
 
 
 class PredictionTester:
@@ -27,7 +28,9 @@ class PredictionTester:
         self.X_time_trend = data["X_time_trend"]
         self.X_temporal = data["X_temporal"]
         self.X_spatial = data["X_spatial"]
-
+        self.actual = data.get("y", None)
+        if self.actual is not None:
+            self.y = self.actual.cpu().numpy()
         self.model = model
         self.guide = guide
         self.predictions = None  # Will hold Predictive output
@@ -147,6 +150,52 @@ class PredictionTester:
 
         return df
 
+    def get_rmse(self):
+        if self.actual is None:
+            raise RuntimeError(
+                "No actual values found in data. Cannot compute RMSE.")
+        if self.predictions is None:
+            raise RuntimeError(
+                "No predictions found. Call predict(num_samples) first.")
+        predicted_vals = self.get_median_predictions().values.flatten()
+        return np.sqrt(np.mean((predicted_vals - self.y) ** 2))
+
+    def get_mae(self):
+        if self.actual is None:
+            raise RuntimeError(
+                "No actual values found in data. Cannot compute MAE.")
+        if self.predictions is None:
+            raise RuntimeError(
+                "No predictions found. Call predict(num_samples) first.")
+        predicted_vals = self.get_median_predictions().values.flatten()
+        return np.mean(np.abs(predicted_vals - self.y))
+
+    def get_crps(self, epsilon: float = 1e-6) -> float:
+        if self.actual is None:
+            raise RuntimeError("No actual values; cannot compute CRPS.")
+        if self.predictions is None:
+            raise RuntimeError("No predictions; call predict() first.")
+
+        # (1) DataFrame of shape (n_lsoas, n_draws)
+        df_samples = self.get_all_predictions()
+
+        # (2) Compute mu & sigma per LSOA
+        mu = df_samples.mean(axis=1)
+        sigma = df_samples.std(axis=1).clip(lower=epsilon)
+
+        # (3) Observed per‐LSOA counts (Series indexed as df_samples)
+        obs_df = self.get_mean_predictions()
+        x_obs = obs_df["mean"]
+
+        # (4) Vectorized CRPS for a Normal(mu,sigma) at x_obs
+        z = (x_obs - mu) / sigma
+        pdf = norm.pdf(z)
+        cdf = norm.cdf(z)
+        crps_per = sigma * (z * (2*cdf - 1) + 2*pdf - 1/np.sqrt(np.pi))
+
+        # (5) Return the average
+        return float(crps_per.mean())
+
     @staticmethod
     def _save(obj, path: str):
         """
@@ -160,19 +209,13 @@ class PredictionTester:
             raise ValueError("Can only save pandas DataFrame or Series.")
 
     def __repr__(self):
-       return (
+        return (
             f"Tester(occupation_idx={self.occupation_idx.shape}, ward_idx={self.ward_idx.shape}, "
             f"X_static={self.X_static.shape}, X_dynamic={self.X_dynamic.shape}, "
             f"X_seasonal={self.X_seasonal.shape}, X_time_trend={self.X_time_trend.shape}, "
             f"X_temporal={self.X_temporal.shape}, X_spatial={self.X_spatial.shape})"
         )
 
-
-
-import torch
-import pandas as pd
-from pyro.infer import Predictive
-from typing import Dict, List
 
 class StatisticalTester:
     def __init__(
@@ -191,13 +234,13 @@ class StatisticalTester:
         factors_map: dict mapping factor‐names → list of column labels for that factor
         """
         self.occupation_idx = data["occupation_idx"]  # Tensor shape (N,)
-        self.ward_idx      = data["ward_idx"]
-        self.X_static      = data["X_static"]
-        self.X_dynamic     = data["X_dynamic"]
-        self.X_seasonal    = data["X_seasonal"]
-        self.X_time_trend  = data["X_time_trend"]
-        self.X_temporal    = data["X_temporal"]
-        self.X_spatial     = data["X_spatial"]
+        self.ward_idx = data["ward_idx"]
+        self.X_static = data["X_static"]
+        self.X_dynamic = data["X_dynamic"]
+        self.X_seasonal = data["X_seasonal"]
+        self.X_time_trend = data["X_time_trend"]
+        self.X_temporal = data["X_temporal"]
+        self.X_spatial = data["X_spatial"]
 
         self.model = model
         self.guide = guide
@@ -205,7 +248,6 @@ class StatisticalTester:
 
         # Will be populated by predict()
         self.posterior_samples = None
-
 
     def predict(self, num_samples: int):
         """
@@ -230,7 +272,6 @@ class StatisticalTester:
             self.X_spatial
         )
 
-
     def _summarize_factor(self, factor: str) -> pd.DataFrame:
         """
         Compute posterior mean, 95% CI, two‐sided p‐value, and 'significant_CI' flag
@@ -239,24 +280,27 @@ class StatisticalTester:
         sorted by p_val ascending.
         """
         if self.posterior_samples is None:
-            raise RuntimeError("No posterior_samples found. Call predict(num_samples) first.")
+            raise RuntimeError(
+                "No posterior_samples found. Call predict(num_samples) first.")
         if factor not in self.posterior_samples:
             return pd.DataFrame(
-                columns=["col", "mean", "ci_lower", "ci_upper", "p_val", "significant_CI"]
+                columns=["col", "mean", "ci_lower",
+                         "ci_upper", "p_val", "significant_CI"]
             )
         samples = self.posterior_samples[factor]
         # If shape is (n_samples, 1, n_cols), squeeze to (n_samples, n_cols)
         if samples.ndim == 3 and samples.size(1) == 1:
             samples = samples.squeeze(1)
-        
-        #If shape is empty or has no columns, return empty DataFrame
+
+        # If shape is empty or has no columns, return empty DataFrame
         if samples.numel() == 0 or samples.size(-1) == 0:
             return pd.DataFrame(
-                columns=["col", "mean", "ci_lower", "ci_upper", "p_val", "significant_CI"]
+                columns=["col", "mean", "ci_lower",
+                         "ci_upper", "p_val", "significant_CI"]
             )
 
         # 1) Posterior mean, 95% CI
-        mean_vals  = samples.mean(dim=0)   # shape: (n_cols,)
+        mean_vals = samples.mean(dim=0)   # shape: (n_cols,)
         lower_vals = torch.quantile(samples, 0.025, dim=0)
         upper_vals = torch.quantile(samples, 0.975, dim=0)
 
@@ -269,10 +313,10 @@ class StatisticalTester:
         rows = []
         col_labels = self.factors_map[factor]
         for j, col_name in enumerate(col_labels):
-            m_j   = mean_vals[j].item()
-            lo_j  = lower_vals[j].item()
-            hi_j  = upper_vals[j].item()
-            p_j   = p_vals[j].item()
+            m_j = mean_vals[j].item()
+            lo_j = lower_vals[j].item()
+            hi_j = upper_vals[j].item()
+            p_j = p_vals[j].item()
             sig_j = (lo_j > 0.0) or (hi_j < 0.0)
             rows.append({
                 "col":            col_name,
@@ -286,7 +330,6 @@ class StatisticalTester:
         df = pd.DataFrame(rows)
         return df.sort_values("p_val").reset_index(drop=True)
 
-
     def evaluate_all(self, save_dir: str = None) -> Dict[str, pd.DataFrame]:
         """
         For each factor in factors_map, run _summarize_factor and collect results in a dict.
@@ -294,7 +337,8 @@ class StatisticalTester:
         Returns: dict mapping factor_name → summary DataFrame.
         """
         if self.posterior_samples is None:
-            raise RuntimeError("No posterior_samples found. Call predict(num_samples) first.")
+            raise RuntimeError(
+                "No posterior_samples found. Call predict(num_samples) first.")
 
         results = {}
         for factor in self.factors_map.keys():
@@ -304,7 +348,6 @@ class StatisticalTester:
                 path = f"{save_dir}/{factor}_summary.csv"
                 df_factor.to_csv(path, index=False)
         return results
-
 
     def __repr__(self):
         return (

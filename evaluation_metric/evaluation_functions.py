@@ -58,21 +58,13 @@ def fit_gaussian_per_lsoa(original_data: pd.DataFrame, id_col: str = 'LSOA', eps
         mu = np.mean(samples)
         sigma = np.std(samples)
 
-        if sigma < epsilon:
-            sigma = epsilon
-
+        sigma = max(sigma, epsilon)
         lsoa_pdfs[lsoa_code] = norm(loc=mu, scale=sigma)
         means.append(mu)
         stds.append(sigma)
         index_list.append(lsoa_code)
 
-    stats_df = pd.DataFrame({
-        id_col: index_list,
-        'mu': means,
-        'sigma': stds
-    })
-
-    return stats_df
+    return pd.DataFrame({id_col: index_list, 'mu': means, 'sigma': stds})
 
 #Function to merge the stats_df from fit_gaussian_per_lsoa() with the observed data, needed to run the future CRPS function
 def Full_Data_In_Merged_CRPS(stats_df, observed_data):    
