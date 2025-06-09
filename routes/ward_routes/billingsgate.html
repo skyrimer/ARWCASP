@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3eae981198561f5e37a4befe4e3f89b4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3eae981198561f5e37a4befe4e3f89b4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3eae981198561f5e37a4befe4e3f89b4 = L.map(
+                "map_3eae981198561f5e37a4befe4e3f89b4",
+                {
+                    center: [51.509180036603524, -0.08266065771037343],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_de64525c096d3c1b69e12060a2087fc3 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_de64525c096d3c1b69e12060a2087fc3.addTo(map_3eae981198561f5e37a4befe4e3f89b4);
+        
+    
+        function geo_json_d715e9d456df225d1451c6cce6fd7fd0_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_d715e9d456df225d1451c6cce6fd7fd0_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_d715e9d456df225d1451c6cce6fd7fd0 = L.geoJson(null, {
+                onEachFeature: geo_json_d715e9d456df225d1451c6cce6fd7fd0_onEachFeature,
+            
+                style: geo_json_d715e9d456df225d1451c6cce6fd7fd0_styler,
+            ...{
+}
+        });
+
+        function geo_json_d715e9d456df225d1451c6cce6fd7fd0_add (data) {
+            geo_json_d715e9d456df225d1451c6cce6fd7fd0
+                .addData(data);
+        }
+            geo_json_d715e9d456df225d1451c6cce6fd7fd0_add({"features": [{"geometry": {"coordinates": [[[-0.08548093541091405, 51.50859627062677], [-0.08547740785266095, 51.50861239504854], [-0.08532777887004675, 51.50908660235557], [-0.0852381750974138, 51.509367515493935], [-0.08521948989312188, 51.50936541243407], [-0.08451126081610476, 51.50927923048197], [-0.08446266603250278, 51.509338669828615], [-0.0843048357370052, 51.509529376994884], [-0.08420670030096739, 51.50984071602296], [-0.08411418666165581, 51.50998403373893], [-0.08405354520437236, 51.51005586213059], [-0.08393791975159288, 51.510200600148174], [-0.0840071632369697, 51.510645927407225], [-0.08357177102234202, 51.510615439803985], [-0.08325287521062977, 51.51059224853442], [-0.08325122407623305, 51.510597615552086], [-0.08314935376744283, 51.5109637316811], [-0.08306355859158829, 51.511563940416586], [-0.08255727694718108, 51.511574543442364], [-0.08218279559888422, 51.51160438055451], [-0.08185929338027916, 51.51165392924013], [-0.0815819061835339, 51.51170602935271], [-0.08154030601980657, 51.51153094281009], [-0.08153273939804628, 51.511332050043485], [-0.08149379739071984, 51.5113341100434], [-0.08012437692284036, 51.51140978221768], [-0.08018854613688321, 51.51111856752044], [-0.08023102474999165, 51.5109645448361], [-0.08041645202618608, 51.51039203966234], [-0.08056937003915302, 51.5098748300801], [-0.08066358366171998, 51.50972524990944], [-0.08175749530611137, 51.51010013998534], [-0.08181702793960943, 51.510122689686504], [-0.08230234306369345, 51.50954708487402], [-0.08227402348507695, 51.50953673280488], [-0.08206668550330894, 51.50946313039676], [-0.08187435311554242, 51.50937457992117], [-0.0817449547620009, 51.509230421445224], [-0.08171970502588495, 51.50911304846403], [-0.0817037188377581, 51.50911458499066], [-0.08126475720354856, 51.50916943540504], [-0.08123269600197643, 51.509109576824365], [-0.08109534467609779, 51.50884652948479], [-0.08001743363410375, 51.508538420963895], [-0.08003263148097961, 51.50851889174216], [-0.08040207991028507, 51.50802590383654], [-0.08112707095268172, 51.50706208217091], [-0.08139746713967548, 51.507107860010755], [-0.08192127146227814, 51.50719374196811], [-0.08266888899861627, 51.50730305878654], [-0.08346647763750646, 51.50742496433864], [-0.08393541062933552, 51.50747937452719], [-0.0842070109473134, 51.5075305595272], [-0.08489105373351602, 51.50764601558074], [-0.08518741277611372, 51.507690500482475], [-0.08567582606653094, 51.50772814071802], [-0.08573765426201548, 51.507732745903645], [-0.08548093541091405, 51.50859627062677]]], "type": "Polygon"}, "id": "648", "properties": {"DISTRICT": "City and County of the City of London", "GSS_CODE": "E05009291", "HECTARES": 12.067, "LAGSSCODE": "E09000001", "NAME": "Billingsgate", "NONLD_AREA": 3.944}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d715e9d456df225d1451c6cce6fd7fd0.addTo(map_3eae981198561f5e37a4befe4e3f89b4);
+        
+    
+        function geo_json_fd95c140f31a64edabd622f701f4fbd2_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#fd8c3c", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_fd95c140f31a64edabd622f701f4fbd2_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_fd95c140f31a64edabd622f701f4fbd2 = L.geoJson(null, {
+                onEachFeature: geo_json_fd95c140f31a64edabd622f701f4fbd2_onEachFeature,
+            
+                style: geo_json_fd95c140f31a64edabd622f701f4fbd2_styler,
+            ...{
+}
+        });
+
+        function geo_json_fd95c140f31a64edabd622f701f4fbd2_add (data) {
+            geo_json_fd95c140f31a64edabd622f701f4fbd2
+                .addData(data);
+        }
+            geo_json_fd95c140f31a64edabd622f701f4fbd2_add({"features": [{"geometry": {"coordinates": [[[[-0.07737099887417906, 51.517396019685506], [-0.07847157603218012, 51.5215098870382], [-0.08521839623899545, 51.52033385874817], [-0.08812915078150328, 51.51941071951071], [-0.09548113459525204, 51.51544001964419], [-0.09974880246315052, 51.51676759455516], [-0.10399462243365584, 51.51077938121521], [-0.09990284589579007, 51.51075114610646], [-0.09935578694134153, 51.51067664983341], [-0.09635884004862082, 51.510268488544355], [-0.09525988733101631, 51.51011879806548], [-0.09232213738951378, 51.50947573722671], [-0.09198839045879534, 51.50940267591846], [-0.0886035773016867, 51.50892260258973], [-0.08548097709594062, 51.50859612613124], [-0.0851724254980519, 51.50856149069807], [-0.08118153259906154, 51.508113430942245], [-0.08040208006001064, 51.5080259042259], [-0.07937941404664733, 51.50784275606517], [-0.0791597500790817, 51.50778683430268], [-0.07617255031926315, 51.5104769637077], [-0.08003605823182643, 51.515673489449554], [-0.07737099887417906, 51.517396019685506]]]], "type": "MultiPolygon"}, "id": "0", "properties": {"BNG_E": 532920, "BNG_N": 181297, "DISTRICT": "City and County of the City of London", "GSS_CODE": "E05009291", "GlobalID": "{94762C09-73CF-4426-BA0D-E0D96EDFB7F5}", "HECTARES": 12.067, "LAGSSCODE": "E09000001", "LAT": 51.51496887207031, "LONG": -0.0857900008559227, "LSOA21CD": "E01032739", "LSOA21NM": "City of London 001F", "LSOA21NMW": " ", "NAME": "Billingsgate", "NONLD_AREA": 3.944, "WD24NM": "Walbrook", "crime_rate": 4.0, "is_high_crime": true, "median": 4.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_fd95c140f31a64edabd622f701f4fbd2.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_fd95c140f31a64edabd622f701f4fbd2.addTo(map_3eae981198561f5e37a4befe4e3f89b4);
+        
+    
+            var feature_group_f48aef280b51bdcc3d845fbd1134619d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_160518ce52199c3ae40a63a4bf489573 = L.marker(
+                [51.5105935, -0.0832127],
+                {
+}
+            ).addTo(feature_group_f48aef280b51bdcc3d845fbd1134619d);
+        
+    
+            var icon_88b4318a95aaffb235ecdd49d169fbe0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35b4adb6397128c93198cf58a96fb77c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_569ed8be2d8eb3c35dac2e142ba91efb = $(`<div id="html_569ed8be2d8eb3c35dac2e142ba91efb" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001F (Pt 1)<br><b>Median Crime:</b> 4.00</div>`)[0];
+                popup_35b4adb6397128c93198cf58a96fb77c.setContent(html_569ed8be2d8eb3c35dac2e142ba91efb);
+            
+        
+
+        marker_160518ce52199c3ae40a63a4bf489573.bindPopup(popup_35b4adb6397128c93198cf58a96fb77c)
+        ;
+
+        
+    
+    
+                marker_160518ce52199c3ae40a63a4bf489573.setIcon(icon_88b4318a95aaffb235ecdd49d169fbe0);
+            
+    
+            var marker_021ae5abddcae0612dda039a6cb935ce = L.marker(
+                [51.5105935, -0.0832127],
+                {
+}
+            ).addTo(feature_group_f48aef280b51bdcc3d845fbd1134619d);
+        
+    
+            var icon_6bc9bc34e2bf2d0846ae1d84bf316463 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_229ff8cfda6ebf0dc23ebdc260365ae4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_43ca167815523529a5403817f1f8c7dd = $(`<div id="html_43ca167815523529a5403817f1f8c7dd" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001F (Pt 2)<br><b>Median Crime:</b> 4.00</div>`)[0];
+                popup_229ff8cfda6ebf0dc23ebdc260365ae4.setContent(html_43ca167815523529a5403817f1f8c7dd);
+            
+        
+
+        marker_021ae5abddcae0612dda039a6cb935ce.bindPopup(popup_229ff8cfda6ebf0dc23ebdc260365ae4)
+        ;
+
+        
+    
+    
+                marker_021ae5abddcae0612dda039a6cb935ce.setIcon(icon_6bc9bc34e2bf2d0846ae1d84bf316463);
+            
+    
+            var marker_9e43ba56d9d46713b1d4e302b3727928 = L.marker(
+                [51.509361, -0.0838044],
+                {
+}
+            ).addTo(feature_group_f48aef280b51bdcc3d845fbd1134619d);
+        
+    
+            var icon_bdc0da932ec73daebb0bb3d197d47f6a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3d81d6548a103764a8d5f4bad728b457 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ff2aad48e947c0f9c65949cdaa74cbee = $(`<div id="html_ff2aad48e947c0f9c65949cdaa74cbee" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001F (Pt 3)<br><b>Median Crime:</b> 4.00</div>`)[0];
+                popup_3d81d6548a103764a8d5f4bad728b457.setContent(html_ff2aad48e947c0f9c65949cdaa74cbee);
+            
+        
+
+        marker_9e43ba56d9d46713b1d4e302b3727928.bindPopup(popup_3d81d6548a103764a8d5f4bad728b457)
+        ;
+
+        
+    
+    
+                marker_9e43ba56d9d46713b1d4e302b3727928.setIcon(icon_bdc0da932ec73daebb0bb3d197d47f6a);
+            
+    
+            var marker_2806c21295a24cd565584c40f7930a3b = L.marker(
+                [51.5105935, -0.0832127],
+                {
+}
+            ).addTo(feature_group_f48aef280b51bdcc3d845fbd1134619d);
+        
+    
+            var icon_0e231e966f1acc9af8b2b9284ce84eba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4eb5e4fccca6970f6379e7ef406d0014 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_938977d567d7f1c8d54612974800511e = $(`<div id="html_938977d567d7f1c8d54612974800511e" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001F (Pt 4)<br><b>Median Crime:</b> 4.00</div>`)[0];
+                popup_4eb5e4fccca6970f6379e7ef406d0014.setContent(html_938977d567d7f1c8d54612974800511e);
+            
+        
+
+        marker_2806c21295a24cd565584c40f7930a3b.bindPopup(popup_4eb5e4fccca6970f6379e7ef406d0014)
+        ;
+
+        
+    
+    
+                marker_2806c21295a24cd565584c40f7930a3b.setIcon(icon_0e231e966f1acc9af8b2b9284ce84eba);
+            
+    
+            var marker_4ee70890b59951979643d2c606d1e474 = L.marker(
+                [51.5105935, -0.0832127],
+                {
+}
+            ).addTo(feature_group_f48aef280b51bdcc3d845fbd1134619d);
+        
+    
+            var icon_24304643c86c0dbc430ff468753ad5d4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6ddbd923f3609bd2bf9fdcd71e75bfa0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ce3e5d26b35bbd84125895a61c1d25a8 = $(`<div id="html_ce3e5d26b35bbd84125895a61c1d25a8" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> City of London 001F (Pt 5)<br><b>Median Crime:</b> 4.00</div>`)[0];
+                popup_6ddbd923f3609bd2bf9fdcd71e75bfa0.setContent(html_ce3e5d26b35bbd84125895a61c1d25a8);
+            
+        
+
+        marker_4ee70890b59951979643d2c606d1e474.bindPopup(popup_6ddbd923f3609bd2bf9fdcd71e75bfa0)
+        ;
+
+        
+    
+    
+                marker_4ee70890b59951979643d2c606d1e474.setIcon(icon_24304643c86c0dbc430ff468753ad5d4);
+            
+    
+            feature_group_f48aef280b51bdcc3d845fbd1134619d.addTo(map_3eae981198561f5e37a4befe4e3f89b4);
+        
+    
+            var poly_line_2e69c59d82c425ebd658bea747656d3e = L.polyline(
+                [[51.5105935, -0.0832127], [51.5097464, -0.0835642], [51.509361, -0.0838044], [51.5097464, -0.0835642], [51.5105935, -0.0832127]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_3eae981198561f5e37a4befe4e3f89b4);
+        
+    
+            var layer_control_8934b7a19c75ecfa75400b95ebf31b47_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_de64525c096d3c1b69e12060a2087fc3,
+                },
+                overlays :  {
+                    "Billingsgate Boundary" : geo_json_d715e9d456df225d1451c6cce6fd7fd0,
+                    "LSOA Median Crime Rates for Billingsgate" : geo_json_fd95c140f31a64edabd622f701f4fbd2,
+                    "Patrol Waypoints" : feature_group_f48aef280b51bdcc3d845fbd1134619d,
+                },
+            };
+            let layer_control_8934b7a19c75ecfa75400b95ebf31b47 = L.control.layers(
+                layer_control_8934b7a19c75ecfa75400b95ebf31b47_layers.base_layers,
+                layer_control_8934b7a19c75ecfa75400b95ebf31b47_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_3eae981198561f5e37a4befe4e3f89b4);
+
+        
+</script>
+</html>

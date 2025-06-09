@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_17e0dee2805fb85b5d8f2c958abdf794 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_17e0dee2805fb85b5d8f2c958abdf794" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_17e0dee2805fb85b5d8f2c958abdf794 = L.map(
+                "map_17e0dee2805fb85b5d8f2c958abdf794",
+                {
+                    center: [51.40599419899215, -0.12260954168053688],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_91a5dd7f838a38580ed80f97adea152e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_91a5dd7f838a38580ed80f97adea152e.addTo(map_17e0dee2805fb85b5d8f2c958abdf794);
+        
+    
+        function geo_json_d2dd0362fb0f27b3639871561f0cdca0_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#cccccc", "fillOpacity": 0.1, "weight": 2};
+            }
+        }
+
+        function geo_json_d2dd0362fb0f27b3639871561f0cdca0_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_d2dd0362fb0f27b3639871561f0cdca0 = L.geoJson(null, {
+                onEachFeature: geo_json_d2dd0362fb0f27b3639871561f0cdca0_onEachFeature,
+            
+                style: geo_json_d2dd0362fb0f27b3639871561f0cdca0_styler,
+            ...{
+}
+        });
+
+        function geo_json_d2dd0362fb0f27b3639871561f0cdca0_add (data) {
+            geo_json_d2dd0362fb0f27b3639871561f0cdca0
+                .addData(data);
+        }
+            geo_json_d2dd0362fb0f27b3639871561f0cdca0_add({"features": [{"geometry": {"coordinates": [[[-0.12686177128919648, 51.412700228160105], [-0.12676676106620793, 51.412666345209416], [-0.12641055932951506, 51.41255097194853], [-0.12607982634811601, 51.41244490503347], [-0.1258283327221444, 51.4123698616217], [-0.1254902689489122, 51.41226915974118], [-0.12519878890861938, 51.41218619339049], [-0.12491161680860266, 51.41210518315439], [-0.12450612924927511, 51.41200070256197], [-0.12385983595115671, 51.41183833522889], [-0.12318980568220826, 51.41166218891479], [-0.12299774786379512, 51.411609667437716], [-0.12271205378604477, 51.41153038354846], [-0.1224958833258184, 51.411470282900204], [-0.12226570789550356, 51.411401866364194], [-0.12195742338949858, 51.41130972241742], [-0.12170475004679322, 51.41123195412823], [-0.1214562650728264, 51.411153263516546], [-0.12109027537829026, 51.411031423934276], [-0.12084204674710229, 51.41094653294765], [-0.12066070015529388, 51.41088159321885], [-0.12040424071089759, 51.410789287318494], [-0.12009976591719107, 51.410673825275985], [-0.1198831025954856, 51.410591236601505], [-0.1196184762473331, 51.410487110804134], [-0.11935688323953303, 51.4103813249601], [-0.11912924597335843, 51.410285972622404], [-0.1187788634208345, 51.410133719973956], [-0.11856126272872838, 51.410039426640076], [-0.1182351109653695, 51.40989484333614], [-0.11793850591195508, 51.40976412888714], [-0.11746953923797981, 51.40955782513369], [-0.11698660607932675, 51.40934239485229], [-0.11669004512072462, 51.409210778887], [-0.11553132293180852, 51.40875064744075], [-0.11462035981855129, 51.40828010655376], [-0.1140645666156471, 51.40798338991382], [-0.11371737811491596, 51.40778891975755], [-0.11314320165337866, 51.40745234626138], [-0.11257290535947932, 51.4070879630326], [-0.11001782451533262, 51.40534621203473], [-0.11000374162988101, 51.4053369947837], [-0.10996192250176276, 51.405307551924565], [-0.11009892687091091, 51.40522795149499], [-0.11049077837228737, 51.40499953852836], [-0.11059050741788357, 51.40494990288269], [-0.1105361381049654, 51.404908570721624], [-0.11048327194847249, 51.40486816178369], [-0.11050104238762895, 51.404854064132635], [-0.11288151514262852, 51.403398715594406], [-0.11366610010148427, 51.402956358243806], [-0.11372634434161015, 51.402924064578244], [-0.11378341638461485, 51.4028997210242], [-0.11384748916985904, 51.40288097409696], [-0.11669626484072008, 51.402304497472485], [-0.11861653009454673, 51.401896536233366], [-0.11923770647832131, 51.40165019969332], [-0.11928254257928908, 51.401643727216886], [-0.11938182056489405, 51.40160756208478], [-0.1198180648518649, 51.40145094245562], [-0.1201669370212641, 51.4013233960869], [-0.12055075414652588, 51.40118481192821], [-0.12140459270186593, 51.400872072543244], [-0.12186990674503938, 51.40070862937741], [-0.12196115886045215, 51.400657050254004], [-0.12207441176916135, 51.40059503551421], [-0.1224990669642091, 51.400370704533024], [-0.12289288613605709, 51.40016116125566], [-0.12296038293958579, 51.40012808005282], [-0.12306472838443135, 51.40007221475817], [-0.12321523149442193, 51.39997753217375], [-0.12333611507385583, 51.39990565942037], [-0.12335767416873897, 51.39990600469294], [-0.12372772921505512, 51.39971504718188], [-0.1238784908000514, 51.39961398491587], [-0.12401574822798314, 51.39952718033949], [-0.12413264717115119, 51.399445443762055], [-0.12466376264988152, 51.39911582694285], [-0.12516536871657502, 51.39883518119994], [-0.12523538246423055, 51.39881292710085], [-0.1253004173627294, 51.398802280446716], [-0.12531617997842817, 51.39880522965845], [-0.1254174341263426, 51.3988248297452], [-0.12539608481234546, 51.39885415556277], [-0.12538650826992717, 51.39891153905238], [-0.12537898585954227, 51.39895636925112], [-0.12543783182285426, 51.399027523395084], [-0.12564543820656154, 51.39926099113607], [-0.125917249436265, 51.399573789182334], [-0.12614216953777424, 51.399839088168555], [-0.12622225844971946, 51.399921279821775], [-0.12631244122593965, 51.400000126675856], [-0.12652477164992537, 51.40018781877144], [-0.12664781145869475, 51.40030674713305], [-0.12676014431928775, 51.400409232109766], [-0.12703428206335673, 51.400665426961005], [-0.127219217696604, 51.40085357888443], [-0.12751009585824125, 51.40115858667282], [-0.1276409434677964, 51.40133607437352], [-0.12771757183338617, 51.40139573440523], [-0.127787121038267, 51.4014516852404], [-0.12776961401528086, 51.40145949662049], [-0.12773732455258474, 51.401475162904845], [-0.12798981313966373, 51.40169864514347], [-0.1280112997662334, 51.40170078641676], [-0.12803417124934097, 51.4017038488192], [-0.1282705251737596, 51.40186674910141], [-0.12833657770076762, 51.401903854435425], [-0.1284903708742134, 51.40207981970538], [-0.12864884673321242, 51.40221369597322], [-0.12888118899491058, 51.40236754081821], [-0.12925345776796413, 51.4025812456481], [-0.12942905332788976, 51.40268204086518], [-0.13048115657971945, 51.403256396532164], [-0.13050617607890855, 51.403276573898076], [-0.13052660109669398, 51.403304769047686], [-0.1306212364813219, 51.403486979700546], [-0.1306347540855481, 51.40354212482722], [-0.13067808138628934, 51.40360754468663], [-0.13091160430387958, 51.4038054556914], [-0.13116996941286216, 51.40399306418171], [-0.13121578161988626, 51.40403245218512], [-0.13127943286630336, 51.40409370087519], [-0.13131451261228605, 51.40414918975938], [-0.13132899567724926, 51.40418358307227], [-0.1315330993045191, 51.404926003115975], [-0.13155099683606233, 51.404978431023174], [-0.13140740431424414, 51.405011202794974], [-0.13144283333430382, 51.40520064958138], [-0.131481017403317, 51.40524980493389], [-0.13150057153054456, 51.40526450087125], [-0.13166804649125724, 51.405352576990715], [-0.13231847990724657, 51.40692767055468], [-0.13248109151389267, 51.40840688407605], [-0.13225904029176308, 51.408421325418004], [-0.13225761854172796, 51.4084213027582], [-0.13195562617572074, 51.40845694461829], [-0.13200807656115418, 51.40879320085605], [-0.13204250400571507, 51.408902619580836], [-0.1320514397873344, 51.40893063128419], [-0.1320734240379882, 51.40902537761582], [-0.13208909266780114, 51.409170367759906], [-0.13131649940717657, 51.40921567706497], [-0.1313147845978126, 51.40922284179067], [-0.13128590757842576, 51.409506557973586], [-0.13095644372572482, 51.409512091941586], [-0.13051251284059864, 51.409536476179234], [-0.13050076357244889, 51.40954258180722], [-0.12947853603452, 51.40957481640209], [-0.12947873200448232, 51.409851804165676], [-0.1293574114633932, 51.409864251784605], [-0.12917186693151797, 51.4100762428958], [-0.12894249059923776, 51.41037734488842], [-0.12876186741734652, 51.41061099014277], [-0.1286080715013253, 51.41078572894138], [-0.1286406063995269, 51.41083389594888], [-0.12854348970937038, 51.41092134696939], [-0.12852221834266614, 51.41095157357698], [-0.12848085671117468, 51.41101213554359], [-0.12832225933041627, 51.41098793654018], [-0.1282275083595354, 51.41094776582994], [-0.12819357949383386, 51.41093373877817], [-0.12804107250035668, 51.41121907551702], [-0.12780958092673955, 51.411850257555905], [-0.1277267096573062, 51.41201264311245], [-0.12761534109132638, 51.41220504970461], [-0.12753470762817318, 51.41231263134487], [-0.12775174262594385, 51.41231699789537], [-0.127428153765708, 51.41249162955632], [-0.1273391950870136, 51.41252437041114], [-0.12686177128919648, 51.412700228160105]]], "type": "Polygon"}, "id": "32", "properties": {"DISTRICT": "Croydon", "GSS_CODE": "E05011472", "HECTARES": 134.046, "LAGSSCODE": "E09000008", "NAME": "Norbury \u0026 Pollards Hill", "NONLD_AREA": 0.0, "_normalized_name": "norbury pollards hill"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d2dd0362fb0f27b3639871561f0cdca0.addTo(map_17e0dee2805fb85b5d8f2c958abdf794);
+        
+    
+        function geo_json_e811f66487357b7f37e3a2c2f62899dc_styler(feature) {
+            switch(feature.id) {
+                case "2": case "8": 
+                    return {"color": "black", "fillColor": "#800026", "fillOpacity": 0.7, "weight": 0.5};
+                default:
+                    return {"color": "black", "fillColor": "#ffffcc", "fillOpacity": 0.7, "weight": 0.5};
+            }
+        }
+
+        function geo_json_e811f66487357b7f37e3a2c2f62899dc_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_e811f66487357b7f37e3a2c2f62899dc = L.geoJson(null, {
+                onEachFeature: geo_json_e811f66487357b7f37e3a2c2f62899dc_onEachFeature,
+            
+                style: geo_json_e811f66487357b7f37e3a2c2f62899dc_styler,
+            ...{
+}
+        });
+
+        function geo_json_e811f66487357b7f37e3a2c2f62899dc_add (data) {
+            geo_json_e811f66487357b7f37e3a2c2f62899dc
+                .addData(data);
+        }
+            geo_json_e811f66487357b7f37e3a2c2f62899dc_add({"features": [{"geometry": {"coordinates": [[[[-0.13008679556983835, 51.409212318812926], [-0.12365766309646845, 51.409441687155855], [-0.122913926807804, 51.40946819780048], [-0.12277405973289171, 51.41184774656017], [-0.11899216350076634, 51.41401412174407], [-0.12258505500911167, 51.415030298418706], [-0.1269375071198396, 51.41270741862196], [-0.12780790659360206, 51.41231563647895], [-0.12786260098806346, 51.411741407094574], [-0.13141247917973375, 51.40921517338365], [-0.13008679556983835, 51.409212318812926]]]], "type": "MultiPolygon"}, "id": "2", "properties": {"BNG_E": 530483, "BNG_N": 169713, "DISTRICT": "Croydon", "GSS_CODE": "E05011472", "GlobalID": "{21E991EB-5A43-4C8B-90C9-BFB39AEFED96}", "HECTARES": 134.046, "LAGSSCODE": "E09000008", "LAT": 51.41143035888672, "LONG": -0.12515999376773834, "LSOA21CD": "E01001085", "LSOA21NM": "Croydon 004A", "LSOA21NMW": " ", "NAME": "Norbury \u0026 Pollards Hill", "NONLD_AREA": 0.0, "WD24NM": "Norbury \u0026 Pollards Hill", "_normalized_name": "norbury pollards hill", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.11056164013455141, 51.404946813333694], [-0.11960958562193211, 51.40674763612642], [-0.11867170119681462, 51.403963196998035], [-0.1180825383757009, 51.40201014787093], [-0.11376327656459911, 51.40290793719134], [-0.11056164013455141, 51.404946813333694]]]], "type": "MultiPolygon"}, "id": "3", "properties": {"BNG_E": 531249, "BNG_N": 169033, "DISTRICT": "Croydon", "GSS_CODE": "E05011472", "GlobalID": "{E39FFAFD-B6CE-4C24-96DF-876C96C70E49}", "HECTARES": 134.046, "LAGSSCODE": "E09000008", "LAT": 51.4051513671875, "LONG": -0.11440999805927277, "LSOA21CD": "E01001086", "LSOA21NM": "Croydon 003B", "LSOA21NMW": " ", "NAME": "Norbury \u0026 Pollards Hill", "NONLD_AREA": 0.0, "WD24NM": "Norbury \u0026 Pollards Hill", "_normalized_name": "norbury pollards hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.11001816026568749, 51.40534635957673], [-0.11539873128645152, 51.41030415544416], [-0.11899216350076634, 51.41401412174407], [-0.12277405973289171, 51.41184774656017], [-0.12217806678904422, 51.40915500139498], [-0.12418015020812886, 51.4080188188638], [-0.11960958562193211, 51.40674763612642], [-0.11056164013455141, 51.404946813333694], [-0.11001816026568749, 51.40534635957673]]]], "type": "MultiPolygon"}, "id": "4", "properties": {"BNG_E": 531046, "BNG_N": 169605, "DISTRICT": "Croydon", "GSS_CODE": "E05011472", "GlobalID": "{3323BE64-2B6C-4AA4-9EC2-B2D9BAF863C5}", "HECTARES": 134.046, "LAGSSCODE": "E09000008", "LAT": 51.41033172607422, "LONG": -0.1171099990606308, "LSOA21CD": "E01001087", "LSOA21NM": "Croydon 003C", "LSOA21NMW": " ", "NAME": "Norbury \u0026 Pollards Hill", "NONLD_AREA": 0.0, "WD24NM": "Norbury \u0026 Pollards Hill", "_normalized_name": "norbury pollards hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.12781410002627752, 51.40604903059564], [-0.13008679556983835, 51.409212318812926], [-0.13141247917973375, 51.40921517338365], [-0.13153306553589866, 51.404927420238636], [-0.12925317588192123, 51.40258056371035], [-0.12874506274562672, 51.402279946219366], [-0.12544973640964036, 51.405717325610695], [-0.12781410002627752, 51.40604903059564]]]], "type": "MultiPolygon"}, "id": "5", "properties": {"BNG_E": 530245, "BNG_N": 169073, "DISTRICT": "Croydon", "GSS_CODE": "E05011472", "GlobalID": "{51601090-8519-41CB-9BB0-4530853A07DF}", "HECTARES": 134.046, "LAGSSCODE": "E09000008", "LAT": 51.405738830566406, "LONG": -0.12882000207901, "LSOA21CD": "E01001088", "LSOA21NM": "Croydon 004B", "LSOA21NMW": " ", "NAME": "Norbury \u0026 Pollards Hill", "NONLD_AREA": 0.0, "WD24NM": "Norbury \u0026 Pollards Hill", "_normalized_name": "norbury pollards hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.12418015020812886, 51.4080188188638], [-0.12217806678904422, 51.40915500139498], [-0.12277405973289171, 51.41184774656017], [-0.122913926807804, 51.40946819780048], [-0.12365766309646845, 51.409441687155855], [-0.13008679556983835, 51.409212318812926], [-0.12781410002627752, 51.40604903059564], [-0.12418015020812886, 51.4080188188638]]]], "type": "MultiPolygon"}, "id": "6", "properties": {"BNG_E": 530414, "BNG_N": 169423, "DISTRICT": "Croydon", "GSS_CODE": "E05011472", "GlobalID": "{69A36FAA-314F-48E2-A4A9-D8994D9E03F3}", "HECTARES": 134.046, "LAGSSCODE": "E09000008", "LAT": 51.40884017944336, "LONG": -0.12625999748706818, "LSOA21CD": "E01001089", "LSOA21NM": "Croydon 004C", "LSOA21NMW": " ", "NAME": "Norbury \u0026 Pollards Hill", "NONLD_AREA": 0.0, "WD24NM": "Norbury \u0026 Pollards Hill", "_normalized_name": "norbury pollards hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.11960958562193211, 51.40674763612642], [-0.12418015020812886, 51.4080188188638], [-0.12781410002627752, 51.40604903059564], [-0.12544973640964036, 51.405717325610695], [-0.11867170119681462, 51.403963196998035], [-0.11960958562193211, 51.40674763612642]]]], "type": "MultiPolygon"}, "id": "7", "properties": {"BNG_E": 530749, "BNG_N": 169110, "DISTRICT": "Croydon", "GSS_CODE": "E05011472", "GlobalID": "{9375B455-D1FB-4864-9A89-1C8857ACF677}", "HECTARES": 134.046, "LAGSSCODE": "E09000008", "LAT": 51.405948638916016, "LONG": -0.1215599998831749, "LSOA21CD": "E01001090", "LSOA21NM": "Croydon 004D", "LSOA21NMW": " ", "NAME": "Norbury \u0026 Pollards Hill", "NONLD_AREA": 0.0, "WD24NM": "Norbury \u0026 Pollards Hill", "_normalized_name": "norbury pollards hill", "crime_rate": 0.0, "is_high_crime": false, "median": 0.0}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-0.11867170119681462, 51.403963196998035], [-0.12544973640964036, 51.405717325610695], [-0.12874506274562672, 51.402279946219366], [-0.1254963266865185, 51.398722310404295], [-0.1186165813493243, 51.40189684994303], [-0.1180825383757009, 51.40201014787093], [-0.11867170119681462, 51.403963196998035]]]], "type": "MultiPolygon"}, "id": "8", "properties": {"BNG_E": 530631, "BNG_N": 168688, "DISTRICT": "Croydon", "GSS_CODE": "E05011472", "GlobalID": "{5971E63F-8D46-49DE-9DFB-1D3361876766}", "HECTARES": 134.046, "LAGSSCODE": "E09000008", "LAT": 51.402191162109375, "LONG": -0.12341000139713287, "LSOA21CD": "E01001091", "LSOA21NM": "Croydon 004E", "LSOA21NMW": " ", "NAME": "Norbury \u0026 Pollards Hill", "NONLD_AREA": 0.0, "WD24NM": "Norbury \u0026 Pollards Hill", "_normalized_name": "norbury pollards hill", "crime_rate": 1.0, "is_high_crime": true, "median": 1.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e811f66487357b7f37e3a2c2f62899dc.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["LSOA21CD", "LSOA21NM", "crime_rate"];
+    let aliases = ["LSOA Code:", "LSOA Name:", "Median Crime Rate (from \"median\"):"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_e811f66487357b7f37e3a2c2f62899dc.addTo(map_17e0dee2805fb85b5d8f2c958abdf794);
+        
+    
+            var feature_group_47784eed89c851ca6336009f82838982 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_d51822b4de0c3b537c074da5d7de8dcf = L.marker(
+                [51.4116681, -0.123413],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_df056dd1956433b23f7762cc378305ac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4f5a8120b12f49beb176341625a2814e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_af323909682d14830e4676a45050976a = $(`<div id="html_af323909682d14830e4676a45050976a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004A (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_4f5a8120b12f49beb176341625a2814e.setContent(html_af323909682d14830e4676a45050976a);
+            
+        
+
+        marker_d51822b4de0c3b537c074da5d7de8dcf.bindPopup(popup_4f5a8120b12f49beb176341625a2814e)
+        ;
+
+        
+    
+    
+                marker_d51822b4de0c3b537c074da5d7de8dcf.setIcon(icon_df056dd1956433b23f7762cc378305ac);
+            
+    
+            var marker_688cb5678cd5617455741f6fdda22b1b = L.marker(
+                [51.4113663, -0.1244793],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_34b4d12fcf0bd4fcdde43c6b42c3ae12 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2670882ca8fc9a14218997a2dd334d7b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_702126f76c0f43104f5af640080ad87f = $(`<div id="html_702126f76c0f43104f5af640080ad87f" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004A (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_2670882ca8fc9a14218997a2dd334d7b.setContent(html_702126f76c0f43104f5af640080ad87f);
+            
+        
+
+        marker_688cb5678cd5617455741f6fdda22b1b.bindPopup(popup_2670882ca8fc9a14218997a2dd334d7b)
+        ;
+
+        
+    
+    
+                marker_688cb5678cd5617455741f6fdda22b1b.setIcon(icon_34b4d12fcf0bd4fcdde43c6b42c3ae12);
+            
+    
+            var marker_4a423c0440ccecc9226e76b15da59fb3 = L.marker(
+                [51.4095883, -0.129003],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_0f4cc3e1c6bb6b020dd1e08a81d897f0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_83ea16d6268d7d9e77f531d56480816a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_643f77726efdc527859df3d6ea94562a = $(`<div id="html_643f77726efdc527859df3d6ea94562a" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004A (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_83ea16d6268d7d9e77f531d56480816a.setContent(html_643f77726efdc527859df3d6ea94562a);
+            
+        
+
+        marker_4a423c0440ccecc9226e76b15da59fb3.bindPopup(popup_83ea16d6268d7d9e77f531d56480816a)
+        ;
+
+        
+    
+    
+                marker_4a423c0440ccecc9226e76b15da59fb3.setIcon(icon_0f4cc3e1c6bb6b020dd1e08a81d897f0);
+            
+    
+            var marker_20350ecdf05228c3feb0e9fdc566a3d9 = L.marker(
+                [51.4118489, -0.125862],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_3312379d8e7558c7bea9e03531a3cfac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ab229b123c78c780e021ec1bbc152795 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2015ad04bfd95f4b6b9adc5b613b8581 = $(`<div id="html_2015ad04bfd95f4b6b9adc5b613b8581" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004A (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_ab229b123c78c780e021ec1bbc152795.setContent(html_2015ad04bfd95f4b6b9adc5b613b8581);
+            
+        
+
+        marker_20350ecdf05228c3feb0e9fdc566a3d9.bindPopup(popup_ab229b123c78c780e021ec1bbc152795)
+        ;
+
+        
+    
+    
+                marker_20350ecdf05228c3feb0e9fdc566a3d9.setIcon(icon_3312379d8e7558c7bea9e03531a3cfac);
+            
+    
+            var marker_f397b04b195f91e1fa2641cca7b8c0f9 = L.marker(
+                [51.4012536, -0.1244233],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_574df3253611bdb9b7bfa16cf8f31347 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fe14dfc2ff2900271d136a42da947d64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a5c01b53a0627e34412d3a566d427ce2 = $(`<div id="html_a5c01b53a0627e34412d3a566d427ce2" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004E (Pt 1)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_fe14dfc2ff2900271d136a42da947d64.setContent(html_a5c01b53a0627e34412d3a566d427ce2);
+            
+        
+
+        marker_f397b04b195f91e1fa2641cca7b8c0f9.bindPopup(popup_fe14dfc2ff2900271d136a42da947d64)
+        ;
+
+        
+    
+    
+                marker_f397b04b195f91e1fa2641cca7b8c0f9.setIcon(icon_574df3253611bdb9b7bfa16cf8f31347);
+            
+    
+            var marker_fde78a14964b2f531d43897c7835ec0a = L.marker(
+                [51.4013826, -0.120106],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_cc5dae30f74354b7ac52977b6f270f23 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1e28a2231d45fe6547d4bc51c8fb1fd8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e81d470b403cd2f69ad66f5a6dd55f95 = $(`<div id="html_e81d470b403cd2f69ad66f5a6dd55f95" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004E (Pt 2)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_1e28a2231d45fe6547d4bc51c8fb1fd8.setContent(html_e81d470b403cd2f69ad66f5a6dd55f95);
+            
+        
+
+        marker_fde78a14964b2f531d43897c7835ec0a.bindPopup(popup_1e28a2231d45fe6547d4bc51c8fb1fd8)
+        ;
+
+        
+    
+    
+                marker_fde78a14964b2f531d43897c7835ec0a.setIcon(icon_cc5dae30f74354b7ac52977b6f270f23);
+            
+    
+            var marker_a7278562767103298be3926c41ea1721 = L.marker(
+                [51.4039527, -0.1244689],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_891840376538263dd191765deff45e75 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_975dd5d62e8c2452127eb23ff952c45e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31b1639bff340559f76a517ada8490de = $(`<div id="html_31b1639bff340559f76a517ada8490de" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004E (Pt 3)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_975dd5d62e8c2452127eb23ff952c45e.setContent(html_31b1639bff340559f76a517ada8490de);
+            
+        
+
+        marker_a7278562767103298be3926c41ea1721.bindPopup(popup_975dd5d62e8c2452127eb23ff952c45e)
+        ;
+
+        
+    
+    
+                marker_a7278562767103298be3926c41ea1721.setIcon(icon_891840376538263dd191765deff45e75);
+            
+    
+            var marker_175e890856a562ccdcaacb5be9a1fa5e = L.marker(
+                [51.4034407, -0.1200163],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_256a2b863f1f3578dcce13406aa65da5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1ab32e4fc802b812e4aa652373605695 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_212e9d27661540586fde49ec569d9afa = $(`<div id="html_212e9d27661540586fde49ec569d9afa" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004E (Pt 4)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_1ab32e4fc802b812e4aa652373605695.setContent(html_212e9d27661540586fde49ec569d9afa);
+            
+        
+
+        marker_175e890856a562ccdcaacb5be9a1fa5e.bindPopup(popup_1ab32e4fc802b812e4aa652373605695)
+        ;
+
+        
+    
+    
+                marker_175e890856a562ccdcaacb5be9a1fa5e.setIcon(icon_256a2b863f1f3578dcce13406aa65da5);
+            
+    
+            var marker_674a4da96dced94524032b94583f1f11 = L.marker(
+                [51.4048279, -0.1249434],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_fddaf2daa8fca8dbf24ff83cb9e76767 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3e6a9f9f7d32a086ad74bb907eb8020e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_25a591eb6ef8a53879270293f824a6ce = $(`<div id="html_25a591eb6ef8a53879270293f824a6ce" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004E (Pt 5)<br><b>Median Crime:</b> 1.00</div>`)[0];
+                popup_3e6a9f9f7d32a086ad74bb907eb8020e.setContent(html_25a591eb6ef8a53879270293f824a6ce);
+            
+        
+
+        marker_674a4da96dced94524032b94583f1f11.bindPopup(popup_3e6a9f9f7d32a086ad74bb907eb8020e)
+        ;
+
+        
+    
+    
+                marker_674a4da96dced94524032b94583f1f11.setIcon(icon_fddaf2daa8fca8dbf24ff83cb9e76767);
+            
+    
+            var marker_2f51dc1955296575bce8f866b7391f98 = L.marker(
+                [51.4046686, -0.1170529],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_052bfaca2dbb2917d67fa0d491ed675b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_72e5437c6d4da869fdfbdcc22162abbb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b1ec2661f4577e0c1c2b19877c39ade = $(`<div id="html_1b1ec2661f4577e0c1c2b19877c39ade" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 003B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_72e5437c6d4da869fdfbdcc22162abbb.setContent(html_1b1ec2661f4577e0c1c2b19877c39ade);
+            
+        
+
+        marker_2f51dc1955296575bce8f866b7391f98.bindPopup(popup_72e5437c6d4da869fdfbdcc22162abbb)
+        ;
+
+        
+    
+    
+                marker_2f51dc1955296575bce8f866b7391f98.setIcon(icon_052bfaca2dbb2917d67fa0d491ed675b);
+            
+    
+            var marker_a95e7f4e288b2245ed2a9638e8a89050 = L.marker(
+                [51.4056454, -0.1136417],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_e3eab242ed0f3aa422cf32c13ae71194 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8eb83962444f1c0e0adcbe9779a6622b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef589fbdb01baaf9e07bbee30ee81948 = $(`<div id="html_ef589fbdb01baaf9e07bbee30ee81948" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 003B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8eb83962444f1c0e0adcbe9779a6622b.setContent(html_ef589fbdb01baaf9e07bbee30ee81948);
+            
+        
+
+        marker_a95e7f4e288b2245ed2a9638e8a89050.bindPopup(popup_8eb83962444f1c0e0adcbe9779a6622b)
+        ;
+
+        
+    
+    
+                marker_a95e7f4e288b2245ed2a9638e8a89050.setIcon(icon_e3eab242ed0f3aa422cf32c13ae71194);
+            
+    
+            var marker_95deab1a236d993431467e47cf0925f3 = L.marker(
+                [51.4031884, -0.1162407],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_9ad9f20fc24d43a7d11f1b56deb1e548 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2e3e1ac19e8828ae720080a4f6692bd5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_01ce9161c167d43e3f01b6183862ca87 = $(`<div id="html_01ce9161c167d43e3f01b6183862ca87" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 003B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_2e3e1ac19e8828ae720080a4f6692bd5.setContent(html_01ce9161c167d43e3f01b6183862ca87);
+            
+        
+
+        marker_95deab1a236d993431467e47cf0925f3.bindPopup(popup_2e3e1ac19e8828ae720080a4f6692bd5)
+        ;
+
+        
+    
+    
+                marker_95deab1a236d993431467e47cf0925f3.setIcon(icon_9ad9f20fc24d43a7d11f1b56deb1e548);
+            
+    
+            var marker_6a12caa911e4b959aa20efa2f4f3b3ce = L.marker(
+                [51.4073216, -0.1212803],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_a405fbd7b48570a44cf5c4703d9077e4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3bfb2c92ed82eed6391c29b92dab7348 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96c8f8342ac8def82370dc2c1bf47532 = $(`<div id="html_96c8f8342ac8def82370dc2c1bf47532" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 003C (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3bfb2c92ed82eed6391c29b92dab7348.setContent(html_96c8f8342ac8def82370dc2c1bf47532);
+            
+        
+
+        marker_6a12caa911e4b959aa20efa2f4f3b3ce.bindPopup(popup_3bfb2c92ed82eed6391c29b92dab7348)
+        ;
+
+        
+    
+    
+                marker_6a12caa911e4b959aa20efa2f4f3b3ce.setIcon(icon_a405fbd7b48570a44cf5c4703d9077e4);
+            
+    
+            var marker_4f89b4a34761ceba1be7928c7cc49bef = L.marker(
+                [51.4085536, -0.1212913],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_ff73230a9abec4d557dcbc60cd4d4700 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8f31408d26b7c4f9614f27a2fce0da2d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_601f4098ab809083ad3b175556c7d027 = $(`<div id="html_601f4098ab809083ad3b175556c7d027" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 003C (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8f31408d26b7c4f9614f27a2fce0da2d.setContent(html_601f4098ab809083ad3b175556c7d027);
+            
+        
+
+        marker_4f89b4a34761ceba1be7928c7cc49bef.bindPopup(popup_8f31408d26b7c4f9614f27a2fce0da2d)
+        ;
+
+        
+    
+    
+                marker_4f89b4a34761ceba1be7928c7cc49bef.setIcon(icon_ff73230a9abec4d557dcbc60cd4d4700);
+            
+    
+            var marker_9d601312aa3dd2a420bbce54e92391ba = L.marker(
+                [51.4108459, -0.1228551],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_f84b220692640d305564b78755f25f2e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8d789d74d5606866f3ec71acaa2240ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_299c31ad9dd26f3aeece1eb88ea12805 = $(`<div id="html_299c31ad9dd26f3aeece1eb88ea12805" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 003C (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_8d789d74d5606866f3ec71acaa2240ec.setContent(html_299c31ad9dd26f3aeece1eb88ea12805);
+            
+        
+
+        marker_9d601312aa3dd2a420bbce54e92391ba.bindPopup(popup_8d789d74d5606866f3ec71acaa2240ec)
+        ;
+
+        
+    
+    
+                marker_9d601312aa3dd2a420bbce54e92391ba.setIcon(icon_f84b220692640d305564b78755f25f2e);
+            
+    
+            var marker_090fdecd798425d29be4651c778446b5 = L.marker(
+                [51.4074598, -0.1229258],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_6167c5ecd477554b4e3e5f29a2f0f3f0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_85eb82baa5ef59e84279573f637b9b90 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c3bb1edbbd230d6f9649a96e124eba83 = $(`<div id="html_c3bb1edbbd230d6f9649a96e124eba83" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 003C (Pt 4)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_85eb82baa5ef59e84279573f637b9b90.setContent(html_c3bb1edbbd230d6f9649a96e124eba83);
+            
+        
+
+        marker_090fdecd798425d29be4651c778446b5.bindPopup(popup_85eb82baa5ef59e84279573f637b9b90)
+        ;
+
+        
+    
+    
+                marker_090fdecd798425d29be4651c778446b5.setIcon(icon_6167c5ecd477554b4e3e5f29a2f0f3f0);
+            
+    
+            var marker_975fef64ba65874e47d87c8ee0dbcff8 = L.marker(
+                [51.4079175, -0.1231556],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_0a8f1c96dd818a4feaf276c32c4f5197 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6d6e2609c58cd1ebcfb637d76985432b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d243f195ecf145414c3d13ae100c51aa = $(`<div id="html_d243f195ecf145414c3d13ae100c51aa" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 003C (Pt 5)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_6d6e2609c58cd1ebcfb637d76985432b.setContent(html_d243f195ecf145414c3d13ae100c51aa);
+            
+        
+
+        marker_975fef64ba65874e47d87c8ee0dbcff8.bindPopup(popup_6d6e2609c58cd1ebcfb637d76985432b)
+        ;
+
+        
+    
+    
+                marker_975fef64ba65874e47d87c8ee0dbcff8.setIcon(icon_0a8f1c96dd818a4feaf276c32c4f5197);
+            
+    
+            var marker_ce6aad29157b377c70401eee332aa443 = L.marker(
+                [51.4042123, -0.1286187],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_88466ccede32da8f4d986a05da9fc703 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ef393417d0c24c82a1bd9b51720ac98 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_802a17ee7dd9d4904f5997758f93386d = $(`<div id="html_802a17ee7dd9d4904f5997758f93386d" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004B (Pt 1)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_3ef393417d0c24c82a1bd9b51720ac98.setContent(html_802a17ee7dd9d4904f5997758f93386d);
+            
+        
+
+        marker_ce6aad29157b377c70401eee332aa443.bindPopup(popup_3ef393417d0c24c82a1bd9b51720ac98)
+        ;
+
+        
+    
+    
+                marker_ce6aad29157b377c70401eee332aa443.setIcon(icon_88466ccede32da8f4d986a05da9fc703);
+            
+    
+            var marker_48bd744245b65ebd7ca196b5ad4ac17f = L.marker(
+                [51.4019108, -0.1277349],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_32daf0d0b6b40e8f822d5657fe1c90a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2cf87597b87f543c09ce6a64c9da586 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e17d0543d8c932f2b16de90ce7f0acd = $(`<div id="html_2e17d0543d8c932f2b16de90ce7f0acd" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004B (Pt 2)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_a2cf87597b87f543c09ce6a64c9da586.setContent(html_2e17d0543d8c932f2b16de90ce7f0acd);
+            
+        
+
+        marker_48bd744245b65ebd7ca196b5ad4ac17f.bindPopup(popup_a2cf87597b87f543c09ce6a64c9da586)
+        ;
+
+        
+    
+    
+                marker_48bd744245b65ebd7ca196b5ad4ac17f.setIcon(icon_32daf0d0b6b40e8f822d5657fe1c90a1);
+            
+    
+            var marker_fabd5a4ad46573bccece8a58d17364ea = L.marker(
+                [51.4073303, -0.1308622],
+                {
+}
+            ).addTo(feature_group_47784eed89c851ca6336009f82838982);
+        
+    
+            var icon_df1df48b4eef9c89b8aeb9aaf672d9cc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "circle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9a102f93325bc87e03e9e377b063480f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31ecf9f21a287df3561debb5273389d1 = $(`<div id="html_31ecf9f21a287df3561debb5273389d1" style="width: 100.0%; height: 100.0%;"><b>LSOA:</b> Croydon 004B (Pt 3)<br><b>Median Crime:</b> 0.00</div>`)[0];
+                popup_9a102f93325bc87e03e9e377b063480f.setContent(html_31ecf9f21a287df3561debb5273389d1);
+            
+        
+
+        marker_fabd5a4ad46573bccece8a58d17364ea.bindPopup(popup_9a102f93325bc87e03e9e377b063480f)
+        ;
+
+        
+    
+    
+                marker_fabd5a4ad46573bccece8a58d17364ea.setIcon(icon_df1df48b4eef9c89b8aeb9aaf672d9cc);
+            
+    
+            feature_group_47784eed89c851ca6336009f82838982.addTo(map_17e0dee2805fb85b5d8f2c958abdf794);
+        
+    
+            var poly_line_86f49addee082549879d3fd03b4dc11f = L.polyline(
+                [[51.4116681, -0.123413], [51.4113663, -0.1244793], [51.4111253, -0.1254149], [51.4118489, -0.125862], [51.4113469, -0.1267905], [51.4108412, -0.1277167], [51.4095883, -0.129003], [51.4095493, -0.1301052], [51.4088586, -0.1300546], [51.4074689, -0.1299098], [51.4073303, -0.1308622], [51.4072011, -0.1317545], [51.4066559, -0.131632], [51.4053838, -0.131106], [51.404836, -0.1309102], [51.4038022, -0.1294552], [51.4042123, -0.1286187], [51.404569, -0.1276406], [51.4036022, -0.1251714], [51.4033086, -0.1253718], [51.4024115, -0.1271272], [51.4019108, -0.1277349], [51.4024115, -0.1271272], [51.4010979, -0.1233488], [51.4013834, -0.1234825], [51.4012536, -0.1244233], [51.4013834, -0.1234825], [51.4010979, -0.1233488], [51.4020622, -0.1224915], [51.4023607, -0.1218182], [51.4024822, -0.1188565], [51.4026517, -0.1189174], [51.4031884, -0.1162407], [51.4039132, -0.1166376], [51.4034016, -0.1192058], [51.4032852, -0.119163], [51.4031898, -0.1198018], [51.4034407, -0.1200163], [51.4031898, -0.1198018], [51.4032852, -0.119163], [51.4034016, -0.1192058], [51.4039132, -0.1166376], [51.4031884, -0.1162407], [51.4026517, -0.1189174], [51.4024822, -0.1188565], [51.4019032, -0.1186198], [51.4013826, -0.120106], [51.4019032, -0.1186198], [51.4024822, -0.1188565], [51.4023607, -0.1218182], [51.4020622, -0.1224915], [51.4019552, -0.123884], [51.4033086, -0.1253718], [51.4036022, -0.1251714], [51.4039527, -0.1244689], [51.4048279, -0.1249434], [51.4056057, -0.1253527], [51.4057094, -0.1254004], [51.4066382, -0.1208964], [51.4073216, -0.1212803], [51.4070085, -0.1226956], [51.4074598, -0.1229258], [51.4079175, -0.1231556], [51.4076087, -0.1247444], [51.4081153, -0.1249798], [51.4084473, -0.1239513], [51.4087049, -0.1220373], [51.4085614, -0.1219716], [51.4085536, -0.1212913], [51.407157, -0.115957], [51.4056454, -0.1136417], [51.4050553, -0.1151007], [51.4046686, -0.1170529], [51.4050553, -0.1151007], [51.407157, -0.115957], [51.4085536, -0.1212913], [51.4085614, -0.1219716], [51.4087049, -0.1220373], [51.4084473, -0.1239513], [51.4084124, -0.1250795], [51.409036, -0.1251462], [51.4090823, -0.1239237], [51.410196, -0.1252403], [51.410869, -0.125269], [51.4111253, -0.1254149], [51.4113663, -0.1244793], [51.4101931, -0.1237117], [51.4104019, -0.1225971], [51.4108459, -0.1228551], [51.4101413, -0.1206872], [51.4097315, -0.1197546], [51.4095465, -0.1214693], [51.4094744, -0.1222224], [51.4091511, -0.122165], [51.4090823, -0.1239237], [51.410196, -0.1252403], [51.410869, -0.125269], [51.4111253, -0.1254149], [51.4113663, -0.1244793], [51.4101931, -0.1237117], [51.4104019, -0.1225971], [51.4108459, -0.1228551], [51.4116681, -0.123413]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_17e0dee2805fb85b5d8f2c958abdf794);
+        
+    
+            var layer_control_1257cdf1800e87981d162df7f8cbd2aa_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_91a5dd7f838a38580ed80f97adea152e,
+                },
+                overlays :  {
+                    "Norbury \u0026 Pollards Hill Boundary" : geo_json_d2dd0362fb0f27b3639871561f0cdca0,
+                    "LSOA Median Crime Rates for Norbury \u0026 Pollards Hill" : geo_json_e811f66487357b7f37e3a2c2f62899dc,
+                    "Patrol Waypoints" : feature_group_47784eed89c851ca6336009f82838982,
+                },
+            };
+            let layer_control_1257cdf1800e87981d162df7f8cbd2aa = L.control.layers(
+                layer_control_1257cdf1800e87981d162df7f8cbd2aa_layers.base_layers,
+                layer_control_1257cdf1800e87981d162df7f8cbd2aa_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_17e0dee2805fb85b5d8f2c958abdf794);
+
+        
+</script>
+</html>

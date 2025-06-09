@@ -16,6 +16,7 @@ import matplotlib
 import matplotlib.cm as cm
 import matplotlib.colors as colors
 import re 
+import unicodedata
 
 
 # Suppress warnings for cleaner output, especially from geopandas/shapely
@@ -186,22 +187,18 @@ def load_and_filter_lsoa_boundaries(all_lsoas_with_crime_and_geo_gdf, area_gdf_o
 
         # Initial spatial join to get LSOAs that intersect with the target area (ward from OSMnx)
         lsoas_intersecting_area_osm = gpd.sjoin(all_lsoas_with_crime_and_geo_gdf, area_gdf_osm, how="inner", predicate="intersects")
-        # Reset index to ensure unique index for downstream selection
         lsoas_intersecting_area_osm = lsoas_intersecting_area_osm.reset_index(drop=True)
-        # Drop duplicate columns from the join
         lsoas_intersecting_area_osm = lsoas_intersecting_area_osm.drop(columns=[col for col in lsoas_intersecting_area_osm.columns if '_right' in col or 'index_' in col], errors='ignore')
 
         print(f"   Initial filter resulted in {len(lsoas_intersecting_area_osm)} LSOAs intersecting the OSMnx area.")
 
         if lsoas_intersecting_area_osm.empty:
             print("   No LSOAs found intersecting the specified OSMnx area after initial spatial join.")
-            # Ensure the returned GeoDataFrame has the expected columns for downstream processes
             return gpd.GeoDataFrame(columns=[LSOA_COLUMN_NAME_FOR_MERGE, 'LSOA21NM', 'geometry', crime_value_column, 'crime_rate'], crs="EPSG:4326")
 
         # Further filter LSOAs where a majority of their area is within the target ward (OSMnx boundary)
         print(f"   Filtering LSOAs where less than {majority_threshold*100:.0f}% of area is within the OSMnx ward boundary...")
-        
-        # Project both for accurate area and intersection calculations (using British National Grid)
+
         area_polygon_projected = area_gdf_osm.to_crs(epsg=27700).geometry.iloc[0]
         lsoas_intersecting_area_projected = lsoas_intersecting_area_osm.to_crs(epsg=27700)
 
@@ -209,28 +206,25 @@ def load_and_filter_lsoa_boundaries(all_lsoas_with_crime_and_geo_gdf, area_gdf_o
         for idx, row in lsoas_intersecting_area_projected.iterrows():
             lsoa_geom = row.geometry
             lsoa_original_area = lsoa_geom.area
-
             intersection_geom = lsoa_geom.intersection(area_polygon_projected)
-            
             if intersection_geom.is_valid and not intersection_geom.is_empty:
                 intersection_area = intersection_geom.area
-                if lsoa_original_area > 1e-9 and (intersection_area / lsoa_original_area) > majority_threshold:
-                    # Instead of .loc[idx], use .iloc[<row number>] since index may not be unique
+                threshold = majority_threshold
+                if len(lsoas_intersecting_area_projected) == 1 and intersection_area > 0:
+                    threshold = 0.0
+                if lsoa_original_area > 1e-9 and (intersection_area / lsoa_original_area) >= threshold:
                     filtered_lsoas_list.append(lsoas_intersecting_area_osm.iloc[row.name])
 
         if not filtered_lsoas_list:
-            print(f"   After majority-area filtering (threshold: {majority_threshold*100:.0f}%), no LSOAs remain. This might indicate an issue with the area or LSOA data, or the threshold is too strict. Consider adjusting LSOA_MAJORITY_AREA_THRESHOLD.")
-            return gpd.GeoDataFrame(columns=[LSOA_COLUMN_NAME_FOR_MERGE, 'LSOA21NM', 'geometry', crime_value_column, 'crime_rate'], crs="EPSG:4326")
+            print(f"   After majority-area filtering (threshold: {majority_threshold*100:.0f}%), no LSOAs remain. Using all LSOAs that intersect the area.")
+            lsoas_within_area_gdf = lsoas_intersecting_area_osm.to_crs(epsg=4326)
+        else:
+            lsoas_within_area_gdf = gpd.GeoDataFrame(filtered_lsoas_list, crs=lsoas_intersecting_area_osm.crs).to_crs(epsg=4326)
+            print(f"   Filtered to {len(lsoas_within_area_gdf)} LSOAs after majority-area check.")
 
-        # Create the final GeoDataFrame, ensuring it's back in WGS84 for Folium
-        lsoas_within_area_gdf = gpd.GeoDataFrame(filtered_lsoas_list, crs=lsoas_intersecting_area_osm.crs).to_crs(epsg=4326)
-        print(f"   Filtered to {len(lsoas_within_area_gdf)} LSOAs after majority-area check.")
-
-        # Assign the actual crime rates (median) to a 'crime_rate' column for consistency with existing functions
-        # Ensure it's a numeric type, fill NaN with 0 if any LSOA somehow lost its crime data
         lsoas_within_area_gdf['crime_rate'] = lsoas_within_area_gdf[crime_value_column].fillna(0).astype(float)
         print(f"   Assigned crime rates (from '{crime_value_column}' column) to {len(lsoas_within_area_gdf)} LSOAs.")
-        
+
         return lsoas_within_area_gdf
     except Exception as e:
         print(f"Error loading or filtering LSOA boundaries: {e}")
@@ -654,6 +648,27 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
     print(f"   Interactive map saved to {final_output_filename}")
 
 
+def normalize_ward_name(name):
+    """
+    Normalize ward names for robust matching:
+    - Lowercase
+    - Remove punctuation (including apostrophes, periods)
+    - Remove extra spaces
+    """
+    if not isinstance(name, str):
+        return ""
+    # Remove accents
+    name = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore').decode('ascii')
+    # Lowercase
+    name = name.lower()
+    # Remove punctuation (keep only alphanumerics and spaces)
+    name = re.sub(r'[^a-z0-9 ]', '', name)
+    # Collapse multiple spaces
+    name = re.sub(r'\s+', ' ', name)
+    # Strip leading/trailing spaces
+    name = name.strip()
+    return name
+
 def load_ward_boundary_from_shapefile(ward_name):
     """
     Loads the ward boundary from a local shapefile.
@@ -665,11 +680,18 @@ def load_ward_boundary_from_shapefile(ward_name):
     print(f"--- Step 1: Loading Ward Boundary for '{ward_name}' from local shapefile ---")
     try:
         all_wards_gdf = gpd.read_file(WARD_SHAPEFILE_PATH)
-        selected_ward_gdf = all_wards_gdf[all_wards_gdf[WARD_COLUMN_NAME_IN_SHAPEFILE] == ward_name].copy()
+        # Normalize all ward names in the shapefile
+        all_wards_gdf['_normalized_name'] = all_wards_gdf[WARD_COLUMN_NAME_IN_SHAPEFILE].apply(normalize_ward_name)
+        # Normalize the input ward name
+        normalized_input = normalize_ward_name(ward_name)
+        # Filter using normalized names
+        selected_ward_gdf = all_wards_gdf[all_wards_gdf['_normalized_name'] == normalized_input].copy()
 
         if selected_ward_gdf.empty:
             print(f"ERROR: Ward '{ward_name}' not found in '{WARD_SHAPEFILE_PATH}' under column '{WARD_COLUMN_NAME_IN_SHAPEFILE}'.")
             print(f"Available ward names (first 10): {all_wards_gdf[WARD_COLUMN_NAME_IN_SHAPEFILE].unique()[:10]}")
+            # Print normalized names for debugging
+            print("Normalized ward names (first 10):", all_wards_gdf['_normalized_name'].unique()[:10])
             return None
         
         # Ensure single geometry for area_polygon and correct CRS
