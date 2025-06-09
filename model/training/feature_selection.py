@@ -228,6 +228,7 @@ def projection_predictive_selection(
     """
 
     torch.set_default_device(device)
+    print(f'Using device: {device}')
 
     groups = [
         "static",
