@@ -1,5 +1,6 @@
 from testing.testing import PredictionTester
 from training.training import create_learner, train_model
+import pyro
 
 from model import burglary_model
 
@@ -15,6 +16,7 @@ def train_and_evaluate_model(training_data, testing_data,
                              num_particles: int = 1,
                              training_steps=500,
                              testing_steps=1000):
+    pyro.clear_param_store()
 
     svi = create_learner(model_function,
                          guide_type=guide_type,
