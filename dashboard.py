@@ -35,12 +35,20 @@ for key, desc in descriptions.items():
 # --- Sidebar: Upload data files ---
 st.sidebar.markdown("📍 To view police route maps, select 'Borough' or 'Ward' and scroll down.")
 st.sidebar.header("🔄 Upload Data Files")
-pred_file = st.sidebar.file_uploader("Predictions (.parquet)", type="parquet")
-hist_file = st.sidebar.file_uploader("Historical (.parquet)", type="parquet")
 
-if not pred_file or not hist_file:
-    st.warning("Upload both prediction and historical data to proceed.")
-    st.stop()
+# Default: automatically detect files
+if os.path.exists("./model/sample_predictions.parquet") and os.path.exists("./merged_data.parquet"):
+    pred_file = "./model/sample_predictions.parquet"
+    hist_file = "./merged_data.parquet"
+else:
+    st.sidebar.markdown("**Note:** No default files found. Please upload your own data.")
+
+    pred_file = st.sidebar.file_uploader("Predictions (.parquet)", type="parquet")
+    hist_file = st.sidebar.file_uploader("Historical (.parquet)", type="parquet")
+
+    if not pred_file or not hist_file:
+        st.warning("Upload both prediction and historical data to proceed.")
+        st.stop()
 
 # Read data
 df_pred = pd.read_parquet(pred_file)
@@ -83,13 +91,13 @@ if geo_level == "LSOA" and view_mode == "Compare Two Past Months":
 
 # --- File paths ---
 paths = {
-    "LSOA": r"C:\\Users\\20231096\\Downloads\\LSOA_Boundaries\\LSOA_2011_London_region",
-    "Borough": r"C:\\Users\\20231096\\Downloads\\Borough_Boundaries\\statistical-gis-boundaries-london\\MapInfo",
-    "Ward": r"C:\\Users\\20231096\\Downloads\\Ward_Boundaries"
+    "LSOA": r"./data/lsoashape/LSOA_2021_EW_BSC_V4.shp",
+    "Borough": r"./data/London_Boroughs.gpkg",
+    "Ward": r"./data/ward/London_Ward.shp"
 }
 routes_folders = {
-    "Borough": r"C:\\Users\\20231096\\Downloads\\borough_routes",
-    "Ward": r"C:\\Users\\20231096\\Downloads\\ward_routes"
+    "Borough": r"./routes/borough_routes",
+    "Ward": r"./routes/ward_routes"
 }
 
 # --- Load geodata ---
@@ -99,11 +107,10 @@ def load_geodata(level):
     """
     folder = paths[level]
     if level == "Borough":
-        tab = [f for f in os.listdir(folder) if f.lower().endswith('.tab')]
-        gdf = gpd.read_file(os.path.join(folder, tab[0]))
+        gdf = gpd.read_file(paths["Borough"])
     else:
-        shp = [os.path.join(folder, f) for f in os.listdir(folder) if f.lower().endswith('.shp')]
-        gdf = gpd.GeoDataFrame(pd.concat([gpd.read_file(s) for s in shp], ignore_index=True))
+        
+        gdf = gpd.read_file(folder)
     return gdf.to_crs(epsg=4326)
 
 # Simplify geometry
