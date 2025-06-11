@@ -2,10 +2,10 @@ import streamlit as st  # UI
 import geopandas as gpd  # Spatial data
 import pandas as pd  # Tabular data
 import folium  # Interactive mapping
-from folium import GeoJson, GeoJsonTooltip, LayerControl
-from streamlit_folium import folium_static  # Embed Folium in Streamlit
-import branca.colormap as cm  # Color scales
+from streamlit_folium import st_folium  # Embed Folium in Streamlit
+import streamlit.components.v1 as components
 import os  # Filesystem operations
+from shapely.geometry import shape
 
 # --- Page setup ---
 st.set_page_config(layout="wide", page_title="London Crime & Police Routes Dashboard")
@@ -34,21 +34,24 @@ for key, desc in descriptions.items():
 
 # --- Sidebar: Upload data files ---
 st.sidebar.markdown("📍 To view police route maps, select 'Borough' or 'Ward' and scroll down.")
-st.sidebar.header("🔄 Upload Data Files")
 
 # Default: automatically detect files
-if os.path.exists("./model/sample_predictions.parquet") and os.path.exists("./merged_data.parquet"):
-    pred_file = "./model/sample_predictions.parquet"
-    hist_file = "./merged_data.parquet"
-else:
+pred_file = "./model/sample_predictions.parquet"
+hist_file = "./merged_data.parquet"
+
+if not (os.path.exists(pred_file) and os.path.exists(hist_file)):
+    st.sidebar.header("🔄 Upload Data Files")
     st.sidebar.markdown("**Note:** No default files found. Please upload your own data.")
 
-    pred_file = st.sidebar.file_uploader("Predictions (.parquet)", type="parquet")
-    hist_file = st.sidebar.file_uploader("Historical (.parquet)", type="parquet")
+    uploaded_pred_file = st.sidebar.file_uploader("Predictions (.parquet)", type="parquet")
+    uploaded_hist_file = st.sidebar.file_uploader("Historical (.parquet)", type="parquet")
 
-    if not pred_file or not hist_file:
+    if not uploaded_pred_file or not uploaded_hist_file:
         st.warning("Upload both prediction and historical data to proceed.")
         st.stop()
+    else:
+        pred_file = uploaded_pred_file
+        hist_file = uploaded_hist_file
 
 # Read data
 df_pred = pd.read_parquet(pred_file)
@@ -72,26 +75,8 @@ avail_year_months = sorted(
     key=lambda ym: pd.to_datetime(ym, format='%Y-%B')
 )
 
-# --- Controls ---
-geo_level = st.selectbox("Geography Level", ["LSOA", "Borough", "Ward"])
-if geo_level == "LSOA":
-    view_mode = st.radio("View Mode", [
-        "Prediction (Current Month)",
-        "Actual (One Past Month)",
-        "Compare Two Past Months"
-    ])
-else:
-    view_mode = "Actual (One Past Month)"
-sel1 = sel2 = None
-if geo_level == "LSOA" and view_mode in ["Actual (One Past Month)"]:
-    sel1 = st.selectbox("Select Month", avail_year_months)
-if geo_level == "LSOA" and view_mode == "Compare Two Past Months":
-    sel1 = st.selectbox("First Month", avail_year_months, index=0)
-    sel2 = st.selectbox("Second Month", avail_year_months, index=1)
-
 # --- File paths ---
 paths = {
-    "LSOA": r"./data/lsoashape/LSOA_2021_EW_BSC_V4.shp",
     "Borough": r"./data/London_Boroughs.gpkg",
     "Ward": r"./data/ward/London_Ward.shp"
 }
@@ -101,123 +86,303 @@ routes_folders = {
 }
 
 # --- Load geodata ---
+@st.cache_data
 def load_geodata(level):
     """
-    Loads shapefiles (.shp for LSOA/Ward, .tab for Borough) and projects to WGS84 (lat/lon) for mapping.
+    Load geographical data for the specified level.
     """
     folder = paths[level]
-    if level == "Borough":
-        gdf = gpd.read_file(paths["Borough"])
-    else:
-        
-        gdf = gpd.read_file(folder)
+    gdf = gpd.read_file(folder)
     return gdf.to_crs(epsg=4326)
 
-# Simplify geometry
-gdf = load_geodata(geo_level)
-gdf['geometry'] = gdf['geometry'].simplify(0.0015, preserve_topology=True)
+# Simplify geometry and load once
+borough_gdf_base = load_geodata("Borough")
+borough_gdf_base['geometry'] = borough_gdf_base['geometry'].simplify(0.0015, preserve_topology=True)
 
-# --- Cache function ---
-@st.cache_data
-def get_month_df(df, label):
-    return df[df['year_month'] == label][['LSOA_code', 'Burglaries amount']].rename(columns={'Burglaries amount': label})
+# Load LSOA to Borough lookup once
+lsoa_lookup_path = "./data/LSOA_(2011)_to_LSOA_(2021)_Exact_Fit_Lookup_for_EW_(V3).csv"
+lsoa_df = pd.read_csv(lsoa_lookup_path) if os.path.exists(lsoa_lookup_path) else None
 
-# --- Merge predictions for LSOA ---
-def prepare_pred(df_geo):
-    if geo_level != 'LSOA':
-        return df_geo
-    pcol = df_pred.columns[0]
-    dfp = df_pred.reset_index().rename(columns={'index':'LSOA_code', pcol:'predictions'})
-    key = next((c for c in df_geo.columns if 'lsoa' in c.lower()), None)
-    return df_geo.merge(dfp, how='left', left_on=key, right_on='LSOA_code')
+# Helper to get a fresh copy of the borough GeoDataFrame
+def get_borough_gdf_copy():
+    return borough_gdf_base.copy()
 
-# --- Map renderer ---
-def render_map(gdfm, col, caption, use_tooltip=True):
+# --- Mode switcher ---
+st.markdown("### Map Display Mode")
+borough_mode = st.radio(
+    "Choose map mode:",
+    ["Show Predicted", "Compare Predicted vs Actual", "Show Historical"],
+    horizontal=True,
+    key="borough_mode_radio"
+)
+
+# Initialize selected_borough in session state if not present
+if "selected_borough" not in st.session_state:
+    st.session_state["selected_borough"] = None
+
+# --- Display logic based on mode ---
+
+# --- Show Predicted (main mode with LSOA drill-down) ---
+if borough_mode == "Show Predicted":
+    st.subheader("London Boroughs Map with Predicted Burglaries")
+    borough_gdf = get_borough_gdf_copy()
+
+    # Calculate borough-level predictions if not already present
+    if 'Burglaries amount' not in borough_gdf.columns:
+        predictions_path = "./model/sample_predictions.parquet"
+        if os.path.exists(predictions_path) and lsoa_df is not None:
+            predictions_df = pd.read_parquet(predictions_path)
+            predictions_df = predictions_df.reset_index()
+            predictions_df.rename(columns={'index': 'LSOA21CD'}, inplace=True)
+            if 'median' in predictions_df.columns:
+                predictions_df.rename(columns={'median': 'predictions'}, inplace=True)
+            elif 'predictions' not in predictions_df.columns:
+                st.error("Predictions file must have a 'median' or 'predictions' column.")
+            merged = pd.merge(predictions_df, lsoa_df, on='LSOA21CD', how='left')
+            merged = merged.dropna(subset=['LAD22NM'])
+            borough_burglaries = merged.groupby('LAD22NM')['predictions'].sum().reset_index()
+            borough_burglaries.rename(columns={'LAD22NM': 'name', 'predictions': 'Burglaries amount'}, inplace=True)
+            borough_gdf = borough_gdf.merge(borough_burglaries, on='name', how='left')
+        else:
+            st.error("Cannot compute borough colors: missing predictions or LSOA lookup.")
+            borough_gdf['Burglaries amount'] = 0  # fallback
+
+    # Color scale using quantiles to reduce outlier effect
+    col_data = borough_gdf['Burglaries amount'].dropna()
+    if col_data.empty:
+        vmin, vmax = 0, 1
+    else:
+        vmin = col_data.min()
+        vmax = col_data.quantile(0.95)
+    cmap = folium.LinearColormap(['green', 'yellow', 'red'], vmin=vmin, vmax=vmax)
+    cmap.caption = 'Predicted Burglaries'
+
     m = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles="cartodbpositron")
-    # Base boundaries
-    GeoJson(
-        gdfm,
-        name="Boundaries",
-        style_function=lambda f: {'fillColor': 'none', 'color': 'gray', 'weight': 1}
+    def style_fn(feature):
+        val = feature['properties'].get('Burglaries amount', 0)
+        return {
+            'fillColor': cmap(val),
+            'color': 'black',
+            'weight': 1,
+            'fillOpacity': 0.7
+        }
+    folium.GeoJson(
+        borough_gdf,
+        name="Boroughs",
+        style_function=style_fn,
+        highlight_function=lambda x: {'weight': 3, 'color': 'blue'},
+        tooltip=folium.GeoJsonTooltip(fields=['name', 'Burglaries amount'])
     ).add_to(m)
+    cmap.add_to(m)
+    map_data = st_folium(m, height=600, width=900, returned_objects=["last_active_drawing"], key="main_borough_map")
 
-    # Choropleth layer if requested
-    if col and col in gdfm.columns:
-        col_data = gdfm[col].dropna().astype(float)
-        if not col_data.empty:
-            # create color map
-            cmap = cm.linear.YlOrRd_09.scale(col_data.min(), col_data.max())
-            cmap.caption = caption
-            def style_fn(feature):
-                raw = feature['properties'].get(col)
-                val = raw if (raw is not None) else 0
-                return {'fillColor': cmap(val), 'color': 'black', 'weight': 0.3, 'fillOpacity': 0.7}
-            layer = GeoJson(
-                gdfm,
-                name=caption,
-                style_function=style_fn
+    # Update selected_borough based on map click
+    if map_data and map_data.get("last_active_drawing"):
+        clicked_geom = shape(map_data["last_active_drawing"]["geometry"])
+        found_borough = None
+        for idx, row in borough_gdf.iterrows():
+            # Use a small tolerance for exact equality comparison of geometries
+            if row['geometry'].equals_exact(clicked_geom, tolerance=1e-6):
+                found_borough = row['name']
+                break
+        if not found_borough: # Fallback if exact_equals fails, use centroid containment
+            pt = clicked_geom.centroid
+            for idx, row in borough_gdf.iterrows():
+                if row['geometry'].contains(pt):
+                    found_borough = row['name']
+                    break
+        
+        if found_borough and found_borough != st.session_state["selected_borough"]:
+            st.session_state["selected_borough"] = found_borough
+            # Rerun the app to update the LSOA map section
+            st.rerun() # This will ensure the LSOA section below updates immediately
+
+    # --- LSOA Details and Route Viewer (ONLY in "Show Predicted" mode) ---
+    selected_borough = st.session_state["selected_borough"]
+    if selected_borough:
+        st.success(f"Selected Borough: {selected_borough}")
+        lsoa_shp_path = f"./data/lsoashape/{selected_borough}.shp"
+        if os.path.exists(lsoa_shp_path):
+            lsoa_gdf = gpd.read_file(lsoa_shp_path).to_crs(epsg=4326)
+            
+            # Merge predictions into LSOA GeoDataFrame
+            pred_col = 'median'
+            df_pred_lsoa = df_pred.reset_index().rename(columns={'index': 'LSOA_code', pred_col: 'predictions'})
+            key = next((c for c in lsoa_gdf.columns if 'lsoa' in c.lower()), None)
+            lsoa_gdf = lsoa_gdf.merge(df_pred_lsoa, how='left', left_on=key, right_on='LSOA_code')
+
+            # Print the predicted burglaries for E01032739 (example specific LSOA)
+            if 'predictions' not in lsoa_gdf.columns:
+                st.error("Predictions column not found in LSOA data.")
+                lsoa_gdf['predictions'] = 0
+            if 'E01032739' in lsoa_gdf[key].values:
+                e01032739_pred = lsoa_gdf[lsoa_gdf[key] == 'E01032739']['predictions'].values[0]
+                st.write(f"Predicted burglaries for E01032739: {e01032739_pred}")
+
+            # Color scale for predictions
+            col_data_lsoa = lsoa_gdf['predictions'].dropna()
+            if col_data_lsoa.empty:
+                vmin_lsoa, vmax_lsoa = 0, 1
+            else:
+                vmin_lsoa = col_data_lsoa.min()
+                vmax_lsoa = col_data_lsoa.quantile(0.95)
+            cmap_lsoa = folium.LinearColormap(['green', 'yellow', 'red'], vmin=vmin_lsoa, vmax=vmax_lsoa)
+            cmap_lsoa.caption = 'Predicted Burglaries (LSOA)'
+
+            # Checkbox for patrol route, unique key for this specific LSOA map
+            checkbox_key = f"show_route_checkbox_{selected_borough}_predicted"
+            show_route = st.checkbox(
+                "Show patrol route for this borough",
+                value=st.session_state.get(checkbox_key, False),
+                key=checkbox_key
             )
-            if use_tooltip:
-                layer.add_child(GeoJsonTooltip(fields=[col], aliases=[caption], localize=True))
-            layer.add_to(m)
-            cmap.add_to(m)
 
-    # Routes overlay for Borough/Ward
-    if geo_level in routes_folders:
-        for fn in os.listdir(routes_folders[geo_level]):
-            if fn.lower().endswith('.shp'):
-                rg = gpd.read_file(os.path.join(routes_folders[geo_level], fn)).to_crs(epsg=4326)
-                GeoJson(
-                    rg,
-                    name="Police Routes",
-                    style_function=lambda _: {'color': 'blue', 'weight': 2}
-                ).add_to(m)
-
-    LayerControl().add_to(m)
-    return m
-
-# --- Display logic ---
-gdfp = prepare_pred(gdf)
-if view_mode == "Prediction (Current Month)":
-    st.subheader("Predicted Burglaries")
-    folium_static(render_map(gdfp, 'predictions', 'Predicted Burglaries'), height=600)
-elif view_mode == "Actual (One Past Month)" and sel1:
-    if geo_level == 'LSOA':
-        dfm = get_month_df(df_recent, sel1)
-        key = next((c for c in gdf.columns if 'lsoa' in c.lower()), None)
-        g = gdf.merge(dfm, how='left', left_on=key, right_on='LSOA_code')
-        st.subheader(f"Actual Burglaries - {sel1}")
-        folium_static(render_map(g, sel1, f"Actual {sel1}"), height=600)
+            if show_route:
+                borough_route_name = selected_borough.lower().replace(" ", "_")
+                route_html_path = f"./routes/borough_routes/{borough_route_name}.html"
+                if os.path.exists(route_html_path):
+                    with open(route_html_path, "r", encoding="utf-8") as f:
+                        route_html = f.read()
+                    st.markdown("**Patrol Route Map for this Borough:**")
+                    components.html(route_html, height=600, scrolling=True)
+                else:
+                    st.warning(f"No patrol route HTML found for {selected_borough} in ./routes/borough_routes/")
+            else:
+                # Map centered on borough
+                centroid = lsoa_gdf.geometry.union_all().centroid
+                m_borough = folium.Map(location=[centroid.y, centroid.x], zoom_start=12, tiles="cartodbpositron")
+                def lsoa_style_fn(feature):
+                    val = feature['properties'].get('predictions', 0)
+                    return {
+                        'fillColor': cmap_lsoa(val),
+                        'color': 'black',
+                        'weight': 0.5,
+                        'fillOpacity': 0.7
+                    }
+                folium.GeoJson(
+                    lsoa_gdf,
+                    name="LSOAs",
+                    style_function=lsoa_style_fn,
+                    tooltip=folium.GeoJsonTooltip(fields=[key, 'predictions'], aliases=['LSOA', 'Predicted Burglaries'])
+                ).add_to(m_borough)
+                cmap_lsoa.add_to(m_borough)
+                folium.LayerControl().add_to(m_borough)
+                st_folium(m_borough, height=600, width=900, key=f"lsoa_map_{selected_borough}_predicted") # Unique key
+        else:
+            st.warning(f"No LSOA shapefile found for {selected_borough} in ./data/lsoashape/")
     else:
-        st.subheader(f"{geo_level} Map and Routes")
-        folium_static(render_map(gdf, None, f"{geo_level} Boundaries"), height=600)
-elif view_mode == "Compare Two Past Months" and sel1 and sel2:
-    if geo_level == 'LSOA':
-        # Compare two months side by side using columns
-        df1 = get_month_df(df_recent, sel1)
-        df2 = get_month_df(df_recent, sel2)
-        # merge both months into one DF
-        df_comb = pd.merge(df1, df2, on='LSOA_code', how='outer')
-        key = next((c for c in gdf.columns if 'lsoa' in c.lower()), None)
-        g12 = gdf.merge(df_comb, how='left', left_on=key, right_on='LSOA_code')
-        col1, col2 = st.columns(2)
-        with col1:
-            st.subheader(sel1)
-            folium_static(render_map(g12, sel1, sel1, use_tooltip=False), height=600)
-        with col2:
-            st.subheader(sel2)
-            folium_static(render_map(g12, sel2, sel2, use_tooltip=False), height=600)
-    else:
-        st.subheader(f"{geo_level} Map and Routes")
-        folium_static(render_map(gdf, None, f"{geo_level} Boundaries"), height=600)
+        st.info("Click a borough on the map above to see its LSOAs and predicted crime.")
 
-# --- Route Viewer for HTML maps ---
-    st.markdown(f"## 🚓 {geo_level} Police Routes Viewer 🗺️")
-    import streamlit.components.v1 as components
-    htmls = {f.replace('.html','').title():f for f in os.listdir(routes_folders[geo_level]) if f.endswith('.html')}
-    sel = st.selectbox(f"Select {geo_level} Route", sorted(htmls.keys()))
-    if sel:
-        components.html(
-            open(os.path.join(routes_folders[geo_level], htmls[sel]), 'r', encoding='utf-8').read(),
-            height=600, scrolling=True
-        )
+# --- Compare Predicted vs Actual ---
+elif borough_mode == "Compare Predicted vs Actual":
+    st.subheader("Compare Predicted vs Actual Burglaries by Borough")
+    st.info("This section shows a side-by-side comparison of predicted and actual burglaries for the latest available month.")
+
+    borough_gdf_pred_display = get_borough_gdf_copy()
+    borough_gdf_actual_display = get_borough_gdf_copy()
+
+    # Calculate predicted borough-level data
+    predictions_path = "./model/sample_predictions.parquet"
+    if os.path.exists(predictions_path) and lsoa_df is not None:
+        predictions_df = pd.read_parquet(predictions_path)
+        predictions_df = predictions_df.reset_index()
+        predictions_df.rename(columns={'index': 'LSOA21CD'}, inplace=True)
+        if 'median' in predictions_df.columns:
+            predictions_df.rename(columns={'median': 'predictions'}, inplace=True)
+        elif 'predictions' not in predictions_df.columns:
+            st.error("Predictions file must have a 'median' or 'predictions' column.")
+        merged_pred = pd.merge(predictions_df, lsoa_df, on='LSOA21CD', how='left')
+        merged_pred = merged_pred.dropna(subset=['LAD22NM'])
+        borough_burglaries_pred = merged_pred.groupby('LAD22NM')['predictions'].sum().reset_index()
+        borough_burglaries_pred.rename(columns={'LAD22NM': 'name', 'predictions': 'Predicted Burglaries'}, inplace=True)
+        borough_gdf_pred_display = borough_gdf_pred_display.merge(borough_burglaries_pred, on='name', how='left')
+    else:
+        st.error("Cannot compute predicted borough colors: missing predictions or LSOA lookup.")
+        borough_gdf_pred_display['Predicted Burglaries'] = 0  # fallback
+
+    # Calculate actual borough-level data for the latest month
+    latest_month = df_recent['year_month'].max()
+    df_actual = df_recent[df_recent['year_month'] == latest_month]
+    if lsoa_df is not None and 'LAD22NM' in lsoa_df.columns:
+        lsoa_actual = df_actual.merge(lsoa_df, left_on='LSOA_code', right_on='LSOA21CD', how='left')
+        borough_actual = lsoa_actual.groupby('LAD22NM')['Burglaries amount'].sum().reset_index()
+        borough_actual.rename(columns={'LAD22NM': 'name', 'Burglaries amount': 'Actual Burglaries'}, inplace=True)
+        borough_gdf_actual_display = borough_gdf_actual_display.merge(borough_actual, on='name', how='left')
+    else:
+        borough_gdf_actual_display['Actual Burglaries'] = 0
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**Predicted Burglaries**")
+        col_data_pred = borough_gdf_pred_display['Predicted Burglaries'].dropna()
+        vmin_pred = col_data_pred.min() if not col_data_pred.empty else 0
+        vmax_pred = col_data_pred.quantile(0.95) if not col_data_pred.empty else 1
+        cmap_pred = folium.LinearColormap(['green', 'yellow', 'red'], vmin=vmin_pred, vmax=vmax_pred)
+        cmap_pred.caption = 'Predicted Burglaries'
+        m_pred = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles="cartodbpositron")
+        folium.GeoJson(
+            borough_gdf_pred_display,
+            name="Boroughs",
+            style_function=lambda f: {
+                'fillColor': cmap_pred(f['properties'].get('Predicted Burglaries', 0)),
+                'color': 'black', 'weight': 1, 'fillOpacity': 0.7
+            },
+            tooltip=folium.GeoJsonTooltip(fields=['name', 'Predicted Burglaries'])
+        ).add_to(m_pred)
+        cmap_pred.add_to(m_pred)
+        st_folium(m_pred, height=500, width=450, key="compare_pred_borough_map")
+
+    with col2:
+        st.markdown(f"**Actual Burglaries ({latest_month})**")
+        col_data_actual = borough_gdf_actual_display['Actual Burglaries'].dropna()
+        vmin_actual = col_data_actual.min() if not col_data_actual.empty else 0
+        vmax_actual = col_data_actual.quantile(0.95) if not col_data_actual.empty else 1
+        cmap_actual = folium.LinearColormap(['green', 'yellow', 'red'], vmin=vmin_actual, vmax=vmax_actual)
+        cmap_actual.caption = 'Actual Burglaries'
+        m_actual = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles="cartodbpositron")
+        folium.GeoJson(
+            borough_gdf_actual_display,
+            name="Boroughs",
+            style_function=lambda f: {
+                'fillColor': cmap_actual(f['properties'].get('Actual Burglaries', 0)),
+                'color': 'black', 'weight': 1, 'fillOpacity': 0.7
+            },
+            tooltip=folium.GeoJsonTooltip(fields=['name', 'Actual Burglaries'])
+        ).add_to(m_actual)
+        cmap_actual.add_to(m_actual)
+        st_folium(m_actual, height=500, width=450, key="compare_actual_borough_map")
+
+# --- Show Historical ---
+elif borough_mode == "Show Historical":
+    st.subheader("Historical Burglaries by Borough")
+    st.info("This section shows actual burglaries by borough for a selected month.")
+
+    borough_gdf_hist_display = get_borough_gdf_copy()
+
+    hist_month = st.selectbox("Select Month", avail_year_months, key="borough_hist_month")
+    df_hist_month = df_recent[df_recent['year_month'] == hist_month]
+    if lsoa_df is not None and 'LAD22NM' in lsoa_df.columns:
+        lsoa_actual_hist = df_hist_month.merge(lsoa_df, left_on='LSOA_code', right_on='LSOA21CD', how='left')
+        borough_actual_hist = lsoa_actual_hist.groupby('LAD22NM')['Burglaries amount'].sum().reset_index()
+        borough_actual_hist.rename(columns={'LAD22NM': 'name', 'Burglaries amount': 'Actual Burglaries'}, inplace=True)
+        borough_gdf_hist_display = borough_gdf_hist_display.merge(borough_actual_hist, on='name', how='left')
+    else:
+        borough_gdf_hist_display['Actual Burglaries'] = 0
+
+    col_data_hist = borough_gdf_hist_display['Actual Burglaries'].dropna()
+    vmin_hist = col_data_hist.min() if not col_data_hist.empty else 0
+    vmax_hist = col_data_hist.quantile(0.95) if not col_data_hist.empty else 1
+    cmap_hist = folium.LinearColormap(['green', 'yellow', 'red'], vmin=vmin_hist, vmax=vmax_hist)
+    cmap_hist.caption = f'Actual Burglaries ({hist_month})'
+    m_hist = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles="cartodbpositron")
+    folium.GeoJson(
+        borough_gdf_hist_display,
+        name="Boroughs",
+        style_function=lambda f: {
+            'fillColor': cmap_hist(f['properties'].get('Actual Burglaries', 0)),
+            'color': 'black', 'weight': 1, 'fillOpacity': 0.7
+        },
+        tooltip=folium.GeoJsonTooltip(fields=['name', 'Actual Burglaries'])
+    ).add_to(m_hist)
+    cmap_hist.add_to(m_hist)
+    st_folium(m_hist, height=600, width=900, key="hist_borough_map")
