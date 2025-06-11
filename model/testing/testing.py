@@ -184,8 +184,8 @@ class PredictionTester:
         sigma = df_samples.std(axis=1).clip(lower=epsilon)
 
         # (3) Observed per‐LSOA counts (Series indexed as df_samples)
-        obs_df = self.get_mean_predictions()
-        x_obs = obs_df["mean"]
+        obs_df = self.get_median_predictions()
+        x_obs = obs_df["median"]
 
         # (4) Vectorized CRPS for a Normal(mu,sigma) at x_obs
         z = (x_obs - mu) / sigma
@@ -272,7 +272,7 @@ class StatisticalTester:
             self.X_spatial
         )
 
-    def _summarize_factor(self, factor: str) -> pd.DataFrame:
+    def _summarize_factor(self, factor: str, alpha: float = 0.05) -> pd.DataFrame:
         """
         Compute posterior mean, 95% CI, two‐sided p‐value, and 'significant_CI' flag
         for each coefficient in `factor`. Returns a DataFrame with columns:
@@ -301,8 +301,8 @@ class StatisticalTester:
 
         # 1) Posterior mean, 95% CI
         mean_vals = samples.mean(dim=0)   # shape: (n_cols,)
-        lower_vals = torch.quantile(samples, 0.025, dim=0)
-        upper_vals = torch.quantile(samples, 0.975, dim=0)
+        lower_vals = torch.quantile(samples, alpha / 2, dim=0)
+        upper_vals = torch.quantile(samples, 1- alpha / 2, dim=0)
 
         # 2) Two‐sided “p‐value” = 2 * min(P(β>0), P(β<0))
         prop_pos = (samples > 0.0).float().mean(dim=0)
@@ -330,7 +330,7 @@ class StatisticalTester:
         df = pd.DataFrame(rows)
         return df.sort_values("p_val").reset_index(drop=True)
 
-    def evaluate_all(self, save_dir: str = None) -> Dict[str, pd.DataFrame]:
+    def evaluate_all(self, save_dir: str = None, alpha: float = 0.05) -> Dict[str, pd.DataFrame]:
         """
         For each factor in factors_map, run _summarize_factor and collect results in a dict.
         If save_dir is provided, save each factor's DataFrame to "{save_dir}/{factor}_summary.csv".
@@ -342,7 +342,7 @@ class StatisticalTester:
 
         results = {}
         for factor in self.factors_map.keys():
-            df_factor = self._summarize_factor(factor)
+            df_factor = self._summarize_factor(factor, alpha)
             results[factor] = df_factor
             if save_dir is not None:
                 path = f"{save_dir}/{factor}_summary.csv"

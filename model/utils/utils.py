@@ -25,9 +25,10 @@ def downcast_numeric(df: pd.DataFrame) -> pd.DataFrame:
 
         if not any(df.select_dtypes(include=[number_type]).columns):
             raise ValueError(f"No {number_type} columns found in DataFrame.")
-        
+
         number_cols = df.select_dtypes(include=[number_type]).columns
-        df[number_cols] = (df[number_cols].apply(pd.to_numeric, downcast=number_type))
+        df[number_cols] = (df[number_cols].apply(
+            pd.to_numeric, downcast=number_type))
 
     return df
 
@@ -92,3 +93,19 @@ def get_device() -> torch.device:
     This is useful to ensure consistency across different parts of the code.
     """
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def last_n_time_splits(df: pd.DataFrame,
+                       time_col: str = "time_s",
+                       n_splits: int = 12):
+    results = []
+    results.extend(
+        (
+            df.query(f"{time_col} < {time_vallue}").copy(),
+            df.query(f"{time_col} == {time_vallue}").copy(),
+        )
+        for time_vallue in df.sort_values(time_col)[time_col]
+        .unique()
+        .tolist()[-n_splits:]
+    )
+    return results

@@ -17,8 +17,12 @@ def create_all_features(gdf: gpd.GeoDataFrame, static, dynamic) -> gpd.GeoDataFr
             (gdf['period'].dt.year - t0.year) * 12
             + (gdf['period'].dt.month - t0.month)
         )
+        time_idexs2 = time_idx ** 2
+        time_idxlog = np.log1p(time_idx)
         # center & scale
         gdf['time_s'] = (time_idx - time_idx.mean()) / time_idx.std()
+        gdf['time_s2'] = (time_idexs2 - time_idexs2.mean()) / time_idexs2.std()
+        gdf['time_log'] = (time_idxlog - time_idxlog.mean()) / time_idxlog.std()
 
     # Create seasonal features
     with detect_new_columns(gdf) as seasonal_features:
