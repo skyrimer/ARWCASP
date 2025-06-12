@@ -2,6 +2,8 @@ import copy
 from typing import Dict, List
 import random
 import time
+import pandas as pd
+import numpy as np
 import pyro
 from pyro.infer import Predictive
 import torch
@@ -391,3 +393,54 @@ def projection_predictive_selection(
             break
 
     return selected
+def apply_correlation_filter_and_corona_interactions(
+    model_function,
+    train_df: pd.DataFrame,
+    val_df: pd.DataFrame,
+    candidate_features: Dict[str, list],
+    device,
+    num_steps: int = 500,
+    lr: float = 1e-3,
+    guide_type: str = "diag",
+    verbose: bool = False,
+    max_features: int | None = None,
+    print_progress: bool = True,
+    debug_random: bool = False,
+    debug_time: float = 30.0,
+    threshold: float = 0.1,
+    corona_col: str | None = "during_corona",
+) -> tuple[pd.DataFrame, Dict[str, list]]:
+    """Filter candidate features by correlation and add corona interactions.
+
+    Only ``train_df``, ``candidate_features``, ``threshold`` and ``corona_col``
+    are used. The remaining parameters are accepted for compatibility with
+    :func:`forward_feature_selection`.
+    """
+
+    gdf = train_df.copy()
+    groups = [
+        "static",
+        "dynamic",
+        "seasonal",
+        "time_trend",
+        "temporal",
+        "spatial",
+    ]
+
+    selected: Dict[str, list] = {g: [] for g in groups}
+
+    for group in groups:
+        feats = candidate_features.get(group, [])
+        for feat in feats:
+            if feat not in gdf.columns:
+                continue
+            corr = gdf[feat].corr(gdf["burglaries"])
+            if pd.isna(corr) or abs(corr) < threshold:
+                continue
+            selected[group].append(feat)
+            if corona_col is not None and corona_col in gdf.columns:
+                inter = f"{feat}_x_{corona_col}"
+                gdf[inter] = gdf[feat] * gdf[corona_col]
+                selected[group].append(inter)
+
+    return gdf, selected
