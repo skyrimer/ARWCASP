@@ -5,8 +5,30 @@ import geopandas as gpd
 
 def get_boroughs():
     """
-    Returns a list of boroughs in London.
+    Returns a list of boroughs in London, using the shapefile if possible.
     """
+    shapefile_path = "../data/London_Boroughs.gpkg"
+    try:
+        gdf = gpd.read_file(shapefile_path)
+        # Try to find the column with borough names
+        name_col = None
+        for col in gdf.columns:
+            if col.lower() in ["name", "borough", "borough_name"]:
+                name_col = col
+                break
+        if not name_col:
+            # Fallback: use the first string column
+            for col in gdf.columns:
+                if gdf[col].dtype == object:
+                    name_col = col
+                    break
+        if name_col:
+            boroughs = list(gdf[name_col].unique())
+            boroughs = [str(b) for b in boroughs if isinstance(b, str)]
+            return boroughs
+    except Exception as e:
+        print(f"Could not load boroughs from shapefile: {e}")
+    # Fallback to hardcoded list
     return [
         "Barking and Dagenham",
         "Barnet",

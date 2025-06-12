@@ -35,12 +35,13 @@ LSOA_MAJORITY_AREA_THRESHOLD = 0.3 # Percentage of LSOA area that must be within
 
 # --- IMPORTANT: Configure your LSOA Shapefile Path here ---
 LSOA_SHAPEFILE_PATH = "../data/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BSC_V4.gpkg"
+BOROUGH_SHAPEFILE_PATH = "../data/London_Boroughs.gpkg" 
 
 # --- 1. Geospatial Data Acquisition and Preprocessing ---
 
 def download_area_boundary(area_name):
     """
-    Downloads the boundary of the specified London area using OSMnx.
+    Downloads the boundary of the specified London area using OSMnx or shapefile for boroughs.
     Args:
         area_name (str): The name of the area to download.
     Returns:
@@ -55,38 +56,33 @@ def download_area_boundary(area_name):
     ]
     for borough in boroughs:
         if area_name.lower().strip() == borough.lower():
-            # Try OSMnx's boundaries_from_place with the borough name and admin_level=10 (London boroughs)
-            queries = [
-                f"London Borough of {borough}, England, United Kingdom",
-                f"{borough}, London, UK"
-            ]
-            for place_query in queries:
-                print(f"1. Downloading boundary for: {place_query} ...")
-                try:
-                    if isinstance(place_query, dict):
-                        # Use geometries_from_place for Overpass dict queries
-                        gdf = ox.features_from_place("London, England, United Kingdom", place_query)
-                        # Filter to polygons only and dissolve to a single geometry
-                        gdf = gdf[gdf.geometry.type.isin(["Polygon", "MultiPolygon"])]
-                        if not gdf.empty:
-                            area_gdf = gpd.GeoDataFrame(geometry=[gdf.unary_union], crs="EPSG:4326")
-                        else:
-                            continue
-                    else:
-                        area_gdf = ox.geocode_to_gdf(place_query)
+            # Use shapefile for boroughs instead of OSMnx
+            print(f"1. Loading borough boundary from shapefile for: {borough} ...")
+            try:
+                boroughs_gdf = gpd.read_file(BOROUGH_SHAPEFILE_PATH)
+                # Try to match by name (case-insensitive)
+                match = boroughs_gdf[boroughs_gdf['name'].str.lower() == borough.lower()]
+                if match.empty:
+                    # Try alternative column names if needed
+                    possible_cols = [col for col in boroughs_gdf.columns if 'name' in col.lower()]
+                    for col in possible_cols:
+                        match = boroughs_gdf[boroughs_gdf[col].str.lower() == borough.lower()]
+                        if not match.empty:
+                            break
+                if not match.empty:
+                    area_gdf = match.copy()
+                    area_gdf = area_gdf.set_crs(epsg=4326)
                     area_gdf_projected = area_gdf.to_crs(epsg=27700)
                     area_km2 = area_gdf_projected.geometry.area.sum() / 1e6
-                    if not area_gdf.empty and area_km2 > 2 and area_km2 < 20000:  # Require at least 2 km² for a borough
-                        area_gdf = area_gdf.set_crs(epsg=4326)
-                        print(f"   Area boundary downloaded. CRS: {area_gdf.crs}")
-                        print(f"   Approximate Area: {area_km2:.2f} km² (in projected CRS)")
-                        return area_gdf
-                    else:
-                        print(f"   Query returned area too small ({area_km2:.2f} km²), trying next query...")
-                except Exception as e:
-                    print(f"   Query failed: {e}")
-            print(f"Error: Could not find a valid boundary for borough '{borough}'.")
-            return None
+                    print(f"   Area boundary loaded from shapefile. CRS: {area_gdf.crs}")
+                    print(f"   Approximate Area: {area_km2:.2f} km² (in projected CRS)")
+                    return area_gdf
+                else:
+                    print(f"   Could not find borough '{borough}' in shapefile. Falling back to OSMnx.")
+            except Exception as e:
+                print(f"   Error loading borough shapefile: {e}. Falling back to OSMnx.")
+            # If not found in shapefile, fallback to OSMnx below
+
     # For wards or other names, fallback to previous logic
     if "london" not in area_name.lower():
         area_name = area_name + ", London, UK"
@@ -104,7 +100,7 @@ def download_area_boundary(area_name):
 
 def load_and_filter_lsoa_boundaries(lsoa_file_path, area_gdf, majority_threshold=LSOA_MAJORITY_AREA_THRESHOLD):
     """
-    Loads LSOA boundaries from a geopackage file and filters them to the specified area,
+    Loads LSOA boundaries from a geopackage file or per-borough shapefile and filters them to the specified area,
     retaining only LSOAs where a majority of their area is within the target area.
     Assigns random crime rates to the filtered LSOAs.
     Args:
@@ -114,6 +110,31 @@ def load_and_filter_lsoa_boundaries(lsoa_file_path, area_gdf, majority_threshold
     Returns:
         geopandas.GeoDataFrame: GeoDataFrame of LSOAs within the area with random crime rates.
     """
+    # Try to use per-borough LSOA shapefile if available
+    area_name_for_log = area_gdf['name'].iloc[0] if 'name' in area_gdf.columns else "the specified area"
+    borough_shapefile_path = None
+    if 'name' in area_gdf.columns:
+        borough_name = area_gdf['name'].iloc[0]
+        borough_shapefile_path = f"../data/lsoashape/{borough_name}.shp"
+        if not os.path.exists(borough_shapefile_path):
+            # Try with underscores (for e.g. "Kingston upon Thames" -> "Kingston_upon_Thames.shp")
+            borough_shapefile_path = f"../data/lsoashape/{borough_name.replace(' ', '_')}.shp"
+        if not os.path.exists(borough_shapefile_path):
+            borough_shapefile_path = None
+
+    if borough_shapefile_path and os.path.exists(borough_shapefile_path):
+        print(f"2. Loading LSOA boundaries from per-borough shapefile: {borough_shapefile_path}")
+        try:
+            lsoas_gdf = gpd.read_file(borough_shapefile_path)
+            lsoas_gdf = lsoas_gdf.to_crs(epsg=4326)
+            print(f"   Loaded {len(lsoas_gdf)} LSOAs from {borough_shapefile_path}.")
+            # Add dummy crime_rate column if not present (will be merged later)
+            if 'crime_rate' not in lsoas_gdf.columns:
+                lsoas_gdf['crime_rate'] = np.nan
+            return lsoas_gdf
+        except Exception as e:
+            print(f"   Error loading per-borough LSOA shapefile: {e}. Falling back to default LSOA file.")
+
     # Improved logging for area name
     area_name_for_log = area_gdf['name'].iloc[0] if 'name' in area_gdf.columns else "the specified area"
     print(f"2. Loading LSOA boundaries from: {lsoa_file_path} and filtering to {area_name_for_log}...")
@@ -337,7 +358,7 @@ def select_waypoints_from_lsoas(lsoas_gdf, G):
 
         num_points_for_this_lsoa = calculate_points(lsoa_area_sqm, factor, lsoas_gdf.loc[idx, 'crime_rate'])
         
-        #print(f"   Generating {num_points_for_this_lsoa} points in LSOA: {lsoa_row['LSOA21NM']} (Area: {lsoa_area_sqm/1e6:.2f} km², Crime Rate: {lsoa_row['crime_rate']:.2f})")
+        #print(f"   Generating {num_points_for_this_lsoa} points in LSOA: {lsoa_row['LSOA21NM']} (Area: {lsoa_area_sqm/1e6:.2f} km², Crime Rate: {lsoas_row['crime_rate']:.2f})")
         
         # Ensure the LSOA geometry is valid before generating points (use original CRS for random point generation)
         lsoas_polygon_geographic = lsoa_row.geometry
