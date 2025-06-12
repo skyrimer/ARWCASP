@@ -1,6 +1,7 @@
 import copy
 from typing import Dict, List
-
+import random
+import time
 import pyro
 from pyro.infer import Predictive
 import torch
@@ -13,12 +14,15 @@ def forward_feature_selection(
     val_df,
     candidate_features: Dict[str, List[str]],
     device,
-    num_steps: int = 200,
+    num_steps: int = 500,
     lr: float = 1e-3,
     guide_type: str = "diag",
     verbose: bool = False,
     max_features: int | None = None,
     print_progress: bool = True,
+    debug_random:bool = False,
+    debug_time:float = 30.0,
+
 ):
     """Greedy forward selection of features using validation loss.
 
@@ -66,6 +70,21 @@ def forward_feature_selection(
 
     selected = {g: [] for g in groups}
     remaining = {g: candidate_features.get(g, []).copy() for g in groups}
+    if debug_random:
+        candidate_groups = [g for g, feats in remaining.items() if feats]
+        empty_group = random.choice(candidate_groups) if candidate_groups else None
+        end_time = time.time() + debug_time
+        while time.time() < end_time:
+            available_groups = [
+                g for g, feats in remaining.items() if feats and g != empty_group
+            ]
+            if not available_groups:
+                break
+            g = random.choice(available_groups)
+            feat = random.choice(remaining[g])
+            selected[g].append(feat)
+            remaining[g].remove(feat)
+        return selected
 
     def evaluate(current: Dict[str, List[str]]) -> float:
         pyro.clear_param_store()
@@ -94,7 +113,13 @@ def forward_feature_selection(
             stds,
             train_ds["ward_idx"].cpu().numpy(),
         )
-        val_loss = svi.evaluate_loss(
+        predictive = Predictive(
+            model_function,
+            guide=svi.guide,
+            num_samples=1,
+            return_sites=["obs"],
+        )
+        pred = predictive(
             val_ds["occupation_idx"],
             val_ds["ward_idx"],
             val_ds["X_static"],
@@ -103,11 +128,11 @@ def forward_feature_selection(
             val_ds["X_time_trend"],
             val_ds["X_temporal"],
             val_ds["X_spatial"],
-            val_ds["y"],
-        )
-        return float(val_loss)
+        )["obs"].float().mean(0)
+        rmse = torch.sqrt(torch.mean((pred - val_ds["y"].float()) ** 2))
+        return float(rmse)
 
-    best_loss = evaluate(selected)
+    best_rmse = evaluate(selected)
     improved = True
 
     def total_selected() -> int:
@@ -115,7 +140,7 @@ def forward_feature_selection(
 
     while improved:
         improved = False
-        current_best = best_loss
+        current_best = best_rmse
         best_group = None
         best_feat = None
 
@@ -123,21 +148,21 @@ def forward_feature_selection(
             for feat in list(remaining[group]):
                 trial = {k: v.copy() for k, v in selected.items()}
                 trial[group].append(feat)
-                loss = evaluate(trial)
+                score = evaluate(trial)
                 if verbose:
-                    print(f"{group}:{feat} -> {loss:.2f}")
-                if loss < current_best:
-                    current_best = loss
+                    print(f"{group}:{feat} -> {score:.2f}")
+                if score < current_best:
+                    current_best = score
                     best_group = group
                     best_feat = feat
 
         if best_feat is not None:
             selected[best_group].append(best_feat)
             remaining[best_group].remove(best_feat)
-            best_loss = current_best
+            best_rmse = current_best
             improved = True
         if print_progress:
-            print(f"Selected {best_group}:{best_feat} -> {best_loss:.2f}")
+            print(f"Selected {best_group}:{best_feat} -> {best_rmse:.2f}")
 
         if max_features is not None and total_selected() >= max_features:
             break

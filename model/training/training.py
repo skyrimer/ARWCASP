@@ -107,6 +107,7 @@ def prepare_model_data(
     X = df[feat_cols].values.astype(np.float32)
     means = X.mean(axis=0) if means is None else means
     stds = X.std(axis=0) if stds is None else stds
+    stds = np.where(stds == 0, 1, stds)
     X = (X - means) / stds
 
     return {
