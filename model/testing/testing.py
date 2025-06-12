@@ -44,7 +44,7 @@ class PredictionTester:
             model=self.model,
             guide=self.guide,
             num_samples=num_samples,
-            return_sites=["obs"]
+            return_sites=["obs", "lam"]
         )
         self.predictions = predictive(
             self.occupation_idx,

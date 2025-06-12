@@ -218,7 +218,7 @@ if __name__ == "__main__":
 
     print("Download completed.")
 
-    # download_files(urls, os.path.join("data", "raw_download"))
+    download_files(urls, os.path.join("data", "raw_download"))
     preprocess_files(os.path.join("data", "relevant_data"),
                      os.path.join("processed_data"))
     

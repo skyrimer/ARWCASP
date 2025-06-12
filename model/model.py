@@ -129,6 +129,7 @@ def burglary_model(
             # to a reasonable range before exponentiation
             mu  = torch.exp(eta.clamp(-10, 10))
             # Sample from Poisson distribution with observed data
+            pyro.deterministic("lam", mu) 
             pyro.sample("obs", dist.Poisson(mu), obs=y[i])
     else:
         with pyro.plate("data", N):
@@ -140,4 +141,5 @@ def burglary_model(
                 + (X_temporal * b_temporal).sum(-1) \
                 + (X_spatial * b_spatial).sum(-1)  
             mu  = torch.exp(eta.clamp(-10, 10))
+            pyro.deterministic("lam", mu) 
             pyro.sample("obs", dist.Poisson(mu), obs=y if y is not None else None)

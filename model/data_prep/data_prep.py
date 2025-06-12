@@ -75,7 +75,7 @@ def prepare_all_data(path: str, occupation_type: Literal["lsoa", "msoa", "boroug
     Prepare all data by reading, converting occupation to indices,
     and extracting static and dynamic columns.
     """
-    gdf = get_raw_data(path, occupation_type)
+    gdf = get_raw_data(path, occupation_type).drop(columns="Crime Rank (where 1 is most deprived)")
 
     gdf, ward_to_code, code_to_ward = add_ward_idx(gdf)
     gdf, name_to_code, code_to_name = convert_occupation_to_idx(gdf)
