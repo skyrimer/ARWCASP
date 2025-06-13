@@ -555,7 +555,7 @@ if borough_mode == "Show Predicted":
                             with col_pie2:
                                 fig2, ax2 = plt.subplots()
                                 ax2.pie(ethnic_vals, labels=ethnic_labels, autopct='%1.1f%%', startangle=90)
-                                ax2.set_title("Ethnic Group")
+                                fig2.suptitle("Ethnic Group")
                                 st.pyplot(fig2)
 
                             with col_pie3:
@@ -574,7 +574,7 @@ if borough_mode == "Show Predicted":
                             with col_pie5:
                                 fig5, ax5 = plt.subplots()
                                 ax5.pie(tenure_vals, labels=tenure_labels, autopct='%1.1f%%', startangle=90)
-                                ax5.set_title("Tenure")
+                                fig5.suptitle("Tenure")
                                 st.pyplot(fig5)
 
                             with col_pie6:
@@ -598,7 +598,7 @@ if borough_mode == "Show Predicted":
 # --- Compare Predicted vs Actual ---
 elif borough_mode == "Compare Predicted vs Actual":
     st.subheader("Compare Predicted vs Actual Burglaries by Borough")
-    st.info("This section shows a side-by-side comparison of predicted and actual burglaries for the latest available month.")
+    st.info("This section shows a side-by-side comparison of predicted (next month) and actual burglaries for the latest available month.")
 
     borough_gdf_pred_display = get_borough_gdf_copy()
     borough_gdf_actual_display = get_borough_gdf_copy()
@@ -660,7 +660,13 @@ elif borough_mode == "Compare Predicted vs Actual":
             style_function=style_function_pred,
             tooltip=folium.GeoJsonTooltip(fields=['name', 'Predicted Burglaries'])
         ).add_to(m_pred)
-        st_folium(m_pred, height=500, width=450, key="compare_pred_borough_map")
+        pred_map_data = st_folium(
+            m_pred,
+            height=500,
+            width=450,
+            returned_objects=["last_active_drawing"],
+            key="compare_pred_borough_map"
+        )
 
     with col2:
         st.markdown(f"**Actual Burglaries ({latest_month})**")
@@ -687,8 +693,119 @@ elif borough_mode == "Compare Predicted vs Actual":
             style_function=style_function_actual,
             tooltip=folium.GeoJsonTooltip(fields=['name', 'Actual Burglaries'])
         ).add_to(m_actual)
-        st_folium(m_actual, height=500, width=450, key="compare_actual_borough_map")
+        actual_map_data = st_folium(
+            m_actual,
+            height=500,
+            width=450,
+            returned_objects=["last_active_drawing"],
+            key="compare_actual_borough_map"
+        )
 
+    # --- Borough selection and LSOA map display ---
+    selected_compare_borough = None
+    # Prefer click on predicted map, fallback to actual map
+    if pred_map_data and pred_map_data.get("last_active_drawing"):
+        map_data = pred_map_data
+    else:
+        map_data = actual_map_data
+    if map_data and map_data.get("last_active_drawing"):
+        clicked_geom = shape(map_data["last_active_drawing"]["geometry"])
+        for idx, row in borough_gdf_pred_display.iterrows():
+            if row['geometry'].equals_exact(clicked_geom, tolerance=1e-6):
+                selected_compare_borough = row['name']
+                break
+        if not selected_compare_borough:
+            pt = clicked_geom.centroid
+            for idx, row in borough_gdf_pred_display.iterrows():
+                if row['geometry'].contains(pt):
+                    selected_compare_borough = row['name']
+                    break
+
+    if selected_compare_borough:
+        st.success(f"Selected Borough: {selected_compare_borough}")
+        lsoa_shp_path = f"./data/lsoashape/{selected_compare_borough}.shp"
+        if os.path.exists(lsoa_shp_path):
+            lsoa_gdf = gpd.read_file(lsoa_shp_path).to_crs(epsg=4326)
+            # Merge predictions into LSOA GeoDataFrame
+            pred_col = 'median'
+            df_pred_lsoa = df_pred.reset_index().rename(columns={'index': 'LSOA_code', pred_col: 'predictions'})
+            key = next((c for c in lsoa_gdf.columns if 'lsoa' in c.lower()), None)
+            lsoa_gdf = lsoa_gdf.merge(df_pred_lsoa, how='left', left_on=key, right_on='LSOA_code')
+            # Prepare actuals for the latest month
+            lsoa_actuals = df_actual[df_actual['LSOA_code'].isin(lsoa_gdf[key])]
+            lsoa_gdf = lsoa_gdf.merge(
+                lsoa_actuals[['LSOA_code', 'Burglaries amount']],
+                how='left',
+                left_on='LSOA_code',
+                right_on='LSOA_code',
+                suffixes=('', '_actual')
+            )
+            # Color scales
+            col_data_pred = lsoa_gdf['predictions'].dropna()
+            col_data_actual = lsoa_gdf['Burglaries amount'].dropna()
+            vmin_pred = col_data_pred.min() if not col_data_pred.empty else 0
+            vmax_pred = col_data_pred.quantile(0.95) if not col_data_pred.empty else 1
+            vmin_actual = col_data_actual.min() if not col_data_actual.empty else 0
+            vmax_actual = col_data_actual.quantile(0.95) if not col_data_actual.empty else 1
+            cmap_pred = cm.get_cmap('YlOrRd')
+            norm_pred = colors.Normalize(vmin=vmin_pred, vmax=vmax_pred)
+            cmap_actual = cm.get_cmap('YlOrRd')
+            norm_actual = colors.Normalize(vmin=vmin_actual, vmax=vmax_actual)
+            centroid = lsoa_gdf.geometry.union_all().centroid
+
+            # --- Show both maps side by side ---
+            col_lsoa_pred, col_lsoa_actual = st.columns(2)
+            with col_lsoa_pred:
+                m_borough_pred = folium.Map(location=[centroid.y, centroid.x], zoom_start=12, tiles="cartodbpositron")
+                def style_function_pred(feature):
+                    crime_rate = feature['properties'].get('predictions', 0)
+                    if crime_rate is None:
+                        crime_rate = 0
+                    return {
+                        'fillColor': colors.rgb2hex(cmap_pred(norm_pred(crime_rate))),
+                        'color': 'black',
+                        'weight': 0.5,
+                        'fillOpacity': 0.3
+                    }
+                folium.GeoJson(
+                    lsoa_gdf.to_json(),
+                    name='LSOA predicted burglaries',
+                    style_function=style_function_pred,
+                    tooltip=folium.GeoJsonTooltip(
+                        fields=[key, 'predictions'],
+                        aliases=['LSOA Code:', 'Predicted burglaries:']
+                    )
+                ).add_to(m_borough_pred)
+                folium.LayerControl().add_to(m_borough_pred)
+                st.markdown("**LSOA Predicted Burglaries**")
+                st_folium(m_borough_pred, height=600, width=450, key=f"compare_lsoa_map_pred_{selected_compare_borough}")
+
+            with col_lsoa_actual:
+                m_borough_actual = folium.Map(location=[centroid.y, centroid.x], zoom_start=12, tiles="cartodbpositron")
+                def style_function_actual(feature):
+                    crime_rate = feature['properties'].get('Burglaries amount', 0)
+                    if crime_rate is None:
+                        crime_rate = 0
+                    return {
+                        'fillColor': colors.rgb2hex(cmap_actual(norm_actual(crime_rate))),
+                        'color': 'black',
+                        'weight': 0.5,
+                        'fillOpacity': 0.3
+                    }
+                folium.GeoJson(
+                    lsoa_gdf.to_json(),
+                    name='LSOA actual burglaries',
+                    style_function=style_function_actual,
+                    tooltip=folium.GeoJsonTooltip(
+                        fields=[key, 'Burglaries amount'],
+                        aliases=['LSOA Code:', 'Actual burglaries:']
+                    )
+                ).add_to(m_borough_actual)
+                folium.LayerControl().add_to(m_borough_actual)
+                st.markdown("**LSOA Actual Burglaries**")
+                st_folium(m_borough_actual, height=600, width=450, key=f"compare_lsoa_map_actual_{selected_compare_borough}")
+        else:
+            st.warning(f"No LSOA shapefile found for {selected_compare_borough} in ./data/lsoashape/")
 # --- Show Historical ---
 elif borough_mode == "Show Historical":
     st.subheader("Historical Burglaries by Borough")
@@ -727,24 +844,51 @@ elif borough_mode == "Show Historical":
         style_function=style_function_hist,
         tooltip=folium.GeoJsonTooltip(fields=['name', 'Actual Burglaries'])
     ).add_to(m_hist)
-    # Remove cmap_hist.add_to(m_hist) -- not valid for matplotlib colormap
-    st_folium(m_hist, height=600, width=900, key="hist_borough_map")
+    hist_map_data = st_folium(m_hist, height=600, width=900, returned_objects=["last_active_drawing"], key="hist_borough_map")
 
-    # --- LSOA Details and Route Viewer (ONLY in "Show Historical" mode) ---
-    selected_borough = st.session_state["selected_borough"]
-    if selected_borough:
-        st.success(f"Selected Borough: {selected_borough}")
-        # --- LSOA Map for Selected Borough ---
-        lsoa_shp_path = f"./data/lsoashape/{selected_borough}.shp"
+    # --- Borough selection and LSOA map display for historical ---
+    selected_hist_borough = None
+    if hist_map_data and hist_map_data.get("last_active_drawing"):
+        clicked_geom = shape(hist_map_data["last_active_drawing"]["geometry"])
+        for idx, row in borough_gdf_hist_display.iterrows():
+            if row['geometry'].equals_exact(clicked_geom, tolerance=1e-6):
+                selected_hist_borough = row['name']
+                break
+        if not selected_hist_borough:
+            pt = clicked_geom.centroid
+            for idx, row in borough_gdf_hist_display.iterrows():
+                if row['geometry'].contains(pt):
+                    selected_hist_borough = row['name']
+                    break
+
+    if selected_hist_borough:
+        st.success(f"Selected Borough: {selected_hist_borough}")
+        lsoa_shp_path = f"./data/lsoashape/{selected_hist_borough}.shp"
         if os.path.exists(lsoa_shp_path):
             lsoa_gdf = gpd.read_file(lsoa_shp_path).to_crs(epsg=4326)
-            
             # Merge historical data into LSOA GeoDataFrame
             hist_col = 'Burglaries amount'
-            df_hist_lsoa = df_hist_month.reset_index().rename(columns={'index': 'LSOA_code', hist_col: 'Actual Burglaries'})
             key = next((c for c in lsoa_gdf.columns if 'lsoa' in c.lower()), None)
-            lsoa_gdf = lsoa_gdf.merge(df_hist_lsoa, how='left', left_on=key, right_on='LSOA_code')
-
+            # Prepare a DataFrame with LSOA code and actual burglaries for this month
+            df_hist_lsoa = df_hist_month[[ 'LSOA_code', hist_col ]].rename(columns={hist_col: 'Actual Burglaries'})
+            # Remove duplicate columns if present
+            if df_hist_lsoa.columns.duplicated().any():
+                df_hist_lsoa = df_hist_lsoa.loc[:, ~df_hist_lsoa.columns.duplicated()]
+            if lsoa_gdf.columns.duplicated().any():
+                lsoa_gdf = lsoa_gdf.loc[:, ~lsoa_gdf.columns.duplicated()]
+            # Ensure the geometry column is named 'geometry' and set as active
+            geom_cols = [col for col in lsoa_gdf.columns if str(lsoa_gdf[col].dtype).startswith("geometry")]
+            if "geometry" not in lsoa_gdf.columns and geom_cols:
+                lsoa_gdf = lsoa_gdf.rename(columns={geom_cols[0]: "geometry"})
+            if "geometry" in lsoa_gdf.columns:
+                lsoa_gdf = lsoa_gdf.set_geometry("geometry")
+            # Merge on LSOA code
+            lsoa_gdf = lsoa_gdf.merge(
+                df_hist_lsoa,
+                how='left',
+                left_on=key,
+                right_on='LSOA_code'
+            )
             # Color scale for historical data
             col_data_lsoa_hist = lsoa_gdf['Actual Burglaries'].dropna()
             if col_data_lsoa_hist.empty:
@@ -754,9 +898,8 @@ elif borough_mode == "Show Historical":
                 vmax_lsoa_hist = col_data_lsoa_hist.quantile(0.95)
             cmap = cm.get_cmap('YlOrRd')
             norm = colors.Normalize(vmin=vmin_lsoa_hist, vmax=vmax_lsoa_hist)
-
-            # Map centered on borough
             centroid = lsoa_gdf.geometry.union_all().centroid
+
             m_borough_hist = folium.Map(location=[centroid.y, centroid.x], zoom_start=12, tiles="cartodbpositron")
             def lsoa_style_fn_hist(feature):
                 val = feature['properties'].get('Actual Burglaries', 0)
@@ -778,8 +921,188 @@ elif borough_mode == "Show Historical":
                 )
             ).add_to(m_borough_hist)
             folium.LayerControl().add_to(m_borough_hist)
-            st_folium(m_borough_hist, height=600, width=900, key=f"lsoa_map_{selected_borough}_historical") # Unique key
-        else:
-            st.warning(f"No LSOA shapefile found for {selected_borough} in ./data/lsoashape/")
-    else:
-        st.info("Click a borough on the map above to see its LSOAs and historical crime data.")
+            lsoa_map_data_hist = st_folium(
+                m_borough_hist,
+                height=600,
+                width=900,
+                returned_objects=["last_active_drawing"],
+                key=f"lsoa_map_{selected_hist_borough}_historical"
+            )
+
+            # --- Show LSOA factors from merged_data if clicked ---
+            selected_lsoa_code_hist = None
+            if lsoa_map_data_hist and lsoa_map_data_hist.get("last_active_drawing"):
+                clicked_geom = shape(lsoa_map_data_hist["last_active_drawing"]["geometry"])
+                for idx, row in lsoa_gdf.iterrows():
+                    if row['geometry'].equals_exact(clicked_geom, tolerance=1e-6):
+                        selected_lsoa_code_hist = row[key]
+                        break
+                if not selected_lsoa_code_hist:
+                    pt = clicked_geom.centroid
+                    for idx, row in lsoa_gdf.iterrows():
+                        if row['geometry'].contains(pt):
+                            selected_lsoa_code_hist = row[key]
+                            break
+
+            if selected_lsoa_code_hist:
+                st.markdown(f"### Factors for LSOA: {selected_lsoa_code_hist}")
+                lsoa_factors = df_hist[df_hist['LSOA_code'] == selected_lsoa_code_hist]
+                if not lsoa_factors.empty:
+                    lsoa_factors = lsoa_factors.sort_values("date", ascending=False).iloc[0]
+                    exclude_cols = ['geometry', 'date']
+                    display_factors = lsoa_factors.drop(labels=[col for col in exclude_cols if col in lsoa_factors.index])
+
+                    import matplotlib.pyplot as plt
+
+                    # --- Pie Chart Data Preparation ---
+                    # Dwelling type
+                    dwelling_cols = [
+                        "Dwelling type|Flat, maisonette or apartment (%)"
+                    ]
+                    dwelling_vals = [lsoa_factors.get(col, 0) for col in dwelling_cols]
+                    dwelling_other = 100 - sum(dwelling_vals)
+                    dwelling_labels = ["Flat, maisonette or apartment", "Other"]
+                    dwelling_sizes = [dwelling_vals[0], dwelling_other]
+
+                    # Ethnic group
+                    ethnic_cols = [
+                        "Ethnic Group|Asian/Asian British (%)",
+                        "Ethnic Group|Black/African/Caribbean/Black British (%)",
+                        "Ethnic Group|Mixed/multiple ethnic groups (%)",
+                        "Ethnic Group|Other ethnic group (%)",
+                        "Ethnic Group|White (%)"
+                    ]
+                    ethnic_labels = [
+                        "Asian/Asian British",
+                        "Black/African/Caribbean/Black British",
+                        "Mixed/multiple ethnic groups",
+                        "Other ethnic group",
+                        "White"
+                    ]
+                    ethnic_vals = [lsoa_factors.get(col, 0) for col in ethnic_cols]
+
+                    # Household composition
+                    hh_cols = [
+                        "Household Composition|% Couple household with dependent children",
+                        "Household Composition|% Couple household without dependent children",
+                        "Household Composition|% Lone parent household",
+                        "Household Composition|% One person household",
+                        "Household Composition|% Other multi person household"
+                    ]
+                    hh_labels = [
+                        "Couple w/ children",
+                        "Couple w/o children",
+                        "Lone parent",
+                        "One person",
+                        "Other multi person"
+                    ]
+                    hh_vals = [lsoa_factors.get(col, 0) for col in hh_cols]
+
+                    # Mid-year Population Estimates (Aged 0-65+)
+                    pop_cols = [
+                        "Mid-year Population Estimates|Aged 0-15",
+                        "Mid-year Population Estimates|Aged 16-29",
+                        "Mid-year Population Estimates|Aged 30-44",
+                        "Mid-year Population Estimates|Aged 45-64",
+                        "Mid-year Population Estimates|Aged 65+"
+                    ]
+                    pop_labels = [
+                        "0-15", "16-29", "30-44", "45-64", "65+"
+                    ]
+                    pop_vals = [lsoa_factors.get(col, 0) for col in pop_cols]
+
+                    # Tenure
+                    tenure_cols = [
+                        "Tenure|Owned outright (%)",
+                        "Tenure|Owned with a mortgage or loan (%)",
+                        "Tenure|Private rented (%)",
+                        "Tenure|Social rented (%)"
+                    ]
+                    tenure_labels = [
+                        "Owned outright",
+                        "Owned w/ mortgage/loan",
+                        "Private rented",
+                        "Social rented"
+                    ]
+                    tenure_vals = [lsoa_factors.get(col, 0) for col in tenure_cols]
+
+                    # Car or van availability (except cars per household)
+                    car_cols = [
+                        "Car or van availability|No cars or vans in household (%)",
+                        "Car or van availability|1 car or van in household (%)",
+                        "Car or van availability|2 cars or vans in household (%)",
+                        "Car or van availability|3 cars or vans in household (%)",
+                        "Car or van availability|4 or more cars or vans in household (%)"
+                    ]
+                    car_labels = [
+                        "No cars/vans",
+                        "1 car/van",
+                        "2 cars/vans",
+                        "3 cars/vans",
+                        "4+ cars/vans"
+                    ]
+                    car_vals = [lsoa_factors.get(col, 0) for col in car_cols]
+
+                    # Public Transport Accessibility Levels|%
+                    ptal_cols = [
+                        "Public Transport Accessibility Levels|% 0-1 (poor access)|Level3_65",
+                        "Public Transport Accessibility Levels|% 2-3 (average access)|Level3_66",
+                        "Public Transport Accessibility Levels|% 4-6 (good access)|Level3_67"
+                    ]
+                    ptal_labels = [
+                        "PTAL 0-1 (poor)",
+                        "PTAL 2-3 (average)",
+                        "PTAL 4-6 (good)"
+                    ]
+                    ptal_vals = [lsoa_factors.get(col, 0) for col in ptal_cols]
+
+                    # --- Pie Charts in 3 columns, above the factors table ---
+                    col_pie1, col_pie2, col_pie3 = st.columns(3)
+                    with col_pie1:
+                        fig1, ax1 = plt.subplots()
+                        ax1.pie(dwelling_sizes, labels=dwelling_labels, autopct='%1.1f%%', startangle=90)
+                        ax1.set_title("Dwelling Type")
+                        st.pyplot(fig1)
+
+                    with col_pie2:
+                        fig2, ax2 = plt.subplots()
+                        ax2.pie(ethnic_vals, labels=ethnic_labels, autopct='%1.1f%%', startangle=90)
+                        fig2.suptitle("Ethnic Group")
+                        st.pyplot(fig2)
+
+                    with col_pie3:
+                        fig3, ax3 = plt.subplots()
+                        ax3.pie(hh_vals, labels=hh_labels, autopct='%1.1f%%', startangle=90)
+                        ax3.set_title("Household Composition")
+                        st.pyplot(fig3)
+
+                    col_pie4, col_pie5, col_pie6 = st.columns(3)
+                    with col_pie4:
+                        fig4, ax4 = plt.subplots()
+                        ax4.pie(pop_vals, labels=pop_labels, autopct='%1.1f%%', startangle=90)
+                        ax4.set_title("Population Age Groups")
+                        st.pyplot(fig4)
+
+                    with col_pie5:
+                        fig5, ax5 = plt.subplots()
+                        ax5.pie(tenure_vals, labels=tenure_labels, autopct='%1.1f%%', startangle=90)
+                        fig5.suptitle("Tenure")
+                        st.pyplot(fig5)
+
+                    with col_pie6:
+                        fig6, ax6 = plt.subplots()
+                        ax6.pie(car_vals, labels=car_labels, autopct='%1.1f%%', startangle=90)
+                        ax6.set_title("Car or Van Availability")
+                        st.pyplot(fig6)
+
+                    # Last row for PTAL
+                    col_pie7, _, _ = st.columns(3)
+                    with col_pie7:
+                        fig7, ax7 = plt.subplots()
+                        ax7.pie(ptal_vals, labels=ptal_labels, autopct='%1.1f%%', startangle=90)
+                        ax7.set_title("Public Transport Accessibility Levels (%)")
+                        st.pyplot(fig7)
+
+                    st.table(display_factors)
+                else:
+                    st.info("No factor data found for this LSOA in merged_data.")
