@@ -9,6 +9,11 @@ from shapely.geometry import shape
 import matplotlib.cm as cm
 import matplotlib.colors as colors
 
+def get_colormap_hex_list(cmap_name='YlOrRd', n=6):
+    """Return a list of hex colors sampled from a matplotlib colormap."""
+    cmap = cm.get_cmap(cmap_name)
+    return [colors.rgb2hex(cmap(i/(n-1))) for i in range(n)]
+
 # --- Page setup ---
 st.set_page_config(layout="wide", page_title="London Crime & Police Routes Dashboard")
 st.title("London Crime Risk & Police Routes📍")
@@ -183,6 +188,7 @@ if borough_mode == "Show Predicted":
             vmax = col_data.quantile(0.95)
         cmap = cm.get_cmap('YlOrRd')
         norm = colors.Normalize(vmin=vmin, vmax=vmax)
+        color_stops = get_colormap_hex_list('YlOrRd', 6)
 
         def style_function_ward(feature):
             crime_rate = feature['properties'].get('Burglaries amount', 0)
@@ -206,9 +212,8 @@ if borough_mode == "Show Predicted":
                 aliases=['Ward Name:', 'Predicted Burglaries:']
             )
         ).add_to(m_ward)
-        folium_cmap = folium.LinearColormap(['green', 'yellow', 'red'], vmin=vmin, vmax=vmax)
-        folium_cmap.caption = 'Predicted Burglaries'
-        folium_cmap.add_to(m_ward)
+        # Add matching color scale
+        folium.LinearColormap(color_stops, vmin=vmin, vmax=vmax, caption='Predicted Burglaries').add_to(m_ward)
 
         # Show the map and capture click events
         ward_map_data = st_folium(
@@ -279,9 +284,9 @@ if borough_mode == "Show Predicted":
         else:
             vmin = col_data.min()
             vmax = col_data.quantile(0.95)
-        # Use matplotlib colormap for fillColor, but use folium.LinearColormap for legend
         cmap = cm.get_cmap('YlOrRd')
         norm = colors.Normalize(vmin=vmin, vmax=vmax)
+        color_stops = get_colormap_hex_list('YlOrRd', 6)
 
         def style_function(feature):
             crime_rate = feature['properties'].get('Burglaries amount', 0)
@@ -302,11 +307,7 @@ if borough_mode == "Show Predicted":
             highlight_function=lambda x: {'weight': 3, 'color': 'blue'},
             tooltip=folium.GeoJsonTooltip(fields=['name', 'Burglaries amount'])
         ).add_to(m)
-        cmap = cm.get_cmap('YlOrRd')
-        norm = colors.Normalize(vmin=vmin, vmax=vmax)
-        folium_cmap = folium.LinearColormap(['green', 'yellow', 'red'], vmin=vmin, vmax=vmax)
-        folium_cmap.caption = 'Predicted Burglaries'
-        folium_cmap.add_to(m)
+        folium.LinearColormap(color_stops, vmin=vmin, vmax=vmax, caption='Predicted Burglaries').add_to(m)
         map_data = st_folium(m, height=600, width=900, returned_objects=["last_active_drawing"], key="main_borough_map")
 
         # Update selected_borough based on map click
@@ -362,6 +363,7 @@ if borough_mode == "Show Predicted":
                     vmax_lsoa = col_data_lsoa.quantile(0.95)
                 cmap = cm.get_cmap('YlOrRd')
                 norm = colors.Normalize(vmin=vmin_lsoa, vmax=vmax_lsoa)
+                color_stops = get_colormap_hex_list('YlOrRd', 6)
 
                 # Checkbox for patrol route, unique key for this specific LSOA map
                 checkbox_key = f"show_route_checkbox_{selected_borough}_predicted"
@@ -406,8 +408,8 @@ if borough_mode == "Show Predicted":
                             aliases=['LSOA Code:', 'Expected burglaries:']
                         )
                     ).add_to(m_borough)
-
                     folium.LayerControl().add_to(m_borough)
+                    folium.LinearColormap(color_stops, vmin=vmin_lsoa, vmax=vmax_lsoa, caption='Predicted Burglaries').add_to(m_borough)
                     # Capture click events on LSOA map
                     lsoa_map_data = st_folium(
                         m_borough,
@@ -639,9 +641,9 @@ elif borough_mode == "Compare Predicted vs Actual":
         col_data_pred = borough_gdf_pred_display['Predicted Burglaries'].dropna()
         vmin_pred = col_data_pred.min() if not col_data_pred.empty else 0
         vmax_pred = col_data_pred.quantile(0.95) if not col_data_pred.empty else 1
-        # Use matplotlib colormap for fillColor, but do NOT call add_to for matplotlib colormap
         cmap_pred = cm.get_cmap('YlOrRd')
         norm_pred = colors.Normalize(vmin=vmin_pred, vmax=vmax_pred)
+        color_stops_pred = get_colormap_hex_list('YlOrRd', 6)
 
         m_pred = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles="cartodbpositron")
         def style_function_pred(feature):
@@ -660,6 +662,7 @@ elif borough_mode == "Compare Predicted vs Actual":
             style_function=style_function_pred,
             tooltip=folium.GeoJsonTooltip(fields=['name', 'Predicted Burglaries'])
         ).add_to(m_pred)
+        folium.LinearColormap(color_stops_pred, vmin=vmin_pred, vmax=vmax_pred, caption='Predicted Burglaries').add_to(m_pred)
         pred_map_data = st_folium(
             m_pred,
             height=500,
@@ -675,6 +678,7 @@ elif borough_mode == "Compare Predicted vs Actual":
         vmax_actual = col_data_actual.quantile(0.95) if not col_data_actual.empty else 1
         cmap_actual = cm.get_cmap('YlOrRd')
         norm_actual = colors.Normalize(vmin=vmin_actual, vmax=vmax_actual)
+        color_stops_actual = get_colormap_hex_list('YlOrRd', 6)
 
         m_actual = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles="cartodbpositron")
         def style_function_actual(feature):
@@ -693,6 +697,7 @@ elif borough_mode == "Compare Predicted vs Actual":
             style_function=style_function_actual,
             tooltip=folium.GeoJsonTooltip(fields=['name', 'Actual Burglaries'])
         ).add_to(m_actual)
+        folium.LinearColormap(color_stops_actual, vmin=vmin_actual, vmax=vmax_actual, caption='Actual Burglaries').add_to(m_actual)
         actual_map_data = st_folium(
             m_actual,
             height=500,
@@ -751,6 +756,8 @@ elif borough_mode == "Compare Predicted vs Actual":
             norm_pred = colors.Normalize(vmin=vmin_pred, vmax=vmax_pred)
             cmap_actual = cm.get_cmap('YlOrRd')
             norm_actual = colors.Normalize(vmin=vmin_actual, vmax=vmax_actual)
+            color_stops_pred = get_colormap_hex_list('YlOrRd', 6)
+            color_stops_actual = get_colormap_hex_list('YlOrRd', 6)
             centroid = lsoa_gdf.geometry.union_all().centroid
 
             # --- Show both maps side by side ---
@@ -777,6 +784,7 @@ elif borough_mode == "Compare Predicted vs Actual":
                     )
                 ).add_to(m_borough_pred)
                 folium.LayerControl().add_to(m_borough_pred)
+                folium.LinearColormap(color_stops_pred, vmin=vmin_pred, vmax=vmax_pred, caption='Predicted Burglaries').add_to(m_borough_pred)
                 st.markdown("**LSOA Predicted Burglaries**")
                 st_folium(m_borough_pred, height=600, width=450, key=f"compare_lsoa_map_pred_{selected_compare_borough}")
 
@@ -802,10 +810,9 @@ elif borough_mode == "Compare Predicted vs Actual":
                     )
                 ).add_to(m_borough_actual)
                 folium.LayerControl().add_to(m_borough_actual)
+                folium.LinearColormap(color_stops_actual, vmin=vmin_actual, vmax=vmax_actual, caption='Actual Burglaries').add_to(m_borough_actual)
                 st.markdown("**LSOA Actual Burglaries**")
                 st_folium(m_borough_actual, height=600, width=450, key=f"compare_lsoa_map_actual_{selected_compare_borough}")
-        else:
-            st.warning(f"No LSOA shapefile found for {selected_compare_borough} in ./data/lsoashape/")
 # --- Show Historical ---
 elif borough_mode == "Show Historical":
     st.subheader("Historical Burglaries by Borough")
@@ -828,6 +835,7 @@ elif borough_mode == "Show Historical":
     vmax_hist = col_data_hist.quantile(0.95) if not col_data_hist.empty else 1
     cmap = cm.get_cmap('YlOrRd')
     norm = colors.Normalize(vmin=vmin_hist, vmax=vmax_hist)
+    color_stops = get_colormap_hex_list('YlOrRd', 6)
 
     m_hist = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles="cartodbpositron")
     def style_function_hist(feature):
@@ -844,6 +852,7 @@ elif borough_mode == "Show Historical":
         style_function=style_function_hist,
         tooltip=folium.GeoJsonTooltip(fields=['name', 'Actual Burglaries'])
     ).add_to(m_hist)
+    folium.LinearColormap(color_stops, vmin=vmin_hist, vmax=vmax_hist, caption='Actual Burglaries').add_to(m_hist)
     hist_map_data = st_folium(m_hist, height=600, width=900, returned_objects=["last_active_drawing"], key="hist_borough_map")
 
     # --- Borough selection and LSOA map display for historical ---
@@ -898,6 +907,7 @@ elif borough_mode == "Show Historical":
                 vmax_lsoa_hist = col_data_lsoa_hist.quantile(0.95)
             cmap = cm.get_cmap('YlOrRd')
             norm = colors.Normalize(vmin=vmin_lsoa_hist, vmax=vmax_lsoa_hist)
+            color_stops = get_colormap_hex_list('YlOrRd', 6)
             centroid = lsoa_gdf.geometry.union_all().centroid
 
             m_borough_hist = folium.Map(location=[centroid.y, centroid.x], zoom_start=12, tiles="cartodbpositron")
@@ -921,13 +931,7 @@ elif borough_mode == "Show Historical":
                 )
             ).add_to(m_borough_hist)
             folium.LayerControl().add_to(m_borough_hist)
-            lsoa_map_data_hist = st_folium(
-                m_borough_hist,
-                height=600,
-                width=900,
-                returned_objects=["last_active_drawing"],
-                key=f"lsoa_map_{selected_hist_borough}_historical"
-            )
+            folium.LinearColormap(color_stops, vmin=vmin_lsoa_hist, vmax=vmax_lsoa_hist, caption='Actual Burglaries').add_to(m_borough_hist)
 
             # --- Show LSOA factors from merged_data if clicked ---
             selected_lsoa_code_hist = None
