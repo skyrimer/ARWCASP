@@ -75,7 +75,31 @@ def prepare_all_data(path: str, occupation_type: Literal["lsoa", "msoa", "boroug
     Prepare all data by reading, converting occupation to indices,
     and extracting static and dynamic columns.
     """
-    gdf = get_raw_data(path, occupation_type).drop(columns="Crime Rank (where 1 is most deprived)")
+    gdf = get_raw_data(path, occupation_type).drop(columns=[
+        "Crime Rank (where 1 is most deprived)",
+        "Ethnic Group|Other ethnic group (%)",
+        "Household Composition|% Other multi person household",
+        "Mid-year Population Estimates|Working-age",
+        # "Mid-year Population Estimates|All Ages",
+        "Mid-year Population Estimates|Aged 65+",
+        "Tenure|Owned outright (%)",
+        "Public Transport Accessibility Levels|Number of people in each PTAL level:|0",
+        "Public Transport Accessibility Levels|% 0-1 (poor access)|Level3_65",
+        'Public Transport Accessibility Levels|% 2-3 (average access)|Level3_66',
+        'Public Transport Accessibility Levels|% 4-6 (good access)|Level3_67',
+        'Public Transport Accessibility Levels|Number of people in each PTAL level:|1a',
+        'Public Transport Accessibility Levels|Number of people in each PTAL level:|1b',
+        'Public Transport Accessibility Levels|Number of people in each PTAL level:|2',
+        'Public Transport Accessibility Levels|Number of people in each PTAL level:|3',
+        'Public Transport Accessibility Levels|Number of people in each PTAL level:|4',
+        "Car or van availability|No cars or vans in household (%)",
+        'Car or van availability|1 car or van in household (%)',
+        'Car or van availability|2 cars or vans in household (%)',
+        'Car or van availability|3 cars or vans in household (%)',
+        'Car or van availability|4 or more cars or vans in household (%)',
+        "Ethnic Group|BAME (%)",
+        "Index of Multiple Deprivation (IMD) Rank (where 1 is most deprived)",
+        ])
 
     gdf, ward_to_code, code_to_ward = add_ward_idx(gdf)
     gdf, name_to_code, code_to_name = convert_occupation_to_idx(gdf)

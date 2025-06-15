@@ -21,18 +21,16 @@ def create_all_features(gdf: gpd.GeoDataFrame, static, dynamic) -> gpd.GeoDataFr
         time_idxlog = np.log1p(time_idx)
         # center & scale
         gdf['time_s'] = (time_idx - time_idx.mean()) / time_idx.std()
-        gdf['time_s2'] = (time_idexs2 - time_idexs2.mean()) / time_idexs2.std()
-        gdf['time_log'] = (time_idxlog - time_idxlog.mean()) / time_idxlog.std()
-
+        # gdf['time_s2'] = (time_idexs2 - time_idexs2.mean()) / time_idexs2.std()
+        gdf['time_log'] = time_idxlog
+        # gdf['time_log'] = (time_idxlog - time_idxlog.mean()) / time_idxlog.std()
+    time_features.remove("time_s")
     # Create seasonal features
     with detect_new_columns(gdf) as seasonal_features:
         gdf['month_sin'] = np.sin(
             2*np.pi*gdf['period'].dt.month/12).astype("float32")
-        gdf['month_cos'] = np.cos(
-            2*np.pi*gdf['period'].dt.month/12).astype("float32")
 
-        lockdown_start = pd.Timestamp("2020-03-23")
-        lockdown_cutoff = pd.Timestamp("2020-03-01")
+        lockdown_cutoff = pd.Timestamp("2020-02-01")
 
         restrictions_end = pd.Timestamp("2022-02-24")
         post_corona_start = restrictions_end + pd.Timedelta(days=1)
@@ -78,8 +76,8 @@ def create_all_features(gdf: gpd.GeoDataFrame, static, dynamic) -> gpd.GeoDataFr
         gdf["area"] = gdf["occupation_idx"].map(static_cols["area"])
         gdf["n_neighbors"] = gdf["occupation_idx"].map(
             static_cols["n_neighbors"])
-        gdf["shared_length"] = gdf["occupation_idx"].map(
-            static_cols["shared_length"])
+        # gdf["shared_length"] = gdf["occupation_idx"].map(
+        #     static_cols["shared_length"])
 
     static.extend(static_spatial)
 
@@ -91,11 +89,15 @@ def create_all_features(gdf: gpd.GeoDataFrame, static, dynamic) -> gpd.GeoDataFr
         # !!!
         df = create_dynamic_spatial_features(gdf, neighbor_dict)
         gdf["lag1_sum_neighbors"] = df["lag1_sum_neighbors"].fillna(0)
-        gdf["lag1_mean_neighbors"] = df["lag1_mean_neighbors"].fillna(0)
         gdf["lag1_median_neighbors"] = df["lag1_median_neighbors"].fillna(0)
-        with detect_new_columns(gdf) as interaction_cols:
-            gdf["lag_1_x_n_neighbors"] = gdf["lag_1"] * gdf["n_neighbors"]
-            gdf["lag1_diff_neighbors"] = gdf["lag_1"] - gdf["lag1_mean_neighbors"]
+
+    with detect_new_columns(gdf) as interaction_cols:
+        # gdf["lag_1_x_n_neighbors"] = gdf["lag_1"] * gdf["n_neighbors"]
+        # gdf["lag1_diff_neighbors"] = gdf["lag_1"] - gdf["lag1_median_neighbors"]
+        for column in [*static, *dynamic, *time_features, *temporal_features, *dynamic_spatial]:
+            gdf[f"{column}_x_post_corona"] = gdf[column] * gdf["post_corona"]
+            # gdf[f"{column}_x_during_corona"] = gdf[column] * gdf["during_corona"]
+        
 
     dynamic.extend(interaction_cols)
 

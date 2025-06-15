@@ -12,13 +12,13 @@ from model import burglary_model
 def train_and_evaluate_model(training_data, testing_data,
                              model_function,
                              inx_to_occupation_map,
-                             guide_type: str = "diag",       # “diag”, “lowrank”, or “iaf”
-                             guide_rank: int = 10,  # rank for low-rank guide
-                             lr: float = 1e-3,
-                             elbo_type: str = "trace",       # “trace”, “graph”, “renyi”, or “jit”
+                             guide_type: str = "lowrank",       # “diag”, “lowrank”, or “iaf”
+                             guide_rank: int = 14,  # rank for low-rank guide
+                             lr: float = 0.007,
+                             elbo_type: str = "jit",       # “trace”, “graph”, “renyi”, or “jit”
                              renyi_alpha: float = 0.5,
-                             num_particles: int = 1,
-                             training_steps=500,
+                             num_particles: int = 9,
+                             training_steps=971,
                              testing_steps=1000):
     pyro.clear_param_store()
 
@@ -80,7 +80,7 @@ def cross_validate_time_splits(
         )
 
         # Train & evaluate
-        evaluation_metrics, _, _, tester = train_and_evaluate_model(
+        evaluation_metrics, _, _, _ = train_and_evaluate_model(
             train_data,
             test_data,
             burglary_model,
@@ -95,4 +95,4 @@ def cross_validate_time_splits(
         }
         records.append(record)
 
-    return pd.DataFrame(records), 
+    return pd.DataFrame(records)
