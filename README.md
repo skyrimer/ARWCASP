@@ -7,13 +7,22 @@ An automated, data-driven police demand forecasting system to inform resource al
 
 - [Project Overview](#project-overview)  
 - [Problem Description](#problem-description)  
-- [Background Information](#background-information)  
-- [Expectations](#expectations)  
-- [Resource Limitations](#resource-limitations)  
-- [Data Sources](#data-sources)  
-- [Accessing the Data](#accessing-the-data)  
-- [Background Reading](#background-reading)  
 - [Software & Resources](#software--resources)  
+- [Project Structure](#project-structure)  
+  - [📁 Root Directory](#📁-root-directory)  
+  - [📁 EDA/](#📁-eda)  
+  - [📁 data/](#📁-data)  
+  - [📁 data_download_pipeline/](#📁-data_download_pipeline)  
+  - [📁 processed_data/](#📁-processed_data)  
+  - [📁 model/](#📁-model)  
+  - [📁 routes/](#📁-routes)  
+  - [How It All Fits Together](#how-it-all-fits-together)  
+- [Authors](#authors)  
+- [References](#references)  
+  - [Official Statistics & Government Data](#official-statistics--government-data)  
+  - [Academic & Industry Research](#academic--industry-research)  
+  - [Technical Tools & Libraries](#technical-tools--libraries)  
+  - [Licensing & Terms](#licensing--terms)  
 
 
 ## Project Overview
@@ -97,7 +106,7 @@ Automated data-fetch scripts:
   Downloads burglary records via the UK police API.
 
 - **openstreetmapdownload.py**  
-  Uses **OSMnx** to fetch POIs and road networks from OpenStreetMap :contentReference[oaicite:1]{index=1}.
+  Uses **OSMnx** to fetch POIs and road networks from OpenStreetMap.
 
 
 ### 📁 `processed_data/`
@@ -124,7 +133,7 @@ Implements the Bayesian spatio-temporal burglary model and training pipeline:
 Generates optimized patrol routes using predicted hotspots:
 
 - **borough_routes.py**  
-  Creates borough-level waypoints and solves a TSP via **NetworKit** heuristics :contentReference[oaicite:2]{index=2}.
+  Creates borough-level waypoints and solves a TSP via **NetworKit** heuristics.
 
 - **ward_routes.py**  
   Similar to borough routing but at ward granularity.
@@ -143,9 +152,17 @@ Generates optimized patrol routes using predicted hotspots:
 6. **Routing**: Generate patrol paths under `routes/`.  
 7. **Dashboard**: Launch `dashboard.py` for interactive visualization.
 
-# References
+## Authors
+- Kirill Chekmenev
+- Neha Joseph
+- Rayan Mahmoud
+- Elisa Martín Morán
+- Joshua Pantekoek
+- Diederik Webster
 
-## Official Statistics & Government Data
+## References
+
+### Official Statistics & Government Data
 - **Office for National Statistics**. *Crime in England and Wales: year ending December 2024*. ONS, 24 April 2025.  
   https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/bulletins/crimeinenglandandwales/yearendingdecember2024
 
@@ -170,7 +187,7 @@ Generates optimized patrol routes using predicted hotspots:
 - **data.gov.uk**. *LSOA 2011→2021 Code Lookup (Exact Fit)*.  
   https://data.gov.uk/dataset/ons::lsoa-to-lsoa-exact-fit-lookup
 
-## Academic & Industry Research
+### Academic & Industry Research
 - den Heyer, G. (2014). “Examining Police Strategic Resource Allocation in a Time of Austerity.” *Salus Journal: An International Journal of Law Enforcement & Public Safety*, 2(1), 63–79.  
   https://salusjournal.com/wp-content/uploads/2013/03/den_Heyer_Salus_Journal_Issue_2_Number_1_2014_pp_63-79.pdf
 
@@ -189,7 +206,7 @@ Generates optimized patrol routes using predicted hotspots:
 - Reese, H. (2022, Feb 23). “What Happens When Police Use AI to Predict and Prevent Crime?” *JSTOR Daily*.  
   https://daily.jstor.org/what-happens-when-police-use-ai-to-predict-and-prevent-crime/
 
-## Technical Tools & Libraries
+### Technical Tools & Libraries
 - **OpenStreetMap Contributors**. *OpenStreetMap* (ODbL).  
   https://www.openstreetmap.org
 
@@ -202,9 +219,10 @@ Generates optimized patrol routes using predicted hotspots:
 - **Folium Contributors**. *Folium: Python Data. Viz. on Leaflet Maps*.  
   https://python-visualization.github.io/folium
 
-## Licensing & Terms
+### Licensing & Terms
 - **Open Government Licence v3.0**. UK Government.  
   http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 
 - **Open Data Commons Open Database License (ODbL)**. Open Data Commons.  
   https://opendatacommons.org/licenses/odbl/
+
