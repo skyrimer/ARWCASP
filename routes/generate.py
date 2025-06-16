@@ -1,4 +1,4 @@
-import patrol
+import patrol_borough
 import patrol_ward
 import os
 import geopandas as gpd
@@ -25,6 +25,14 @@ def get_boroughs():
         if name_col:
             boroughs = list(gdf[name_col].unique())
             boroughs = [str(b) for b in boroughs if isinstance(b, str)]
+
+            # Add westminster and city of london if not present
+            if "City of Westminster" not in boroughs:
+                boroughs.append("City of Westminster")
+            if "Kensington and Chelsea" not in boroughs:
+                boroughs.append("Royal Borough of Kensington and Chelsea")
+
+
             return boroughs
     except Exception as e:
         print(f"Could not load boroughs from shapefile: {e}")
@@ -89,8 +97,8 @@ def generate_boroughs(override=False):
             print(f"Patrol route for {borough} already exists. Skipping...")
             continue
 
-        print(f"Generating patrol route for {borough}...")
-        patrol.process_location(borough, False)
+        print(f"Generating patrol route for borough {borough}...")
+        patrol_borough.process_location(borough, False)
 
 def get_wards():
     """
@@ -164,21 +172,21 @@ def create_point_image(location):
     Creates an image of all of the points the patrol route uses.
     """
 
-    patrol.process_location(location, False, True)
+    patrol_borough.process_location(location, False, True)
     
 
 if __name__ == "__main__":
-    #generate_boroughs(True)
+    #generate_boroughs()
     #print("All borough patrol routes generated successfully.")
 
-    generate_wards()
+    #generate_wards()
     #print("All ward patrol routes generated successfully.")
 
     # Example usage
     #patrol.process_location("City of London")
 
     #check_boroughs()
-    check_wards()
+    #check_wards()
 
     #create_point_image("City of London")
 

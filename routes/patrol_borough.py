@@ -24,14 +24,13 @@ warnings.filterwarnings('ignore', 'The `geoseries.notna()` method is deprecated'
 warnings.filterwarnings('ignore', 'The get_cmap function was deprecated in Matplotlib', UserWarning)
 # Suppress Geometry is in a geographic CRS warning for area calculation
 warnings.filterwarnings('ignore', 'Geometry is in a geographic CRS. Results from \'area\' are likely incorrect.', UserWarning)
-# Suppress Geometry is in a geographic CRS warning for centroid calculation
-warnings.filterwarnings('ignore', 'Geometry is in a geographic CRS. Results from \'centroid\' are likely incorrect.', UserWarning)
 
 
 # --- Configuration ---
 POINTS_PER_LSOA_MIN = 0 # Minimum points to generate for any high-crime LSOA
 POINTS_PER_LSOA_MAX_CAP = 25 # Maximum points to generate for a single LSOA, regardless of size
 LSOA_MAJORITY_AREA_THRESHOLD = 0.3 # Percentage of LSOA area that must be within the ward (e.g., 0.3 for 30%)
+AREA_TO_POINTS_SCALING_FACTOR = 150000 # Area (in sqm) per point for base calculation
 
 # --- IMPORTANT: Configure your LSOA Shapefile Path here ---
 LSOA_SHAPEFILE_PATH = "../data/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BSC_V4.gpkg"
@@ -71,7 +70,7 @@ def download_area_boundary(area_name):
                             break
                 if not match.empty:
                     area_gdf = match.copy()
-                    area_gdf = area_gdf.set_crs(epsg=4326)
+                    area_gdf = area_gdf.to_crs(epsg=4326)
                     area_gdf_projected = area_gdf.to_crs(epsg=27700)
                     area_km2 = area_gdf_projected.geometry.area.sum() / 1e6
                     print(f"   Area boundary loaded from shapefile. CRS: {area_gdf.crs}")
@@ -97,6 +96,49 @@ def download_area_boundary(area_name):
     except Exception as e:
         print(f"Error downloading area boundary: {e}")
         return None
+
+def _standardize_lsoa_columns(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """
+    Standardizes LSOA code and name columns to 'LSOA21CD' and 'LSOA21NM'.
+    Args:
+        gdf (geopandas.GeoDataFrame): The LSOA GeoDataFrame to standardize.
+    Returns:
+        geopandas.GeoDataFrame: The GeoDataFrame with standardized column names.
+    """
+    # Standardize LSOA Code column
+    lsoa_code_cols = ['LSOA21CD', 'LSOA11CD', 'lsoa_code', 'code']
+    found_code_col = None
+    for col in lsoa_code_cols:
+        if col in gdf.columns:
+            found_code_col = col
+            break
+    if found_code_col and found_code_col != 'LSOA21CD':
+        gdf = gdf.rename(columns={found_code_col: 'LSOA21CD'})
+        print(f"   Renamed LSOA code column '{found_code_col}' to 'LSOA21CD'.")
+    elif not found_code_col:
+        print("   Warning: No standard LSOA code column found. 'LSOA21CD' may be missing.")
+
+    # Standardize LSOA Name column
+    lsoa_name_cols = ['LSOA21NM', 'LSOA11NM', 'lsoa_name', 'NAME', 'name']
+    found_name_col = None
+    for col in lsoa_name_cols:
+        if col in gdf.columns:
+            found_name_col = col
+            break
+    if found_name_col and found_name_col != 'LSOA21NM':
+        gdf = gdf.rename(columns={found_name_col: 'LSOA21NM'})
+        print(f"   Renamed LSOA name column '{found_name_col}' to 'LSOA21NM'.")
+    elif not found_name_col:
+        print("   Warning: No standard LSOA name column found. 'LSOA21NM' may be missing.")
+        # As a fallback, if LSOA21NM is absolutely necessary and not found,
+        # you might consider creating a dummy column or handling the absence gracefully.
+        # For now, we'll let the KeyError propagate if it's still used downstream without being found.
+        if 'LSOA21NM' not in gdf.columns:
+             gdf['LSOA21NM'] = gdf['LSOA21CD'] # Fallback: use code as name if name missing
+
+
+    return gdf
+
 
 def load_and_filter_lsoa_boundaries(lsoa_file_path, area_gdf, majority_threshold=LSOA_MAJORITY_AREA_THRESHOLD):
     """
@@ -127,6 +169,7 @@ def load_and_filter_lsoa_boundaries(lsoa_file_path, area_gdf, majority_threshold
         try:
             lsoas_gdf = gpd.read_file(borough_shapefile_path)
             lsoas_gdf = lsoas_gdf.to_crs(epsg=4326)
+            lsoas_gdf = _standardize_lsoa_columns(lsoas_gdf) # Standardize columns
             print(f"   Loaded {len(lsoas_gdf)} LSOAs from {borough_shapefile_path}.")
             # Add dummy crime_rate column if not present (will be merged later)
             if 'crime_rate' not in lsoas_gdf.columns:
@@ -142,6 +185,8 @@ def load_and_filter_lsoa_boundaries(lsoa_file_path, area_gdf, majority_threshold
         # Load the full LSOA geopackage
         all_lsoas_gdf = gpd.read_file(lsoa_file_path)
         print(f"   Loaded {len(all_lsoas_gdf)} LSOAs from file. CRS: {all_lsoas_gdf.crs}")
+
+        all_lsoas_gdf = _standardize_lsoa_columns(all_lsoas_gdf) # Standardize columns
 
         # Ensure both GeoDataFrames have the same CRS for initial spatial join
         if all_lsoas_gdf.crs != area_gdf.crs:
@@ -283,28 +328,38 @@ def generate_random_points_in_polygon(polygon, num_points):
         print(f"   Warning: Could not generate {num_points} points within polygon. Generated {len(points)}.")
     return points
 
-def calculate_points(lsoa_area_sqm, area_scaling_factor, nrburglaries, min_points=POINTS_PER_LSOA_MIN, max_points_per_lsoa_cap=POINTS_PER_LSOA_MAX_CAP):
+def calculate_points(lsoa_area_sqm: float, area_scaling_factor: float, expected_burglaries: float, min_points: int=POINTS_PER_LSOA_MIN, max_points_per_lsoa_cap: int=POINTS_PER_LSOA_MAX_CAP) -> int:
     """
-    Determines the number of points to generate for an LSOA based on its area.
+    Determines the number of points to generate for an LSOA based on its area and expected burglaries.
     Args:
         lsoa_area_sqm (float): Area of the LSOA in square meters (projected CRS).
+        area_scaling_factor (float): Area (in sqm) per point (e.g., 150,000 sqm per point).
+        expected_burglaries (float): The predicted number of burglaries for this LSOA.
         min_points (int): Minimum number of points to generate.
         max_points_per_lsoa_cap (int): Maximum number of points to generate for a single LSOA.
-        area_scaling_factor (float): Area (in sqm) per point.
     Returns:
         int: Number of points to generate for this LSOA.
     """
-    
-    
+    # Calculate a base number of points proportional to area
+    base_points = lsoa_area_sqm / area_scaling_factor
+
+    # Apply a square root to reduce the impact of very large areas
+    # Add 1 to ensure at least 1 point is considered for very small or zero base_points
+    scaled_points = 1 + np.sqrt(base_points)
+
     # Only adjust points if there is predicted crime, and make the impact smaller
-    if nrburglaries > 0:
-        points = lsoa_area_sqm / area_scaling_factor
-        points = 1 + np.sqrt(points)  # Square root to reduce the impact of area size
-        points = np.floor(points * nrburglaries)  # Small increase per crime
-        points = max(min_points, points)
+    # This factor (0.5 here) can be tuned to control the influence of crime rate
+    if expected_burglaries > 0:
+        # Increase the number of points based on expected burglaries.
+        # A small multiplier (e.g., 0.5) ensures crime rate adds to the density without dominating area.
+        points_from_crime = scaled_points * (1 + (expected_burglaries * 0.5))
+        points = points_from_crime
     else:
-        points = min_points
-    
+        points = scaled_points # If no crime, just use the area-based scaled points
+
+    # Ensure points are integers and within defined min/max caps
+    points = int(np.floor(points))
+    points = max(min_points, points)
     points = min(max_points_per_lsoa_cap, points)
     return points
 
@@ -322,9 +377,10 @@ def select_waypoints_from_lsoas(lsoas_gdf, G):
     
     all_generated_waypoints = []
 
+    # The LSOA21CD and LSOA21NM columns should now be standardized by load_and_filter_lsoa_boundaries
+    # No need for the separate renaming logic here anymore.
+
     # append the 'crime_rate' column to the LSOAs GeoDataFrame based on the number of burglaries predicted
-   
-        
     # open the expected burglaries parquet file
     expected_burglaries_file = "../model/sample_predictions.parquet"
     if os.path.exists(expected_burglaries_file):
@@ -336,10 +392,16 @@ def select_waypoints_from_lsoas(lsoas_gdf, G):
 
         lsoas_gdf = pd.merge(lsoas_gdf, expected_burglaries_df[['LSOA21CD', 'median']], on='LSOA21CD', how='left')
         
+        # Remove any duplicate 'crime_rate' columns before renaming
+        if 'crime_rate' in lsoas_gdf.columns:
+            lsoas_gdf = lsoas_gdf.drop(columns=['crime_rate'])
         # Rename the column to 'crime_rate' for consistency
         lsoas_gdf.rename(columns={'median': 'crime_rate'}, inplace=True)
-        print(f"   Merged expected burglaries data. Total LSOAs: {len(lsoas_gdf)}")
 
+        print(f"   Merged expected burglaries data. Total LSOAs: {len(lsoas_gdf)}")
+        print("   crime_rate stats after merge:")
+        print(lsoas_gdf['crime_rate'].describe())
+        print(f"   Number of LSOAs with NaN crime_rate: {lsoas_gdf['crime_rate'].isna().sum()}")
     else:
         print(f"   Warning: Expected burglaries file not found at {expected_burglaries_file}. Using random crime rates instead.")
         # Assign random crime rates if the expected burglaries file is not found
@@ -349,16 +411,22 @@ def select_waypoints_from_lsoas(lsoas_gdf, G):
 
     # Iterate through all LSOAs to generate points based on size
     for idx, lsoa_row in lsoas_gdf.iterrows():
+        # Ensure crime_rate is a scalar, not a Series
+        crime_rate = lsoa_row['crime_rate']
+        if isinstance(crime_rate, pd.Series):
+            crime_rate = crime_rate.iloc[0]
+
+        # Skip LSOAs where no burglary is predicted (crime_rate is zero or NaN)
+        if pd.isna(crime_rate) or crime_rate == 0:
+            continue
+
         # Get LSOA geometry in projected CRS for accurate area calculation
         lsoa_polygon_projected = gpd.GeoSeries([lsoa_row.geometry], crs=lsoas_gdf.crs).to_crs(epsg=27700).iloc[0]
         lsoa_area_sqm = lsoa_polygon_projected.area
 
-        # Calculate the factor based on the average area of an LSOA and 
-        factor = 150000
-
-        num_points_for_this_lsoa = calculate_points(lsoa_area_sqm, factor, lsoas_gdf.loc[idx, 'crime_rate'])
+        num_points_for_this_lsoa = calculate_points(lsoa_area_sqm, AREA_TO_POINTS_SCALING_FACTOR, crime_rate)
         
-        #print(f"   Generating {num_points_for_this_lsoa} points in LSOA: {lsoa_row['LSOA21NM']} (Area: {lsoa_area_sqm/1e6:.2f} km², Crime Rate: {lsoas_row['crime_rate']:.2f})")
+        # print(f"   Generating {num_points_for_this_lsoa} points in LSOA: {lsoa_row['LSOA21NM']} (Area: {lsoa_area_sqm/1e6:.2f} km², Crime Rate: {lsoa_row['crime_rate']:.2f})")
         
         # Ensure the LSOA geometry is valid before generating points (use original CRS for random point generation)
         lsoas_polygon_geographic = lsoa_row.geometry
@@ -475,16 +543,10 @@ def calculate_optimal_route(G, waypoints_df):
                             segment_length += 0 # Or some error handling
                 total_route_distance += segment_length
             else:
-                # If path_nodes is None, it means no path was found even after connected component filtering.
-                # This should ideally not happen if waypoints are selected from the main component.
-                # If it does, it indicates a problem with the graph or waypoint selection.
-                print(f"   Error: No path found between {optimal_node_sequence_waypoints[i]} and {optimal_node_sequence_waypoints[i+1]} during route reconstruction. This segment will appear as a straight line.")
-                # To avoid a straight line, we could add a direct line segment as a last resort,
-                # but the user explicitly wants to avoid this. The best fix is to ensure connectivity.
-                # For now, we'll just log and continue, which might lead to a visual gap or straight line.
-                # A more robust solution would be to re-evaluate waypoint selection or graph connectivity.
+                # If path_nodes is None, it means no path was found.
+                print(f"   Warning: No path found between {optimal_node_sequence_waypoints[i]} and {optimal_node_sequence_waypoints[i+1]}. This segment will be skipped in visualization and distance calculation.")
         except Exception as e:
-            print(f"   Error reconstructing path segment between {optimal_node_sequence_waypoints[i]} and {optimal_node_sequence_waypoints[i+1]}: {e}")
+            print(f"   Error reconstructing path segment between {optimal_node_sequence_waypoints[i]} and {optimal_node_sequence_waypoints[i+1]}: {e}. This segment will be skipped.")
             
     print(f"   Optimal route calculated. Total distance: {total_route_distance:.2f} meters.")
     return optimal_node_sequence_waypoints, total_route_distance, route_segments_detailed
@@ -526,26 +588,36 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
     # Add LSOA Choropleth based on simulated crime rates
     lsoas_gdf_wgs84 = lsoas_gdf.to_crs(epsg=4326)
 
-    # Fix: Remove rows with missing or None crime_rate before calculating min/max
-    lsoas_gdf_wgs84 = lsoas_gdf_wgs84[lsoas_gdf_wgs84['crime_rate'].notnull()]
+    # Filter out rows with missing or non-numeric crime_rate before calculating min/max
+    lsoas_gdf_wgs84 = lsoas_gdf_wgs84[pd.to_numeric(lsoas_gdf_wgs84['crime_rate'], errors='coerce').notnull()]
+    lsoas_gdf_wgs84['crime_rate'] = pd.to_numeric(lsoas_gdf_wgs84['crime_rate'])
+
+
     if lsoas_gdf_wgs84.empty:
-        print("Warning: No LSOAs with valid crime_rate for visualization.")
+        print("Warning: No LSOAs with valid crime_rate for visualization. Using default color scale.")
         min_crime = 0
         max_crime = 1
     else:
         min_crime = lsoas_gdf_wgs84['crime_rate'].min()
         max_crime = lsoas_gdf_wgs84['crime_rate'].max()
-        if min_crime is None or max_crime is None:
-            min_crime = 0
-            max_crime = 1
+        # Handle case where min_crime equals max_crime (e.g., all crime rates are the same)
+        if min_crime == max_crime:
+            if min_crime == 0: # If all are zero
+                max_crime = 1 # Set a range to avoid division by zero in normalization
+            else: # If all are same non-zero value
+                min_crime = 0
+                max_crime = min_crime * 2
+                if max_crime == 0: max_crime = 1
 
-    # Use cm.get_cmap for compatibility, with warning filter in place
-    cmap = cm.get_cmap('YlOrRd')
+
+    # Use matplotlib.colormaps for modern compatibility
+    cmap = cm.get_cmap('YlOrRd')  # Yellow to Red colormap
     norm = colors.Normalize(vmin=min_crime, vmax=max_crime)
 
     def style_function(feature):
         crime_rate = feature['properties'].get('crime_rate', 0)
-        if crime_rate is None:
+        # Ensure crime_rate is numeric; default to 0 if not
+        if not isinstance(crime_rate, (int, float)):
             crime_rate = 0
         return {
             'fillColor': colors.rgb2hex(cmap(norm(crime_rate))),
@@ -590,7 +662,7 @@ def visualize_route(area_gdf, lsoas_gdf, waypoints_df, G, optimal_node_sequence,
         # and remove redundant nodes at segment junctions.
         
         # Start with the nodes of the first segment
-        if route_segments[0]:
+        if route_segments and route_segments[0]: # Ensure route_segments and its first element exist
             for node_id in route_segments[0]:
                 if node_id in G.nodes:
                     full_route_latlons.append([G.nodes[node_id]['y'], G.nodes[node_id]['x']])
