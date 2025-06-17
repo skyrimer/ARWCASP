@@ -445,158 +445,148 @@ if borough_mode == "Show Predicted":
                             import matplotlib.pyplot as plt
 
                             # --- Pie Chart Data Preparation ---
-                            # Dwelling type
-                            dwelling_cols = [
-                                "Dwelling type|Flat, maisonette or apartment (%)"
+                            pie_chart_options = [
+                                "Dwelling Type",
+                                "Ethnic Group",
+                                "Household Composition",
+                                "Population Age Groups",
+                                "Tenure",
+                                "Car or Van Availability",
+                                "Public Transport Accessibility Levels (%)"
                             ]
-                            dwelling_vals = [lsoa_factors.get(col, 0) for col in dwelling_cols]
-                            dwelling_other = 100 - sum(dwelling_vals)
-                            dwelling_labels = ["Flat, maisonette or apartment", "Other"]
-                            dwelling_sizes = [dwelling_vals[0], dwelling_other]
+                            center_col = st.columns([1, 2, 1])[1]
+                            with center_col:
+                                selected_pie_chart = st.selectbox(
+                                    "Select a pie chart to display",
+                                    pie_chart_options,
+                                    key=f"pie_chart_select_{selected_lsoa_code}"
+                                )
 
-                            # Ethnic group
-                            ethnic_cols = [
-                                "Ethnic Group|Asian/Asian British (%)",
-                                "Ethnic Group|Black/African/Caribbean/Black British (%)",
-                                "Ethnic Group|Mixed/multiple ethnic groups (%)",
-                                "Ethnic Group|Other ethnic group (%)",
-                                "Ethnic Group|White (%)"
-                            ]
-                            ethnic_labels = [
-                                "Asian/Asian British",
-                                "Black/African/Caribbean/Black British",
-                                "Mixed/multiple ethnic groups",
-                                "Other ethnic group",
-                                "White"
-                            ]
-                            ethnic_vals = [lsoa_factors.get(col, 0) for col in ethnic_cols]
+                                # Data for each pie chart
+                                dwelling_cols = [
+                                    "Dwelling type|Flat, maisonette or apartment (%)"
+                                ]
+                                dwelling_vals = [lsoa_factors.get(col, 0) for col in dwelling_cols]
+                                dwelling_other = 100 - sum(dwelling_vals)
+                                dwelling_labels = ["Flat, maisonette or apartment", "Other"]
+                                dwelling_sizes = [dwelling_vals[0], dwelling_other]
 
-                            # Household composition
-                            hh_cols = [
-                                "Household Composition|% Couple household with dependent children",
-                                "Household Composition|% Couple household without dependent children",
-                                "Household Composition|% Lone parent household",
-                                "Household Composition|% One person household",
-                                "Household Composition|% Other multi person household"
-                            ]
-                            hh_labels = [
-                                "Couple w/ children",
-                                "Couple w/o children",
-                                "Lone parent",
-                                "One person",
-                                "Other multi person"
-                            ]
-                            hh_vals = [lsoa_factors.get(col, 0) for col in hh_cols]
+                                ethnic_cols = [
+                                    "Ethnic Group|Asian/Asian British (%)",
+                                    "Ethnic Group|Black/African/Caribbean/Black British (%)",
+                                    "Ethnic Group|Mixed/multiple ethnic groups (%)",
+                                    "Ethnic Group|Other ethnic group (%)",
+                                    "Ethnic Group|White (%)"
+                                ]
+                                ethnic_labels = [
+                                    "Asian/Asian British",
+                                    "Black/African/Caribbean/Black British",
+                                    "Mixed/multiple ethnic groups",
+                                    "Other ethnic group",
+                                    "White"
+                                ]
+                                ethnic_vals = [lsoa_factors.get(col, 0) for col in ethnic_cols]
 
-                            # Mid-year Population Estimates (Aged 0-65+)
-                            pop_cols = [
-                                "Mid-year Population Estimates|Aged 0-15",
-                                "Mid-year Population Estimates|Aged 16-29",
-                                "Mid-year Population Estimates|Aged 30-44",
-                                "Mid-year Population Estimates|Aged 45-64",
-                                "Mid-year Population Estimates|Aged 65+"
-                            ]
-                            pop_labels = [
-                                "0-15", "16-29", "30-44", "45-64", "65+"
-                            ]
-                            pop_vals = [lsoa_factors.get(col, 0) for col in pop_cols]
+                                hh_cols = [
+                                    "Household Composition|% Couple household with dependent children",
+                                    "Household Composition|% Couple household without dependent children",
+                                    "Household Composition|% Lone parent household",
+                                    "Household Composition|% One person household",
+                                    "Household Composition|% Other multi person household"
+                                ]
+                                hh_labels = [
+                                    "Couple w/ children",
+                                    "Couple w/o children",
+                                    "Lone parent",
+                                    "One person",
+                                    "Other multi person"
+                                ]
+                                hh_vals = [lsoa_factors.get(col, 0) for col in hh_cols]
 
-                            # Tenure
-                            tenure_cols = [
-                                "Tenure|Owned outright (%)",
-                                "Tenure|Owned with a mortgage or loan (%)",
-                                "Tenure|Private rented (%)",
-                                "Tenure|Social rented (%)"
-                            ]
-                            tenure_labels = [
-                                "Owned outright",
-                                "Owned w/ mortgage/loan",
-                                "Private rented",
-                                "Social rented"
-                            ]
-                            tenure_vals = [lsoa_factors.get(col, 0) for col in tenure_cols]
+                                pop_cols = [
+                                    "Mid-year Population Estimates|Aged 0-15",
+                                    "Mid-year Population Estimates|Aged 16-29",
+                                    "Mid-year Population Estimates|Aged 30-44",
+                                    "Mid-year Population Estimates|Aged 45-64",
+                                    "Mid-year Population Estimates|Aged 65+"
+                                ]
+                                pop_labels = [
+                                    "0-15", "16-29", "30-44", "45-64", "65+"
+                                ]
+                                pop_vals = [lsoa_factors.get(col, 0) for col in pop_cols]
 
-                            # Car or van availability (except cars per household)
-                            car_cols = [
-                                "Car or van availability|No cars or vans in household (%)",
-                                "Car or van availability|1 car or van in household (%)",
-                                "Car or van availability|2 cars or vans in household (%)",
-                                "Car or van availability|3 cars or vans in household (%)",
-                                "Car or van availability|4 or more cars or vans in household (%)"
-                            ]
-                            car_labels = [
-                                "No cars/vans",
-                                "1 car/van",
-                                "2 cars/vans",
-                                "3 cars/vans",
-                                "4+ cars/vans"
-                            ]
-                            car_vals = [lsoa_factors.get(col, 0) for col in car_cols]
+                                tenure_cols = [
+                                    "Tenure|Owned outright (%)",
+                                    "Tenure|Owned with a mortgage or loan (%)",
+                                    "Tenure|Private rented (%)",
+                                    "Tenure|Social rented (%)"
+                                ]
+                                tenure_labels = [
+                                    "Owned outright",
+                                    "Owned w/ mortgage/loan",
+                                    "Private rented",
+                                    "Social rented"
+                                ]
+                                tenure_vals = [lsoa_factors.get(col, 0) for col in tenure_cols]
 
-                            # Public Transport Accessibility Levels|%
-                            ptal_cols = [
-                                "Public Transport Accessibility Levels|% 0-1 (poor access)|Level3_65",
-                                "Public Transport Accessibility Levels|% 2-3 (average access)|Level3_66",
-                                "Public Transport Accessibility Levels|% 4-6 (good access)|Level3_67"
-                            ]
-                            ptal_labels = [
-                                "PTAL 0-1 (poor)",
-                                "PTAL 2-3 (average)",
-                                "PTAL 4-6 (good)"
-                            ]
-                            ptal_vals = [lsoa_factors.get(col, 0) for col in ptal_cols]
+                                car_cols = [
+                                    "Car or van availability|No cars or vans in household (%)",
+                                    "Car or van availability|1 car or van in household (%)",
+                                    "Car or van availability|2 cars or vans in household (%)",
+                                    "Car or van availability|3 cars or vans in household (%)",
+                                    "Car or van availability|4 or more cars or vans in household (%)"
+                                ]
+                                car_labels = [
+                                    "No cars/vans",
+                                    "1 car/van",
+                                    "2 cars/vans",
+                                    "3 cars/vans",
+                                    "4+ cars/vans"
+                                ]
+                                car_vals = [lsoa_factors.get(col, 0) for col in car_cols]
 
-                            # --- Pie Charts in 3 columns, above the factors table ---
-                            col_pie1, col_pie2, col_pie3 = st.columns(3)
-                            with col_pie1:
-                                fig1, ax1 = plt.subplots()
-                                ax1.pie(dwelling_sizes, labels=dwelling_labels, autopct='%1.1f%%', startangle=90)
-                                ax1.set_title("Dwelling Type")
-                                st.pyplot(fig1)
+                                ptal_cols = [
+                                    "Public Transport Accessibility Levels|% 0-1 (poor access)|Level3_65",
+                                    "Public Transport Accessibility Levels|% 2-3 (average access)|Level3_66",
+                                    "Public Transport Accessibility Levels|% 4-6 (good access)|Level3_67"
+                                ]
+                                ptal_labels = [
+                                    "PTAL 0-1 (poor)",
+                                    "PTAL 2-3 (average)",
+                                    "PTAL 4-6 (good)"
+                                ]
+                                ptal_vals = [lsoa_factors.get(col, 0) for col in ptal_cols]
 
-                            with col_pie2:
-                                fig2, ax2 = plt.subplots()
-                                ax2.pie(ethnic_vals, labels=ethnic_labels, autopct='%1.1f%%', startangle=90)
-                                fig2.suptitle("Ethnic Group")
-                                st.pyplot(fig2)
-
-                            with col_pie3:
-                                fig3, ax3 = plt.subplots()
-                                ax3.pie(hh_vals, labels=hh_labels, autopct='%1.1f%%', startangle=90)
-                                ax3.set_title("Household Composition")
-                                st.pyplot(fig3)
-
-                            col_pie4, col_pie5, col_pie6 = st.columns(3)
-                            with col_pie4:
-                                fig4, ax4 = plt.subplots()
-                                ax4.pie(pop_vals, labels=pop_labels, autopct='%1.1f%%', startangle=90)
-                                ax4.set_title("Population Age Groups")
-                                st.pyplot(fig4)
-
-                            with col_pie5:
-                                fig5, ax5 = plt.subplots()
-                                ax5.pie(tenure_vals, labels=tenure_labels, autopct='%1.1f%%', startangle=90)
-                                fig5.suptitle("Tenure")
-                                st.pyplot(fig5)
-
-                            with col_pie6:
-                                fig6, ax6 = plt.subplots()
-                                ax6.pie(car_vals, labels=car_labels, autopct='%1.1f%%', startangle=90)
-                                ax6.set_title("Car or Van Availability")
-                                st.pyplot(fig6)
-
-                            # Last row for PTAL
-                            col_pie7, _, _ = st.columns(3)
-                            with col_pie7:
-                                fig7, ax7 = plt.subplots()
-                                ax7.pie(ptal_vals, labels=ptal_labels, autopct='%1.1f%%', startangle=90)
-                                ax7.set_title("Public Transport Accessibility Levels (%)")
-                                st.pyplot(fig7)
-
-                            # Show the factors table below the pie charts
+                                # --- Show only the selected pie chart ---
+                                fig, ax = plt.subplots(figsize=(4, 4))
+                                if selected_pie_chart == "Dwelling Type":
+                                    ax.pie(dwelling_sizes, labels=dwelling_labels, autopct='%1.1f%%', startangle=90)
+                                    ax.set_title("Dwelling Type", fontsize=12)
+                                elif selected_pie_chart == "Ethnic Group":
+                                    ax.pie(ethnic_vals, labels=ethnic_labels, autopct='%1.1f%%', startangle=90)
+                                    ax.set_title("Ethnic Group", fontsize=12)
+                                elif selected_pie_chart == "Household Composition":
+                                    ax.pie(hh_vals, labels=hh_labels, autopct='%1.1f%%', startangle=90)
+                                    ax.set_title("Household Composition", fontsize=12)
+                                elif selected_pie_chart == "Population Age Groups":
+                                    ax.pie(pop_vals, labels=pop_labels, autopct='%1.1f%%', startangle=90)
+                                    ax.set_title("Population Age Groups", fontsize=12)
+                                elif selected_pie_chart == "Tenure":
+                                    ax.pie(tenure_vals, labels=tenure_labels, autopct='%1.1f%%', startangle=90)
+                                    ax.set_title("Tenure", fontsize=12)
+                                elif selected_pie_chart == "Car or Van Availability":
+                                    ax.pie(car_vals, labels=car_labels, autopct='%1.1f%%', startangle=90)
+                                    ax.set_title("Car or Van Availability", fontsize=12)
+                                elif selected_pie_chart == "Public Transport Accessibility Levels (%)":
+                                    ax.pie(ptal_vals, labels=ptal_labels, autopct='%1.1f%%', startangle=90)
+                                    ax.set_title("PTAL (%)", fontsize=12)
+                                st.pyplot(fig, use_container_width=True)
+                            # Show the factors table below the centered pie chart
+                            st.markdown("#### LSOA Data Table")
                             st.table(display_factors)
                         else:
                             st.info("No factor data found for this LSOA in merged_data.")
+
 # --- Compare Predicted vs Actual ---
 elif borough_mode == "Compare Predicted vs Actual":
     st.subheader("Compare Predicted vs Actual Burglaries by Borough")
@@ -959,154 +949,144 @@ elif borough_mode == "Show Historical":
                     import matplotlib.pyplot as plt
 
                     # --- Pie Chart Data Preparation ---
-                    # Dwelling type
-                    dwelling_cols = [
-                        "Dwelling type|Flat, maisonette or apartment (%)"
+                    pie_chart_options = [
+                        "Dwelling Type",
+                        "Ethnic Group",
+                        "Household Composition",
+                        "Population Age Groups",
+                        "Tenure",
+                        "Car or Van Availability",
+                        "Public Transport Accessibility Levels (%)"
                     ]
-                    dwelling_vals = [lsoa_factors.get(col, 0) for col in dwelling_cols]
-                    dwelling_other = 100 - sum(dwelling_vals)
-                    dwelling_labels = ["Flat, maisonette or apartment", "Other"]
-                    dwelling_sizes = [dwelling_vals[0], dwelling_other]
+                    center_col = st.columns([1, 2, 1])[1]
+                    with center_col:
+                        selected_pie_chart = st.selectbox(
+                            "Select a pie chart to display",
+                            pie_chart_options,
+                            key=f"pie_chart_select_{selected_lsoa_code_hist}"
+                        )
 
-                    # Ethnic group
-                    ethnic_cols = [
-                        "Ethnic Group|Asian/Asian British (%)",
-                        "Ethnic Group|Black/African/Caribbean/Black British (%)",
-                        "Ethnic Group|Mixed/multiple ethnic groups (%)",
-                        "Ethnic Group|Other ethnic group (%)",
-                        "Ethnic Group|White (%)"
-                    ]
-                    ethnic_labels = [
-                        "Asian/Asian British",
-                        "Black/African/Caribbean/Black British",
-                        "Mixed/multiple ethnic groups",
-                        "Other ethnic group",
-                        "White"
-                    ]
-                    ethnic_vals = [lsoa_factors.get(col, 0) for col in ethnic_cols]
+                        # Data for each pie chart
+                        dwelling_cols = [
+                            "Dwelling type|Flat, maisonette or apartment (%)"
+                        ]
+                        dwelling_vals = [lsoa_factors.get(col, 0) for col in dwelling_cols]
+                        dwelling_other = 100 - sum(dwelling_vals)
+                        dwelling_labels = ["Flat, maisonette or apartment", "Other"]
+                        dwelling_sizes = [dwelling_vals[0], dwelling_other]
 
-                    # Household composition
-                    hh_cols = [
-                        "Household Composition|% Couple household with dependent children",
-                        "Household Composition|% Couple household without dependent children",
-                        "Household Composition|% Lone parent household",
-                        "Household Composition|% One person household",
-                        "Household Composition|% Other multi person household"
-                    ]
-                    hh_labels = [
-                        "Couple w/ children",
-                        "Couple w/o children",
-                        "Lone parent",
-                        "One person",
-                        "Other multi person"
-                    ]
-                    hh_vals = [lsoa_factors.get(col, 0) for col in hh_cols]
+                        ethnic_cols = [
+                            "Ethnic Group|Asian/Asian British (%)",
+                            "Ethnic Group|Black/African/Caribbean/Black British (%)",
+                            "Ethnic Group|Mixed/multiple ethnic groups (%)",
+                            "Ethnic Group|Other ethnic group (%)",
+                            "Ethnic Group|White (%)"
+                        ]
+                        ethnic_labels = [
+                            "Asian/Asian British",
+                            "Black/African/Caribbean/Black British",
+                            "Mixed/multiple ethnic groups",
+                            "Other ethnic group",
+                            "White"
+                        ]
+                        ethnic_vals = [lsoa_factors.get(col, 0) for col in ethnic_cols]
 
-                    # Mid-year Population Estimates (Aged 0-65+)
-                    pop_cols = [
-                        "Mid-year Population Estimates|Aged 0-15",
-                        "Mid-year Population Estimates|Aged 16-29",
-                        "Mid-year Population Estimates|Aged 30-44",
-                        "Mid-year Population Estimates|Aged 45-64",
-                        "Mid-year Population Estimates|Aged 65+"
-                    ]
-                    pop_labels = [
-                        "0-15", "16-29", "30-44", "45-64", "65+"
-                    ]
-                    pop_vals = [lsoa_factors.get(col, 0) for col in pop_cols]
+                        hh_cols = [
+                            "Household Composition|% Couple household with dependent children",
+                            "Household Composition|% Couple household without dependent children",
+                            "Household Composition|% Lone parent household",
+                            "Household Composition|% One person household",
+                            "Household Composition|% Other multi person household"
+                        ]
+                        hh_labels = [
+                            "Couple w/ children",
+                            "Couple w/o children",
+                            "Lone parent",
+                            "One person",
+                            "Other multi person"
+                        ]
+                        hh_vals = [lsoa_factors.get(col, 0) for col in hh_cols]
 
-                    # Tenure
-                    tenure_cols = [
-                        "Tenure|Owned outright (%)",
-                        "Tenure|Owned with a mortgage or loan (%)",
-                        "Tenure|Private rented (%)",
-                        "Tenure|Social rented (%)"
-                    ]
-                    tenure_labels = [
-                        "Owned outright",
-                        "Owned w/ mortgage/loan",
-                        "Private rented",
-                        "Social rented"
-                    ]
-                    tenure_vals = [lsoa_factors.get(col, 0) for col in tenure_cols]
+                        pop_cols = [
+                            "Mid-year Population Estimates|Aged 0-15",
+                            "Mid-year Population Estimates|Aged 16-29",
+                            "Mid-year Population Estimates|Aged 30-44",
+                            "Mid-year Population Estimates|Aged 45-64",
+                            "Mid-year Population Estimates|Aged 65+"
+                        ]
+                        pop_labels = [
+                            "0-15", "16-29", "30-44", "45-64", "65+"
+                        ]
+                        pop_vals = [lsoa_factors.get(col, 0) for col in pop_cols]
 
-                    # Car or van availability (except cars per household)
-                    car_cols = [
-                        "Car or van availability|No cars or vans in household (%)",
-                        "Car or van availability|1 car or van in household (%)",
-                        "Car or van availability|2 cars or vans in household (%)",
-                        "Car or van availability|3 cars or vans in household (%)",
-                        "Car or van availability|4 or more cars or vans in household (%)"
-                    ]
-                    car_labels = [
-                        "No cars/vans",
-                        "1 car/van",
-                        "2 cars/vans",
-                        "3 cars/vans",
-                        "4+ cars/vans"
-                    ]
-                    car_vals = [lsoa_factors.get(col, 0) for col in car_cols]
+                        tenure_cols = [
+                            "Tenure|Owned outright (%)",
+                            "Tenure|Owned with a mortgage or loan (%)",
+                            "Tenure|Private rented (%)",
+                            "Tenure|Social rented (%)"
+                        ]
+                        tenure_labels = [
+                            "Owned outright",
+                            "Owned w/ mortgage/loan",
+                            "Private rented",
+                            "Social rented"
+                        ]
+                        tenure_vals = [lsoa_factors.get(col, 0) for col in tenure_cols]
 
-                    # Public Transport Accessibility Levels|%
-                    ptal_cols = [
-                        "Public Transport Accessibility Levels|% 0-1 (poor access)|Level3_65",
-                        "Public Transport Accessibility Levels|% 2-3 (average access)|Level3_66",
-                        "Public Transport Accessibility Levels|% 4-6 (good access)|Level3_67"
-                    ]
-                    ptal_labels = [
-                        "PTAL 0-1 (poor)",
-                        "PTAL 2-3 (average)",
-                        "PTAL 4-6 (good)"
-                    ]
-                    ptal_vals = [lsoa_factors.get(col, 0) for col in ptal_cols]
+                        car_cols = [
+                            "Car or van availability|No cars or vans in household (%)",
+                            "Car or van availability|1 car or van in household (%)",
+                            "Car or van availability|2 cars or vans in household (%)",
+                            "Car or van availability|3 cars or vans in household (%)",
+                            "Car or van availability|4 or more cars or vans in household (%)"
+                        ]
+                        car_labels = [
+                            "No cars/vans",
+                            "1 car/van",
+                            "2 cars/vans",
+                            "3 cars/vans",
+                            "4+ cars/vans"
+                        ]
+                        car_vals = [lsoa_factors.get(col, 0) for col in car_cols]
 
-                    # --- Pie Charts in 3 columns, above the factors table ---
-                    col_pie1, col_pie2, col_pie3 = st.columns(3)
-                    with col_pie1:
-                        fig1, ax1 = plt.subplots()
-                        ax1.pie(dwelling_sizes, labels=dwelling_labels, autopct='%1.1f%%', startangle=90)
-                        ax1.set_title("Dwelling Type")
-                        st.pyplot(fig1)
+                        ptal_cols = [
+                            "Public Transport Accessibility Levels|% 0-1 (poor access)|Level3_65",
+                            "Public Transport Accessibility Levels|% 2-3 (average access)|Level3_66",
+                            "Public Transport Accessibility Levels|% 4-6 (good access)|Level3_67"
+                        ]
+                        ptal_labels = [
+                            "PTAL 0-1 (poor)",
+                            "PTAL 2-3 (average)",
+                            "PTAL 4-6 (good)"
+                        ]
+                        ptal_vals = [lsoa_factors.get(col, 0) for col in ptal_cols]
 
-                    with col_pie2:
-                        fig2, ax2 = plt.subplots()
-                        ax2.pie(ethnic_vals, labels=ethnic_labels, autopct='%1.1f%%', startangle=90)
-                        fig2.suptitle("Ethnic Group")
-                        st.pyplot(fig2)
-
-                    with col_pie3:
-                        fig3, ax3 = plt.subplots()
-                        ax3.pie(hh_vals, labels=hh_labels, autopct='%1.1f%%', startangle=90)
-                        ax3.set_title("Household Composition")
-                        st.pyplot(fig3)
-
-                    col_pie4, col_pie5, col_pie6 = st.columns(3)
-                    with col_pie4:
-                        fig4, ax4 = plt.subplots()
-                        ax4.pie(pop_vals, labels=pop_labels, autopct='%1.1f%%', startangle=90)
-                        ax4.set_title("Population Age Groups")
-                        st.pyplot(fig4)
-
-                    with col_pie5:
-                        fig5, ax5 = plt.subplots()
-                        ax5.pie(tenure_vals, labels=tenure_labels, autopct='%1.1f%%', startangle=90)
-                        fig5.suptitle("Tenure")
-                        st.pyplot(fig5)
-
-                    with col_pie6:
-                        fig6, ax6 = plt.subplots()
-                        ax6.pie(car_vals, labels=car_labels, autopct='%1.1f%%', startangle=90)
-                        ax6.set_title("Car or Van Availability")
-                        st.pyplot(fig6)
-
-                    # Last row for PTAL
-                    col_pie7, _, _ = st.columns(3)
-                    with col_pie7:
-                        fig7, ax7 = plt.subplots()
-                        ax7.pie(ptal_vals, labels=ptal_labels, autopct='%1.1f%%', startangle=90)
-                        ax7.set_title("Public Transport Accessibility Levels (%)")
-                        st.pyplot(fig7)
-
+                        # --- Show only the selected pie chart ---
+                        fig, ax = plt.subplots(figsize=(4, 4))
+                        if selected_pie_chart == "Dwelling Type":
+                            ax.pie(dwelling_sizes, labels=dwelling_labels, autopct='%1.1f%%', startangle=90)
+                            ax.set_title("Dwelling Type", fontsize=12)
+                        elif selected_pie_chart == "Ethnic Group":
+                            ax.pie(ethnic_vals, labels=ethnic_labels, autopct='%1.1f%%', startangle=90)
+                            ax.set_title("Ethnic Group", fontsize=12)
+                        elif selected_pie_chart == "Household Composition":
+                            ax.pie(hh_vals, labels=hh_labels, autopct='%1.1f%%', startangle=90)
+                            ax.set_title("Household Composition", fontsize=12)
+                        elif selected_pie_chart == "Population Age Groups":
+                            ax.pie(pop_vals, labels=pop_labels, autopct='%1.1f%%', startangle=90)
+                            ax.set_title("Population Age Groups", fontsize=12)
+                        elif selected_pie_chart == "Tenure":
+                            ax.pie(tenure_vals, labels=tenure_labels, autopct='%1.1f%%', startangle=90)
+                            ax.set_title("Tenure", fontsize=12)
+                        elif selected_pie_chart == "Car or Van Availability":
+                            ax.pie(car_vals, labels=car_labels, autopct='%1.1f%%', startangle=90)
+                            ax.set_title("Car or Van Availability", fontsize=12)
+                        elif selected_pie_chart == "Public Transport Accessibility Levels (%)":
+                            ax.pie(ptal_vals, labels=ptal_labels, autopct='%1.1f%%', startangle=90)
+                            ax.set_title("PTAL (%)", fontsize=12)
+                        st.pyplot(fig, use_container_width=True)
+                    # Show the factors table below the centered pie chart
+                    st.markdown("#### LSOA Data Table")
                     st.table(display_factors)
                 else:
                     st.info("No factor data found for this LSOA in merged_data.")
