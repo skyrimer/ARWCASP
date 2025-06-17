@@ -34,7 +34,7 @@ os.environ['SHAPE_RESTORE_SHX'] = 'YES'
 
 
 # --- GLOBAL CONFIGURATION (Update These Paths and Names) ---
-WARD_NAME = "Alexandra" # The specific ward you want to analyze
+WARD_NAME = "Alperton" # The specific ward you want to analyze
 FIXED_CRIME_RATE_THRESHOLD = 0.40 # LSOAs with crime_rate >= this value will be considered high crime
 MAX_TOTAL_WAYPOINTS_FOR_TSP = 20 # Maximum total waypoints to feed into the TSP solver
 POINTS_PER_LSOA_MIN = 1 # Minimum points to generate for any high-crime LSOA
@@ -329,11 +329,12 @@ def calculate_points_based_on_size(lsoa_area_sqm, min_points=POINTS_PER_LSOA_MIN
     points = min(max_points_per_lsoa_cap, points)
     return points
 
+# --- Main function to simulate crime and select waypoints ---
 def simulate_crime_and_select_waypoints(lsoas_gdf, G, max_total_waypoints_for_tsp, fixed_crime_rate_threshold):
     """
     Identifies high-crime LSOAs (based on median crime rate),
-    and selects representative network nodes as patrol waypoints, generating additional points
-    based on LSOA size for high-crime LSOAs.
+    and selects representative network nodes as patrol waypoints, ensuring
+    a minimum of one point per LSOA, then adding more based on size/crime priority.
     Args:
         lsoas_gdf (geopandas.GeoDataFrame): GeoDataFrame of LSOAs with 'crime_rate' (which is 'median').
         G (networkx.MultiDiGraph): The cycle network graph.
@@ -343,33 +344,27 @@ def simulate_crime_and_select_waypoints(lsoas_gdf, G, max_total_waypoints_for_ts
         pandas.DataFrame: DataFrame of selected waypoints with their details.
         geopandas.GeoDataFrame: LSOAs GeoDataFrame with crime rates and high-crime flag.
     """
-    print("--- Step 4: Selecting Patrol Waypoints Based on Median Crime ---")
+    print("--- Step 4: Selecting Patrol Waypoints Based on Median Crime and Area ---")
     
     # Identify high-crime LSOAs based on the fixed crime rate threshold for display/labeling purposes only.
     lsoas_gdf['is_high_crime'] = lsoas_gdf['crime_rate'] >= fixed_crime_rate_threshold
     
-    # To ensure every LSOA gets at least one point, we will iterate over ALL LSOAs in the ward.
-    # We still sort by crime rate (descending) so that higher crime LSOAs are processed earlier,
-    # which can be relevant if MAX_TOTAL_WAYPOINTS_FOR_TSP is hit and points need to be capped.
+    # Sort by crime rate (descending) so that higher crime LSOAs are processed earlier for potential extra points
     lsoas_to_process = lsoas_gdf.sort_values(by='crime_rate', ascending=False)
 
     if lsoas_to_process.empty:
-        print("   No LSOAs found in the ward to select waypoints from. Exiting waypoint selection.")
+        print("    No LSOAs found in the ward to select waypoints from. Exiting waypoint selection.")
         return pd.DataFrame(), lsoas_gdf
 
-    all_generated_waypoints = []
+    guaranteed_waypoints = []
+    potential_additional_waypoints = []
     
-    print(f"   Generating points for all {len(lsoas_to_process)} LSOAs in the ward...")
+    print(f"    Generating points for all {len(lsoas_to_process)} LSOAs in the ward...")
     
     for idx, lsoa_row in lsoas_to_process.iterrows():
         # Get LSOA geometry in projected CRS for accurate area calculation
         lsoa_polygon_projected = gpd.GeoSeries([lsoa_row.geometry], crs=lsoas_gdf.crs).to_crs(epsg=27700).iloc[0]
         lsoa_area_sqm = lsoa_polygon_projected.area
-
-        # Calculate points based on size, respecting POINTS_PER_LSOA_MIN (which is 1)
-        num_points_for_this_lsoa = calculate_points_based_on_size(lsoa_area_sqm)
-        
-        print(f"   Generating {num_points_for_this_lsoa} points in LSOA: {lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]} (Area: {lsoa_area_sqm/1e6:.2f} km², Median Crime: {lsoa_row['crime_rate']:.2f})")
         
         # Ensure the LSOA geometry is valid before generating points (use original CRS for random point generation)
         lsoa_polygon_geographic = lsoa_row.geometry
@@ -377,38 +372,77 @@ def simulate_crime_and_select_waypoints(lsoas_gdf, G, max_total_waypoints_for_ts
             lsoa_polygon_geographic = lsoa_polygon_geographic.buffer(0) # Attempt to fix invalid geometry
 
         if lsoa_polygon_geographic.is_empty:
-            print(f"   Warning: LSOA ({lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]}) has an empty or invalid geometry. Skipping point generation.")
+            print(f"    Warning: LSOA ({lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]}) has an empty or invalid geometry. Skipping point generation.")
             continue
 
-        random_points = generate_random_points_in_polygon(lsoa_polygon_geographic, num_points_for_this_lsoa)
+        # --- 1. GUARANTEE AT LEAST ONE POINT PER LSOA ---
+        # Generate 1 point for this LSOA
+        guaranteed_random_points = generate_random_points_in_polygon(lsoa_polygon_geographic, POINTS_PER_LSOA_MIN)
         
-        for i, point in enumerate(random_points):
-            nearest_node = ox.nearest_nodes(G, point.x, point.y)
-            # Ensure the nearest node is actually in the graph G (the largest connected component)
-            if nearest_node in G.nodes:
-                all_generated_waypoints.append({
-                    'LSOA21CD': lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE], # Store actual LSOA code
-                    'LSOA21NM': lsoa_row['LSOA21NM'] + f' (Pt {i+1})' if 'LSOA21NM' in lsoa_row else f"LSOA {lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]} (Pt {i+1})",
-                    'simulated_crime_rate': lsoa_row['crime_rate'], # This is actually the median crime
+        if guaranteed_random_points: # Check if at least one point was successfully generated
+            point = guaranteed_random_points[0] # Take the first generated point
+            nearest_node = ox.distance.nearest_nodes(G, point.x, point.y)
+            if nearest_node is not None and nearest_node in G.nodes:
+                guaranteed_waypoints.append({
+                    'LSOA21CD': lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE],
+                    'LSOA21NM': lsoa_row['LSOA21NM'] + ' (Guaranteed Pt)' if 'LSOA21NM' in lsoa_row else f"LSOA {lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]} (Guaranteed Pt)",
+                    'simulated_crime_rate': lsoa_row['crime_rate'],
                     'waypoint_lat': G.nodes[nearest_node]['y'],
                     'waypoint_lon': G.nodes[nearest_node]['x'],
                     'nearest_node_id': nearest_node
                 })
             else:
-                print(f"   Warning: Nearest node {nearest_node} for point in LSOA {lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]} is not in the main connected component. Skipping this waypoint.")
+                print(f"    Warning: Could not find valid nearest network node for guaranteed point in LSOA {lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]}. Skipping guaranteed point for this LSOA.")
+        else:
+            print(f"    Warning: Could not generate a guaranteed point within polygon for LSOA {lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]}. Skipping guaranteed point for this LSOA.")
 
-    patrol_waypoints_df = pd.DataFrame(all_generated_waypoints)
+        # --- 2. CALCULATE AND GENERATE ADDITIONAL POINTS BASED ON SIZE ---
+        # Calculate total points this LSOA should get based on size, respecting the max cap
+        num_points_by_size = calculate_points_based_on_size(lsoa_area_sqm)
+        
+        # Determine how many *additional* points are needed, beyond the guaranteed one(s)
+        num_additional_points = num_points_by_size - POINTS_PER_LSOA_MIN 
+        
+        if num_additional_points > 0:
+            additional_random_points = generate_random_points_in_polygon(lsoa_polygon_geographic, num_additional_points)
+            for i, point in enumerate(additional_random_points):
+                nearest_node = ox.distance.nearest_nodes(G, point.x, point.y)
+                if nearest_node is not None and nearest_node in G.nodes:
+                    potential_additional_waypoints.append({
+                        'LSOA21CD': lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE],
+                        'LSOA21NM': lsoa_row['LSOA21NM'] + f' (Addl Pt {i+1})' if 'LSOA21NM' in lsoa_row else f"LSOA {lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]} (Addl Pt {i+1})",
+                        'simulated_crime_rate': lsoa_row['crime_rate'],
+                        'waypoint_lat': G.nodes[nearest_node]['y'],
+                        'waypoint_lon': G.nodes[nearest_node]['x'],
+                        'nearest_node_id': nearest_node
+                    })
+                else:
+                    print(f"    Warning: Could not find valid nearest network node for additional point in LSOA {lsoa_row[LSOA_COLUMN_NAME_FOR_MERGE]}. Skipping this additional waypoint.")
 
-    # If more waypoints were generated than the maximum allowed for TSP, select the top ones.
-    # This caps the total number of waypoints used in the TSP, prioritizing higher crime LSOAs.
-    if len(patrol_waypoints_df) > max_total_waypoints_for_tsp:
-        print(f"   Total waypoints generated ({len(patrol_waypoints_df)}) exceeds MAX_TOTAL_WAYPOINTS_FOR_TSP ({max_total_waypoints_for_tsp}). Selecting top {max_total_waypoints_for_tsp} by crime rate (median).")
-        patrol_waypoints_df = patrol_waypoints_df.sort_values(by='simulated_crime_rate', ascending=False).head(max_total_waypoints_for_tsp)
-    else:
-        print(f"   All {len(patrol_waypoints_df)} generated waypoints will be used.")
+    # --- 3. COMBINE AND APPLY FINAL CAP ---
+    final_patrol_waypoints = pd.DataFrame(guaranteed_waypoints)
     
-    print(f"   Selected a total of {len(patrol_waypoints_df)} patrol waypoints for TSP.")
-    return patrol_waypoints_df, lsoas_gdf
+    # Calculate how many more waypoints we can add up to the total max budget
+    remaining_capacity = max_total_waypoints_for_tsp - len(final_patrol_waypoints)
+    
+    if remaining_capacity > 0 and potential_additional_waypoints:
+        potential_additional_df = pd.DataFrame(potential_additional_waypoints)
+        # Prioritize additional points by crime rate before adding them
+        potential_additional_df = potential_additional_df.sort_values(by='simulated_crime_rate', ascending=False)
+        
+        # Take only as many additional points as the remaining capacity allows
+        selected_additional_df = potential_additional_df.head(remaining_capacity)
+        
+        final_patrol_waypoints = pd.concat([final_patrol_waypoints, selected_additional_df], ignore_index=True)
+        print(f"    Added {len(selected_additional_df)} additional waypoints based on crime priority. Remaining capacity: {remaining_capacity}.")
+    elif remaining_capacity <= 0:
+        print(f"    No capacity for additional waypoints. Reached MAX_TOTAL_WAYPOINTS_FOR_TSP ({max_total_waypoints_for_tsp}) with guaranteed points.")
+    else:
+        print("    No additional waypoints generated.")
+
+
+    print(f"    Selected a total of {len(final_patrol_waypoints)} patrol waypoints for TSP (including guaranteed points).")
+    return final_patrol_waypoints, lsoas_gdf
 
 # --- 3. Designing the Optimal Cycle Patrol Route ---
 
