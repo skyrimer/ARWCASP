@@ -16,7 +16,8 @@ An automated, data-driven police demand forecasting system to inform resource al
   - [📁 processed_data/](#📁-processed_data)  
   - [📁 model/](#📁-model)  
   - [📁 routes/](#📁-routes)  
-  - [How It All Fits Together](#how-it-all-fits-together)  
+  - [How It All Fits Together](#how-it-all-fits-together)
+- [Running the dashboard](#running-dashboard)
 - [Authors](#authors)  
 - [References](#references)  
   - [Official Statistics & Government Data](#official-statistics--government-data)  
@@ -151,6 +152,13 @@ Generates optimized patrol routes using predicted hotspots:
 5. **Modeling**: Train & validate Bayesian model in `model/`.  
 6. **Routing**: Generate patrol paths under `routes/`.  
 7. **Dashboard**: Launch `dashboard.py` for interactive visualization.
+
+## Running the dashboard
+To run the dashboard, open up a terminal and run the following command in the root folder of the GitHub:
+```
+streamlit run dashboard.py
+```
+This will open up your webbrowser with the dashboard running there. For more information about the dashboard see the report.
 
 ## Authors
 - Kirill Chekmenev
