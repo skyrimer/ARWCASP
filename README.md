@@ -17,7 +17,7 @@ An automated, data-driven police demand forecasting system to inform resource al
   - [📁 model/](#📁-model)  
   - [📁 routes/](#📁-routes)  
   - [How It All Fits Together](#how-it-all-fits-together)
-- [Running the dashboard](#running-dashboard)
+- [Running the dashboard](#running-the-dashboard)
 - [Authors](#authors)  
 - [References](#references)  
   - [Official Statistics & Government Data](#official-statistics--government-data)  
